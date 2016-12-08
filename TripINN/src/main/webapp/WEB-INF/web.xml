@@ -24,7 +24,7 @@
   </listener>
    
    <servlet>
-      <servlet-name>dispatcherTiles2</servlet-name>
+      <servlet-name>action</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -36,7 +36,7 @@
    </servlet>
 
 	<servlet-mapping>
-		<servlet-name>dispatcherTiles2</servlet-name>
+		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
