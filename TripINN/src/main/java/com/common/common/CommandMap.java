@@ -21,7 +21,7 @@ public class CommandMap {
 	}
 	
 	public boolean containsKey(String key) {
-		return map.containsKey(key);
+		return map.containsKey(key); 
 	}
 	
 	public boolean containsValue(Object value) {
