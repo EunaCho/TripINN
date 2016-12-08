@@ -13,7 +13,7 @@ public class CommandMap {
 	}
 	
 	public void put(String key, Object value) {
-		map.put(key, value);
+		map.put(key, value); 
 	}
 	
 	public Object remove(String key) {
