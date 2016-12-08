@@ -1,69 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
 <script>
-function logout() {
-	if(confirm("·Î±×¾Æ¿ôÀ» ÇÏ½Ã°Ú½À´Ï±î?")) {
+/* function logout() {
+	if(confirm("ë¡œê·¸ì•„ì›ƒì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
 		location.href="memberLogout.action";
 	}
 	return;
-}
+} */
 </script>
 <div class="top_module">
-  <div class="menu_container">
-    <div class="" style="width:140px;height:70px;float:left; margin:0px;">
-    	<img src="/Taster/images/logo2.png"	onclick="location.href='main.action'" 
-    		width="138px" height="68px" style="cursor:pointer"/>
-    </div>
-    
-    <s:if test="#session.member_id != null">
-    <div class="btn_category" onclick="logout();">·Î±×¾Æ¿ô</div>
-    <div class="btn_category" onclick="location.href='qboardList.action'">1:1¹®ÀÇ</div>
-    <div class="btn_category" onclick="location.href='memberMypage.action'">¸¶ÀÌÆäÀÌÁö</div>
-    </s:if>
-    
-    <s:if test="#session.member_id == null">
-    <div class="btn_category" onclick="location.href='qboardList.action'">1:1¹®ÀÇ</div>
-    <div class="btn_category" onclick="location.href='memberJoin.action'" >È¸¿ø°¡ÀÔ</div>
-    <div class="btn_category"  onclick="">
-    	<a href="#layer" class="layer_trigger">·Î±×ÀÎ</a>
-    </div>
-    </s:if>
-    
-    <s:if test="#session.member_level == 3">
-    <div class="btn_category" onclick="location.href='approvalRequestList.action'" style="background:#ff792a;" >½Å±Ô½Ä´ç ½ÂÀÎ</div>
-    <div class="btn_category" onclick="location.href='adminMemberList.action'" style="background:#ff792a;">È¸¿ø °ü¸®</div>
-    </s:if>
-  </div>
-  <div style="width:100%; height:100px; text-align:center; color:#fff;">
-  	<h3>¼ÖÁ÷ÇÑ ¸®ºä, ¹ÏÀ» ¼ö ÀÖ´Â ÆòÁ¡!</h3>
-  	<h3>¸À°´¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù.</h3>
-  	
-  	<select name="" id="selectbox" class="selectbox">
-  		<option value="">½Ä´ç¸í</option>
-  		<option value="">Áö¿ª</option>
-  	</select>
-  	
-  	<input type="text" name="keyword" id="keyword" placeholder="°Ë»ö ¸ñ·ÏÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä."/>
-  	<input type="button" value="°Ë  »ö" class="btn_search" style="margin-right:30px;font-size:13px;font-weight:bold;"/>
-  	<input type="button" value="»ó¼¼°Ë»ö" class="btn_search" style="font-size:13px;font-weight:bold;"/>
-  </div>
+  <div class="menu_container" >
+    <center><h3>í—¤ë” ì…ë‹ˆë‹¤.</h3></center>
 </div>
-<table style="width:100%;" class="top_table">
-	<tr>
-		<td onclick="location.href='foodsMenuList.action'">¾÷Á¾º° ¸ÀÁı</td>
-		<td onclick="location.href='foodsAreaList.action'">Áö¿ªº° ¸ÀÁı</td>
-		<td onclick="location.href='foodsHotList.action'">¶ß´Â ¸ÀÁı</td>
-		<td onclick="location.href='#'">½Å±Ô ¸ÀÁı</td>
-		<td onclick="location.href='foodsRecommendList.action'">ÃßÃµ ¸ÀÁı</td>
-		<td onclick="">ÀüÃ¼ º¸±â</td>
-	</tr>
-</table>
-
 <script>
 jQuery(function($){
 	 var layerWindow = $('.mw_layer');
@@ -95,10 +48,10 @@ jQuery(function($){
 	
 function loginCheck() {
 	if($("#member_id").val() == "") {
-		alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		return;
 	} else if($("#member_pwd").val() == "") {
-		alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		return;
 	}
 	
@@ -113,8 +66,8 @@ function loginCheck() {
 	 	<h2 style="border-bottom:1px solid black;">LOGIN</h2>
 		 <div class="login_line">
 		 	<div class="box_in">
-		 		<input type="text" name="member_id" id="member_id"  size="23" placeholder="¾ÆÀÌµğ">
-				<input type="password" name="member_pwd" id="member_pwd" size="23" placeholder="ºñ¹Ğ¹øÈ£">
+		 		<input type="text" name="member_id" id="member_id"  size="23" placeholder="ì•„ì´ë””">
+				<input type="password" name="member_pwd" id="member_pwd" size="23" placeholder="ë¹„ë°€ë²ˆí˜¸">
 			</div>
 			<span class="btn_login" onclick="loginCheck();">LOGIN</span>
 		 </div>
@@ -122,10 +75,10 @@ function loginCheck() {
 	    <div class="close" >
 		    <table width="100%" id="loginTbl" >
 		    	<tr>
-		    		<td width="30%" align="left" onclick="memberJoin.action">È¸¿ø°¡ÀÔ</td>
-		    		<td width="50%;" align="left">¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â</td>
+		    		<td width="30%" align="left" onclick="memberJoin.action">íšŒì›ê°€ì…</td>
+		    		<td width="50%;" align="left">ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</td>
 		    		<td width="20%" align="right">
-		    		 	<a href="#layer_anchor" title="·¹ÀÌ¾î ´İ±â" class="close">´İ±â</a>
+		    		 	<a href="#layer_anchor" title="ë ˆì´ì–´ ë‹«ê¸°" class="close">ë‹«ê¸°</a>
 		    		</td>
 		    	</tr>
 		    </table>
