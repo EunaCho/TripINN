@@ -1,0 +1,23 @@
+.mw_layer{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
+.mw_layer.open{display:block}
+.mw_layer .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+#layer{
+	position:absolute;width:250px;top:25%;left:40%;margin:0px auto;padding:0px 28px 0 28px;
+	border:2px solid #ff792a;background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
+	color:#767676;line-height:normal;white-space:normal; 
+}
+.login_line{margin:10px 0 0;height:80px;}
+.box_in{float:left;margin:0 10px 0; }
+.box_in input{width:120px;height:24px;display:block;margin:3px 0 0;}
+.btn_login{
+			width:72px;height:60px;background:#363636;color:#a6a6a6;float:left;
+			line-height:60px;text-align:center;margin-top:5px;
+			cursor: pointer;
+			}
+#layer h2{color:#636363;font-size:24px;line-height:40px;}
+.close { margin-bottom:10px; text-decoration: none; width:100%; text-align:right; cursor: pointer}
+.close a { color: #ff3300; }
+#loginTbl tr td{
+	font-size:11px;
+	font-family : 'NanumGothic';
+}
