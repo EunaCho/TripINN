@@ -1,13 +1,13 @@
 package com.inn.house;
 
 import java.util.List;
-import java.util.Map; //DB ÆÄ¶ó¹ÌÅÍ°ª ¸Ê ÇüÅÂ·Î Ã³¸®
+import java.util.Map; //DB ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ Ã³ï¿½ï¿½
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository; //DAO Å¬·¡½º µî·Ï ¾î³ÊÅ×ÀÌ¼Ç
 
 
-@Repository("houseDAO") // DAO Å¬·¡½º µî·Ï
+@Repository("houseDAO") // DAO 
 public class HouseDAO {
 	/*
 	1. all : ¸ðµç °æ°í¸¦ ¾ïÁ¦

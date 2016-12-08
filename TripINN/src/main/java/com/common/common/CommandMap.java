@@ -7,13 +7,13 @@ import java.util.Set;
 
 public class CommandMap {
 	Map<String, Object> map = new HashMap<String, Object>();
-	
+	   
 	public Object get(String key) {
 		return map.get(key);
-	}
+	  }
 	
 	public void put(String key, Object value) {
-		map.put(key, value);
+		map.put(key, value); 
 	}
 	
 	public Object remove(String key) {
@@ -21,8 +21,8 @@ public class CommandMap {
 	}
 	
 	public boolean containsKey(String key) {
-		return map.containsKey(key);
-	}
+		return map.containsKey(key);   
+	}  
 	
 	public boolean containsValue(Object value) {
 		return map.containsValue(value);
