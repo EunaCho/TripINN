@@ -6,10 +6,10 @@
 <tiles-definitions>
 
 	<!-- 메인페이지 -->
-	<definition name="main" template="/common/layout.jsp">
-		<put-attribute name="header" value="/common/header.jsp"/>
-		<put-attribute name="body" value="/common/main.jsp"/>
-		<put-attribute name="bottom" value="/common/bottom.jsp"/>
+	<definition name="main" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/common/main.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
 
