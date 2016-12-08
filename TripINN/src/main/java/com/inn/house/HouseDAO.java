@@ -1,12 +1,12 @@
 package com.inn.house;
 
 import java.util.List;
-import java.util.Map; //DB ÆÄ¶ó¹ÌÅÍ°ª ¸Ê ÇüÅÂ·Î Ã³¸®
+import java.util.Map; //DB ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ Ã³ï¿½ï¿½
 
 import org.springframework.stereotype.Repository; 
 
 
-@Repository("houseDAO") // DAO Å¬·¡½º µî·Ï
+@Repository("houseDAO") // DAO 
 public class HouseDAO {
 
 }
