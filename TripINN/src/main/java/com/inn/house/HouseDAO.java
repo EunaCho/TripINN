@@ -4,20 +4,14 @@ import java.util.List;
 import java.util.Map; //DB 파라미터값 맵 형태로 처리.
 //테스트
 
-<<<<<<< HEAD
 import org.springframework.stereotype.Repository; //DAO 클래스 등록 어너테이션
 import org.springframework.beans.factory.annotation.Autowired;
-=======
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository; //DAO Ŭ���� ��� ������̼�
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
-
 import com.common.common.AbstractDAO; //SQL 오버로딩
 
 @Repository("houseDAO") // DAO 클래스 등록
 public class HouseDAO extends AbstractDAO{
 	/*
-<<<<<<< HEAD
 	@SuppressWarnings
 	1. all : 모든 경고를 억제
 	2. cast : 캐스트 연산자 관련 경고 억제
@@ -37,34 +31,11 @@ public class HouseDAO extends AbstractDAO{
 	
 	
 	4. 지도위 가격 클릭
-=======
-	 * ㅇㅇㅇ움ㅇ누마아가나다
-	1. all : ��� ��� ����
-	2. cast : ĳ��Ʈ ������ ���� ��� ����
-	3. dep-ann : ������� ���ƾ� �� �ּ� ���� ��� ����
-	4. deprecation : ������� ���ƾ� �� �޼ҵ� ���� ��� ����
-	5. fallthrough : switch�������� break ���� ���� ��� ����
-	6. finally : ��ȯ���� �ʴ� finally �� ���� ��� ����
-	7. null : null �м� ���� ��� ����
-	8. rawtypes : ���׸��� ����ϴ� Ŭ���� �Ű� ������ ��Ư���� ���� ��� ����
-	9. unchecked : �������� ���� ������ ���� ��� ����
-	10. unused : ������� �ʴ� �ڵ� ���� ��� ����
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
+
 	*/
-	
-<<<<<<< HEAD
-	// sql 설정
-=======
-//	sql �غ���
-	private SqlSessionTemplate sqlSession;
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
-	
-<<<<<<< HEAD
+
 	@SuppressWarnings("unchecked")//경고 제외 어너테이션
 	//숙소 리스트 
-=======
-	@SuppressWarnings("unchecked")//��� ���� ������̼�
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 	public List<Map<String,Object>> selectHouseList(Map<String,Object> map){
 		return (List<Map<String,Object>>)selectList("house.selectHouseList",map);
 	}
