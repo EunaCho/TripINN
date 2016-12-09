@@ -1,36 +1,57 @@
 package com.inn.house;
 
 import java.util.List;
-import java.util.Map; //DB ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ Ã³ï¿½ï¿½
+import java.util.Map; //DB íŒŒë¼ë¯¸í„°ê°’ ë§µ í˜•íƒœë¡œ ì²˜ë¦¬.
+//í…ŒìŠ¤íŠ¸
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository; //DAO Å¬·¡½º µî·Ï ¾î³ÊÅ×ÀÌ¼Ç
+import org.springframework.stereotype.Repository; //DAO í´ë˜ìŠ¤ ë“±ë¡ ì–´ë„ˆí…Œì´ì…˜
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.common.common.AbstractDAO; //SQL ì˜¤ë²„ë¡œë”©
 
-@Repository("houseDAO") // DAO 
-public class HouseDAO {
+@Repository("houseDAO") // DAO í´ë˜ìŠ¤ ë“±ë¡
+public class HouseDAO extends AbstractDAO{
 	/*
-	1. all : ¸ğµç °æ°í¸¦ ¾ïÁ¦
-	2. cast : Ä³½ºÆ® ¿¬»êÀÚ °ü·Ã °æ°í ¾ïÁ¦
-	3. dep-ann : »ç¿ëÇÏÁö ¸»¾Æ¾ß ÇÒ ÁÖ¼® °ü·Ã °æ°í ¾ïÁ¦
-	4. deprecation : »ç¿ëÇÏÁö ¸»¾Æ¾ß ÇÒ ¸Ş¼Òµå °ü·Ã °æ°í ¾ïÁ¦
-	5. fallthrough : switch¹®¿¡¼­ÀÇ break ´©¶ô °ü·Ã °æ°í ¾ïÁ¦
-	6. finally : ¹İÈ¯ÇÏÁö ¾Ê´Â finally ºí·° °ü·Ã °æ°í ¾ïÁ¦
-	7. null : null ºĞ¼® °ü·Ã °æ°í ¾ïÁ¦
-	8. rawtypes : Á¦³×¸¯À» »ç¿ëÇÏ´Â Å¬·¡½º ¸Å°³ º¯¼ö°¡ ºÒÆ¯Á¤ÀÏ ¶§ÀÇ °æ°í ¾ïÁ¦
-	9. unchecked : °ËÁõµÇÁö ¾ÊÀº ¿¬»êÀÚ °ü·Ã °æ°í ¾ïÁ¦
-	10. unused : »ç¿ëÇÏÁö ¾Ê´Â ÄÚµå °ü·Ã °æ°í ¾ïÁ¦
+	@SuppressWarnings
+	1. all : ëª¨ë“  ê²½ê³ ë¥¼ ì–µì œ
+	2. cast : ìºìŠ¤íŠ¸ ì—°ì‚°ì ê´€ë ¨ ê²½ê³  ì–µì œ
+	3. dep-ann : ì‚¬ìš©í•˜ì§€ ë§ì•„ì•¼ í•  ì£¼ì„ ê´€ë ¨ ê²½ê³  ì–µì œ
+	4. deprecation : ì‚¬ìš©í•˜ì§€ ë§ì•„ì•¼ í•  ë©”ì†Œë“œ ê´€ë ¨ ê²½ê³  ì–µì œ
+	5. fallthrough : switchë¬¸ì—ì„œì˜ break ëˆ„ë½ ê´€ë ¨ ê²½ê³  ì–µì œ
+	6. finally : ë°˜í™˜í•˜ì§€ ì•ŠëŠ” finally ë¸”ëŸ­ ê´€ë ¨ ê²½ê³  ì–µì œ
+	7. null : null ë¶„ì„ ê´€ë ¨ ê²½ê³  ì–µì œ
+	8. rawtypes : ì œë„¤ë¦­ì„ ì‚¬ìš©í•˜ëŠ” í´ë˜ìŠ¤ ë§¤ê°œ ë³€ìˆ˜ê°€ ë¶ˆíŠ¹ì •ì¼ ë•Œì˜ ê²½ê³  ì–µì œ
+	9. unchecked : ê²€ì¦ë˜ì§€ ì•Šì€ ì—°ì‚°ì ê´€ë ¨ ê²½ê³  ì–µì œ
+	10. unused : ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ì½”ë“œ ê´€ë ¨ ê²½ê³  ì–µì œ
+	
+	House ê¸°ëŠ¥
+	1. ìˆ™ì†Œ ë©”ì¸(ë¦¬ìŠ¤íŠ¸)
+	2. ê°„í¸ ê²€ìƒ‰
+	3. ìƒì„¸ ê²€ìƒ‰
+	
+	
+	4. ì§€ë„ìœ„ ê°€ê²© í´ë¦­
 	*/
 	
-//	sql ÇØº¸±â
-	private SqlSessionTemplate sqlSession;
+	// sql ì„¤ì •
 	
-	@SuppressWarnings("unchecked")//°æ°í Á¦¿Ü ¾î³ÊÅ×ÀÌ¼Ç
+	@SuppressWarnings("unchecked")//ê²½ê³  ì œì™¸ ì–´ë„ˆí…Œì´ì…˜
+	//ìˆ™ì†Œ ë¦¬ìŠ¤íŠ¸ 
 	public List<Map<String,Object>> selectHouseList(Map<String,Object> map){
 		return (List<Map<String,Object>>)selectList("house.selectHouseList",map);
 	}
 	
-	public List selectList(String id, Object params){
-		return sqlSession.
+	
+	//insert DAO
+	public void insertHouse(Map<String, Object> map) throws Exception{
+		insert("house.insertHouse", map); // sql namespace
 	}
+	
+	//update DAO
+	public void updateHouse(Map<String, Object> map) throws Exception{
+		update("house.updateHouse", map);
+	}
+	
+	
+
 }
