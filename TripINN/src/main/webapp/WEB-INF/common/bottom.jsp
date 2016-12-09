@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <div style="width:100%;height:50px;border:1px solid black;text-align:center;">
-<h3>╧ыерют╢о╢ы</h3>
+<h3>К╟■М┘─Л·┘К▀┬К▀╓</h3>
 </div>
