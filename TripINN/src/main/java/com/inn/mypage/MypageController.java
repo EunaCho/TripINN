@@ -15,41 +15,46 @@ public class MypageController {
 	
 	//*알림판
 	@RequestMapping("/notice.do")
-	public ModelAndView noticeForm(CommandMap commandMap) throws Exception{
-		ModelAndView mv = new ModelAndView("noticeForm");
+	public String noticeForm(CommandMap commandMap) throws Exception{
 		
-		return mv;
+		
+		return "noticeForm";
 	}
 	
 	
 	//*메시지
 	@RequestMapping("/message.do")
-	public void messageForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
+	public String messageForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
 		
+		return "msgList";
 	}
 	
 	//*숙소목록
 	@RequestMapping("/house.do")
-	public void houseForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
+	public String houseForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
 		
+		return "houseForm";
 	}
 	
 	//*트립목록
 	@RequestMapping("/trip.do")
-	public void tripForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
+	public String tripForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
 		
+		return "tripForm";
 	}
 
 	//*위시리스트
 	@RequestMapping("/wishList.do")
-	public void wishListForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
+	public String wishListForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
 		
+		return "listForm";
 	}
 	
 	//*프로필 
 	@RequestMapping("/profile.do")
-	public void profileForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
+	public String profileForm(CommandMap commandMap, HttpServletResponse response) throws Exception{
 		
+		return "proForm";
 	}
 
 }
