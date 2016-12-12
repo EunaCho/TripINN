@@ -1,13 +1,20 @@
 package com.inn.admin;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+
+@Controller
 public class adminController {
 	
-	@RequestMapping("/main.do")
-	public ModelAndView main(){
-		return null;
+	@RequestMapping("/admin/main.do")
+	public String main() {
+		
+		return "adminmain";
 		
 	}
 
