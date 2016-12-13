@@ -35,29 +35,16 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 	
 	
    <ul>
-<<<<<<< HEAD
+
    
-       <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-        
-		<li><a href = "http://localhost:8080/TripINN/main.do"><h2>회원관리</h2></a></li>
-=======
-
+        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-
 		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-
 		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-		
-<<<<<<< HEAD
 		<li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnalist.do"><h3>ㄴQ&A</h3></a></li>
-=======
-		<li><a href = "http://www.naver.com"><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
         <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
 
 	</ul>
