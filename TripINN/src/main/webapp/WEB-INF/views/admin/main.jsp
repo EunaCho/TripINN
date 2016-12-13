@@ -42,7 +42,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		
 		<li><a href = "http://www.naver.com"><h2>문의게시판</h2></a></li>
-        <li><a href = "http://www.tistory.com"><h3>ㄴ1:1문의</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnalist.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
 
 	</ul>
@@ -61,10 +61,10 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 	<h5>&nbsp;&nbsp;&nbsp;&nbsp;숙소 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
 	
 	<h4>&nbsp;· &nbsp;문의게시판</h4>
-	<h5>&nbsp;&nbsp;&nbsp;&nbsp;1:1문의와 FAQ 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
+	<h5>&nbsp;&nbsp;&nbsp;&nbsp;Q&A와 FAQ 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
 	
    </div>
-   
+   <
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
    
