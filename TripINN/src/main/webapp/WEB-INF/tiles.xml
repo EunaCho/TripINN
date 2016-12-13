@@ -25,11 +25,64 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+<<<<<<< HEAD
 	
 	<!-- 트립 페이지 -->
 	<definition name="tripMain" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/trip/tripMain.jsp"/>
+=======
+		<!-- 관리자QNA페이지 -->
+		<definition name="qnaList" template="/WEB-INF/common/layout.jsp">
+			<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/qna/list.jsp"/>
+			<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+		</definition>
+		
+		<!-- 회원관리 페이지 -->
+		<definition name="memberList" template="/WEB-INF/common/layout.jsp">
+			<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
+			<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+		</definition>
+		
+	
+	<!-- 마이페이지  -->
+	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/noticeForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="msgList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/msgList.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="houseForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/houseForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="tripForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/tripForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="proForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/proForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	
+	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/listForm.jsp"/>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 

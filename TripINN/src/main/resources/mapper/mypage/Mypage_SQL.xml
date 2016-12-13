@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<<<<<<< HEAD
 <mapper namespace="mypage">
 
 	<select id="myPageTest" parameterType="hashmap" resultType="hashmap">
@@ -8,4 +9,14 @@
 			select 문
 		]]>
 	</select>
+=======
+<mapper namespace="mypageTest">
+
+	<select id="test" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			select 문
+		]]>
+	</select>
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </mapper>

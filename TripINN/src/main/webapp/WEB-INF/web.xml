@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	
+   
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>
@@ -27,42 +27,42 @@
       <servlet-name>action</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>
-				/WEB-INF/config/*-servlet.xml
-			</param-value>
-	  </init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>
+            /WEB-INF/config/*-servlet.xml
+         </param-value>
+     </init-param>
       <load-on-startup>1</load-on-startup>
    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>action</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	
+   <servlet-mapping>
+      <servlet-name>action</servlet-name>
+      <url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+   
    <!-- <servlet-mapping>
       <servlet-name>dispatcherTiles2</servlet-name>
       <url-pattern>/tiles2/*</url-pattern>
    </servlet-mapping>
    
-	<servlet>
-		<servlet-name>action</servlet-name>
-		<servlet-class>
-			org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>
-				/WEB-INF/config/*-servlet.xml
-			</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet> -->
-	
+   <servlet>
+      <servlet-name>action</servlet-name>
+      <servlet-class>
+         org.springframework.web.servlet.DispatcherServlet
+      </servlet-class>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>
+            /WEB-INF/config/*-servlet.xml
+         </param-value>
+      </init-param>
+      <load-on-startup>1</load-on-startup>
+   </servlet> -->
+   
      
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:config/spring/context-*.xml</param-value>
-  	</context-param>
+     </context-param>
 
 </web-app>
