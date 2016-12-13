@@ -8,10 +8,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser; 
- 
-
 public class ConvertAddress {
 	
 	public static String conAddr(String address) {
