@@ -49,14 +49,28 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
    
    </div>
    
-   <div style="width:85%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:222px">
-	<center><h2>관리자 공지사항</h2></center>
+   <div style="color:black;width:65%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:222px;">
+	<h3>관리자 공지사항</h3>
+	<h4>&nbsp;· &nbsp;관리자 홈으로 이동</h4>
+	<h5>&nbsp;&nbsp;&nbsp;&nbsp;관리자 홈으로 바로 이동 할 수 있습니다.</h5>
 	
-    <h4>· &nbsp;관리자 홈으로 이동</h4>
-    <h5>관리자 홈으로 가는 바로가기</h5>
+	<h4>&nbsp;· &nbsp;회원관리</h4>
+	<h5>&nbsp;&nbsp;&nbsp;&nbsp;회원을 관리하기 위한 페이지로 이동 할 수 있습니다.</h5>
+	
+	<h4>&nbsp;· &nbsp;숙소관리</h4>
+	<h5>&nbsp;&nbsp;&nbsp;&nbsp;숙소 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
+	
+	<h4>&nbsp;· &nbsp;문의게시판</h4>
+	<h5>&nbsp;&nbsp;&nbsp;&nbsp;1:1문의와 FAQ 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
+	
    </div>
    
+   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
+   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
    
+   
+
+   </div>
   
   </body>
 </html>
