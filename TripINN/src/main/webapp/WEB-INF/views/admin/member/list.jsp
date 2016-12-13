@@ -11,7 +11,7 @@ function delchk(){
 }
 </script>
 
-<!-- 스타일 지정 -->
+<!-- 스타일 -->
 <style type="text/css">
 .paging{text-align:center;height:32px;margin-top:5px;margin-bottom:15px;}
 .paging a,
@@ -29,14 +29,13 @@ function delchk(){
 </style>
 </head>
 
-<!-- 회원관리  -->
 <div class="row" style="padding-left:15px;width:900px;">    
-	<h1 class="page-header">회원관리</h1>
+	<h1 class="page-header">회원목록</h1>
 </div>
 <div class="row">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-                         회원목록 페이지 검색, 수정, 삭제 기능하는 페이지입니다.
+                         회원목록페이지 검색, 수정, 삭제 기능하는 페이지입니다.
         </div>
         <div class="panel-body">
 			<div class="dataTable_wrapper">
@@ -44,7 +43,7 @@ function delchk(){
 					class="dataTables_wrapper form-inline dt-bootstrap no-footer">
 					<div class="row" style="margin-bottom:5px;">
 						<div class="col-sm-6">
-							<a href="/TripINN/admin/member/list.do?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체</button></a>													
+							<a href="/pet/admin/memberadminList.dog?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체</button></a>													
 						</div>
 						<div class="col-sm-6" style="text-align:right;">
 							<div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">총 회원수 : ${totalCount}</div>
@@ -59,20 +58,19 @@ function delchk(){
 								aria-describedby="dataTables-example_info">
 								<thead>
 									<tr role="row">
-										<th style="width: 5%; text-align:center;">회원번호</th>
-										<th style="width: 8%; text-align:center;">회원ID</th>
+										<th style="width: 5%; text-align:center;">번호</th>
+										<th style="width: 8%; text-align:center;">ID</th>
 										<th style="width: 7%; text-align:center;">이름</th>										
 										<th style="width: 9%; text-align:center;">전화번호</th>
 										<th style="width: 14%; text-align:center;">E-Mail</th>
 										<th style="width: 29%; text-align:center;">주소</th>
-<<<<<<< HEAD
 										<th style="width: 10%; text-align:center;">가입일자</th>
 										<th style="width: 13%; text-align:center;">관리</th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:forEach var="memberlist"  items="${memberlist}" varStatus="stat">
-								<c:url var="viewURL" value="/admin/member/Modify.do" >
+								<c:url var="viewURL" value="memberModify.do" >
 									<c:param name="id" value="${memberlist.id }" />
 								</c:url>									
 									<tr class="gradeA even" role="row">
@@ -81,12 +79,11 @@ function delchk(){
 										<td style="text-align:center;vertical-align:middle;">${memberlist.name}</td>
 										<td style="text-align:center;vertical-align:middle;">${memberlist.phone}</td>
 										<td style="text-align:center;vertical-align:middle;">${memberlist.email}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.addr}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.point}</td>										
+										<td style="text-align:center;vertical-align:middle;">${memberlist.addr}</td>										
 										<td style="text-align:center;vertical-align:middle;"><fmt:formatDate value="${memberlist.join_date}" pattern="YY.MM.dd HH:mm" /></td>
 										<td style="text-align:center;vertical-align:middle;">
 											<a href="${viewURL}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cog_font_awesome.svg/32px-Cog_font_awesome.svg.png"></a>&nbsp;&nbsp;
-										<c:url var="viewURL2" value="/admin/member/modify.do" >
+										<c:url var="viewURL2" value="memberDelete.do" >
 											<c:param name="id" value="${memberlist.id }" />							
 										</c:url>	
 										 <a href="${viewURL2}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a></td>									
@@ -95,38 +92,6 @@ function delchk(){
 								<!--  등록된 회원이 없을때 -->
 									<c:if test="${fn:length(memberlist) le 0}">
 										<tr><td colspan="9" style="text-align:center;">등록된 회원이 없습니다</td></tr>
-=======
-										<th style="width: 5%; text-align:center;">Point</th>
-										<th style="width: 10%; text-align:center;">가입일자</th>
-										<th style="width: 13%; text-align:center;">관리</th>
-									</tr>
-								</thead>
-								<tbody>
-								<c:forEach var="memberlist"  items="${memberlist}" varStatus="stat">
-								<c:url var="viewURL" value="adminmemberModify.dog" >
-									<c:param name="id" value="${memberlist.id }" />
-								</c:url>									
-									<tr class="gradeA even" role="row">
-										<td style="text-align:center;vertical-align:middle;">${memberlist.num}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.id}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.name}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.phone}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.email}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.addr}</td>
-										<td style="text-align:center;vertical-align:middle;">${memberlist.point}</td>										
-										<td style="text-align:center;vertical-align:middle;"><fmt:formatDate value="${memberlist.join_date}" pattern="YY.MM.dd HH:mm" /></td>
-										<td style="text-align:center;vertical-align:middle;">
-											<a href="${viewURL}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cog_font_awesome.svg/32px-Cog_font_awesome.svg.png"></a>&nbsp;&nbsp;
-										<c:url var="viewURL2" value="/admin/member/modify.do" >
-											<c:param name="id" value="${memberlist.id }" />							
-										</c:url>	
-										 <a href="${viewURL2}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a></td>									
-									</tr>
-								</c:forEach>
-								<!--  등록된 상품이 없을때 -->
-									<c:if test="${fn:length(memberlist) le 0}">
-										<tr><td colspan="9" style="text-align:center;">등록된 상품이 없습니다</td></tr>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 									</c:if> 
 								</tbody>
 							</table>
