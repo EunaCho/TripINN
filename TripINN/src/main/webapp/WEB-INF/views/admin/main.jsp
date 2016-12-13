@@ -14,13 +14,13 @@
     
 <style>	
 
-ul{width:172px;height:300px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
+ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
 
 li{margin-right:50px }
 
 a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 
-</style> 
+</style>
     
   </head>
   <body>
@@ -29,10 +29,15 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 	<h2>관리자 페이지에 오신걸 환영합니다.</h2>
    </div>
    
+   
+   
    <div style="width:15%;height:380px;border:1px solid black;text-align:center;">
-	<h3>관리자 홈</h3>
+	
+	
    <ul>
-
+   
+       <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+        
 		<li><a href = "http://localhost:8080/TripINN/main.do"><h2>회원관리</h2></a></li>
 
 		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
@@ -41,7 +46,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		
-		<li><a href = "http://www.naver.com"><h2>문의게시판</h2></a></li>
+		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnalist.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
 
@@ -64,12 +69,9 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 	<h5>&nbsp;&nbsp;&nbsp;&nbsp;Q&A와 FAQ 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
 	
    </div>
-   <
+   
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
-   
-   
-
    </div>
   
   </body>
