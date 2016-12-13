@@ -65,14 +65,13 @@ function delchk(){
 										<th style="width: 9%; text-align:center;">전화번호</th>
 										<th style="width: 14%; text-align:center;">E-Mail</th>
 										<th style="width: 29%; text-align:center;">주소</th>
-										<th style="width: 5%; text-align:center;">Point</th>
 										<th style="width: 10%; text-align:center;">가입일자</th>
 										<th style="width: 13%; text-align:center;">관리</th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:forEach var="memberlist"  items="${memberlist}" varStatus="stat">
-								<c:url var="viewURL" value="adminmemberModify.dog" >
+								<c:url var="viewURL" value="/admin/member/Modify.do" >
 									<c:param name="id" value="${memberlist.id }" />
 								</c:url>									
 									<tr class="gradeA even" role="row">
@@ -92,9 +91,9 @@ function delchk(){
 										 <a href="${viewURL2}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a></td>									
 									</tr>
 								</c:forEach>
-								<!--  등록된 상품이 없을때 -->
+								<!--  등록된 회원이 없을때 -->
 									<c:if test="${fn:length(memberlist) le 0}">
-										<tr><td colspan="9" style="text-align:center;">등록된 상품이 없습니다</td></tr>
+										<tr><td colspan="9" style="text-align:center;">등록된 회원이 없습니다</td></tr>
 									</c:if> 
 								</tbody>
 							</table>

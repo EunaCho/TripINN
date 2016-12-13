@@ -12,20 +12,20 @@ public class adminController {
 		return "adminmain";
 	}
 	
-	@RequestMapping("/admin/qna/list.do")
+	@RequestMapping("/admin/qnaList.do")
 	public String qnaList() {
 		
 		return "qnaList";
 	}
 	
-	@RequestMapping("/admin/member/list.do")
+	@RequestMapping("/admin/memberList.do")
 	public String memberList() {
 		
 		return "memberList";
 	}
 	
 	
-	@RequestMapping("/admin/faq/list.do")
+	@RequestMapping("/admin/faqList.do")
 	public String faqList() {
 		
 		return "faqList";
