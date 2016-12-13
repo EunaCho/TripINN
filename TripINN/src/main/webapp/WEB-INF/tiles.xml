@@ -25,7 +25,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-	
+		<!-- 관리자QNA페이지 -->
+		<definition name="qnaList" template="/WEB-INF/common/layout.jsp">
+			<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/qna/list.jsp"/>
+			<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+		</definition>
+		
+		<!-- 회원관리 페이지 -->
+		<definition name="memberList" template="/WEB-INF/common/layout.jsp">
+			<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
+			<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+		</definition>
+		
 	
 	<!-- 마이페이지  -->
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">

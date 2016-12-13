@@ -10,7 +10,25 @@ public class adminController {
 	public String main() {
 		
 		return "adminmain";
+	}
+	
+	@RequestMapping("/admin/qna/list.do")
+	public String qnaList() {
 		
+		return "qnaList";
+	}
+	
+	@RequestMapping("/admin/member/list.do")
+	public String memberList() {
+		
+		return "memberList";
+	}
+	
+	
+	@RequestMapping("/admin/faq/list.do")
+	public String faqList() {
+		
+		return "faqList";
 	}
 
 }
