@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 
 <!--스크립트 정의  -->
@@ -60,9 +60,9 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 			<div class="dataTable_wrapper">
 				<div id="dataTables-example_wrapper"
 					class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-					<div class="row" style="text-align:right;">
+					<div class="row" style="text-align:left;">
 						<div class="col-sm-6">
-							<a href="/TripINN/admin/qna/list.do?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체보기</button></a>											
+							<a href="/TripINN/admin/qnaList.do?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체보기</button></a>											
 						</div>
 						<div class="col-sm-6" style="text-align:left;">
 							<div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">총 게시물수 : ${totalCount}</div>
@@ -149,7 +149,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 	
    <ul>
   <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-		<li><a href = "http://localhost:8080/TripINN/main.do"><h2>회원관리</h2></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 
 		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
@@ -158,7 +158,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		
 		<li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnalist.do"><h3>ㄴQ&A</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
 
 	</ul>
