@@ -28,18 +28,16 @@ function delchk(){
 .paging .page_arw{font-size:11px;line-height:30px;}
 </style>
 
-<!-- 메인화면 가운데 부분에 게시판jsp 띄우기 위해 추가함 -->
+<!-- 스타일 적용2 -->
 <style>	
 ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
 li{margin-right:50px }
 a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 
-</style>
-<!-- 추가한 부분 끝 -->
- 
+</style> 
 </head>
 
-<!-- 임시 추가-->
+<!-- 가운데 윗 영역-->
 <body>
   <br><br>
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
@@ -47,7 +45,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
    </div>
 <div style="width:65%;height:380px;border:1px solid black;text-align:center; position:absolute;top:151px;left:222px;">
 
-<!-- 임시추가 -->
+<!-- 가운데영역 -->
 <div class="row" style="padding-left:15px;width:900px;">    
 	<h1 class="page-header">회원목록</h1>
 </div>
@@ -88,6 +86,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 									</tr>
 								</thead>
 								<tbody>
+								<!-- 삭제예정 -->
 								<c:forEach var="memberlist"  items="${memberlist}" varStatus="stat">
 								<c:url var="viewURL" value="memberModify.do" >
 									<c:param name="id" value="${memberlist.id }" />
@@ -108,6 +107,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 										 <a href="${viewURL2}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a></td>									
 									</tr>
 								</c:forEach>
+								<!-- 삭제예정 -->
 								<!--  등록된 회원이 없을때 -->
 									<c:if test="${fn:length(memberlist) le 0}">
 										<tr><td colspan="9" style="text-align:center;">등록된 회원이 없습니다</td></tr>
@@ -143,7 +143,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
         <!-- /.panel -->   
 </div>
 
-<!-- 가운데 집어넣기 위해 임시로 추가한 부분 -->
+<!-- 좌측영역 -->
 </div>
 <div style="width:15%;height:380px;border:1px solid black;text-align:center;">
 	
@@ -159,10 +159,11 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 		
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-        <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
 
 	</ul>
    
+   <!-- 우측 영역 -->
    </div>
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
