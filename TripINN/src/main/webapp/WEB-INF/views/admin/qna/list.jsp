@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 
 <!--스크립트 정의  -->
@@ -11,7 +11,7 @@ function delchk(){
 }
 </script>
 
-<!-- 스타일 정의 -->
+<!-- 스타일 적용1 -->
 <style type="text/css">
 .paging{text-align:center;height:32px;margin-top:5px;margin-bottom:15px;}
 .paging a,
@@ -28,41 +28,43 @@ function delchk(){
 .paging .page_arw{font-size:11px;line-height:30px;}
 </style>
 
+<!-- 스타일 적용2 -->
 <style>	
-
 ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
 
 li{margin-right:50px }
 
 a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
-
 </style> 
 </head>
 
 <body>
   <br><br>
+  
+ <!-- 가운데 윗 영역 -->
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
 	<h2>Q&A 페이지에 오신걸 환영합니다.</h2>
    </div>
 <div style="width:65%;height:380px;border:1px solid black;text-align:center; position:absolute;top:151px;left:222px;">
-<!-- 가로열 정의 -->
-
 <div class="row" style="padding-left:15px;width:900px; text-align:left;">    
 	<h1 class="page-header">QnA</h1>
 </div>
 
+
+<!-- 가운데영역 -->
 <div class="row">
 	<div class="panel panel-default">
 		<div class= "panel-heading" style="text-align:left;">
                          QnA  검색, 수정, 삭제 기능하는 페이지입니다.
         </div>
+       
         <div class="panel-body">
 			<div class="dataTable_wrapper">
 				<div id="dataTables-example_wrapper"
 					class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-					<div class="row" style="text-align:right;">
+					<div class="row" style="text-align:left;">
 						<div class="col-sm-6">
-							<a href="/TripINN/admin/qna/list.do?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체보기</button></a>											
+							<a href="/TripINN/admin/qnaList.do?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체보기</button></a>											
 						</div>
 						<div class="col-sm-6" style="text-align:left;">
 							<div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">총 게시물수 : ${totalCount}</div>
@@ -85,6 +87,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 									</tr>
 								</thead>
 								<tbody>
+								<!-- 삭제예정 -->
 								<c:forEach var="list"  items="${list}" varStatus="stat">															
 									<tr class="gradeA even" role="row">
 										<td style="text-align:center;vertical-align:middle;">${list.no}</td>
@@ -105,6 +108,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 										 <a href="${viewURL2}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a></td>									
 									</tr>
 								</c:forEach>
+								<!-- 삭제예정 -->
 								<!--  등록된 문의가 없을때 -->
 									<c:if test="${fn:length(list) le 0}">
 									<br>
@@ -145,6 +149,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 </div>
 </div>
 
+<!-- 좌측영역 -->
 <div style="width:15%;height:380px;border:1px solid black;text-align:center;">
 	
    <ul>
@@ -159,10 +164,15 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 		
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
+<<<<<<< HEAD
         <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
+=======
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	</ul>
-   
+	
+   <!-- 우측 영역 -->
    </div>
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">

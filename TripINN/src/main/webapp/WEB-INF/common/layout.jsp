@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
-<body style="width:100%;height:100%;">
+<body style="width:100%;height:100%;margin:0px;padding:0px;">
 	<div id="header">
 		<tiles:insertAttribute name="header"/>
 	</div>

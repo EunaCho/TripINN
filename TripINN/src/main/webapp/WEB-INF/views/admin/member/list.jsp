@@ -27,25 +27,42 @@ function delchk(){
 .paging strong{color:#fff;background:#337AB7;border:1px solid #337AB7;}
 .paging .page_arw{font-size:11px;line-height:30px;}
 </style>
+
+<!-- 스타일 적용2 -->
+<style>	
+ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
+li{margin-right:50px }
+a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+
+</style> 
 </head>
 
+<!-- 가운데 윗 영역-->
+<body>
+  <br><br>
+    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+	<h2>Q&A 페이지에 오신걸 환영합니다.</h2>
+   </div>
+<div style="width:65%;height:380px;border:1px solid black;text-align:center; position:absolute;top:151px;left:222px;">
+
+<!-- 가운데영역 -->
 <div class="row" style="padding-left:15px;width:900px;">    
 	<h1 class="page-header">회원목록</h1>
 </div>
 <div class="row">
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="panel-heading" style="text-align:center;">
                          회원목록페이지 검색, 수정, 삭제 기능하는 페이지입니다.
         </div>
         <div class="panel-body">
 			<div class="dataTable_wrapper">
 				<div id="dataTables-example_wrapper"
 					class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-					<div class="row" style="margin-bottom:5px;">
+					<div class="row" style="text-align:left;">
 						<div class="col-sm-6">
-							<a href="/pet/admin/memberadminList.dog?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체</button></a>													
+							<a href="/TripINN/admin/memberList.do?searchNum=0&isSearch="><button type="button" class="btn btn-outline btn-default">전체보기</button></a>													
 						</div>
-						<div class="col-sm-6" style="text-align:right;">
+						<div class="col-sm-6" style="text-align:left;">
 							<div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">총 회원수 : ${totalCount}</div>
 						</div>
 						
@@ -69,6 +86,7 @@ function delchk(){
 									</tr>
 								</thead>
 								<tbody>
+								<!-- 삭제예정 -->
 								<c:forEach var="memberlist"  items="${memberlist}" varStatus="stat">
 								<c:url var="viewURL" value="memberModify.do" >
 									<c:param name="id" value="${memberlist.id }" />
@@ -89,6 +107,7 @@ function delchk(){
 										 <a href="${viewURL2}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a></td>									
 									</tr>
 								</c:forEach>
+								<!-- 삭제예정 -->
 								<!--  등록된 회원이 없을때 -->
 									<c:if test="${fn:length(memberlist) le 0}">
 										<tr><td colspan="9" style="text-align:center;">등록된 회원이 없습니다</td></tr>
@@ -123,3 +142,32 @@ function delchk(){
 	</div>
         <!-- /.panel -->   
 </div>
+
+<!-- 좌측영역 -->
+</div>
+<div style="width:15%;height:380px;border:1px solid black;text-align:center;">
+	
+   <ul>
+  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
+
+		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
+		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+
+		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+		
+		<li><a><h2>문의게시판</h2></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+
+	</ul>
+   
+   <!-- 우측 영역 -->
+   </div>
+   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
+   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
+   </div>
+</body>
+
+
