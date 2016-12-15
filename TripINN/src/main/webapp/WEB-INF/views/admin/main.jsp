@@ -47,7 +47,7 @@
    </div>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:66%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:213px;">
+   <div style="color:black;width:66%;height:381px;border:1px solid black;text-align:left; position:absolute;top:192px;left:213px;">
 	<h3>관리자 공지사항</h3>
 	<h4>&nbsp;· &nbsp;관리자 홈으로 이동</h4>
 	<h5>&nbsp;&nbsp;&nbsp;&nbsp;관리자 홈으로 바로 이동 할 수 있습니다.</h5>
@@ -65,7 +65,7 @@
    
    <!-- 우측영역 -->
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:1142px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
+   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:381px;">
    </div>
   
   </body>
