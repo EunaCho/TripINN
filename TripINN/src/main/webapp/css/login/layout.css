@@ -3,7 +3,7 @@
 .mw_layer .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
 #layer{
 	position:absolute;width:250px;top:25%;left:40%;margin:0px auto;padding:0px 28px 0 28px;
-	border:2px solid #ff792a;background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
+	border:2px solid #9BC3FF; background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
 	color:#767676;line-height:normal;white-space:normal; 
 }
 .login_line{margin:10px 0 0;height:80px;}
@@ -16,8 +16,16 @@
 			}
 #layer h2{color:#636363;font-size:24px;line-height:40px;}
 .close { margin-bottom:10px; text-decoration: none; width:100%; text-align:right; cursor: pointer}
-.close a { color: #ff3300; }
+.close a { color: #9BC3FF; }
 #loginTbl tr td{
 	font-size:11px;
 	font-family : 'NanumGothic';
 }
+
+.header_menu{width:100%; height:50px;line-height:20px;background:#9BC3FF; position:absolute; }
+.header_menu .inner{width:400px; margin:auto;position:relative; top:0;left:0; float:right; margin-right:30px;}
+.header_menu .inner span{float:right; margin-top:5px; margin-right:5px;} 
+.header_menu .inner span a{padding:5px 10px;color:#646496;font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800; font-size:15px; text-decoration:none;}
+.header_menu .inner span.admin a{color:#ee1c25;text-decoration:underline;font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800;}
+
+
