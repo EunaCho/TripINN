@@ -11,22 +11,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-<!-- 스타일적용2 -->    
-<style>	
-	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
-	li{margin-right:50px }
-	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
-</style>
-    
   </head>
-  
   <body>
- 	 <br><br>
- <!-- 가운데 윗 영역 -->	 
-    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-	<h2>관리자 페이지에 오신걸 환영합니다.</h2>
+  <br><br>
+    <div style="width:100%;height:100px;border:1px solid blue;text-align:left;">
+	<h3>관리자 페이지에 오신걸 환영합니다.</h3>
    </div>
+<<<<<<< HEAD
    
    
    <!-- 좌측 영역 -->
@@ -34,7 +25,7 @@
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
@@ -66,6 +57,13 @@
    <!-- 우측영역 -->
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:1142px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:381px;">
+=======
+   <div style="width:10%;height:300px;border:1px solid black;text-align:left;">
+	<h3>관리자.</h3>
+   <button class="btn btn-default">Default</button><br>
+   <button class="btn btn-primary">Primary</button><br>
+   <button class="btn btn-success">Success</button>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    </div>
   
   </body>
