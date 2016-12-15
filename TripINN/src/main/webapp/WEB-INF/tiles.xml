@@ -4,7 +4,6 @@
 	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-<<<<<<< HEAD
    <!-- 메인페이지 -->
    <definition name="main" template="/WEB-INF/common/layout.jsp">
       <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -27,7 +26,7 @@
    </definition>
    
    <!-- 마이페이지  -->
-=======
+
 	<!-- 메인페이지 -->
 	<definition name="main" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -74,7 +73,7 @@
 		
 	
 	<!-- 마이페이지  -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -142,20 +141,10 @@
 		<!-- 위시리스트 -->
 	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-<<<<<<< HEAD
 		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
-=======
-		<put-attribute name="body" value="/WEB-INF/views/mypage/listForm.jsp"/>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-<<<<<<< HEAD
-   
-	
-   
 
-  
-=======
 	
 	<!-- 트립 페이지 -->
 	<definition name="tripMain" template="/WEB-INF/common/layout.jsp">
@@ -169,6 +158,6 @@
 		<put-attribute name="body" value="/WEB-INF/test/test2.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 </tiles-definitions>
 	
