@@ -44,7 +44,7 @@ function delchk(){
 	<h2>FAQ 페이지에 오신걸 환영합니다.</h2>
    </div>
    
-<div style="width:65%;height:380px;border:1px solid black;text-align:center; position:absolute;top:151px;left:222px;">
+<div style="width:66%;height:380px;border:1px solid black;text-align:center; position:absolute;top:192px;left:213px;">
 
 	<div class="row" style="padding-left:15px;width:900px; text-align:left;">    
 		<h1 class="page-header">FAQ</h1>
@@ -169,7 +169,7 @@ function delchk(){
 	</ul>
    <!-- 우측 영역 -->
    </div>
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:151px;left:1147px;">
+   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:1142px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:380px;">
    </div>
 </body>
