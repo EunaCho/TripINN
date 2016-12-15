@@ -77,7 +77,7 @@ public class MemberController {
 	@RequestMapping(value="/memberLogout.do", method=RequestMethod.POST) 
 	public ModelAndView memberLogout(HttpServletRequest request) throws Exception {
 		
-		HttpSession session = request.getSession(false);//세션값 불러옴
+		HttpSession session = request.getSession();//세션값 불러옴
 		
 		if(session != null){ //세션에 값이 있으면
 			session.invalidate(); //세션 값 비우기
