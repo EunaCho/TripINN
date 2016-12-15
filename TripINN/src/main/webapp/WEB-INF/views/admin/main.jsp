@@ -34,7 +34,7 @@
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
