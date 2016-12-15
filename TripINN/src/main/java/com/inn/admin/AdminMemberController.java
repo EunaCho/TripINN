@@ -9,4 +9,12 @@ public class AdminMemberController {
 	      
 	      return "memberList";
 	   }
+	
+	@RequestMapping("/admin/memberView.do")
+	   public String memberView() {
+	      
+	      return "memberView";
+	   }
+	
+	
 }
