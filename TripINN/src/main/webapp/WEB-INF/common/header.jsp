@@ -11,12 +11,12 @@
 </style>
 
 <script>
-/*function memberJoinOk() {
+function logout() {
 	if(confirm("로그아웃을 하시겠습니까?")) {
-		location.href="memberLogout.action";
+		location.href="/member/memberLogout.do";
 	}
 	return;
-} */
+}
 </script>
 
 
@@ -82,7 +82,7 @@ function joinCheck() {
 
 		<!-- 로그인상태 -->
 		<c:if test="${sessionScope.member_email != null}">
-			<span><a href="<%=cp %>/">로그아웃</a></span>
+			<span><a onclick="logout();">로그아웃</a></span>
 			<span><a href="<%=cp %>/hosting.do">호스팅하기</a></span>	
 			<span><a href="<%=cp %>/qnaList.do">도움말</a></span>
 			<span><a href="<%=cp %>/mypage/main.do">마이페이지</a></span>

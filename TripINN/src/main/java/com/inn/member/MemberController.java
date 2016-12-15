@@ -31,32 +31,8 @@ public class MemberController {
 											// sql문은 Service내 연결된 memberDAO에서 받아옴
 	
 	ModelAndView mav = new ModelAndView(); // ModelnView 타입으로 리턴하기 위해 정의
-	
-	//로그인
-	@RequestMapping(value="/memberLogin.do", method=RequestMethod.POST) //'memberLogin.do' 명령을 받을 경우 실행되는 로직
-	public ModelAndView memberLogin(HttpServletRequest request, CommandMap commandMap) throws Exception {
-	
-		Map<String, Object> memberMap = (Map<String, Object>)memberService.memberLogin(commandMap.getMap());
-		//view에서 commandMap에 입력받아 넘어온 값을 MemberService의 memberLogin 메서드를 돌린 후 memberMap 객체에 저장
-		
-		//기존에 회원정보가 있으면
-		if(memberMap != null) { 
-		
-			HttpSession session = request.getSession();
-	
-			session.setAttribute("member_email", memberMap.get("MEMBER_EMAIL"));
-			session.setAttribute("member_name", memberMap.get("member_name"));
-			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
-			//로그인 완료 후 메인페이지로 돌아감
-			mav.setViewName("redirect:/main.do"); 
+	  
 
-			return mav;
-			
-		}
-		//회원정보가 없으면 에러 페이지 출력
-		//mav.setViewName("member/loginError");
-		return mav;
-	}
 	
 	//회원가입
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.POST)
@@ -71,6 +47,47 @@ public class MemberController {
 		return mav;
 	}   
 
+	//로그인
+	@RequestMapping(value="/memberLogin.do", method=RequestMethod.POST) //'memberLogin.do' 명령을 받을 경우 실행되는 로직
+	public ModelAndView memberLogin(HttpServletRequest request, CommandMap commandMap) throws Exception {
+	
+		Map<String, Object> memberMap = (Map<String, Object>)memberService.memberLogin(commandMap.getMap());
+		//view에서 commandMap에 입력받아 넘어온 값을 MemberService의 memberLogin 메서드를 돌린 후 memberMap 객체에 저장
+		
+		//기존에 회원정보가 있으면
+		if(memberMap != null) { 
+		
+			HttpSession session = request.getSession();
+	
+			session.setAttribute("member_email", memberMap.get("MEMBER_EMAIL"));
+			session.setAttribute("member_name", memberMap.get("MEMBER_NAME"));
+			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
+			//로그인 완료 후 메인페이지로 돌아감
+			mav.setViewName("redirect:/main.do"); 
+
+			return mav;
+			
+		}
+		//회원정보가 없으면 에러 페이지 출력
+		//mav.setViewName("member/loginError");
+		return mav;
+	}
+	
+	//로그아웃
+	@RequestMapping(value="/memberLogout.do", method=RequestMethod.POST) 
+	public ModelAndView memberLogout(HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession(false);//세션값 불러옴
+		
+		if(session != null){ //세션에 값이 있으면
+			session.invalidate(); //세션 값 비우기
+		}
+		//로그아웃 완료 후 메인페이지로 돌아감
+		mav.setViewName("redirect:/main.do");
+		return mav;
+	}
 }
+
+
 
 
