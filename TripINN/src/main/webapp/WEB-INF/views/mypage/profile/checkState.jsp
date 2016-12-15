@@ -136,7 +136,7 @@
 
 	<div class="profile">
 		<div class="pro_menu">
-			후기
+			인증현황
 		</div>
 		
 </div>

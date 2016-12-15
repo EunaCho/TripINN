@@ -1,20 +1,53 @@
 package com.inn.house;
 
 import java.util.List;
-import java.util.Map; //sql¹®
+import java.util.Map; //sql map í˜•ì‹ ì—°ê²°
 
-import javax.annotation.Resource; //service Å¬·¡½º µî·Ï
-import javax.servlet.http.HttpServletRequest; //jsp µ¥ÀÌÅÍ ³Ñ±â±â À§ÇÔ
+import javax.annotation.Resource; //service í´ë˜ìŠ¤ ì—°ê²°
+import javax.servlet.http.HttpServletRequest; //jsp data
 
-import org.springframework.stereotype.Controller; //controller Å¬·¡½º µî·Ï
-import org.springframework.web.bind.annotation.RequestMapping; //jsp¿Í ¿¬°á
-import org.springframework.web.servlet.ModelAndView; //jsp ¸®ÅÏ Å¬·¡½º
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller; //controller í´ë˜ìŠ¤ ë“±ë¡ ìœ„í•¨
+import org.springframework.web.bind.annotation.RequestMapping; //jspì™€ í´ë˜ìŠ¤ ì—°ê²°
+import org.springframework.web.servlet.ModelAndView; //jsp view
 
-import com.inn.house.HouseService; // interface ·ÎÁ÷
-import com.common.common.CommandMap; // sql ¸Ê µ¥ÀÌÅÍ ¹æ½Ä
+import com.inn.house.HouseService; // interface ìˆ™ì†Œ ë“±ë¡
+import com.common.common.CommandMap; // sql key ì„¤ì •
 
 
 @Controller
 public class HouseController {
-
+	
+	Logger log = Logger.getLogger(this.getClass()); //ë°ì´í„° ì°ê¸°
+	
+	@Resource(name="houseService")//service class ì—°ê²°
+	private HouseService houseService; // interface ì—°ê²°
+	
+	//house list mapping
+	@RequestMapping(value="/house/houseList.do")
+	public ModelAndView houseList(CommandMap commandMap)throws Exception{
+		ModelAndView mv = new ModelAndView("houseList"); // tilseì— ë“±ë¡ëœ jsp
+		
+		List<Map<String, Object>> list = houseService.selectHouseList(commandMap.getMap());
+		mv.addObject("list",list); // listì— ë‹´ì€ ë°ì´í„°ë¥¼ ë³´ì—¬ì£¼ê¸° ìœ„í•¨.
+		return mv;
+	}
+	
+	//house register view mapping
+	@RequestMapping(value="/house/openHouseRegister.do")
+	public ModelAndView openHouseRegister(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		ModelAndView mv = new ModelAndView("openHouseRegister"); // tilseì— ë“±ë¡ëœ jsp
+		
+		return mv;
+	}
+	
+	//houseregister insert mapping
+	@RequestMapping(value="/house/insertHouseRegister.do")
+	public ModelAndView insertHouseRegister(CommandMap commandMap, HttpServletRequest request)throws Exception{
+		ModelAndView mv = new ModelAndView("insertHouseRegister"); // tilseì— ë“±ë¡ëœ jsp
+		houseService.insertHouse(commandMap.getMap(), request);
+		
+		return mv;
+	}
+	
 }

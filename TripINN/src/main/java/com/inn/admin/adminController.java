@@ -2,12 +2,15 @@ package com.inn.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
-	public class AdminQnaController {
-	@RequestMapping("/admin/qnaList.do")
-	   public String qnaList() {
-	      
-	      return "qnaList";
-	   }
+public class adminController {
+	
+	@RequestMapping("/admin/main.do")
+	public String main() {
+		
+		return "adminmain";
+		
+	}
 
 }
