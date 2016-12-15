@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/TripINN/test3.do" method="post">
-		제목 : <input type="text" name="testTitle" id="" /> <br />
-		내용 : <input type="text" name="testContent" id="" />
-		
-		<input type="submit" value="전송" />
-	</form>
+
 </body>
 </html>

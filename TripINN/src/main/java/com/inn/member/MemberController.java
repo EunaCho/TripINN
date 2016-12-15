@@ -21,25 +21,25 @@ import org.springframework.web.servlet.ModelAndView;
 import com.common.common.CommandMap;
 
 @Controller
-@RequestMapping("/member") //"/action"À» ¹Ş°í "tiles"¸¦ ¸®ÅÏ
+@RequestMapping("/member") //"/action"ì„ ë°›ê³  "tiles"ë¥¼ ë¦¬í„´
 public class MemberController {
 	
 	Logger log = Logger.getLogger(this.getClass()); //????
 	
-	@Resource(name="memberService") //"memberService"·Î @Service¸íÀÌ Á¤ÀÇµÈ MemberServiceImpl.javaÆÄÀÏÀ» Resource·Î ¿¬°á
-	private MemberService memberService; 	//Member °ü·Ã ¸Ş¼­µå ¹Ş¾Æ¿È
-											// sql¹®Àº Service³» ¿¬°áµÈ memberDAO¿¡¼­ ¹Ş¾Æ¿È
+	@Resource(name="memberService") //"memberService"ë¡œ @Serviceëª…ì´ ì •ì˜ëœ MemberServiceImpl.javaíŒŒì¼ì„ Resourceë¡œ ì—°ê²°
+	private MemberService memberService; 	//Member ê´€ë ¨ ë©”ì„œë“œ ë°›ì•„ì˜´
+											// sqlë¬¸ì€ Serviceë‚´ ì—°ê²°ëœ memberDAOì—ì„œ ë°›ì•„ì˜´
 	
-	ModelAndView mav = new ModelAndView(); // ModelnView Å¸ÀÔÀ¸·Î ¸®ÅÏÇÏ±â À§ÇØ Á¤ÀÇ
+	ModelAndView mav = new ModelAndView(); // ModelnView íƒ€ì…ìœ¼ë¡œ ë¦¬í„´í•˜ê¸° ìœ„í•´ ì •ì˜
 	
-	//·Î±×ÀÎ
-	@RequestMapping(value="/memberLogin.do", method=RequestMethod.POST) //'memberLogin.do' ¸í·ÉÀ» ¹ŞÀ» °æ¿ì ½ÇÇàµÇ´Â ·ÎÁ÷
+	//ë¡œê·¸ì¸
+	@RequestMapping(value="/memberLogin.do", method=RequestMethod.POST) //'memberLogin.do' ëª…ë ¹ì„ ë°›ì„ ê²½ìš° ì‹¤í–‰ë˜ëŠ” ë¡œì§
 	public ModelAndView memberLogin(HttpServletRequest request, CommandMap commandMap) throws Exception {
 	
 		Map<String, Object> memberMap = (Map<String, Object>)memberService.memberLogin(commandMap.getMap());
-		//view¿¡¼­ commandMap¿¡ ÀÔ·Â¹Ş¾Æ ³Ñ¾î¿Â °ªÀ» MemberServiceÀÇ memberLogin ¸Ş¼­µå¸¦ µ¹¸° ÈÄ memberMap °´Ã¼¿¡ ÀúÀå
+		//viewì—ì„œ commandMapì— ì…ë ¥ë°›ì•„ ë„˜ì–´ì˜¨ ê°’ì„ MemberServiceì˜ memberLogin ë©”ì„œë“œë¥¼ ëŒë¦° í›„ memberMap ê°ì²´ì— ì €ì¥
 		
-		//±âÁ¸¿¡ È¸¿øÁ¤º¸°¡ ÀÖÀ¸¸é
+		//ê¸°ì¡´ì— íšŒì›ì •ë³´ê°€ ìˆìœ¼ë©´
 		if(memberMap != null) { 
 		
 			HttpSession session = request.getSession();
@@ -47,26 +47,26 @@ public class MemberController {
 			session.setAttribute("member_email", memberMap.get("MEMBER_EMAIL"));
 			session.setAttribute("member_name", memberMap.get("member_name"));
 			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
-			//·Î±×ÀÎ ¿Ï·á ÈÄ ¸ŞÀÎÆäÀÌÁö·Î µ¹¾Æ°¨
+			//ë¡œê·¸ì¸ ì™„ë£Œ í›„ ë©”ì¸í˜ì´ì§€ë¡œ ëŒì•„ê°
 			mav.setViewName("redirect:/main.do"); 
 
 			return mav;
 			
 		}
-		//È¸¿øÁ¤º¸°¡ ¾øÀ¸¸é ¿¡·¯ ÆäÀÌÁö Ãâ·Â
+		//íšŒì›ì •ë³´ê°€ ì—†ìœ¼ë©´ ì—ëŸ¬ í˜ì´ì§€ ì¶œë ¥
 		//mav.setViewName("member/loginError");
 		return mav;
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.POST)
 	public ModelAndView memberJoin(CommandMap commandMap) throws Exception {
 		//Validate Binding ??
 		//new MemberValidator().validate(member, result);
-		//memberService·Î ³Ñ¾î°¡¼­ memberJoin ¸Ş¼­µå ½ÇÇà
+		//memberServiceë¡œ ë„˜ì–´ê°€ì„œ memberJoin ë©”ì„œë“œ ì‹¤í–‰
 		System.out.println(commandMap.getMap());
 		memberService.memberJoin(commandMap.getMap());
-		//È¸¿ø°¡ÀÔ ¿Ï·á ÈÄ ¸ŞÀÎÆäÀÌÁö·Î µ¹¾Æ°¨
+		//íšŒì›ê°€ì… ì™„ë£Œ í›„ ë©”ì¸í˜ì´ì§€ë¡œ ëŒì•„ê°
 		mav.setViewName("redirect:/main.do"); 
 		return mav;
 	}   

@@ -4,33 +4,68 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import javax.annotation.Resource;//등록된 DAO 클래스 사용. 필요한 자원을 자동으로 연결될때 사용하는 어너테이션
+/*
+ @Autowried와 @Resource를 사용할 수 있는 위치.
+ @Autowried : 필드, 생성자, 입력파라미터가 여러개인 메소드에 적용가능
+ @Resource : 필드, 입력파라미터가 한 개인 빈 프로퍼티 setter 메소드에 적용가능
+ * */
 
-import org.springframework.stereotype.Service; //Service 클래스 등록
+import javax.servlet.http.HttpServletRequest; //jsp 파라미터 값 송수신 하기 위함.
+
+import org.springframework.stereotype.Service;
+
+import com.common.common.FileUtils; //Service 클래스 등록
 
 
 //서비스 클래스 등록
-@Service("hosueService")
+@Service("houseService")
 public class HouseServiceImpl implements HouseService{
-
-	// jsp와 연동
+	
+	@Resource(name = "houseDAO") //@Repository로 등록된 DAO 클래스를 연결.
+	private HouseDAO houseDAO;
+	
+	@Resource(name = "fileUtils") //@Component로 등록된 Utils 클래스를 연결.
+	private FileUtils fileUtils; //file Upload를 하기위한 객체 생성.
+	
+	// service 인터페이스 구현.
+	// DAO클래스에 명시된 sql문을 이용하여 구현.
+	
+	//house list
 	@Override
 	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception {
+		return houseDAO.selectHouseList(map);
+	}
+
+	//house write
+	@Override
+	public void insertHouse(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		houseDAO.insertHouse(map); //게시글 write
+		
+/*		//file 업로드 코드
+		List<Map<String, Object>> houseList = fileUtils.parseInsertFileInfo(map, request);
+		for(int i = 0; i < houseList.size(); i++){
+			houseDAO.insertHouse(map);
+		}
+*/		
+	}
+
+	//house update
+	@Override
+	public void updateHouse(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		houseDAO.updateHouse(map);
+	}
+
+	//house delete
+	@Override
+	public void deleteHouse(Map<String, Object> map) throws Exception {
+	}
+
+	//house detail
+	@Override
+	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void insertHouse(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateHouse(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
