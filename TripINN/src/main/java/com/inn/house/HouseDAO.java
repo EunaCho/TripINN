@@ -34,12 +34,11 @@ public class HouseDAO extends AbstractDAO{
 
 	*/
 
-	@SuppressWarnings("unchecked")//경고 제외 어너테이션
 	//숙소 리스트 
+	@SuppressWarnings("unchecked")//경고 제외 어너테이션
 	public List<Map<String,Object>> selectHouseList(Map<String,Object> map){
 		return (List<Map<String,Object>>)selectList("house.selectHouseList",map);
 	}
-	
 	
 	//insert DAO
 	public void insertHouse(Map<String, Object> map) throws Exception{
@@ -50,6 +49,44 @@ public class HouseDAO extends AbstractDAO{
 	public void updateHouse(Map<String, Object> map) throws Exception{
 		update("house.updateHouse", map);
 	}
+	//delete DAO
+	public void deleteHouse(Map<String, Object> map) throws Exception{
+		delete("house.deleteHouse", map);
+	}
+	
+	//detail DAO
+	@SuppressWarnings("unchecked") //검증되지 않은 연산자 관련 경고 억제
+	public Map<String, Object> selectHouseDetail(Map<String,Object> map) throws Exception{
+		return (Map<String, Object>) selectOne("house.selectHouseDetail", map);
+	}
+
+	//조회수 증가
+	public void updateHitCnt(Map<String,Object> map) throws Exception{
+		update("house.updateHitCnt",map);
+	}
+	
+	//							file upload
+	//file 리스트
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectList("house.selectFileList", map);
+	}
+	
+	//insert file
+	public void insertFile(Map<String, Object> map) throws Exception{
+		insert("house.insertFile", map);
+	}
+
+	//update file
+	public void updateFile(Map<String, Object> map) throws Exception{
+		update("house.updateFile", map);
+	}
+	
+	//delete file
+	public void deleteFileList(Map<String, Object> map) throws Exception{
+		update("house.deleteFileList", map);
+	}
+
 	
 	
 

@@ -12,6 +12,50 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
+	<!-- **********************house_start**********************-->
+	<!-- house layout -->
+	<definition name="house" template="/WEB-INF/views/house/layout/layout.jsp">
+		<put-attribute name="house_header" value="/WEB-INF/views/house/layout/header.jsp"/>
+		<put-attribute name="house_body" value="/WEB-INF/views/house/layout/body.jsp"/>
+	</definition>
+	
+	<!-- 메인 -->
+	<definition name="houseMain" extends="main">
+		<put-attribute name="main" value="house"/>
+	</definition>
+	
+	<!-- list 정의 -->
+	<definition name="houseList_Layout" extends="house">
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
+	</definition>
+	
+	<!-- list -->
+	<definition name="houseList" extends="main">
+		<put-attribute name="main" value="houseList_Layout"/>
+	</definition>
+	
+	
+	<!-- open register 정의 -->
+ 	<definition name="openHouseRegister_Layout" extends="house">
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
+	</definition>
+	
+	<!-- open register -->
+ 	<definition name="openHouseRegister" extends="main">
+		<put-attribute name="main" value="openHouseRegister_Layout"/>	
+	</definition>
+	
 
+	<!-- insert register 정의 -->
+ 	<definition name="insertHouseRegister_Layout" extends="house">
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
+	</definition>
+	
+	<!-- insert register -->
+ 	<definition name="insertHouseRegister" extends="main">
+		<put-attribute name="main" value="insertHouseRegister_Layout"/>
+	</definition>
+	
+	<!-- **********************house_end**********************-->
 </tiles-definitions>
 	
