@@ -2,68 +2,104 @@
 <!DOCTYPE tiles-definitions PUBLIC 
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
 	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
-	
 <tiles-definitions>
 
-	<!-- 메인페이지 -->
-	<definition name="main" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/common/main.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
-	<!-- 테스트 -->
-	<definition name="test" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
+   <!-- 메인페이지 -->
+   <definition name="main" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/common/main.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   <!-- 테스트 -->
+   <definition name="test" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
 
-	<!-- 관리자페이지 -->
-	<definition name="adminmain" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
-	
-	<!-- 마이페이지  -->
+   <!-- 관리자페이지 -->
+   <definition name="adminmain" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   <!-- 마이페이지  -->
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/noticeForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
-	<definition name="msgList" template="/WEB-INF/common/layout.jsp">
+		<!-- 메시지 -->
+	<definition name="sendMsgForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/msgList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/receiveMsgList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="receiveMsgForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/sendMsgList.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+		<!-- 숙소목록 -->
 	<definition name="houseForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/houseForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/house/houseForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="houseReserForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+		<!-- 트립목록 -->
 	<definition name="tripForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/tripForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/trip/tripForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="tripReserForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/trip/reserForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+		<!-- 프로필 -->
 	<definition name="proForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/proForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/profile/proForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+		
+	<definition name="reviewForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/profile/reviewForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="checkState" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/profile/checkState.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
 	
+		<!-- 위시리스트 -->
 	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/listForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+   
+	
+   
 
+  
 </tiles-definitions>
 	

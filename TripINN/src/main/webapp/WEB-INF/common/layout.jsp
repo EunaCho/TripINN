@@ -10,15 +10,15 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body style="width:100%;height:100%;">
-	<div id="header">
+	<div id="header" style="height:50px;" >
 		<tiles:insertAttribute name="header"/>
 	</div>
 	
-	<div id="main">
+	<div id="main" style="display:;">
 		<tiles:insertAttribute name="body"/>
 	</div>
 	
-	<div id="bottom">
+	<div id="bottom" style="display:block;">
 		<tiles:insertAttribute name="bottom"/>
 	</div>
 </body>
