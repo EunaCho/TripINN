@@ -9,23 +9,23 @@ import com.common.common.AbstractDAO;
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO {
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	void memberJoin(Map<String, Object> map) throws Exception {
 		insert("member.joinMember", map);
 	}
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	@SuppressWarnings("unchecked")
 	Map<String, Object> memberLogin(Map<String, Object> map) throws Exception {
 		return (Map<String, Object>)selectOne("member.loginMember", map);
 	}
 	
-	//¾ÆÀÌµğ Ã£±â
+	//ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 	void memberEmailFind(Map<String, Object> map) throws Exception {
 		
 	}
 	
-	//ºñ¹Ğ¹øÈ£ Ã£±â
+	//ï¿½ï¿½Ğ¹ï¿½È£ Ã£ï¿½ï¿½
 	void memberPwFind(Map<String, Object> map) throws Exception {
 		
 	}

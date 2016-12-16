@@ -1,13 +1,10 @@
-
-
-
 function logout() {
 	if(confirm("로그아웃을 하시겠습니까?")) {
-		location.href="/member/memberLogout.do";
+		return true;
+	} else {
+	return false;
 	}
-	return;
 }
-
 function loginCheck() {
 	   if($("#member_email_log").val() == "") {
 	      alert("이메일주소를 입력해주세요.");
@@ -79,4 +76,3 @@ jQuery(function($){
     
     
    });
-   
