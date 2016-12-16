@@ -2,6 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC 
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
 	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
 <tiles-definitions>
 
    <!-- 메인페이지 -->
@@ -17,6 +18,7 @@
       <put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
       <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
    </definition>
+<<<<<<< HEAD
 
    <!-- 관리자페이지 -->
    <definition name="adminmain" template="/WEB-INF/common/layout.jsp">
@@ -26,6 +28,10 @@
    </definition>
    
    <!-- 마이페이지  -->
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 	<!-- 메인페이지 -->
 	<definition name="main" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -41,12 +47,13 @@
 	</definition>
 
 	<!-- 관리자페이지 -->
-	<definition name="adminmain" template="/WEB-INF/common/layout.jsp">
+	<definition name="adminMain" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
+<<<<<<< HEAD
 	<!-- **********************house_start**********************-->
 	<!-- house layout -->
 	<definition name="house" template="/WEB-INF/views/house/layout/layout.jsp">
@@ -95,9 +102,28 @@
 	
 	
 	<!-- 회원관리 페이지 -->
+=======
+
+<!-- 회원관리 페이지 -->
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 	<definition name="memberList" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+	
+	<!-- 회원정보 상세보기 페이지 -->
+	<definition name="memberView" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/member/view.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<!-- 회원정보 수정 페이지 -->
+	<definition name="memberModify" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/member/modify.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
@@ -115,11 +141,23 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<!-- 숙소 관리 페이지-->
+	<definition name="houseList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/house/list.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
 	
 		
+<<<<<<< HEAD
 	
 	<!-- 마이페이지  -->
 
+=======
+
+	<!-- 마이페이지  -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -129,13 +167,13 @@
 		<!-- 메시지 -->
 	<definition name="sendMsgForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/message/receiveMsgList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/sendMsgList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
 	<definition name="receiveMsgForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/message/sendMsgList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/receiveMsgList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
@@ -185,14 +223,68 @@
 	</definition>
 	
 		<!-- 위시리스트 -->
+<<<<<<< HEAD
 	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/listForm.jsp"/>
+=======
+	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
+<<<<<<< HEAD
 	
+=======
+	<!-- **********************house_start**********************-->
+	<!-- house layout -->
+	<definition name="house" template="/WEB-INF/views/house/layout/layout.jsp">
+		<put-attribute name="house_header" value="/WEB-INF/views/house/layout/header.jsp"/>
+		<put-attribute name="house_body" value="/WEB-INF/views/house/layout/body.jsp"/>
+	</definition>
+	<!-- 메인 -->
+	<definition name="houseMain" extends="main">
+		<put-attribute name="main" value="house"/>
+	</definition>
+	
+	<!-- list 정의 -->
+	<definition name="houseList_Layout" extends="house">
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
+	</definition>
+	
+	<!-- list -->
+	<definition name="houseList" extends="main">
+		<put-attribute name="main" value="houseList_Layout"/>
+	</definition>
+	
+	
+	<!-- open register 정의 -->
+ 	<definition name="openHouseRegister_Layout" extends="house">
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
+	</definition>
+	
+	<!-- open register -->
+ 	<definition name="openHouseRegister" extends="main">
+		<put-attribute name="main" value="openHouseRegister_Layout"/>	
+	</definition>
+
+	<!-- insert register 정의 -->
+ 	<definition name="insertHouseRegister_Layout" extends="house">
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
+	</definition>
+	
+	<!-- insert register -->
+ 	<definition name="insertHouseRegister" extends="main">
+		<put-attribute name="main" value="insertHouseRegister_Layout"/>
+	</definition>
+	
+	<!-- **********************house_end**********************-->
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 	<!-- 트립 페이지 -->
 	<definition name="tripMain" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -200,10 +292,21 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="tripRegistForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/trip/tripRegist.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
 	<definition name="test2" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/test/test2.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+<<<<<<< HEAD
 	</definition>
+=======
+	</definition>
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 </tiles-definitions>
 	
