@@ -1,9 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String cp = request.getContextPath(); %>
 <script>
 	function fnMove(seq) {
 		var offset = $("#tripDiv" + seq).offset();
 		$("html, body").animate({scrollTop:offset.top-60}, 400);
+	}
+	function tripRegist() {
+		var t_form = document.tripForm;
+		var trip_area = t_form.trip_area.value;
+		var trip_type = t_form.trip_type.value;
+		
+		if(trip_area == "") {
+			alert("지역 정보를 입력해주세요.");
+			return;
+		}
+		if(trip_type == "") {
+			alert("유형 정보를 입력해주세요.");
+			return;
+		}
+		
+		t_form.submit();
 	}
 </script>
 <style>
@@ -52,7 +69,7 @@
 	    padding-right: 40px;
 	    height: 30px;
 	    display: block;
-	    width: 200px;
+	    width: 25%;
 	    float:left;
 	}
 	
@@ -70,6 +87,7 @@
 		<input type="button" value="div2" onclick="fnMove('2')"/>
 		<input type="button" value="div3" onclick="fnMove('3')"/>
 	</div> -->
+	<form action="<%=cp%>/tripRegistForm.do" name="tripForm" method="post">
 	<div id="tripHeader" >
 		<div id="ment1">
 			<h4>열정을 가진 분야를 전 세계와 나누세요.</h4>
@@ -125,28 +143,30 @@
 				<span>원하는 트립을 디자인하는 것으로 시작하세요. 각 단계별로 안내해 드리겠습니다. <br />
 				 회원님의 트립이 품질 기준에 부합하면 다음 단계에 대해 알려드립니다.</span>
 				<div>
-					<select name="sel1" id="">
+					<select name="trip_area" id="">
 						<option value="">도시 선택</option>
 						<option value="서울">서울</option>
 						<option value="대전">대전</option>
 						<option value="대구">대구</option>
 					</select>
 					
-					<select name="sel2" id="" >
+					<select name="trip_type" id="" >
 						<option value="">유형 선택</option>
 						<option value="쇼핑">쇼핑</option>
 						<option value="음식">음식</option>
 						<option value="운동">운동</option>
 					</select>
 					
-					<div style="width:170px;height:18px;background:#95D09F;color:#fff;text-align:center; float:left; margin-left:20px; border-radius: 15px; padding:6px;">
+					<div style="width:20%;height:18px;background:#95D09F;color:#fff;
+					text-align:center; float:left; margin-left:20px; border-radius: 15px; padding:6px;
+					cursor:pointer" onclick="tripRegist();">
 						<b>트립 만들기</b>
 					</div>
 				</div>
-				
 					
 			</div>
 		</div>
 	</div>
 	<div style="clear:both;"></div>
+	</form>
 </div> 
