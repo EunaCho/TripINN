@@ -5,21 +5,6 @@
 
 <tiles-definitions>
 
-   <!-- 메인페이지 -->
-   <definition name="main" template="/WEB-INF/common/layout.jsp">
-      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-      <put-attribute name="body" value="/WEB-INF/common/main.jsp"/>
-      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-   </definition>
-   
-   <!-- 테스트 -->
-   <definition name="test" template="/WEB-INF/common/layout.jsp">
-      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-      <put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
-      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-   </definition>
-
-
 	<!-- 메인페이지 -->
 	<definition name="main" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -40,7 +25,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-
+	
+	<!-- 회원관리 페이지 -->
 
 <!-- 회원관리 페이지 -->
 
@@ -86,8 +72,7 @@
 	</definition>
 	
 	
-		
-
+	
 	<!-- 마이페이지  -->
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -108,7 +93,7 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
-		<!-- 숙소목록 -->
+	<!-- 숙소목록 -->
 	<definition name="houseForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/houseForm.jsp"/>
@@ -154,10 +139,10 @@
 	</definition>
 	
 		<!-- 위시리스트 -->
+
 	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
-
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
@@ -168,18 +153,19 @@
 		<put-attribute name="house_body" value="/WEB-INF/views/house/layout/body.jsp"/>
 	</definition>
 	<!-- 메인 -->
+	<!-- 
 	<definition name="houseMain" extends="main">
 		<put-attribute name="main" value="house"/>
 	</definition>
-	
+	 -->
 	<!-- list 정의 -->
 	<definition name="houseList_Layout" extends="house">
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
 	</definition>
 	
-	<!-- list -->
-	<definition name="houseList" extends="main">
-		<put-attribute name="main" value="houseList_Layout"/>
+	<!-- main -->
+	<definition name="houseMain" extends="main">
+		<put-attribute name="body" value="houseList_Layout"/>
 	</definition>
 	
 	
@@ -190,7 +176,7 @@
 	
 	<!-- open register -->
  	<definition name="openHouseRegister" extends="main">
-		<put-attribute name="main" value="openHouseRegister_Layout"/>	
+		<put-attribute name="body" value="openHouseRegister_Layout"/>	
 	</definition>
 
 	<!-- insert register 정의 -->
@@ -200,10 +186,11 @@
 	
 	<!-- insert register -->
  	<definition name="insertHouseRegister" extends="main">
-		<put-attribute name="main" value="insertHouseRegister_Layout"/>
+		<put-attribute name="body" value="insertHouseRegister_Layout"/>
 	</definition>
 	
 	<!-- **********************house_end**********************-->
+
 
 	<!-- 트립 페이지 -->
 	<definition name="tripMain" template="/WEB-INF/common/layout.jsp">
