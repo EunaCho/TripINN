@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<!-- 회원가입 -->
+	<insert id="joinMember" parameterType="hashmap">
+			INSERT INTO MEMBER 
+				(member_idx, member_email, 
+				  member_name, member_pwd, 
+				  member_phone)
+			VALUES (member_idx_seq.nextval, #{member_email}, 
+			#{member_name}, #{member_pwd}, 
+			#{member_phone})   
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="loginMember" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		FROM MEMBER
+		WHERE member_email = #{member_email} and member_pwd = #{member_pwd}
+	</select>
+
+</mapper>
