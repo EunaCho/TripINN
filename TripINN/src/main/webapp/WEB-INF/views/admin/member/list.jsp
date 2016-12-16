@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -60,7 +60,7 @@
   
   </body>
 </html>
-=======
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -206,32 +206,6 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
         <!-- /.panel -->   
 </div>
 
-<!-- 좌측영역 -->
-</div>
-<div style="width:15%;height:380px;border:1px solid black;text-align:center;">
-	
-   <ul>
-  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-
-		<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-
-		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-		
-		<li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-
-	</ul>
-   
-   <!-- 우측 영역 -->
-   </div>
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:1142px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:381px;">
-   </div>
-</body>
 
 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
