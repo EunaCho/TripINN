@@ -22,7 +22,7 @@
   <body>
   <br><br>
     <div style="width:100%;height:100px;border:1px solid blue;text-align:center;">
-	<h2>관리자 페이지에 오신걸 환영합니다.</h2>
+	<h2>회원관리 페이지에 오신걸 환영합니다.</h2>
    </div>
 
    
@@ -46,18 +46,7 @@
    
    <!-- 가운데 영역 -->
    <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:200px;left:222px;">
-	<h3>관리자 공지사항</h3>
-	<h4>&nbsp;· &nbsp;관리자 홈으로 이동</h4>
-	<h5>&nbsp;&nbsp;&nbsp;&nbsp;관리자 홈으로 바로 이동 할 수 있습니다.</h5>
 	
-	<h4>&nbsp;· &nbsp;회원관리</h4>
-	<h5>&nbsp;&nbsp;&nbsp;&nbsp;회원을 관리하기 위한 페이지로 이동 할 수 있습니다.</h5>
-	
-	<h4>&nbsp;· &nbsp;숙소관리</h4>
-	<h5>&nbsp;&nbsp;&nbsp;&nbsp;숙소 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
-	
-	<h4>&nbsp;· &nbsp;문의게시판</h4>
-	<h5>&nbsp;&nbsp;&nbsp;&nbsp;Q&A와 FAQ 관리를 위한 페이지로 이동 할 수 있습니다.</h5>
 	
    </div>
    
