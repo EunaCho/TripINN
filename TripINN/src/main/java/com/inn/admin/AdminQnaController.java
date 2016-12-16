@@ -1,18 +1,5 @@
 package com.inn.admin;
 
-<<<<<<< HEAD
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@Controller
-public class AdminQnaController {
-	@RequestMapping("/admin/qnaList.do")
-	   public String memberList() {
-	      
-	      return "qnaList";
-	   }
-}
-=======
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -20,28 +7,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-	public class AdminQnaController {
+public class AdminQnaController {
 	
 	@Resource
 	private QnAService qnAService;
-	private int searchNum;//°Ë»öÀ¯Çü 1. Á¦¸ñ 2. ³»¿ë µî
-	private String replyNum;//´äº¯¹øÈ£??
+	private int searchNum;//ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ 1. ï¿½ï¿½ï¿½ï¿½ 2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private String replyNum;//ï¿½äº¯ï¿½ï¿½È£??
 	private String isSearch;
 
-	private int currentPage = 1; //Ã³À½ Ç¥½ÃµÇ´Â ÆäÀÌÁö
-	private int totalCount;		//ÃÑ ±Û °¹¼öÀÎµí
-	private int blockCount = 10;//1ÆäÀÌÁö´ç ±Û ¸î°³ ÇÒ°ÇÁö
-	private int blockPage = 5;  //ÇÑ È­¸é¿¡ ÆäÀÌÁö¹øÈ£ ¸î°³±îÁö ¶ç¿ì°í  ÀÌÀü ´ÙÀ½ Ã³¸®ÇÒ²«Áö
+	private int currentPage = 1; //Ã³ï¿½ï¿½ Ç¥ï¿½ÃµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int totalCount;		//ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½
+	private int blockCount = 10;//1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½î°³ ï¿½Ò°ï¿½ï¿½ï¿½
+	private int blockPage = 5;  //ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½î°³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½
 	private String pagingHtml;  //
 	private Paging page;        //
 
-	private int comment_count; //ÄÚ¸àÆ® ¹øÈ£?
-	private int commupdate1;   //ÄÚ¸àÆ® Á¶È¸¼ö?
-	private String commenter;  //ÄÚ¸àÆ®ÀÛ¼ºÀÚ
+	private int comment_count; //ï¿½Ú¸ï¿½Æ® ï¿½ï¿½È£?
+	private int commupdate1;   //ï¿½Ú¸ï¿½Æ® ï¿½ï¿½È¸ï¿½ï¿½?
+	private String commenter;  //ï¿½Ú¸ï¿½Æ®ï¿½Û¼ï¿½ï¿½ï¿½
 
-	@ModelAttribute("qnaModel") //¸ðµ¨°´Ã¼ ÇÊ¿ä
+	@ModelAttribute("qnaModel") //ï¿½ðµ¨°ï¿½Ã¼ ï¿½Ê¿ï¿½
 	public QnAModel formBack() {
-		return new QnAModel(); // °´Ã¼ »ý¼ºÈÄ ¹ÝÈ¯
+		return new QnAModel(); // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	}
 	
 	
@@ -51,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	public ModelAndView qnaList(HttpServletRequest request, QnAModel qnaModel) throws UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 	     
-		//ÇöÀçÆäÀÌÁö 1 ¶Ç´Â Å¬¸¯ÇÑ ÆäÀÌÁö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½Ç´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
 				|| request.getParameter("currentPage").equals("0")) {
 			currentPage = 1;
@@ -62,7 +49,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		List<QnAModel> list;
 		list = qnAService.QnAList();
 		
-		/* °Ô½ÃÆÇ °Ë»ö */
+		/* ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ */
 		String isSearch = request.getParameter("isSearch");
 		if(isSearch != null) isSearch = new String(isSearch.getBytes("8859_1"), "UTF-8");
 
@@ -79,7 +66,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			}
 		}
 		
-		//ÆäÀÌÂ¡°ü·Ã?
+		//ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ï¿½ï¿½?
 		totalCount = list.size();
 		page = new Paging(currentPage, totalCount, blockCount, blockPage, "QnAList");
 		pagingHtml = page.getPagingHtml().toString();

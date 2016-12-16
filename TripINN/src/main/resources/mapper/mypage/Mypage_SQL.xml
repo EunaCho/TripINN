@@ -6,11 +6,7 @@
 
 	<!-- mypage message 보낸메시지 리스트  -->
 	<select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			
 		
-		]]
-	
 	</select>
 
 </mapper>
