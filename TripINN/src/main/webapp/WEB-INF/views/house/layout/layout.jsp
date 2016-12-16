@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/TripINN/Utils/house/css/layout.css">
 </head>
 
-<body id="hbody">
+<body id="houseContainer">
 	<div id="header">
 		<tiles:insertAttribute name="house_header"/>
 	</div>

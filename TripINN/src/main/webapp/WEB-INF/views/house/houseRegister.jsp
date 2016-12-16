@@ -3,47 +3,38 @@
 <html>
 <head>
 
-<title>HOUSE Register</title>
+<title>숙소 등록 페이지</title>
+<link rel="stylesheet" type="text/css" href="/TripINN/Utils/house/css/houseRegister.css">
 </head>
 <body>
-	<div>
-	<h2>서울 호스팅 예상</h2>
-	</div>
-	<div>
-		<select>
-			<option>집 전체</option>
-			<option>개인실</option>
-			<option>다인실</option>
-		</select>
+<div class="houseRegister">
+	<div class="HRsubject">
+	<h2>Trip INN</h2>
 	</div>
 	
-	<div>
-		<select>
-			<option>게스트 1명</option>
-			<option>게스트 2명</option>
-			<option>게스트 3명</option>
-			<option>게스트 4명</option>
-			<option>게스트 5명</option>
-			<option>게스트 6명</option>
-			<option>게스트 7명</option>
-			<option>게스트 8명</option>
-			<option>게스트 9명</option>
-			<option>게스트 10명</option>
-			<option>게스트 11명</option>
-			<option>게스트 12명</option>
-			<option>게스트 13명</option>
-			<option>게스트 14명</option>
-			<option>게스트 15명</option>
-			<option>게스트 16명</option>
-		</select>
+	<div class="hostInfo">
+		<div class="hostInfo_subject">
+		<div><h2>호스팅의 장점</h2></div>
+		</div>
+		
+		<div class="hostInfo_content">
+		<div class="info">
+			<div><h4>부가수입</h4></div>
+			<div>집 수리에서 꿈꿔온 여행까지, 호스팅 수입으로 진짜 하고 싶은 일을 하세요.</div>
+		</div>
+		
+		<div class="info">
+			<div><h4>호스트 지원</h4></div>
+			<div>유용한 팁과 필요한 도구를 지원받고 전세계 다른 호스트와 교류하세요.</div>
+		</div>
+		
+		<div class="info">
+			<div><h4>유연성</h4></div>
+			<div>요금, 호스팅 시기 및 빈도 모두 호스트가 전적으로 결정합니다.</div>
+		</div>
+		</div>	
 	</div>
-	
-	<div>
-		<input type="text" id="areaSearch">
-	</div>
-	
-	<div>
-		<input type="button" id="next" value="next">
-	</div>
+</div>
+<div style="clear: both;"></div>
 </body>
 </html>
