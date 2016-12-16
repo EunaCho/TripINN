@@ -132,7 +132,7 @@
 	</div>
 	
 	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:330px;left:450px;">
-	<input type="button" value="수정하기" onClick="location.href='http://localhost:8080/TripINN/admin/memberModify.do'">
+	<input type="button" value="수정완료" onClick="location.href='http://localhost:8080/TripINN/admin/memberView.do'">
 	</div>
 	
 	</div>
