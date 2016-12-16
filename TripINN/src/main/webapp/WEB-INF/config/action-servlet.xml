@@ -27,15 +27,22 @@
     
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />    
+    
      
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
       <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
       <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
       <property name="order" value="1"></property> 
       </bean>
       
-      <!--  <bean id="adminController" class="com.inn.admin.adminController"></bean> -->
+        
    
    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
       <property name="definitions">
@@ -45,5 +52,9 @@
       </property>
       <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
    </bean>
+<<<<<<< HEAD
+      
+=======
 
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </beans>
