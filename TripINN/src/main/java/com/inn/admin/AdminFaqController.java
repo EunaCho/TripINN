@@ -12,3 +12,10 @@ public class AdminFaqController {
 	      return "faqList";
 	   }
 }
+<<<<<<< HEAD
+
+
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git

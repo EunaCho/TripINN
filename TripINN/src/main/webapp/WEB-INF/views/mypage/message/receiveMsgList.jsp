@@ -60,6 +60,16 @@
 	}
 
 </style>
+<!-- jQuery(document).ready(function(){
+
+	var select = $('.select-box select');
+	select.change(function(){
+		var select_name = $(this).children('option:selected').text();
+		$(this).siblings("label").text(select_name);
+	});
+
+});
+ -->
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 
 <div style="width:1200px; height:100%; margin:0px auto;">

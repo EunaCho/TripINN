@@ -1,11 +1,30 @@
 package com.inn.admin;
+<<<<<<< HEAD
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class AdminQnaController {
+	@RequestMapping("/admin/qnaList.do")
+	   public String memberList() {
+	      
+	      return "qnaList";
+	   }
+}
+=======
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 
+<<<<<<< HEAD
+
+=======
 @Controller
 public class AdminQnaController {
 	
@@ -101,4 +120,5 @@ public class AdminQnaController {
 	}
 
 }
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 >>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
