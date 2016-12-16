@@ -64,7 +64,7 @@ public class MemberController {
 			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
 			//로그인 완료 후 메인페이지로 돌아감
 			mav.setViewName("redirect:/main.do"); 
-
+			System.out.println("로그인");
 			return mav;
 			
 		}
@@ -74,13 +74,15 @@ public class MemberController {
 	}
 	
 	//로그아웃
-	@RequestMapping(value="/memberLogout.do", method=RequestMethod.POST) 
-	public ModelAndView memberLogout(HttpServletRequest request) throws Exception {
-		
+	@RequestMapping(value="/memberLogout.do")
+	public ModelAndView memberLogout(HttpServletRequest request, CommandMap commandMap) throws Exception {
+		System.out.println(1);
 		HttpSession session = request.getSession();//세션값 불러옴
-		
+		System.out.println(2);
+		System.out.println(session);
 		if(session != null){ //세션에 값이 있으면
 			session.invalidate(); //세션 값 비우기
+			System.out.println("로그아웃");
 		}
 		//로그아웃 완료 후 메인페이지로 돌아감
 		mav.setViewName("redirect:/main.do");

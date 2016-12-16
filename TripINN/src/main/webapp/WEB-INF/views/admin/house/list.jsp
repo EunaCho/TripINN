@@ -47,14 +47,14 @@
    </div>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:66%;height:381px;border:1px solid black;text-align:left; position:absolute;top:192px;left:213px;">
+   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:200px;left:222px;">
 	
 	
    </div>
    
    <!-- 우측영역 -->
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:1142px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:381px;">
+   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
+   <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
    </div>
   
   </body>

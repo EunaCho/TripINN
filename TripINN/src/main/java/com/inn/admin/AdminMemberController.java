@@ -16,5 +16,11 @@ public class AdminMemberController {
 	      return "memberView";
 	   }
 	
+	@RequestMapping("/admin/memberModify.do")
+	   public String memberModify() {
+	      
+	      return "memberModify";
+	   }
+	
 	
 }

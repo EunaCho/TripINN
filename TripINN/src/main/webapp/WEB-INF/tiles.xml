@@ -2,7 +2,34 @@
 <!DOCTYPE tiles-definitions PUBLIC 
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
 	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<<<<<<< HEAD
+
+=======
+	
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 <tiles-definitions>
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
+   <!-- 메인페이지 -->
+   <definition name="main" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/common/main.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   <!-- 테스트 -->
+   <definition name="test" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+<<<<<<< HEAD
+
+=======
 
 	<!-- 메인페이지 -->
 	<definition name="main" template="/WEB-INF/common/layout.jsp">
@@ -17,24 +44,49 @@
 		<put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	<!-- 관리자페이지 -->
-	<definition name="adminmain" template="/WEB-INF/common/layout.jsp">
+	<definition name="adminMain" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
+
+	
+	
+
+<<<<<<< HEAD
+	
+=======
+	<!-- 회원관리 페이지 -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 <!-- 회원관리 페이지 -->
+
 	<definition name="memberList" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
 	
 	<!-- 회원정보 상세보기 페이지 -->
 	<definition name="memberView" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/member/view.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<!-- 회원정보 수정 페이지 -->
+	<definition name="memberModify" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/member/modify.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
@@ -62,7 +114,12 @@
 	
 		
 	
+<<<<<<< HEAD
 	<!-- 마이페이지  -->
+
+=======
+	<!-- 마이페이지  -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -72,13 +129,13 @@
 		<!-- 메시지 -->
 	<definition name="sendMsgForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/message/receiveMsgList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/sendMsgList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
 	<definition name="receiveMsgForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/message/sendMsgList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/receiveMsgList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
@@ -129,18 +186,33 @@
 	
 		<!-- 위시리스트 -->
 	<definition name="listForm" template="/WEB-INF/common/layout.jsp">
+<<<<<<< HEAD
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/listForm.jsp"/>
+=======
+
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/listForm.jsp"/>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<!-- **********************house_start**********************-->
 	<!-- house layout -->
 	<definition name="house" template="/WEB-INF/views/house/layout/layout.jsp">
 		<put-attribute name="house_header" value="/WEB-INF/views/house/layout/header.jsp"/>
 		<put-attribute name="house_body" value="/WEB-INF/views/house/layout/body.jsp"/>
+<<<<<<< HEAD
 	</definition>
-	
+
+=======
+	</definition>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<!-- 메인 -->
 	<definition name="houseMain" extends="main">
 		<put-attribute name="main" value="house"/>
@@ -166,7 +238,7 @@
  	<definition name="openHouseRegister" extends="main">
 		<put-attribute name="main" value="openHouseRegister_Layout"/>	
 	</definition>
-	
+
 	<!-- insert register 정의 -->
  	<definition name="insertHouseRegister_Layout" extends="house">
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
@@ -179,7 +251,14 @@
 	
 	<!-- **********************house_end**********************-->
 
+	<!-- **********************house_end**********************-->
+<<<<<<< HEAD
+
+
 	
+=======
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<!-- 트립 페이지 -->
 	<definition name="tripMain" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
