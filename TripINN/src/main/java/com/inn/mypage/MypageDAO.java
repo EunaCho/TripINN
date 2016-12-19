@@ -22,8 +22,6 @@ public class MypageDAO extends AbstractDAO {
 	9. unchecked : 검증되지 않은 연산자 관련 경고 억제
 	10. unused : 사용하지 않는 코드 관련 경고 억제
 	*/
-	
-<<<<<<< HEAD
 	//**메시지 
 	//보낸 메시지 리스트
 	@SuppressWarnings("unchecked")//경고 제외 어노테이션
@@ -37,15 +35,4 @@ public class MypageDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
 	}
 	
-=======
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectSendMsgList(Map<String,Object> map){
-		return (List<Map<String, Object>>) selectList("mypage.selectSendMsgList", map);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectReceiveMsgList(Map<String,Object> map){
-		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
-	}
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 }
