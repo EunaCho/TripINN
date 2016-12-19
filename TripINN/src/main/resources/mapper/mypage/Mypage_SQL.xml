@@ -4,9 +4,7 @@
 <mapper namespace="mypage">
 
 	<select id="myPageTest" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			select 문
-		]]>
+			select * from message where member_idx = #member_idx#
 	</select>
 
 </mapper>

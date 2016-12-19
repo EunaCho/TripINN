@@ -1,5 +1,8 @@
 package com.inn.mypage;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -23,9 +26,13 @@ public class MypageController {
 	//**메시지
 	//*메시지->보낸메시지(숙소/트립)
 	@RequestMapping("/sendMessage.do")
-	public String sendMsgForm(CommandMap commandMap) throws Exception{
+	public ModelAndView sendMsgForm(CommandMap commandMap) throws Exception{
 		//보낸 메시지를 select박스를이용해서 숙소와 트립의 선택에 따라 리스트를 뽑는다. 
-		return "sendMsgForm";
+		ModelAndView mv = new ModelAndView("sendMsgForm");
+		ArrayList<Map<String, Object>> list = new ArrayList<>();
+		
+		mv.addObject("msgList", list);
+		return mv;
 	}
 	
 	//*메시지->받은메시지(숙소/트립)

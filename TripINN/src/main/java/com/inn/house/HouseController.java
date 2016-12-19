@@ -24,9 +24,9 @@ public class HouseController {
 	private HouseService houseService; // interface 연결
 	
 	//house list mapping
-	@RequestMapping(value="/house/houseList.do")
+	@RequestMapping(value="/house/houseMain.do")
 	public ModelAndView houseList(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("houseList"); // tilse에 등록된 jsp
+		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 		
 		List<Map<String, Object>> list = houseService.selectHouseList(commandMap.getMap());
 		mv.addObject("list",list); // list에 담은 데이터를 보여주기 위함.

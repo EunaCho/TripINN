@@ -1,6 +1,10 @@
 package com.inn.mypage;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
+
 import com.common.common.AbstractDAO;
 
 @Repository("mypageDAO")
@@ -18,4 +22,14 @@ public class MypageDAO extends AbstractDAO {
 	9. unchecked : 검증되지 않은 연산자 관련 경고 억제
 	10. unused : 사용하지 않는 코드 관련 경고 억제
 	*/
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectSendMsgList(Map<String,Object> map){
+		return (List<Map<String, Object>>) selectList("mypage.selectSendMsgList", map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectReceiveMsgList(Map<String,Object> map){
+		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
+	}
 }
