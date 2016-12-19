@@ -13,10 +13,8 @@
    </definition>
    
    <!-- 테스트 -->
-   <definition name="test" template="/WEB-INF/common/layout.jsp">
-      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+   <definition name="test">
       <put-attribute name="body" value="/WEB-INF/test/test.jsp"/>
-      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
    </definition>
 
 
