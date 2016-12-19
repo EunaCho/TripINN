@@ -19,15 +19,17 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
-	<!-- 관리자페이지 -->
+	
+
+
+
+
+<!-- 관리자페이지 -->
 	<definition name="adminMain" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-	
-	<!-- 회원관리 페이지 -->
-
 <!-- 회원관리 페이지 -->
 
 	<definition name="memberList" template="/WEB-INF/common/layout.jsp">

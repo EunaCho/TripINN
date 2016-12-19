@@ -42,9 +42,9 @@ public class TestController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("test");
 		
-		String addr1 = ""; // °Ë»öµÈ ÁÖ¼Ò
+		String addr1 = "ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ í…Œí—¤ë€ë¡œ14ê¸¸"; //
 		String addr2 = "6";
-		String[] nearByAddr = {"", "8", "16", "13"}; // ±ÙÃ³ ÁÖ¼Ò ¹Ş¾Æ¿À±â
+		String[] nearByAddr = {"5 ì‚¼í¥ì—­ì‚¼ë¹Œë”©", "48", "16 ë¼ì¸ë¹Œë”©", "13"}; // 
 		
 		
 		String map = ConvertAddress.conAddr(addr1 + " " + addr2);
@@ -68,7 +68,7 @@ public class TestController {
 				nearByMap.put("ba", ConvertAddress.decode(map2.substring(map2.indexOf("buildingAddress")+18, map2.indexOf("title")-3).trim()));
 				
 				if(nearByMap.get("ba").equals("")) {
-					nearByMap.put("ba", "°Ç¹°¸í ¾øÀ½");
+					nearByMap.put("ba", "ê±´ë¬¼ëª… ì—†ìŒ");
 				}
 				nearByList.add(nearByMap);
 				

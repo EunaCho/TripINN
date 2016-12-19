@@ -13,7 +13,7 @@ public class MypageServiceImpl implements MypageService{
 	
 	Logger log = Logger.getLogger(this.getClass()); 
 	
-	@Resource(name="mypageDAO")// @Repository에 DAO 등록 
+	@Resource(name="mypageDAO")// @Repository로 DAO연결 
 	private MypageDAO mypageDAO;
 	
 	

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
 <script src="<%= cp %>/js/common.js"></script>
 
-<div class="header_menu">
+<div class="header_menu" style="top:0px;left:0px;right:0px;">
 	<div class="inner">	
 
 
