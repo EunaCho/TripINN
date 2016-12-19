@@ -58,13 +58,14 @@ public class MemberController {
 		if(memberMap != null) { 
 		
 			HttpSession session = request.getSession();
-	
+
+			session.setAttribute("member_idx", memberMap.get("MEMBER_IDX"));
 			session.setAttribute("member_email", memberMap.get("MEMBER_EMAIL"));
 			session.setAttribute("member_name", memberMap.get("MEMBER_NAME"));
 			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
 			//로그인 완료 후 메인페이지로 돌아감
 			mav.setViewName("redirect:/main.do"); 
-			System.out.println("로그인");
+			//System.out.println(memberMap.get("MEMBER_IDX"));
 			return mav;
 			
 		}
