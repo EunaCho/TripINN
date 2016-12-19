@@ -6,18 +6,7 @@
 <% String cp = request.getContextPath(); %>
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
-<script src="<%= cp %>/js/header.js"></script>
-
-<script>
-function logout() {
-	if(confirm("로그아웃을 하시겠습니까?")) {
-		return true;
-	} else {
-	return false;
-	}
-}
-
-</script>
+<script src="<%= cp %>/js/common.js"></script>
 
 <div class="header_menu">
 	<div class="inner">	
