@@ -1,5 +1,128 @@
 @CHARSET "utf-8";
 /* id ==# class==. */
-#hbody{width:100%; height:100%; background-color: yellow;}
-#house_header{
+#houseContainer{
+	width:100%;
+	height:100%;
+	/* background-color: yellow; */
 }
+#header_container{
+	margin:10px;
+	font-family: "나눔 고딕","Nanum Gothic","맑은 고딕","Malgun Gothic","Apple Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+/* (container height - block height) / 2= margin  */
+#house_searchForm{
+	
+	margin:0 auto;
+	border: 2px solid #dce0e0;
+	border-radius: 10px;
+    padding: 20px;
+	width: 1200px;
+	height: 80px;
+	display: block;
+	font-size: 14px;
+	color: #484848;
+	
+}
+
+label{
+	display: block;
+}
+/* header 제목 */
+#house_searchForm .searchForm_label{
+	width:100px;
+	padding-top: 0;
+    padding-bottom: 0;
+    font-size: 15px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+/* input */
+#house_searchForm input[type=text]{
+	height: 50px;
+	border-radius: 5px;
+}
+#input_location{
+	width: 200px;
+}
+.input_date{
+	color:#d9d9d9;
+}
+.input_person{
+	color:#d9d9d9;
+	width: 100px;
+}
+.searchForm_input{
+	font-size:19px;
+	line-height:22px;
+	letter-spacing: 0.5px;
+	-webkit-font-smoothing: antialiased;
+/* 	padding:8px 0; */
+	display: block;
+	vertical-align: middle;
+}
+
+/* form */
+#searchForm_location{
+	margin: 0 auto;
+	float: left;
+	width: 200px;
+	
+	font-size: 14px;
+	line-height: 1.43;
+	color: #484848;
+	
+	padding: 0px 16px 8px;
+}
+
+#house_searchForm #searchForm_location{
+	position:static;
+}
+
+#searchForm_date{
+	float: left;
+	width:400px;
+	height:100px;
+	padding: 0px 16px 8px;
+}
+#searchForm_person{
+	float: left;
+	width:180px;
+	padding: 0px 16px 8px;
+}
+#searchForm_search{
+	float: left;
+	width: 200px;
+	padding: 0px 16px 8px;
+	vertical-align: middle;
+}
+/* 버튼 */
+.personBtn{
+	width:50px;
+	height: 50px;
+	background-image: url(/TripINN/images/arrow2.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	cursor: pointer;
+}
+.div_person{
+	display: block;
+}
+
+/* 메뉴 */
+#dropPerson ul{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+
+.dropInfo{float: left;}
+.dropInfo>li{float:left;}
+.dropInfo ul{display: none; position: absolute;/*  top: 25px; */}
+.dropInfo li:hover>ul{display: block;}
+#dropPerson {position:relative;margin-left:1px;zoom:1;}
+#dropPerson:before, #header:after{content: " "; display: block; clear: both;}
+#dropPerson:after{clear: both;} 
+
+/* ul li a{text-decoration:none; display:block; width:90px;height: 30px;line-height: 30px;text-align:center; */} 
+ul li {width:100px;}  

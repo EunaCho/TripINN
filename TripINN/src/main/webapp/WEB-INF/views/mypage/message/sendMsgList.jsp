@@ -58,6 +58,57 @@
 		width:880px;
 		height:370px;
 	}
+	.msg_menu{
+		border:1px solid black;
+		margin:0px;
+		width:879px;
+		height:25px;
+	}
+	.msg_menu1{
+		border:1px solid black;
+		margin:0px;
+		width:90px;
+		height:25px;
+		font-size:5px;
+		float:left;
+	}
+ 	ul{
+		list-style:none;
+		margin:0px;
+		padding:0px;
+	}
+	li{
+		margin:0;
+		padding:0 0 0 0;
+		border:0;
+		float:left;
+	
+	}
+	
+	.msg_menu2{
+		border:1px solid black;
+		margin-left:15px;
+		width:769px;
+		height:25px;
+		font-size:5px;
+		float:left;
+	}
+	.msg_title{
+		border:1px solid black;
+		margin:0px;
+		width:120px;
+		height:25px;
+		font-size:5px;
+		float:left;
+	}
+	.msg_content{
+		border:1px solid black;
+		margin:0px;
+		width:403px;
+		height:25px;
+		font-size:5px;
+		float:left;
+	}
 
 </style>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
@@ -86,7 +137,34 @@
 			</div>
 			
 			<div class="message_list">
-				보낸메시지 리스트 
+				<div class="msg_menu">
+					<div class="msg_menu1">
+						<ul list-style="none;">
+							<li>
+								<input type="checkbox" name="" onclick="">
+								<label for="mailcheck_">check</label>
+							</li>
+							<li>
+								<span></span>
+							</li>
+						</ul>
+					</div>
+	
+					<div class="msg_menu2">
+						<div class="msg_title">
+						 받는사람 
+						</div>
+						<div class="msg_title">
+						 제목
+						</div>
+						<div class="msg_content">
+						내용 
+						</div>
+						<div class="msg_title">
+						 보낸 날짜
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
