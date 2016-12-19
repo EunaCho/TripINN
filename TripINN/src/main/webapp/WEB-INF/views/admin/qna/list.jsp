@@ -23,7 +23,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>Q&A 페이지에 오신걸 환영합니다.</h2>
    </div>
-<div style="width:64%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:222px;">
+<div style="width:66%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:220px;">
 <div class="row" style="padding-left:15px;width:900px; text-align:left;">    
    <h1 class="page-header">QnA</h1>
 </div>
