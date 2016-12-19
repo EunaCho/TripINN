@@ -24,11 +24,7 @@
     <div style="width:100%;height:100px;border:1px solid blue;text-align:center;">
 	<h2>관리자 페이지에 오신걸 환영합니다.</h2>
    </div>
-<<<<<<< HEAD
-=======
 
-   
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    <!-- 좌측 영역 -->
    <div style="width:15%;height:380px;border:1px solid black;text-align:center;">	
@@ -65,23 +61,17 @@
    </div>
    
    <!-- 우측영역 -->
-<<<<<<< HEAD
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:192px;left:1142px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 280px; height:381px;">
-   
-   <div style="width:10%;height:300px;border:1px solid black;text-align:left;">
-	<h3>관리자.</h3>
-   <button class="btn btn-default">Default</button><br>
-   <button class="btn btn-primary">Primary</button><br>
-   <button class="btn btn-success">Success</button>
-   </div>
-=======
+
+  </div>
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
+   </div>
+   
+ 
+   
 
    
 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
   
   </body>
 </html>

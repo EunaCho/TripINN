@@ -30,7 +30,7 @@
    <!-- conmpoent-scan은 xml에 일일이 빈등록을 하지 않고 각 빈 클래스에 @Componet를 통해 자동 빈등록.
       메타 어노테이션으로는 @Controller, @Repository, @Service 를 말한다.
     -->
-    <context:component-scan base-package="com.inn.admin" />
+    <context:component-scan base-package="com.inn.main" />
    
    
    
