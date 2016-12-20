@@ -56,16 +56,21 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지
 	</div>
 	
-	
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:530px;text-align:center; background-color:skyblue;">
+	아이디
+	</div>
 	
 	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:300px;text-align:center; background-color:skyblue;">
 	이름
 	</div>
 	<!-- 이름 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
 	
 	</div>
+	<!-- 아이디 받는 곳 -->
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:50px;left:622px;">
 	
+	</div>
 	
 	<div style="color:black;width:10%;height:40px;border:1px solid black; position:absolute;top:90px;left:300px;text-align:center; background-color:skyblue;">
 	주소
@@ -127,7 +132,7 @@
 	</div>
 	
 	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:330px;left:450px;">
-	<button class="btn btn-primary" onClick="location.href='http://localhost:8080/TripINN/admin/memberModify.do'">수정하기 </button>
+	<input type="button" value="수정하기" onClick="location.href='http://localhost:8080/TripINN/admin/memberModify.do'">
 	</div>
 	
 	</div>

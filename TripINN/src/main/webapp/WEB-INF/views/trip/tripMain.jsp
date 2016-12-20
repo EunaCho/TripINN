@@ -70,7 +70,7 @@
 	    height: 30px;
 	    display: block;
 	    width: 25%;
-	    float:left; 
+	    float:left;
 	}
 	
 	.imageContainer { width:47%; height:298px; margin: 5px; float:left;}
