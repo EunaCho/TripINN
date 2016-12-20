@@ -13,11 +13,8 @@ public class MypageServiceImpl implements MypageService{
 	
 	Logger log = Logger.getLogger(this.getClass()); 
 	
-<<<<<<< HEAD
+
 	@Resource(name="mypageDAO")// @Repository로 DAO연결 
-=======
-	@Resource(name="mypageDAO")// @Repository에 DAO 등록 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	private MypageDAO mypageDAO;
 	
 	
