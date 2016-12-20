@@ -48,16 +48,39 @@
    
    <!-- 가운데 영역 -->
    <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:200px;left:222px;">
+<<<<<<< HEAD
 
      
+=======
+   
+   <div style="color:black;width:73%;height:381px;border:1px solid black; margin-left:150px;">
+   
+	<div style="width:20%;height:150px;border:2px solid blue">
+	<img src="/TripINN/images/공유.png" style="width:100%; height:150px;">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지
+	</div>
+	
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:530px;text-align:center; background-color:skyblue;">
+	아이디
+	</div>
+	
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:300px;text-align:center; background-color:skyblue;">
 	이름
 	</div>
 	<!-- 이름 받는 곳 -->
+<<<<<<< HEAD
 	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
 	${map.MEMBER_NAME}
-	</div>
+=======
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
 	
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+	</div>
+	<!-- 아이디 받는 곳 -->
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:50px;left:622px;">
+	
+	</div>
 	
 	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:70px;left:300px;text-align:center; background-color:skyblue;">
 	주소
@@ -151,7 +174,11 @@
 	
 	
 	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:330px;left:450px;">
+<<<<<<< HEAD
 	<input type="button" value="수정완료" onClick="location.href='http://localhost:8080/TripINN/admin/memberView.do'">
+=======
+	<input type="button" value="수정하기" onClick="location.href='http://localhost:8080/TripINN/admin/memberModify.do'">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	</div>
         
    
