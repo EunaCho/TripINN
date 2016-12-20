@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.common.common.AbstractDAO;
 
-@Repository("mypageDAO")
+@Repository("mypageDAO") //DAO 클래스 등록 
 public class MypageDAO extends AbstractDAO {
 	/*
 	@SuppressWarnings
@@ -21,20 +21,33 @@ public class MypageDAO extends AbstractDAO {
 	8. rawtypes : 제네릭을 사용하는 클래스 매개 변수가 불특정일 때의 경고 억제
 	9. unchecked : 검증되지 않은 연산자 관련 경고 억제
 	10. unused : 사용하지 않는 코드 관련 경고 억제
+<<<<<<< HEAD
 	*/
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectSendMsgList(Map<String,Object> map){
 		System.out.println("test : " + map.get("member_idx") + "//" + map.size());
+=======
+	*/
+	//**메시지 
+	//보낸 메시지 리스트
+	@SuppressWarnings("unchecked")//경고 제외 어노테이션
+	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map){
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		return (List<Map<String, Object>>) selectList("mypage.selectSendMsgList", map);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectReceiveMsgList(Map<String,Object> map){
+	@SuppressWarnings("unchecked")//경고 제외 어노테이션
+	//받은 메시지 리트스 
+	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map){
 		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
 	}
+<<<<<<< HEAD
 	
 	public Map<String, Object> selectMsgDetail(Map<String, Object> map){
 		return (Map<String, Object>) selectOne("mypage.selectMsgDetail", map);
 	}
+=======
+	
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 }
