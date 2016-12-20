@@ -17,15 +17,21 @@ public class MypageServiceImpl implements MypageService{
 	private MypageDAO mypageDAO;
 	
 	
-	//sendMessageList
+	//보낸메시지 리스트 
 	@Override
 	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectSendMsgList(map);
 	}
 	
-	//receiveMessageList
+	//받은메시지 리스트 
 	@Override
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
+	}
+	
+	//메시지 상세보기 
+	@Override
+	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectMsgDetail(map);
 	}
 }

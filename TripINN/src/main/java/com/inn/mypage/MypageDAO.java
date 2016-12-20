@@ -25,11 +25,16 @@ public class MypageDAO extends AbstractDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectSendMsgList(Map<String,Object> map){
+		System.out.println("test : " + map.get("member_idx") + "//" + map.size());
 		return (List<Map<String, Object>>) selectList("mypage.selectSendMsgList", map);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String,Object> map){
 		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
+	}
+	
+	public Map<String, Object> selectMsgDetail(Map<String, Object> map){
+		return (Map<String, Object>) selectOne("mypage.selectMsgDetail", map);
 	}
 }
