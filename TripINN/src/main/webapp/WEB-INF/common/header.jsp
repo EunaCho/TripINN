@@ -6,23 +6,13 @@
 <% String cp = request.getContextPath(); %>
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
-<script src="<%= cp %>/js/header.js"></script>
+<script src="<%= cp %>/js/common.js"></script>
 
-<script>
-function logout() {
-	if(confirm("로그아웃을 하시겠습니까?")) {
-		return true;
-	} else {
-	return false;
-	}
-}
+<div class="header_menu" style="top:0px;left:0px;right:0px;">
+<a href="/TripINN/main.do"><img src="<%=cp %>/images/logo.png"/></a>
 
-</script>
-
-<div class="header_menu">
 	<div class="inner">	
-
-
+	
 		<!-- 로그인상태 -->
 		<c:if test="${sessionScope.member_email != null}">
 			<span><a href="/TripINN/member/memberLogout.do" onclick="logout();">로그아웃</a></span>
