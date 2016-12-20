@@ -12,12 +12,8 @@ import org.springframework.stereotype.Service;
 public class MypageServiceImpl implements MypageService{
 	
 	Logger log = Logger.getLogger(this.getClass()); 
-<<<<<<< HEAD
-	
 
-=======
 	
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	@Resource(name="mypageDAO")// @Repository로 DAO연결 
 	private MypageDAO mypageDAO;
 	
