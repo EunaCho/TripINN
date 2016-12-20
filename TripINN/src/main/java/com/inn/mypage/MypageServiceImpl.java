@@ -13,25 +13,23 @@ public class MypageServiceImpl implements MypageService{
 	
 	Logger log = Logger.getLogger(this.getClass()); 
 	
+<<<<<<< HEAD
 	@Resource(name="mypageDAO")// @Repository로 DAO연결 
+=======
+	@Resource(name="mypageDAO")// @Repository에 DAO 등록 
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	private MypageDAO mypageDAO;
 	
 	
-	//보낸메시지 리스트 
+	//sendMessageList
 	@Override
 	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectSendMsgList(map);
 	}
 	
-	//받은메시지 리스트 
+	//receiveMessageList
 	@Override
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
-	}
-	
-	//메시지 상세보기 
-	@Override
-	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception{
-		return mypageDAO.selectMsgDetail(map);
 	}
 }

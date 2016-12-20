@@ -31,11 +31,19 @@ public class AdminMemberController {
 		return mv;
 	}
 	
-	@RequestMapping("/admin/memberView.do")
-	   public String memberView() {
-	      
-	      return "memberView";
-	   }
+	@RequestMapping(value="/admin/memberView.do")
+	   public ModelAndView memberView(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("memberView");
+		System.out.println(request.getParameter("MEMBER_IDX"));
+		int member_idx = Integer.parseInt(request.getParameter("MEMBER_IDX")); 
+		
+		commandMap.put("member_idx", member_idx);
+		
+		Map<String,Object> map = adminMemberService.selectMemberView(commandMap.getMap());
+		mv.addObject("map",map);
+		System.out.println("member_idx: " + member_idx);
+		return mv;
+	}
 	
 	@RequestMapping("/admin/memberModify.do")
 	   public String memberModify() {

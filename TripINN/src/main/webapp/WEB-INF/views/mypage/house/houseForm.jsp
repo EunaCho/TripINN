@@ -41,21 +41,6 @@
 		width:890px;
 		height:435px;
 	}
-	.div_radius{
-	 	border-radius:2px;
-	}
-	.h_list_menu{
-	
-		border:1px solid black;
-		margin:2px;
-		width:600px;
-		height:200px;
-		
-		background-color:#506EA5;
-		font-size:16px;
-		color:#FFF;
-		
-	}
 </style>
 
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
@@ -72,9 +57,7 @@
 
 	<div class="house_list">
 		<div class="pro_menu2">
-			<div class="h_list_menu">
-				내가 등록한 숙소  
-			</div>
+			숙소목록 리스트 
 		</div>
 		
 	</div>
