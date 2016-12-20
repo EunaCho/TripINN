@@ -137,8 +137,8 @@ $(function () {
 $(document).ready(function(){
 $("#rolling").Scroll({
 	line:1, 
-	speed:3000, 
-	timer:5000, 
+	speed:5000, 
+	timer:1000, 
 	up:"#topbtnid",
 	down:"#btmbtnid",
 	autoplay:'#bannerplay',

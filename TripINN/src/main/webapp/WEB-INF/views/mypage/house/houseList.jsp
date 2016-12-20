@@ -9,4 +9,4 @@
 <body>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 </body>
-</html>
+</html>>

@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
+<mapper namespace="admin">
 
 	<select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
             MEMBER_IDX,
             MEMBER_EMAIL,
+            MEMBER_JOINDATE,
+            MEMBER_LEVEL
             MEMBER_NAME,
             MEMBER_PWD,
             MEMBER_BIRTH,
             MEMBER_PHONE,
             MEMBER_SEX,
             MEMBER_ADDR,
-            MEMBER_JOINDATE,
-            MEMBER_LEVEL
+            MEMBER_IMAGE
             FROM
             MEMBER
             ORDER BY MEMBER_IDX DESC
 		]]>
 	</select>
+	
+	
+     
+<select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            MEMBER_IDX,
+            MEMBER_EMAIL,
+            MEMBER_JOINDATE,
+            MEMBER_LEVEL
+            MEMBER_NAME,
+            MEMBER_PWD,
+            MEMBER_BIRTH,
+            MEMBER_PHONE,
+            MEMBER_SEX,
+            MEMBER_ADDR,
+            MEMBER_IMAGE
+            FROM 
+            MEMBER
+            WHERE MEMBER_IDX = #{MEMBER_IDX}        
+    ]]>
+</select>
+	
 
 </mapper>
