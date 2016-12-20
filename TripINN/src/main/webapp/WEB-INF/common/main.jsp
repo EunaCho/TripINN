@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/TripINN/css/main.css" />
 
 <!-- 메인 바디 -->
-<div style="width:100%;height:1300px;border:1px solid blue;text-align:center;">
+<div style="width:100%;height:1300px;border:1px solid #9BC3FF;text-align:center;">
 
 	
 	<!-- 슬라이드 롤링 --> 
@@ -30,7 +30,7 @@
 	
 	<!-- 왼쪽 간편검색바 -->
 	<div id="leftDiv">
-	<form style="border:1px solid black;">
+	<form>
 		<div> 
 			<h3>숙소 검색하기</h3><br/>
 			<input type="text" class="pre_srch_input" name="preSearch" placeholder="장소, 지역, 숙소명 검색"/>
@@ -78,102 +78,40 @@
 	
 	<!-- 숙소/트립 미리보기 -->
 	<div id="rightDiv">
-		<div class="subject_house">등록된 숙소</div>
-		
+		<div class="subject">
+			<span>등록된 숙소</span>
+			<span><a href="">전체보기>></a></span>
+		</div>
+
 		<!-- 하우스 미리보기 리스트 출력 -->
+		<div class="pre_houseList">
+		<ul>
+			<c:forEach items="${houseList}" var="houseList" varStatus="stat">
 			
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
 				<c:url var="viewURL" value="/house/houseDetail.do">
-					<c:param name="house_idx" value="${houseList.house_idx}"/>
+					<c:param name="house_idx" value="${houseList.HOUSE_IDX}"/>
 					<c:param name=""/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
-				<div>
-				<a href="" id="housePreview">
-				
-					<img src="<%= cp %>/images/house/${houseList.house_image}" alt="숙소 사진">
-					<p>
-						<span><strong>${houseList.house_name}</strong></span>
-						<span>${houseList.house_info}</span>
-					</p>
-					<p>
-						<span>${houseList.hrb_star}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
+				<li>
+				<a href="viewURL">
+					<img src="<%= cp %>/images/house/${houseList.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
+					<br/>
+						<span><strong>${houseList.HOUSE_NAME}</strong></span>
+						<span>${houseList.HOUSE_INFO}</span>
+					<br/>
+						<span>${houseList.HRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
 						<span> 후기 ?? 개</span>
-					</p>
-					
 				</a>
-				</div>  
-		
+				</li>  
+			</c:forEach>
+			</ul>
+		</div>
 			<!-- 트립 미리보기 리스트 출력 -->
 	
 	</div>
-
-<%-- 	<c:forEach items="${newShopList}" var="shopBean" varStatus="status">
-	<div class="shopInfo" onclick="location.href='foodsDetailView.action?shop_idx=${shopBean.shop_idx }'">
-		<div style="background-image:url('/Taster/images/shop/${shopBean.file_savname}');
-				background-repeat: no-repeat; display:block; 
-				width:298px;height:149px;background-size:298px 149px;padding-top:50px;">
-			<span>${shopBean.shop_name}</span>
-			
-		</div>
-	</div>
-	<c:if test="${status.index + 1 mod 3 == 0 && status.index != 0}">
-		<div class="clearDiv"></div>
-	</c:if>
-</c:forEach>
-
-
-<div class="movie_list mt40">
-	<ul>
-		<c:forEach var="list" items="${list }" varStatus="stat">
-			<c:url var="viewURL" value="/movie/movieView.mt">
-				<c:param name="movie_no" value="${list.movie_no }" />
-				<c:param name="currentPage" value="${currentPage }" />
-			</c:url>
-			<li>
-				<a href="${viewURL }" class="list"> 
-				<img src="/project/upload/movie/${list.poster}" alt="영화포스터" /> 
-				<span class="detail">상세보기</span>
-					<div class="explan">
-						<p>
-							<strong>감독</strong> : ${list.director}
-						</p>
-						<p>
-							<strong>개봉</strong> : <fmt:formatDate value="${list.show_date }" pattern="yyyy.MM.dd"></fmt:formatDate>
-						</p>
-					</div>
-				</a>
-				<span class="btn btnC_02 btnF_01">
-					<input type="button" value="예매하기" onclick="javascript:location.href='<%=cp%>/reserve/reserveMain.mt'"/>
-				</span>
-			</li>
-		</c:forEach>
-	</ul>
-	<a href="<%=cp %>/movie/movieList.mt" class="more">더보기</a>
-</div><!-- // movie_list -->
-
-
- --%>
-<!-- 트립 미리보기 
-
-/* public ModelAndView main(CommandMap commandMap) throws Exception {
-		System.out.println(1);
-		ModelAndView mv = new ModelAndView("main");//tiles definition name
-		System.out.println(2);
-		//하우스 미리보기 출력용 리스트 생성
-		//List<Map<String, Object>> houseList = houseService.selectHouseList(commandMap.getMap());
-		System.out.println(3);
-		//mv.addObject("houseList", houseList);
-		System.out.println(4);
-		
-		//트립 미리보기 출력용 리스트 생성
-		//List<Map<String, Object>> tripList = tripService.selectTripList(commandMap.getMap());
-		//mv.addObject("tripList", tripList);
-		//System.out.println("houseList");
-		return mv; 
-	}*/-->
-
 	
 	
 </div>
