@@ -9,6 +9,26 @@ function logout() {
 	}
 }
 
+// 회원가입 체크
+function joinCheck() {
+	   if($("#member_email").val() == "") {
+	      alert("이메일주소를 입력해주세요.");
+	      return;
+	   } else if($("#member_name").val() == "") {
+	      alert("이름를 입력해주세요.");
+	      return;
+	   } else if($("#member_pwd").val() == "") {
+		      alert("비밀번호를 입력해주세요.");
+		      return;
+	    } else if($("#member_phone").val() == "") {
+		      alert("전화번호를 입력해주세요.");
+		      return;
+		}
+	   alert("회원가입이 완료되었습니다.");
+	   document.joinForm.submit();
+	}
+
+//로그인 체크
 function loginCheck() {
 	   if($("#member_email_log").val() == "") {
 	      alert("이메일주소를 입력해주세요.");
@@ -117,8 +137,8 @@ $(function () {
 $(document).ready(function(){
 $("#rolling").Scroll({
 	line:1, 
-	speed:1500, 
-	timer:3000, 
+	speed:3000, 
+	timer:5000, 
 	up:"#topbtnid",
 	down:"#btmbtnid",
 	autoplay:'#bannerplay',
