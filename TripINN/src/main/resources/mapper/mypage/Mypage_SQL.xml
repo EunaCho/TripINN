@@ -3,7 +3,6 @@
 
 <mapper namespace="mypage">
 
-<<<<<<< HEAD
 	<select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
 		select MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX from message where member_idx = #{member_idx}
 		order by msg_idx desc
@@ -18,11 +17,7 @@
 	<select id="selectMsgDetail" parameterType="hashmap" resultType="hashmap">
 		select MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX
 		from message m inner join member m2 on m.member_idx=m2.member_idx where msg_idx=#{msg_idx}
-=======
-	<!-- mypage message 보낸메시지 리스트  -->
-	<select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
-		
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-	</select>
+	</select>	
+
 
 </mapper>

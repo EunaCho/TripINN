@@ -19,10 +19,6 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
-	
-
-
-
 
 <!-- 관리자페이지 -->
 	<definition name="adminMain" template="/WEB-INF/common/layout.jsp">

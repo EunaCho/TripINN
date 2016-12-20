@@ -29,15 +29,13 @@ public class MypageController {
 	
 	private Calendar today = Calendar.getInstance(); // 시스템 날짜
 	
-	//**알림판
+//--------------------------------------알림판(마이페지 메인)-------------------------------------------------//
 	@RequestMapping("/notice.do")
 	public ModelAndView noticeForm(CommandMap commandMa, HttpSession session, HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("noticeForm"); //noticeForm으로 설정된 ModelAndView 객체 선언 
 
 		session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 세션값
-		
-		
 		/*
 		if(session_member_idx == null){
 			mv.setViewName("redirect:/main.do");
@@ -45,8 +43,8 @@ public class MypageController {
 		
 		return mv;
 	}
+//---------------------------------------메시지 시작-----------------------------------------------------//
 	
-	//**메시지
 	//*메시지->보낸메시지list(숙소/트립)
 	@RequestMapping("/sendMessage.do")
 	public ModelAndView sendMsgForm(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{ 	//보낸 메시지를 select박스를이용해서 숙소와 트립의 선택에 따라 리스트를 뽑는다. 
@@ -107,10 +105,10 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("messageWrite");
 		
 		return mv;
-		
 	}
 	
-	//**숙소목록
+//------------------------------------숙소목록 시작-----------------------------------------------------//
+	
 	//*숙소목록=>숙소목록 메인
 	@RequestMapping("/house.do")
 	public String houseForm(CommandMap commandMap) throws Exception{
@@ -124,7 +122,8 @@ public class MypageController {
 		return "houseReserForm";
 	}
 	
-	//**트립목록
+//------------------------------------트립목록 시작-----------------------------------------------------//
+	
 	//*트립목록=>트립목록 메인
 	@RequestMapping("/trip.do")
 	public String tripForm(CommandMap commandMap) throws Exception{
