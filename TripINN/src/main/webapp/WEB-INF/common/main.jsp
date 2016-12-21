@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/TripINN/css/main.css" />
 
 <!-- 메인 바디 -->
-<div style="width:100%;height:1300px;border:1px solid #9BC3FF;text-align:center;">
+<div style="width:100%;height:1300px;border:;text-align:center;">
 
 	
 	<!-- 슬라이드 롤링 --> 
