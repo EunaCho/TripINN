@@ -16,8 +16,15 @@ public class AdminQnaServiceImpl implements AdminQnaService{
     private AdminQnaDAO adminQnaDAO;
      
     @Override
-    public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {
-        return adminQnaDAO.selectBoardList(map);
+    public Map<String, Object> qnaBoardList(Map<String, Object> map) throws Exception {
+        return adminQnaDAO.qnaBoardList(map);
     }
+    
+    /*
+    public List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception {
+        return adminQnaDAO.qnaBoardList(map);
+    }
+    */
+    
  
 }

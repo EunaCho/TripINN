@@ -11,8 +11,8 @@ import com.common.common.AbstractDAO;
 public class AdminQnaDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-    public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception{
-        return (List<Map<String, Object>>)selectList("admin.selectBoardList", map);
+    public Map<String, Object> qnaBoardList(Map<String, Object> map) throws Exception{
+        return (Map<String, Object>)selectPagingList("admin.qnaBoardList", map);
     }
  
 }

@@ -16,4 +16,15 @@
     	<property name="maxUploadSize" value="10000000" />
         <property name="maxInMemorySize" value="100000000" />
     </bean>
+	
+	
+	<!-- 게시판들 페이징을 사용하기 위한 bean을 설정  작성자:이진욱 -->
+	<bean id="textRenderer" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer"/>   
+    <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+        <property name="rendererType">
+            <map>
+                <entry key="text" value-ref="textRenderer"/>
+            </map>
+        </property>
+    </bean>
 </beans>

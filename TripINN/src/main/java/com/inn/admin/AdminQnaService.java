@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface AdminQnaService {
-
-	  List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception;
+	//리턴값을 list에서 Map으로 변경하였음
+	Map<String, Object> qnaBoardList(Map<String, Object> map) throws Exception;
+	//List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception;
 }

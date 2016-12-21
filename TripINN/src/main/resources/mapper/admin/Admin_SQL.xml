@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
+<mapper namespace="admin">
+
+
 
 	<select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
@@ -21,5 +23,55 @@
             ORDER BY MEMBER_IDX DESC
 		]]>
 	</select>
-
+	
+	
+	
+	
+	<!-- 페이징을 위해 수정됨 -->
+	<select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
+	<!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
+    <include refid="common.pagingPre"/> 
+    <![CDATA[
+        SELECT
+            ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
+            QNA_IDX,
+            QNA_TITLE,
+            QNA_READCOUNT,
+            QNA_REGDATE
+        FROM
+            QNA_BOARD
+        ORDER BY QNA_IDX DESC
+    ]]>
+    <include refid="common.pagingPost"/> 
+	</select>	
+	<!--  
+	<select id="selectQnaBoardList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+           SELECT
+   			 QNA_IDX,
+   			 QNA_TITLE,
+   			 QNA_READCOUNT,
+  			 QNA_REGDATE
+		FROM
+    		QNA_BOARD
+		ORDER BY QNA_IDX DESC
+		
+        ]]>
+    </select>
+    -->
+    
+    <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+           SELECT
+   			 FAQ_IDX,
+   			 FAQ_TITLE,
+   			 FAQ_READCOUNT,
+  			 FAQ_REGDATE
+		FROM
+    		FAQ_BOARD
+		ORDER BY FAQ_IDX DESC
+		
+        ]]>
+    </select>
+    
 </mapper>
