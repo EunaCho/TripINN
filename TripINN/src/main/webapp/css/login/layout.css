@@ -39,17 +39,12 @@
 			cursor: pointer;
 			}
 
+ 
 
-
-/* .header_menu{width:100%; height:50px;line-height:20px;background:#9BC3FF; } */
-.header_menu{width:100%; height:80px;line-height:20px;background:url('/TripINN/images/pix3.png') repeat; }
-.header_menu .inner{width:600px; margin:auto;position:relative; top:0;left:0; float:right; margin-right:30px;}
-.header_menu .inner span{float:right; margin-top:25px; margin-right:5px;} 
-/* .header_menu .inner span a{padding:5px 10px;color:#646496;font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800; font-size:15px; text-decoration:none;} */
-.header_menu .inner span a{padding:10px 15px;font-family: "³ª´®°íµñ",Nanum Gothic,helvetica,sans-serif;color:#444; font-size:14px; text-decoration:none;font-weight:800;}
-.header_menu .inner span a:hover{padding:10px 15px;font-family: "³ª´®°íµñ",Nanum Gothic,helvetica,sans-serif;color:#646496; font-size:14px; text-decoration:none;font-weight:800;}
-.header_menu .inner span.admin a{color:#ee1c25;text-decoration:underline;font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800;}
-
-
-.header_menu img { width:80px; height:80px; float:left; margin-left:10px; margin-top:-15px;}
+ 
+.header_menu{width:100%; height:55px;line-height:20px;background:white; }
+.header_menu img { width:80px; height:80px; float:left; margin-left:10px; margin-top:-18px;}
+.header_menu .inner{width:600px; margin:auto;position:relative; top:0;left:0; float:right; margin-right:30px; margin-top:3px;}
+.header_menu .inner span{float:right; margin-top:5px; margin-right:5px;} 
+.header_menu .inner span a{padding:5px 10px;color:gray;font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800; font-size:15px; text-decoration:none;}
 
