@@ -125,19 +125,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
    <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
    </div>
 </body>
-
-<!-- 스타일 적용2 -->
-<style>	
-ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
-
-li{margin-right:50px }
-
-a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
-</style> 
-</head>
-
-<body>
-  <br><br>
+</html>
   
  
 

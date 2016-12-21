@@ -28,21 +28,26 @@ public class AdminQnaController {
         ModelAndView mv = new ModelAndView("qnaList");
         
         
-        //페이징을 위해 수정된 부분
+     
         //반환시킨 맵을 리절트맵에 담음
         Map<String,Object> resultMap = adminQnaService.qnaBoardList(commandMap.getMap());
         
         //paginationInfo와 result를 mv에 담아줌
         mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
         mv.addObject("list", resultMap.get("result"));
-        
-        
-        //List<Map<String,Object>> list = adminQnaService.QnaBoardList(commandMap);
-        //mv.addObject("list", list);
-         
+          
         return mv;
+    }   
+    
+    
+    @RequestMapping(value="/admin/qnaDetail.do")
+    public ModelAndView adminQnaDetail(CommandMap commandMap) throws Exception{
+        ModelAndView mv = new ModelAndView("qnaDetail");
+             
+        Map<String,Object> map = adminQnaService.selectQnaDetail(commandMap.getMap());
+        mv.addObject("map", map);
+             
+        return mv;
+        }    
+        
     }
-    
-    
-    
-}
