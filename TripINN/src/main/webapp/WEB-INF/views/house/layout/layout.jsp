@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>layout</title>
-<link rel="stylesheet" type="text/css" href="/TripINN/Utils/house/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/TripINN/css/house/layout.css">
 </head>
 
 <body id="houseContainer">

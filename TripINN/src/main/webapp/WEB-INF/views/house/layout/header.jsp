@@ -6,7 +6,7 @@
 <title>header</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/houseUtils/common.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="/TripINN/Utils/house/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/TripINN/css/house/layout.css">
 
 </head>
 <body>
@@ -100,7 +100,5 @@
 		comSubmit.setUrl("<c:url value='/house/openHouseRegister.do' />");
 		comSubmit.submit();
 	}
-	
-	function 
 </script>
 </html>

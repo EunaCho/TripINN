@@ -1,0 +1,96 @@
+@CHARSET "utf-8";
+
+.houseRegister {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	display: table-cell;
+}
+.header_img{
+	width: 100%;
+}
+.header_font1{
+	margin-top: 45px;
+	font-weight: bold;
+    font-size: 35px;
+}
+
+.header_font2{
+	font-weight: bold;
+	font-size: 50px;
+}
+
+.hostInfo .hostInfo_header .header_img{
+	margin: 0 0 30px;
+}
+.houseRegister{
+	text-align: center;
+	display:inline-block;
+}
+.info{
+	border: 4px solid #e4e4e4;
+    border-radius: 10px;
+	width: 208px;
+	height: 350px;
+	margin: 20px;
+	display: inline-block;
+}
+.info .info_div1{
+	font-size: 30px;
+	text-align: left;
+}
+.info .info_div2{
+	margin-top:20px;
+	font-size : 22px;
+	text-align: center;
+}
+.hostInfo{
+	width:100%;
+	height:100%;
+	font-family: 나눔고딕,NanumGothic,돋움,Dotum;
+	text-align: center;
+	display: inline-block;
+}
+
+.hostInfo_body{
+	width: 100%;
+    height: 100%;
+    margin: 0 0 30px auto;
+	text-align: center;
+	/* background-color: red; */
+}
+
+.hostInfo_bottom .houseStartBtn{
+	font-size: 75px;
+    font-weight: bold;
+    border-radius: 90px;
+    border: 5px solid #bababa;
+    padding: 15px;
+    margin: 58px;
+    color: #787878;
+    outline: none !important;
+}
+.hostInfo_bottom{
+	width:100%;
+	height: 100%;
+}
+.hostInfo_bottom button[type=button]:HOVER{
+	border: 5px solid black;
+	background-color:#ff5a5f;
+	color:white;
+}
+
+.info_img{
+	width:100px;
+	height:100px;
+	margin:auto;
+	margin-top: 10px;
+/* 	background-color: red; */
+}
+
+.info_img img{
+	width: 100%;
+	height: 100%;
+	margin: 3px;
+}
+

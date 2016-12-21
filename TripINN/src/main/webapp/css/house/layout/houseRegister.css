@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+#hrContainer{
+	width : 100%;
+	height: 1000px;
+	margin: auto;
+ /* background-color: red; */
+}
+
+#hrLeft{
+	width: 65%;
+	height: 100%;
+	text-align: center;
+	margin:15px 10px 30px;
+	float: left;
+	/* background-color: orange; */
+}
+
+#hrRight{
+	width: 30%;
+	height: 100%;
+	float: left;
+	/* background-color: yellow; */
+}

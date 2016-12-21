@@ -3,38 +3,50 @@
 <html>
 <head>
 
+<link rel="stylesheet" type="text/css" href="/TripINN/css/house/houseRegister.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=1.0">
+<script type="text/javascript" src="/TripINN/js/house/openHouseRegister.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>숙소 등록 페이지</title>
-<link rel="stylesheet" type="text/css" href="/TripINN/Utils/house/css/houseRegister.css">
 </head>
 <body>
+<div>
 <div class="houseRegister">
-	<div class="HRsubject">
-	<h2>Trip INN</h2>
-	</div>
 	
 	<div class="hostInfo">
-		<div class="hostInfo_subject">
-		<div><h2>호스팅의 장점</h2></div>
+		<div class="hostInfo_header">
+		<div class="header_font1">Trip INN</div>
+		<div class="header_img"><img src="/TripINN/images/house/logo.png" width="350px"></div>
+		<div class="header_font2">호스팅의 장점</div>
 		</div>
 		
-		<div class="hostInfo_content">
+		<div class="hostInfo_body">
 		<div class="info">
-			<div><h4>부가수입</h4></div>
-			<div>집 수리에서 꿈꿔온 여행까지, 호스팅 수입으로 진짜 하고 싶은 일을 하세요.</div>
-		</div>
-		
-		<div class="info">
-			<div><h4>호스트 지원</h4></div>
-			<div>유용한 팁과 필요한 도구를 지원받고 전세계 다른 호스트와 교류하세요.</div>
+			<div class="info_div1">부가수입</div>
+			<div class="info_img"><img src="/TripINN/images/house/money.png"></div>
+			<div class="info_div2">집 수리에서 꿈꿔온 여행까지, 호스팅 수입으로 진짜 하고 싶은 일을 하세요.</div>
 		</div>
 		
 		<div class="info">
-			<div><h4>유연성</h4></div>
-			<div>요금, 호스팅 시기 및 빈도 모두 호스트가 전적으로 결정합니다.</div>
+			<div class="info_div1">호스트 지원</div>
+			<div class="info_img"><img src="/TripINN/images/house/persons.png"></div>
+			<div class="info_div2">유용한 팁과 필요한 도구를 지원받고 전세계 다른 호스트와 교류하세요.</div>
 		</div>
+		
+		<div class="info">
+			<div class="info_div1">유연성</div>
+			<div class="info_img"><img src="/TripINN/images/house/pen.png"></div>
+			<div class="info_div2">요금, 호스팅 시기 및 빈도 모두 호스트가 전적으로 결정합니다.</div>
+		</div>
+		</div>
+		
+		<div class="hostInfo_bottom">
+			<button type="button" class="btn btn-default houseStartBtn" onclick="openHouseRegister()">등록 하기</button>
 		</div>	
 	</div>
 </div>
 <div style="clear: both;"></div>
+
 </body>
 </html>
