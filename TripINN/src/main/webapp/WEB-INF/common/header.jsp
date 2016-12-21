@@ -9,7 +9,7 @@
 <script src="<%= cp %>/js/common.js"></script>
 
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
-<img src="<%=cp %>/images/logo.png"/> 
+<a href="<%=cp %>/main.do"><img src="<%=cp %>/images/logo.png"/> </a>
 	<div class="inner">	
 
 
