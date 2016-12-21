@@ -11,25 +11,21 @@
 					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
 					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX 
 			FROM HOUSE 
+			ORDER BY HOUSE_IDX DESC
 		]]>
 	</select>
 	
 	<!-- house insert sql -->
 	<insert id="insertHouse" parameterType="hashmap" useGeneratedKeys="true" keyProperty="HOUSE_IDX">
-		<!-- house idx key -->
-	<selectKey keyProperty="HOUSE_IDX" resultType="string" order="BEFORE">
-		SELECT HOUSE_IDX_SEQ.NEXTVAL FROM DUAL 
-	</selectKey>
-	
+		<selectKey keyProperty="IDX" resultType="string" order="BEFORE">
+			SELECT HOUSE_IDX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+	<!-- HOUSE_IDX_SEQ.NEXTVAL -->
 	<![CDATA[
 		INSERT INTO HOUSE(
-			HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_KIND,  
-			HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, 
-			HOUSE_TOTAL_PERSONS, HOUSE_PERSON_PRICE
+			HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_TOTAL_PERSONS, HOUSE_PRICE, HOUSE_PERSON_PRICE
 	    )VALUES(
-			#{HOUSE_IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_KIND}, 
-			#{HOUSE_ZIPCODE}, #{HOUSE_ADDR1}, #{HOUSE_ADDR2}, #{HOUSE_ADDR3},
-			#{HOUSE_TOTAL_PERSONS}, #{HOUSE_PERSON_PRICE}
+			#{IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_TOTAL_PERSONS}, #{HOUSE_PRICE}, #{HOUSE_PERSON_PRICE}
 		)
 	]]>
 	</insert>
