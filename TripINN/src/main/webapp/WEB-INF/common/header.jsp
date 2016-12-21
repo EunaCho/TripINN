@@ -18,10 +18,23 @@ function logout() {
 }
 
 </script>
-
+<style>
+	#logo {
+		/* border:1px solid red; */
+		width:120px;
+		height:80px;
+		background-image:url("/TripINN/images/logo.png");
+		background-size:90%;
+		background-repeat: no-repeat;
+		background-position: 100% 100%;
+		float:left;
+	}
+</style>
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
+	<div id="logo">
+		
+		</div>
 	<div class="inner">	
-
 
 		<!-- 로그인상태 -->
 		<c:if test="${sessionScope.member_email != null}">

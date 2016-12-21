@@ -13,8 +13,8 @@
 	<div id="header" style="height:50px;" >
 		<tiles:insertAttribute name="header"/>
 	</div>
-	
-	<div id="main" style="display:;">
+	<div style="clear:both;"></div>
+	<div id="main" style="display:block;">
 		<tiles:insertAttribute name="body"/>
 	</div>
 	

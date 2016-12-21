@@ -78,10 +78,27 @@ var createNum = 4;
 		}
 		
 	}
+	
+	function tripRegist() {
+		var frm = document.form;
+		var start_date = frm.date1.value + frm.hour1.value + frm.time1.value;
+		var last_date =  frm.date2.value + frm.hour2.value + frm.time2.value;
+		start_date = start_date.replace(/-/gi, "");
+		last_date = last_date.replace(/-/gi, "");
+		
+		frm.trip_first_date.value = start_date;
+		frm.trip_last_date.value = last_date;
+		
+		frm.action = "/TripINN/tripRegist.do";
+		frm.submit();
+	}
+	
+	
 </script>
 <style>
 	#wrap { width: 100%; min-height:1000px; height:100%; }
 	#leftDiv { width:15%;background-color:#46649b;min-height:1600px;float:left; height:100%; }
+	/* #leftDiv { width:15%;background:url('/TripINN/images/pix2.png') repeat;min-height:1600px;float:left; height:100%; } */
 	#rightDiv { width:80%;float:left;margin-left:30px;  }
 	ul { position: fixed; height:100%; }
 	ul li { color:#B9B9B9; margin:7px; list-style: none; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:13px; margin-bottom:20px; cursor:pointer;}
@@ -186,6 +203,11 @@ var createNum = 4;
 	</div>
 	
 	<form name="form" id="form" enctype="multipart/form-data" method="post">
+	<input type="hidden" name="trip_first_date" value="" />
+	<input type="hidden" name="trip_last_date" value="" />
+	<input type="hidden" name="trip_image" value="" />
+	<input type="hidden" name="trip_pprice" value=""/>
+	<input type="hidden" name="trip_tprice" value=""/>
 	<div id="rightDiv">
 		<div id="tripInfo1" class="tripInfo">
 			<h3>카테고리</h3>
@@ -233,7 +255,7 @@ var createNum = 4;
 				<div class="ti" id="tripInfo3">시작일</div>
 			</div>
 			<div style="height:50px;">
-				<input type="text" name="trip_first_date" id="datepicker" placeholder="시작 일자" class="text-short"/>
+				<input type="text" name="date1" id="datepicker" placeholder="시작 일자" class="text-short"/>
 				<select name="hour1" id="" class="select-short">
 					<option value="" selected="selected">시</option>
 					<%
@@ -264,7 +286,7 @@ var createNum = 4;
 			</div>
 			
 			<div style="height:50px;">
-				<input type="text" name="trip_last_date" id="datepicker2" placeholder="마감 일자를 입력해주세요." class="text-short"/>
+				<input type="text" name="date2" id="datepicker2" placeholder="마감 일자를 입력해주세요." class="text-short"/>
 				<select name="hour2" id="" class="select-short">
 					<option value="" selected="selected">시</option>
 					<%
@@ -349,19 +371,19 @@ var createNum = 4;
 				<div class="ti">제공사항</div>
 			</div>
 			<div class="inc">
-				<input type="checkbox" name="trip_include" id="inc1" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc1" value="식사"/><i></i>
 				<label for="inc1">식사</label>
-				<input type="checkbox" name="trip_include" id="inc2" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc2" value="간식"/><i></i>
 				<label for="inc2">간식</label>
-				<input type="checkbox" name="trip_include" id="inc3" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc3" value="음료"/><i></i>
 				<label for="inc3">음료</label>
-				<input type="checkbox" name="trip_include" id="inc4" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc4" value="숙박"/><i></i>
 				<label for="inc4">숙박</label>
-				<input type="checkbox" name="trip_include" id="inc5" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc5" value="교통비"/><i></i>
 				<label for="inc5">교통비</label>
-				<input type="checkbox" name="trip_include" id="inc6" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc6" value="티켓"/><i></i>
 				<label for="inc6">티켓</label>
-				<input type="checkbox" name="trip_include" id="inc7" /><i></i>
+				<input type="checkbox" name="trip_include" id="inc7" value="장비"/><i></i>
 				<label for="inc7">장비</label>
 			</div>
 			
@@ -371,19 +393,19 @@ var createNum = 4;
 			<div style="height:200px;border:1px solid gray;" class="addrDiv">
 				<div style="width:510px;float:left;">
 					<label for="addr1" class="lab">우편번호</label>
-					<input type="text" id="addr1" name="" class="input-small postcodify_postcode5" value=""/>
+					<input type="text" id="addr1" name="trip_zipcode" class="input-small postcodify_postcode5" value=""/>
 					<input type="button" id="postcodify_search_button" value="검색"/>&nbsp;
 					<input type="button" value="지도 업데이트" onclick="mapView();"/>
 					<br />
 					
 					<label for="addr2" class="lab">도로명주소</label>
-					<input type="text" id="addr2" name="" class="input-large postcodify_address" value="" disabled/><br />
+					<input type="text" id="addr2" name="trip_addr1" class="input-large postcodify_address" value="" readonly/><br />
 					
 					<label for="addr3" class="lab">상세주소</label>
-					<input type="text" id="addr3" name="" class="input-large postcodify_details" value="" /><br />
+					<input type="text" id="addr3" name="trip_addr2" class="input-large postcodify_details" value="" /><br />
 					
 					<label for="addr4" class="lab">참고항목</label>
-					<input type="text" id="addr4" name="" class="input-large postcodify_extra_info" value="" disabled/><br />
+					<input type="text" id="addr4" name="trip_addr3" class="input-large postcodify_extra_info" value="" readonly/><br />
 				</div>
 				<div style="width:400px;height:200px; margin-left:20px; float:left;" id="mapView">
 					
@@ -397,7 +419,7 @@ var createNum = 4;
 				<div class="ti" style="">예상 수입(수수료 20%)</div>
 			</div>
 			<div >
-				<input type="text" name="trip_price" id="trip_price" value="0"
+				<input type="text" id="trip_price" value="0"
 					 class="text-short" onkeyup="calcTrip();" style="text-align:right;padding-right:20px;"/>
 			</div>
 			<div >
@@ -406,8 +428,8 @@ var createNum = 4;
 					 style="width:50px;margin-left:40px;text-align:center;"/>
 			</div>
 			<div style="height:50px;">
-				<input type="text" id="total_price" value="0" class="text-short" 
-				style="margin-left:40px;text-align:right;padding-right:20px;" disabled/>
+				<input type="text"  id="total_price" value="0" class="text-short" 
+				style="margin-left:40px;text-align:right;padding-right:20px;" readonly/>
 			</div>
 			
 			<div style="width:100%;height:50px;margin:20px auto;">
@@ -434,6 +456,8 @@ function calcTrip() {
 	$("#trip_price").val(insertComma(trip_price));
 	$("#total_price").val(insertComma(total_price));
 	
+	document.form.trip_pprice.value = trip_price;
+	document.form.trip_tprice.value = total_price;
 }
 function insertComma(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
