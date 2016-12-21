@@ -26,12 +26,12 @@
 <style>
 	.tripDiv { height: 1000px; }
 	#wrap { width:100%;text-align:center;}
-	#headerWrap { background:url('/TripINN/images/pix3.png') repeat; }
+	/* #headerWrap { background:url('/TripINN/images/pix3.png') repeat; } */
 	#tripHeader {  background-image: url('https://a1.muscache.com/airbnb/static/launch_platform/experience-hosting/hero_paola-ef7396a9cc13bbd2788ec6e5f553aad1.png');
 				background-position: 85% 100% !important;
 			    background-repeat: no-repeat !important;
 			    background-size: contain !important;
-			    /* background-color: #9BC3FF; */
+			    background-color: #AAB9FF;
 			    height: 200px;
 			    width: 100%; }
 	#ment1 { top: 10% !important; left:10% !important; position: absolute !important; max-width: 350px !important; }

@@ -4,7 +4,12 @@
 <% String cp = request.getContextPath(); %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services"></script>
 <script>
+
+var containNum = 1;
+var createNum = 4;
 	$(function () {
 	    $("#datepicker").datepicker({
 	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
@@ -27,6 +32,7 @@
 	         altFormat: "yy-mm-dd"
 	  });
 	});
+	$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 	function fnMove(seq) {
 		var offset = $("#tripInfo" + seq).offset();
 		$("html, body").animate({scrollTop:offset.top}, 400);
@@ -44,6 +50,7 @@
 	        reader.readAsDataURL(html.files[0]);
 	    }
 	}
+	
 	function createDiv() {
 		var chtml = "";
 		if(createNum%3 == 1){
@@ -87,17 +94,13 @@
 	}
 	
 	
-
 </script>
 <style>
-	#wrap { width: 100%; min-height:1000px; height:100%; }
+	#wrap { width: 100%; min-height:1600px; height:100%; background-color:#eee; }
 	#leftDiv { width:15%;background-color:#46649b;min-height:1600px;float:left; height:100%; }
 	/* #leftDiv { width:15%;background:url('/TripINN/images/pix2.png') repeat;min-height:1600px;float:left; height:100%; } */
-
-	#wrap { width: 100%; min-height:1000px; }
-	#leftDiv { width:15%;background-color:#46649b;min-height:1000px;float:left; }
-	#rightDiv { width:80%;float:left;margin-left:30px;  }
-	ul { position: fixed; }
+	#rightDiv { width:80%;float:left;margin-left:30px;background-color:#eee;  }
+	ul { position: fixed; height:100%; }
 	ul li { color:#B9B9B9; margin:7px; list-style: none; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:13px; margin-bottom:20px; cursor:pointer;}
 	ul li:hover { color:#fff; } 
 	.tripInfo { width:100%; margin-bottom: 20px; float:left;}
@@ -105,8 +108,13 @@
 	.tripInfo .text-long { width:500px; height:30px; margin-left:25px; padding:5px; }
 	.tripInfo .text-short { width:200px; height:30px; margin-left:25px; padding:5px; float:left; }
 	.tripInfo textarea { width:500px;  margin-left:25px; padding:5px; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:13px;}
-	.tripInfo div .ti { margin-left:25px;float:left; width: 25%; padding:3px; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:13px;}
-	#rightDiv .select-long {
+	.tripInfo div .ti, .tripInfo div .ti p { margin-left:25px;float:left; width: 25%; padding:3px; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:13px;}
+	.tripInfo div .ti { color:#46649b; }
+	.tripInfo .inc input[type=checkbox] {margin-left:25px;}
+	.tripInfo .inc label {font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+	    font-size: 14px;
+	    color: #484848 ;}
+	#rightDiv .select-long, #rightDiv .select-short {
 		font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
 	    font-size: 14px;
 	    color: #484848 ;
@@ -122,18 +130,7 @@
 	}
 	
 	#rightDiv .select-short {
-		font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
-	    font-size: 14px;
-	    color: #484848 ;
-	    margin: 5px;
-	    margin-left:25px;
-	    border: 1px solid #a6a6a6;
-	    padding-left: 12px;
-	    padding-right: 20px;
-	    height: 30px;
-	    display: block;
 	    width: 10%;
-	    float:left;
 	}
 	
 	.imgDiv {
@@ -180,8 +177,15 @@
 	    font-size: 40px !important;
 	    font-weight: 200 !important;
 	}
+	.imgPlus div { cursor:pointer; }
+	.imgPlus div p { margin-left:25px; }
+	.imgPlus div p, .imgPlus span { float:left; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:13px; }
+	.imgPlus div span {float:left;width:25px;height:25px;background-image:url('http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/black-white-pearls-icons-alphanumeric/069304-black-white-pearl-icon-alphanumeric-plussign1.png');background-size:100%;margin-top:8px;}
+	.wrap-container { width:100%; height:100px; padding-top:10px;}
 	
-	
+	.addrDiv .lab { display: inline-block;width:100px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif; font-size:12px;margin-left:20px; }
+	.addrDiv .input-small { width:150px; height:20px; padding:5px; margin:5px; }
+	.addrDiv .input-large { width:350px; height:20px; padding:5px; margin:5px; }
 </style>
 <div id="wrap" style="margin-top:2px;">
 	<div id="leftDiv">
@@ -190,12 +194,10 @@
 			<li onclick="fnMove('1')">카테고리</li>
 			<li onclick="fnMove('2')">트립 제목  & 소개</li>
 			<li onclick="fnMove('3')">시간</li>
-			<li>사진</li>
-			<li>자기소개</li>
-			<li>프로그램</li>
-			<li>장소</li>
-			<li>제공내역</li>
-			<li>비용</li>
+			<li onclick="fnMove('4')">사진</li>
+			<li onclick="fnMove('5')">제공내역</li>
+			<li onclick="fnMove('6')">장소</li>
+			<li onclick="fnMove('7')">비용</li>
 			<li>최종등록</li>
 		</ul>
 	</div>
@@ -311,24 +313,55 @@
 				</select>
 			</div>
 			
-			<div style="width:100%;height:30px;margin-top:5px;">
-				<div class="ti">사진&nbsp;&nbsp;이미지 추가하기 <img width="30" height="30" src="https://cdn.pixabay.com/photo/2012/04/02/15/48/sign-24805_960_720.png" alt="" /></div>
+			<div style="width:100%;height:30px;margin-top:5px;" id="tripInfo4">
+				<div class="ti">사진</div>
 			</div>
-			<div class="imgDiv" id="cma_image1">
-				<input type="file" id="photo-image1" name="picture1" 
-					accept="image/jpg, image/jpeg, image/png, image/gif" class="hiddenImg"
-					onchange="getThumbnailPrivew(this,$('#cma_image1'))" >
-				<label for="photo-image1" class="emptyFrame">
-				<div>
-					<div class="va-middle text-center">
-						<div class="textContainer" >
-							<div class="plusSign">+</div>
+			<div id="wrap-img">
+				<div class="wrap-container">
+					<div class="imgDiv" id="cma_image1">
+						<input type="file" id="photo-image1" name="picture1" 
+							accept="image/jpg, image/jpeg, image/png, image/gif" class="hiddenImg"
+							onchange="getThumbnailPrivew(this,$('#cma_image1'))" >
+						<label for="photo-image1" class="emptyFrame">
+						<div>
+							<div class="va-middle text-center">
+								<div class="textContainer" >
+									<div class="plusSign">+</div>
+								</div>
+							</div>
 						</div>
+						</label>
+					</div>
+					<div class="imgDiv" id="cma_image2">
+						<input type="file" id="photo-image2" name="picture2" 
+							accept="image/jpg, image/jpeg, image/png, image/gif" class="hiddenImg"
+							onchange="getThumbnailPrivew(this,$('#cma_image2'))" >
+						<label for="photo-image2" class="emptyFrame">
+						<div>
+							<div class="va-middle text-center">
+								<div class="textContainer" >
+									<div class="plusSign">+</div>
+								</div>
+							</div>
+						</div>
+						</label>
+					</div>
+					<div class="imgDiv" id="cma_image3">
+						<input type="file" id="photo-image3" name="picture3" 
+							accept="image/jpg, image/jpeg, image/png, image/gif" class="hiddenImg"
+							onchange="getThumbnailPrivew(this,$('#cma_image3'))" >
+						<label for="photo-image3" class="emptyFrame">
+						<div>
+							<div class="va-middle text-center">
+								<div class="textContainer" >
+									<div class="plusSign">+</div>
+								</div>
+							</div>
+						</div>
+						</label>
 					</div>
 				</div>
-				</label>
 			</div>
-
 			<div style="clear:both;"></div>
 			<div class="imgPlus" style="height:40px;">
 				<div onclick="createDiv();"><p>이미지 추가</p> <span></span></div>
@@ -404,37 +437,10 @@
 					text-align:center;  border-radius: 15px; padding:6px;
 					cursor:pointer" onclick="tripRegist();">
 						<b>트립 만들기</b>
-			<div class="imgDiv" id="cma_image2">
-				<input type="file" id="photo-image2" name="picture2" 
-					accept="image/jpg, image/jpeg, image/png, image/gif" class="hiddenImg"
-					onchange="getThumbnailPrivew(this,$('#cma_image2'))" >
-				<label for="photo-image2" class="emptyFrame">
-				<div>
-					<div class="va-middle text-center">
-						<div class="textContainer" >
-							<div class="plusSign">+</div>
-						</div>
-
 					</div>
-				</div>
-				</label>
 			</div>
-			<div class="imgDiv" id="cma_image3">
-				<input type="file" id="photo-image3" name="picture3" 
-					accept="image/jpg, image/jpeg, image/png, image/gif" class="hiddenImg"
-					onchange="getThumbnailPrivew(this,$('#cma_image3'))" >
-				<label for="photo-image3" class="emptyFrame">
-				<div>
-					<div class="va-middle text-center">
-						<div class="textContainer" >
-							<div class="plusSign">+</div>
-						</div>
-					</div>
-				</div>
-				</label>
-			</div>
-			
 		</div>
+		
 	</div>
 	</form>
 </div>
@@ -477,5 +483,4 @@ function mapView() {
 	});
 }
 </script>
-
 <div style="clear:both;"></div>
