@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+
+<!DOCTYPE html>
+<html lang="ko">
+
 <head>
 
 <!--스크립트 정의  -->
@@ -46,13 +51,53 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>FAQ 페이지에 오신걸 환영합니다.</h2>
    </div>
-<div style="width:64%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:222px;">
-<div class="row" style="padding-left:15px;width:900px; text-align:left;">    
-  
+
+<div style="width:66%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:220px;">
+<div class="row" style="padding-left:15px;width:900px; text-align:left;">  
+	<h1 class="page-header">FAQ</h1>
+	<h2>게시판 목록</h2>
+	
+<table style="border:1px solid #ccc">
+    <colgroup>
+        <col width="10%"/>
+        <col width="*"/>
+        <col width="15%"/>
+        <col width="20%"/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th scope="col">글번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">조회수</th>
+            <th scope="col">작성일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:choose>
+            <c:when test="${fn:length(list) > 0}">
+                <c:forEach items="${list }" var="row">
+                    <tr>
+                        <td>${row.FAQ_IDX }</td>
+                        <td>${row.FAQ_TITLE }</td>
+                        <td>${row.FAQ_READCOUNT }</td>
+                        <td>${row.FAQ_REGDATE}</td>
+                    </tr>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <tr>
+                    <td colspan="4">조회된 결과가 없습니다.</td>
+                </tr>
+            </c:otherwise>
+        </c:choose>
+         
+    </tbody>
+</table>
+ 
+</div>
 </div>
 
 
-</div>
 
 <!-- 좌측영역 -->
 <div style="width:15%;height:380px;border:1px solid black;text-align:center;">
@@ -69,9 +114,6 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
       
       <li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-
-        <li><a href = "http://www.naver.com"><h3>ㄴFAQ</h3></a></li>
-
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
 
 

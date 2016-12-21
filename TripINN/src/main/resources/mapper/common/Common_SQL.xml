@@ -15,4 +15,26 @@
 			    IDX = #{IDX}
 		]]>
 	</select>
-</mapper>
+	
+	<!-- 관리자페이지내에서 공통적으로 사용되는  페이징 쿼리 -->
+	<sql id="pagingPre">
+    <![CDATA[
+        SELECT
+            AAA.*
+        FROM(
+            SELECT
+                COUNT(*) OVER() AS TOTAL_COUNT,
+                AA.*
+            FROM(  
+    ]]>
+	</sql>
+ 
+	<sql id="pagingPost">
+    <![CDATA[
+            ) AA
+        ) AAA
+        WHERE
+            AAA.RNUM BETWEEN #{START} AND #{END}
+    ]]>
+	</sql>
+	</mapper>

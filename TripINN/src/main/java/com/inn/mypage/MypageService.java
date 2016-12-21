@@ -8,5 +8,7 @@ public interface MypageService {
 	
 	List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception;
 	List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception;
+	
+	Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception;
 
 }
