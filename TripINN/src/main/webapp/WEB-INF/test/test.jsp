@@ -1,18 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<div id="map" style="width:100%;height:300px;"></div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="map" style="width:100%;height:350px;"></div>
 	
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services,clusterer"></script>
 	<script>
-	var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div  
+	var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div  
     mapOption = { 
-        center: new daum.maps.LatLng(${lat}, ${lng}), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-        level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+        center: new daum.maps.LatLng(${lat}, ${lng}), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+        level: 3 // ÁöµµÀÇ È®´ë ·¹º§
     };
 
-var map = new daum.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-// ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìœ„ì¹˜ì™€ title ê°ì²´ ë°°ì—´ì…ë‹ˆë‹¤ 
+var map = new daum.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
+// ¸¶Ä¿¸¦ Ç¥½ÃÇÒ À§Ä¡¿Í title °´Ã¼ ¹è¿­ÀÔ´Ï´Ù 
 
 var positions = [
     {
@@ -28,38 +35,49 @@ var positions = [
       </c:if>
 ];
 
-//ë§ˆì»¤ í´ëŸ¬ìŠ¤í„°ëŸ¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤ 
+//¸¶Ä¿ Å¬·¯½ºÅÍ·¯¸¦ »ı¼ºÇÕ´Ï´Ù 
 var clusterer = new daum.maps.MarkerClusterer({
-    map: map, // ë§ˆì»¤ë“¤ì„ í´ëŸ¬ìŠ¤í„°ë¡œ ê´€ë¦¬í•˜ê³  í‘œì‹œí•  ì§€ë„ ê°ì²´ 
-    averageCenter: true, // í´ëŸ¬ìŠ¤í„°ì— í¬í•¨ëœ ë§ˆì»¤ë“¤ì˜ í‰ê·  ìœ„ì¹˜ë¥¼ í´ëŸ¬ìŠ¤í„° ë§ˆì»¤ ìœ„ì¹˜ë¡œ ì„¤ì • 
-    minLevel: 7 // í´ëŸ¬ìŠ¤í„° í•  ìµœì†Œ ì§€ë„ ë ˆë²¨ 
+    map: map, // ¸¶Ä¿µéÀ» Å¬·¯½ºÅÍ·Î °ü¸®ÇÏ°í Ç¥½ÃÇÒ Áöµµ °´Ã¼ 
+    averageCenter: true, // Å¬·¯½ºÅÍ¿¡ Æ÷ÇÔµÈ ¸¶Ä¿µéÀÇ Æò±Õ À§Ä¡¸¦ Å¬·¯½ºÅÍ ¸¶Ä¿ À§Ä¡·Î ¼³Á¤ 
+    minLevel: 7 // Å¬·¯½ºÅÍ ÇÒ ÃÖ¼Ò Áöµµ ·¹º§ 
 });
 
 
-var markers = new Array(); //ë§ˆì»¤ ë“¤ì„ ë‹´ì„ ë°°ì—´ ìƒì„±
+var markers = new Array(); //¸¶Ä¿ µéÀ» ´ãÀ» ¹è¿­ »ı¼º
 
-// ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì´ë¯¸ì§€ ì£¼ì†Œì…ë‹ˆë‹¤
+// ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ ÀÌ¹ÌÁö ÁÖ¼ÒÀÔ´Ï´Ù
 for (var i = 0; i < positions.length; i ++) {
     
-    // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì´ë¯¸ì§€ í¬ê¸° ì…ë‹ˆë‹¤
+    // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ ÀÌ¹ÌÁö Å©±â ÀÔ´Ï´Ù
     var imageSize = new daum.maps.Size(24, 35); 
     
-    // ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
+    // ¸¶Ä¿ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÕ´Ï´Ù    
     if (i == 0) {
     	var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
     } else {
     	//var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
     }
     var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-    // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+    // ¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
     
     markers[i] =  new daum.maps.Marker({
-	        position: positions[i].latlng, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìœ„ì¹˜
-	        title : positions[i].title, // ë§ˆì»¤ì˜ íƒ€ì´í‹€, ë§ˆì»¤ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ íƒ€ì´í‹€ì´ í‘œì‹œë©ë‹ˆë‹¤
-	        image : markerImage // ë§ˆì»¤ ì´ë¯¸ì§€ 
+	        position: positions[i].latlng, // ¸¶Ä¿¸¦ Ç¥½ÃÇÒ À§Ä¡
+	        title : positions[i].title, // ¸¶Ä¿ÀÇ Å¸ÀÌÆ², ¸¶Ä¿¿¡ ¸¶¿ì½º¸¦ ¿Ã¸®¸é Å¸ÀÌÆ²ÀÌ Ç¥½ÃµË´Ï´Ù
+	        image : markerImage // ¸¶Ä¿ ÀÌ¹ÌÁö 
 	});
 }
-//í´ëŸ¬ìŠ¤í„°ëŸ¬ì— ë§ˆì»¤ë“¤ì„ ì¶”ê°€í•©ë‹ˆë‹¤
+//Å¬·¯½ºÅÍ·¯¿¡ ¸¶Ä¿µéÀ» Ãß°¡ÇÕ´Ï´Ù
 clusterer.addMarkers(markers);
 	</script>
 	
+	<h3>
+	<c:if test="${!empty nearByList}">
+	    <c:forEach var="list" items="${nearByList}" step="1">
+	   list.ba : ${list.ba}, &nbsp;&nbsp; 
+	    	 latlng : ${list.lat}, ${list.lng} <br />
+	     
+	    </c:forEach>
+	</c:if>	
+	</h3>
+</body>
+</html>

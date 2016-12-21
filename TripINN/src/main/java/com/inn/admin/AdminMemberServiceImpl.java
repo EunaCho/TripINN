@@ -19,6 +19,13 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		
 		return adminMemberDAO.selectMemberList(map);
 	}
+
+	@Override
+	public Map<String, Object> selectMemberView(Map<String, Object> map) throws Exception {
+		
+		Map<String,Object> resultMap = adminMemberDAO.selectMemberView(map);
+		return resultMap;
+	}
 	
 
 }

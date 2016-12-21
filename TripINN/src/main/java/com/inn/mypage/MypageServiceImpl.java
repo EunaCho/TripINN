@@ -28,4 +28,10 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
 	}
+
+	@Override
+	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body style="width:100%;height:100%;margin:0px;padding:0px;">
-	<div id="header" style="height:50px;" >
+	<div id="header" style="height:30px;" >
 		<tiles:insertAttribute name="header"/>
 	</div>
 	<div style="clear:both;"></div>

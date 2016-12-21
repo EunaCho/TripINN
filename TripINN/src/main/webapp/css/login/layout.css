@@ -41,7 +41,6 @@
 
 
 
-
 /* .header_menu{width:100%; height:50px;line-height:20px;background:#9BC3FF; } */
 .header_menu{width:100%; height:80px;line-height:20px;background:url('/TripINN/images/pix3.png') repeat; }
 .header_menu .inner{width:600px; margin:auto;position:relative; top:0;left:0; float:right; margin-right:30px;}
@@ -51,4 +50,6 @@
 .header_menu .inner span a:hover{padding:10px 15px;font-family: "³ª´®°íµñ",Nanum Gothic,helvetica,sans-serif;color:#646496; font-size:14px; text-decoration:none;font-weight:800;}
 .header_menu .inner span.admin a{color:#ee1c25;text-decoration:underline;font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800;}
 
+
+.header_menu img { width:80px; height:80px; float:left; margin-left:10px; margin-top:-15px;}
 

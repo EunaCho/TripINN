@@ -30,11 +30,15 @@ function logout() {
 		float:left;
 	}
 </style>
+<script src="<%= cp %>/js/common.js"></script>
+
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
-	<div id="logo">
+
+	<div class="inner">	
+		<div id="logo">
 		
 		</div>
-	<div class="inner">	
+<%-- <a href="/TripINN/main.do"><img src="<%=cp %>/images/logo.png"/></a> --%>
 
 		<!-- 로그인상태 -->
 		<c:if test="${sessionScope.member_email != null}">
