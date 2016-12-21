@@ -25,12 +25,13 @@
 </script>
 <style>
 	.tripDiv { height: 1000px; }
-	#wrap { width:100%;text-align:center; }
+	#wrap { width:100%;text-align:center;}
+	#headerWrap { background:url('/TripINN/images/pix3.png') repeat; }
 	#tripHeader {  background-image: url('https://a1.muscache.com/airbnb/static/launch_platform/experience-hosting/hero_paola-ef7396a9cc13bbd2788ec6e5f553aad1.png');
 				background-position: 85% 100% !important;
 			    background-repeat: no-repeat !important;
 			    background-size: contain !important;
-			    background-color: #9BC3FF;
+			    /* background-color: #9BC3FF; */
 			    height: 200px;
 			    width: 100%; }
 	#ment1 { top: 10% !important; left:10% !important; position: absolute !important; max-width: 350px !important; }
@@ -88,12 +89,14 @@
 		<input type="button" value="div3" onclick="fnMove('3')"/>
 	</div> -->
 	<form action="<%=cp%>/tripRegistForm.do" name="tripForm" method="post">
+	<div id="headerWrap">
 	<div id="tripHeader" >
 		<div id="ment1">
 			<h4>열정을 가진 분야를 전 세계와 나누세요.</h4>
 			<span>회원님의 도시에서 체험할 수 있는 이색적인 트립을 호스팅하여 부수입을 올려보세요.</span> <br /><br />
 			<a href="javascript:fnMove('3')">트립 만들기</a>
 		</div>
+	</div>
 	</div>
 	<div id="tripMiddle">
 		<div class="leftRight" id="tripLeft">
