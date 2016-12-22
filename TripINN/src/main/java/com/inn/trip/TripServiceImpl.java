@@ -26,4 +26,9 @@ public class TripServiceImpl implements TripService {
 		tripDAO.tripRegist(map);
 	}
 
+	@Override
+	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
+		return tripDAO.selectTripList(map);
+	}
+
 }

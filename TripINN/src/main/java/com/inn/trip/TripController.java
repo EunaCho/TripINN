@@ -4,6 +4,7 @@ package com.inn.trip;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +57,16 @@ public class TripController {
 		mv.addObject("trip_area", request.getParameter("trip_area"));
 		mv.addObject("trip_type", request.getParameter("trip_type"));
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripList.do", method=RequestMethod.GET) //트립 리스트
+	public ModelAndView tripList(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("tripList");
+		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
+		
+		System.out.println("list.size() : " + list.size());
+		mv.addObject("list",list); 
 		return mv;
 	}
 	

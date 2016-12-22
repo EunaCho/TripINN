@@ -45,7 +45,6 @@
 		width:150px;
 		height:30px;
 	}
-	
 	.right_div1{
 		border:1px solid black;
 		margin:5px;
@@ -86,10 +85,11 @@
 		height:25px;
 	}
 	.msg_check{
+		border-top:1px solid black;
 		border-bottom:1px solid black;
 		border-left:1px solid black;
 		margin:0px;
-		width:50px;
+		width:40px;
 		height:25px;
 		font-size:5px;
 		float:left;
@@ -108,7 +108,7 @@
 	
 	.msg_menu{
 		border:1px solid black;
-		margin-left:15px;
+		margin:0px;
 		height:25px;
 		font-size:5px;
 		float:left;
@@ -119,20 +119,22 @@
 		margin:0px;
 		width:154px;
 		height:25px;
-		font-size:5px;
+		font-size:10px;
+		padding-left:3px;
 		float:left;
 	}
 	.msg_content{
 		border-bottom:1px solid black;
 		border-left:1px solid black;
 		margin:0px;
-		width:500px;
+		width:460px;
 		height:25px;
-		font-size:5px;
+		font-size:10px;
+		padding-left:3px;
 		float:left;
 	}
 	
-
+	
 </style>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 
@@ -164,6 +166,29 @@
 			</div>
 			
 			<div class="right_div3">
+				<div class="list_div">
+					<div class="msg_check" style="background-color:#d2d2d2">
+						선택
+					</div>
+					<div class="msg_check" style="background-color:#d2d2d2">
+						상태
+					</div>
+					
+					<div class="msg_menu">
+						<div class="msg_title" style="background-color:#d2d2d2">
+						 	보낸사람
+						</div>
+						<div class="msg_title" style="background-color:#d2d2d2">
+						 	제목
+						</div>
+						<div class="msg_content" style="background-color:#d2d2d2">
+							내용
+						</div>
+						<div class="msg_title" style="background-color:#d2d2d2">
+						 	보낸 날짜
+						</div>
+					</div>
+				</div>
 			<c:forEach var="list" items="${list}" varStatus="stat">
 			<c:url var="viewURL" value="/mypage/messageDetail.do">
 				<c:param name="msg_idx" value="${list.MSG_IDX}"/>
@@ -171,18 +196,15 @@
 			
 				<div class="list_div">
 					<div class="msg_check">
-						<ul list-style="none;">
-							<li>
-								<input type="checkbox" name="" onclick="">
-								<label for="mailcheck_">check</label>
-							</li>
-							<li>
-								<span></span>
-							</li>
-						</ul>
+						<input type="checkbox" name="" onclick="">
+						<label for="mailcheck_">check</label>
+						
 					</div>
 	
 					<div class="msg_menu">
+						<div class="msg_check">
+							상태
+						</div>
 						<div class="msg_title">
 						 	<a href="${viewURL}" style="text-decoration:none;">${list.RECEIVE_MEMBER_EMAIL}</a>
 						</div>
@@ -208,4 +230,3 @@
 	</div>
 </div>
 <div style="clear:both;"></div>
-
