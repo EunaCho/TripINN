@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
 <script type="text/javascript" src="<%= cp %>/js/scrollnews.js"></script> <!-- 롤링 스클 -->
-<script src="<%= cp %>/js/common.js"></script>
-
+<script src="<%= cp %>/js/main.js"></script>
   <link rel="stylesheet" href="/TripINN/css/main.css" />
 
 <!-- 메인 바디 -->
 <div style="width:100%;height:1300px;border:;text-align:center;">
+
 
 	
 	<!-- 슬라이드 롤링 --> 
