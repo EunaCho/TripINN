@@ -151,9 +151,8 @@
 
 	<div class="right_div1">
 		<div class="right_div2">
-			메시지 쓰기 
+			메시지 상세보기 
 		</div>
 	</div>
 </div>
 <div style="clear:both;"></div>
-
