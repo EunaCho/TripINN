@@ -1,5 +1,5 @@
 <%@ page pageEncoding="utf-8"%>
 
 <!-- 작성자: 이진욱 -->
-<!--  common.js에 있는 submit 기능을 위한 숨김 폼-->
+<!--  common.js에 있는 submit 기능을 쓰기위한 숨김 폼-->
 <form id="commonForm" name="commonForm"></form>
