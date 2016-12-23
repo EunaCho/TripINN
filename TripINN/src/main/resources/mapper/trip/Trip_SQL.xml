@@ -5,4 +5,20 @@
 		insert into testTbl(testIdx, testTitle, testContent)
 			values(test_seq_no.nextval, #{testTitle}, #{testContent})
 	</insert>
+	
+	<insert id="tripRegist" parameterType="HashMap">
+		insert into trip(trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
+			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx) 
+  values(trip_idx_seq.nextval, #{trip_area}, #{trip_type}, #{trip_language}, #{trip_name}, #{trip_intro},
+    to_date(#{trip_first_date}, 'YYYY-MM-DD HH24:MI'), to_date(#{trip_last_date}, 'YYYY-MM-DD HH24:MI'),
+     #{trip_include}, #{trip_zipcode}, #{trip_addr1}, #{trip_addr2}, #{trip_addr3},
+      #{trip_image}, #{trip_pprice}, #{trip_tprice}, #{trip_persons}, #{member_idx}, 0)
+	</insert>
+	
+	<select id="tripList" parameterType="HashMap" resultType="HashMap">
+		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
+			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
+	</select>
 </mapper>

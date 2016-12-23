@@ -3,20 +3,68 @@
 
 <mapper namespace="admin">
 
+	<!-- Qna리스트, 페이징을 위해 수정됨 -->
+	<select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
+	<!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
+    <include refid="common.pagingPre"/> 
+    <![CDATA[
+        SELECT
+            ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
+            QNA_IDX,
+            QNA_TITLE,
+            QNA_READCOUNT,
+            QNA_REGDATE
+        FROM
+            QNA_BOARD
+        ORDER BY QNA_IDX DESC
+    ]]>
+    <include refid="common.pagingPost"/> 
+	</select>	
+	
+	
+	<!--조회수 증가  -->
+	<update id="updateQnaReadCount" parameterType="hashmap">
+    <![CDATA[
+        UPDATE QNA_BOARD 
+        SET
+            QNA_READCOUNT = NVL(QNA_READCOUNT, 0) + 1
+        WHERE
+            QNA_IDX = #{QNA_IDX}    
+    ]]>
+	</update>
+ 
+ 	<!--QNA 상세보기 -->
+	<select id="selectQnaDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            QNA_IDX,
+            QNA_TITLE,
+            QNA_CONTENT,
+            QNA_PWD,
+            QNA_REGDATE,
+            QNA_READCOUNT
+        FROM
+            QNA_BOARD
+        WHERE
+            QNA_IDX = #{QNA_IDX}        
+   	 ]]>
+	</select>
+
+
+	<!-- 멤버리스트 -->
 	<select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		
 			SELECT
             MEMBER_IDX,
             MEMBER_EMAIL,
-            MEMBER_JOINDATE,
-            MEMBER_LEVEL
             MEMBER_NAME,
             MEMBER_PWD,
             MEMBER_BIRTH,
             MEMBER_PHONE,
             MEMBER_SEX,
             MEMBER_ADDR,
-            MEMBER_IMAGE
+            MEMBER_JOINDATE,
+            MEMBER_LEVEL
             FROM
             MEMBER
             ORDER BY MEMBER_IDX DESC
@@ -24,6 +72,7 @@
 	</select>
 	
 	
+<<<<<<< HEAD
      
 <select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
     
@@ -68,6 +117,23 @@
 
 
 </delete>
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	
-
+	
+	<!-- faq 리스트 -->
+    <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+           SELECT
+   			 FAQ_IDX,
+   			 FAQ_TITLE,
+   			 FAQ_READCOUNT,
+  			 FAQ_REGDATE
+		FROM
+    		FAQ_BOARD
+		ORDER BY FAQ_IDX DESC
+		
+        ]]>
+    </select>
+    
 </mapper>

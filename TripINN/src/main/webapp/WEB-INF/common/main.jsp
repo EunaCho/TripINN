@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
 <script type="text/javascript" src="<%= cp %>/js/scrollnews.js"></script> <!-- 롤링 스클 -->
-<script src="<%= cp %>/js/common.js"></script>
-
+<script src="<%= cp %>/js/main.js"></script>
   <link rel="stylesheet" href="/TripINN/css/main.css" />
 
 <!-- 메인 바디 -->
-<div style="width:100%;height:1300px;border:1px solid #9BC3FF;text-align:center;">
+<div style="width:100%;height:1300px;border:;text-align:center;">
+
 
 	
 	<!-- 슬라이드 롤링 --> 
@@ -78,30 +78,32 @@
 	
 	<!-- 숙소/트립 미리보기 -->
 	<div id="rightDiv">
+	
+		<!-- 하우스 미리보기 블럭 -->
 		<div class="subject">
 			<span>등록된 숙소</span>
 			<span><a href="">전체보기>></a></span>
 		</div>
 
 		<!-- 하우스 미리보기 리스트 출력 -->
-		<div class="pre_houseList">
+		<div class="pre_List">
 		<ul>
 			<c:forEach items="${houseList}" var="houseList" varStatus="stat">
 			
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
-				<c:url var="viewURL" value="/house/houseDetail.do">
+				<c:url var="houseViewURL" value="/house/houseDetail.do">
 					<c:param name="house_idx" value="${houseList.HOUSE_IDX}"/>
 					<c:param name=""/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
 				<li>
-				<a href="viewURL">
+				<a href="${houseViewURL}">
 					<img src="<%= cp %>/images/house/${houseList.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
 					<br/>
 						<span><strong>${houseList.HOUSE_NAME}</strong></span>
 						<span>${houseList.HOUSE_INFO}</span>
-					<br/>
+					<br>
 						<span>${houseList.HRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
 						<span> 후기 ?? 개</span>
 				</a>
@@ -109,7 +111,39 @@
 			</c:forEach>
 			</ul>
 		</div>
-			<!-- 트립 미리보기 리스트 출력 -->
+		
+		<!-- 트립 미리보기 블럭 -->
+		<div class="subject">
+			<span>등록된 트립</span>
+			<span><a href="">전체보기>></a></span>
+		</div>
+		<!-- 트립 미리보기 리스트 출력 -->
+			
+		<div class="pre_List">
+		<ul>
+			<c:forEach items="${tripList}" var="tripList" varStatus="stat">
+			
+				<!-- 트립 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
+				<c:url var="tripViewURL" value="/trip/tripDetail.do">
+					<c:param name="trip_idx" value="${tripList.TRIP_IDX}"/>
+					<c:param name=""/>
+				</c:url>
+				
+				<!-- 미리보기 개체 -->
+				<li>
+				<a href="${tripViewURL}">
+					<img src="<%= cp %>/images/trip/${tripList.TRIP_IMAGE}" class="houseImage" alt="트립 사진"/>
+					<br/>
+						<span><strong>${tripList.TRIP_NAME}</strong></span>
+						<span>${tripList.TRIP_INFO}</span>
+					<br/>
+						<span>${tripList.TRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
+						<span> 후기 ?? 개</span>
+				</a>
+				</li>  
+			</c:forEach>
+			</ul>
+		</div>
 	
 	</div>
 	

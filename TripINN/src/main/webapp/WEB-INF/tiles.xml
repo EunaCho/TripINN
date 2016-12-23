@@ -103,6 +103,18 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="messageDetail" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/msgDetail.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="messageWrite" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/message/msgWrite.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
 	<!-- 숙소목록 -->
 	<definition name="houseForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -158,39 +170,53 @@
 
 	<!-- **********************house_start**********************-->
 	<!-- house layout -->
-	<definition name="house" template="/WEB-INF/views/house/layout/layout.jsp">
+	<definition name="house_form" template="/WEB-INF/views/house/layout/layout.jsp">
 		<put-attribute name="house_header" value="/WEB-INF/views/house/layout/header.jsp"/>
 		<put-attribute name="house_body" value="/WEB-INF/views/house/layout/body.jsp"/>
 	</definition>
-	<!-- 메인 -->
-	<!-- 
-	<definition name="houseMain" extends="main">
-		<put-attribute name="main" value="house"/>
-	</definition>
-	 -->
+	
 	<!-- list 정의 -->
-	<definition name="houseList_Layout" extends="house">
+	<definition name="houseList_layout" extends="house_form">
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
 	</definition>
 	
 	<!-- main -->
 	<definition name="houseMain" extends="main">
-		<put-attribute name="body" value="houseList_Layout"/>
-	</definition>
-	
-	
-	<!-- open register 정의 -->
- 	<definition name="openHouseRegister_Layout" extends="house">
-		<put-attribute name="house_body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
+		<put-attribute name="body" value="houseList_layout"/>
 	</definition>
 	
 	<!-- open register -->
  	<definition name="openHouseRegister" extends="main">
-		<put-attribute name="body" value="openHouseRegister_Layout"/>	
+		<put-attribute name="body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
 	</definition>
-
+	
+			<!-- 숙소 등록 상세 페이지 레이아웃 -->
+	<definition name="houseRegister_form" template="/WEB-INF/views/house/layout/register/layout.jsp">
+		<put-attribute name="left" value="/WEB-INF/views/house/layout/register/left.jsp"/>
+		<put-attribute name="right" value="/WEB-INF/views/house/layout/register/right.jsp"/>
+	</definition>
+	
+	<!-- 숙소 기본정보 등록 페이지 정의 -->
+	<definition name="houseRegister_layout" extends="houseRegister_form">
+		<put-attribute name="left" value="/WEB-INF/views/house/register/houseRegister1.jsp"/>
+	</definition>
+	
+	<!-- open register detail1 -->
+	<definition name="houseRegister1" extends="main">
+		<put-attribute name="body" value="houseRegister_layout"/>
+	</definition>						
+	
+	<!-- 숙소 추가정보 등록 페이지 정의 -->
+	<definition name="houseRegister2_layout" extends="houseRegister_form">
+		<put-attribute name="left" value="/WEB-INF/views/house/register/houseRegister2.jsp"/>
+	</definition>
+	<!-- open register detail2 -->
+	<definition name="houseRegister2" extends="main">
+		<put-attribute name="body" value="houseRegister2_layout"/>
+	</definition>
+	
 	<!-- insert register 정의 -->
- 	<definition name="insertHouseRegister_Layout" extends="house">
+ 	<definition name="insertHouseRegister_layout" extends="house_form">
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
 	</definition>
 	
@@ -212,6 +238,12 @@
 	<definition name="tripRegistForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/trip/tripRegist.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="tripList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/trip/tripList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	

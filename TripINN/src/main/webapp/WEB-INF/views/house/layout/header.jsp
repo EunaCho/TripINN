@@ -5,48 +5,44 @@
 
 <title>header</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/houseUtils/common.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="/TripINN/Utils/house/css/layout.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
+<script src="/house/common.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="/TripINN/css/house/houseMain.css">
+
 
 </head>
 <body>
 <div id="header_container">
-<div id="house_searchForm">
-	
-	<form>
-	<div id="searchForm_location">
+	<form id="house_searchForm">
+
+	<div>
+		<label>위치</label>
+		<input class="location" type="text" placeholder="목적지, 도시명, 주소">
+	</div>
+	<div>
 		<div>
-		<label class="searchForm_label">위치</label>
+		<label>체크인</label>
+		<input class="checkinout" type="text" name="periodToStay_startDate" id="datepicker_in" placeholder="체크인" >
 		</div>
-		
-		<div class="searchForm_input">
-		<span>
-		<input type="text" placeholder="목적지, 도시명, 주소" id="input_location">
-		</span>
+		<div><img src="/TripINN/images/arrow.png"  style="width:30px;"></div>
+		<div>
+		<label>체크아웃</label>
+		<input class="checkinout" type="text" name="periodToStay_startDate" id="datepicker_out" placeholder="체크아웃">
 		</div>
 	</div>
-	
-	<div id="searchForm_date">
-		<div>
-		<label class="searchForm_label">날짜</label>
-		</div>
-		
-		<div class="searchForm_input">
-		<span>
-		<input type="text" value="체크인" class="input_date" readonly="readonly">
-		<img src="/TripINN/images/arrow.png" width="30px">
-		<input type="text" value="체크아웃" class="input_date" readonly="readonly">
-		</span>
-		</div>
-	</div>
-	
-	<div id="searchForm_person">
-		<div>
-		<label class="searchForm_label">인원</label>
-		
-		</div>
-		
-		<div class="searchForm_input">
+
+	<div style="margin-left:30px;">
+		<label>인원</label>
+		<select name="person" placeholder="인원 1명">	
+			<option value="인원 1명">인원 1명</option>
+			<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
+			<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
+			<option value="3" <c:if test="${person eq 3}">selected="selected"</c:if> >인원 3명</option>
+			<option value="4" <c:if test="${person eq 4}">selected="selected"</c:if> >인원 4명</option>
+			<option value="5" <c:if test="${person eq 5}">selected="selected"</c:if> >인원 5명</option>
+		</select>
+		<!-- <div class="searchForm_input">
 			<div class="div_person">
 			<span class="span_person">
 			<input type="text" readonly="readonly" value="인원 1명" class="input_person">
@@ -55,19 +51,14 @@
 			<input type="button" class="personBtn">
 			</span>
 			</div>
-		</div>
-		
+		</div> -->
 	</div>
 	
-	<div id="searchForm_search">
-		<input type="image" width="80px" src="/TripINN/images/searchBtn.png">
-		<a href="/TripINN/house/openHouseRegister.do" class="btn" id="houseRegister">숙소 등록하기</a>
-	</div>
-	
-	
+	<a href="/TripINN/house/searchHouse.do">
+		<img id="searchBtn" src="/TripINN/images/searchBtn.png">
+	</a>
+
 	</form>
-</div>
-	
 
 <div style="clear:both"></div>
 
@@ -83,6 +74,7 @@
 			
 		</ul>
 	</div>
+	
 	
 </div>
 </body>
@@ -100,7 +92,6 @@
 		comSubmit.setUrl("<c:url value='/house/openHouseRegister.do' />");
 		comSubmit.submit();
 	}
-	
-	function 
 </script>
+
 </html>

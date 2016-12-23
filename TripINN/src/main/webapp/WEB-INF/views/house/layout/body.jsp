@@ -4,7 +4,6 @@
 <title>body</title>
 </head>
 <body>
-
 	<h1> house body</h1>
 </body>
 </html>
