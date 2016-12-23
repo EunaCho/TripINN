@@ -21,16 +21,20 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
   <br><br>
   
  <!-- 가운데 윗 영역 -->
-  <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+  <div style="width:100%;height:100px;border:1px solid red;text-align:center;">
    <h5>상세보기 페이지 입니다.</h5>
   </div>
 
- <div style="width:66%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:220px;">
+
+
+ <div style="width:66%;height:381px;border:1px solid red;text-align:center; position:absolute;top:200px;left:220px;">
 <!-- 900 -->
-<div class="row" style="padding-left:15px;width:1650px; text-align:center;">
+<div class="row" style="padding-left:15px;width:1600px;border:1px solid red; text-align:center;">
+
+
 
  <!-- 상세보기,편집 할 수 없도록 <input> 태그를 사용하지 않았음. -->
-<table class="board_view">
+<table class="board_view" >
         <colgroup>
             <col width="15%"/>
             <col width="30%"/>
@@ -113,6 +117,78 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
         }
         
     </script>
+    
+<!-- 댓글쓰는 창	 -->	
+<div class="inner" style ="border:1px solid red;">
+	<form class="commentForm" method="post" onsubmit="return validation();">
+		<input type="hidden" name="content_num" value="${QnAModel.no}"/>
+		<input type="hidden" name="commenter" value="${session_member_id}"/>	
+	      	
+	      	
+<div class="reply_grp" >
+     <div class="reply_form">
+            
+       <div class="reply_write">
+          <div class="textarea_grp" style="width: 1000px;">
+          
+              <!-- 로그인안했을 때 보여주는 댓글 요청 내용 -->
+	      	<br/><c:if test="${session_member_id == null}">
+	      	<input type="text" style="align:center; margin: 10px; width: 950px; height: 55px;" value="로그인 후에  댓글 작성이 가능합니다." readonly="readonly"/>
+	      	 </c:if>
+	      	 <!-- 댓글 쓰는 창 -->
+	      	 <c:if test="${session_member_id != null}">
+	      	 <!-- 글자 수 제한 -->
+	      	 <textarea name="commentt" style="width: 885px; height: 55px;"onKeyUp="javascript:fnChkByte(this,'200')"></textarea>
+	      		<button type="button" class="btn1 btn-primary1" onclick="onComment()">입력	</button>
+	      		<div style="margin-bottom:10px;"><br/>&nbsp;&nbsp;&nbsp;<span id="byteInfo">0</span>/200Byte</div>
+	      	 </c:if>
+	      	 
+				</div>
+				</div>
+				
+				
+<p class="reply_num"> <strong>댓글 총 개수 :   ${comment_count}</strong></p>
+			</div >
+			
+	<!-- 댓글 차례로 보여주는 창 -->
+		<c:forEach var="list" items="${CommList}">		
+	<div style="margin-bottom:50px;">
+		<div class="reply_view" >
+			<div class="reply_tit">
+				<p class="tit"><strong>${list.commenter}</strong>님  <fmt:formatDate value="${list.reg_date}" pattern="yy.MM.dd"></fmt:formatDate><span class="ip"></span> </p>
+					<!-- 입력되어 있는 작성자와 아이디가 같거나, 아이디가 admin 일때만 삭제  창을 띄운다. -->
+					<c:if test="${session_member_id == list.commenter || session_member_id == 'admin'}">
+					<td align="left">
+						<%-- <input type="button" onclick="qnacommDelete(${list.comment_num},${session_member_id})&QnAcommUpdate2(${list.content_num})"  value="삭제" class="btn btnC_01 btnP_02"/> --%>
+						<a href="QnAcommDelete.dog?comment_num=${list.comment_num}&no=${QnAModel.no}&commenter=${list.commenter}">
+						<input type="button" onclick="qnacommDelete(${list.comment_num})"  value="삭제" class="btn btnC_01 btnP_02"/>
+					</a>
+					</td>
+<!-- 						<span class="btn btnC_05 reply_btn">	삭제</span> -->
+				
+					</c:if>
+				</div>
+			
+				<div class="reply_cts" >
+					<p>${list.commentt}</p><br/>
+				</div>
+			</div>
+			</div>
+				</c:forEach>
+			
+			</div>
+	</form>
+				<c:if test="${fn:length(CommList) le 0}">
+	      				<br/><center>등록된 댓글이 없습니다</center><br/>
+	      	</c:if> 	
+
+	      	
+	      					
+	      			</div>
+	      		</div>
+	 					</div>
+	 					</div>    
+    
 </div>
 </div>
 
