@@ -23,14 +23,35 @@ public class AdminQnaServiceImpl implements AdminQnaService{
     public Map<String, Object> qnaBoardList(Map<String, Object> map) throws Exception {
         return adminQnaDAO.qnaBoardList(map);
     }
+    //글쓰기
+    @Override
+    public void adminQnaInsertPro(Map<String, Object> map) throws Exception {
+    	adminQnaDAO.adminQnaInsertPro(map);
+    }
+
     
     //상세보기
     @Override
-    public Map<String, Object> selectQnaDetail(Map<String, Object> map) throws Exception {
+    public Map<String, Object> adminQnaSelectDetail(Map<String, Object> map) throws Exception {
         adminQnaDAO.updateQnaReadCount(map);
-        Map<String, Object> resultMap = adminQnaDAO.selectQnaDetail(map);
+        Map<String, Object> resultMap = adminQnaDAO.adminQnaSelectDetail(map);
         return resultMap;
     }
+    
+    //수정하기
+    @Override
+    public void adminQnaUpdatePro(Map<String, Object> map) throws Exception{
+    	System.out.println("서비스임플1");
+        adminQnaDAO.adminQnaUpdatePro(map);
+        System.out.println("서비스임플2");
+    }
+    
+    //삭제하기
+    @Override
+    public void adminQnaDelete(Map<String, Object> map) throws Exception {
+        adminQnaDAO.adminQnaDelete(map);
+    }
+    
     
     /*
     public List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception {
