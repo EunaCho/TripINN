@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -46,41 +49,44 @@
    
    </div>
    
+   <form name="frm" method="post">
+   <input type="button" value="수정하기"  onClick="mySubmit(1)"/>
+   <input type="button" value="삭제하기"  onClick="mySubmit(2)"/>
+   <input type="hidden" value="${map.MEMBER_IDX}" name="MEMBER_IDX"/>
    <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:200px;left:222px;">
+   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:172px;left:213px;">
 
-
-     
 
    
-   <div style="color:black;width:73%;height:381px;border:1px solid black; margin-left:150px;">
+
    
-	<div style="width:20%;height:150px;border:2px solid blue">
+   
+   
+	<div style="width:15%;height:150px;border:2px solid blue">
 	<img src="/TripINN/images/공유.png" style="width:100%; height:150px;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:530px;text-align:center; background-color:skyblue;">
-	아이디
-	</div>
 	
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:30px;left:300px;text-align:center; background-color:skyblue;">
+	번호
+	</div>
+	<!-- 이름 받는 곳 -->
+
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:30px;left:392px;">
+	${map.MEMBER_IDX}
+    </div>
 
 	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:300px;text-align:center; background-color:skyblue;">
 	이름
 	</div>
 	<!-- 이름 받는 곳 -->
 
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:392px;">
 	${map.MEMBER_NAME}
-
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
+    </div>
 	
-
-	</div>
-	<!-- 아이디 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:50px;left:622px;">
 	
-	</div>
 	
 	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:70px;left:300px;text-align:center; background-color:skyblue;">
 	주소
@@ -115,7 +121,7 @@
 	</div>
 	
 	<!-- 생일 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:393px;">
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:392px;">
 	${map.MEMBER_BIRTH}
 	</div>
 	
@@ -134,7 +140,7 @@
 	
 	
 	<!-- 가입일자 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:150px;left:393px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:150px;left:392px;">
 	
 	${map.MEMBER_JOINDATE}
 	
@@ -145,7 +151,7 @@
 	</div>
 	
 	<!-- 비밀번호 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:170px;left:393px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:170px;left:392px;">
 	
 	${map.MEMBER_PWD}
 	
@@ -157,43 +163,46 @@
 	</div>
 	
 	<!--회원 등급 받는 곳  -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:190px;left:393px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:190px;left:392px;">
 	
 	${map.MEMBER_LEVEL}
+	
+	
 	</div>
 	
-	<div style="width:15%;height:150px;border:2px solid blue">
-	<img src="/TripINN/images/공유.png" style="width:100%; height:150px;">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${map.MEMBER_IMAGE}
+	 <script>
+  function mySubmit(index){
+	  if(index==1){
+		  
+		  document.frm.action="/TripINN/admin/memberModify.do";
+	  }
+	  
+	  if(index==2){
+		  document.frm.action="/TripINN/admin/deleteList.do";
+	  }
+	  document.frm.submit();
+  }
+  
+  
+  </script>
+	
+	
+	
+	
+	
+	
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:330px;left:450px;">
-
-	<input type="button" value="수정완료" onClick="location.href='http://localhost:8080/TripINN/admin/memberView.do'">
-
-	<input type="button" value="수정하기" onClick="location.href='http://localhost:8080/TripINN/admin/memberModify.do'">
-
-	</div>
-        
-   
-   
-	</div>
-	
-	
+	</form>
 	
 	
 	
    
    <!-- 우측영역 -->
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
+   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:172px;left:1124px;">
+   <img src="/TripINN/images/풍차.jpg" style="width: 298px; height:381px;">
    </div>
+ 
   
+
   </body>
 </html>
