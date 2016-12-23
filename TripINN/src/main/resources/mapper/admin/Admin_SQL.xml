@@ -4,7 +4,7 @@
 <mapper namespace="admin">
 
 	<select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
+		
 			SELECT
             MEMBER_IDX,
             MEMBER_EMAIL,
@@ -20,18 +20,18 @@
             FROM
             MEMBER
             ORDER BY MEMBER_IDX DESC
-		]]>
+	
 	</select>
 	
 	
      
 <select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
-    <![CDATA[
+    
         SELECT
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_JOINDATE,
-            MEMBER_LEVEL
+            MEMBER_LEVEL,
             MEMBER_NAME,
             MEMBER_PWD,
             MEMBER_BIRTH,
@@ -42,8 +42,32 @@
             FROM 
             MEMBER
             WHERE MEMBER_IDX = #{MEMBER_IDX}        
-    ]]>
+   
 </select>
+
+<update id="updateMemberModify" parameterType="hashmap">
+   
+        UPDATE MEMBER SET
+            MEMBER_ADDR = #{MEMBER_ADDR},
+            MEMBER_PHONE = #{MEMBER_PHONE},
+            MEMBER_EMAIL = #{MEMBER_EMAIL},
+            MEMBER_PWD = #{MEMBER_PWD},
+            MEMBER_LEVEL = #{MEMBER_LEVEL}
+            
+            WHERE MEMBER_IDX = #{MEMBER_IDX}    
+ 
+</update>
+
+<delete id="deleteList" parameterType="hashmap">
+
+
+        DELETE
+        FROM MEMBER
+        
+        WHERE MEMBER_IDX = #{MEMBER_IDX}  
+
+
+</delete>
 	
 
 </mapper>

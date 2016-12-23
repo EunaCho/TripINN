@@ -22,6 +22,16 @@ public class AdminMemberDAO extends AbstractDAO {
 		    return (Map<String, Object>) selectOne("admin.selectMemberView",map);
 
 	}
+	
+	public void updateMemberModify(Map<String, Object> map) throws Exception{
+		
+		update("admin.updateMemberModify",map);
+	}
 
+	public void deleteList(Map<String, Object> map) throws Exception{
+		
+		delete("admin.deleteList", map);
+	}
+	
 	
 }
