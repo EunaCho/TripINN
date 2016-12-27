@@ -29,14 +29,9 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
 
-	@Override
-	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-=======
+
+	
 	
 	//메시지 상세보기 
 	@Override
@@ -63,5 +58,4 @@ public class MypageServiceImpl implements MypageService{
 	
 	//-------트립목록 ------//
 	//-------프로필------//
->>>>>>> 98d0ea3 hjhj
 }

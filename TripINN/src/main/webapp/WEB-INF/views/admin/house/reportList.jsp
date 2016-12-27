@@ -90,63 +90,7 @@
 	margin-left:550px;
 	margin-top:-20px;
 	}
-	.house_delete{
-	border:2px solid black;
-	width:70px;
-	height:20px;
-	margin-left:750px;
-	margin-top:50px;
-	}
-	.report_listNo{
-	border:1px solid black;
-	width:200px;
-	height:30px;
-	margin:10px;
-	}
 	
-	.house_zipcode{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:550px;
-	margin-top:10px;
-	}
-	.house_addr{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:550px;
-	margin-top:10px;
-	}
-	.house_persons{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:550px;
-	margin-top:10px;
-	}
-	.house_total_price{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:220px;
-	margin-top:-85px;
-	}
-	.house_person_price{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:220px;
-	margin-top:10px;
-	}
-	
-.house_kind{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:220px;
-	margin-top:10px;
-	}
 	
 	
 	
@@ -160,7 +104,7 @@
  	 
  <!-- 가운데 윗 영역 -->	 
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-	<h2>숙소관리 페이지에 오신걸 환영합니다.</h2>
+	<h2>신고관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
   
@@ -184,7 +128,7 @@
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div class="report_list">
-   전체 숙소 목록
+   신고 목록
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
@@ -194,42 +138,25 @@
     <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
       </div>
       <div class="house_idx">
-      번호: ${house.HOUSE_IDX}
+      번호: ${house.REPORT_IDX}
       </div>
        <div class="house_info">
-      설명: ${house.HOUSE_INFO}
+      제목: ${house.REPORT_TITLE}
       </div>
       <div class="house_name">
-      이름: ${house.HOUSE_NAME}
+      내용: ${house.REPORT_CONTENT}
       </div>
       <div class="house_price">
-      숙소가격: ${house.HOUSE_PRICE}
+      작성일자: ${house.REPORT_REGDATE}
       </div>
-      <div class="house_zipcode">
-      우편번호: ${house.HOUSE_ZIPCODE}
-      </div>
-      <div class="house_addr">
-      주소: ${house.HOUSE_ADDR1}  ${house.HOUSE_ADDR2}  ${house.HOUSE_ADDR3}
-      </div>
-     <div class="house_persons">
-      최대수용인원: ${house.HOUSE_PERSONS}
-      </div>
-       <div class="house_total_price">
-      총 가격: ${house.HOUSE_TOTAL_PRICE}
-      </div>
-       <div class="house_person_price">
-      인원 당 가격: ${house.HOUSE_PERSON_PRICE}
-      </div>
-      <div class="house_kind">
-      종류: ${house.HOUSE_KIND}
-      </div>
+   
       
     </div>
     </c:forEach>
     </c:when>
     <c:otherwise>
 				<div class="report_listNo">
-					등록된 숙소가 없습니다.
+					신고된 숙소가 없습니다.
 					
 				</div>
 		</c:otherwise>

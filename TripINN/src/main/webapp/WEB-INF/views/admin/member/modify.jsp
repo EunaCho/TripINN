@@ -49,7 +49,7 @@
    <input type="hidden" value="${map.MEMBER_IDX}" name="MEMBER_IDX"/>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:172px;left:213px;">
+   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:208px;left:213px;">
    
    <div style="color:black;width:73%;height:381px;border:1px solid black; margin-left:150px;">
    
@@ -170,10 +170,7 @@
 	
    </div>
    </form>
-   <!-- 우측영역 -->
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:172px;left:1124px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 298px; height:381px;">
-   </div>
+  
    
  
   

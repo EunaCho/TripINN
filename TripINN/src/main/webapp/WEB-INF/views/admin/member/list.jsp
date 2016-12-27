@@ -2,8 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
-<head>
+
 
 <!-- 스타일 적용2 -->
 <style>   
@@ -19,91 +18,78 @@ li{margin-right:50px }
 .tbl tr td a:hover { color: #ff3300; vertical-align: middle; }
 #tbl {}
 </style> 
-</head>
 
-<body>
   <br><br>
   
  <!-- 가운데 윗 영역 -->
-    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-   <h2>회원관리 페이지에 오신걸 환영합니다.</h2>
-   </div>
+<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+   		<h2>회원관리 페이지에 오신걸 환영합니다.</h2>
+</div>
+
+<div style="height:100%; margin:0px auto; display:table;"> <!-- 좌측+리스트 -->
+<!-- 좌측영역 -->
+<div style="width:210px;height:380px;border:1px solid black;text-align:center; float:left;">
+	<ul class="left-ul">
+		<li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+      	<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
+
+      	<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
+      	<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+
+      	<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+      	<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+      
+      	<li><a><h2>문의게시판</h2></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
+
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+   </ul>
+</div><!-- side div End -->
    
-<div style="width:85%;height:381px;border:1px solid black;text-align:center; position:absolute;top:172px;left:213px;">
-<div class="row" style="padding-left:15px;width:900px; text-align:center;">    
-  <h2>회원 리스트</h2>
-  <div style="width:500px; height:100%; margin:0px auto;">
+<div style="width:1025px;height:100%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
+
+  		<h2>회원 리스트</h2>
+  	<div style="width:1001px; height:100%; margin:10px; border:1px solid red;"> <!-- table div start -->
  
- <form name="frm" method="post" action="/TripINN/admin/memberView.do">
- <input type="hidden" value="" name="MEMBER_IDX"/>
+ 		<form name="frm" method="post" action="/TripINN/admin/memberView.do">
+ 			<input type="hidden" value="" name="MEMBER_IDX"/>
  
-<table class="tbl" cellspacing="0" cellpadding="0" >
+			<table class="tbl" cellspacing="0" cellpadding="0" >
 		
-		<tr>
-			<th width="100px">번호</th>
-			<th width="500px">이메일</th>
-			<th width="1300px">주소</th>
-			<th width="350px">가입일</th>
-			
-		</tr>
+				<tr>
+					<th width="100px">번호</th>
+					<th width="500px">이메일</th>
+					<th width="1300px">주소</th>
+					<th width="350px">가입일</th>	
+				</tr>
 		
-		<c:choose>
-			<c:when test="${fn:length(list) > 0}">
-				<c:forEach items="${list}" var="member">
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach items="${list}" var="member">
 					<tr>
 						<td align="center">${member.MEMBER_IDX}</td>
 						
 						<td class="MEMBER_EMAIL">
                                 <a href="javascript:formSubmit('${member.MEMBER_IDX}');" >${member.MEMBER_EMAIL }</a>
-                            </td>
+                        </td>
                         <td align="center">${member.MEMBER_ADDR}</td>
 						<td align="center" >${member.MEMBER_JOINDATE}</td>
-						
-						
-						
 					</tr>
-				</c:forEach>
-			</c:when>
-			
+					</c:forEach>
+				</c:when>
 			<c:otherwise>
-			<tr>
-			
-				<td>회원가입한 멤버가 없습니다.</td>
-			</tr>
-		</c:otherwise>
-		</c:choose>
-		
-	</table>
-  </form>
-  
-</div>
+					<tr>
+						<td>회원가입한 멤버가 없습니다.</td>
+					</tr>
+			</c:otherwise>
+			</c:choose>
+			</table>
+ 		</form>
+	</div><!-- table div End -->
+</div><!-- list div End -->
 
-
-</div>
-
-</div>
-
-<!-- 좌측영역 -->
-<div style="width:15%;height:380px;border:1px solid black;text-align:center;">
-   
-   <ul class="left-ul">
-  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-
-      <li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-
-      <li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-      
-      <li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-
-        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
- 
-
-   </ul>
-   
+</div><!-- 전체  --> 
+<div style="clear:both;"></div>
    
    
    <!--스크립트 정의  -->
@@ -115,7 +101,4 @@ li{margin-right:50px }
 	}
 	
 </script>
-</body>
-
-</html>
 

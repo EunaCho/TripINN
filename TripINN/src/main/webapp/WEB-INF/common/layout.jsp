@@ -13,14 +13,14 @@
 	<div id="header" style="height:55px;" >
 		<tiles:insertAttribute name="header"/>
 	</div>
-<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
+
 	<div style="clear:both;"></div>
 	<div id="main" style="display:block;">
-=======
+
 	<div style="clear: both;"></div>
 	
 	<div id="main" style="display:;">
->>>>>>> 98d0ea3 hjhj
+
 		<tiles:insertAttribute name="body"/>
 	</div>
 		<div style="clear: both;"></div>
