@@ -6,6 +6,7 @@
 <% String cp = request.getContextPath(); %>
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
+<script src="<%= cp %>/js/main.js"></script>
 
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
 <a href="<%=cp %>/main.do"><img src="<%=cp %>/images/logo.png"/> </a>

@@ -12,7 +12,7 @@
 <style>   
 ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
 li{margin-right:50px }
-a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
 </style>
 </head>
 
@@ -118,7 +118,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/admin/qnaDetail.do' />");
             
-            <!--  서버로 전송될 키,값-->
+            //서버로 전송될 키 값
              //jQuery를 이용하여 선택된 <a> 태그의 부모 노드 내에서 IDX라는 값을 가진 태그를 찾고 그 태그의 값을 가져오도록 한 것 
             comSubmit.addParam("QNA_IDX", obj.parent().find("#QNA_IDX").val());
             comSubmit.submit();
@@ -158,10 +158,12 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
    </ul>
    
    <!-- 우측 영역 -->
+  <!-- 
    </div>
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
    </div>
+    -->
 </body>
 </html>
  

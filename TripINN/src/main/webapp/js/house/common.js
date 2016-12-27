@@ -32,3 +32,30 @@ function ComSubmit(opt_formId) {
 		frm.submit();	
 	};
 }
+
+
+/*header.jsp*/
+
+//숙박일 선택
+$(function () {
+    $("#datepicker_in").datepicker({
+         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+         minDate: new Date(),
+         altField: "#datepicker",
+         altFormat: "yy-mm-dd"
+  });
+});
+$(function () {
+    $("#datepicker_out").datepicker({
+         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+         minDate: new Date(),
+         altField: "#datepicker2",
+         altFormat: "yy-mm-dd"
+  });
+});

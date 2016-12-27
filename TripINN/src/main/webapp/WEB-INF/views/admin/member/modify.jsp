@@ -25,7 +25,7 @@
  	 <br><br>
  <!-- 가운데 윗 영역 -->	 
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-	<h2>회원정보 상세페이지</h2>
+	<h2>회원정보 수정페이지</h2>
    </div>
    
    
@@ -45,99 +45,137 @@
 	</ul>
    
    </div>
+    <form name="frm" method="post" action="/TripINN/admin/updateMemberModify.do">
+   <input type="hidden" value="${map.MEMBER_IDX}" name="MEMBER_IDX"/>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:200px;left:222px;">
+   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:172px;left:213px;">
    
    <div style="color:black;width:73%;height:381px;border:1px solid black; margin-left:150px;">
    
-	<div style="width:20%;height:150px;border:2px solid blue">
+	<div style="width:15%;height:150px;border:2px solid blue">
 	<img src="/TripINN/images/공유.png" style="width:100%; height:150px;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지
 	</div>
 	
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:30px;left:300px;text-align:center; background-color:skyblue;">
+	번호
+	</div>
+	<!-- 번호 받는 곳 -->
+
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:30px;left:392px;">
+	${map.MEMBER_IDX }
+	<input type="hidden" id="MEMBER_IDX" name="MEMBER_IDX" value="${map.MEMBER_IDX }">
+    </div>
+	
+	
+
 	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:300px;text-align:center; background-color:skyblue;">
 	이름
 	</div>
 	<!-- 이름 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:393px;">
+
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:392px;">
+	${map.MEMBER_NAME}
+    </div>
 	
-	</div>
 	
 	
-	<div style="color:black;width:10%;height:40px;border:1px solid black; position:absolute;top:90px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:70px;left:300px;text-align:center; background-color:skyblue;">
 	주소
-	</div>
+	</div> 
 	<!-- 주소 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:90px;left:392px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:70px;left:392px;">
+	<input type="text" size="57" id="MEMBER_ADDR" name="MEMBER_ADDR" value="${map.MEMBER_ADDR }"/>
+	
 	
 	</div>
-	<!--  주소 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:110px;left:392px;">
 	
-	</div>
-	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:150px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:90px;left:300px;text-align:center; background-color:skyblue;">
 	이메일
 	</div>
 	
 	<!-- 이메일 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:150px;left:392px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:90px;left:392px;">
+	<input type="text" size="57" id="MEMBER_EMAIL" name="MEMBER_EMAIL" value="${map.MEMBER_EMAIL }"/>
 	
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:190px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:110px;left:300px;text-align:center; background-color:skyblue;">
 	휴대폰
 	</div>
 	
 	<!--  휴대폰 받는곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:190px;left:392px;">
-	
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:110px;left:392px;">
+	<input type="text" size="57" id="MEMBER_PHONE" name="MEMBER_PHONE" value="${map.MEMBER_PHONE }"/>
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:230px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:130px;left:300px;text-align:center; background-color:skyblue;">
 	생일
 	</div>
 	
 	<!-- 생일 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:230px;left:393px;">
-	
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:392px;">
+	${map.MEMBER_BIRTH}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:230px;left:530px;text-align:center; background-color:skyblue;">
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:130px;left:530px;text-align:center; background-color:skyblue;">
 	성별
 	</div>
 	
 	<!-- 성별 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:230px;left:622px;">
-	
+	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:622px;">
+	${map.MEMBER_SEX}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:270px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:150px;left:300px;text-align:center; background-color:skyblue;">
 	가입일자
 	</div>
 	
 	
 	<!-- 가입일자 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:270px;left:393px;">
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:150px;left:392px;">
+	${map.MEMBER_JOINDATE}
+	
+	</div>
+	
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:170px;left:300px;text-align:center; background-color:skyblue;">
+	비밀번호
+	</div>
+	
+	<!-- 비밀번호 받는 곳 -->
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:170px;left:392px;">
+	
+	<input type="text" size="57" id="MEMBER_PWD" name="MEMBER_PWD" value="${map.MEMBER_PWD }"/>
+	
+	</div>
 	
 	
+	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:190px;left:300px;text-align:center; background-color:skyblue;">
+	회원등급
+	</div>
+	
+	<!--회원 등급 받는 곳  -->
+	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:190px;left:392px;">
+	
+	<input type="text" size="57" id="MEMBER_LEVEL" name="MEMBER_LEVEL" value="${map.MEMBER_LEVEL }"/>
 	</div>
 	
 	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:330px;left:450px;">
-	<input type="button" value="수정완료" onClick="location.href='http://localhost:8080/TripINN/admin/memberView.do'">
+	<input type="button" value="완료" onClick="document.frm.submit();">
 	</div>
 	
 	</div>
 	
 	
-	
+   </div>
+   </form>
+   <!-- 우측영역 -->
+   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:172px;left:1124px;">
+   <img src="/TripINN/images/풍차.jpg" style="width: 298px; height:381px;">
    </div>
    
-   <!-- 우측영역 -->
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
-   </div>
+ 
   
   </body>
 </html>

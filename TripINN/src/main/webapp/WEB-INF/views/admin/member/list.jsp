@@ -7,11 +7,17 @@
 
 <!-- 스타일 적용2 -->
 <style>   
-ul{width:172px;height:340px;background:blue;opacity:1.0;list-style:none;padding-top:15px;}
+ul{width:172px;height:340px;background:blue;opacity:0.4;list-style:none;padding-top:15px;}
 
 li{margin-right:50px }
 
-a{font-size:12px;color:skyblue;font-weight:bold;text-decoration:none}
+.left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
+.tbl { width:1000px; border:1px; }
+.tbl tr th {  border:1px solid #a6a6a6;height:30px;text-align:center; background:#eee; }
+.tbl tr td { border:1px solid #a6a6a6; padding:5px;height:30px; }
+.tbl tr td a { text-decoration: none; color:#000; }
+.tbl tr td a:hover { color: #ff3300; vertical-align: middle; }
+#tbl {}
 </style> 
 </head>
 
@@ -22,20 +28,22 @@ a{font-size:12px;color:skyblue;font-weight:bold;text-decoration:none}
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>회원관리 페이지에 오신걸 환영합니다.</h2>
    </div>
-<div style="width:66%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:220px;">
-<div class="row" style="padding-left:15px;width:900px; text-align:left;">    
+   
+<div style="width:85%;height:381px;border:1px solid black;text-align:center; position:absolute;top:172px;left:213px;">
+<div class="row" style="padding-left:15px;width:900px; text-align:center;">    
   <h2>회원 리스트</h2>
   <div style="width:500px; height:100%; margin:0px auto;">
  
  <form name="frm" method="post" action="/TripINN/admin/memberView.do">
  <input type="hidden" value="" name="MEMBER_IDX"/>
-<table border="1">
+ 
+<table class="tbl" cellspacing="0" cellpadding="0" >
 		
 		<tr>
-			<td>번호</td>
-			<td>이메일</td>
-			<td>가입일</td>
-			
+			<th width="100px">번호</th>
+			<th width="500px">이메일</th>
+			<th width="1300px">주소</th>
+			<th width="350px">가입일</th>
 			
 		</tr>
 		
@@ -43,13 +51,13 @@ a{font-size:12px;color:skyblue;font-weight:bold;text-decoration:none}
 			<c:when test="${fn:length(list) > 0}">
 				<c:forEach items="${list}" var="member">
 					<tr>
-						<td>${member.MEMBER_IDX}</td>
+						<td align="center">${member.MEMBER_IDX}</td>
 						
 						<td class="MEMBER_EMAIL">
                                 <a href="javascript:formSubmit('${member.MEMBER_IDX}');" >${member.MEMBER_EMAIL }</a>
                             </td>
-
-						<td>${member.MEMBER_JOINDATE}</td>
+                        <td align="center">${member.MEMBER_ADDR}</td>
+						<td align="center" >${member.MEMBER_JOINDATE}</td>
 						
 						
 						
@@ -78,7 +86,7 @@ a{font-size:12px;color:skyblue;font-weight:bold;text-decoration:none}
 <!-- 좌측영역 -->
 <div style="width:15%;height:380px;border:1px solid black;text-align:center;">
    
-   <ul>
+   <ul class="left-ul">
   <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
       <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 
@@ -96,11 +104,7 @@ a{font-size:12px;color:skyblue;font-weight:bold;text-decoration:none}
 
    </ul>
    
-   <!-- 우측 영역 -->
-   </div>
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
-   </div>
+   
    
    <!--스크립트 정의  -->
 <script type="text/javascript">
