@@ -157,10 +157,12 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
    </ul>
    
    <!-- 우측 영역 -->
+  <!-- 
    </div>
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
    </div>
+    -->
 </body>
 </html>
  

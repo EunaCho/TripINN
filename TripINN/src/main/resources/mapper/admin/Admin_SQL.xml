@@ -120,8 +120,12 @@
 	
 	</select>
 	
+<<<<<<< HEAD
 	
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
      
 <select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
     
@@ -165,9 +169,13 @@
         WHERE MEMBER_IDX = #{MEMBER_IDX}  
 
 
+<<<<<<< HEAD
 </delete>
 
 
+=======
+</delete>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	
 	
 	<!-- faq 리스트 -->

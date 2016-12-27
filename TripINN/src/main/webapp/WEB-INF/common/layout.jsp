@@ -6,21 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TripINN</title>
+<style>html {height:100%;}</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body style="width:100%;height:100%;margin:0px;padding:0px;">
 	<div id="header" style="height:55px;" >
 		<tiles:insertAttribute name="header"/>
+<<<<<<< HEAD
 	</div>
 
+=======
+	</div>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<div style="clear:both;"></div>
+<<<<<<< HEAD
 	<div id="main" style="display:block;">
 
 	<div style="clear: both;"></div>
 	
 	<div id="main" style="display:;">
 
+=======
+
+	<div id="main" style="display:table;height:100%;width:100%;margin:0px auto;">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		<tiles:insertAttribute name="body"/>
 	</div>
 		<div style="clear: both;"></div>
