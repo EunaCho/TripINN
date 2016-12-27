@@ -36,4 +36,9 @@ public class TripServiceImpl implements TripService {
 		return tripDAO.selectImages(trip_idx);
 	}
 
+	@Override
+	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
+		return tripDAO.selectTripDetail(map);
+	}
+
 }

@@ -25,4 +25,8 @@ public class TripDAO extends AbstractDAO {
 	public String selectImages(String trip_idx) {
 		return (String) selectOne("trip.getImages", trip_idx);
 	}
+
+	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
+		return (Map<String, Object>) selectOne("trip.tripDetail", map);
+	}
 }

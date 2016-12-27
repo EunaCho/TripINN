@@ -13,5 +13,7 @@ public interface TripService {
 
 	String selectImages(String trip_idx) throws Exception;
 
+	Map<String, Object> selectTripDetail(Map<String, Object> map);
+
 	
 }

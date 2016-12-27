@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -86,6 +87,8 @@ public class TripController {
 		return mv;
 	}
 	
+	
+	//리스트에서 사진정보 ajax로 가져옴
 	@RequestMapping(value="/tripPhotoInfo.do", method=RequestMethod.POST)
 	public ModelAndView tripPhotoInfo(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("/trip/photoInfo");
@@ -99,6 +102,7 @@ public class TripController {
 		return mv; 
 	} 
 	
+	//리스트에서 지역별로 검색
 	@RequestMapping(value="/tripSearchArea.do", method=RequestMethod.POST)
 	public ModelAndView tripSearchArea(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("tripList");
@@ -110,4 +114,14 @@ public class TripController {
 		mv.addObject("area", commandMap.get("trip_area"));
 		return mv;
 	}
+	
+	@RequestMapping(value="/tripDetail.do", method=RequestMethod.POST)
+	public ModelAndView tripDetail(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("tripDetail");
+		
+		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap());
+		mv.addObject("trip", map);
+		return mv;
+	}
+	
 }

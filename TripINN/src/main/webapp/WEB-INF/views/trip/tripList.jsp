@@ -89,6 +89,11 @@ var curNum = 1;
 	   form.area.value = area;
 	   form.submit();
    } 
+   function tripDetail(idx) {
+	   var form = document.formDetail;
+	   form.trip_idx.value = idx;
+	   form.submit();
+   }
 </script>
 <style>
 	#wrap{ width:100%;height:100%;padding:0px; display: table; margin:0px auto; margin-bottom:20px;}
@@ -120,6 +125,10 @@ var curNum = 1;
 <form action="/TripINN/tripSearchArea.do" method="post" name="formArea">
 	<input type="hidden" name="area"  value=""/>
 </form>
+<form action="/TripINN/tripDetail.do" method="post" name="formDetail">
+	<input type="hidden" name="trip_idx" value=""/>
+</form>
+
 <div id="wrap">
 <div id="divBackGround" style="display: none; background-color: #fff; filter: alpha(opacity=50); opacity: 0.5; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 50;"></div>
 <div id="HotelPhotoView" class="popContainer02" style="display: block; position: fixed; top: 50%; left: 50%; z-index: 100;"></div>
@@ -173,7 +182,7 @@ var curNum = 1;
 							<div style="color:#cb4242;text-align:right;">
 								<div style="width:120px;float:left;margin-top:-8px;text-align:left;margin-left:-15px;">
 								<img src="http://openimage.interpark.com/tourpark/tour/common/button/btn_detail_view02.gif"
-									width="70px" height="25px"/>
+									style="cursor:pointer" width="70px" height="25px" onclick="tripDetail('${trip.TRIP_IDX}');"/>
 								<img src="http://openimage.interpark.com/tourpark/tour/sub_depth/icon_search.gif"
 									 alt="포토" style="cursor:pointer" onclick="newShowHotelPhoto('${trip.TRIP_IDX}')">
 								</div>
