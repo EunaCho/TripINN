@@ -84,7 +84,7 @@ public class AbstractDAO {
 	    
 	    //한 페이지에 몇개의 행을 보여줄 것인지를 설정
 	    if(map.containsKey("PAGE_ROW") == false || (map.get("PAGE_ROW") == null || map.get("PAGE_ROW")=="") ){
-	        paginationInfo.setRecordCountPerPage(5);
+	        paginationInfo.setRecordCountPerPage(10);
 	    }
 	    else{
 	        paginationInfo.setRecordCountPerPage(Integer.parseInt(map.get("PAGE_ROW").toString()));
