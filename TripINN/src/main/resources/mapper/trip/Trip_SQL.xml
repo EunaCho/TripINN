@@ -20,5 +20,10 @@
 		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
+		where trip_area = #{trip_area}
+	</select>
+	
+	<select id="getImages" parameterType="String" resultType="String">
+		select trip_image from trip where trip_idx=#{trip_Idx}
 	</select>
 </mapper>

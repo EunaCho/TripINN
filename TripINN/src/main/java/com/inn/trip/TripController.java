@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +41,7 @@ public class TripController {
 		for(String inc : inc_list) {
 			trip_include = trip_include + inc + "|";
 		}
-		System.out.println("trip_zipcode : " + commandMap.get("trip_zipcode"));
-		System.out.println("trip_addr1 : " + commandMap.get("trip_addr1"));
-		System.out.println("trip_addr2 : " + commandMap.get("trip_addr2"));
-		System.out.println("trip_addr3 : " + commandMap.get("trip_addr3"));
+		
 		//commandMap.put("member_idx", session.getAttribute("member_idx"));
 		commandMap.put("member_idx", 1);
 		commandMap.put("trip_include", trip_include);
@@ -65,8 +63,8 @@ public class TripController {
 		ModelAndView mv = new ModelAndView("tripList");
 		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
 		
-		System.out.println("list.size() : " + list.size());
 		mv.addObject("list",list); 
+		mv.addObject("area", commandMap.get("trip_area"));
 		return mv;
 	}
 	
@@ -85,7 +83,31 @@ public class TripController {
 		mv.addObject("ba", ba);
 		
 		System.out.println("lat : " + lat + "// lng : "  + lng + "// ba : " + ba);
-
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripPhotoInfo.do", method=RequestMethod.POST)
+	public ModelAndView tripPhotoInfo(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("/trip/photoInfo");
+		String trip_idx = request.getParameter("trip_idx");
+		
+		String images = tripService.selectImages(trip_idx);
+		System.out.println("images : " + images);
+		
+		String[] imgs = images.split("\\|");
+		mv.addObject("imgs", imgs);
+		return mv; 
+	} 
+	
+	@RequestMapping(value="/tripSearchArea.do", method=RequestMethod.POST)
+	public ModelAndView tripSearchArea(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("tripList");
+		commandMap.put("trip_area", request.getParameter("area"));
+		
+		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
+		
+		mv.addObject("list", list);
+		mv.addObject("area", commandMap.get("trip_area"));
 		return mv;
 	}
 }
