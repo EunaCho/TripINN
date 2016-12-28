@@ -31,11 +31,6 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	//메시지 상세보기 
 	@Override
 	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception{
