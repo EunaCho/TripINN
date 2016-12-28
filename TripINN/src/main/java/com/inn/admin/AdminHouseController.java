@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.common.common.CommandMap;
-import com.inn.admin.AdminMemberService;
+
 
 @Controller
 public class AdminHouseController {
@@ -24,7 +24,7 @@ public class AdminHouseController {
 	
 //----------------------------------------------------------------------------//	
 	@RequestMapping(value="/admin/houseList.do")
-	  public ModelAndView memberList(CommandMap commandMap) throws Exception{
+	  public ModelAndView houseList(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("houseList");
 		
 		List<Map<String,Object>> list = adminHouseService.selectHouseList(commandMap.getMap());
@@ -39,6 +39,19 @@ public class AdminHouseController {
 		
 		List<Map<String,Object>> list = adminHouseService.selectHouseReportList(commandMap.getMap());
 		mv.addObject("list",list);
+		
+		return mv;
+	}
+	//-----------------------------------------------------------------------------//
+	@RequestMapping(value="/admin/houseReportDelete.do", method=RequestMethod.POST)
+	public ModelAndView houseReportDelete(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/admin/houseList.do");
+		                                   
+		
+        int report_idx = Integer.parseInt(request.getParameter("REPORT_IDX"));
+	    commandMap.put("REPORT_IDX", report_idx);
+	    
+		adminHouseService.houseReportDelete(commandMap.getMap());
 		
 		return mv;
 	}

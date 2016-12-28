@@ -21,4 +21,9 @@ public class AdminHouseDAO extends AbstractDAO {
 		
 		return (List<Map<String, Object>>)selectList("admin.selectHouseReportList", map);
 	}
+	
+     public void houseReportDelete(Map<String, Object> map) throws Exception{
+		
+		delete("admin.houseReportDelete", map);
+	}
 }

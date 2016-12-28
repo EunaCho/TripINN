@@ -19,9 +19,9 @@
 
 <!-- 스타일적용1 -->    
 <style>	
-	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
+	ul{width:172px;height:320px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
 	li{margin-right:50px }
-	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+	.left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
 </style>
 <!-- 스타일 적용2 -->
 <style>
@@ -44,11 +44,11 @@
 	margin:10px;
 	}
 	
-	.list1{
-	   border:1px solid blue;
-	   width:900px;
-	   height:200px;
-	   margin:40px;
+   .list1{
+    border:1px solid blue;
+	width:900px;
+	height:200px;
+	margin:40px;
 	}
 	.picture{
 	border:1px solid black;
@@ -68,6 +68,7 @@
 	height:20px;
 	margin-left:220px;
 	margin-top:-190px;
+	
 	}
 	.house_info{
 	border:1px solid black;
@@ -94,6 +95,8 @@
 	
 	
 	
+	
+	
 </style>
     
   </head>
@@ -101,20 +104,25 @@
   
  	 <br><br>
  	 
- 	 
+ <form name="frm" method="post" action="/TripINN/admin/houseReportDelete.do">
+ <input type="hidden" value="" name="REPORT_IDX"/>
+ 
  <!-- 가운데 윗 영역 -->	 
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
 	<h2>신고관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
+   
+   
+  
   
    <!-- 좌측 영역 -->
    <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
-	   <ul>   
-        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+	  <ul class="left-ul">
+      <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
 		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		<li><a><h2>문의게시판</h2></a></li>
@@ -138,7 +146,7 @@
     <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
       </div>
       <div class="house_idx">
-      번호: ${house.REPORT_IDX}
+     번호: <a href="javascript:formSubmit('${house.REPORT_IDX}');">${house.REPORT_IDX }</a>
       </div>
        <div class="house_info">
       제목: ${house.REPORT_TITLE}
@@ -149,9 +157,11 @@
       <div class="house_price">
       작성일자: ${house.REPORT_REGDATE}
       </div>
-   
       
     </div>
+     <div>
+     <h4>신고된 숙소의 번호를 누르시면 숙소가 삭제 됩니다.</h4>
+     </div>
     </c:forEach>
     </c:when>
     <c:otherwise>
@@ -162,9 +172,18 @@
 		</c:otherwise>
     </c:choose>
    </div>
-   
+     <!--스크립트 정의  -->
+<script type="text/javascript">
+
+	function formSubmit(REPORT_IDX) {
+		document.frm.REPORT_IDX.value = REPORT_IDX;
+		document.frm.submit();
+	}
+	
+</script>
+ 
     
    
-  
+  </form>
   
 </html>

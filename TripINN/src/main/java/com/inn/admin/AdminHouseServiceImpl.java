@@ -27,4 +27,10 @@ public class AdminHouseServiceImpl implements AdminHouseService {
 		
 		return adminHouseDAO.selectHouseReportList(map);
 	}
+	
+	@Override
+	public void houseReportDelete(Map<String, Object> map) throws Exception{
+		
+		adminHouseDAO.houseReportDelete(map);
+	}
 }
