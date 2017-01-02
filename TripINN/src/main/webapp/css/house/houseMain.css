@@ -1,5 +1,8 @@
 @CHARSET "EUC-KR";
 
+
+/* /house/header.jsp */
+
 #header_container{
 	margin:10px;
 	font-family: "³ª´® °íµñ","Nanum Gothic","¸¼Àº °íµñ","Malgun Gothic","Apple Gothic","µ¸¿ò",Dotum,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
@@ -9,7 +12,7 @@
 	
 	margin:0 auto;
 	border: 2px solid #dcdcdc;
-	border-radius: 10px;
+	border-radius: 40px;
     padding: 20px;
 	width: 800px;
 	height: 50px;
@@ -25,8 +28,7 @@
 #house_searchForm div .location {height:30px; width:200px; }
 #house_searchForm div .checkinout {height:30px; width:130px;}  
 #house_searchForm div select {width:150px; height:38px; color:#aaaaaa; border-radius: 5px;}
-#house_searchForm div img {width:30px; margin-top:20px; margin-left:-15px; margin-right:-15px;}
-#searchBtn {width:40px; height:40px; margin-top:15px;}
+#searchBtn {width:40px; height:40px; margin-top:15px; border: none;}
 label{
 	display: block; 
 }
@@ -66,3 +68,59 @@ user agent stylesheet
 input, textarea, keygen, select, button, meter, progress {
     -webkit-writing-mode: horizontal-tb;
 }
+
+
+
+/* /house/houseList.jsp(¿ÞÂÊ) */
+
+/* »ó¼¼°Ë»öºí·Ï */
+#searchForm{ 
+	float:center;
+	margin:15px;
+	border: 2px solid #6e6e6e;
+	border-radius: 10px;
+    padding: 10px;
+	min-width: 480px;
+	max-width: 600px;
+	height:300px;
+	display: block;
+	/* font-size: 14px; */
+	align:center;
+	background-color: #dce0e0;
+	}
+	
+#searchForm .border_date { border-bottom:1px solid #787878; width:100%; height:80px; position:relative; float:center;}
+#searchForm .border_date div {margin-left: 15px; float: left;}
+#searchForm .border_date h4 { margin-right:30px; margin-top:30px;}
+#searchForm .border_date label {color:#8c8c8c;}
+#searchForm .border_date .checkinout {height:30px; width:110px; border-radius: 5px;}  
+#searchForm .border_date select {width:110px; height:38px; color:#aaaaaa; border-radius: 5px;}
+
+#searchForm .border_category { border-bottom:1px solid #787878; width:100%; height:80px; position:relative;}
+#searchForm .border_category div {margin-left: 15px; float: left;}
+#searchForm .border_category h4 { margin-top:30px;}
+#searchForm .border_category label {color:#8c8c8c;}
+
+
+
+
+#searchForm .border_price {border-bottom:1px solid #787878; height:80px; width:100%; position:relative;}
+#searchForm .border_price h4 {margin-left: 15px; margin-top:30px; float:left; position:relative;} 
+#searchForm .border_price .price_range {margin-left: 15px; float:left; display:inline-block; width:75%; height:50px; margin-top:10px;}
+#searchForm .border_price .price_range label {color:#8c8c8c;width:100px; float:left;}
+#searchForm .border_price .price_range input {width:150px; background-color: #dcdcdc; margin-bottom:15px;}
+#searchForm .button {background-color:#00d775; color:white; border-radius: 5rem; float: right; clear: right; display: inline-block; font-weight: 700;padding: .375rem 1.5rem; font-size: 1.5rem;}
+
+ .slider { width:200px;}
+
+
+
+
+
+/* ¹Ì¸®º¸±â ºí·° */
+#house_div .pre_List {width:100%; min-width: 480px; overflow:hidden; margin-bottom:20px; float:center;}
+#house_div .pre_List li {float:center; width:260px; display:inline-block; margin:5px;}
+#house_div .pre_List li a {text-decoration:none; color:gray;}
+#house_div .pre_List li a span {display:block; font-size:12px; float:left; white-space:normal;}
+#house_div .pre_List li a span strong{font-size:15px;}
+#house_div .pre_List li img {with:240px; height:160px;}

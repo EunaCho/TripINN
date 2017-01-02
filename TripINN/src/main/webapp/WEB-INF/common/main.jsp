@@ -9,13 +9,26 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
 <script type="text/javascript" src="<%= cp %>/js/scrollnews.js"></script> <!-- 롤링 스클 -->
 <script src="<%= cp %>/js/main.js"></script>
-  <link rel="stylesheet" href="/TripINN/css/main.css" />
+<link rel="stylesheet" href="/TripINN/css/main.css" />
 
+
+
+<script>
+
+function preSearch() {
+	if(confirm("확인요?")) {
+		return true;
+	} else {
+	return false;
+	}
+	document.preSearchForm.submit();
+}
+
+</script>
 <!-- 메인 바디 -->
 <div style="width:100%;height:1300px;border:;text-align:center;">
 
 
-	
 	<!-- 슬라이드 롤링 --> 
 
 	<div class="noti" id="rolling">
@@ -30,17 +43,17 @@
 	
 	<!-- 왼쪽 간편검색바 -->
 	<div id="leftDiv">
-	<form>
+	<form method="POST" action="house/houseMain.do" name="preSearchForm">
 		<div> 
 			<h3>숙소 검색하기</h3><br/>
-			<input type="text" class="pre_srch_input" name="preSearch" placeholder="장소, 지역, 숙소명 검색"/>
+			<input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
 		</div>
 		<div style="margin-top:10px;">
 			<div class="date">체크인<br/>
-			<input type="text" name="periodToStay_startDate" id="datepicker_in" placeholder="체크인" class="datepicker"/>
+			<input type="text" name="hri_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
 			</div>
 			<div class="date">체크아웃<br/>
-			<input type="text" name="periodToStay_startDate" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
+			<input type="text" name="hri_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
 			</div>
 		</div>
 		<div class="select">
@@ -70,9 +83,13 @@
 			</select>
 		</div>
 		
-		<a href="" class="pre_srch_submit" >
-		<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a>
-	</form>
+
+	<!-- 	<a href="/TripINN/house/houseMain.do" onclick="preSearch();" class="pre_srch_submit">
+		//<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a> -->
+		
+		<!-- <span class="btn_join" onclick="preSearch();">검색</span> -->
+		<button class="btn_join" type="submit">검색</button>
+	</form>	
 	</div>
 	
 	

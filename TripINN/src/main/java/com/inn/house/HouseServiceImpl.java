@@ -36,6 +36,11 @@ public class HouseServiceImpl implements HouseService{
 	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception {
 		return houseDAO.selectHouseList(map);
 	}
+	
+	@Override
+	public List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception {
+		return houseDAO.searchHouseList(map);
+	}
 
 	//house write
 	@Override
