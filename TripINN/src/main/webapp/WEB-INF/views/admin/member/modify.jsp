@@ -35,13 +35,12 @@
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
 		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
 		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-
 	</ul>
    
    </div>
@@ -49,7 +48,7 @@
    <input type="hidden" value="${map.MEMBER_IDX}" name="MEMBER_IDX"/>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:172px;left:213px;">
+   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:208px;left:213px;">
    
    <div style="color:black;width:73%;height:381px;border:1px solid black; margin-left:150px;">
    
@@ -170,10 +169,7 @@
 	
    </div>
    </form>
-   <!-- 우측영역 -->
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:172px;left:1124px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 298px; height:381px;">
-   </div>
+  
    
  
   

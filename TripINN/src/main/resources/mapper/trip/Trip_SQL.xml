@@ -20,5 +20,19 @@
 		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
+		where trip_area = #{trip_area}
+	</select>
+	
+	<select id="tripDetail" parameterType="HashMap" resultType="HashMap">
+		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
+			  trip_image, trip_pprice, trip_tprice, trip_persons, t.member_idx, house_idx,
+          member_email, member_name, member_phone, member_image
+        from trip t inner join member m on m.member_idx = t.member_idx 
+        	where t.trip_idx=#{trip_idx}
+	</select>
+	
+	<select id="getImages" parameterType="String" resultType="String">
+		select trip_image from trip where trip_idx=#{trip_Idx}
 	</select>
 </mapper>

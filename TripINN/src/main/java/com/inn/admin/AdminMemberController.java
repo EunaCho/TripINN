@@ -22,6 +22,8 @@ public class AdminMemberController {
 	@Resource(name="AdminMemberService")
 	private AdminMemberService adminMemberService;
 	
+//--------------------------------------------------------------------//	
+	
 	@RequestMapping(value="/admin/memberList.do")
 	  public ModelAndView memberList(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("memberList");

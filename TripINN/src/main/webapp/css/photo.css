@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+.popContainer02 {
+    font-size: 12px;
+    color: #646464;
+    font-family: 돋움, dotum, san-serif;
+    display: none;
+    position: absolute;
+    z-index: 100;
+	}
+	
+.popContainer02 .popWarp {
+    position: relative;
+    padding-bottom: 20px;
+    background: #424c57;
+}
+.popContainer02 .popWarp h1 {
+    padding: 13px 0 0 23px;
+	margin:0px;
+}
+.popContainer02 .popWarp .btn-close {
+    position: absolute;
+    top: 14px;
+    right: 26px;
+	color: #646464;
+	text-decoration: none;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+.popContainer02 .photo-block {
+    overflow: hidden;
+    margin: 8px 23px 0 23px;
+    _zoom: 1;
+}
+.popContainer02 .popWarp .photo-view {
+    float: left;
+    display: inline;
+    width: 469px;
+}
+.popContainer02 .popWarp .photo-view .photo {
+    text-align: center;
+}
+.popContainer02 .popWarp .photo-view .photo img {
+    width: auto;
+    height: 335px;
+    max-width: 100%;
+}
+.popContainer02 .popWarp .movement {
+    float: left;
+    display: inline;
+    width: 120px;
+    height: 335px;
+    background: #2c353f;
+}
+.popContainer02 .popWarp .movement .btn-pre {
+    display: block;
+    padding: 7px 0 6px;
+    text-align: center;
+}
+a:link {
+    color: #646464;
+}
+.popContainer02 .popWarp .movement .photo-list {
+    margin: 0 auto;
+    width: 101px;
+}
+ul, li, dl, dt, dd, ol, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul {
+	display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+.popContainer02 .popWarp .movement .photo-list li {
+    padding-bottom: 5px;
+    _padding-bottom: 2px;
+    height: 51px;
+	list-style: none;
+    padding: 0;
+    margin: 0;
+	display: list-item;
+    text-align: -webkit-match-parent;
+    margin-left:-40px;
+}
+.popContainer02 .popWarp .movement .photo-list li a {
+    display: inline-block;
+    padding: 3px;
+}
+.popContainer02 .popWarp .movement .photo-list li a img {
+    width: 95px;
+    height: 49px;
+	position: relative;
+	border: 0;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+.popContainer02 .popWarp .movement .btn-next {
+    display: block;
+    padding: 6px 0 7px;
+    text-align: center;
+}
+.popContainer02 .popWarp h2.none {
+    background: none;
+    padding-bottom: 0;
+}
