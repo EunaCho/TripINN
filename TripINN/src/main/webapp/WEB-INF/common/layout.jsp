@@ -17,7 +17,7 @@
 	<div id="main" style="display:block;">
 		<tiles:insertAttribute name="body"/>
 	</div>
-	
+	<div style="clear:both;"></div>
 	<div id="bottom" style="display:block;">
 		<tiles:insertAttribute name="bottom"/>
 	</div>

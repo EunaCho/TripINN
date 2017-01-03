@@ -165,7 +165,7 @@
 	
 	<!-- list 정의 -->
 	<definition name="houseList_layout" extends="house_form">
-		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseMain.jsp"/>
 	</definition>
 	
 	<!-- main -->
@@ -203,6 +203,11 @@
 		<put-attribute name="body" value="houseRegister2_layout"/>
 	</definition>
 	
+	<!-- open register detail3 -->
+	<definition name="houseRegister3" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/house/register/houseRegister3.jsp"/>
+	</definition>
+	
 	<!-- insert register 정의 -->
  	<definition name="insertHouseRegister_layout" extends="house_form">
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
@@ -212,6 +217,7 @@
  	<definition name="insertHouseRegister" extends="main">
 		<put-attribute name="body" value="insertHouseRegister_Layout"/>
 	</definition>
+	
 	
 	<!-- **********************house_end**********************-->
 

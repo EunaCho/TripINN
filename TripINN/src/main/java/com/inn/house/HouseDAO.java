@@ -41,9 +41,17 @@ public class HouseDAO extends AbstractDAO{
 	}
 	
 	//insert DAO
+	//등록 페이지 1
 	public void insertHouse(Map<String, Object> map) throws Exception{
-		insert("house.insertHouse", map); // sql namespace
+		System.out.println(map.get("HOUSE_ADDR1")+"************************** 다오");
+		insert("house.insertHouse", map);
 	}
+	//등록 페이지 2
+	public void insertHouseInfo(Map<String, Object> map) throws Exception{
+		insert("house.insertHouseInfo", map);
+	}
+	
+	
 	
 	//update DAO
 	public void updateHouse(Map<String, Object> map) throws Exception{
@@ -87,7 +95,6 @@ public class HouseDAO extends AbstractDAO{
 		update("house.deleteFileList", map);
 	}
 
-	
 	
 
 }
