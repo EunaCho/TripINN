@@ -1,31 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 
-
+<!-- 작성자: 이진욱 -->
 <!-- 스타일 적용1 -->
 <style>   
 ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
-
 li{margin-right:50px }
-
-a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
-</style> 
+a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
+</style>
 </head>
 
 <body>
   <br><br>
   
  <!-- 가운데 윗 영역 -->
-    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>Q&A 페이지에 오신걸 환영합니다.</h2>
    </div>
+   
 <div style="width:66%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:220px;">
-<!-- 맨윗줄?? -->
+
 <div class="row" style="padding-left:15px;width:900px; text-align:center;">    
    <h5 class="page-header">QnA 게시판</h5>
 	<table class="board_list">
@@ -51,10 +51,11 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
             <c:forEach var="row" items="${list}" varStatus="status">                
                     <tr>
                         <td>${row.QNA_IDX }</td>
-                        <!--  <td>${row.QNA_TITLE }</td>-->
                         <td class="title">
+                        <!-- a태그를 이용하여 링크 가능하도록 함 -->
                                 <a href="#this" name="title">${row.QNA_TITLE }</a>
-                                <input type="hidden" id="IDX" value="${row.QNA_IDX }">
+                        <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->        
+                                <input type="hidden" id="QNA_IDX" value="${row.QNA_IDX }">
                         </td>
                         <td>${row.QNA_READCOUNT }</td>
                         <td>${row.QNA_REGDATE }</td>
@@ -69,6 +70,7 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
         </c:choose>        
     </tbody>
 </table>
+<br/>
 
 	<!-- 화면에서 페이징으로 바뀔 부분 -->	
 	<c:if test="${not empty paginationInfo}">
@@ -80,7 +82,6 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
     <!-- 현재 페이지 번호를 저장 -->
     <input type="hidden" id="currentPageNo" name="currentPageNo"/>
      
-    <br/>
     <a href="#this" class="btn" id="write">글쓰기</a>
      
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
@@ -92,28 +93,35 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
         $(document).ready(function(){
             $("#write").on("click", function(e){ //글쓰기 버튼
                 e.preventDefault();
-                fn_openBoardWrite();
+                fn_qnaBoardWrite();
             }); 
              
             $("a[name='title']").on("click", function(e){ //제목 
                 e.preventDefault();
-                fn_openBoardDetail($(this));
+            
+              //아래의 함수를 실행, 여기서 $(this)가 jQuery 객체를 뜻하며 게시글 제목인 <a>태그를 의미함.
+                fn_qnaBoardDetail($(this));
             });
         });
          
-         
-        function fn_openBoardWrite(){
+        
+        function fn_qnaBoardWrite(){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/admin/qnaWrite.do' />");
             comSubmit.submit();
         }
          
-        function fn_openBoardDetail(obj){
+  
+        function fn_qnaBoardDetail(obj){
+        	
+        	//ComSubmit 객체를 만든 이유중 하나가 폼에 동적으로 값을 추가하는 기능을 편하게 사용하기 위함이며 addParam 함수가 그 역할을 담당한다.
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/admin/qnaDetail.do' />");
-            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
+            //서버로 전송될 키 값
+             //jQuery를 이용하여 선택된 <a> 태그의 부모 노드 내에서 IDX라는 값을 가진 태그를 찾고 그 태그의 값을 가져오도록 한 것 
+            comSubmit.addParam("QNA_IDX", obj.parent().find("#QNA_IDX").val());
             comSubmit.submit();
-        }
+        } 
         
         //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
         function fn_search(pageNo){
@@ -149,24 +157,13 @@ a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
    </ul>
    
    <!-- 우측 영역 -->
+  <!-- 
    </div>
    <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
    <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
    </div>
+    -->
 </body>
-
-<!-- 스타일 적용2 -->
-<style>	
-ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
-
-li{margin-right:50px }
-
-a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
-</style> 
-</head>
-
-<body>
-  <br><br>
-  
+</html>
  
 

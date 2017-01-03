@@ -2,21 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mypage">
+   
+   <!-- 보낸메시지 리스트 -->
+   <select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
+      select MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX from message where member_idx = #{member_idx}
+      order by msg_idx desc
+   </select>
+   
+   <!-- 받은메시지 리스트-->
+   <select id="selectReceiveMsgList" parameterType="hashmap" resultType="hashmap">
+      select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+      		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
+      where receive_member_email =#{member_email}
+      order by msg_idx desc
+   </select>
+   
+   <!-- 받은 메시지 상세보기 -->
+   <select id="selectReceiveMsgDetail" parameterType="hashmap" resultType="hashmap">
+   		select MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+      		   HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
+     	where receive_member_email =#{member_email} and msg_idx = #{msg_idx}
+      	order by msg_idx desc
+   </select>
+   
+   <!-- 보낸 메시지 상세보기-->
+   <select id="selectSendMsgDetail" parameterType="hashmap" resultType="hashmap">
+      select MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX
+      from message where msg_idx=#{msg_idx}
+   </select>   
+ 
+   
+   <!-- msg_state 값 update -->
+   <update id="updateMsg_state" parameterType="hashmap">
+   		update message set MSG_STATE = '1' where msg_idx = #{msg_idx}
+   </update>
 
-	<select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
-		select MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX from message where member_idx = #{member_idx}
-		order by msg_idx desc
-	</select>
-	
-	<select id="selectReceiveMsgList" parameterType="hashmap" resultType="hashmap">
-		select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
-		HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx where receive_member_email =#{member_email}
-		order by msg_idx desc
-	</select>
-	
-	<select id="selectMsgDetail" parameterType="hashmap" resultType="hashmap">
-		select MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX
-		from message m inner join member m2 on m.member_idx=m2.member_idx where msg_idx=#{msg_idx}
-	</select>
-
+   <!-- 메시지 쓰기 -->
+   <insert id="insertMsgWrite" parameterType="java.util.HashMap" >
+  	 insert into message(msg_idx, receive_member_email, member_idx ,msg_state, msg_type, msg_content, 
+   						send_date, msg_title)
+   				values(msg_idx_seq.nextval,#{RECEIVE_MEMBER_EMAIL}, #{MEMBER_IDX},0,1,#{MSG_CONTENT}, 
+   					   sysdate, #{MSG_TITLE})
+	</insert>
+   <!-- 내가 등록한 숙소  리스트-->
+   <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
+      SELECT h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
+				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,HOUSE_CNT,
+				HI_SPACE, HI_BAD,HI_TOTAL_STAR 
+			from house h inner join house_info hf on h.house_idx=hf.house_idx 
+			where member_idx=#{member_idx}
+			order by h.house_idx desc
+   </select>
+   
+   <!-- 숙소 상세보기  -->
+   <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
+   		select h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
+				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,HOUSE_CNT,
+				HI_SPACE, HI_BAD,HI_TOTAL_STAR
+		 from house h inner join house_info hf on h.HOUSE_IDX = hf.HOUSE_IDX
+		 where h.HOUSE_IDX=#{HOUSE_IDX}	
+		 order by h.house_idx desc	
+   </select>
+   
+   <!-- 해당 숙소에 해당하는 예약 현황 리스트  -->
+   <select id ="selectH_ReserList" parameterType="hashmap" resultType="hashmap">
+   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, MEMBER_IDX, HOUSE_IDX
+   		from HOUSE_RSV 
+   		where HOUSE_IDX = #{HOUSE_IDX}
+   		order by HR_IDX DESC  
+   </select>
+   
+   <!-- 해당 숙소의 메시지  -->
+   <select id="selectH_MsgList" parameterType="hashmap" resultType="hashmap">
+   		select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+      		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
+      	where HOUSE_IDX = #{HOUSE_IDX}
+     	order by msg_idx desc
+   </select>
+   <!-- 내가 등록한 트립 리스트 -->
+   <!-- 트립 상세보기  -->
 </mapper>

@@ -1,7 +1,3 @@
-@CHARSET "EUC-KR";
-
-@charset "utf-8";
-
 @media print {
 	* {
 		font-family:"µ¸¿ò", dotum, san-serif;
@@ -17,12 +13,13 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 
 
 /* main.jsp */
-
+/* »ó´Ü ·Ñ¸µ */
 #rolling { width: 100%; height:400px; float:left; margin-left:-30px; }
 #rolling ul, li {list-style:none}
 #rolling .rolling_wrap { } 	
   
 
+/* ¿ÞÂÊ °£Æí °Ë»ö¹Ù */
 #leftDiv { background-color:#6482B9; min-height:500px; width:300px; float:left; margin:20px 20px 5px;  border-radius: 3px;border:2px solid #9BC3FF;}
 #leftDiv div { text-align:center;}
 #leftDiv div h3 { color:white;}
@@ -33,13 +30,18 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 #leftDiv .select {font-size:13px; color:white; font-family:'³ª´® °íµñ º¼µå','¸¼Àº °íµñ',Malgun Gothic,sans-serif; ; border-radius: 3px;}
 #leftDiv select {border-radius: 3px;}
  
+ 
+/* ¿À¸¥ÂÊ ¹Ì¸®º¸±â ºí·° */ 
 #rightDiv { width:70%; position:relative; float:left;margin:20px 10px 5px; } 
-#rightDiv .subject {text-align:left; position:relative;}
-#rightDiv .subject span a {float:right; text-decoration:none; font-style:bold;}
-#rightDiv .pre_houseList {width:100%; height:200px; border:2px solid #9BC3FF; overflow:hidden;}
-#rightDiv .pre_houseList li {float:left; width:200px; display:inline-block; margin:10px;}
-#rightDiv .pre_houseList li a {text-decoration:none; color:gray;}
-#rightDiv .pre_houseList li a span {display:block; font-size:12px; float:left; }
-#rightDiv .pre_houseList li a span strong{font-size:15px;}
-#rightDiv .pre_houseList li img {with:150px; height:120px; }
+#rightDiv .subject { color:gray; text-align:left; position:relative; margin-top:20px; margin-bottom:10px; font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif;font-weight:800;}
+#rightDiv .subject span a {float:right; text-decoration:none; color:gray; font-style:bold;}
+
+/* ¹Ì¸®º¸±â ºí·° */
+#rightDiv .pre_List {width:100%; height:200px; border:2px solid #9BC3FF; overflow:hidden; margin-bottom:20px;}
+#rightDiv .pre_List li {float:left; width:200px; display:inline-block; margin:10px;}
+#rightDiv .pre_List li a {text-decoration:none; color:gray;}
+#rightDiv .pre_List li a span {display:block; font-size:12px; float:left; white-space:normal;}
+#rightDiv .pre_List li a span strong{font-size:15px;}
+#rightDiv .pre_List li img {with:150px; height:120px; }
+
 

@@ -9,12 +9,27 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
 <script type="text/javascript" src="<%= cp %>/js/scrollnews.js"></script> <!-- 롤링 스클 -->
 
-  <link rel="stylesheet" href="/TripINN/css/main.css" />
+<script src="<%= cp %>/js/main.js"></script>
+<link rel="stylesheet" href="/TripINN/css/main.css" />
 
+
+
+<script>
+
+function preSearch() {
+	if(confirm("확인요?")) {
+		return true;
+	} else {
+	return false;
+	}
+	document.preSearchForm.submit();
+}
+
+</script>
 <!-- 메인 바디 -->
 <div style="width:100%;height:1300px;border:;text-align:center;">
 
-	
+
 	<!-- 슬라이드 롤링 --> 
 
 	<div class="noti" id="rolling">
@@ -29,17 +44,17 @@
 	
 	<!-- 왼쪽 간편검색바 -->
 	<div id="leftDiv">
-	<form>
+	<form method="POST" action="house/houseMain.do" name="preSearchForm">
 		<div> 
 			<h3>숙소 검색하기</h3><br/>
-			<input type="text" class="pre_srch_input" name="preSearch" placeholder="장소, 지역, 숙소명 검색"/>
+			<input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
 		</div>
 		<div style="margin-top:10px;">
 			<div class="date">체크인<br/>
-			<input type="text" name="periodToStay_startDate" id="datepicker_in" placeholder="체크인" class="datepicker"/>
+			<input type="text" name="hri_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
 			</div>
 			<div class="date">체크아웃<br/>
-			<input type="text" name="periodToStay_startDate" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
+			<input type="text" name="hri_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
 			</div>
 		</div>
 		<div class="select">
@@ -69,38 +84,44 @@
 			</select>
 		</div>
 		
-		<a href="" class="pre_srch_submit" >
-		<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a>
-	</form>
+
+	<!-- 	<a href="/TripINN/house/houseMain.do" onclick="preSearch();" class="pre_srch_submit">
+		//<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a> -->
+		
+		<!-- <span class="btn_join" onclick="preSearch();">검색</span> -->
+		<button class="btn_join" type="submit">검색</button>
+	</form>	
 	</div>
 	
 	
 	<!-- 숙소/트립 미리보기 -->
 	<div id="rightDiv">
+	
+		<!-- 하우스 미리보기 블럭 -->
 		<div class="subject">
 			<span>등록된 숙소</span>
 			<span><a href="">전체보기>></a></span>
 		</div>
 
 		<!-- 하우스 미리보기 리스트 출력 -->
-		<div class="pre_houseList">
+		<div class="pre_List">
 		<ul>
 			<c:forEach items="${houseList}" var="houseList" varStatus="stat">
 			
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
-				<c:url var="viewURL" value="/house/houseDetail.do">
+				<c:url var="houseViewURL" value="/house/houseDetail.do">
 					<c:param name="house_idx" value="${houseList.HOUSE_IDX}"/>
 					<c:param name=""/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
 				<li>
-				<a href="viewURL">
+				<a href="${houseViewURL}">
 					<img src="<%= cp %>/images/house/${houseList.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
 					<br/>
 						<span><strong>${houseList.HOUSE_NAME}</strong></span>
 						<span>${houseList.HOUSE_INFO}</span>
-					<br/>
+					<br>
 						<span>${houseList.HRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
 						<span> 후기 ?? 개</span>
 				</a>
@@ -108,7 +129,39 @@
 			</c:forEach>
 			</ul>
 		</div>
-			<!-- 트립 미리보기 리스트 출력 -->
+		
+		<!-- 트립 미리보기 블럭 -->
+		<div class="subject">
+			<span>등록된 트립</span>
+			<span><a href="">전체보기>></a></span>
+		</div>
+		<!-- 트립 미리보기 리스트 출력 -->
+			
+		<div class="pre_List">
+		<ul>
+			<c:forEach items="${tripList}" var="tripList" varStatus="stat">
+			
+				<!-- 트립 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
+				<c:url var="tripViewURL" value="/trip/tripDetail.do">
+					<c:param name="trip_idx" value="${tripList.TRIP_IDX}"/>
+					<c:param name=""/>
+				</c:url>
+				
+				<!-- 미리보기 개체 -->
+				<li>
+				<a href="${tripViewURL}">
+					<img src="<%= cp %>/images/trip/${tripList.TRIP_IMAGE}" class="houseImage" alt="트립 사진"/>
+					<br/>
+						<span><strong>${tripList.TRIP_NAME}</strong></span>
+						<span>${tripList.TRIP_INFO}</span>
+					<br/>
+						<span>${tripList.TRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
+						<span> 후기 ?? 개</span>
+				</a>
+				</li>  
+			</c:forEach>
+			</ul>
+		</div>
 	
 	</div>
 	

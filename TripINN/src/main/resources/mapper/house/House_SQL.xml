@@ -4,6 +4,7 @@
 <mapper namespace="house">
 
 	<!-- house list sql -->
+	
 	<select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
@@ -13,6 +14,45 @@
 			FROM HOUSE 
 			ORDER BY HOUSE_IDX DESC
 		]]>
+	</select>
+	
+	
+	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
+	
+			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX<!-- , HR_FIRST_DATE, HR_LAST_DATE -->
+			FROM HOUSE <!-- H
+						 INNER JOIN HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX  -->
+			<!-- <where>
+			<if test="preSearch_keyword != null">
+				(HOUSE_NAME like '%' || #{preSearch_keyword} || '%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%'
+				or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
+			</if> -->
+			<!-- <if test="hr_first_date != null and hr_last_date != null">
+			<![CDATA[AND ((HR_FIRST_DATE >= #{hr_first_date} and #{hr_last_date} >= HR_LAST_DATE))]]>
+			</if> 
+		</where>-->
+		
+			ORDER BY HOUSE_IDX DESC
+			
+			
+	</select>
+	
+	
+	<!-- House Detail -->
+	<select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
+			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX, 
+					HI_IDX, HI_CLEAN_PRICE, HI_DEPOSIT, HI_GUEST, HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM,
+				   HI_CHECKIN, HI_CHECKOUT, HI_TOTAL_STAR, 
+			FROM HOUSE H 
+						INNER JOIN HOUSE_INFO HI on H.HOUSE_IDX = HI.HOUSE_IDX
+			WHERE HOUSE_IDX = #{house_idx}
+			ORDER BY HOUSE_IDX DESC
 	</select>
 	
 	<!-- house insert sql -->

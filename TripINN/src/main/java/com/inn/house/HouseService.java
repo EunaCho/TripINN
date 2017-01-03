@@ -11,7 +11,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public interface HouseService {
 	//리스트 목록 보기 기능
 	List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception;
-	
+
+	//하우스검색 정렬
+	List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception;
+
 	//삽입 기능
 	void insertHouse(Map<String, Object> map, HttpServletRequest request) throws Exception;
 		
@@ -21,4 +24,7 @@ public interface HouseService {
 	void deleteHouse(Map<String, Object> map) throws Exception;
 	//상세보기 기능
 	Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception;
+	
+	
+
 }

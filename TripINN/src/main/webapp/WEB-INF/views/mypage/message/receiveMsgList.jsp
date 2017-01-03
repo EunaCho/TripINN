@@ -49,16 +49,15 @@
 		border:1px solid black;
 		margin:5px;
 		width:1060px;
-		height:450px;
+		height:100%x;
 		float:left;
 		top:114px; 	
 		left:220px;
 	}
 	.right_div2{
-		border:1px solid black;
-		margin:5px;
-		width:1048px;
-		height:435px;
+		/* border:1px solid black; */
+		margin:3px;
+		height:100%;
 	}
 	.selectBox_div{
 		border:1px solid black;
@@ -73,22 +72,14 @@
 		border-radius:6px;
 		background:#fff;
 	}
-	.right_div3{
-		border:1px solid black;
-		margin:3px;
-		height:370px;
-	}
-	.list_div{
-		/* border:1px solid black; */
-		margin:0px;
-		
-		height:25px;
-	}
+	
+
 	.msg_check{
+
 		border-bottom:1px solid black;
 		border-left:1px solid black;
 		margin:0px;
-		width:50px;
+		width:40px;
 		height:25px;
 		font-size:5px;
 		float:left;
@@ -106,8 +97,9 @@
 	}
 	
 	.msg_menu{
-		border:1px solid black;
-		margin-left:15px;
+		
+		border: 1px solid red;
+		margin:0px;
 		height:25px;
 		font-size:5px;
 		float:left;
@@ -118,18 +110,21 @@
 		margin:0px;
 		width:154px;
 		height:25px;
-		font-size:5px;
+		font-size:10px;
+		padding-left:3px;
 		float:left;
 	}
 	.msg_content{
 		border-bottom:1px solid black;
 		border-left:1px solid black;
 		margin:0px;
-		width:500px;
+		width:460px;
 		height:25px;
-		font-size:5px;
+		font-size:10px;
+		padding-left:3px;
 		float:left;
 	}
+	
 	
 </style>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
@@ -150,7 +145,6 @@
 	</div>
 
 	<div class="right_div1">
-		<div class="right_div2">
 			<div class="selectBox_div">
 				<div style="inline-block;">
 						<select id="selectbox">
@@ -161,28 +155,41 @@
 				</div>
 			</div>
 			
-			<div class="right_div3">
+			<div class="right_div2">
+			
+					<div class="msg_menu">
+						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%;">
+							선택
+						</div>
+						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%;">
+							상태
+						</div>
+
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
+							 보낸사람
+						</div>
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
+							 제목
+						</div>
+						<div class="msg_content" style="background-color: #f7f7f7; background-size:700%;">
+							내용
+						</div>
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid black;">
+							 보낸 날짜
+						</div>
+					</div>
 			<c:forEach var="list" items="${list}" varStatus="stat">
-			<c:url var="viewURL" value="/mypage/messageDetail.do">
+			<c:url var="viewURL" value="/mypage/c">
 				<c:param name="msg_idx" value="${list.MSG_IDX}"/>
 			</c:url>
 			
-				<div class="list_div">
-					<div class="msg_check">
-						<ul list-style="none;">
-							<li>
-								<input type="checkbox" name="" onclick="">
-								<label for="mailcheck_">check</label>
-							</li>
-							<li>
-								<span></span>
-							</li>
-						</ul>
-					</div>
-	
+				
 					<div class="msg_menu">
+						<div class="msg_check">
+							상태
+						</div>
 						<div class="msg_title">
-						 	<a href="${viewURL}" style="text-decoration:none;">${list.RECEIVE_MEMBER_EMAIL}</a>
+						 	<a href="${viewURL}" style="text-decoration:none;">${list.MEMBER_EMAIL}</a>
 						</div>
 						<div class="msg_title">
 						 	<a href="${viewURL}" style="text-decoration:none;">${list.MSG_TITLE}</a>
@@ -190,20 +197,19 @@
 						<div class="msg_content">
 							<a href="${viewURL}" style="text-decoration:none;">${list.MSG_CONTENT}</a>
 						</div>
-						<div class="msg_title">
+						<div class="msg_title" style="border-right:1px solid black;">
 							<%-- <p><fmt:formatDate value="${list.send_date}"pattern="yyyy.MM.dd"></fmt:formatDate></p> --%>
 						</div>
 					</div>
-				</div>
+				
 			</c:forEach>
-			</div><!-- right_div3 End-->
+			</div><!-- right_div2 End-->
 			
 			<%-- <c:if test="${totalCount<1 }">
 				보낸 메시지가 없습니다.
 			</c:if> --%>
 			
-		</div>
-	</div>
-</div>
+			
+		</div><!-- right_div1 -->
+</div><!-- 전체-->
 <div style="clear:both;"></div>
-

@@ -4,15 +4,18 @@ package com.inn.trip;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -39,10 +42,7 @@ public class TripController {
 		for(String inc : inc_list) {
 			trip_include = trip_include + inc + "|";
 		}
-		System.out.println("trip_zipcode : " + commandMap.get("trip_zipcode"));
-		System.out.println("trip_addr1 : " + commandMap.get("trip_addr1"));
-		System.out.println("trip_addr2 : " + commandMap.get("trip_addr2"));
-		System.out.println("trip_addr3 : " + commandMap.get("trip_addr3"));
+		
 		//commandMap.put("member_idx", session.getAttribute("member_idx"));
 		commandMap.put("member_idx", 1);
 		commandMap.put("trip_include", trip_include);
@@ -56,6 +56,16 @@ public class TripController {
 		mv.addObject("trip_area", request.getParameter("trip_area"));
 		mv.addObject("trip_type", request.getParameter("trip_type"));
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripList.do", method=RequestMethod.GET) //트립 리스트
+	public ModelAndView tripList(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("tripList");
+		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
+		
+		mv.addObject("list",list); 
+		mv.addObject("area", commandMap.get("trip_area"));
 		return mv;
 	}
 	
@@ -74,7 +84,44 @@ public class TripController {
 		mv.addObject("ba", ba);
 		
 		System.out.println("lat : " + lat + "// lng : "  + lng + "// ba : " + ba);
-
 		return mv;
 	}
+	
+	
+	//리스트에서 사진정보 ajax로 가져옴
+	@RequestMapping(value="/tripPhotoInfo.do", method=RequestMethod.POST)
+	public ModelAndView tripPhotoInfo(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("/trip/photoInfo");
+		String trip_idx = request.getParameter("trip_idx");
+		
+		String images = tripService.selectImages(trip_idx);
+		System.out.println("images : " + images);
+		
+		String[] imgs = images.split("\\|");
+		mv.addObject("imgs", imgs);
+		return mv; 
+	} 
+	
+	//리스트에서 지역별로 검색
+	@RequestMapping(value="/tripSearchArea.do", method=RequestMethod.POST)
+	public ModelAndView tripSearchArea(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("tripList");
+		commandMap.put("trip_area", request.getParameter("area"));
+		
+		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
+		
+		mv.addObject("list", list);
+		mv.addObject("area", commandMap.get("trip_area"));
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripDetail.do", method=RequestMethod.POST)
+	public ModelAndView tripDetail(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("tripDetail");
+		
+		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap());
+		mv.addObject("trip", map);
+		return mv;
+	}
+	
 }
