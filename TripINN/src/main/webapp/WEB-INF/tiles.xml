@@ -245,6 +245,12 @@
 		<put-attribute name="body" value="insertHouseRegister_Layout"/>
 	</definition>
 	
+	<!-- 하우스 상세보기 -->
+	
+	<definition name="HouseInfoDetail" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/house/houseDetail.jsp"/>
+	</definition>
+	
 	<!-- **********************house_end**********************-->
 
 

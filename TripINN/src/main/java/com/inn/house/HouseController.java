@@ -98,4 +98,16 @@ public class HouseController {
 		return mv;
 	}
 	
+	//하우스 상세정보 보기
+	@RequestMapping(value="/house/houseDetail.do", method=RequestMethod.GET) 
+	public ModelAndView houseDetail(CommandMap commandMap) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("HouseInfoDetail");
+		
+		Map<String, Object> map = houseService.selectHouseDetail(commandMap.getMap()); //하우스 상세정보 꺼내오기
+		mv.addObject("detail", map);//map에 상세정보 넣기
+		
+		return mv; //mv 값 넘기기
+	}
+	
 }

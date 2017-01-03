@@ -14,17 +14,17 @@
 	$( function() {
 		$( "#slider-range" ).slider({
 			range: true,
-			min: 0,
-			max: 500,
-			values: [ 75, 300 ],
+			min: 10000,
+			max: 500000,
+			values: [ 30000, 100000],
 			slide: function( event, ui ) {
-				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#amount" ).val( ui.values[ 0 ] +" 원" + " - " + ui.values[ 1 ]  +"원");
 			}
 		});
-		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - $" + $( "#slider-range" ).slider( "values", 1 ) );
+		$( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) +" 원" +
+			" - " + $( "#slider-range" ).slider( "values", 1 ) +" 원");
 	} );
-	
+
 	
 	$(function () {
 	    $("#datepicker_in_sub").datepicker({
@@ -50,7 +50,7 @@
 	});
 	</script>
 
-	<STYLE> 
+<STYLE> 
 #left { scrollbar-3dlight-color:#FFFFFF;
 scrollbar-arrow-color:#000000;
 scrollbar-track-color:#FFFFFF;
@@ -78,11 +78,11 @@ scrollbar-shadow-color:#FFFFFF}
 		<div><h4>날 짜</h4></div>
 		<div>
 			<label>체크인</label>
-			<input class="checkinout" type="text" name="hri_first_date" id="datepicker_in_sub" value="${search.hri_first_date}" placeholder="체크인" >
+			<input class="checkinout" type="text" name="hr_first_date" id="datepicker_in_sub" value="${search.hr_first_date}" placeholder="체크인" >
 		</div>
 		<div>
 			<label>체크아웃</label>
-			<input class="checkinout" type="text" name="hri_last_date" id="datepicker_out_sub" value="${search.hri_last_date}" placeholder="체크아웃">
+			<input class="checkinout" type="text" name="hr_last_date" id="datepicker_out_sub" value="${search.hr_last_date}" placeholder="체크아웃">
 		</div>
 		<div>
 			<label>인원</label>
@@ -98,9 +98,9 @@ scrollbar-shadow-color:#FFFFFF}
 	</div>
 	<div class="border_category">
 		<div><h4>숙소 유형</h4></div>
-		<div>집 전체<input class="checkinout" type="checkbox" name="" id=""></div>
-		<div>개인실<input class="checkinout" type="checkbox" name="" id=""></div>
-		<div>다인실<input class="checkinout" type="checkbox" name="" id=""></div>
+		<div class="h_category">집 전체<input type="checkbox" name="" id="" style="color:"></div>
+		<div class="h_category" >개인실<input type="checkbox" name="" id=""></div>
+		<div class="h_category" >다인실<input type="checkbox" name="" id=""></div>
 	</div>
 	
 	
@@ -115,16 +115,14 @@ scrollbar-shadow-color:#FFFFFF}
 				<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 15%;"></span>
 				<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 60%;"></span>
 			</div>
+
 		</div>
 	</div>
 	
-	<button class="button" type="button">검색하기</button>
+	<button class="button" type="submit">검색</button>
 	</form>
-	
-			${preSearch}
-					${searchKeyword}
-					${HOUSE_CHECKIN}
-					${HOUSE_CHECKOUT}		
+	 
+
 	<!-- 하우스 미리보기 블럭 -->
 	<div id="house_div">
 		<!-- 하우스 미리보기 리스트 출력 -->
