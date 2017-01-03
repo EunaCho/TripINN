@@ -197,7 +197,7 @@
 	
 	<!-- list 정의 -->
 	<definition name="houseList_layout" extends="house_form">
-		<put-attribute name="house_body" value="/WEB-INF/views/house/houseMain.jsp"/>
+		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
 	</definition>
 	
 	<!-- main -->
@@ -252,9 +252,10 @@
 	
 	
 	<!-- 하우스 상세보기 -->
-	
-	<definition name="HouseInfoDetail" extends="main">
+	<definition name="HouseInfoDetail" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/house/houseDetail.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
 	<!-- **********************house_end**********************-->
