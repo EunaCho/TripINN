@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+.container{
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	font-family: "나눔 고딕", "Nanum Gothic", "맑은 고딕", "Malgun Gothic",
+		"Apple Gothic", "돋움", Dotum, "Helvetica Neue", Helvetica, Arial,
+		sans-serif !important;
+}
+
+.header{
+	width:100%;
+	height:100%;
+}
+
+.body{
+	margin: 10px;
+	width:100%;
+	height: 100%;
+}
+
+.bottom{
+	width:100%;
+	height:100%;
+	margin: 70px 0 70px auto;
+}
+
+.bar_container{
+	width: 100%;
+    height: 20px;
+    display: inline-block;
+    margin: 0 0 15px;
+}
+.header .label{
+	text-align: left;
+	font-weight: bold;
+	color: #bbb;
+	font-size: 24px;
+	display: inherit;
+	margin-top:10px;
+}
+.progressBar{
+	width: 100%;
+	height: 20px;
+	-webkit-appearance: none;
+    appearance: none;
+}
+.progressBar[value]::-webkit-progress-bar{
+	background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25) inset;
+}
+.progressBar[value]::-webkit-progress-value{
+	background-color: #ff5a5f;
+	border-radius: 2px;
+}
+
+.btn_container{
+	width:100%;
+	height: 100%;
+	margin-top:45px;
+	letter-spacing: 50px;
+}
+.btn_container input[type="button"]{
+	width: 280px;
+    height: 125px;
+    font-size: 50px;
+    font-weight: bold;
+    border-radius: 60px;
+    border: 4px solid black;
+    letter-spacing: 5px;
+    outline: none !important;
+}
+
+.btn_container input[type="button"]:HOVER{
+    border: 2px solid white;
+    background-color:#ff5a5f;
+    color:white;
+    outline: none !important;
+}
+
+.label_subject{
+	letter-spacing: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* 수정 */
+.bottom_info_container{
+	border: 1px solid black;
+}
+
+.bottom_info_container div{
+	border: 1px solid black;
+}
+
+.left{
+	float: left;
+    width: 50%;
+    height: 100%;
+}
+.right{
+	float: left;
+    width: 50%;
+    height: 100%;
+}
+.label_right_1{
+	font-size: 22px;
+    font-weight: bold;
+}
+.label_right_2{
+	width: 140px;
+	float:left;
+	font-size: 16px;
+    text-align: center;
+}
+.label_check{
+	font-size:12px;
+}
+.label_guest{
+	font-size: 15px;
+}

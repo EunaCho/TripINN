@@ -4,6 +4,7 @@
 <mapper namespace="house">
 
 	<!-- house list sql -->
+	
 	<select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
@@ -15,18 +16,93 @@
 		]]>
 	</select>
 	
+	
+	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
+	
+			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX<!-- , HR_FIRST_DATE, HR_LAST_DATE -->
+			FROM HOUSE <!-- H
+						 INNER JOIN HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX  -->
+			<!-- <where>
+			<if test="preSearch_keyword != null">
+				(HOUSE_NAME like '%' || #{preSearch_keyword} || '%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%'
+				or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
+			</if> -->
+			<!-- <if test="hr_first_date != null and hr_last_date != null">
+			<![CDATA[AND ((HR_FIRST_DATE >= #{hr_first_date} and #{hr_last_date} >= HR_LAST_DATE))]]>
+			</if> 
+		</where>-->
+		
+			ORDER BY HOUSE_IDX DESC
+			
+			
+	</select>
+	
+	
+	<!-- House Detail -->
+	<select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
+			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX, 
+					HI_IDX, HI_CLEAN_PRICE, HI_DEPOSIT, HI_GUEST, HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM,
+				   HI_CHECKIN, HI_CHECKOUT, HI_TOTAL_STAR, 
+			FROM HOUSE H 
+						INNER JOIN HOUSE_INFO HI on H.HOUSE_IDX = HI.HOUSE_IDX
+			WHERE HOUSE_IDX = #{house_idx}
+			ORDER BY HOUSE_IDX DESC
+	</select>
+	
 	<!-- house insert sql -->
 	<insert id="insertHouse" parameterType="hashmap" useGeneratedKeys="true" keyProperty="HOUSE_IDX">
-		<selectKey keyProperty="IDX" resultType="string" order="BEFORE">
+		<selectKey keyProperty="HOUSE_IDX" resultType="string" order="BEFORE">
 			SELECT HOUSE_IDX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 	<!-- HOUSE_IDX_SEQ.NEXTVAL -->
 	<![CDATA[
 		INSERT INTO HOUSE(
-			HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_TOTAL_PERSONS, HOUSE_PRICE, HOUSE_PERSON_PRICE
+			HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_KIND, 
+			HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, 
+			HOUSE_TOTAL_PERSONS, HOUSE_PERSON_PRICE, 
+			HOUSE_PRICE, HOUSE_IMAGE
 	    )VALUES(
-			#{IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_TOTAL_PERSONS}, #{HOUSE_PRICE}, #{HOUSE_PERSON_PRICE}
+			#{HOUSE_IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_KIND}, 
+			#{HOUSE_ZIPCODE}, #{HOUSE_ADDR1}, #{HOUSE_ADDR2}, #{HOUSE_ADDR3},
+			#{HOUSE_TOTAL_PERSONS}, #{HOUSE_PERSON_PRICE}, 
+			#{HOUSE_PRICE}, #{HOUSE_IMAGE}
 		)
 	]]>
+	</insert>
+	<!-- 
+	UPDATE HOUSE_INFO SET HI_CHECKOUT = SYSDATE
+WHERE HI_IDX = 240
+ALTER TABLE HOUSE_INFO
+MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
+	 -->
+	<!-- houseInfo insert sql -->
+	<insert id="insertHouseInfo" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO HOUSE_INFO(
+				HI_IDX, HOUSE_IDX, HI_SALE, HI_DEPOSIT, HI_GUEST, 
+				HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE
+				HI_CHECKIN, HI_CHECKOUT
+			)VALUES(
+				HI_IDX_SEQ.NEXTVAL, #{HOUSE_IDX}, #{HI_SALE}, #{HI_DEPOSIT}, 
+				#{HI_GUEST}, #{HI_SPACE}, #{HI_CSPACE}, #{HI_BAD}, #{HI_ROOM}, #{HI_CLEAN_PRICE},
+				#{HI_CHECKIN}, #{HI_CHECKOUT}
+				)		
+		]]>
+	</insert>
+	
+	<insert id="insertHouseImg" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO HOUSE(
+			HOUSE_IMAGE
+			)VALUES(
+			#{HOUSE_IMAGE}
+			)
+		]]>
 	</insert>
 </mapper>

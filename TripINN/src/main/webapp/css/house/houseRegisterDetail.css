@@ -45,7 +45,7 @@ body {
 }
 
 .hrLabel1 {
-	margin-bottom: 16px;
+	margin: 10px 0 10px;
 	text-align: left;
 	font-size: 19px;
 	font-weight: bold;
@@ -54,7 +54,7 @@ body {
 .hrData {
 	width: 100%;
 	height: 100%;
-	margin: 0 50px 0;
+	margin: 0 25px 0;
 }
 
 .hrLabelName {
@@ -62,6 +62,7 @@ body {
 	font-size: 38px;
 	font-weight: bold;
 	line-height: 1.1;
+	margin-top: 70px;
 	color: #484848;
 }
 
@@ -80,11 +81,22 @@ body {
 	outline: none !important;
 }
 
+.hrTextArea {
+	display: inline-block;
+	text-align: left;
+	border-radius: 8px;
+	border: 1px solid #acacac;
+	width: 250px;
+	height: 180px;
+	padding: 0 0 0 25px;
+	outline: none !important;
+}
+
 .hrDiv {
 	text-align: left;
 	width: 100%;
 	height: 100%;
-	margin: 40px;
+	margin: 40px 0;
 }
 
 .hrDiv2 {
@@ -109,7 +121,7 @@ body {
 .hrAddrRight {
 	width: 50%;
 	float: left;
-	background-color: orange;
+	/* background-color: orange; */
 }
 
 .hrAddrBtn {
@@ -130,7 +142,7 @@ body {
 .hrPersonsBtn {
 	border: 1px solid #ededed;
 	border-radius: 10px;
-	width: 50px;
+	width: 100%;
 	height: 50px;
 	background: white;
 	font-size: 23px;
@@ -150,6 +162,12 @@ body {
 	outline: none !important;
 }
 
+.hrBtn-default:HOVER {
+	border: 1px solid #ededed;
+	background-color: #ff5a5f;
+	color: white;
+}
+
 .hr-footer-btn {
 	width: 300px;
 	height: 100%;
@@ -163,22 +181,23 @@ body {
 	width: 100%;
 	height: 100%;
 	border: 1px solid #c6c6c6;
-	padding: 10px;
+	padding: 28px;
 	border-radius: 20px;
 	display: inline-block;
 }
-
+/* 
 .hrLabelImg {
-	font-size: 24px;
-	float: left;
+	font-size: 13px;
+    float: left;
+    margin: 7px;
 }
 
 .hrBtnImg {
 	width: 40px;
 	height: 40px;
-}
+} */
 
-.hrDiv_file .hrLabel_file {
+/* .hrDiv_file .hrLabel_file {
 	display: inline-block;
 	padding: .5em .75em;
 	color: #474747;
@@ -190,8 +209,8 @@ body {
 	border: 1px solid #ebebeb;
 	border-bottom-color: #e2e2e2;
 }
-
-.hrDiv_file input[type="file"] {
+ */
+/* .hrDiv_file input[type="file"] {
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -216,4 +235,127 @@ body {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+}
+ */
+.hrBar {
+	width: 100%;
+	height: 20px;
+	display: inline-block;
+	margin: 0 0 15px;
+}
+
+.hrBar_container {
+	width: 100%;
+	height: 20px;
+	margin: 0 auto;
+}
+
+.progressBar {
+	width: 100%;
+	height: 20px;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.progressBar[value]::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+.progressBar[value]::-webkit-progress-value {
+	/* background-image: 
+	-webkit-linear-gradient(-45deg, transparent 33%, rgba(0,0,0,.1) 33%,
+	rgba(0,0,0,.1) 66%, transparent 66%),
+	-webkit-linear-gradient(top, rgba(255,255,255,.25), rgba(0,0,0,.25)),
+	-webkit-linear-gradient(left,#09c, #f44); */
+	background-color: #ff5a5f;
+	border-radius: 2px;
+}
+
+.hrDivAddr {
+	width: 382px;
+}
+
+.hrText_Addr {
+	width: 155px;
+	height: 30px;
+}
+
+.hrText_Addr2 {
+	width: 384px;
+	height: 32px;
+}
+
+.houseMap {
+	width: 443px;
+	height: 266px;
+	border: 0px solid;
+	border-radius: 11px;
+}
+
+.hr_left {
+	float: left;
+	width: 50%;
+	/* background: red; */
+}
+
+.hr_right {
+	float: left;
+	width: 50%;
+	/* background-color: orange; */
+}
+
+.house_img {
+	width: 100%;
+	height: 100%;
+}
+
+/* img */
+.house_img_left{
+	width:50%;
+	height:100%;
+	float: left;
+}
+
+.house_img_left label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+  margin: 20px;
+}
+
+.house_img_left input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+input[type="checkbox"]{
+	width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-family: "나눔 고딕","Nanum Gothic","맑은 고딕","Malgun Gothic","Apple Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+.hrData .selectFont{
+	font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 20px;
+    font-family: "나눔 고딕","Nanum Gothic","맑은 고딕","Malgun Gothic","Apple Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	
 }
