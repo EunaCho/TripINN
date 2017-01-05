@@ -140,7 +140,6 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
         	//ComSubmit 객체를 만든 이유중 하나가 폼에 동적으로 값을 추가하는 기능을 편하게 사용하기 위함이며 addParam 함수가 그 역할을 담당한다.
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/admin/qnaDetail.do' />");
-            
             //서버로 전송될 키 값
              //jQuery를 이용하여 선택된 <a> 태그의 부모 노드 내에서 IDX라는 값을 가진 태그를 찾고 그 태그의 값을 가져오도록 한 것 
             comSubmit.addParam("QNA_IDX", obj.parent().find("#QNA_IDX").val());

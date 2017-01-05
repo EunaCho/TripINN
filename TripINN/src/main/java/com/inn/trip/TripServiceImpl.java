@@ -31,4 +31,14 @@ public class TripServiceImpl implements TripService {
 		return tripDAO.selectTripList(map);
 	}
 
+	@Override
+	public String selectImages(String trip_idx) throws Exception {
+		return tripDAO.selectImages(trip_idx);
+	}
+
+	@Override
+	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
+		return tripDAO.selectTripDetail(map);
+	}
+
 }

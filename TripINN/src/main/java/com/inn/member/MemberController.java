@@ -40,6 +40,7 @@ public class MemberController {
 		//Validate Binding ??
 		//new MemberValidator().validate(member, result);
 		//memberService로 넘어가서 memberJoin 메서드 실행
+		System.out.println("맵");
 		System.out.println(commandMap.getMap());
 		memberService.memberJoin(commandMap.getMap());
 		//회원가입 완료 후 메인페이지로 돌아감

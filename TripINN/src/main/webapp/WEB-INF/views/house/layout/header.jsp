@@ -4,31 +4,26 @@
 <head>
 
 <title>header</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
-<script src="/house/common.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="/TripINN/css/house/houseMain.css">
 
 
 </head>
 <body>
 <div id="header_container">
-	<form id="house_searchForm">
-
+	<form id="house_searchForm" method="POST" action="/TripINN/house/houseMain.do">
+ 
 	<div>
 		<label>위치</label>
-		<input class="location" type="text" placeholder="목적지, 도시명, 주소">
+		<input class="location" type="text" name="preSearch_keyword" placeholder="목적지, 도시명, 주소" value="${search.preSearch_keyword}">
 	</div>
 	<div>
 		<div>
 		<label>체크인</label>
-		<input class="checkinout" type="text" name="periodToStay_startDate" id="datepicker_in" placeholder="체크인" >
+		<input class="checkinout" type="text" name="hri_first_date" id="datepicker_in" value="${search.hri_first_date}" placeholder="체크인" >
 		</div>
 		<div><img src="/TripINN/images/arrow.png"  style="width:30px;"></div>
 		<div>
 		<label>체크아웃</label>
-		<input class="checkinout" type="text" name="periodToStay_startDate" id="datepicker_out" placeholder="체크아웃">
+		<input class="checkinout" type="text" name="hri_last_date" id="datepicker_out" value="${search.hri_last_date}" placeholder="체크아웃">
 		</div>
 	</div>
 
@@ -53,11 +48,8 @@
 			</div>
 		</div> -->
 	</div>
-	
-	<a href="/TripINN/house/searchHouse.do">
-		<img id="searchBtn" src="/TripINN/images/searchBtn.png">
-	</a>
-
+	<!-- <button type="submit"> <img src="/TripINN/images/searchBtn.png"><!-- </button> -->
+		<input type="image" id="searchBtn" src="/TripINN/images/searchBtn.png">
 	</form>
 
 <div style="clear:both"></div>

@@ -39,11 +39,24 @@ public class HouseDAO extends AbstractDAO{
 	public List<Map<String,Object>> selectHouseList(Map<String,Object> map){
 		return (List<Map<String,Object>>)selectList("house.selectHouseList",map);
 	}
+	//숙소 검색시 리스트
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> searchHouseList(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("house.searchHouseList",map);
+	}
 	
 	//insert DAO
+	//등록 페이지 1
 	public void insertHouse(Map<String, Object> map) throws Exception{
-		insert("house.insertHouse", map); // sql namespace
+		System.out.println(map.get("HOUSE_ADDR1")+"************************** 다오");
+		insert("house.insertHouse", map);
 	}
+	//등록 페이지 2
+	public void insertHouseInfo(Map<String, Object> map) throws Exception{
+		insert("house.insertHouseInfo", map);
+	}
+	
+	
 	
 	//update DAO
 	public void updateHouse(Map<String, Object> map) throws Exception{
@@ -86,8 +99,5 @@ public class HouseDAO extends AbstractDAO{
 	public void deleteFileList(Map<String, Object> map) throws Exception{
 		update("house.deleteFileList", map);
 	}
-
-	
-	
 
 }

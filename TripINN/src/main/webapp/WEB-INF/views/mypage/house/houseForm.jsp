@@ -29,7 +29,7 @@
 		border:1px solid black;
 		margin:5px;
 		width:900px;
-		height:450px;
+		height:100%;
 		
 		float:left;
 		top:114px;
@@ -38,7 +38,7 @@
 	.house_div{
 		border:1px solid black;
 		margin:2px;
-		width:150px;
+		width:98%;
 		height:25px;
 		border-radius:4px;
 		background-color:#31b0d5;
@@ -113,7 +113,12 @@
 	
 	
 </style>
-
+<script>
+function houseDetail(idx) {
+	document.detailForm.HOUSE_IDX.value = idx;
+	document.detailForm.submit();
+}
+</script>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
@@ -133,6 +138,8 @@
 			</div>
 		<c:choose>
 		<c:when test="${fn:length(list) >0}">
+			<form method="post" action="<%=cp %>/mypage/houseDetail.do" name="detailForm">
+				<input type="hidden" name="HOUSE_IDX" value=""/>
 			<c:forEach var="list" items="${list}" varStatus="status">
 				<div class="house_menu_div">
 					<div class="menu_div">
@@ -145,14 +152,18 @@
 					</div>
 					
 					<div class="menu_div2">
-						<div class="name_div">
-							<font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size=150px; font-style:'바탕체'">
+						<div class="name_div" onclick="houseDetail('${list.HOUSE_IDX}')">
+							<font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
+							<br>
 							${status.index+1}.
-							${list.HOUSE_NAME}
 							</font>
+							<a href="javascript:houseDetail(${list.HOUSE_IDX});"  style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
+								${list.HOUSE_NAME}
+							</a>
 						</div>
+						
 						<div class="position_div">
-							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size=12px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>
+							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:12px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>
 							<br>
 							${list.HI_TOTAL_STAR} (별점)| 후기개수 
 						</div>
@@ -178,6 +189,7 @@
 				
 			
 			</c:forEach>
+			</form>
 		</c:when>
 		<c:otherwise>
 				<div class="h_list_div">

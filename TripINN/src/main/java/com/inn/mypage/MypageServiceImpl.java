@@ -23,25 +23,32 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectSendMsgList(map);
 	}
-	
 	//받은메시지 리스트 
 	@Override
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
+
+	//보낸 메시지 상세보기 
+	@Override
+	public Map<String, Object> selectSendMsgDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectSendMsgDetail(map);
+	}
+	//받은메시지 상세보기 
 
 	@Override
-	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, Object> selectReceiveMsgDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectReceiveMsgDetail(map);
 	}
-=======
-	
-	//메시지 상세보기 
+	//msg_date update
 	@Override
-	public Map<String, Object> selectMsgDetail(Map<String, Object> map) throws Exception{
-		return mypageDAO.selectMsgDetail(map);
+	public void updateMsg_state(Map<String, Object> map) throws Exception{
+		mypageDAO.updateMsg_state(map);
+	}
+	//메시지 쓰기
+	@Override
+	public void insertMsgWrite(Map<String, Object> map) throws Exception{
+		mypageDAO.insertMsgWrite(map);
 	}
 	
 	//-------숙소목록------//
@@ -49,19 +56,30 @@ public class MypageServiceImpl implements MypageService{
 	//숙소목록 리스트
 	@Override
 	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception{
-		
 		return mypageDAO.selectHouseList(map);
 	}
 
 	//숙소 상세보기 
 	@Override
-	public Map<String, Object> selectHousetDetail(Map<String, Object> map) throws Exception{
-		
-		return mypageDAO.selectHousetDetail(map);
+	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectHouseDetail(map);
+	}
+	//해당 숙소 예약 현황 리스트
+	@Override
+	public List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectH_ReserList(map);
+	}
+	//해당 숙소 메시지 리스트
+	@Override
+	public List<Map<String, Object>> selectH_MsgList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectH_MsgList(map);
 	}
 	
 	
 	//-------트립목록 ------//
+
 	//-------프로필------//
->>>>>>> 98d0ea3 hjhj
+
+	//-------프로필------//
+
 }
