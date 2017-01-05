@@ -225,10 +225,13 @@
 			REPORT_IDX,
 			REPORT_TITLE,
 			REPORT_CONTENT,
-			REPORT_REGDATE
+			REPORT_REGDATE,
+			REPORT_TYPE
 
           FROM
             REPORT_BOARD
+            
+            WHERE REPORT_TYPE=1
             
           ORDER BY REPORT_IDX DESC
 	
@@ -245,5 +248,53 @@
 
 
 </delete>
+
+<!-- Trip List -->
+<select id="selectTripList" parameterType="hashmap" resultType="hashmap">
+		
+			SELECT
+			TRIP_IDX,
+			TRIP_IMAGE,
+			TRIP_AREA,
+			TRIP_FIRST_DATE,
+			TRIP_LAST_DATE,
+			TRIP_LANGUAGE,
+			TRIP_NAME,
+			TRIP_INTRO,
+			TRIP_INCLUDE,
+			TRIP_ZIPCODE,
+			TRIP_ADDR1,
+			TRIP_ADDR2,
+			TRIP_ADDR3,
+			TRIP_PERSONS,
+			TRIP_TPRICE,
+			TRIP_PPRICE
+			
+          FROM
+            TRIP
+            
+          ORDER BY HOUSE_IDX DESC
+	
+	</select>
+	
+	<select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
+		
+			SELECT
+			REPORT_IDX,
+			REPORT_TITLE,
+			REPORT_CONTENT,
+			REPORT_REGDATE,
+			REPORT_TYPE
+
+          FROM
+            REPORT_BOARD
+            
+            WHERE REPORT_TYPE=2
+            
+          ORDER BY REPORT_IDX DESC
+	
+	</select>
+
+
     
 </mapper>
