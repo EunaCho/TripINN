@@ -143,32 +143,32 @@
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div style="text-align:right">
-     <h4>신고된 숙소의 번호를 누르시면 숙소가 삭제 됩니다.</h4>
+     <h4>신고된 투어의 번호를 누르시면 투어가 삭제 됩니다.</h4>
   </div>
    <div class="report_list">
    신고 목록
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
-   <c:forEach var="house" items="${list}">
+   <c:forEach var="adminTrip" items="${list}">
     <div class="list1">
      <div class="picture">
-    <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
+    <img class="picture1" src="<%=cp%>/images/trip/${adminTrip.REPORT_IMAGE}">
       </div>
       <div class="house_idx">
-     번호: <a href="javascript:formSubmit('${house.REPORT_IDX}');">${house.REPORT_IDX }</a>
+     번호: <a href="javascript:formSubmit('${adminTrip.REPORT_IDX}');">${adminTrip.REPORT_IDX }</a>
       </div>
        <div class="house_info">
-      제목: ${house.REPORT_TITLE}
+      제목: ${adminTrip.REPORT_TITLE}
       </div>
       <div class="house_name">
-      내용: ${house.REPORT_CONTENT}
+      내용: ${adminTrip.REPORT_CONTENT}
       </div>
       <div class="house_price">
-      작성일자: ${house.REPORT_REGDATE}
+      작성일자: ${adminTrip.REPORT_REGDATE}
       </div>
        <div class="house_type">
-      신고유형: ${house.REPORT_TYPE}
+      신고유형: ${adminTrip.REPORT_TYPE}
       </div>
       
     </div>

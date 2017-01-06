@@ -80,8 +80,21 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/house/list.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+	<!-- 트립 관리 리스트 페이지 -->
+	<definition name="adminTripList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/trip/list.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	<!-- 트립신고 리스트 페이지 -->
+	<definition name="adminTripReportList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/trip/reportList.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
 	
 	
+	<!--  ==========================================================================================-->
 	
 	<!-- 마이페이지  -->
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
@@ -277,6 +290,18 @@
 	<definition name="tripList" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/trip/tripList.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="tripDetail" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/trip/tripDetail.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	<definition name="tripReserveForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/trip/tripReserve.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 
-<head>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
@@ -14,19 +13,22 @@ ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding
 li{margin-right:50px }
 a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
 </style>
-</head>
 
-<body>
+
+
   <br><br>
   
  <!-- 가운데 윗 영역 -->
 <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>Q&A 페이지에 오신걸 환영합니다.</h2>
    </div>
-   
-<div style="width:66%;height:381px;border:1px solid black;text-align:center; position:absolute;top:200px;left:220px;">
 
-<div class="row" style="padding-left:15px;width:900px; text-align:center;">    
+
+<!-- 가운데 영역 , height 380 , 포지션 left: 230 대체할수 있는 퍼센트-->   
+<div style="width:66%;height:100%;border:1px solid black;text-align:center; position:absolute;top:210px;left:230px;">
+
+<!-- 900 -->
+<div class="row" style="padding-left:15px;width:95%; text-align:center;">    
    <h5 class="page-header">QnA 게시판</h5>
 	<table class="board_list">
 	<!--<table style="border:1px solid #ccc">-->
@@ -54,7 +56,7 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
                         <td class="title">
                         <!-- a태그를 이용하여 링크 가능하도록 함 -->
                                 <a href="#this" name="title">${row.QNA_TITLE }</a>
-                        <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->        
+                        <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->
                                 <input type="hidden" id="QNA_IDX" value="${row.QNA_IDX }">
                         </td>
                         <td>${row.QNA_READCOUNT }</td>
@@ -72,17 +74,38 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
 </table>
 <br/>
 
-	<!-- 화면에서 페이징으로 바뀔 부분 -->	
-	<c:if test="${not empty paginationInfo}">
-	<!-- paginationInfo= 페이징 태그를 만들기 위해서 필요한 정보, AbstractDAO에서 반환한게 여기서 사용됨 -->
-	<!-- jsFunction = 페이징 태그를 클릭했을 때 수행할 함수 ,즉 fn_search 라는 함수를 호출 -->
-        <ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
-    </c:if>
     
     <!-- 현재 페이지 번호를 저장 -->
     <input type="hidden" id="currentPageNo" name="currentPageNo"/>
      
     <a href="#this" class="btn" id="write">글쓰기</a>
+    
+    <div class="paging">
+       ${pagingHtml}
+    </div>
+    
+
+    <!-- 검색 기능 -->
+	    <!-- 검색파트 영역1 -->
+      <div class="row">
+      	 <!-- 검색파트 영역2 -->
+         <div style="text-align: center;">
+         	<!-- 검색파트 영역3 -->
+            <div id="dataTables-example_filter" class="dataTables_filter">
+ 								  <form  action="">
+                                 <select class="searchOption btn btn-default " name="searchNum" id="searchNum">
+                                    <option value="0">제목</option>
+                                    <option value="1">내용</option>
+                                    <!--  <option value="2">작성자</option>-->
+                                 </select><input  type="text" name="isSearch" id="isSearch" style="margin-left:15px;width:200px;height:36px;border-radius :5px 5px 5px 5px;"/>            
+                                 <span class="btn btnC_03 btnP_04 mr10">
+                                    <input type="submit" value="검색"  style="font-size: 14px; padding-bottom: 20; vertical-align: middle;height:36px;"/>
+                                    </span>
+                              </form>
+               </div><!-- 검색파트 영역3 끝 -->
+               </div><!-- 검색파트 영역2 끝 -->  
+               </div><!-- 검색파트 영역1 끝 -->
+    
      
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
     
@@ -163,7 +186,6 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
    <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
    </div>
     -->
-</body>
-</html>
+
  
 

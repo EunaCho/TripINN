@@ -4,16 +4,20 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.common.common.CommandMap;
 import com.inn.admin.AdminQnaService;
+import com.inn.admin.AdminPaging;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+//import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  
 @Controller
 public class AdminQnaController {
@@ -21,23 +25,112 @@ public class AdminQnaController {
      
     @Resource(name="adminQnaService")
     private AdminQnaService adminQnaService;
+    //페이징 구현을 위해 추가한 변수들
+	private int searchNum;			//검색유형  1.제목  2.내용 3.작성자 
+	//private String replyNum;  		//답변번호??
+	private String isSearch; 
+
+	private int currentPage = 1; 	//처음 표시되는 페이지 
+	private int totalCount;			//총 글 갯수
+	private int blockCount = 10;	//1페이지당 글 몇개 할건지 정하는 변수
+	private int blockPage = 5;  	//한 화면에 페이지번호 몇개까지 띄울 것인지 정하는 변수
+
+	private String pagingHtml;  
+	private AdminPaging page;  
+
+	
+	//private int comment_count; 		//코멘트 개수
+	//private int commupdate1;  	 	//코멘트 조회수?
+	//private String commenter;  		//코멘트작성자
+
+	
+	/*
+	@ModelAttribute("qnaModel") 
+	public QnAModel formBack() {
+		return new QnAModel(); 		// 객체 생성후 반환
+	}*/
+	
+	
     
     //리스트
     @RequestMapping(value="/admin/qnaList.do")
-    public ModelAndView adminQnaList(CommandMap commandMap) throws Exception{
+    public ModelAndView adminQnaList(HttpServletRequest request, CommandMap commandMap) throws Exception{
         ModelAndView mv = new ModelAndView("qnaList");
+
+        if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
+				|| request.getParameter("currentPage").equals("0")) {
+			currentPage = 1;
+		} else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
         
         
-     
-        //반환시킨 맵을 리절트맵에 담음
-        Map<String,Object> resultMap = adminQnaService.qnaBoardList(commandMap.getMap());
+        List<Map<String,Object>> list;
+        list = adminQnaService.qnaBoardList(commandMap.getMap());
         
-        //paginationInfo와 result를 mv에 담아줌
-        mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
-        mv.addObject("list", resultMap.get("result"));
-          
+        
+        /* 게시판 검색 */
+		String isSearch = request.getParameter("isSearch");  //jsp로부터 값을 받아와서
+		System.out.println(isSearch);
+		
+		commandMap.put("isSearch", isSearch);				//isSearch값을 맵에 집어넣는다.
+
+		if (isSearch != null) {
+			
+			isSearch = new String(isSearch.getBytes("8859_1"), "UTF-8");
+			searchNum = Integer.parseInt(request.getParameter("searchNum"));
+			
+			commandMap.put("searchNum", searchNum);		//searchNum값을 맵에 집어넣는다.
+
+			System.out.println(commandMap.getMap()); //{isSearch == null}
+			
+			if (searchNum == 0) {
+				list = adminQnaService.search0(commandMap.getMap());//제목
+			} else if (searchNum == 1) {
+				list = adminQnaService.search1(commandMap.getMap());//내용
+			} 
+			/*else if (searchNum == 2) {
+				list = adminQnaService.search2(isSearch);	
+			}*/
+		}
+		
+		totalCount = list.size();
+		page = new AdminPaging(currentPage, totalCount, blockCount, blockPage, searchNum, isSearch);
+		pagingHtml = page.getPagingHtml().toString();
+
+		int lastCount = totalCount;
+
+		if (page.getEndCount() < totalCount) {
+			lastCount = page.getEndCount() + 1;
+		}
+		
+		System.out.println(commandMap.getMap()); //{isSearch == null}
+		
+		list = list.subList(page.getStartCount(), lastCount);
+		
+		System.out.println(commandMap.getMap()); //{isSearch == null}
+		
+		//mv.addObject("Map<String,Object>", commandMap);
+		//mv.setViewName("qnaDetail");
+		
+		
+		mv.addObject("isSearch", isSearch);
+		mv.addObject("searchNum", searchNum);
+		mv.addObject("totalCount", totalCount);
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.addObject("currentPage", currentPage);
+		mv.addObject("list", list);
+		mv.setViewName("qnaList");  
+		
+		System.out.println(commandMap.getMap());
         return mv;
-    }   
+    }
+		
+    
+    
+    //mv.addObject("list", list);
+
+    
     //글쓰기 폼
     @RequestMapping(value="/admin/qnaWrite.do")
     public ModelAndView adminQnaWrite(CommandMap commandMap) throws Exception{
@@ -58,15 +151,59 @@ public class AdminQnaController {
     
     
     //상세보기
+    //1. 모델 대신 맵으로
+    //2. 댓글리스트는 리스트로
     @RequestMapping(value="/admin/qnaDetail.do")
     public ModelAndView adminQnaDetail(CommandMap commandMap) throws Exception{
-        ModelAndView mv = new ModelAndView("qnaDetail");
-             
+        ModelAndView mv = new ModelAndView("qnaDetail");        
+        
+        System.out.println(7);
+    	System.out.println(commandMap.getMap());
         Map<String,Object> map = adminQnaService.adminQnaSelectDetail(commandMap.getMap());
-        mv.addObject("map", map);
-             
+
+        List<Map<String,Object>> list = adminQnaService.qnaCommList(commandMap.getMap());
+        
+        System.out.println(12);
+    	System.out.println(list);
+        
+        mv.addObject("map", map);     //맵을 모델앤뷰 객체에 담음
+        mv.addObject("commList", list);	  //리스트(댓글)를 모델앤뷰 객체에 담음
         return mv;
-    }
+    }	
+    //redirect:/admin/qnaDetail.do
+    //mav.setViewName("redirect:/QnA/QnAView.dog?no=" + no);
+    
+    
+    
+    
+    	//댓글쓰기
+    	@RequestMapping(value="/admin/qnaCommWrite.do" , method = RequestMethod.POST)
+    	public ModelAndView qnaCommWrite(CommandMap commandMap) throws Exception{	
+    		ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
+    		
+    		
+    		adminQnaService.qnaCommWrite(commandMap.getMap());
+    		mv.addObject("QNA_IDX", commandMap.get("QNA_IDX"));
+    		
+    		return mv;
+    	}
+    	//댓글삭제
+    	@RequestMapping(value="/admin/qnaCommDelete.do")
+        public ModelAndView qnaCommDelete(CommandMap commandMap) throws Exception{
+        	ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
+        	System.out.println(1);
+        	System.out.println(commandMap.getMap());
+            adminQnaService.qnaCommDelete(commandMap.getMap());
+            System.out.println(6);
+            System.out.println(commandMap.getMap());
+            mv.addObject(commandMap.getMap());
+            
+          //해당 게시글의 글 번호를 mv.addObject 메서드를 이용하여 다시 전송
+            mv.addObject("QNA_IDX", commandMap.get("QNA_IDX"));
+            return mv;
+        }
+    	//redirect:/admin/qnaDetail.do
+
     
     //수정폼
     @RequestMapping(value="/admin/qnaUpdate.do")
@@ -82,19 +219,11 @@ public class AdminQnaController {
     //수정처리(저장)
     @RequestMapping(value="/admin/qnaUpdatePro.do")
     public ModelAndView adminQnaUpdatePro(CommandMap commandMap) throws Exception{
-    	System.out.println("글번호1:" + commandMap.get("QNA_IDX"));
-    	System.out.println("글제목1:" + commandMap.get("QNA_TITLE"));
-    	System.out.println("글내용1:" + commandMap.get("QNA_CONTENT"));
-    	
+
     	
         ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
          
         adminQnaService.adminQnaUpdatePro(commandMap.getMap());
-        
-        System.out.println("글번호2:" + commandMap.get("QNA_IDX"));
-    	System.out.println("글제목2:" + commandMap.get("QNA_TITLE"));
-    	System.out.println("글내용2:" + commandMap.get("QNA_CONTENT"));
-        
 
         //해당 게시글의 글 번호를 mv.addObject 메서드를 이용하여 다시 전송
         mv.addObject("QNA_IDX", commandMap.get("QNA_IDX"));
@@ -111,6 +240,9 @@ public class AdminQnaController {
          
         return mv;
     }
+    
+    
+    
     
     
         

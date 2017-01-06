@@ -200,5 +200,5 @@ var curNum = 1;
 		</div>
 	</div>
 </div>
+<div style="width:100%; height:50px;"></div>
 <div style="clear:both;"></div>
-<div style="width:1200px; height:100px;border:10px solid red;"></div>
