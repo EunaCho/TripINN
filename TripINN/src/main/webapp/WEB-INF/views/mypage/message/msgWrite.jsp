@@ -47,20 +47,14 @@
 	}
 	.right_div1{
 		border:1px solid black;
-		margin:5px;
-		width:1000px;
+		margin-left:60px;
+		width:850px;
 		height:450px;
 		float:left;
 		top:114px; 	
 		left:220px;
-		padding-left:50px;
+		padding-left:70p;
 		
-	}
-	.right_div2{
-		border:1px solid black;
-		margin:5px;
-		width:1048px;
-		height:435px;
 	}
 	.selectBox_div{
 		border:1px solid black;
@@ -74,11 +68,6 @@
 		border:1px solid #46AAFF;
 		border-radius:6px;
 		background:#fff;
-	}
-	.right_div3{
-		border:1px solid black;
-		margin:3px;
-		height:370px;
 	}
 	.list_div{
 		/* border:1px solid black; */
@@ -140,11 +129,13 @@
 		padding: 0px;
 	}
 	#joinTable tr th {
+		background-color: #f7f7f7;
 		width: 20%;
-		font-size: 12px;
+	/* 	background-color: #f7f7f7; */
+		font-size: 10px;
 		font-family : 'Noto Sans', sans-serif;
-		background-image: url('/TripINN/images/pix2.png');
-		background-repeat: repeat;
+		background-size:1700%;
+		background-repeat: no-repeat;
 		border-bottom: 1px solid #a6a6a6;
 	}
 	#joinTable tr td {
@@ -187,6 +178,28 @@
 	}
 	
 </style>
+<script>
+function joinConf(){
+	
+	var form = document.msgWirteForm;
+	
+	if($("#MSG_TITLE").val() == ""){
+		alert("제목을 입력해 주세요");
+		return;
+	}
+	if($("#RECEIVE_MEMBER_EMAIL").val() == ""){
+		alert("보내는사람을 입력해 주세요.");
+		return;
+	}
+	if($("#MSG_CONTENT").val() == ""){
+		alert("내용을 입력해 주세요");
+		return;
+	}
+	
+	form.submit();
+}
+
+</script>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 
 <div style="width:1300px; height:100%; margin:0px auto;">
@@ -207,24 +220,24 @@
 	<div class="right_div1">
 		<div id="joinDiv">
 		<div><strong>메시지 쓰기</strong></div>
-		<form method="post" action="<%=cp%>/mypage/messageWriteOk.do'" name="joinForm" enctype="multipart/form-data">
+		<form method="post" action="<%=cp%>/mypage/messageWriteOk.do" name="msgWirteForm" enctype="multipart/form-data">
 			<table id="joinTable">
 				<tr>	
 					<th>제목</th>
 					<td style="height:25px;">
-						<input type="text" name="msg_title" id="msg_title" style="width:60%; height:85%;" />
+						<input type="text" name="MSG_TITLE" id="MSG_TITLE" style="width:60%; height:85%;" />
 					</td>
 				</tr>
 				<tr >
 					<th>받는사람</th>
 					<td style="height:25px;">
-						<input type="text" name="receive_member_email" id="receive_member_email" style="width:60%; height:85%;" />
+						<input type="text" name="RECEIVE_MEMBER_EMAIL" id="RECEIVE_MEMBER_EMAIL" style="width:60%; height:85%;" />
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea name="msg_content" id="msg_content" row="50" cols="50" style="width:100%; height:100%;"></textarea>
+						<textarea name="MSG_CONTENT" id="MSG_CONTENT" row="50" cols="50" style="width:100%; height:100%;"></textarea>
 					</td>
 				</tr>
 				<tr>

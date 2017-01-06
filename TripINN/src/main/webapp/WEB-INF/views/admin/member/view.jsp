@@ -27,13 +27,13 @@
   <body>
  	 <br><br>
  <!-- 가운데 윗 영역 -->	 
-    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+    <div style="width:100%;height:100px;border:1px solid blue;text-align:center;">
 	<h2>회원정보 상세페이지</h2>
    </div>
    
    
    <!-- 좌측 영역 -->
-   <div style="width:15%;height:380px;border:1px solid black;text-align:center;">	
+   <div style="width:16.7%;height:380px;border:1px solid black;text-align:center;">	
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
@@ -49,12 +49,14 @@
    
    </div>
    
+    <!-- 가운데 영역 -->
+   <div style="color:black;width:80%;height:381px;border:2px solid red;text-align:left; position:absolute;top:208px;left:213px;">
+   
    <form name="frm" method="post">
    <input type="button" value="수정하기"  onClick="mySubmit(1)"/>
    <input type="button" value="삭제하기"  onClick="mySubmit(2)"/>
    <input type="hidden" value="${map.MEMBER_IDX}" name="MEMBER_IDX"/>
-   <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:172px;left:213px;">
+  
 
 
    
@@ -68,106 +70,103 @@
 	</div>
 	
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:30px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;font-weight:bold;width:15%;height:30px;border:1px solid black; position:absolute;top:20px;left:175px;text-align:center; background-color:#eee;">
 	번호
 	</div>
-	<!-- 이름 받는 곳 -->
+	<!-- 번호 받는 곳 -->
 
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:30px;left:392px;">
+	<div style="font-size:20px;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:20px;left:327px;text-align:center;">
 	${map.MEMBER_IDX}
     </div>
 
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:50px;left:175px;text-align:center; background-color:#eee;">
 	이름
 	</div>
 	<!-- 이름 받는 곳 -->
 
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:50px;left:327px;">
 	${map.MEMBER_NAME}
     </div>
 	
 	
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:70px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:80px;left:175px;text-align:center; background-color:#eee;">
 	주소
 	</div>
 	<!-- 주소 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:70px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:80px;left:327px;">
 	${map.MEMBER_ADDR}
 	
 	
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:90px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:110px;left:175px;text-align:center; background-color:#eee;">
 	이메일
 	</div>
 	
 	<!-- 이메일 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:90px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:110px;left:327px;">
 	${map.MEMBER_EMAIL}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:110px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:140px;left:175px;text-align:center; background-color:#eee;">
 	휴대폰
 	</div>
 	
 	<!--  휴대폰 받는곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:110px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:20%;height:30px;border:1px solid black; position:absolute;top:140px;left:327px;">
 	${map.MEMBER_PHONE}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:130px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:170px;left:175px;text-align:center; background-color:#eee;">
 	생일
 	</div>
 	
 	<!-- 생일 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:170px;left:327px;">
 	${map.MEMBER_BIRTH}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:130px;left:530px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:140px;left:530px;text-align:center; background-color:#eee;">
 	성별
 	</div>
 	
 	<!-- 성별 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:622px;">
+	<div style="font-size:20px;text-align:center;color:black;width:14.8%;height:30px;border:1px solid black; position:absolute;top:140px;left:683px;">
 	${map.MEMBER_SEX}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:150px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:200px;left:175px;text-align:center; background-color:#eee;">
 	가입일자
 	</div>
 	
 	
 	<!-- 가입일자 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:150px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:200px;left:327px;">
 	
 	${map.MEMBER_JOINDATE}
 	
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:170px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:230px;left:175px;text-align:center; background-color:#eee;">
 	비밀번호
 	</div>
 	
 	<!-- 비밀번호 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:170px;left:392px;">
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:230px;left:327px;">
 	
 	${map.MEMBER_PWD}
 	
 	</div>
 	
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:190px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;font-weight:bold;color:black;width:15%;height:30px;border:1px solid black; position:absolute;top:260px;left:175px;text-align:center; background-color:#eee;">
 	회원등급
 	</div>
 	
 	<!--회원 등급 받는 곳  -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:190px;left:392px;">
-	
+	<div style="font-size:20px;text-align:center;color:black;width:50%;height:30px;border:1px solid black; position:absolute;top:260px;left:327px;">
 	${map.MEMBER_LEVEL}
-	
-	
 	</div>
 	
 	 <script>
@@ -190,17 +189,14 @@
 	
 	
 	
-	
-	</div>
 	</form>
+	</div>
+	
 	
 	
 	
    
-   <!-- 우측영역 -->
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:172px;left:1124px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 298px; height:381px;">
-   </div>
+   
  
   
 

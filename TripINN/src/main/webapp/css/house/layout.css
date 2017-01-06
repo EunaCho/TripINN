@@ -39,7 +39,7 @@ label{
 /* input */
 #house_searchForm input[type=text]{
 	height: 30px;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 }
 #input_location{
 	width: 200px;

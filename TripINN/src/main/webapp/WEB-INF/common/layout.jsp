@@ -25,18 +25,17 @@ jQuery.browser = {};
 	<div id="header" style="height:55px;" >
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div style="clear:both;"></div>
-
+	
+	<div style="clear: both;"></div>
+	
 	<div id="main" style="display:table;height:100%;width:100%;margin:0px auto;">
 		<tiles:insertAttribute name="body"/>
 	</div>
 		<div style="clear: both;"></div>
-	
+	<div style="clear:both;"></div>
 	
 	<div id="bottom" style="display:block;">
 		<tiles:insertAttribute name="bottom"/>
 	</div>
-		<div style="clear: both;"></div>
-	
 </body>
 </html>
