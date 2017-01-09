@@ -32,10 +32,7 @@
 	</definition>
 
 	
-<!-- 회원관리 페이지 -->
 
-	
-	<!-- 회원관리 페이지 -->
 
 <!-- 회원관리 페이지 -->
 
@@ -78,6 +75,12 @@
 	<definition name="houseList" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/admin/house/list.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	<!-- 숙소신고 리스트 페이지 -->
+	<definition name="houseReportList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/house/reportList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	<!-- 트립 관리 리스트 페이지 -->
