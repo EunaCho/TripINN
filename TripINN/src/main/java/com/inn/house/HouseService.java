@@ -29,6 +29,8 @@ public interface HouseService {
 	List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception;
 
 	void insertReview(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> selectHouseMapList(Map<String, Object> map) throws Exception;
 	
 	
 
