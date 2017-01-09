@@ -16,13 +16,14 @@ import javax.servlet.http.HttpServletRequest; //jsp data
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller; //controller 클래스 등록 위함
 import org.springframework.web.bind.annotation.RequestMapping; //jsp와 클래스 연결
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView; //jsp view
 
 import com.inn.house.HouseService; // interface 숙소 등록
-
 import com.common.common.CommandMap; // sql key 설정
 import com.common.common.ConvertAddress;
 
@@ -39,8 +40,21 @@ public class HouseController {
 	@RequestMapping(value="/house/houseMain.do", method=RequestMethod.POST)
 	public ModelAndView houseList(CommandMap map)throws Exception{
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
+		//System.out.println("메인 값 받아오나 확인");
+		//System.out.println(commandMap.getMap());
+		//System.out.println("메인 값  여기까지");
+		mv.addObject("search",map.getMap()); //검색키워드 넘기기
+		//System.out.println(mv);
+	
+		//List<Map<String, Object>> list = houseService.selectHouseList(commandMap.getMap());
+		List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
+
+		System.out.println("맵");
+		System.out.println(map.getMap());
+		System.out.println("리스트");
+		System.out.println(list);
 		mv.addObject("search", map.getMap()); //검색키워드 넘기기
-		List<Map<String, Object>> list = houseService.selectHouseList(map.getMap());
+		//List<Map<String, Object>> list = houseService.selectHouseList(map.getMap());
 		List<Map<String,Object>> map_list = houseService.selectHouseMapList(map.getMap());
 		
 		String str_total_addr = "";
