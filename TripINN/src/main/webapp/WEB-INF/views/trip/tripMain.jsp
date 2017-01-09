@@ -149,15 +149,29 @@
 					<select name="trip_area" id="">
 						<option value="">도시 선택</option>
 						<option value="서울">서울</option>
-						<option value="대전">대전</option>
-						<option value="대구">대구</option>
+						<option value="인천">인천</option>
+						<option value="경기">경기</option>
+						<option value="강원">강원</option>
+						<option value="충청">충청</option>
+						<option value="전라">전라</option>
+						<option value="경상">경상</option>
+						<option value="제주">제주</option>
 					</select>
 					
 					<select name="trip_type" id="" >
 						<option value="">유형 선택</option>
-						<option value="쇼핑">쇼핑</option>
-						<option value="음식">음식</option>
-						<option value="운동">운동</option>
+						<option value="엔터테인먼트">엔터테인먼트</option>
+						<option value="예술 및 디자인">예술 및 디자인</option>
+						<option value="패션">패션</option>
+						<option value="스포츠">스포츠</option>
+						<option value="웰빙">웰빙</option>
+						<option value="자연">자연</option>
+						<option value="음료 및 식사">음료 및 식사</option>
+						<option value="라이프스타일">라이프스타일</option>
+						<option value="역사">역사</option>
+						<option value="음악">음악</option>
+						<option value="비즈니스">비즈니스</option>
+						<option value="바/클럽">바/클럽</option>
 					</select>
 					
 					<div style="width:20%;height:18px;background:#95D09F;color:#fff;
