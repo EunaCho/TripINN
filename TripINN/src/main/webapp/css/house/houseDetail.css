@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+#wishIcon{
+	background: url(/TripINN/images/house/icon_heart_white.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 100% 100%;
+    float: left;
+    margin: 2px 11px 0px;
+}
