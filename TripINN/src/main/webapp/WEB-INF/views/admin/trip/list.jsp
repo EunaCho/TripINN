@@ -21,7 +21,7 @@
 <style>	
 	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
 	li{margin-right:50px }
-	.left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
+	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
 </style>
 <!-- 스타일 적용2 -->
 <style>
@@ -44,11 +44,11 @@
 	margin:10px;
 	}
 	
-   .list1{
-    border:1px solid blue;
-	width:900px;
-	height:200px;
-	margin:40px;
+	.list1{
+	   border:1px solid blue;
+	   width:900px;
+	   height:260px;
+	   margin:40px;
 	}
 	.picture{
 	border:1px solid black;
@@ -68,7 +68,6 @@
 	height:20px;
 	margin-left:220px;
 	margin-top:-190px;
-	
 	}
 	.house_info{
 	border:1px solid black;
@@ -91,17 +90,84 @@
 	margin-left:550px;
 	margin-top:-20px;
 	}
-	.house_type{
+	.house_delete{
+	border:2px solid black;
+	width:70px;
+	height:20px;
+	margin-left:750px;
+	margin-top:50px;
+	}
+	.report_listNo{
+	border:1px solid black;
+	width:200px;
+	height:30px;
+	margin:10px;
+	}
+	
+	.house_zipcode{
 	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:10px;
 	}
+	.house_addr{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:550px;
+	margin-top:10px;
+	}
+	.house_persons{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:550px;
+	margin-top:10px;
+	}
+	.house_total_price{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:220px;
+	margin-top:-85px;
+	}
+	.house_person_price{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:220px;
+	margin-top:10px;
+	}
 	
-	
-	
-	
+    .house_kind{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:220px;
+	margin-top:10px;
+	}
+	 .trip_pprice{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:220px;
+	margin-top:30px;
+	}
+	.trip_tprice{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:220px;
+	margin-top:10px;
+	}
+	 .trip_persons{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:550px;
+	margin-top:-53px;
+	}
 	
 	
 </style>
@@ -111,22 +177,17 @@
   
  	 <br><br>
  	 
- <form name="frm" method="post" action="/TripINN/admin/houseReportDelete.do">
- <input type="hidden" value="" name="REPORT_IDX"/>
- 
+ 	 
  <!-- 가운데 윗 영역 -->	 
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-	<h2>신고관리 페이지에 오신걸 환영합니다.</h2>
+	<h2>투어관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
-   
-   
-  
   
    <!-- 좌측 영역 -->
    <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
-	  <ul class="left-ul">
-      <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+	   <ul>   
+        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
@@ -142,59 +203,72 @@
    
    <!-- 가운데 영역 -->
    <div class="house_div">
-   <div style="text-align:right">
-     <h4>신고된 숙소의 번호를 누르시면 숙소가 삭제 됩니다.</h4>
-  </div>
    <div class="report_list">
-   신고 목록
+   전체 투어 목록
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
-   <c:forEach var="house" items="${list}">
+   <c:forEach var="adminTrip" items="${list}">
     <div class="list1">
      <div class="picture">
-    <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
+     <c:set var="fullImg" value="${adminTrip.TRIP_IMAGE }"/>
+	 <c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+    <img class="picture1" src="<%=cp%>/images/trip/${tripImg}">
       </div>
       <div class="house_idx">
-     번호: <a href="javascript:formSubmit('${house.REPORT_IDX}');">${house.REPORT_IDX }</a>
+      번호: ${adminTrip.TRIP_IDX}
       </div>
        <div class="house_info">
-      제목: ${house.REPORT_TITLE}
+      지역: ${adminTrip.TRIP_AREA}
       </div>
       <div class="house_name">
-      내용: ${house.REPORT_CONTENT}
+   투어 테마: ${adminTrip.TRIP_TYPE}
       </div>
       <div class="house_price">
-      작성일자: ${house.REPORT_REGDATE}
+     언어: ${adminTrip.TRIP_LANGUAGE}
       </div>
-       <div class="house_type">
-      신고유형: ${house.REPORT_TYPE}
+      <div class="house_zipcode">
+     투어이름: ${adminTrip.TRIP_NAME}
+      </div>
+      <div class="house_addr">
+     소개:${adminTrip.TRIP_INTRO}
+      </div>
+     <div class="house_persons">
+   투어기간:${adminTrip.TRIP_FIRST_DATE} ~ ${adminTrip.TRIP_LAST_DATE}
+      </div>
+       <div class="house_total_price">
+  포함사항:${adminTrip.TRIP_INCLUDE}
+      </div>
+       <div class="house_person_price">
+   우편번호:${adminTrip.TRIP_ZIPCODE}
+      </div>
+      <div class="house_kind">
+  주소:${adminTrip.TRIP_ADDR1} ${adminTrip.TRIP_ADDR2} ${adminTrip.TRIP_ADDR3}
+      </div>
+       <div class="trip_pprice">
+  인원당 가격: ${adminTrip.TRIP_PPRICE}
+      </div>
+       <div class="trip_tprice">
+  총 가격: ${adminTrip.TRIP_TPRICE}
+      </div>
+      <div class="trip_persons">
+  인원수: ${adminTrip.TRIP_PERSONS}
       </div>
       
     </div>
-     
     </c:forEach>
     </c:when>
     <c:otherwise>
 				<div class="report_listNo">
-					신고된 숙소가 없습니다.
+					등록된 투어가 없습니다.
 					
 				</div>
 		</c:otherwise>
     </c:choose>
    </div>
-     <!--스크립트 정의  -->
-<script type="text/javascript">
-
-	function formSubmit(REPORT_IDX) {
-		document.frm.REPORT_IDX.value = REPORT_IDX;
-		document.frm.submit();
-	}
-	
-</script>
- 
+   
     
    
-  </form>
+  
   
 </html>

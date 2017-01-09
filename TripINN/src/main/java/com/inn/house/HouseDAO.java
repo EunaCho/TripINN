@@ -107,4 +107,13 @@ public class HouseDAO extends AbstractDAO{
 		update("house.deleteFileList", map);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return (List<Map<String, Object>>)selectList("house.selectReviewList", map);
+	}
+	public void insertReview(Map<String, Object> map) {
+		insert("house.insertReview", map);
+		
+	}
 }

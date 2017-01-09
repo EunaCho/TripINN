@@ -33,13 +33,6 @@
 
 	
 <!-- 회원관리 페이지 -->
-
-	
-	<!-- 회원관리 페이지 -->
-
-<!-- 회원관리 페이지 -->
-
-
 	<definition name="memberList" template="/WEB-INF/common/layout.jsp">
       <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
       <put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
@@ -60,12 +53,34 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
-	<!-- 관리자QNA페이지 -->
-	<definition name="qnaList" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/qna/list.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
+	
+	<!-- 관리자QNA 리스트 페이지 -->
+   <definition name="qnaList" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/qna/list.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   <!-- 관리자QNA 글쓰기 페이지 -->
+   <definition name="qnaWrite" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/qna/write.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   <!-- 관리자QNA 상세보기 페이지 -->
+   <definition name="qnaDetail" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/qna/detail.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>  
+   
+   <!-- 관리자QNA 수정하기 페이지 -->
+   <definition name="qnaUpdate" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/qna/update.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
 	
 	<!-- 관리자FAQ페이지 -->
 	<definition name="faqList" template="/WEB-INF/common/layout.jsp">
@@ -80,8 +95,21 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/house/list.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+	<!-- 트립 관리 리스트 페이지 -->
+	<definition name="adminTripList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/trip/list.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	<!-- 트립신고 리스트 페이지 -->
+	<definition name="adminTripReportList" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/trip/reportList.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
 	
 	
+	<!--  ==========================================================================================-->
 	
 	<!-- 마이페이지  -->
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
@@ -252,9 +280,10 @@
 	
 	
 	<!-- 하우스 상세보기 -->
-	
-	<definition name="HouseInfoDetail" extends="main">
+	<definition name="HouseInfoDetail" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/house/houseDetail.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
 	<!-- **********************house_end**********************-->

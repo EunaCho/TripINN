@@ -1,0 +1,48 @@
+body { font-family: 'Nanum Gothic',malgun Gothic,dotum; }
+#wrap {width:100%;height:100%;margin:0px auto; border-top:1px solid #e4e4e4;}
+#left-wrap, #right-wrap {width:49%;height:100%; float:left;}
+h3 { color:#000; }
+#left-info, #right-info {  width:90%; height:100%; margin:0px auto;}
+#left-info .trDiv { width:100%;overflow: hidden; height: auto;}
+#left-info .trDiv .tdDiv-left { width:30%;height:auto;float:left;border:0px solid red;text-align:center;vertical-align:middle; }
+#left-info .trDiv .tdDiv-col { width:98%;height:auto;float:left; padding-left: 40px;}
+#left-info .trDiv .tdDiv-col p, #left-info .trDiv .tdDiv-col span { font-size:13px; }
+#left-info .trDiv .tdDiv-left p { font-size:15px;font-weight:bold; }
+#left-info .trDiv .tdDiv-right { width: 65%;height:auto;float:left;border:0px solid black; }
+#left-info .trDiv .tdDiv-right p {font-size:15px;}
+.hostImg {width: 72px !important;height: 72px !important;border-radius: 72px !important;}
+.includ {width:48%; float:left; border-top: 1px solid #e4e4e4;border-bottom: 1px solid #e4e4e4;padding-left:10px;margin:0px auto;} 
+.includ h3 {padding: 0 0 2px 30px;font-size: 18px;color: #333;margin-bottom: 20px;
+   background: url(http://openimage.interpark.com/tourpark/tour_ui/detail/icon_check.png) no-repeat left top;}
+   .includ .txt {line-height: 1.5; color:#666;}
+   .trDiv:after {content: ""; display: block; clear: both; }
+   
+
+
+
+.reserve_layerWindow{display:block;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%;margin:0px auto;text-align:center;}
+.reserve_layerWindow.open{display:block}
+.reserve_layerWindow .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50);z-index:-999;}
+#reserve_layer{
+	width:800px;height:100%;margin:0px auto;padding:0px 28px 0 28px;
+	border:2px solid #9BC3FF; background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
+	color:#767676;line-height:normal;white-space:normal; 
+}
+.reserve_line{margin:10px 0 0;height:80%;}
+.box_in{float:left;margin:0 10px 0; }
+.box_in input{width:120px;height:24px;display:block;margin:3px 0 0;}
+.btn_reserve{
+			width:72px;height:30px;background:#363636;color:#a6a6a6;
+			line-height:60px;text-align:center;margin-top:5px;
+			cursor: pointer;
+			}
+#reserve_layer h2{color:#636363;font-size:24px;line-height:40px;}
+.close { margin-bottom:10px; text-decoration: none; width:100%; text-align:right; cursor: pointer}
+.close a { color: #9BC3FF; }
+#reserveTbl tr td{
+	font-size:11px;
+	font-family : 'NanumGothic';
+}
+ 
+
+ 

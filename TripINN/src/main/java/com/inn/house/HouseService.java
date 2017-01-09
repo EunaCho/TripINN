@@ -28,6 +28,9 @@ public interface HouseService {
 	//상세보기 기능
 	Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception;
 	
+	//리뷰 작성하긴
+	void insertReview(Map<String, Object> map) throws Exception;
+	
 	
 
 }

@@ -47,10 +47,10 @@
                 	<td>${map.QNA_READCOUNT}</td>
             </tr>
             <tr>
-            <!--  
+               
                 <th scope="row">작성자</th>
                 <td>${map.MEMBER_NAME }</td>
-            -->    
+               
                 <th scope="row">작성시간</th>
                 <td>${map.QNA_REGDATE}</td>
             </tr>
