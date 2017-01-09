@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping; //jsp와 클래�
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView; //jsp view
 
 import com.inn.house.HouseService; // interface 숙소 등록
@@ -225,7 +226,8 @@ public class HouseController {
 		
 		Map<String, Object> map = houseService.selectHouseDetail(commandMap.getMap()); //하우스 상세정보 꺼내오기
 		mv.addObject("detail", map);//map에 상세정보 넣기
-		
+		System.out.println(commandMap.get("HOUSE_IDX"));
+		System.out.println();
 		return mv; //mv 값 넘기기
 	}
 	

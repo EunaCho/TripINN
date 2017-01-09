@@ -7,16 +7,10 @@
 <title>HOUSE LIST</title>
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css"> -->
-<link rel="stylesheet" href="/TripINN/css/house/houseList.css">
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->                                                                                       
+<link rel="stylesheet" href="/TripINN/css/house/houseList.css">                                                                              
 <script src="http://code.jquery.com/jquery.min.js"></script>
 	<!-- daum map -->
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
-
-<!-- 9793fe2952f3288aa045aae89f36a67b 
-	8480244a1ed769ec1115bf2466296aa2 
-	 31244aa6795ca046e48d086d5b53f8c6
--->	
 <STYLE> 
 #left { scrollbar-3dlight-color:#FFFFFF;
 scrollbar-arrow-color:#000000;
@@ -100,16 +94,15 @@ scrollbar-shadow-color:#FFFFFF}
 			
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
 				<c:url var="houseViewURL" value="/house/houseDetail.do">
-					<c:param name="house_idx" value="${house.HOUSE_IDX}"/>
-					<c:param name=""/>
+					<c:param name="HOUSE_IDX" value="${house.HOUSE_IDX}"/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
 				<li>
 				<a href="${houseViewURL}">
-					<input type="text" id="HOUSE_NAME${stat.index }" value="${house.HOUSE_NAME }" >
-					<input type="text" id="HOUSE_IMAGE${stat.index }"value="${house.HOUSE_IMAGE }">
-					<input type="text" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
+					<input type="hidden" id="HOUSE_NAME${stat.index }" value="${house.HOUSE_NAME }" >
+					<input type="hidden" id="HOUSE_IMAGE${stat.index }"value="${house.HOUSE_IMAGE }">
+					<input type="hidden" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
 					<img src="<%= cp %>/images/house/${house.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
 					<br/>
 						<span><strong>${house.HOUSE_NAME}</strong></span>
@@ -128,14 +121,11 @@ scrollbar-shadow-color:#FFFFFF}
 	
 	<!-- 오른쪽 -->
 	<div id="right" style="width:48%; min-width: 530px;  border:1px solid red;  float:left;">
-		
 		<c:forEach items="${map_list }" var="map" varStatus="stat">
-			<input type="text" value="${map}" id="map_addr${stat.index}">
+			<input type="hidden" value="${map}" id="map_addr${stat.index}">
 		</c:forEach>
 		
-		<div id="mapView">
-		
-		</div>
+		<div id="mapView"></div>
 		
 	</div>
 </body>
@@ -156,7 +146,7 @@ scrollbar-shadow-color:#FFFFFF}
 			
 			img = $("#HOUSE_IMAGE"+i).val();
 			name = $("#HOUSE_NAME"+i).val(); 
-			idx = $('#HOUSE_IDX'+i).val();
+			idx = $("#HOUSE_IDX"+i).val();
 			img2 = img2 + img + ",";
 			name2 = name2 + name + ",";
 			idx2 = idx2 + idx + ",";
