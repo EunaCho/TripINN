@@ -4,7 +4,6 @@
 <mapper namespace="house">
 
 	<!-- house list sql -->
-	
 	<select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
@@ -15,7 +14,14 @@
 			ORDER BY HOUSE_IDX DESC
 		]]>
 	</select>
-	
+	<!-- house Map 리스트 뽑기 idx, addr1 필요 -->
+	<select id="selectHouseMapList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT HOUSE_IDX, HOUSE_ADDR1 
+			FROM HOUSE 
+			ORDER BY HOUSE_IDX DESC
+		]]>
+	</select>
 	
 	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
 	
@@ -86,7 +92,7 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		<![CDATA[
 			INSERT INTO HOUSE_INFO(
 				HI_IDX, HOUSE_IDX, HI_SALE, HI_DEPOSIT, HI_GUEST, 
-				HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE
+				HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE, 
 				HI_CHECKIN, HI_CHECKOUT
 			)VALUES(
 				HI_IDX_SEQ.NEXTVAL, #{HOUSE_IDX}, #{HI_SALE}, #{HI_DEPOSIT}, 

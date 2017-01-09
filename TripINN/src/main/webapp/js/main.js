@@ -1,5 +1,5 @@
 
-/*header.jsp*/
+//header.jsp
 function logout() {
 	if(confirm("로그아웃을 하시겠습니까?")) {
 		return true;
@@ -106,7 +106,7 @@ jQuery(function($){
 
 
 
-/*main.jsp*/
+//main.jsp
 
 //숙박일 선택
 $(function () {
@@ -132,7 +132,7 @@ $(function () {
   });
 });
 
-//메인 롤링 스크립트
+/*//메인 롤링 스크립트
 
 $(document).ready(function(){
 $("#rolling").Scroll({
@@ -145,4 +145,4 @@ $("#rolling").Scroll({
 	autostop:'#bannerstop'
 });
 
-});
+});*/

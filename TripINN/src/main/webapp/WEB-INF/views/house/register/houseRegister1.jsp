@@ -9,11 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=1.0">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services"></script>
 <script type="text/javascript" src="/TripINN/js/house/openHouseRegister.js"></script>
-<script>
 
-</script>
 </head>
 <body>
 <div style="clear:both"></div>
@@ -148,7 +146,6 @@
 		<div style="clear:both"></div>
 	</form>
 	</div>
-	
 </body>
 <script type="text/javascript" src="/TripINN/js/house/mapView.js"></script>
 </html>

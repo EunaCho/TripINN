@@ -15,6 +15,9 @@ public interface HouseService {
 	//하우스검색 정렬
 	List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception;
 
+	//하우스 지도 검색 정렬
+	List<Map<String,Object>> selectHouseMapList(Map<String,Object> map) throws Exception;
+	
 	//삽입 기능
 	void insertHouse(Map<String, Object> map, HttpServletRequest request) throws Exception;
 		

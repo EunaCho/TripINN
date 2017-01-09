@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -6,51 +5,18 @@
 <html>
 <head>
 <title>HOUSE LIST</title>
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css"> -->
+<link rel="stylesheet" href="/TripINN/css/house/houseList.css">
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->                                                                                       
+<script src="http://code.jquery.com/jquery.min.js"></script>
+	<!-- daum map -->
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-	$( function() {
-		$( "#slider-range" ).slider({
-			range: true,
-			min: 10000,
-			max: 500000,
-			values: [ 30000, 100000],
-			slide: function( event, ui ) {
-				$( "#amount" ).val( ui.values[ 0 ] +" 원" + " - " + ui.values[ 1 ]  +"원");
-			}
-		});
-		$( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) +" 원" +
-			" - " + $( "#slider-range" ).slider( "values", 1 ) +" 원");
-	} );
-
-	
-	$(function () {
-	    $("#datepicker_in_sub").datepicker({
-	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-	         minDate: new Date(),
-	         altField: "#datepicker",
-	         altFormat: "yy-mm-dd"
-	  });
-	});
-	$(function () {
-	    $("#datepicker_out_sub").datepicker({
-	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-	         minDate: new Date(),
-	         altField: "#datepicker2",
-	         altFormat: "yy-mm-dd"
-	  });
-	});
-	</script>
-
+<!-- 9793fe2952f3288aa045aae89f36a67b 
+	8480244a1ed769ec1115bf2466296aa2 
+	 31244aa6795ca046e48d086d5b53f8c6
+-->	
 <STYLE> 
 #left { scrollbar-3dlight-color:#FFFFFF;
 scrollbar-arrow-color:#000000;
@@ -60,6 +26,7 @@ scrollbar-face-color:#FFFFFF;
 scrollbar-highlight-color:#FFFFFF;
 scrollbar-shadow-color:#FFFFFF} 
 </STYLE> 
+
 </head>
 
 <body>
@@ -72,7 +39,7 @@ scrollbar-shadow-color:#FFFFFF}
 	<div id="left" style="width:48%; height:600px; overflow-y:scroll; min-width: 530px; border:1px solid black; float:left; align:center;">
 
 	<!-- 상세검색폼 -->
-	<form id="searchForm" >
+	<form id="searchForm">
 	
 	<!-- 날짜 설정 -->
 	<div class="border_date">
@@ -87,7 +54,7 @@ scrollbar-shadow-color:#FFFFFF}
 		</div>
 		<div>
 			<label>인원</label>
-			<select name="person" placeholder="인원 1명">	
+			<select name="person">	
 				<option value="인원 1명">인원 1명</option>
 				<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
 				<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
@@ -140,6 +107,9 @@ scrollbar-shadow-color:#FFFFFF}
 				<!-- 미리보기 개체 -->
 				<li>
 				<a href="${houseViewURL}">
+					<input type="text" id="HOUSE_NAME${stat.index }" value="${house.HOUSE_NAME }" >
+					<input type="text" id="HOUSE_IMAGE${stat.index }"value="${house.HOUSE_IMAGE }">
+					<input type="text" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
 					<img src="<%= cp %>/images/house/${house.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
 					<br/>
 						<span><strong>${house.HOUSE_NAME}</strong></span>
@@ -154,43 +124,54 @@ scrollbar-shadow-color:#FFFFFF}
 		</div>
 	</div>
 
-
-	<!-- 숙소미리보기 정렬 -->
-	<%-- <table border="1">
-		<tr>
-			<td>번호</td>
-			<td>이름</td>
-			<td>소개</td>
-		</tr>
-		
-		<c:choose>
-			<c:when test="${fn:length(list) > 0}">
-				<c:forEach items="${list}" var="house">
-					<tr>
-						<td>${house.HOUSE_IDX}</td>
-						<td>${house.HOUSE_NAME}</td>
-						<td>${house.HOUSE_INFO}</td>
-						<td>${house.HOUSE_PRICE }</td>
-					</tr>
-				</c:forEach>
-			</c:when>
-			
-			<c:otherwise>
-			<tr>
-				<td>등록된 숙소가 없습니다.</td>
-			</tr>
-		</c:otherwise>
-		</c:choose>
-		
-	</table> --%>
 	</div>
-	
 	
 	<!-- 오른쪽 -->
-	<div name="right" style="width:48%;min-width: 530px;  border:1px solid red;  float:left;">
-	지도
+	<div id="right" style="width:48%; min-width: 530px;  border:1px solid red;  float:left;">
+		
+		<c:forEach items="${map_list }" var="map" varStatus="stat">
+			<input type="text" value="${map}" id="map_addr${stat.index}">
+		</c:forEach>
+		
+		<div id="mapView">
+		
+		</div>
+		
 	</div>
-	
-
 </body>
+<script> 
+
+	window.onload = function() {
+		
+		var addr, img, name, idx;
+		var addr2 = "";
+		var img2 = "";
+		var name2 = "";
+		var idx2 = "";
+		
+		var addrArr = new Array(${map_list_length } );
+		for(var i=0; i<addrArr.length; i++){
+			addr = $("#map_addr"+i).val(); 
+			addr2 = addr2 + addr + ",";
+			
+			img = $("#HOUSE_IMAGE"+i).val();
+			name = $("#HOUSE_NAME"+i).val(); 
+			idx = $('#HOUSE_IDX'+i).val();
+			img2 = img2 + img + ",";
+			name2 = name2 + name + ",";
+			idx2 = idx2 + idx + ",";
+		}
+		 /* alert(addr2); */
+		$.ajax({
+			url: "/TripINN/house/houseMapListView.do",
+			type: "GET",
+			async:true,
+			dataType: "Text", 
+			data: {"addr": addr2, "img": img2, "name": name2, "idx" : idx2},
+			success: function(data) {
+				$('#mapView').html(data);
+			}
+		});
+	}
+	</script>
 </html>
