@@ -26,9 +26,24 @@ public class AdminQnaController {
     private AdminQnaService adminQnaService;
     
     //검색 구현을 위해 추가한 변수들
+<<<<<<< HEAD
+	private int searchNum;			//검색유형  0.제목  1.내용 2.작성자 
+	private String isSearch; 
+=======
    private int searchNum;         //검색유형  1.제목  2.내용 3.작성자 
    private String isSearch; 
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
+<<<<<<< HEAD
+	//페이징 구현을 위해 추가한 변수들
+	private int currentPage = 1; 	//처음 표시되는 페이지 
+	private int totalCount;			//총 글 갯수
+	private int blockCount = 10;	//1페이지당 글 몇개 할건지 정하는 변수
+	private int blockPage = 5;  	//한 화면에 페이지번호 몇개까지 띄울 것인지 정하는 변수
+	private String requestName;
+	private String pagingHtml;  
+	private AdminPaging page;  
+=======
    //페이징 구현을 위해 추가한 변수들
    private int currentPage = 1;    //처음 표시되는 페이지 
    private int totalCount;         //총 글 갯수
@@ -37,6 +52,7 @@ public class AdminQnaController {
    private String requestName;
    private String pagingHtml;  
    private AdminPaging page;  
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
     
     //리스트
@@ -57,9 +73,15 @@ public class AdminQnaController {
         
         
         /* 게시판 검색 */
+<<<<<<< HEAD
+		String isSearch = request.getParameter("isSearch");  //jsp로부터 값을 받아와서
+		
+		commandMap.put("isSearch", isSearch);				//isSearch값을 맵에 집어넣는다.
+=======
       String isSearch = request.getParameter("isSearch");  //jsp로부터 값을 받아와서
       
       commandMap.put("isSearch", isSearch);            //isSearch값을 맵에 집어넣는다.
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
       if (isSearch != null) {
          
@@ -68,6 +90,20 @@ public class AdminQnaController {
          
          commandMap.put("searchNum", searchNum);      //searchNum값을 맵에 집어넣는다.
 
+<<<<<<< HEAD
+			if (searchNum == 0) {
+				list = adminQnaService.search0(commandMap.getMap()); //제목
+			}else if (searchNum == 1) {
+				list = adminQnaService.search1(commandMap.getMap()); //내용
+			}else if (searchNum == 2) {							
+				list = adminQnaService.search2(commandMap.getMap()); //작성자
+			}
+		}
+		
+		totalCount = list.size();
+		page = new AdminPaging(currentPage, totalCount, blockCount, blockPage,"qnaList", searchNum, isSearch);
+		pagingHtml = page.getPagingHtml().toString();
+=======
          if (searchNum == 0) {
             list = adminQnaService.search0(commandMap.getMap()); //제목
          } else if (searchNum == 1) {
@@ -81,9 +117,26 @@ public class AdminQnaController {
       totalCount = list.size();
       page = new AdminPaging(currentPage, totalCount, blockCount, blockPage,"qnaList", searchNum, isSearch);
       pagingHtml = page.getPagingHtml().toString();
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
       int lastCount = totalCount;
 
+<<<<<<< HEAD
+		if (page.getEndCount() < totalCount) {
+			lastCount = page.getEndCount() + 1;
+		}
+				
+		list = list.subList(page.getStartCount(), lastCount);
+
+		mv.addObject("isSearch", isSearch);
+		mv.addObject("searchNum", searchNum);
+		mv.addObject("totalCount", totalCount);
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.addObject("currentPage", currentPage);
+		mv.addObject("list", list);
+		mv.setViewName("qnaList");  
+		
+=======
       if (page.getEndCount() < totalCount) {
          lastCount = page.getEndCount() + 1;
       }
@@ -98,6 +151,7 @@ public class AdminQnaController {
       mv.addObject("list", list);
       mv.setViewName("qnaList");  
       
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
         return mv;
     }
     
@@ -129,11 +183,34 @@ public class AdminQnaController {
         
         Map<String,Object> map = adminQnaService.adminQnaSelectDetail(commandMap.getMap());
 
+        //댓글리스트
         List<Map<String,Object>> list = adminQnaService.qnaCommList(commandMap.getMap());
         
         mv.addObject("map", map);     //맵을 모델앤뷰 객체에 담음
+<<<<<<< HEAD
+        mv.addObject("commList", list);	  //리스트(댓글리스트)를 모델앤뷰 객체에 담음
+=======
         mv.addObject("commList", list);     //리스트(댓글)를 모델앤뷰 객체에 담음
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
         return mv;
+<<<<<<< HEAD
+    }	
+    
+    	//댓글쓰기
+    	@RequestMapping(value="/admin/qnaCommWrite.do" , method = RequestMethod.POST)
+    	public ModelAndView qnaCommWrite(CommandMap commandMap) throws Exception{	
+    		ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
+    		
+    		
+    		adminQnaService.qnaCommWrite(commandMap.getMap());
+    		mv.addObject("QNA_IDX", commandMap.get("QNA_IDX"));
+    		
+    		return mv;
+    	}
+    	
+    	//댓글삭제
+    	@RequestMapping(value="/admin/qnaCommDelete.do")
+=======
     }   
     
        //댓글쓰기
@@ -150,11 +227,19 @@ public class AdminQnaController {
        
        //댓글삭제
        @RequestMapping(value="/admin/qnaCommDelete.do")
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
         public ModelAndView qnaCommDelete(CommandMap commandMap) throws Exception{
+<<<<<<< HEAD
+        	ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
+ 
+        	System.out.println(commandMap.getMap());
+        	
+=======
            ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
  
            System.out.println(commandMap.getMap());
            
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
             adminQnaService.qnaCommDelete(commandMap.getMap());
             
             mv.addObject(commandMap.getMap());
@@ -194,10 +279,17 @@ public class AdminQnaController {
     @RequestMapping(value="/admin/qnaDelete.do")
     public ModelAndView deleteBoard(CommandMap commandMap) throws Exception{
         
+<<<<<<< HEAD
+    	ModelAndView mv = new ModelAndView("redirect:/admin/qnaList.do");
+    	System.out.println(1);
+    	System.out.println(commandMap.getMap());
+    	
+=======
        ModelAndView mv = new ModelAndView("redirect:/admin/qnaList.do");
        System.out.println(1);
        System.out.println(commandMap.getMap());
        
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
         adminQnaService.adminQnaDelete(commandMap.getMap());
 
         System.out.println(6);

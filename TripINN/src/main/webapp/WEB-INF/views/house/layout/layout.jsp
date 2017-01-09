@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
 <link rel="stylesheet" type="text/css" href="/TripINN/css/house/layout.css">
-<link rel="stylesheet" type="text/css" href="/TripINN/css/house/house.css">
+<link rel="stylesheet" type="text/css" href="/TripINN/css/house/main.css">
 
 <script src="/TripINN/js/house/common.js" charset="utf-8"></script>
 </head>

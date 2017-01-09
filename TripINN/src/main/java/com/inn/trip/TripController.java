@@ -3,7 +3,6 @@ package com.inn.trip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -116,43 +115,12 @@ public class TripController {
 		return mv;
 	}
 	
-	// 트립 상세 페이지
 	@RequestMapping(value="/tripDetail.do", method=RequestMethod.POST)
 	public ModelAndView tripDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("tripDetail");
 		
 		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap());
-		System.out.println("trip_idx : " + commandMap.get("trip_idx"));
-		// 지도 뷰
-		String addr1 = (String) map.get("TRIP_ADDR1");
-		
-		String mapView = ConvertAddress.conAddr(addr1);
-		String lat = mapView.substring(mapView.indexOf("lat")+5, mapView.indexOf("lat")+16).trim();
-		String lng = mapView.substring(mapView.indexOf("lng")+5, mapView.indexOf("lng")+16).trim();
-		String ba = ConvertAddress.decode(mapView.substring(mapView.indexOf("buildingAddress")+18, mapView.indexOf("title")-3).trim()); // 
-		mv.addObject("lat", lat);
-		mv.addObject("lng", lng);
-		mv.addObject("ba", ba);
-		//지도 뷰
-		System.out.println("lat : " + lat + "// lng : "  + lng + "// ba : " + ba);
-		//사진 뷰
-		String images = (String) map.get("TRIP_IMAGE");
-		String[] imgs = images.split("\\|");
-		mv.addObject("imgs", imgs);
-		//사진뷰
-		
 		mv.addObject("trip", map);
-		return mv;
-	}
-	
-	//트립 예약 폼 이동
-	@RequestMapping(value="/tripReserveForm.do", method=RequestMethod.POST)
-	public ModelAndView tripReserveForm(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("tripReserveForm");
-		
-		Map<String, Object> tripInfo = tripService.selectTripDetail(commandMap.getMap());
-		
-		mv.addObject("tripInfo", tripInfo);
 		return mv;
 	}
 	

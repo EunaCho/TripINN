@@ -27,23 +27,21 @@
 <style>
 	
 	.house_div{
-		border:3px solid black;
+		border:2px solid black;
 		width:1040px;
 		height:100%;
 		border-radius:4px;
-		background-color:white;
+		background-color:#F4FFFF;
 		margin:auto;
 		margin-left:220px;
 		margin-top:-383px;
 		
 	}
 	.report_list{
-	border:0px solid black;
+	border:1px solid black;
 	width:150px;
 	height:30px;
 	margin:10px;
-	font-size:21px;
-	background-color:#eee;
 	}
 	
 	.list1{
@@ -53,53 +51,44 @@
 	   margin:40px;
 	}
 	.picture{
-	border:0px solid black;
+	border:1px solid black;
 	width:200px;
 	height:180px;
 	margin:10px;
 	}
 	.picture1{
-	border:0px solid black;
+	border:1px solid black;
 	width:180px;
 	height:160px;
 	margin:10px;
 	}
 	.house_idx{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:-190px;
-	background-color:#eee;
-	font-size:14px;
-	
 	}
 	.house_info{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_name{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_delete{
 	border:2px solid black;
@@ -109,68 +98,54 @@
 	margin-top:50px;
 	}
 	.report_listNo{
-	border:0px solid black;
+	border:1px solid black;
 	width:200px;
 	height:30px;
 	margin:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	
 	.house_zipcode{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_addr{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
-	height:40px;
+	height:20px;
 	margin-left:550px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_persons{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_total_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:-105px;
-	background-color:#eee;
-	font-size:14px;
+	margin-top:-85px;
 	}
 	.house_person_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	
 .house_kind{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	
 	
@@ -192,12 +167,12 @@
    <!-- 좌측 영역 -->
    <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
 	   <ul>   
-         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do"><h2>투어관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do"><h3>ㄴ신고하기</h3></a></li>
+		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>

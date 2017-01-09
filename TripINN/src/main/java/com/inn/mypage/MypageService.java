@@ -21,17 +21,4 @@ public interface MypageService {
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
 	
-	List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception; //숙소예약관리리스트
-	Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception; //예약상세보기 
-	
-	void updateHr_delete_state_1(Map<String, Object> map) throws Exception;//예약취소 신청 hr_delete_state update
-	void updateHr_delete_state_2(Map<String, Object> map) throws Exception;
-	void updateHr_delete_state_3(Map<String, Object> map) throws Exception;
-	
-	void updateHr_delete_date(Map<String, Object> map) throws Exception;//에약취소 신청 날짜 update
-	
-	Map<String, Object> countDate(Map<String, Object> map) throws Exception;  //숙소 이용 날짜 
-	
-	
-	
 }

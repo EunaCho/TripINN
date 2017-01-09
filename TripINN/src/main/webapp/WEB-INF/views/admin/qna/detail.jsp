@@ -197,10 +197,9 @@ li{margin-right:50px }
             </tr>
             
             <tr>
-            <!--  추후 추가할 것임
                 <th scope="row">작성자</th>
                 <td>${map.MEMBER_NAME }</td>
-            -->    
+               
                 <th scope="row">작성시간</th>
                 <td>${map.QNA_REGDATE }</td>
             </tr>
@@ -211,13 +210,37 @@ li{margin-right:50px }
             <tr>
                 <td colspan="4">${map.QNA_CONTENT }</td>
             </tr>
+            <!-- 임시 테스트용 글작성자의  멤버레벨 출력 -->
+            <tr>
+                <td colspan="4">${map.MEMBER_LEVEL }</td>
+            </tr>
+            <!-- 임시 테스트용 글작성자의 멤버IDX 출력 -->
+            <tr>
+                <td colspan="4">${map.MEMBER_IDX }</td>
+            </tr>
+            
+            <!-- 임시 테스트용 세션멤버레벨 출력 -->
+            <tr>
+                <td colspan="4">${member_level }</td>
+            </tr>
+            <!-- 임시 테스트용 세션멤버IDX 출력 -->
+            <tr>
+                <td colspan="4">${member_idx }</td>
+            </tr>
         </tbody>
     </table>
      
     <a href="#this" class="btn" id="list">목록으로</a>
-    <a href="#this" class="btn" id="update">수정하기</a>
-    <a href="#this" class="btn" id="delete">삭제하기</a>
-     
+    
+    <!-- 글쓴이의 멤버idx와  로그인중인 멤버idx가 같아야만 수정하기 버튼 보이도록 함 -->
+	<c:if test="${map.MEMBER_IDX == member_idx}">
+		<a href="#this" class="btn" id="update">수정하기</a>
+	</c:if>
+    
+    <!-- 글쓴이의 멤버idx와  로그인중인 멤버idx가 같거나 또는  로그인중인 멤버레벨이 관리자여야 글 삭제하기 버튼이 보이도록 함> -->
+    <c:if test="${(map.MEMBER_IDX == member_idx) || (member_level == 1) }">
+    	<a href="#this" class="btn" id="delete">삭제하기</a>
+    </c:if>
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
 
 
@@ -242,7 +265,7 @@ li{margin-right:50px }
            			   <!-- 로그인안했을 때 보여주는 댓글 요청 내용 -->
            			   <!-- 테스트용으로 일부러 로그인 안했을때 댓글창 보여주도록 하였음-->
 	      				<br/>
-	      				<c:if test="${session_member_id != null}">
+	      				<c:if test="${session.getAttribute(member_name) != null}">
 	     			 		<input type="text" style="align:center; margin: 10px; width: 950px; height: 55px;" value="로그인 후에  댓글 작성이 가능합니다." readonly="readonly"/>
 	     			 	</c:if>
 	     			 	
@@ -277,12 +300,12 @@ li{margin-right:50px }
 							
 							
 							<!-- 입력되어 있는 작성자와 아이디가 같거나, 아이디가 관리자 일때만 삭제  창을 띄운다. -->
-							<!-- 일단 테스트용으로 삭제창 그냥 띄워보도록 하였음 -->
-							<c:if test="${session_member_id == null}">
+							
+							<c:if test="${member_level == 1}">
 								<td align="left">
-									<a href="qnaCommDelete.do?QCO_IDX=${list.QCO_IDX}&QNA_IDX=${map.QNA_IDX}">
+									<%-- <a href="qnaCommDelete.do?QCO_IDX=${list.QCO_IDX}&QNA_IDX=${map.QNA_IDX}"> --%>
 										<input type="button" onclick="qnaCommDelete(${list.QCO_IDX})"  value="삭제" class="btn btnC_01 btnP_02"/>
-									</a>
+									<!-- </a> -->
 								</td>			
 							</c:if>
 						</div><!-- 댓글영역 9 끝 -->
