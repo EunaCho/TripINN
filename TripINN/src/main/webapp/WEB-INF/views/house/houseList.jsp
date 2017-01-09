@@ -195,7 +195,6 @@ scrollbar-shadow-color:#FFFFFF}
 	</table> --%>
 	</div>
 	
-	
 	<!-- 오른쪽 -->
 
 	<div id="right" style="width:48%; min-width: 530px;  border:1px solid red;  float:left;">

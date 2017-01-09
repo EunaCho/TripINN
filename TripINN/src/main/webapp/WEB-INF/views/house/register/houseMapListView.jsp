@@ -21,7 +21,8 @@
 </style>
 
 
-<script>	
+<script>
+alert("ddd");
  	// 지도의 중심 
  	var addr_size = ${addr_size};
  	/* alert(addr_size); */
