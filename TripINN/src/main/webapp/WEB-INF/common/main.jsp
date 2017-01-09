@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% String cp = request.getContextPath(); %>
 
 
@@ -133,24 +133,19 @@ function preSearch() {
 		<!-- 트립 미리보기 블럭 -->
 		<div class="subject">
 			<span>등록된 트립</span>
-			<span><a href="">전체보기>></a></span>
+			<span><a href="<%=cp%>/tripList.do">전체보기>></a></span>
 		</div>
 		<!-- 트립 미리보기 리스트 출력 -->
 			
 		<div class="pre_List">
 		<ul>
 			<c:forEach items="${tripList}" var="tripList" varStatus="stat">
-			
-				<!-- 트립 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
-				<c:url var="tripViewURL" value="/trip/tripDetail.do">
-					<c:param name="trip_idx" value="${tripList.TRIP_IDX}"/>
-					<c:param name=""/>
-				</c:url>
-				
+				<c:set var="fullImg" value="${tripList.TRIP_IMAGE }"/>
+				<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
 				<!-- 미리보기 개체 -->
 				<li>
-				<a href="${tripViewURL}">
-					<img src="<%= cp %>/images/trip/${tripList.TRIP_IMAGE}" class="houseImage" alt="트립 사진"/>
+				<a href="javascript:tripDetail('${tripList.TRIP_IDX }');">
+					<img src="<%= cp %>/images/trip/${tripImg}" class="houseImage" alt="트립 사진"/>
 					<br/>
 						<span><strong>${tripList.TRIP_NAME}</strong></span>
 						<span>${tripList.TRIP_INFO}</span>
@@ -164,6 +159,15 @@ function preSearch() {
 		</div>
 	
 	</div>
-	
-	
 </div>
+
+<form action="/TripINN/tripDetail.do" method="post" name="formDetail">
+	<input type="hidden" name="trip_idx" value=""/>
+</form>
+<script>
+function tripDetail(trip_idx) {
+	var dform = document.formDetail;
+	dform.trip_idx.value = trip_idx;
+	dform.submit();
+}
+</script>
