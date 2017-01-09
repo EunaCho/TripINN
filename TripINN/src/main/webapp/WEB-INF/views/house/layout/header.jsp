@@ -12,8 +12,8 @@
 	<form id="house_searchForm" method="POST" action="/TripINN/house/houseMain.do">
  
 	<div>
-		<label>위치</label>
-		<input class="location" type="text" name="preSearch_keyword" placeholder="목적지, 도시명, 주소" value="${search.preSearch_keyword}">
+		<label>검색 키워드</label>
+		<input class="location" type="text" name="preSearch_keyword" placeholder="숙소 이름, 도시명, 주소" value="${search.preSearch_keyword}">
 	</div>
 	<div>
 		<div>
@@ -29,8 +29,8 @@
 
 	<div style="margin-left:30px;">
 		<label>인원</label>
-		<select name="person" placeholder="인원 1명">	
-			<option value="인원 1명">인원 1명</option>
+		<select name="person" placeholder="">	
+			<option value="0">인원 1명</option>
 			<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
 			<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
 			<option value="3" <c:if test="${person eq 3}">selected="selected"</c:if> >인원 3명</option>

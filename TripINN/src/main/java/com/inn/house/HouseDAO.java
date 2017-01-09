@@ -45,13 +45,6 @@ public class HouseDAO extends AbstractDAO{
 		return (List<Map<String,Object>>)selectList("house.searchHouseList",map);
 	}
 	
-	//숙소 지도 리스트
-	@SuppressWarnings("unchecked")
-	public List<Map<String,Object>> selectHouseMapList(Map<String,Object> map){
-		return (List<Map<String,Object>>) selectList("house.selectHouseMapList", map);
-	}
-	
-	
 	//insert DAO
 	//등록 페이지 1
 	public void insertHouse(Map<String, Object> map) throws Exception{
@@ -106,7 +99,6 @@ public class HouseDAO extends AbstractDAO{
 	public void deleteFileList(Map<String, Object> map) throws Exception{
 		update("house.deleteFileList", map);
 	}
-
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) {
 		// TODO Auto-generated method stub

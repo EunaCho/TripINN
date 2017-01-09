@@ -15,9 +15,6 @@ public interface HouseService {
 	//하우스검색 정렬
 	List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception;
 
-	//하우스 지도 검색 정렬
-	List<Map<String,Object>> selectHouseMapList(Map<String,Object> map) throws Exception;
-	
 	//삽입 기능
 	void insertHouse(Map<String, Object> map, HttpServletRequest request) throws Exception;
 		
@@ -27,8 +24,10 @@ public interface HouseService {
 	void deleteHouse(Map<String, Object> map) throws Exception;
 	//상세보기 기능
 	Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception;
-	
-	//리뷰 작성하긴
+
+	//하우스 리뷰 리스트
+	List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception;
+
 	void insertReview(Map<String, Object> map) throws Exception;
 	
 	
