@@ -133,4 +133,19 @@ public class HouseController {
 		return mv; //mv 값 넘기기
 	}
 	
+	//하우스 리뷰 작성하기
+	@RequestMapping(value="/house/houseReviewWrite.do", method=RequestMethod.POST)
+	public ModelAndView houseReviewWrite(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView();
+ 		
+		//작성된 리뷰 내용 전송
+		
+		houseService.insertReview(commandMap.getMap());
+		
+		
+		mv.setViewName("redirect:/house/houseDetail.do");//리뷰 작성하면 상세페이지 다시 띄움
+		return mv; 
+	}
+	
+
 }
