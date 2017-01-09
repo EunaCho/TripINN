@@ -9,13 +9,12 @@ import com.common.common.CommandMap;
 public interface AdminQnaService {
 	//리턴값을 list에서 Map으로 변경하였음
 	//리스트
-	
 	List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception;
 	
 	//검색 (0=제목, 1=내용, 2=이름)
 		List<Map<String,Object>> search0(Map<String,Object> map);
 		List<Map<String,Object>> search1(Map<String,Object> map);
-		//List<Map<String,Object>> search2(String search);
+		List<Map<String,Object>> search2(Map<String,Object> map);
 	
 	
 	//글쓰기 

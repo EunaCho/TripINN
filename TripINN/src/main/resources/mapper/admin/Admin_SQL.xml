@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="admin">
 
-<<<<<<< HEAD
+
    <!-- Qna리스트, 페이징을 위해 수정됨 -->
    <select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
    <!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
-    	SELECT
-=======
-	<!-- Qna리스트, 페이징을 위해 수정됨 -->
-   <select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
-   <!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
-    <include refid="common.pagingPre"/> 
-    <![CDATA[
-        SELECT
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-            ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
-            QNA_IDX,
-            QNA_TITLE,
-            QNA_READCOUNT,
-            QNA_REGDATE
-        FROM
-            QNA_BOARD
-        ORDER BY QNA_IDX DESC
-<<<<<<< HEAD
+    	SELECT 
+    		ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
+			QNA_IDX, 
+			QNA_TITLE, 
+			QNA_CONTENT, 
+			QNA_READCOUNT, 
+			QNA_REGDATE, 
+			MEMBER_NAME
+		FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
+		ORDER BY QNA_IDX DESC
    </select>
    
    <!-- 게시판 검색 -->
@@ -39,32 +30,22 @@
 	<!-- 내용검색 -->
 	<select id="search1" parameterType="hashmap" resultType="hashmap">
 		SELECT * FROM QNA_BOARD
-		WHERE QNA_CONTENT like #{search} 
+		WHERE QNA_CONTENT like '%'||#{isSearch}||'%'
 		ORDER BY QNA_IDX DESC
 	</select>
 
-	<!-- 작성자검색,보류 -->
-	<!--  
+	<!-- 작성자검색 -->
 	<select id="search2" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM QNA_BOARD
-		WHERE member_id like #{search}
+		SELECT * FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
+		WHERE MEMBER_NAME like '%'||#{isSearch}||'%'
 		ORDER BY QNA_IDX DESC
 	</select>
-   -->
    
       
    
    
    <!-- qna 글쓰기 처리 -->
    <insert id="adminQnaInsertPro" parameterType="hashmap">
-=======
-    ]]>
-    <include refid="common.pagingPost"/> 
-   </select>   
-   
-   
-   
-   <insert id="adminQnaInsertPro" parameterType="hashmap">
     <![CDATA[
         INSERT INTO QNA_BOARD
         (
@@ -81,47 +62,14 @@
            QNA_IDX_SEQ.NEXTVAL, 
             #{QNA_TITLE}, 
             #{QNA_CONTENT}, 
-            '11', 
+            #{QNA_PWD}, 
             SYSDATE, 
             0, 
-            1
+            #{MEMBER_IDX}
         )
     ]]>
    </insert>
    
-   
-   <!--조회수 증가  -->
-   <update id="updateQnaReadCount" parameterType="hashmap">
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-    <![CDATA[
-        INSERT INTO QNA_BOARD
-        (
-            QNA_IDX,
-            QNA_TITLE,
-            QNA_CONTENT,
-            QNA_PWD,
-            QNA_REGDATE,
-            QNA_READCOUNT,
-            MEMBER_IDX
-        )
-        VALUES
-        (
-           QNA_IDX_SEQ.NEXTVAL, 
-            #{QNA_TITLE}, 
-            #{QNA_CONTENT}, 
-            '11', 
-            SYSDATE, 
-            0, 
-            1
-        )
-    ]]>
-<<<<<<< HEAD
-   </insert>
-   
-=======
-   </update>
- 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
     <!--QNA 상세보기 -->
    <select id="adminQnaSelectDetail" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
@@ -129,17 +77,18 @@
             QNA_IDX,
             QNA_TITLE,
             QNA_CONTENT,
-            QNA_PWD,
             QNA_REGDATE,
-            QNA_READCOUNT
+            QNA_READCOUNT,
+            MEMBER_NAME,
+            MEMBER_LEVEL,
+            M.MEMBER_IDX
         FROM
-            QNA_BOARD
+            QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
         WHERE
             QNA_IDX = #{QNA_IDX}        
        ]]>
    </select>
    
-<<<<<<< HEAD
     	<!--Qna조회수 증가  -->
    		<update id="updateQnaReadCount" parameterType="hashmap">
     	<![CDATA[
@@ -187,34 +136,12 @@
    </update>
 
    <!-- QNA 삭제하기 -->
-   <delete id="adminQnaDelete" parameterType="hashmap">
-    <![CDATA[
-        DELETE FROM QNA_CO
-        WHERE QCO_IDX = #{qco_idx}
-    ]]>
-   </delete>
-=======
-   <!-- QNA 수정 -->
-   <update id="adminQnaUpdatePro" parameterType="hashmap">
-    <![CDATA[
-    
-        UPDATE QNA_BOARD
-        SET
-           QNA_TITLE = #{QNA_TITLE},
-           QNA_CONTENT = #{QNA_CONTENT}
-        WHERE
-           QNA_IDX = #{QNA_IDX}
-    ]]>
-   </update>
-
-   <!-- QNA 삭제하기 -->
-   <update id="adminQnaDelete" parameterType="hashmap">
+	<delete id="adminQnaDelete" parameterType="hashmap">
     <![CDATA[
         DELETE FROM QNA_BOARD
         WHERE QNA_IDX = #{QNA_IDX}
     ]]>
-   </update>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+	</delete>
 
 
    <!-- 멤버리스트 -->
@@ -234,23 +161,24 @@
             FROM
             MEMBER
             ORDER BY MEMBER_IDX DESC
-<<<<<<< HEAD
+
    
    </select>
+   
+
+   
 
 
-=======
-	
-	</select>
-	
+   
 
-	
-
-
-	
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
      
+
+   
+
+
+
+
+
 <select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
     
         SELECT
@@ -284,19 +212,12 @@
  
 </update>
 
+<delete id="deleteList" parameterType="hashmap">
 
-		<delete id="deleteList" parameterType="hashmap">
         DELETE
-        FROM MEMBER   
+        FROM MEMBER
+        
         WHERE MEMBER_IDX = #{MEMBER_IDX}  
-		</delete>
-
-
-<<<<<<< HEAD
-   
-   
-   <!-- faq 리스트 -->
-=======
 
 </delete>
 
@@ -304,10 +225,14 @@
 
 
 
-	
-	
-	<!-- faq 리스트 -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+   
+   
+   
+   
+   
+   <!-- faq 리스트 -->
+
+
     <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
            SELECT
@@ -322,7 +247,7 @@
         ]]>
     </select>
     
-<<<<<<< HEAD
+
      <!-- 댓글쓰기 -->
     <insert id="qnaCommWrite" parameterType="hashmap">
         INSERT INTO QNA_CO
@@ -339,12 +264,13 @@
         )
    </insert>
     
-=======
+
+
     <!-- House List -->
     <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			
+      
+         SELECT
+         
             HOUSE_IDX,
             HOUSE_NAME,
             HOUSE_INFO,
@@ -363,28 +289,31 @@
             HOUSE
             
           ORDER BY HOUSE_IDX DESC
-	
-	</select>
-	
-	<select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
+
+   
+   </select>
+   
+   
+   
+   <select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
+      
+         SELECT
+         REPORT_IDX,
+         REPORT_TITLE,
+         REPORT_CONTENT,
+         REPORT_REGDATE,
+         REPORT_TYPE
 
           FROM
             REPORT_BOARD
             
-            WHERE REPORT_TYPE=1
+             WHERE REPORT_TYPE=1
             
           ORDER BY REPORT_IDX DESC
-	
-	</select>
-	
-	<delete id="houseReportDelete" parameterType="hashmap">
+   
+   </select>
+   
+   <delete id="houseReportDelete" parameterType="hashmap">
 
 
         DELETE
@@ -398,40 +327,40 @@
 
 <!-- Trip List -->
 <select id="selectTripList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			TRIP_IDX,
-			TRIP_IMAGE,
-			TRIP_AREA,
-			TRIP_FIRST_DATE,
-			TRIP_LAST_DATE,
-			TRIP_LANGUAGE,
-			TRIP_NAME,
-			TRIP_INTRO,
-			TRIP_INCLUDE,
-			TRIP_ZIPCODE,
-			TRIP_ADDR1,
-			TRIP_ADDR2,
-			TRIP_ADDR3,
-			TRIP_PERSONS,
-			TRIP_TPRICE,
-			TRIP_PPRICE
-			
+      
+         SELECT
+         TRIP_IDX,
+         TRIP_IMAGE,
+         TRIP_AREA,
+         TRIP_FIRST_DATE,
+         TRIP_LAST_DATE,
+         TRIP_LANGUAGE,
+         TRIP_NAME,
+         TRIP_INTRO,
+         TRIP_INCLUDE,
+         TRIP_ZIPCODE,
+         TRIP_ADDR1,
+         TRIP_ADDR2,
+         TRIP_ADDR3,
+         TRIP_PERSONS,
+         TRIP_TPRICE,
+         TRIP_PPRICE
+         
           FROM
             TRIP
             
           ORDER BY HOUSE_IDX DESC
-	
-	</select>
-	
-	<select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
+   
+   </select>
+   
+   <select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
+      
+         SELECT
+         REPORT_IDX,
+         REPORT_TITLE,
+         REPORT_CONTENT,
+         REPORT_REGDATE,
+         REPORT_TYPE
 
           FROM
             REPORT_BOARD
@@ -439,10 +368,8 @@
             WHERE REPORT_TYPE=2
             
           ORDER BY REPORT_IDX DESC
-	
-	</select>
+   
+   </select>
 
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
     
 </mapper>
