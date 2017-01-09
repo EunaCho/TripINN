@@ -30,18 +30,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-<<<<<<< HEAD
 
 	
-=======
-
-	
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 <!-- 회원관리 페이지 -->
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<definition name="memberList" template="/WEB-INF/common/layout.jsp">
       <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
       <put-attribute name="body" value="/WEB-INF/views/admin/member/list.jsp"/>
@@ -104,12 +95,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/house/list.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-	<!-- 숙소신고 리스트 페이지 -->
-	<definition name="houseReportList" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/house/reportList.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
 	<!-- 트립 관리 리스트 페이지 -->
 	<definition name="adminTripList" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -125,14 +110,8 @@
 	
 	
 	<!--  ==========================================================================================-->
-<<<<<<< HEAD
-
 	
 	<!-- 마이페이지  -->
-=======
-		<!-- 마이페이지  -->
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -184,7 +163,7 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
-	<definition name="my_HouseDetail" template="/WEB-INF/common/layout.jsp">
+	<definition name="houseDetail" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/houseDetail.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
@@ -195,25 +174,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-	
-	<definition name="houseReserDetail" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserDetail.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
-	<definition name="H_reserDeleteOk" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserDeleteOk.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
-	<definition name="H_reserDelete" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserDelete.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
 	
 
 		<!-- 트립목록 -->
@@ -345,18 +305,6 @@
 	<definition name="tripList" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/trip/tripList.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
-	<definition name="tripDetail" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/trip/tripDetail.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
-	
-	<definition name="tripReserveForm" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/trip/tripReserve.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
