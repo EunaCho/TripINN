@@ -18,12 +18,12 @@
 	<div>
 		<div>
 		<label>체크인</label>
-		<input class="checkinout" type="text" name="hri_first_date" id="datepicker_in" value="${search.hri_first_date}" placeholder="체크인" >
+		<input class="checkinout" type="text" name="hr_first_date" id="datepicker_in" value="${search.hr_first_date}" placeholder="체크인" >
 		</div>
 		<div><img src="/TripINN/images/arrow.png"  style="width:30px;"></div>
 		<div>
 		<label>체크아웃</label>
-		<input class="checkinout" type="text" name="hri_last_date" id="datepicker_out" value="${search.hri_last_date}" placeholder="체크아웃">
+		<input class="checkinout" type="text" name="hr_last_date" id="datepicker_out" value="${search.hr_last_date}" placeholder="체크아웃">
 		</div>
 	</div>
 

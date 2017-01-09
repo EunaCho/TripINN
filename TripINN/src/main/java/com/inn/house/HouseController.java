@@ -45,8 +45,8 @@ public class HouseController {
 		mv.addObject("search",commandMap.getMap()); //검색키워드 넘기기
 		//System.out.println(mv);
 	
-		List<Map<String, Object>> list = houseService.selectHouseList(commandMap.getMap());
-		//List<Map<String, Object>> list = houseService.searchHouseList(commandMap.getMap());
+		//List<Map<String, Object>> list = houseService.selectHouseList(commandMap.getMap());
+		List<Map<String, Object>> list = houseService.searchHouseList(commandMap.getMap());
 
 		System.out.println("맵");
 		System.out.println(commandMap.getMap());
