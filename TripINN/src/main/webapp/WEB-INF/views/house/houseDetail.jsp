@@ -53,9 +53,13 @@
 		<div class="house_subject">
 			<div class="house_name">
 				<span><h2>${house.HOUSE_NAME}</h2></span>
-				<span class="addr">${house.HOUSE_ADDR2}, ${house.HOUSE_ADDR1} ${house.HI_TOTAL_STAR} 후기 ??개</span>
+				<span>${house.HOUSE_ADDR2}, ${house.HOUSE_ADDR1} ${house.HI_TOTAL_STAR} 후기 ??개</span>
 			</div>
-			<div class="userProfile">사진${house.MEMBER_IDX }</div>
+			<div class="testt">
+				<span><img src="/TripINN/images/공유.png"/></span> <br/>
+				<span>호스트: ${house.MEMBER_IDX } 님</span>
+			</div>
+			
 		</div>
 		<!-- 숙소상세정보 -->
 		<div class="house_desc">
@@ -124,10 +128,15 @@
 	<!-- 후기 블록 -->
 	<div class="review">
 	<!-- 후기 입력하기 -->
-		<form name="reviewForm" id="reviewForm" action="" method="post">
-		<textarea name="" theme="simple" value="" cols="60" rows="8"></textarea>
-		<br>
-		<button class="reviewBtn" type="submit" name="reviewSubmit">리뷰작성</button>
+		<form name="reviewForm" id="reviewForm" action="<%=cp %>/house/houseReviewWrite.do" method="post">
+			 
+			 <%-- <input type="hidden" name="hrb_idx"/>
+			 <input type="text" name="HOUSE_IDX" value="${house.HOUSE_IDX }"/>
+  			 <input type="text" name="MEMBER_IDX" value="${sessionAttribute.MEMBER_IDX }" />
+			 --%>
+			<textarea name="HRB_CONTENT" theme="simple" value="" cols="60" rows="8"></textarea>
+			<br>
+			<button class="reviewBtn" type="submit" name="reviewSubmit">리뷰작성</button>
 		</form>
 		<!-- 후기 리스트 출력 -->
 		<c:forEach items="${review}" var="review" varStatus="stat">
@@ -135,8 +144,8 @@
 			<div class="reviewBlock">
 				<!-- 작성자정보 -->
 				<div class="writer">
-					<img src="profile">
-					<br> ${review.MEMBER_IDX}
+					<span><img src="/TripINN/images/공유.png"/></span> <br/>
+					<span>작성자: ${review.MEMBER_IDX} 님</span>
 				</div>
 				<!-- 리뷰내용 -->
 				<div class="reviewContent">

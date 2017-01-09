@@ -78,6 +78,10 @@ public class HouseServiceImpl implements HouseService{
 		return houseDAO.selectReviewList(map);
 	}
 	
+	public void insertReview(Map<String, Object> map) throws Exception {
+		houseDAO.insertReview(map);
+	}
+	
 	//hi_space, hi_cspace 문자열 변경 기능
 	public void util(Map<String, Object> map){
 		

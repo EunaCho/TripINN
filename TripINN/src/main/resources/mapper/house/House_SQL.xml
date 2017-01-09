@@ -114,4 +114,12 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 			)
 		]]>
 	</insert>
+	
+	<insert id="insertReview" parameterType="hashmap">
+		INSERT INTO HOUSE_REVIEW_BOARD (
+		 	HRB_IDX, HRB_TITLE, HRB_CONTENT, <!-- HRB_PWD, --> HRB_REGDATE, <!-- HRB_STAR, HRB_LIKE, --> MEMBER_IDX, HOUSE_IDX
+		 ) VALUES (
+		 	hrb_idx_seq.nextval, #{HRB_TITLE}, #{HRB_CONTENT}, <!-- #{HRB_PWD} --> #{HRB_REGDATE},<!--  #{HRB_STAR}, #{HRB_LIKE}, --> #{MEMBER_IDX}, #{HOUSE_IDX}
+		 )
+	</insert>
 </mapper>

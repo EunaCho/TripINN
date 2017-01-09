@@ -28,6 +28,9 @@ public interface HouseService {
 	//하우스 리뷰 리스트
 	List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception;
 	
+	//리뷰 작성하긴
+	void insertReview(Map<String, Object> map) throws Exception;
+	
 	
 
 }
