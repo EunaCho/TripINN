@@ -6,14 +6,14 @@
 <html>
 <head>
 <title>HOUSE LIST</title>
-<<<<<<< HEAD
+
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <link rel="stylesheet" href="/TripINN/css/house/houseList.css">                                                                              
 <script src="http://code.jquery.com/jquery.min.js"></script>
 	<!-- daum map -->
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
-=======
+
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
 	<link rel="stylesheet" href="/resources/demos/style.css">
@@ -58,8 +58,6 @@
 	  });
 	});
 	</script>
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 <STYLE> 
 #left { scrollbar-3dlight-color:#FFFFFF;
 scrollbar-arrow-color:#000000;
