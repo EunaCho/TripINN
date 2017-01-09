@@ -88,7 +88,7 @@ scrollbar-shadow-color:#FFFFFF}
 		<div>
 			<label>인원</label>
 			<select name="person" placeholder="인원 1명">	
-				<option value="인원 1명">인원 1명</option>
+				<option value="0">인원 1명</option>
 				<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
 				<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
 				<option value="3" <c:if test="${person eq 3}">selected="selected"</c:if> >인원 3명</option>

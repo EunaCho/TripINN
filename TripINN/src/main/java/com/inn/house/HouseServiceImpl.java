@@ -71,8 +71,11 @@ public class HouseServiceImpl implements HouseService{
 	//house detail
 	@Override
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return houseDAO.selectHouseDetail(map);
+	}
+	
+	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
+		return houseDAO.selectReviewList(map);
 	}
 	
 	public void insertReview(Map<String, Object> map) throws Exception {

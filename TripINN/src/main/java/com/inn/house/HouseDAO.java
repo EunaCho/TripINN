@@ -99,7 +99,6 @@ public class HouseDAO extends AbstractDAO{
 	public void deleteFileList(Map<String, Object> map) throws Exception{
 		update("house.deleteFileList", map);
 	}
-
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
