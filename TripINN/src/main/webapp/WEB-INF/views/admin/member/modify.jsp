@@ -30,7 +30,7 @@
    
    
    <!-- 좌측 영역 -->
-   <div style="width:15%;height:380px;border:1px solid black;text-align:center;">	
+   <div style="width:16.8%;height:380px;border:1px solid black;text-align:center;">	
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
@@ -48,123 +48,117 @@
    <input type="hidden" value="${map.MEMBER_IDX}" name="MEMBER_IDX"/>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:208px;left:213px;">
+   <div style="color:black;width:80%;height:430px;border:2px solid red;text-align:left; position:absolute;top:208px;left:213px;">
    
-   <div style="color:black;width:73%;height:381px;border:1px solid black; margin-left:150px;">
    
-	<div style="width:15%;height:150px;border:2px solid blue">
-	<img src="/TripINN/images/공유.png" style="width:100%; height:150px;">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지
-	</div>
+   
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:30px;left:300px;text-align:center; background-color:skyblue;">
+	
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:20px;left:20px;text-align:center; background-color:#D2D2FF;">
 	번호
 	</div>
 	<!-- 번호 받는 곳 -->
 
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:30px;left:392px;">
-	${map.MEMBER_IDX }
-	<input type="hidden" id="MEMBER_IDX" name="MEMBER_IDX" value="${map.MEMBER_IDX }">
+	<div style="font-size:18px;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:20px;left:175px;text-align:center;">
+	${map.MEMBER_IDX}
     </div>
-	
-	
 
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:50px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:55px;left:20px;text-align:center; background-color:#D2D2FF;">
 	이름
 	</div>
 	<!-- 이름 받는 곳 -->
 
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:50px;left:392px;">
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:55px;left:175px;">
 	${map.MEMBER_NAME}
     </div>
 	
 	
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:70px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:90px;left:20px;text-align:center; background-color:#D2D2FF;">
 	주소
-	</div> 
+	</div>
 	<!-- 주소 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:70px;left:392px;">
-	<input type="text" size="57" id="MEMBER_ADDR" name="MEMBER_ADDR" value="${map.MEMBER_ADDR }"/>
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:90px;left:175px;">
+	<input type="text"size="95"id="MEMBER_ADDR" style="font-size:12pt; color:black;background-color:#e2e2e2;text-align:center;" name="MEMBER_ADDR" value="${map.MEMBER_ADDR }"/>
 	
 	
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:90px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:125px;left:20px;text-align:center; background-color:#D2D2FF;">
 	이메일
 	</div>
 	
 	<!-- 이메일 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:90px;left:392px;">
-	<input type="text" size="57" id="MEMBER_EMAIL" name="MEMBER_EMAIL" value="${map.MEMBER_EMAIL }"/>
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:125px;left:175px;">
+	<input type="text" size="95" id="MEMBER_EMAIL" name="MEMBER_EMAIL"style="font-size:12pt; color:black;background-color:#e2e2e2;text-align:center;" value="${map.MEMBER_EMAIL }"/>
 	
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:110px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:160px;left:20px;text-align:center; background-color:#D2D2FF;">
 	휴대폰
 	</div>
 	
 	<!--  휴대폰 받는곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:110px;left:392px;">
-	<input type="text" size="57" id="MEMBER_PHONE" name="MEMBER_PHONE" value="${map.MEMBER_PHONE }"/>
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:160px;left:175px;">
+	<input type="text" size="95" id="MEMBER_PHONE" name="MEMBER_PHONE"style="font-size:12pt; color:black;background-color:#e2e2e2;text-align:center;" value="${map.MEMBER_PHONE }"/>
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:130px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:195px;left:20px;text-align:center; background-color:#D2D2FF;">
 	생일
 	</div>
 	
 	<!-- 생일 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:392px;">
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:195px;left:175px;">
 	${map.MEMBER_BIRTH}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:130px;left:530px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:230px;left:20px;text-align:center; background-color:#D2D2FF;">
 	성별
 	</div>
 	
 	<!-- 성별 받는 곳 -->
-	<div style="color:black;width:15%;height:20px;border:1px solid black; position:absolute;top:130px;left:622px;">
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:230px;left:175px;">
 	${map.MEMBER_SEX}
 	</div>
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:150px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:265px;left:20px;text-align:center; background-color:#D2D2FF;">
 	가입일자
 	</div>
 	
 	
 	<!-- 가입일자 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:150px;left:392px;">
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:265px;left:175px;">
+	
 	${map.MEMBER_JOINDATE}
 	
 	</div>
-	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:170px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:300px;left:20px;text-align:center; background-color:#D2D2FF;">
 	비밀번호
 	</div>
 	
 	<!-- 비밀번호 받는 곳 -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:170px;left:392px;">
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:300px;left:175px;">
 	
-	<input type="text" size="57" id="MEMBER_PWD" name="MEMBER_PWD" value="${map.MEMBER_PWD }"/>
+	<input type="text" size="95" id="MEMBER_PWD" name="MEMBER_PWD"style="font-size:12pt; color:black;background-color:#e2e2e2;text-align:center;" value="${map.MEMBER_PWD }"/>
 	
 	</div>
 	
 	
-	<div style="color:black;width:10%;height:20px;border:1px solid black; position:absolute;top:190px;left:300px;text-align:center; background-color:skyblue;">
+	<div style="font-size:20px;color:black;width:15%;height:30px;border:0px solid black; position:absolute;top:335px;left:20px;text-align:center; background-color:#D2D2FF;">
 	회원등급
 	</div>
 	
 	<!--회원 등급 받는 곳  -->
-	<div style="color:black;width:40.3%;height:20px;border:1px solid black; position:absolute;top:190px;left:392px;">
+	<div style="font-size:18px;text-align:center;color:black;width:80%;height:30px;border:1px solid black; position:absolute;top:335px;left:175px;">
 	
-	<input type="text" size="57" id="MEMBER_LEVEL" name="MEMBER_LEVEL" value="${map.MEMBER_LEVEL }"/>
+	<input type="text" size="95" id="MEMBER_LEVEL" name="MEMBER_LEVEL"style="font-size:12pt; color:black;background-color:#e2e2e2;text-align:center;" value="${map.MEMBER_LEVEL }"/>
 	</div>
 	
-	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:330px;left:450px;">
+	<div style="color:black;width:7%;height:20px;border:2px solid white; position:absolute;top:400px;left:510px;">
 	<input type="button" value="완료" onClick="document.frm.submit();">
 	</div>
 	
-	</div>
+	
 	
 	
    </div>

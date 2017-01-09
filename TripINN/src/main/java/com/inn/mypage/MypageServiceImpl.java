@@ -28,14 +28,12 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
 	}
-
 	//보낸 메시지 상세보기 
 	@Override
 	public Map<String, Object> selectSendMsgDetail(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectSendMsgDetail(map);
 	}
 	//받은메시지 상세보기 
-
 	@Override
 	public Map<String, Object> selectReceiveMsgDetail(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgDetail(map);
@@ -58,7 +56,6 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectHouseList(map);
 	}
-
 	//숙소 상세보기 
 	@Override
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception{
@@ -73,6 +70,37 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<Map<String, Object>> selectH_MsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectH_MsgList(map);
+	}
+	//에약 관리 리스트 
+	@Override
+	public List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectMy_ReserList(map);
+	}
+	//예약관리 상세보기 
+	@Override
+	public Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectReserDetail(map);
+	}
+	//update hr_delete_state
+	@Override
+	public void updateHr_delete_state_1(Map<String, Object> map) throws Exception{
+		mypageDAO.updateHr_delete_state_1(map);
+	}
+	public void updateHr_delete_state_2(Map<String, Object> map) throws Exception{
+		mypageDAO.updateHr_delete_state_2(map);
+	}
+	public void updateHr_delete_state_3(Map<String, Object> map) throws Exception{
+		mypageDAO.updateHr_delete_state_3(map);
+	}
+	//예약취소 신청날짜 update
+	public void updateHr_delete_date(Map<String, Object> map) throws Exception{
+		mypageDAO.updateHr_delete_date(map);
+	}
+	
+	//숙소이용날짜 
+	@Override 
+	public Map<String, Object> countDate(Map<String, Object> map) throws Exception{
+		return mypageDAO.countDate(map);
 	}
 	
 	

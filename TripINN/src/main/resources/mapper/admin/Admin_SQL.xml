@@ -3,7 +3,9 @@
 
 <mapper namespace="admin">
 
+
    <!-- Qna리스트, 페이징을 위해 수정됨 -->
+
    <select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
    <!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
        SELECT
@@ -142,10 +144,10 @@
    </delete>
 
 
-   <!-- 멤버리스트 -->
-   <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
-      
-         SELECT
+	<!-- 멤버리스트 -->
+	<select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
+		
+			SELECT
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_NAME,
@@ -161,8 +163,6 @@
             ORDER BY MEMBER_IDX DESC
    
    </select>
-
-
 
 <select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
     
@@ -197,32 +197,37 @@
  
 </update>
 
+<delete id="deleteList" parameterType="hashmap">
 
-      <delete id="deleteList" parameterType="hashmap">
         DELETE
-        FROM MEMBER   
+        FROM MEMBER
+        
         WHERE MEMBER_IDX = #{MEMBER_IDX}  
-      </delete>
+
+</delete>
 
 
-   
-   
-   <!-- faq 리스트 -->
+
+
+
+	
+	
+	<!-- faq 리스트 -->
 
     <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
            SELECT
-             FAQ_IDX,
-             FAQ_TITLE,
-             FAQ_READCOUNT,
-            FAQ_REGDATE
-      FROM
-          FAQ_BOARD
-      ORDER BY FAQ_IDX DESC
-      
+   			 FAQ_IDX,
+   			 FAQ_TITLE,
+   			 FAQ_READCOUNT,
+  			 FAQ_REGDATE
+		FROM
+    		FAQ_BOARD
+		ORDER BY FAQ_IDX DESC
+		
         ]]>
     </select>
-    
+
      <!-- 댓글쓰기 -->
     <insert id="qnaCommWrite" parameterType="hashmap">
         INSERT INTO QNA_CO
@@ -238,7 +243,6 @@
            #{QNA_IDX}
         )
    </insert>
-    
 
     <!-- House List -->
     <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
@@ -263,9 +267,10 @@
             HOUSE
             
           ORDER BY HOUSE_IDX DESC
-   
-   </select>
-   
+
+	</select>
+	
+
    <select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
@@ -274,11 +279,10 @@
          REPORT_CONTENT,
          REPORT_REGDATE,
          REPORT_TYPE
-
           FROM
             REPORT_BOARD
             
-            WHERE REPORT_TYPE=1
+             WHERE REPORT_TYPE=1
             
           ORDER BY REPORT_IDX DESC
    

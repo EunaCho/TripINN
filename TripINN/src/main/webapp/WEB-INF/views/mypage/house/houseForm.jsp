@@ -7,6 +7,7 @@
 	.left_div{
 		border:1px solid black;
 		margin-bottom:20px;
+		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;
@@ -27,7 +28,7 @@
 	
 	.right_div{
 		border:1px solid black;
-		margin:5px;
+		margin-left:40px;
 		width:900px;
 		height:100%;
 		
@@ -36,15 +37,26 @@
 		left:220px;
 	}
 	.house_div{
-		border:1px solid black;
 		margin:2px;
 		width:98%;
 		height:25px;
-		border-radius:4px;
-		background-color:#31b0d5;
+
 		font-size:16px;
 		color:#FFF;
 		font-weight: 400;
+		text-align:center;
+		padding-top:5px;
+		font-style:'바탕체'
+		letter-spacing:2px;
+		
+		border-bottom:2px solid #828282;
+		margin:2px;
+		width:98%;
+		height:25px;
+		
+		/* background-color:#31b0d5; */
+
+		color:#aaaaaa;
 		text-align:center;
 		padding-top:5px;
 	}
@@ -81,13 +93,14 @@
 		margin:2px;
 	}
 	.house_menu_div{
-		border:1px solid #31b0d5;  
+		border-bottom:2px solid #d2d2d2;  
+		border-top:2px solid #d2d2d2;  
 		width: 880px; 
 		height:230px;
-		margin:2px;
+		margin-top:13px;
+		margin-left:4px;
 	}
 	.menu_div{
-		
 		margin:2px;
 		width: 236px; 
 		float:left
@@ -110,8 +123,6 @@
 		width:620px;
 		height:113px;
 	}
-	
-	
 </style>
 <script>
 function houseDetail(idx) {
@@ -147,7 +158,7 @@ function houseDetail(idx) {
 						<img class="poto_div1" src="<%= cp %>/images/house/${list.HOUSE_IMAGE}">
 						</div>
 						<div class="price_div">
-							${list.HOUSE_TOTAL_PRICE}
+							${list.HOUSE_TOTAL_PRICE}\
 						</div>
 					</div>
 					
@@ -163,9 +174,15 @@ function houseDetail(idx) {
 						</div>
 						
 						<div class="position_div">
-							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:12px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>
+							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:13px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>
 							<br>
-							${list.HI_TOTAL_STAR} (별점)| 후기개수 
+							<div style="CLEAR: both;   PADDING-RIGHT: 0px;   PADDING-LEFT: 0px;   BACKGROUND: url(/TripINN/images/icon_star2.gif) 0px 0px;   FLOAT: left;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   WIDTH: 90px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
+							   <p style="WIDTH: ${list.HI_TOTAL_STAR * 20}%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;"></p>
+						   </div>
+						   <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+						  	 	(${list.HI_TOTAL_STAR}점)
+						   		|&nbsp;후기개수:&nbsp;${list.HCNT}개
+						   	</font> 
 						</div>
 						<div class="h_inp_div">
 							<div style="border:1px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
@@ -186,8 +203,7 @@ function houseDetail(idx) {
 						</div>
 					</div>		
 				</div> <!-- house_menu_div End -->
-				
-			
+	
 			</c:forEach>
 			</form>
 		</c:when>
