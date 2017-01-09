@@ -132,7 +132,6 @@ public class HouseController {
 		
 		return mv; //mv 값 넘기기
 	}
-<<<<<<< HEAD
 	
 	//하우스 리뷰 작성하기
 	@RequestMapping(value="/house/houseReviewWrite.do", method=RequestMethod.POST)
@@ -148,7 +147,5 @@ public class HouseController {
 		return mv; 
 	}
 	
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-	
+
 }

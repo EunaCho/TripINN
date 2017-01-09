@@ -99,7 +99,7 @@ public class HouseDAO extends AbstractDAO{
 	public void deleteFileList(Map<String, Object> map) throws Exception{
 		update("house.deleteFileList", map);
 	}
-<<<<<<< HEAD
+
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -109,7 +109,4 @@ public class HouseDAO extends AbstractDAO{
 		insert("house.insertReview", map);
 		
 	}
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-
 }
