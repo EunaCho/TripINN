@@ -1,13 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<link rel="stylesheet" type="text/css" href="/TripINN/css/house/house.css">
+
+<% String cp = request.getContextPath(); %>
+
 
 <html>
 <head>
 
 <title>HOUSE DETAIL</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+	
+	$(function () {
+	    $("#datepicker_in_reserveBar").datepicker({
+	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         minDate: new Date(),
+	         altField: "#datepicker",
+	         altFormat: "yy-mm-dd"
+	  });
+	});
+	$(function () {
+	    $("#datepicker_out_reserveBar").datepicker({
+	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         minDate: new Date(),
+	         altField: "#datepicker2",
+	         altFormat: "yy-mm-dd"
+	  });
+	});
+	</script>
+
 </head>
 <body>
 
-<<<<<<< HEAD
 
 <!-- 왼쪽: 숙소상세 -->
 <div id="houseDetail">
@@ -235,8 +271,6 @@
 		</div>
 	</div>
  --%>
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 </body>
 </html>
