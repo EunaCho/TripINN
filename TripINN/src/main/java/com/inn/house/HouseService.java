@@ -24,6 +24,9 @@ public interface HouseService {
 	void deleteHouse(Map<String, Object> map) throws Exception;
 	//상세보기 기능
 	Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception;
+
+	//하우스 리뷰 리스트
+	List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception;
 	
 	
 

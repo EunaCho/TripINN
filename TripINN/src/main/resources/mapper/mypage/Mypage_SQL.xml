@@ -46,29 +46,31 @@
 	</insert>
    <!-- 내가 등록한 숙소  리스트-->
    <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-      SELECT h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
+   		  SELECT h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
 				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,HOUSE_CNT,
-				HI_SPACE, HI_BAD,HI_TOTAL_STAR 
-			from house h inner join house_info hf on h.house_idx=hf.house_idx 
+				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,
+				HI_SPACE, HI_BAD,HI_TOTAL_STAR, 
+			    (select count(*) from HOUSE_REVIEW_BOARD hrb where hrb.house_idx=h.house_idx)  HCNT
+		 from house h inner join house_info hf on h.house_idx=hf.house_idx 
 			where member_idx=#{member_idx}
-			order by h.house_idx desc
+				order by h.house_idx desc
    </select>
-   
+
    <!-- 숙소 상세보기  -->
    <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
    		select h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
 				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,HOUSE_CNT,
-				HI_SPACE, HI_BAD,HI_TOTAL_STAR
+				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,
+				HI_SPACE, HI_BAD,HI_TOTAL_STAR,
+			    (select count(*) from HOUSE_REVIEW_BOARD hrb where hrb.house_idx=h.house_idx)  HCNT
 		 from house h inner join house_info hf on h.HOUSE_IDX = hf.HOUSE_IDX
-		 where h.HOUSE_IDX=#{HOUSE_IDX}	
-		 order by h.house_idx desc	
+			 where h.HOUSE_IDX=#{HOUSE_IDX}	
+				 order by h.house_idx desc	
    </select>
    
    <!-- 해당 숙소에 해당하는 예약 현황 리스트  -->
    <select id ="selectH_ReserList" parameterType="hashmap" resultType="hashmap">
-   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, MEMBER_IDX, HOUSE_IDX
+   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_PERSONS, HOUSE_IDX, HR_MONEY_STATE
    		from HOUSE_RSV 
    		where HOUSE_IDX = #{HOUSE_IDX}
    		order by HR_IDX DESC  
@@ -77,10 +79,50 @@
    <!-- 해당 숙소의 메시지  -->
    <select id="selectH_MsgList" parameterType="hashmap" resultType="hashmap">
    		select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
-      		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
+      		  HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
       	where HOUSE_IDX = #{HOUSE_IDX}
      	order by msg_idx desc
    </select>
+   
+   <!-- 내 에약관리 리스트  -->
+   <select id="selectMy_ReserList" parameterType="hashMap" resultType="hashmap">
+   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE,hr.HOUSE_IDX, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE
+			from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
+			where hr.MEMBER_IDX =#{MEMBER_IDX} 
+		order by HR_IDX desc
+   </select>
+   <!-- 예약관리 상세보기 -->
+   <select id="selectReserDetail" parameterType="hashMap" resultType="hashmap">
+		select hr.HOUSE_IDX, HOUSE_NAME, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_PRICE,
+   				HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE
+   		from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
+   		where hr.HOUSE_IDX = #{HOUSE_IDX} and HR_IDX=#{HR_IDX}
+   </select>
+   
+   <!-- 예약 취소 신청 예약취소 신청 상태  1:신청요청중 2:신청완료 3:환불 완료-->
+   <update id="updateHr_delete_state_1" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_STATE = '1' where HOUSE_IDX = #{HOUSE_IDX}
+   </update>
+   
+   <update id="updateHr_delete_state_2" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_STATE = '2' where HOUSE_IDX = #{HOUSE_IDX}
+   </update>
+   
+    <update id="updateHr_delete_state_3" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_STATE = '3' where HOUSE_IDX = #{HOUSE_IDX}
+   </update>
+   
+   <!-- 예약취소 신청 날자 update -->
+   <update id="updateHr_delete_date" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_DATE = sysdate where HOUSE_IDX = #{HOUSE_IDX}
+   </update>
+   
+   <!-- 머무는 날 계산  -->
+   <select id="countDate" parameterType="hashMap" resultType="hashMap">
+   		select (HR_LAST_DATE-HR_FIRST_DATE) count_date from house_rsv
+   		where HOUSE_IDX = #{HOUSE_IDX}
+   </select>
+   
    <!-- 내가 등록한 트립 리스트 -->
    <!-- 트립 상세보기  -->
 </mapper>

@@ -126,11 +126,21 @@ public class HouseController {
 	public ModelAndView houseDetail(CommandMap commandMap) throws Exception {
 		
 		ModelAndView mv = new ModelAndView("HouseInfoDetail");
+		//하우스 상세정보 꺼내오기
+		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap()); 
+		mv.addObject("house", house);
 		
-		Map<String, Object> map = houseService.selectHouseDetail(commandMap.getMap()); //하우스 상세정보 꺼내오기
-		mv.addObject("detail", map);//map에 상세정보 넣기
+		//하우스 리뷰 리스트 꺼내오기
+		List<Map<String, Object>> reviewList = houseService.selectReviewList(commandMap.getMap());
+		mv.addObject("review", reviewList);
+		//map에 상세정보 넣기
+		//System.out.println("하우스맵2");
+		//System.out.println(commandMap.getMap());
+		//System.out.println("하우스정보");
+		//System.out.println(house);
 		
 		return mv; //mv 값 넘기기
 	}
+	
 	
 }
