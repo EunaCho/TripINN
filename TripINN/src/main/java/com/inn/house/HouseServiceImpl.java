@@ -44,6 +44,12 @@ public class HouseServiceImpl implements HouseService{
 	public List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception {
 		return houseDAO.searchHouseList(map);
 	}
+	//house 지도 리스트
+	@Override
+	public List<Map<String, Object>> selectHouseMapList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return houseDAO.selectHouseMapList(map);
+	}
 
 	//house 첫번째 등록
 	@Override
@@ -71,8 +77,11 @@ public class HouseServiceImpl implements HouseService{
 	//house detail
 	@Override
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return houseDAO.selectHouseDetail(map);
+	}
+	
+	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
+		return houseDAO.selectReviewList(map);
 	}
 	
 	public void insertReview(Map<String, Object> map) throws Exception {

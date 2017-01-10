@@ -3,6 +3,8 @@ package com.inn.trip;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Repository;
 
 import com.common.common.AbstractDAO;
@@ -28,5 +30,25 @@ public class TripDAO extends AbstractDAO {
 
 	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
 		return (Map<String, Object>) selectOne("trip.tripDetail", map);
+	}
+
+	public void tripReserve(Map<String, Object> map) {
+		insert("trip.tripReserve", map);
+	}
+
+	public void tripReview(Map<String, Object> map) {
+		insert("trip.tripReview", map);
+	}
+
+	public List<Map<String, Object>> reviewList(Map<String, Object> map) {
+		return selectList("trip.reviewList", map);
+	}
+
+	public void reviewLike(Map<String, Object> map) {
+		update("trip.reviewLike", map);
+	}
+
+	public String getLikeCnt(String parameter) {
+		return (String) selectOne("trip.getLikeCnt", parameter);
 	}
 }

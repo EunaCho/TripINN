@@ -13,8 +13,11 @@
 <title>HOUSE DETAIL</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
 	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	
+	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="/TripINN/js/house/houseDetail.js"></script>
+	<link rel="stylesheet" href="/TripINN/css/house/houseDetail.css">
 	<script>
 	
 	$(function () {
@@ -228,8 +231,9 @@
 	</div>
 	
 	<div class="wishList" >
-		<span><img src="/TripINN/images/house/icon_heart_white.png"></span>
-		<span>위시리스트 담기</span>
+		<div id="wishIcon"> </div>
+		<!-- <img src="/TripINN/images/house/icon_heart_white.png"> -->
+		<div>위시리스트 담기</div>
 	</div>
 	<div class="toHost">
 		호스트에게<br>

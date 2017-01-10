@@ -7,6 +7,14 @@
 <head>
 <title>HOUSE LIST</title>
 
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css"> -->
+<link rel="stylesheet" href="/TripINN/css/house/houseList.css">                                                                              
+<script src="http://code.jquery.com/jquery.min.js"></script>
+	<!-- daum map -->
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
+
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -50,7 +58,6 @@
 	  });
 	});
 	</script>
-
 <STYLE> 
 #left { scrollbar-3dlight-color:#FFFFFF;
 scrollbar-arrow-color:#000000;
@@ -88,7 +95,7 @@ scrollbar-shadow-color:#FFFFFF}
 		<div>
 			<label>인원</label>
 			<select name="person" placeholder="인원 1명">	
-				<option value="인원 1명">인원 1명</option>
+				<option value="0">인원 1명</option>
 				<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
 				<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
 				<option value="3" <c:if test="${person eq 3}">selected="selected"</c:if> >인원 3명</option>
@@ -133,13 +140,16 @@ scrollbar-shadow-color:#FFFFFF}
 			
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
 				<c:url var="houseViewURL" value="/house/houseDetail.do">
-					<c:param name="house_idx" value="${house.HOUSE_IDX}"/>
-					<c:param name=""/>
+					<c:param name="HOUSE_IDX" value="${house.HOUSE_IDX}"/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
 				<li>
 				<a href="${houseViewURL}">
+					<input type="hidden" id="HOUSE_NAME${stat.index }" value="${house.HOUSE_NAME }" >
+					<input type="hidden" id="HOUSE_IMAGE${stat.index }"value="${house.HOUSE_IMAGE }">
+					<input type="hidden" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
+
 					<img src="<%= cp %>/images/house/${house.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
 					<br/>
 						<span><strong>${house.HOUSE_NAME}</strong></span>
@@ -185,12 +195,49 @@ scrollbar-shadow-color:#FFFFFF}
 	</table> --%>
 	</div>
 	
-	
 	<!-- 오른쪽 -->
-	<div name="right" style="width:48%;min-width: 530px;  border:1px solid red;  float:left;">
-	지도
+
+	<div id="right" style="width:48%; min-width: 530px;  border:1px solid red;  float:left;">
+		<c:forEach items="${map_list }" var="map" varStatus="stat">
+			<input type="hidden" value="${map}" id="map_addr${stat.index}">
+		</c:forEach>
+		
+		<div id="mapView"></div>
 	</div>
-	
+	<script>
+	window.onload = function() {
+		
+		var addr, img, name, idx;
+		var addr2 = "";
+		var img2 = "";
+		var name2 = "";
+		var idx2 = "";
+		
+		var addrArr = new Array(${map_list_length } );
+		for(var i=0; i<addrArr.length; i++){
+			addr = $("#map_addr"+i).val(); 
+			addr2 = addr2 + addr + ",";
+			
+			img = $("#HOUSE_IMAGE"+i).val();
+			name = $("#HOUSE_NAME"+i).val(); 
+			idx = $("#HOUSE_IDX"+i).val();
+			img2 = img2 + img + ",";
+			name2 = name2 + name + ",";
+			idx2 = idx2 + idx + ",";
+		}
+		 /* alert(addr2); */
+		$.ajax({
+			url: "/TripINN/house/houseMapListView.do",
+			type: "GET",
+			async:true,
+			dataType: "Text", 
+			data: {"addr": addr2, "img": img2, "name": name2, "idx" : idx2},
+			success: function(data) {
+				$('#mapView').html(data);
+			}
+		});
+	}
+	</script>
 
 </body>
 </html>

@@ -35,4 +35,53 @@
 	<select id="getImages" parameterType="String" resultType="String">
 		select trip_image from trip where trip_idx=#{trip_Idx}
 	</select>
+	
+	<insert id="tripReserve" parameterType="hashmap">
+		insert into trip_rsv(tr_idx, tr_name, tr_phone, tr_email, tr_pprice, tr_persons, tr_time, tr_first_date,
+							tr_last_date, member_idx, trip_idx)
+			values(trip_rsv_no_seq.nextval, #{tr_name}, #{tr_phone}, #{tr_email}, #{tr_pprice}, #{tr_persons},
+					sysdate, to_date(#{tr_first_date}, 'YYYY-MM-DD HH24:MI'),
+							 to_date(#{tr_last_date}, 'YYYY-MM-DD HH24:MI'),
+							  #{member_idx}, #{trip_idx})
+	</insert>
+	
+	<insert id="tripReview" parameterType="hashmap">
+		insert into trip_review_board(trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_idx, trip_idx)
+			values(trip_review_seq.nextval, #{trb_content}, sysdate, #{trb_star}, 0, #{member_idx}, #{trip_idx})
+	</insert>
+	
+	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
+		select trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_name,
+		 member_image, m.member_idx from trip_review_board t 
+  			inner join member m on m.member_idx = t.member_idx 
+  				where trip_idx=#{trip_idx}
+  					order by trb_like desc, trb_regdate desc
+	</select>
+	
+	<update id="reviewLike" parameterType="hashmap">
+		update trip_review_board set trb_like = trb_like + #{cnt} where trb_idx=#{trb_idx}
+	</update>
+	
+	<select id="getLikeCnt" parameterType="String" resultType="String">
+		select trb_like from trip_review_board where trb_idx=#{trb_idx}
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@ package com.inn.trip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.common.common.CommandMap;
 import com.common.common.ConvertAddress;
@@ -115,13 +117,83 @@ public class TripController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/tripDetail.do", method=RequestMethod.POST)
+	// 트립 상세 페이지
+	@RequestMapping(value="/tripDetail.do", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView tripDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("tripDetail");
 		
 		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap());
+		System.out.println("trip_idx : " + commandMap.get("trip_idx"));
+		//==============================지도 뷰==============================
+		String addr1 = (String) map.get("TRIP_ADDR1");
+		
+		String mapView = ConvertAddress.conAddr(addr1);
+		String lat = mapView.substring(mapView.indexOf("lat")+5, mapView.indexOf("lat")+16).trim();
+		String lng = mapView.substring(mapView.indexOf("lng")+5, mapView.indexOf("lng")+16).trim();
+		String ba = ConvertAddress.decode(mapView.substring(mapView.indexOf("buildingAddress")+18, mapView.indexOf("title")-3).trim()); // 
+		mv.addObject("lat", lat);
+		mv.addObject("lng", lng);
+		mv.addObject("ba", ba);
+		//==============================지도 뷰==============================
+		System.out.println("lat : " + lat + "// lng : "  + lng + "// ba : " + ba);
+		//==============================사진 뷰==============================
+		String images = (String) map.get("TRIP_IMAGE");
+		String[] imgs = images.split("\\|");
+		mv.addObject("imgs", imgs);
+		//사진뷰
+		
+		//==============================리뷰 가져오기==============================
+		List<Map<String, Object>> rlist = tripService.reviewList(commandMap.getMap());
+		mv.addObject("rlist", rlist);
+		//==============================리뷰 가져오기==============================
+		
 		mv.addObject("trip", map);
 		return mv;
 	}
 	
+	//트립 예약 폼 이동
+	@RequestMapping(value="/tripReserveForm.do", method=RequestMethod.POST)
+	public ModelAndView tripReserveForm(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("tripReserveForm");
+		
+		Map<String, Object> tripInfo = tripService.selectTripDetail(commandMap.getMap());
+		
+		mv.addObject("tripInfo", tripInfo);
+		return mv;
+	}
+	
+	//트립 예약 
+	@RequestMapping(value="/tripReserve.do", method=RequestMethod.POST)
+	public ModelAndView tripReserve(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/tripList.do");
+		
+		tripService.tripReserve(commandMap.getMap());
+
+		//mv.addObject("tripInfo", tripInfo);
+		return mv;
+	}
+	
+	//트립 후기작성
+	@RequestMapping(value="/tripReview.do", method=RequestMethod.POST)
+	public ModelAndView tripReview(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		
+		tripService.tripReview(commandMap.getMap());
+		mv.addObject("trip_idx", commandMap.get("trip_idx"));
+		
+		return mv;
+	}
+	
+	// 리뷰 추천
+	@RequestMapping("/reviewLike.do")
+	public ModelAndView reviewLike(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("/trip/reviewLike");
+		Map<String, Object> map = new HashMap<>();
+		map.put("trb_idx", request.getParameter("trb_idx"));
+		map.put("cnt", Integer.parseInt(request.getParameter("cnt")));
+		tripService.reviewLike(map);
+		String trb_like = tripService.getLikeCnt(request.getParameter("trb_idx"));
+		mv.addObject("trb_like", trb_like);
+		return mv;
+	}
 }
