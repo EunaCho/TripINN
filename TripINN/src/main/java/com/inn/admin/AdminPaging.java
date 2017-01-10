@@ -72,15 +72,14 @@ public class AdminPaging {
 				pagingHtml.append("&nbsp;<b> <font color='red'>");
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
-			}
-			else
-			{
-				pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=");
-				pagingHtml.append(i);
-				pagingHtml.append("'>");
+			}else{
+				pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + ">");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
+				
 			}
+			
+			
 			
 			pagingHtml.append("&nbsp;");
 		}
@@ -91,9 +90,9 @@ public class AdminPaging {
 		if(totalPage - startPage >= blockPage)
 		{
 			pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1) + ">");
-			pagingHtml.append((endPage+1));
-			pagingHtml.append("'>");
-			pagingHtml.append("다음");
+			//pagingHtml.append((endPage+1));
+			pagingHtml.append(">");
+			//pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 		}
 	}
@@ -146,30 +145,35 @@ public class AdminPaging {
 					break;
 				}
 				if(i == currentPage){
-					pagingHtml.append("<strong>");
+					pagingHtml.append("&nbsp;<b> <font color='red'>");
 					pagingHtml.append(i);
-					pagingHtml.append("</strong>");
+					pagingHtml.append("</font></b>");
 				}
 				else{
-					pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i);
+					pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=");
+					pagingHtml.append(i);
 					if(isSearch != "")
 						pagingHtml.append("&searchKeyword="+isSearch);
-					pagingHtml.append("'>");
+					pagingHtml.append(">");
 					pagingHtml.append(i);
 					pagingHtml.append("</a>");
-					
 				}
 				pagingHtml.append("&nbsp;");
 			}
+			
 			// 다음 block 페이지
+			pagingHtml.append("&nbsp;|&nbsp;");
 			if(totalPage - startPage >= blockPage){
 				pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1));
 				if(isSearch != "")
-					pagingHtml.append("&searchKeyword="+isSearch);
-				pagingHtml.append("'>");
+					pagingHtml.append("&searchKeyword="+isSearch);		
+				pagingHtml.append("'>");	
 				pagingHtml.append("다음");
 				pagingHtml.append("</a>");
 			}
+			
+			
+			
 				
 		}
 

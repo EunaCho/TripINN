@@ -147,6 +147,7 @@
    <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
+	        
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_NAME,
