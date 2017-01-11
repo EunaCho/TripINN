@@ -49,6 +49,131 @@ public class AdminPaging {
 			endPage = totalPage;
 		}
 
+<<<<<<< HEAD
+      // 이전 block 페이지
+      pagingHtml = new StringBuffer();
+      if (currentPage > blockPage) {
+         pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + ">");
+         pagingHtml.append("&lt;");
+         pagingHtml.append("</a>");
+      }
+      
+      pagingHtml.append("&nbsp;|&nbsp;");
+      
+      
+      //페이지 번호, 현재 페이지는 다르게 표시
+      for(int i = startPage;i<=endPage;i++)
+      {
+         if(i > totalPage)
+         {
+            break;
+         }
+         if(i == currentPage)
+         {
+            pagingHtml.append("&nbsp;<b> <font color='red'>");
+            pagingHtml.append(i);
+            pagingHtml.append("</font></b>");
+         }
+         else
+         {
+            pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + ">");
+            pagingHtml.append(i);
+            //pagingHtml.append("'>");
+            //pagingHtml.append(i);
+            pagingHtml.append("</a>");
+         }
+         
+         pagingHtml.append("&nbsp;");
+      }
+      
+      pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
+      
+      // 다음 block 페이지
+      if(totalPage - startPage >= blockPage)
+      {
+         pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1) + ">");
+         //pagingHtml.append((endPage+1));
+         pagingHtml.append(">");
+         //pagingHtml.append("다음");
+         pagingHtml.append("</a>");
+      }
+   }
+   
+   // Search있는 생성자
+      public AdminPaging(int currentPage, int totalCount, int blockCount, int blockPage,String requestName, int searchNum, String isSearch){
+         
+         this.blockCount = blockCount;
+         this.blockPage = blockPage;
+         this.currentPage = currentPage;
+         this.totalCount = totalCount;
+         
+         totalPage = (int) Math.ceil((double) totalCount / blockCount);
+         if(totalPage == 0){
+            totalPage = 1;
+         }
+         
+         if(currentPage > totalPage){
+            currentPage = totalPage;
+         }
+         
+         startCount = (currentPage -1) * blockCount;
+         endCount = startCount + blockCount -1;
+         
+         startPage = (int)((currentPage -1) / blockPage) * blockPage +1;
+         endPage = startPage + blockPage -1;
+         
+         if(endPage > totalPage){
+            endPage = totalPage;
+         }
+         
+         // 이전 block 페이지
+         pagingHtml = new StringBuffer();
+         if(currentPage > blockPage){
+            
+            if(isSearch != "")
+               pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + "&searchKeyword="+isSearch+"&searchNum="+searchNum+">");
+            
+            else                    
+               pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + ">");
+            pagingHtml.append("이전");
+            pagingHtml.append("</a>");
+            }
+         
+         pagingHtml.append("&nbsp;|&nbsp;");
+         
+         //페이지 번호, 현재 페이지는 다르게 표시
+         for(int i = startPage; i <= endPage; i++){
+            if(i > totalPage){
+               break;
+            }
+            if(i == currentPage){
+               pagingHtml.append("<strong>");
+               pagingHtml.append(i);
+               pagingHtml.append("</strong>");
+            }
+            else{
+               pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i);
+               if(isSearch != "")
+                  pagingHtml.append("&searchKeyword="+isSearch);
+               pagingHtml.append("'>");
+               pagingHtml.append(i);
+               pagingHtml.append("</a>");
+               
+            }
+            pagingHtml.append("&nbsp;");
+         }
+         // 다음 block 페이지
+         if(totalPage - startPage >= blockPage){
+            pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1));
+            if(isSearch != "")
+               pagingHtml.append("&searchKeyword="+isSearch);
+            pagingHtml.append("'>");
+            pagingHtml.append("다음");
+            pagingHtml.append("</a>");
+         }
+            
+      }
+=======
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if (currentPage > blockPage) {
@@ -72,15 +197,14 @@ public class AdminPaging {
 				pagingHtml.append("&nbsp;<b> <font color='red'>");
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
-			}
-			else
-			{
-				pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=");
-				pagingHtml.append(i);
-				pagingHtml.append("'>");
+			}else{
+				pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + ">");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
+				
 			}
+			
+			
 			
 			pagingHtml.append("&nbsp;");
 		}
@@ -91,9 +215,9 @@ public class AdminPaging {
 		if(totalPage - startPage >= blockPage)
 		{
 			pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1) + ">");
-			pagingHtml.append((endPage+1));
-			pagingHtml.append("'>");
-			pagingHtml.append("다음");
+			//pagingHtml.append((endPage+1));
+			pagingHtml.append(">");
+			//pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 		}
 	}
@@ -146,32 +270,38 @@ public class AdminPaging {
 					break;
 				}
 				if(i == currentPage){
-					pagingHtml.append("<strong>");
+					pagingHtml.append("&nbsp;<b> <font color='red'>");
 					pagingHtml.append(i);
-					pagingHtml.append("</strong>");
+					pagingHtml.append("</font></b>");
 				}
 				else{
-					pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i);
+					pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=");
+					pagingHtml.append(i);
 					if(isSearch != "")
 						pagingHtml.append("&searchKeyword="+isSearch);
-					pagingHtml.append("'>");
+					pagingHtml.append(">");
 					pagingHtml.append(i);
 					pagingHtml.append("</a>");
-					
 				}
 				pagingHtml.append("&nbsp;");
 			}
+			
 			// 다음 block 페이지
+			pagingHtml.append("&nbsp;|&nbsp;");
 			if(totalPage - startPage >= blockPage){
 				pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1));
 				if(isSearch != "")
-					pagingHtml.append("&searchKeyword="+isSearch);
-				pagingHtml.append("'>");
+					pagingHtml.append("&searchKeyword="+isSearch);		
+				pagingHtml.append("'>");	
 				pagingHtml.append("다음");
 				pagingHtml.append("</a>");
 			}
+			
+			
+			
 				
 		}
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	
 
