@@ -85,14 +85,8 @@
 	
 	<!--  ==========================================================================================-->
 	
-<<<<<<< HEAD
 
 	<!-- 마이페이지  -->
-	
-
-=======
-	<!-- 마이페이지  -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>

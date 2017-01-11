@@ -45,14 +45,9 @@ li{margin-right:50px }
 <!-- 가운데 우측영역 -->
 <div style="width:1025px;height:85%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
 
-<<<<<<< HEAD
-  		<h2>회원 리스트</h2>
-  	<div style="width:1001px; height:80%; margin:10px; border:1px solid blue;"> <!-- table div start -->
-=======
-	<!-- 회원 테이블 영역 -->
+   <!-- 회원 테이블 영역 -->
         <h2>회원 리스트</h2>
      <div style="width:1001px; height:75%; margin:10px; border:1px solid red;"> <!-- table div start -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
  
        <form name="frm" method="post" action="/TripINN/admin/memberView.do">
           <input type="hidden" value="" name="MEMBER_IDX"/>
@@ -76,28 +71,6 @@ li{margin-right:50px }
                                 <a href="javascript:formSubmit('${member.MEMBER_IDX}');" >${member.MEMBER_EMAIL }</a>
                         </td>
                         <td align="center">${member.MEMBER_ADDR}</td>
-<<<<<<< HEAD
-						<td align="center" >${member.MEMBER_JOINDATE}</td>
-					</tr>
-					</c:forEach>
-				</c:when>
-			<c:otherwise>
-					<tr>
-						<td>회원가입한 멤버가 없습니다.</td>
-					</tr>
-			</c:otherwise>
-			</c:choose>
-			</table>
- 		</form>
-	</div><!-- table div End -->
-	<!-- 현재 페이지 번호를 저장 -->
-    <div class="paging">
-       ${pagingHtml}
-    </div>
-</div><!-- list div End -->
-
-</div><!-- 전체  --> 
-=======
                   <td align="center" >${member.MEMBER_JOINDATE}</td>
                </tr>
                </c:forEach>
@@ -123,7 +96,6 @@ li{margin-right:50px }
 </div><!-- 전체(좌측+우측 묶은)영역  --> 
 
 <!-- 이건 도대체 뭐냐? -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 <div style="clear:both;"></div>
 
 
@@ -131,21 +103,12 @@ li{margin-right:50px }
    <!--스크립트 정의  -->
 <script type="text/javascript">
 
-<<<<<<< HEAD
-	function formSubmit(MEMBER_IDX) {
-		document.frm.MEMBER_IDX.value = MEMBER_IDX;
-		document.frm.submit();
-	}
-	
-	//게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
-=======
    function formSubmit(MEMBER_IDX) {
       document.frm.MEMBER_IDX.value = MEMBER_IDX;
       document.frm.submit();
    }
    
    //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
     function fn_search(pageNo){
         var comSubmit = new ComSubmit();
         comSubmit.setUrl("<c:url value='/admin/MemberList.do' />");
