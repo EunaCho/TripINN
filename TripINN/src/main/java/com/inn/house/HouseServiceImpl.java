@@ -44,6 +44,12 @@ public class HouseServiceImpl implements HouseService{
 	public List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception {
 		return houseDAO.searchHouseList(map);
 	}
+	//house 지도 리스트
+	@Override
+	public List<Map<String, Object>> selectHouseMapList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return houseDAO.selectHouseMapList(map);
+	}
 
 	//house 첫번째 등록
 	@Override
@@ -76,6 +82,10 @@ public class HouseServiceImpl implements HouseService{
 	
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
 		return houseDAO.selectReviewList(map);
+	}
+	
+	public void insertReview(Map<String, Object> map) throws Exception {
+		houseDAO.insertReview(map);
 	}
 	
 	//hi_space, hi_cspace 문자열 변경 기능

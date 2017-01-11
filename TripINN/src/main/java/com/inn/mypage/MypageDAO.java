@@ -56,30 +56,4 @@ public class MypageDAO extends AbstractDAO {
 	public List<Map<String, Object>> selectH_MsgList(Map<String, Object> map) throws Exception{
 		return (List<Map<String, Object>>)selectList("mypage.selectH_MsgList", map);
 	}
-	//예약관리
-	public List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>)selectList("mypage.selectMy_ReserList", map);
-	}
-	//예약관리 상세보기
-	public Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception{
-		return (Map<String, Object>) selectOne("mypage.selectReserDetail", map);
-	}
-	//update hr_delete_state
-	public void updateHr_delete_state_1(Map<String, Object> map){
-		update("updateHr_delete_state_1", map);
-	}
-	public void updateHr_delete_state_2(Map<String, Object> map){
-		update("updateHr_delete_state_2", map);
-	}
-	public void updateHr_delete_state_3(Map<String, Object> map){
-		update("updateHr_delete_state_3", map);
-	}
-	//예약취소 신청 날짜 update
-	public void updateHr_delete_date(Map<String, Object> map){
-		update("updateHr_delete_date", map);
-	}
-	//숙소 이용 날짜계싼
-	public Map<String, Object> countDate(Map<String, Object> map) throws Exception{
-		return (Map<String, Object>) selectOne("mypage.countDate", map);
-	}
 }

@@ -8,7 +8,6 @@
 	.side_menu{
 		border:1px solid black;
 		margin-bottom:20px;
-		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;
@@ -49,8 +48,8 @@
 	}
 	.right_div1{
 		border:1px solid black;
-		margin-left:40px;
-		width:970px;
+		margin:5px;
+		width:1060px;
 		height:100%x;
 		float:left;
 		top:114px; 	
@@ -118,7 +117,7 @@
 		border-bottom:1px solid black;
 		border-left:1px solid black;
 		margin:0px;
-		width:380px;
+		width:460px;
 		height:25px;
 		font-size:10px;
 		padding-left:3px;
@@ -160,23 +159,23 @@
 			<div class="right_div2">
 	
 					<div class="msg_menu">
-						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%; align=center;">
+						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%;">
 							선택
 						</div>
-						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%; align=center;">
+						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%;">
 							상태
 						</div>
 
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; align:center;">
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
 							 보낸사람
 						</div>
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; align:center;">
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
 							 제목
 						</div>
-						<div class="msg_content" style="background-color: #f7f7f7; background-size:700%; align:center;">
+						<div class="msg_content" style="background-color: #f7f7f7; background-size:700%;">
 							내용
 						</div>
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid black; align:center;">
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid black;">
 							 보낸 날짜
 						</div>
 					</div>
@@ -208,7 +207,7 @@
 							<a href="${viewURL}" style="text-decoration:none;">${list.MSG_CONTENT}</a>
 						</div>
 						<div class="msg_title" style="border-right:1px solid black;">
-							${list.SEND_DATE}
+							${list.send_date}
 						</div>
 					</div>
 			</c:forEach>

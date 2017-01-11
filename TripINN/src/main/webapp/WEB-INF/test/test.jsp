@@ -10,7 +10,7 @@
 <body>
 	<div id="map" style="width:100%;height:350px;"></div>
 	
-	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services,clusterer"></script>
+	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 	<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 

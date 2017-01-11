@@ -22,18 +22,27 @@ public class AdminQnaDAO extends AbstractDAO{
 	//글목록
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception{
-		System.out.println(999);
-        //return (List<Map<String, Object>>)selectPagingList("admin.qnaBoardList", map);
-		return sqlSessionTemplate.selectList("admin.qnaBoardList", map); 
+        return (List<Map<String, Object>>)selectList("admin.qnaBoardList", map);
+		//return sqlSessionTemplate.selectList("admin.qnaBoardList", map); 
     }
 	
 	//제목으로 검색
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> search0(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return (List<Map<String,Object>>)selectList("admin.search0", map);
 	}
 	
+	//내용으로 검색
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> search1(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("admin.search1", map);
+	}
+	
+	//작성자로 검색 
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> search2(Map<String, Object> map) {
+		return (List<Map<String,Object>>)selectList("admin.search2", map);
+	}
 	
 	
 	
@@ -52,11 +61,9 @@ public class AdminQnaDAO extends AbstractDAO{
 	
 		//조회수 증가
 		public void updateQnaReadCount(Map<String, Object> map) throws Exception{
-			System.out.println(9);
-			System.out.println(map);
+			
 		    update("admin.updateQnaReadCount", map);
-		    System.out.println(10);
-			System.out.println(map);
+		   
 		    
 		}
 		
@@ -94,17 +101,13 @@ public class AdminQnaDAO extends AbstractDAO{
 	
 	//삭제하기
 	public void adminQnaDelete(Map<String, Object> map) throws Exception{
+		System.out.println(3);
+		System.out.println(map);
+		
 	    delete("admin.adminQnaDelete", map);
+	    
+	    System.out.println(6);
+	    System.out.println(map);
 	}
-
-
-	
-
-	
-
-	
-	
-	
-	
 	
 }

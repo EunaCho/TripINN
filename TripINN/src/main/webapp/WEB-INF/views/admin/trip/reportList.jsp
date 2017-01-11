@@ -142,8 +142,8 @@
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do"><h2>투어관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do"><h3>ㄴ신고하기</h3></a></li>
+		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>

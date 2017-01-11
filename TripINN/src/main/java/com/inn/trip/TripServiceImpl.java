@@ -14,7 +14,7 @@ public class TripServiceImpl implements TripService {
 	@Resource(name="tripDAO")
 	private TripDAO tripDAO;
 	
-	@Resource(name="tripFileUtils")
+	@Resource(name="tripFileUtils") 
 	private FileUtils fileUtils;
 	
 	@Override
@@ -39,6 +39,31 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
 		return tripDAO.selectTripDetail(map);
+	}
+
+	@Override 
+	public void tripReserve(Map<String, Object> map) {
+		tripDAO.tripReserve(map);
+	}
+
+	@Override
+	public void tripReview(Map<String, Object> map) {
+		tripDAO.tripReview(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> reviewList(Map<String, Object> map) {
+		return tripDAO.reviewList(map);
+	}
+
+	@Override
+	public void reviewLike(Map<String, Object> map) {
+		tripDAO.reviewLike(map);
+	}
+
+	@Override
+	public String getLikeCnt(String parameter) {
+		return tripDAO.getLikeCnt(parameter);
 	}
 
 }

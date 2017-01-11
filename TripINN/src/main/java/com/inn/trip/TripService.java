@@ -15,5 +15,15 @@ public interface TripService {
 
 	Map<String, Object> selectTripDetail(Map<String, Object> map);
 
+	void tripReserve(Map<String, Object> map);
+
+	void tripReview(Map<String, Object> map);
+
+	List<Map<String, Object>> reviewList(Map<String, Object> map);
+
+	void reviewLike(Map<String, Object> map);
+
+	String getLikeCnt(String parameter);
+
 	
 }

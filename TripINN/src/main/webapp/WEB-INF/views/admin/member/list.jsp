@@ -23,52 +23,60 @@ li{margin-right:50px }
   
  <!-- 가운데 윗 영역 -->
 <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-   		<h2>회원관리 페이지에 오신걸 환영합니다.</h2>
+         <h2>회원관리 페이지에 오신걸 환영합니다.</h2>
 </div>
 
+<!-- 가운데 좌측+우측  묶은 영역 -->
 <div style="height:100%; margin:0px auto; display:table;"> <!-- 좌측+리스트 -->
-<!-- 좌측영역 -->
+<!-- 가운데 좌측영역 -->
 <div style="width:210px;height:380px;border:1px solid black;text-align:center; float:left;">
-	<ul class="left-ul">
-		<li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
-		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-		<li><a><h2>문의게시판</h2></a></li>
+   <ul class="left-ul">
+      <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
+      <li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
+      <li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
+      <li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+      <li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
    </ul>
 </div><!-- side div End -->
-   
-<div style="width:1025px;height:100%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
+<!-- 가운데 우측영역 -->
+<div style="width:1025px;height:85%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
 
+<<<<<<< HEAD
   		<h2>회원 리스트</h2>
   	<div style="width:1001px; height:80%; margin:10px; border:1px solid blue;"> <!-- table div start -->
+=======
+	<!-- 회원 테이블 영역 -->
+        <h2>회원 리스트</h2>
+     <div style="width:1001px; height:75%; margin:10px; border:1px solid red;"> <!-- table div start -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
  
- 		<form name="frm" method="post" action="/TripINN/admin/memberView.do">
- 			<input type="hidden" value="" name="MEMBER_IDX"/>
+       <form name="frm" method="post" action="/TripINN/admin/memberView.do">
+          <input type="hidden" value="" name="MEMBER_IDX"/>
  
-			<table class="tbl" cellspacing="0" cellpadding="0" >
-		
-				<tr>
-					<th width="100px">번호</th>
-					<th width="500px">이메일</th>
-					<th width="1300px">주소</th>
-					<th width="350px">가입일</th>	
-				</tr>
-		
-			<c:choose>
-				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list}" var="member">
-					<tr>
-						<td align="center">${member.MEMBER_IDX}</td>
-						
-						<td class="MEMBER_EMAIL">
+         <table class="tbl" cellspacing="0" cellpadding="0" >
+      
+            <tr>
+               <th width="100px">번호</th>
+               <th width="500px">이메일</th>
+               <th width="1300px">주소</th>
+               <th width="350px">가입일</th>   
+            </tr>
+      
+         <c:choose>
+            <c:when test="${fn:length(list) > 0}">
+               <c:forEach items="${list}" var="member">
+               <tr>
+                  <td align="center">${member.MEMBER_IDX}</td>
+                  
+                  <td class="MEMBER_EMAIL">
                                 <a href="javascript:formSubmit('${member.MEMBER_IDX}');" >${member.MEMBER_EMAIL }</a>
                         </td>
                         <td align="center">${member.MEMBER_ADDR}</td>
+<<<<<<< HEAD
 						<td align="center" >${member.MEMBER_JOINDATE}</td>
 					</tr>
 					</c:forEach>
@@ -89,6 +97,33 @@ li{margin-right:50px }
 </div><!-- list div End -->
 
 </div><!-- 전체  --> 
+=======
+                  <td align="center" >${member.MEMBER_JOINDATE}</td>
+               </tr>
+               </c:forEach>
+            </c:when>
+         <c:otherwise>
+               <tr>
+                  <td>회원가입한 멤버가 없습니다.</td>
+               </tr>
+         </c:otherwise>
+         </c:choose>
+         </table>
+       </form>
+   </div><!-- 회원 table div End -->
+   
+   <!-- 현재 페이지 번호를 저장 -->
+    <!--  <input type="hidden" id="currentPageNo" name="currentPageNo"/>-->
+    <div class="paging">
+       ${pagingHtml}
+    </div>
+   
+</div><!-- 가운데 우측영역 end -->
+
+</div><!-- 전체(좌측+우측 묶은)영역  --> 
+
+<!-- 이건 도대체 뭐냐? -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 <div style="clear:both;"></div>
 
 
@@ -96,12 +131,21 @@ li{margin-right:50px }
    <!--스크립트 정의  -->
 <script type="text/javascript">
 
+<<<<<<< HEAD
 	function formSubmit(MEMBER_IDX) {
 		document.frm.MEMBER_IDX.value = MEMBER_IDX;
 		document.frm.submit();
 	}
 	
 	//게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
+=======
+   function formSubmit(MEMBER_IDX) {
+      document.frm.MEMBER_IDX.value = MEMBER_IDX;
+      document.frm.submit();
+   }
+   
+   //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
     function fn_search(pageNo){
         var comSubmit = new ComSubmit();
         comSubmit.setUrl("<c:url value='/admin/MemberList.do' />");
@@ -109,4 +153,3 @@ li{margin-right:50px }
         comSubmit.submit();
     }
 </script>
-

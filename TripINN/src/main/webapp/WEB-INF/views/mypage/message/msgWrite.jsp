@@ -7,7 +7,6 @@
 	.side_menu{
 		border:1px solid black;
 		margin-bottom:20px;
-		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;

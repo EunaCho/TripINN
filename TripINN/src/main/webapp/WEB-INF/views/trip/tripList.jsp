@@ -4,6 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="/TripINN/css/photo.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/TripINN/css/house/main.css">
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
 var curNum = 1;
 	function newShowHotelPhotoPageNum(HotelCD, curNum) {
@@ -94,15 +97,37 @@ var curNum = 1;
 	   form.trip_idx.value = idx;
 	   form.submit();
    }
+   $(function () {
+	    $("#datepicker_in_sub").datepicker({
+	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         minDate: new Date(),
+	         altField: "#datepicker",
+	         altFormat: "yy-mm-dd"
+	  });
+	});
+	$(function () {
+	    $("#datepicker_out_sub").datepicker({
+	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         minDate: new Date(),
+	         altField: "#datepicker2",
+	         altFormat: "yy-mm-dd"
+	  });
+	});
 </script>
 <style>
 	#wrap{ width:100%;height:100%;padding:0px; display: table; margin:0px auto; margin-bottom:20px;}
-	.list-container{ width:1000px; height:100%; margin:20px auto;margin-bottom:20px; display: block; }
-	.list-left { width:15%;height:100%;float:left;
+	.list-container{ width:1000px; height:auto; margin:20px auto;margin-bottom:20px; display: flex; }
+	.list-left { width:15%;height:auto;float:left;
 	background:#1E6198 url(/TripINN/images/trip_pass.png) no-repeat center bottom;
     
  }
-	.list-right { width:84%; height:100%; border: 1px solid #a6a6a6;float:left; }
+	.list-right { width:84%; height:auto; min-height:350px;border: 1px solid #a6a6a6;float:left; }
 	.right-con { width:90%; height:100%; border: 0px solid green;margin:0px auto; display: block; }
 	.right-top { width:100%;margin-top:10px;height:35px; }
 	.right-middle { width:100%; height:70%; margin:10px auto; text-align:center; display:table; }
@@ -132,6 +157,42 @@ var curNum = 1;
 <div id="wrap">
 <div id="divBackGround" style="display: none; background-color: #fff; filter: alpha(opacity=50); opacity: 0.5; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 50;"></div>
 <div id="HotelPhotoView" class="popContainer02" style="display: block; position: fixed; top: 50%; left: 50%; z-index: 100;"></div>
+	<hr />
+	
+	<div id="header_container">
+	<form id="house_searchForm" method="POST" action="/TripINN/house/houseMain.do">
+ 
+	<div>
+		<label>위치</label>
+		<input class="location" type="text" name="preSearch_keyword" placeholder="여행지, 트립 유형" value="${search.preSearch_keyword}">
+	</div>
+	<div>
+		<div>
+		<label>체크인</label>
+		<input class="checkinout" type="text" name="hri_first_date" id="datepicker_in" value="${search.hri_first_date}" placeholder="체크인" >
+		</div>
+		<div><img src="/TripINN/images/arrow.png"  style="width:30px;"></div>
+		<div>
+		<label>체크아웃</label>
+		<input class="checkinout" type="text" name="hri_last_date" id="datepicker_out" value="${search.hri_last_date}" placeholder="체크아웃">
+		</div>
+	</div>
+
+	<div style="margin-left:30px;">
+		<label>인원</label>
+		<select name="person" placeholder="인원 1명">	
+			<option value="인원 1명">인원 1명</option>
+			<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
+			<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
+			<option value="3" <c:if test="${person eq 3}">selected="selected"</c:if> >인원 3명</option>
+			<option value="4" <c:if test="${person eq 4}">selected="selected"</c:if> >인원 4명</option>
+			<option value="5" <c:if test="${person eq 5}">selected="selected"</c:if> >인원 5명</option>
+		</select>
+	</div>
+		<input type="image" id="searchBtn" src="/TripINN/images/searchBtn.png">
+	</form>	
+</div>
+	
 	<hr />
 	<div class="list-container">
 		<div class="list-left">

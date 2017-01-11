@@ -15,17 +15,17 @@ public class ConvertAddress {
 		String inputLine;
 		BufferedReader bufferedReader = null;
 		String resultSet = null;
-		
 		try {
+			
 			String requestURL = "https://apis.daum.net/local/geo/addr2coord";
 			requestURL += "?apikey=" + apiKey;
 			requestURL += "&q=" + URLEncoder.encode(address, "UTF-8");
 			requestURL += "&output=" + "JSON";
-			
+			System.out.println("requestURL : " + requestURL);
 			URL url = new URL(requestURL);
 			URLConnection conn = url.openConnection();
 			bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			
+		
 			//System.out.println("readLIne : " + bufferedReader.readLine());
 			
 			//resultSet = parseJSONData(bufferedReader);
@@ -45,7 +45,7 @@ public class ConvertAddress {
 		}
 		return resultSet;
 	}
-
+	
 	public static String decode(String uni){
 
 		StringBuffer str = new StringBuffer();
