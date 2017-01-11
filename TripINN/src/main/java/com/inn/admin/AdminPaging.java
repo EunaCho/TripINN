@@ -75,10 +75,10 @@ public class AdminPaging {
          }
          else
          {
-            pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=");
+            pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + ">");
             pagingHtml.append(i);
-            pagingHtml.append("'>");
-            pagingHtml.append(i);
+            //pagingHtml.append("'>");
+            //pagingHtml.append(i);
             pagingHtml.append("</a>");
          }
          
@@ -91,9 +91,9 @@ public class AdminPaging {
       if(totalPage - startPage >= blockPage)
       {
          pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1) + ">");
-         pagingHtml.append((endPage+1));
-         pagingHtml.append("'>");
-         pagingHtml.append("다음");
+         //pagingHtml.append((endPage+1));
+         pagingHtml.append(">");
+         //pagingHtml.append("다음");
          pagingHtml.append("</a>");
       }
    }

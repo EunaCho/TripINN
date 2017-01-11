@@ -45,7 +45,7 @@ li{margin-right:50px }
 <div style="width:1025px;height:100%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
 
   		<h2>회원 리스트</h2>
-  	<div style="width:1001px; height:100%; margin:10px; border:1px solid red;"> <!-- table div start -->
+  	<div style="width:1001px; height:80%; margin:10px; border:1px solid blue;"> <!-- table div start -->
  
  		<form name="frm" method="post" action="/TripINN/admin/memberView.do">
  			<input type="hidden" value="" name="MEMBER_IDX"/>
@@ -82,11 +82,16 @@ li{margin-right:50px }
 			</table>
  		</form>
 	</div><!-- table div End -->
+	<!-- 현재 페이지 번호를 저장 -->
+    <div class="paging">
+       ${pagingHtml}
+    </div>
 </div><!-- list div End -->
 
 </div><!-- 전체  --> 
 <div style="clear:both;"></div>
-   
+
+
    
    <!--스크립트 정의  -->
 <script type="text/javascript">
@@ -96,5 +101,12 @@ li{margin-right:50px }
 		document.frm.submit();
 	}
 	
+	//게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
+    function fn_search(pageNo){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/MemberList.do' />");
+        comSubmit.addParam("currentPageNo", pageNo);
+        comSubmit.submit();
+    }
 </script>
 

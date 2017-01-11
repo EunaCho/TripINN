@@ -31,17 +31,19 @@
 		width:1040px;
 		height:100%;
 		border-radius:4px;
-		background-color:#F4FFFF;
+		background-color:white;
 		margin:auto;
 		margin-left:220px;
 		margin-top:-383px;
 		
 	}
 	.report_list{
-	border:1px solid black;
-	width:150px;
+	border:0px solid black;
+	width:100px;
 	height:30px;
 	margin:10px;
+	font-size:21px;
+	background-color:#eee;
 	}
 	
    .list1{
@@ -51,52 +53,62 @@
 	margin:40px;
 	}
 	.picture{
-	border:1px solid black;
+	border:0px solid black;
 	width:200px;
 	height:180px;
 	margin:10px;
 	}
 	.picture1{
-	border:1px solid black;
+	border:0px solid black;
 	width:180px;
 	height:160px;
 	margin:10px;
 	}
 	.house_idx{
-	border:1px solid black;
+	border:0px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:-190px;
+	background-color:#eee;
+	font-size:14px;
 	
 	}
 	.house_info{
-	border:1px solid black;
+	border:0px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
+	background-color:#eee;
+	font-size:14px;
 	}
 	.house_name{
-	border:1px solid black;
+	border:0px solid black;
+	width:630px;
+	height:100px;
+	margin-left:220px;
+	margin-top:10px;
+	background-color:#eee;
+	font-size:14px;
+	}
+	.house_price{
+	border:0px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
+	background-color:#eee;
+	font-size:14px;
 	}
-	.house_price{
-	border:1px solid black;
+	.house_type{
+	border:0px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
-	}
-	.house_type{
-	border:1px solid black;
-	width:300px;
-	height:20px;
-	margin-left:550px;
-	margin-top:10px;
+	background-color:#eee;
+	font-size:14px;
 	}
 	
 	
