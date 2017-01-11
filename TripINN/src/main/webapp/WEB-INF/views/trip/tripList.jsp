@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <link rel="stylesheet" href="/TripINN/css/photo.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="/TripINN/css/house/main.css">
@@ -255,11 +256,39 @@ var curNum = 1;
 						</div>
 					</div>
 				</c:forEach>
+				<c:if test="${not empty paginationInfo}">
+				<div style="clear:both;"></div>
+				<div class="trDiv" style="width:100%;">
+					<div class="tdDiv-col" id="pagingDiv" style="text-align:center;height:30px;margin-top:10px;">
+	        		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
+	        		</div>
+	        	</div>
+	    		</c:if>
 				</div>
 			</div>
-
+			
+			<!-- ///////////////페이징처리/////////////// -->	
+			<style>
+			#pagingDiv {height:40px;}
+			#pagingDiv a { font-size:12px;width:20px; height:20px; border:1px solid #a6a6a6; margin-right:5px; border-radius:7px;padding:7px;}
+			#pagingDiv a:hover {background-color:rgb(255, 235, 240);}
+			#pagingDiv strong { font-size:12px;border:1px solid #a6a6a6;border-radius:7px;padding:7px;color:#cb4646;margin-right:5px;}
+			</style>			
+			
+     		<!-- ///////////////페이징처리/////////////// -->
 		</div>
 	</div>
 </div>
+<form name="listForm" >
+ <input type="hidden" name="currentPageNo" value="" />
+</form>
 <div style="width:100%; height:50px;"></div>
 <div style="clear:both;"></div>
+<script>
+function fn_search(pageNo){
+    var listForm = document.listForm;
+    listForm.action = "/TripINN/tripList.do";
+    listForm.currentPageNo.value = pageNo;
+    listForm.submit();
+}
+</script>
