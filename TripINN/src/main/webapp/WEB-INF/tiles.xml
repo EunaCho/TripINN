@@ -85,6 +85,7 @@
 	
 	<!--  ==========================================================================================-->
 	
+
 	<!-- 마이페이지  -->
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
