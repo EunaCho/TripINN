@@ -137,6 +137,7 @@ scrollbar-shadow-color:#FFFFFF}
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
 				<c:url var="houseViewURL" value="/house/houseDetail.do">
 					<c:param name="HOUSE_IDX" value="${house.HOUSE_IDX}"/>
+					<c:param name="MEMBER_IDX" value="${house.MEMBER_IDX }"/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
@@ -206,7 +207,7 @@ scrollbar-shadow-color:#FFFFFF}
 		
 		var addr, img, name, idx;
 		var addr2 = "";
-		var img2 = "";
+		var img2 = ""; 
 		var name2 = "";
 		var idx2 = "";
 		

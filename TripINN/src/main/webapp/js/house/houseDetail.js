@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
 	var MEMBER_IDX = $('#member_idx').val();
-	
+//	alert('asdfa');
 	//리뷰작성 클릭 이벤트 house_reivew_board
 	$('#reviewBtn').click(function(){
 		alert("asdf");

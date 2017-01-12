@@ -45,7 +45,7 @@ public class HouseController {
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 		if(session.getAttribute("member_idx")!=null){
-			System.out.println("ssssssssssssssssss");
+//			System.out.println("ssssssssssssssssss");
 			mv.addObject("search",map.getMap()); //검색키워드 넘기기
 		
 			List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
@@ -306,8 +306,10 @@ public class HouseController {
 		commandMap.put("HRB_CONTENT", request.getParameter("HRB_CONTENT"));
 		commandMap.put("HRB_PWD", request.getParameter("HRB_PWD"));
 		
-//		Map<String, Object> member = houseService.selectMember(commandMap.getMap()); //member 정보 꺼내오기
+
 		System.out.println( request.getParameter("MEMBER_IDX")+"**************************SDAF");
+		Map<String, Object> member = houseService.selectMember(commandMap.getMap()); //member 정보 꺼내오기
+		mv.addObject("member",member);
 		mv.addObject("house", house);
 		mv.addObject("detail", map);//map에 상세정보 넣기
 		mv.addObject("review", reviewList);

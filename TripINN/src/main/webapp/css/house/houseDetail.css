@@ -9,6 +9,8 @@
     margin: 2px 11px 0px;
 }
 #review_size_label{
+	float: left;
+    margin-right: 1%;
 	font-size: 18px;
     font-weight: bold;
     font-family: "나눔 고딕","Nanum Gothic","맑은 고딕","Malgun Gothic","Apple Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
@@ -23,8 +25,9 @@
     border-radius: 5px;
 }
 .review_text{
-	width: 100%;
+	width: 20%;
 	height: 30px;
+	float: left;
     margin-bottom: 6px;
     border-radius: 2px;
 }
@@ -38,6 +41,7 @@
 #houseDetail {
 	width: 90%;
     margin: 0 auto;
+    position:relative;
 	}
 .houseHead{
 	width: 100%;
@@ -47,16 +51,21 @@
 	float: left;
     /* border: 1px solid green; */
     height: 100%;
-    width: 48%;
-    margin-left: 5%;
+    width: 44%;
+    /* margin-left: 5%; */
     }
 
-
-.map {
-	width: 41%;
+.header_right{
+	width: 42%;
     height: 100%;
     float: left;
-    margin-left: 12px;
+    margin-left: 12px
+}
+.map {
+	width: 589px;
+    height: 100%;
+    float: left;
+    margin-left: 1%;
     }
 .houseMap{
 	width: 100%;
@@ -89,31 +98,40 @@
 .houseInfo .house_desc div ul li {list-style:none;width:150px;}
 
 .pictures {width:22%;height:500px;float:left; border:1px solid blue; }
+
+#reviewForm {
+	margin-top: 80px;
+}
 .review{
-	width:90%;
-	border:1px solid black;
+	width:87%;
+	/* border:1px solid black; */
 	color:#7878aa;
 	font-size:12px;
 	margin-top: 1%;
-    margin-left: 5%;
+    /* margin-left: 5%; */
 	}
  
 .review .reviewBlock {
 	border-bottom:1px solid gray;
 	margin-top: 2%;
 	height:150px;
-	width:90%;
+	width:100%;
 	margin: 0 auto;
 	}
-.review #review_left{
+.review #review_left{/* 
 	padding-top: 1%;
 	float: left;
 	width: 70px;
-	margin-right: 3%;
+	margin-right: 3%; */
+	float:left;
+	/* background: red; */
+    width: 140px;
+    height: auto;
 }
 .review #review_right{
 	float: left;
 	width: 85%;
+	height: auto;
 }
 .review .reviewBlock .writer{
 	width: 100%;
@@ -121,21 +139,24 @@
     margin-top: 10%;
     }
 .review .reviewBlock .writer label {
-	font-size: 15px;
+	font-size: 12px;
     font-weight: bold;
     color: rgb(171, 171, 171);
+    /* padding-left: 10px; */
+    margin-left: 18px;
     }
 .review .reviewBlock .writer img {
 	width: 70px;
     height: 70px;
     border-radius: 74px;
+    margin-left: 30px;
     margin-bottom: 10%;
 	}
 
 .review .reviewBlock .reviewContent{
 	width: 100%;
     height: 100%;
-    font-size: 20px;
+    font-size: 16px;
     color: black;
     }
 .review .reviewBlock .reviewDate {
@@ -176,20 +197,87 @@
 	width: 100%;
 }
 .house_info_block .block_left{
-	font-size: 19px;
 	float: left;
 	width: 30%;
 	font-weight:normal !important;
 	color: #484848 !important
 }
+.house_info_block .block_left label{
+	font-weight: bold !important;
+	font-size: 16px;
+	
+}
 .house_info_block .block_right{
-	font-size: 19px;
+	font-size: 13px;
 	float:left;
 	width: 70%;
 	color: #484848 !important;
+	margin-bottom: 2%;
 }
 
 .block_hr {
 	width: 98% !important;
 	margin-top: 10% !important;
 }
+
+.house_right_info{
+	float: left;
+    width: 50%;
+}
+.house_left_info{
+	float: left;
+	width: 50%
+}
+
+.subject_name{
+	float:left;
+}
+.subject_img{
+	float:right;
+}
+
+.house_info_space{
+	width:100%;
+	height: 100%;
+	line-height: 28px;
+}
+.house_info_space .hi_space_left{
+	width:48%;
+	float: left;
+	margin-bottom: 2%;
+	margin-right: 2%;
+}
+.house_info_space .hi_space_right{
+	widht:48% !important;
+	float: left;
+	margin-bottom: 2%;
+}
+#label_plus{
+	font-size: 25px;
+    font-weight: bold;
+}
+
+.header_right{
+	float: left;
+    width: 46%;
+    height: 100%;
+}
+
+
+/* 오른쪽: 예약바 */
+
+#reserveBar { width:200px; height:500px; margin-top: 4%;top:1%; right:1%; position:fixed; border:2px solid #46649b; color:#7878aa; background-color: #d2e1ff; font-size:12px;}
+#reserveBar .price {height:25px; padding:8px; background-color:#b4b4dc; color:white; margin-bottom:10px;}
+#reserveBar .checkinout { width:56px; padding:5px; float:left; /* border-radius: 5px; */}  
+#reserveBar .checkinout label {font-size:12px;}
+#reserveBar .checkinout input{width:55px; height:20px;}
+#reserveBar select {width:55px; height:27px; color:#aaaaaa; /* border-radius: 5px; */}
+#reserveBar .button {background-color:#7878c1; margin:20px; width: 80%; margin-left: 10%; color:white; height:30px; border-radius: 1px; clear: right; text-align:center;display: inline-block; font-weight: 700;padding:3px; font-size:15px;}
+#reserveBar .state {width:85%; margin:10px; padding:5px;  border-top : 1px solid #46649b; border-bottom:1px solid #46649b;}
+#reserveBar .wishList {background-color:#ffe1e6; margin:15px; width: 80%; margin-left: 10%; color:#EB7EA7; height:22px; border-radius: 5px; clear: right; text-align:center;display: inline-block; font-weight: 700;padding:3px; font-size:15px; border:1px solid;}
+#reserveBar .wishList img {width:20px; height:17px; margin-bottom:-3px;}
+#reserveBar .toHost {background-color:#ffb1bc; width: 166px; margin-left: 10%; color:#fafab4; height:30px; border-radius: 1px; clear: right; text-align:center;display: inline-block; font-weight: 400;padding:2px; font-size:11px; border:1px solid;}
+#reserveBar .toHost span{background-color:#ffdbc1; width:77px; height:12px; text-align:center;display: inline-block; padding:2px; float:left; border:1px solid;}
+
+#reserveBar .report {margin:40px; width: 80%; margin-left: 10%; color:#7878c1; text-align:center;font-weight: 700; font-size:13px;}
+#reserveBar .report img {width:20px; height:22px; margin-bottom:-6px;}
