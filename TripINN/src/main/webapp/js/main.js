@@ -134,7 +134,7 @@ $(function () {
 
 //메인 롤링 스크립트
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 $("#rolling").Scroll({
 	line:1, 
 	speed:5000, 
@@ -145,4 +145,4 @@ $("#rolling").Scroll({
 	autostop:'#bannerstop'
 });
 
-});
+});*/
