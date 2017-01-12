@@ -42,7 +42,9 @@ public class HouseServiceImpl implements HouseService{
 	
 	@Override
 	public List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception {
-		return houseDAO.searchHouseList(map);
+		List<Map<String, Object>> list = houseDAO.searchHouseList(map);
+		
+		return list;
 	}
 	//house 지도 리스트
 	@Override

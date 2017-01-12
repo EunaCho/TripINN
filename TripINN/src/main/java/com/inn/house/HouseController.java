@@ -242,10 +242,7 @@ public class HouseController {
 		//하우스 상세정보 꺼내오기
 		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap()); 
 		mv.addObject("house", house);
-		Map<String, Object> map = houseService.selectHouseDetail(commandMap.getMap()); //하우스 상세정보 꺼내오기
-		mv.addObject("detail", map);//map에 상세정보 넣기
-		System.out.println(commandMap.get("HOUSE_IDX"));
-		System.out.println();
+		
 		//하우스 리뷰 리스트 꺼내오기
 		List<Map<String, Object>> reviewList = houseService.selectReviewList(commandMap.getMap());
 		mv.addObject("review", reviewList);
