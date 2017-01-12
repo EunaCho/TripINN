@@ -3,23 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% String cp = request.getContextPath(); %>
+
+<%@include file="/WEB-INF/common/login.jsp"%>
 <html>
 <head>
 <title>HOUSE LIST</title>
-
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css"> -->
 <link rel="stylesheet" href="/TripINN/css/house/houseList.css">                                                                              
 <script src="http://code.jquery.com/jquery.min.js"></script>
-	<!-- daum map -->
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
+
+<script>
 	$( function() {
 		$( "#slider-range" ).slider({
 			range: true,
@@ -151,6 +147,7 @@ scrollbar-shadow-color:#FFFFFF}
 					<input type="hidden" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
 
 					<img src="<%= cp %>/images/house/${house.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
+
 					<br/>
 						<span><strong>${house.HOUSE_NAME}</strong></span>
 						<span>${house.HOUSE_INFO}</span>
@@ -205,7 +202,7 @@ scrollbar-shadow-color:#FFFFFF}
 		<div id="mapView"></div>
 	</div>
 	<script>
-	window.onload = function() {
+	$(document).ready(function() {
 		
 		var addr, img, name, idx;
 		var addr2 = "";
@@ -235,8 +232,8 @@ scrollbar-shadow-color:#FFFFFF}
 			success: function(data) {
 				$('#mapView').html(data);
 			}
-		});
-	}
+		})
+	});
 	</script>
 
 </body>

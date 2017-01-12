@@ -2,8 +2,6 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 <style>
 	.overlay_info {border-radius: 6px; margin-bottom: 12px; float:left; position: relative; border: 1px solid #ccc; border-bottom: 2px solid #ddd;background-color:#fff;}
     .overlay_info:nth-of-type(n) {border:0; box-shadow: 0px 1px 2px #888;}
@@ -22,7 +20,7 @@
 
 
 <script>
-alert("ddd");
+
  	// 지도의 중심 
  	var addr_size = ${addr_size};
  	/* alert(addr_size); */
@@ -66,7 +64,6 @@ alert("ddd");
  	 addrArry[i] = addrSplit[i];
  	}
  	/* alert(baArry); */
- 	
  	$(function(){
 		if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(pos) {
@@ -150,7 +147,6 @@ alert("ddd");
             $("#map_display"+i).css("display","block");
         };
     }
-    /* alert("map"); */
 		});
 			}else{
 				alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.");

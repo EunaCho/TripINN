@@ -27,7 +27,11 @@
 <style>
 	
 	.house_div{
+<<<<<<< HEAD
+		border:0px solid black;
+=======
 		border:2px solid black;
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		width:1040px;
 		height:100%;
 		border-radius:4px;
@@ -42,6 +46,12 @@
 	width:150px;
 	height:30px;
 	margin:10px;
+<<<<<<< HEAD
+	font-size:21px;
+	background-color:#eee;
+	margin-left:50px;
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	}
 	
 	.list1{
@@ -60,7 +70,7 @@
 	border:1px solid black;
 	width:180px;
 	height:160px;
-	margin:10px;
+	margin:0px;
 	}
 	.house_idx{
 	border:1px solid black;
@@ -159,13 +169,13 @@
  	 
  	 
  <!-- 가운데 윗 영역 -->	 
-    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+    <div style="width:100%;height:100px;border:0px solid black;text-align:center;">
 	<h2>숙소관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
   
    <!-- 좌측 영역 -->
-   <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
+   <div style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
 		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>

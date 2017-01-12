@@ -1,3 +1,4 @@
+//작성자: 이진욱
 function gfn_isNull(str) {
 	if (str == null) return true;
 	if (str == "NaN") return true;

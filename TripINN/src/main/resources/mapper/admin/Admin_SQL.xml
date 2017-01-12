@@ -6,39 +6,39 @@
    <!-- Qna리스트, 페이징을 위해 수정됨 -->
    <select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
    <!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
-    	SELECT 
-    		ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
-			QNA_IDX, 
-			QNA_TITLE, 
-			QNA_CONTENT, 
-			QNA_READCOUNT, 
-			QNA_REGDATE, 
-			MEMBER_NAME
-		FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
-		ORDER BY QNA_IDX DESC
+       SELECT 
+          ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
+         QNA_IDX, 
+         QNA_TITLE, 
+         QNA_CONTENT, 
+         QNA_READCOUNT, 
+         QNA_REGDATE, 
+         MEMBER_NAME
+      FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
+      ORDER BY QNA_IDX DESC
    </select>
    
    <!-- 게시판 검색 -->
-	<!-- 제목검색 -->
-	<select id="search0" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM QNA_BOARD
-		 WHERE QNA_TITLE like '%'||#{isSearch}||'%'
-		 ORDER BY QNA_IDX DESC
-	</select>
-	
-	<!-- 내용검색 -->
-	<select id="search1" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM QNA_BOARD
-		WHERE QNA_CONTENT like '%'||#{isSearch}||'%'
-		ORDER BY QNA_IDX DESC
-	</select>
+   <!-- 제목검색 -->
+   <select id="search0" parameterType="hashmap" resultType="hashmap">
+      SELECT * FROM QNA_BOARD
+       WHERE QNA_TITLE like '%'||#{isSearch}||'%'
+       ORDER BY QNA_IDX DESC
+   </select>
+   
+   <!-- 내용검색 -->
+   <select id="search1" parameterType="hashmap" resultType="hashmap">
+      SELECT * FROM QNA_BOARD
+      WHERE QNA_CONTENT like '%'||#{isSearch}||'%'
+      ORDER BY QNA_IDX DESC
+   </select>
 
-	<!-- 작성자검색 -->
-	<select id="search2" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
-		WHERE MEMBER_NAME like '%'||#{isSearch}||'%'
-		ORDER BY QNA_IDX DESC
-	</select>
+   <!-- 작성자검색 -->
+   <select id="search2" parameterType="hashmap" resultType="hashmap">
+      SELECT * FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
+      WHERE MEMBER_NAME like '%'||#{isSearch}||'%'
+      ORDER BY QNA_IDX DESC
+   </select>
    
       
    
@@ -88,38 +88,38 @@
        ]]>
    </select>
    
-    	<!--Qna조회수 증가  -->
-   		<update id="updateQnaReadCount" parameterType="hashmap">
-    	<![CDATA[
-       	 	UPDATE QNA_BOARD 
-        	SET
+       <!--Qna조회수 증가  -->
+         <update id="updateQnaReadCount" parameterType="hashmap">
+       <![CDATA[
+              UPDATE QNA_BOARD 
+           SET
             QNA_READCOUNT = NVL(QNA_READCOUNT, 0) + 1
-        	WHERE
+           WHERE
             QNA_IDX = #{QNA_IDX}    
-    	]]>
-   		</update>
-   		
-   		
-   		<!-- 댓글리스트 -->
-   		<select id="qnaCommList" parameterType="hashmap" resultType="hashmap">
-  			 SELECT 
-				QCO_IDX, 
-				QCO_CONTENT, 
-				QNA_IDX 
-			FROM
-				QNA_CO
-			WHERE 
-				QNA_IDX = #{QNA_IDX}
-			ORDER BY QCO_IDX DESC
-   		</select>
-   		
-   		<!-- 댓글삭제 -->
-	   <delete id="qnaCommDelete" parameterType="hashmap">
-	    <![CDATA[
-    	    DELETE FROM QNA_CO
-       	 	WHERE QCO_IDX = #{QCO_IDX}
-    	]]>
-   		</delete>
+       ]]>
+         </update>
+         
+         
+         <!-- 댓글리스트 -->
+         <select id="qnaCommList" parameterType="hashmap" resultType="hashmap">
+            SELECT 
+            QCO_IDX, 
+            QCO_CONTENT, 
+            QNA_IDX 
+         FROM
+            QNA_CO
+         WHERE 
+            QNA_IDX = #{QNA_IDX}
+         ORDER BY QCO_IDX DESC
+         </select>
+         
+         <!-- 댓글삭제 -->
+      <delete id="qnaCommDelete" parameterType="hashmap">
+       <![CDATA[
+           DELETE FROM QNA_CO
+              WHERE QCO_IDX = #{QCO_IDX}
+       ]]>
+         </delete>
    
    <!-- QNA 수정 -->
    <update id="adminQnaUpdatePro" parameterType="hashmap">
@@ -135,18 +135,19 @@
    </update>
 
    <!-- QNA 삭제하기 -->
-	<delete id="adminQnaDelete" parameterType="hashmap">
+   <delete id="adminQnaDelete" parameterType="hashmap">
     <![CDATA[
         DELETE FROM QNA_BOARD
         WHERE QNA_IDX = #{QNA_IDX}
     ]]>
-	</delete>
+   </delete>
 
 
    <!-- 멤버리스트 -->
    <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
+           
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_NAME,
@@ -199,11 +200,11 @@
 </update>
 
 
-		<delete id="deleteList" parameterType="hashmap">
+      <delete id="deleteList" parameterType="hashmap">
         DELETE
         FROM MEMBER   
         WHERE MEMBER_IDX = #{MEMBER_IDX}  
-		</delete>
+      </delete>
 
 
    
@@ -243,9 +244,9 @@
 
     <!-- House List -->
     <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			
+      
+         SELECT
+         
             HOUSE_IDX,
             HOUSE_NAME,
             HOUSE_INFO,
@@ -264,17 +265,17 @@
             HOUSE
             
           ORDER BY HOUSE_IDX DESC
-	
-	</select>
-	
-	<select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
+   
+   </select>
+   
+   <select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
+      
+         SELECT
+         REPORT_IDX,
+         REPORT_TITLE,
+         REPORT_CONTENT,
+         REPORT_REGDATE,
+         REPORT_TYPE
 
           FROM
             REPORT_BOARD
@@ -282,10 +283,10 @@
             WHERE REPORT_TYPE=1
             
           ORDER BY REPORT_IDX DESC
-	
-	</select>
-	
-	<delete id="houseReportDelete" parameterType="hashmap">
+   
+   </select>
+   
+   <delete id="houseReportDelete" parameterType="hashmap">
 
 
         DELETE
@@ -299,40 +300,40 @@
 
 <!-- Trip List -->
 <select id="selectTripList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			TRIP_IDX,
-			TRIP_IMAGE,
-			TRIP_AREA,
-			TRIP_FIRST_DATE,
-			TRIP_LAST_DATE,
-			TRIP_LANGUAGE,
-			TRIP_NAME,
-			TRIP_INTRO,
-			TRIP_INCLUDE,
-			TRIP_ZIPCODE,
-			TRIP_ADDR1,
-			TRIP_ADDR2,
-			TRIP_ADDR3,
-			TRIP_PERSONS,
-			TRIP_TPRICE,
-			TRIP_PPRICE
-			
+      
+         SELECT
+         TRIP_IDX,
+         TRIP_IMAGE,
+         TRIP_AREA,
+         TRIP_FIRST_DATE,
+         TRIP_LAST_DATE,
+         TRIP_LANGUAGE,
+         TRIP_NAME,
+         TRIP_INTRO,
+         TRIP_INCLUDE,
+         TRIP_ZIPCODE,
+         TRIP_ADDR1,
+         TRIP_ADDR2,
+         TRIP_ADDR3,
+         TRIP_PERSONS,
+         TRIP_TPRICE,
+         TRIP_PPRICE
+         
           FROM
             TRIP
             
           ORDER BY HOUSE_IDX DESC
-	
-	</select>
-	
-	<select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
+   
+   </select>
+   
+   <select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
+      
+         SELECT
+         REPORT_IDX,
+         REPORT_TITLE,
+         REPORT_CONTENT,
+         REPORT_REGDATE,
+         REPORT_TYPE
 
           FROM
             REPORT_BOARD
@@ -340,8 +341,8 @@
             WHERE REPORT_TYPE=2
             
           ORDER BY REPORT_IDX DESC
-	
-	</select>
+   
+   </select>
 
     
 </mapper>

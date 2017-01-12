@@ -7,9 +7,9 @@
 <!-- 작성자: 이진욱 -->
 <!-- 스타일 적용1 -->
 <style>   
-ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:1px;}
+ul{width:172px;height:340px;background-color:#c2e4e7;list-style:none;padding-top:1px;}
 li{margin-right:50px }
-a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
+a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 </style>
 
 
@@ -24,7 +24,7 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
 
 <!-- 가운데 좌측영역 -->
 <!-- height 380 -->
-<div style="width:15%;height:380px;border:1px solid black;float:left;text-align:center;">
+<div style="width:15%; height:380px;  float:left;text-align:center; ">
    
    <ul>
   <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
@@ -42,16 +42,21 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
 
 
    </ul>
-   </div>
+</div>
 
 
 <!-- 가운데 우측 영역 , height 380 , 포지션 left: 230 대체할수 있는 퍼센트-->   
 <!-- position:absolute;top:210px;left:230px; -->
-<div style="width:82%;height:80%;float:left;border:5px solid black;">
+<div style="width:82%;height:80%;float:left;border:0px solid black;">
 
 <!-- 900 -->
-<div class="row" style="padding-left:15px;width:95%;height:90%">    
-   <h5 class="page-header">QnA 게시판</h5>
+<div class="row" style="padding-left:15px;width:95%;height:90%; margin-left:20px;">    
+	
+	<!-- Qna게시판 글씨 덮는 영역 -->
+	<div class="row" style="width:1172px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+   		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>QnA</strong> 게시판</font>
+	</div>
+	
 	<table class="board_list">
 	<!--<table style="border:1px solid #ccc">-->
     <colgroup>
@@ -108,28 +113,31 @@ a{font-size:12px;color:whit e;font-weight:bold;text-decoration:none}
 	   	 <!-- 검색파트 영역1 -->
       		<div class="row">
       	 		<!-- 페이징, 검색파트 영역2 -->
-         	<div style="text-align: right;">
-         	
-         	<!-- 비회원의 경우 문의게시판 글쓰기 버튼이 안보임 -->
-				<c:if test="${member_level != null}">
-					<a href="#this" class="btn" id="write">글쓰기</a>	
-				</c:if>	
-				
+         	<div style="text-align: center;margin:20px 0px 0px 0px;">
+				${pagingHtml}	
          		<!-- 검색파트 영역3 -->
-            	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin-bottom:30px;">
+            	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin:30px 0px 0px 0px;">
  					<form  action="">
- 						${pagingHtml} &nbsp;&nbsp;&nbsp;
+ 						
                      <select class="searchOption btn btn-default " name="searchNum" id="searchNum">
                      	<option value="0">제목</option>
                      	<option value="1">내용</option>
                       	<option value="2">작성자</option>
                       	
-                     </select><input  type="text" name="isSearch" id="isSearch" style="margin-left:15px;width:200px;height:36px;border-radius :5px 5px 5px 5px;"/>            
+                     </select><input  type="text" name="isSearch" id="isSearch" style="margin-left:15px;width:200px;height:24px;border-radius :5px 5px 5px 5px;"/>            
                      
-                     <span class="btn btnC_03 btnP_04 mr10">
-                          <input type="submit" value="검색"  style="font-size: 14px; padding-bottom: 1; vertical-align: middle;height:36px;"/>
+                     <span class="inputb">
+                          <input type="submit" value="검색"  style="font-size: 14px; padding-bottom: 1; vertical-align: middle;height:20px;"/>
                   	 </span>
+                  	 
+                  	 <!-- 비회원의 경우 문의게시판 글쓰기 버튼이 안보임 -->
+				<c:if test="${member_level != null}">
+					<a href="#this" class="btn" id="write">글쓰기</a>	
+				</c:if>	
                	  </form>
+               	  
+               	
+               	  
                </div><!-- 검색파트 영역3 끝 -->
                </div><!-- 검색파트 영역2 끝 -->  
                </div><!-- 검색파트 영역1 끝 -->

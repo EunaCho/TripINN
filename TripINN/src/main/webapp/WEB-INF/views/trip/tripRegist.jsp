@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services"></script>
 <script>
 
 var containNum = 1;
@@ -216,21 +216,38 @@ var createNum = 4;
 				<div class="ti">유형</div>
 				<div class="ti">언어</div>
 			</div>
+
+					
 			<select name="trip_area" id="" class="select-long">
 				<option value="">도시 선택</option>
 				<option value="서울" <c:if test="${trip_area eq '서울'}">selected="selected"</c:if> >서울</option>
-				<option value="대전" <c:if test="${trip_area eq '대전'}">selected="selected"</c:if>>대전</option>
-				<option value="대구" <c:if test="${trip_area eq '대구'}">selected="selected"</c:if>>대구</option>
+				<option value="인천" <c:if test="${trip_area eq '인천'}">selected="selected"</c:if>>인천</option>
+				<option value="경기" <c:if test="${trip_area eq '경기'}">selected="selected"</c:if>>경기</option>
+				<option value="강원" <c:if test="${trip_area eq '강원'}">selected="selected"</c:if>>강원</option>
+				<option value="충청" <c:if test="${trip_area eq '충청'}">selected="selected"</c:if>>충청</option>
+				<option value="전라" <c:if test="${trip_area eq '전라'}">selected="selected"</c:if>>전라</option>
+				<option value="경상" <c:if test="${trip_area eq '경상'}">selected="selected"</c:if>>경상</option>
+				<option value="제주" <c:if test="${trip_area eq '제주'}">selected="selected"</c:if>>제주</option>
 			</select>
 			<select name="trip_type" id="" class="select-long">
 				<option value="">유형 선택</option>
-				<option value="쇼핑" <c:if test="${trip_type eq '쇼핑'}">selected="selected"</c:if>>쇼핑</option>
-				<option value="음식" <c:if test="${trip_type eq '음식'}">selected="selected"</c:if>>음식</option>
-				<option value="운동" <c:if test="${trip_type eq '운동'}">selected="selected"</c:if>>운동</option>
+				<option value="엔터테인먼트" <c:if test="${trip_type eq '엔터테인먼트'}">selected="selected"</c:if>>엔터테인먼트</option>
+				<option value="예술 및 디자인" <c:if test="${trip_type eq '예술 및 디자인'}">selected="selected"</c:if>>예술 및 디자인</option>
+				<option value="패션" <c:if test="${trip_type eq '패션'}">selected="selected"</c:if>>패션</option>
+				<option value="스포츠" <c:if test="${trip_type eq '스포츠'}">selected="selected"</c:if>>스포츠</option>
+				<option value="웰빙" <c:if test="${trip_type eq '웰빙'}">selected="selected"</c:if>>웰빙</option>
+				<option value="자연" <c:if test="${trip_type eq '자연'}">selected="selected"</c:if>>자연</option>
+				<option value="음료 및 식사" <c:if test="${trip_type eq '음료 및 식사'}">selected="selected"</c:if>>음료 및 식사</option>
+				<option value="라이프스타일" <c:if test="${trip_type eq '라이프스타일'}">selected="selected"</c:if>>라이프스타일</option>
+				<option value="역사" <c:if test="${trip_type eq '역사'}">selected="selected"</c:if>>역사</option>
+				<option value="음악" <c:if test="${trip_type eq '음악'}">selected="selected"</c:if>>음악</option>
+				<option value="비즈니스" <c:if test="${trip_type eq '비즈니스'}">selected="selected"</c:if>>비즈니스</option>
+				<option value="바/클럽" <c:if test="${trip_type eq '바/클럽'}">selected="selected"</c:if>>바/클럽</option>
 			</select>
 			<select name="trip_language" id="" class="select-long">
 				<option value="">선택</option>
 				<option value="한국어">한국어</option>
+				<option value="영어">영어</option>
 				<option value="일본어">일본어</option>
 				<option value="중국어">중국어</option>
 			</select>
@@ -380,11 +397,17 @@ var createNum = 4;
 				<input type="checkbox" name="trip_include" id="inc4" value="숙박"/><i></i>
 				<label for="inc4">숙박</label>
 				<input type="checkbox" name="trip_include" id="inc5" value="교통비"/><i></i>
-				<label for="inc5">교통비</label>
+				<label for="inc5">교통비</label> <br />
 				<input type="checkbox" name="trip_include" id="inc6" value="티켓"/><i></i>
 				<label for="inc6">티켓</label>
 				<input type="checkbox" name="trip_include" id="inc7" value="장비"/><i></i>
 				<label for="inc7">장비</label>
+				<input type="checkbox" name="trip_include" id="inc8" value="봉사료"/><i></i>
+				<label for="inc8">봉사료</label>
+				<input type="checkbox" name="trip_include" id="inc9" value="여행자보험"/><i></i>
+				<label for="inc9">여행자보험</label>
+				<input type="checkbox" name="trip_include" id="inc10" value="기타개인비용"/><i></i>
+				<label for="inc10">기타개인비용</label>
 			</div>
 			
 			<div style="width:100%;height:30px;margin-top:10px;" id="tripInfo6">
