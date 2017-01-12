@@ -86,4 +86,9 @@ public class TripServiceImpl implements TripService {
 		return tripDAO.likeCheckList(map);
 	}
 
+	@Override
+	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
+		return tripDAO.selectTripListSearch(map);
+	}
+
 }

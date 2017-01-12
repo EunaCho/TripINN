@@ -71,8 +71,13 @@ public class TripController {
 	public ModelAndView tripList(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("tripList");
 		//List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
-		Map<String,Object> resultMap = tripService.selectTripList(commandMap.getMap());
+		Map<String,Object> resultMap = null;
 		
+		if(commandMap.get("trip_type") == null) {
+			resultMap = tripService.selectTripList(commandMap.getMap()); // 검색 아닐때
+		} else {
+			resultMap = tripService.selectTripListSearch(commandMap.getMap()); // 검색
+		}
 	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
 	    mv.addObject("list",resultMap.get("result")); 
 		mv.addObject("area", commandMap.get("trip_area"));
