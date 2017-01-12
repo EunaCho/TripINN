@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.common.common.CommandMap;
+
 //DAO 기능 구현
 public interface HouseService {
 	//리스트 목록 보기 기능
@@ -32,6 +34,11 @@ public interface HouseService {
 
 	List<Map<String, Object>> selectHouseMapList(Map<String, Object> map) throws Exception;
 	
+	void insertWish(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
+	void deleteWish(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	
+	String selectWishIdx(Map<String, Object> map) throws Exception;
 
+	Map<String, Object> selectMember(Map<String, Object> map);
 }

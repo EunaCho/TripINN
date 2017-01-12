@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository; //DAO 클래스 등록 어너�
 import org.springframework.beans.factory.annotation.Autowired;
 import org.mybatis.spring.SqlSessionTemplate;
 import com.common.common.AbstractDAO; //SQL 오버로딩
+import com.common.common.CommandMap;
 
 @Repository("houseDAO") // DAO 클래스 등록
 public class HouseDAO extends AbstractDAO{
@@ -112,6 +113,24 @@ public class HouseDAO extends AbstractDAO{
 	}
 	public void insertReview(Map<String, Object> map) {
 		insert("house.insertReview", map);
-		
 	}
+	
+	
+	//wish 리스트 삽입
+	public void insertWish(Map<String, Object> map) throws Exception{
+		insert("house.insertWish", map);
+	}
+	
+	public void deleteWish(Map<String, Object> map) throws Exception{
+		delete("house.deleteWish", map);
+	}
+	
+	public String selectWishIdx(Map<String, Object> map) throws Exception{
+		return (String) selectOne("house.selectFVR_IDX", map);
+	}
+	public Map<String, Object> selectMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) selectOne("house.selectMember", map);
+	}
+	
 }

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest; //jsp 파라미터 값 송수신 �
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.common.common.CommandMap;
 import com.inn.house.FileUtils; //Service 클래스 등록
 
 
@@ -42,7 +43,9 @@ public class HouseServiceImpl implements HouseService{
 	
 	@Override
 	public List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception {
-		return houseDAO.searchHouseList(map);
+		List<Map<String, Object>> list = houseDAO.searchHouseList(map);
+		
+		return list;
 	}
 	//house 지도 리스트
 	@Override
@@ -128,6 +131,34 @@ public class HouseServiceImpl implements HouseService{
 		System.out.println("cspace************" + map.get("HI_CSPACE"));
 		*/
 		}
+	}
+
+	//wish 리스트 삽입
+	@Override
+	public void insertWish(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		// TODO Auto-generated method stub
+		houseDAO.insertWish(map);
+	}
+
+	//wish 리스트 업데이트
+	@Override
+	public void deleteWish(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		// TODO Auto-generated method stub
+		houseDAO.deleteWish(map);
+	}
+
+	@Override
+	public String selectWishIdx(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return houseDAO.selectWishIdx(map);
+		
+		
+	}
+
+	@Override
+	public Map<String, Object> selectMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return houseDAO.selectMember(map);
 	}
 
 }
