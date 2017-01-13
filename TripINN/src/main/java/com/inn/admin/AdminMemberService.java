@@ -15,6 +15,14 @@ public interface AdminMemberService {
     
 	void deleteList(Map<String, Object> map) throws Exception;
 	
+	//검색 (3=이메일)
+	    List<Map<String,Object>> search3(Map<String,Object> map);
 	
+	//검색 (4=번호)
+		List<Map<String,Object>> search4(Map<String,Object> map);
+		
+	//검색 (5=주소)
+		List<Map<String,Object>> search5(Map<String,Object> map);
+			
 
 }

@@ -82,6 +82,7 @@
 .paging{
    font-size:17px;
    margin-left:400px;
+   margin-top:-15px;
    }
 </style> 
 
@@ -98,7 +99,7 @@
    <section>
 				<nav style="height:400px;width:250px;">
 
-<<<<<<< HEAD
+
 					<ul id="dropdown2">
 						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
 						<ul>
@@ -133,18 +134,15 @@
 	
 </div><!-- side div End -->
    
-<div style="width:1045px;height:63%; border:1px solid black; text-align:left; top:208px;left:300px; margin:10px auto; float:left;">
+<div style="width:1045px;height:60%; border:1px solid black; text-align:left; top:208px;left:300px; margin:10px auto; float:left;">
 
         <h2>&nbsp;회원 리스트</h2>
         <div style="width:1028px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
         </div>
-     <div style="width:1001px; height:80%; margin:10px; border:0px solid blue;"> <!-- table div start -->
-=======
+     <div style="width:1001px; height:68%; margin:10px; border:0px solid blue;"> <!-- table div start -->
+
    <!-- 회원 테이블 영역 -->
-        <h2>회원 리스트</h2>
-     <div style="width:1001px; height:75%; margin:10px; border:1px solid red;"> <!-- table div start -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
- 
+       
        <form name="frm" method="post" action="/TripINN/admin/memberView.do">
           <input type="hidden" value="" name="MEMBER_IDX"/>
           
@@ -186,16 +184,31 @@
     <div class="paging">
        ${pagingHtml}
     </div>
+    <!-- 검색파트 영역 -->
+            	<div style="text-align:center; margin-top:30px; margin-left:-100px;">
+ 					<form  action="">
+ 						
+                     <select class="searchOption btn btn-default" name="searchNum" id="searchNum">
+                     	<option value="3">이메일</option>
+                     	<option value="4">번호</option>
+                     	<option value="5">주소</option>
+                     	
+                      	
+                     </select><input  type="text" name="isSearch" id="isSearch" style="margin-left:15px;width:200px;height:24px;border-radius :5px 5px 5px 5px;"/>            
+                     
+                     <span class="inputb">
+                          <input type="submit" value="검색"  style="font-size: 14px;"/>
+                  	 </span>
+               </div><!-- 검색파트 영역  끝 -->
     
 </div><!-- list div End -->
 
 
-<<<<<<< HEAD
+
 
 </div><!-- 전체  --> 
-=======
-<!-- 이건 도대체 뭐냐? -->
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
+
 <div style="clear:both;"></div>
 
 

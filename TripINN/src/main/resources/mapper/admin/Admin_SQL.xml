@@ -2,17 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="admin">
-<<<<<<< HEAD
 
 
-=======
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    <!-- Qna리스트, 페이징을 위해 수정됨 -->
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    <select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
    <!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
        SELECT 
@@ -27,11 +19,6 @@
       ORDER BY QNA_IDX DESC
    </select>
    
-   <!-- 게시판 검색 -->
-<<<<<<< HEAD
-
-  
-
 	<!-- 제목검색 -->
 	<select id="search0" parameterType="hashmap" resultType="hashmap">
 		SELECT * FROM QNA_BOARD
@@ -46,21 +33,6 @@
 		ORDER BY QNA_IDX DESC
 	</select>
 
-=======
-   <!-- 제목검색 -->
-   <select id="search0" parameterType="hashmap" resultType="hashmap">
-      SELECT * FROM QNA_BOARD
-       WHERE QNA_TITLE like '%'||#{isSearch}||'%'
-       ORDER BY QNA_IDX DESC
-   </select>
-   
-   <!-- 내용검색 -->
-   <select id="search1" parameterType="hashmap" resultType="hashmap">
-      SELECT * FROM QNA_BOARD
-      WHERE QNA_CONTENT like '%'||#{isSearch}||'%'
-      ORDER BY QNA_IDX DESC
-   </select>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
    <!-- 작성자검색 -->
    <select id="search2" parameterType="hashmap" resultType="hashmap">
@@ -172,20 +144,14 @@
    </delete>
 
 
-<<<<<<< HEAD
+
 
 	
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
    <!-- 멤버리스트 -->
    <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
-<<<<<<< HEAD
-	        
-=======
-           
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_NAME,
@@ -199,20 +165,16 @@
             FROM
             MEMBER
             ORDER BY MEMBER_IDX DESC
-<<<<<<< HEAD
-
-
-	
 	</select>
 
 
-=======
+
    
-   </select>
 
 
 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
+
 <select id="selectMemberView" parameterType="hashmap" resultType="hashmap">
     
         SELECT
@@ -246,59 +208,34 @@
  
 </update>
 
-<<<<<<< HEAD
-
-
-
-
-
-<delete id="deleteList" parameterType="hashmap">
-
-=======
 
       <delete id="deleteList" parameterType="hashmap">
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
         DELETE
-<<<<<<< HEAD
-
         FROM MEMBER
-        
         WHERE MEMBER_IDX = #{MEMBER_IDX}  
 
-</delete>
-=======
-        FROM MEMBER   
-        WHERE MEMBER_IDX = #{MEMBER_IDX}  
-      </delete>
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+     </delete>
 
    
-<<<<<<< HEAD
    <!-- faq 리스트 -->
-=======
-   
-   <!-- faq 리스트 -->
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
     <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
-        <![CDATA[
+        
            SELECT
+           
              FAQ_IDX,
              FAQ_TITLE,
              FAQ_READCOUNT,
-            FAQ_REGDATE
-      FROM
-          FAQ_BOARD
-      ORDER BY FAQ_IDX DESC
+             FAQ_REGDATE
+             
+             FROM
+             FAQ_BOARD
+             
+             ORDER BY FAQ_IDX DESC
       
-        ]]>
+       
     </select>
     
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
      <!-- 댓글쓰기 -->
     <insert id="qnaCommWrite" parameterType="hashmap">
         INSERT INTO QNA_CO
@@ -316,10 +253,6 @@
    </insert>
     
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
     <!-- House List -->
     <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
       
@@ -343,26 +276,12 @@
             HOUSE
             
           ORDER BY HOUSE_IDX DESC
-<<<<<<< HEAD
-
-	
 	</select>
 	
 
 	
   
-	<select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
-
-=======
-   
-   </select>
+	
    
    <select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
       
@@ -372,7 +291,6 @@
          REPORT_CONTENT,
          REPORT_REGDATE,
          REPORT_TYPE
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
           FROM
             REPORT_BOARD
@@ -437,16 +355,26 @@
             WHERE REPORT_TYPE=2
             
           ORDER BY REPORT_IDX DESC
-<<<<<<< HEAD
 
-   
    </select>
-=======
-   
-   </select>
-
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-    
-
+   <!-- 회원 검색 -->
+   <!--이메일로 회원 검색 -->
+	<select id="search3" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEMBER
+		 WHERE MEMBER_EMAIL like '%'||#{isSearch}||'%'
+		 ORDER BY MEMBER_IDX DESC
+	</select>
+	
+	<select id="search4" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEMBER
+		 WHERE MEMBER_IDX like '%'||#{isSearch}||'%'
+		 ORDER BY MEMBER_IDX DESC
+	</select>
+	
+	<select id="search5" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEMBER
+		 WHERE MEMBER_ADDR like '%'||#{isSearch}||'%'
+		 ORDER BY MEMBER_IDX DESC
+	</select>
 </mapper>
     

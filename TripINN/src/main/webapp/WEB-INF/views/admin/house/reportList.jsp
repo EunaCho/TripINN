@@ -27,10 +27,10 @@
  #dropdown2{
             
 			list-style-type: none;
-			margin-left:-40px;
+			margin-left:-50px;
+			margin-top:80px;
 			position:absolute;
 			max-width:300px;
-			margin-top:-20px;
 			}
 
 			#dropdown2 li{
@@ -80,7 +80,12 @@
 			}
 			hr{ width:95%; color:#eee;}
 </style>
-<!-- 스타일 적용2 -->
+
+<style type="text/css">
+#STATICMENU {margin:0pt;padding:0pt;position:absolute;left:0px;top:0px;}
+</style>
+
+<!-- 스타일 적용3 -->
 <style>
 	
 	.house_div{
@@ -90,7 +95,7 @@
 		background-color:white;
 		margin:auto;
 		margin-left:212px;
-		margin-top:-470px;
+		margin-top:-60px;
 		
 	}
 	.report_list{
@@ -108,63 +113,55 @@
 	height:200px;
 	margin:40px;
 	}
-	.picture{
-	border:0px solid black;
-	width:200px;
-	height:180px;
-	margin:10px;
-	}
-	.picture1{
-	border:0px solid black;
-	width:180px;
-	height:160px;
-	margin:10px;
-	}
 	.house_idx{
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:220px;
-	margin-top:-190px;
+	margin-left:130px;
+	margin-top:10px;
 	font-size:14px;
 	background-color:#eee;
-	
+	border-radius:4px;
 	}
 	.house_info{
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:550px;
+	margin-left:460px;
 	margin-top:-20px;
 	font-size:14px;
 	background-color:#eee;
+	border-radius:4px;
 	}
 	.house_name{
 	border:0px solid black;
 	width:630px;
 	height:120px;
-	margin-left:220px;
+	margin-left:130px;
 	margin-top:10px;
 	font-size:14px;
 	background-color:#eee;
+	border-radius:4px;
 	}
 	.house_price{
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:220px;
+	margin-left:130px;
 	margin-top:10px;
 	font-size:14px;
 	background-color:#eee;
+	border-radius:4px;
 	}
 	.house_type{
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:550px;
+	margin-left:460px;
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:4px;
 	}
 	.paging{
     font-size:17px;
@@ -193,10 +190,10 @@
    
    
    
-  
+  <body onload="InitializeStaticMenu();">
   
    <!-- 좌측 영역 -->
-   <div style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
+   <div id="STATICMENU" style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
 	  <section>
 				<nav style="height:400px;width:250px;">
 
@@ -248,23 +245,21 @@
    <c:when test="${fn:length(list)>0}">
    <c:forEach var="house" items="${list}">
     <div class="list1">
-     <div class="picture">
-    <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
-      </div>
+    
       <div class="house_idx">
-     번호: <a href="javascript:formSubmit('${house.REPORT_IDX}');">${house.REPORT_IDX }</a>
+    &nbsp;번호: <a href="javascript:formSubmit('${house.REPORT_IDX}');">${house.REPORT_IDX }</a>
       </div>
        <div class="house_info">
-      제목: ${house.REPORT_TITLE}
+      &nbsp;제목: ${house.REPORT_TITLE}
       </div>
       <div class="house_name">
-      내용: ${house.REPORT_CONTENT}
+      &nbsp;내용: ${house.REPORT_CONTENT}
       </div>
       <div class="house_price">
-      작성일자: ${house.REPORT_REGDATE}
+     &nbsp; 작성일자: ${house.REPORT_REGDATE}
       </div>
        <div class="house_type">
-      신고유형: ${house.REPORT_TYPE}
+      &nbsp;신고유형: ${house.REPORT_TYPE}
       </div>
       
     </div>
@@ -297,6 +292,33 @@
         comSubmit.addParam("currentPageNo", pageNo);
         comSubmit.submit();
 	 }
+	 
+    //스크롤에 따라서 드롭다운이 따라감
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 150; // 스크롤 시작위치 
+    var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 30; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+     var stmnStartPoint, stmnEndPoint; 
+     stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10); 
+     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+     if (stmnStartPoint != stmnEndPoint) { 
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+      document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+      stmnRefreshTimer = stmnScrollSpeed; 
+      }
+     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+     } 
+    function InitializeStaticMenu() {
+     document.getElementById('STATICMENU').style.left = stmnLEFT + 'px';  //처음에 왼쪽 위치
+     document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+     RefreshStaticMenu();
+     }
 	
 </script>
  
