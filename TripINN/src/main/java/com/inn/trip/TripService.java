@@ -9,7 +9,7 @@ public interface TripService {
 
 	void tripRegist(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
-	List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception;
+	Map<String, Object> selectTripList(Map<String, Object> map) throws Exception;
 
 	String selectImages(String trip_idx) throws Exception;
 
@@ -19,11 +19,21 @@ public interface TripService {
 
 	void tripReview(Map<String, Object> map);
 
-	List<Map<String, Object>> reviewList(Map<String, Object> map);
+	Map<String, Object> reviewList(Map<String, Object> map);
 
 	void reviewLike(Map<String, Object> map);
 
 	String getLikeCnt(String parameter);
+
+	Map<String, Object> getReviewInfoSub(Map<String, Object> map);
+
+	void deleteLike(Map<String, Object> map);
+
+	void insertLike(Map<String, Object> map);
+
+	List<Map<String, Object>> likeCheckList(Map<String, Object> map);
+
+	Map<String, Object> selectTripListSearch(Map<String, Object> map);
 
 	
 }

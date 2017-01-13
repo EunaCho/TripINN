@@ -98,6 +98,7 @@
    <section>
 				<nav style="height:400px;width:250px;">
 
+<<<<<<< HEAD
 					<ul id="dropdown2">
 						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
 						<ul>
@@ -138,6 +139,11 @@
         <div style="width:1028px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
         </div>
      <div style="width:1001px; height:80%; margin:10px; border:0px solid blue;"> <!-- table div start -->
+=======
+   <!-- 회원 테이블 영역 -->
+        <h2>회원 리스트</h2>
+     <div style="width:1001px; height:75%; margin:10px; border:1px solid red;"> <!-- table div start -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
  
        <form name="frm" method="post" action="/TripINN/admin/memberView.do">
           <input type="hidden" value="" name="MEMBER_IDX"/>
@@ -184,8 +190,12 @@
 </div><!-- list div End -->
 
 
+<<<<<<< HEAD
 
 </div><!-- 전체  --> 
+=======
+<!-- 이건 도대체 뭐냐? -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 <div style="clear:both;"></div>
 
 

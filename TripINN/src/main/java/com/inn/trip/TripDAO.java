@@ -16,18 +16,19 @@ public class TripDAO extends AbstractDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectTripList(Map<String, Object> map) throws Exception{
 		String trip_area = (String) map.get("area");
 		if(trip_area == null || trip_area.equals("")) {
 			map.put("trip_area", "서울");
 		}
-		return selectList("trip.tripList", map);
+		return selectPagingList("trip.tripList", map);
 	}
 
 	public String selectImages(String trip_idx) {
 		return (String) selectOne("trip.getImages", trip_idx);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
 		return (Map<String, Object>) selectOne("trip.tripDetail", map);
 	}
@@ -40,8 +41,9 @@ public class TripDAO extends AbstractDAO {
 		insert("trip.tripReview", map);
 	}
 
-	public List<Map<String, Object>> reviewList(Map<String, Object> map) {
-		return selectList("trip.reviewList", map);
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> reviewList(Map<String, Object> map) {
+		return selectPagingList("trip.reviewList", map);
 	}
 
 	public void reviewLike(Map<String, Object> map) {
@@ -50,5 +52,28 @@ public class TripDAO extends AbstractDAO {
 
 	public String getLikeCnt(String parameter) {
 		return (String) selectOne("trip.getLikeCnt", parameter);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getReviewInfoSub(Map<String, Object> map) {
+		return (Map<String, Object>) selectOne("trip.getReviewInfoSub", map);
+	}
+
+	public void deleteLike(Map<String, Object> map) {
+		delete("trip.deleteLike", map);
+	}
+
+	public void insertLike(Map<String, Object> map) {
+		insert("trip.insertLike", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
+		return selectList("trip.likeCheckList", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
+		return selectPagingList("trip.selectTripListSearch", map);
 	}
 }

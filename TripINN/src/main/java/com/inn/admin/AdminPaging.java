@@ -2,7 +2,11 @@ package com.inn.admin;
 
 public class AdminPaging {
 
+<<<<<<< HEAD
    private int currentPage;   // 현재페이지
+=======
+   private int currentPage; // 현재페이지
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    private int totalCount;    // 전체 게시물 수
    private int totalPage;    // 전체 페이지 수
    private int blockCount;    // 한 페이지의  게시물의 수
@@ -73,7 +77,11 @@ public class AdminPaging {
             pagingHtml.append(i);
             pagingHtml.append("</font></b>");
          }else{
+<<<<<<< HEAD
             pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + "> <font color='black'>");
+=======
+            pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + ">");
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
             pagingHtml.append(i);
             pagingHtml.append("</a>");
             
@@ -131,7 +139,7 @@ public class AdminPaging {
             if(isSearch != "")
                pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + "&searchKeyword="+isSearch+"&searchNum="+searchNum+">");
             
-            else                    
+            else
                pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + ">");
             pagingHtml.append("이전");
             pagingHtml.append("</a>");
@@ -171,9 +179,13 @@ public class AdminPaging {
             pagingHtml.append("다음");
             pagingHtml.append("</a>");
          }
+<<<<<<< HEAD
          
          
          
+=======
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
             
       }
 
