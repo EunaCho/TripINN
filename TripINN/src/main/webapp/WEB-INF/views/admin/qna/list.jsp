@@ -39,8 +39,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
       <li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-
-
+ 
    </ul>
 </div>
 
@@ -53,7 +52,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 <div class="row" style="padding-left:15px;width:95%;height:90%; margin-left:20px;">    
 	
 	<!-- Qna게시판 글씨 덮는 영역 -->
-	<div class="row" style="width:1000px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+	<div class="row" style="width:1172px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>QnA</strong> 게시판</font>
 	</div>
 	

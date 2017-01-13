@@ -18,7 +18,7 @@ public class AdminFaqDAO extends AbstractDAO{
 	//글쓰기
 	public void adminFaqInsert(Map<String, Object> map) throws Exception{
 		insert("admin.adminFaqInsert", map);
-	} 
+	}
 	
 	//수정
 	public void adminFaqUpdate(Map<String, Object> map) throws Exception{

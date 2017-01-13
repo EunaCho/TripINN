@@ -9,7 +9,7 @@
     	SELECT 
     		ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
 			QNA_IDX, 
-			QNA_TITLE, 
+			QNA_TITLE,
 			QNA_CONTENT, 
 			QNA_READCOUNT, 
 			QNA_REGDATE, 
@@ -141,13 +141,93 @@
         WHERE QNA_IDX = #{QNA_IDX}
     ]]>
 	</delete>
+	
+	
+	  <!-- faq 리스트 -->
+    <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+         SELECT FAQ_IDX, FAQ_TITLE, FAQ_CONTENT, FAQ_TYPE
+			FROM FAQ_BOARD 
+		ORDER BY FAQ_IDX DESC
+		
+      
+        ]]>
+    </select>
+    
+    
+    
+    <!-- faq 글쓰기 처리 -->
+   <insert id="adminFaqInsert" parameterType="hashmap">
+    <![CDATA[
+        INSERT INTO FAQ_BOARD
+        (
+            FAQ_IDX,
+            FAQ_TITLE,
+            FAQ_CONTENT,
+            FAQ_PWD,
+            FAQ_REGDATE,
+            FAQ_READCOUNT,
+            MEMBER_IDX,
+            FAQ_TYPE
+        )
+        VALUES
+        (
+           FAQ_IDX_SEQ.NEXTVAL, 
+            #{FAQ_TITLE}, 
+            #{FAQ_CONTENT},
+            '11',
+            SYSDATE, 
+            0, 
+            #{MEMBER_IDX},
+            #{FAQ_TYPE}
+        )
+    ]]>
+   </insert>
+   
+    <!--Faq 상세보기 -->
+   <select id="adminFaqSelectDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            FAQ_IDX,
+            FAQ_TITLE,
+            FAQ_CONTENT,
+            MEMBER_IDX,
+            FAQ_TYPE,
+            FAQ_IMAGE
+        FROM
+            FAQ_BOARD
+        WHERE
+            FAQ_IDX = #{FAQ_IDX}       
+       ]]>
+   </select>
+   
+   
+   <!-- faq글 수정 -->
+   <update id="adminFaqUpdate" parameterType="hashmap">
+    <![CDATA[
+        UPDATE FAQ_BOARD
+        SET
+           FAQ_TITLE = #{FAQ_TITLE},
+           FAQ_CONTENT = #{FAQ_CONTENT}
+        WHERE
+           FAQ_IDX = #{FAQ_IDX}
+    ]]>
+   </update>
 
+	<!-- faq글 삭제 -->
+	<delete id="adminFaqDelete" parameterType="hashmap">
+    <![CDATA[
+        DELETE FROM FAQ_BOARD
+        WHERE FAQ_IDX = #{FAQ_IDX}
+    ]]>
+	</delete>
+   
 
    <!-- 멤버리스트 -->
    <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
-	        
+           
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_NAME,
@@ -200,30 +280,16 @@
 </update>
 
 
-		<delete id="deleteList" parameterType="hashmap">
+      <delete id="deleteList" parameterType="hashmap">
         DELETE
         FROM MEMBER   
         WHERE MEMBER_IDX = #{MEMBER_IDX}  
-		</delete>
+      </delete>
 
 
    
    
-   <!-- faq 리스트 -->
-
-    <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
-        <![CDATA[
-           SELECT
-             FAQ_IDX,
-             FAQ_TITLE,
-             FAQ_READCOUNT,
-            FAQ_REGDATE
-      FROM
-          FAQ_BOARD
-      ORDER BY FAQ_IDX DESC
-      
-        ]]>
-    </select>
+ 
     
      <!-- 댓글쓰기 -->
     <insert id="qnaCommWrite" parameterType="hashmap">
@@ -244,9 +310,9 @@
 
     <!-- House List -->
     <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			
+      
+         SELECT
+         
             HOUSE_IDX,
             HOUSE_NAME,
             HOUSE_INFO,
@@ -265,17 +331,17 @@
             HOUSE
             
           ORDER BY HOUSE_IDX DESC
-	
-	</select>
-	
-	<select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
+   
+   </select>
+   
+   <select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
+      
+         SELECT
+         REPORT_IDX,
+         REPORT_TITLE,
+         REPORT_CONTENT,
+         REPORT_REGDATE,
+         REPORT_TYPE
 
           FROM
             REPORT_BOARD
@@ -283,10 +349,10 @@
             WHERE REPORT_TYPE=1
             
           ORDER BY REPORT_IDX DESC
-	
-	</select>
-	
-	<delete id="houseReportDelete" parameterType="hashmap">
+   
+   </select>
+   
+   <delete id="houseReportDelete" parameterType="hashmap">
 
 
         DELETE
@@ -300,40 +366,40 @@
 
 <!-- Trip List -->
 <select id="selectTripList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			TRIP_IDX,
-			TRIP_IMAGE,
-			TRIP_AREA,
-			TRIP_FIRST_DATE,
-			TRIP_LAST_DATE,
-			TRIP_LANGUAGE,
-			TRIP_NAME,
-			TRIP_INTRO,
-			TRIP_INCLUDE,
-			TRIP_ZIPCODE,
-			TRIP_ADDR1,
-			TRIP_ADDR2,
-			TRIP_ADDR3,
-			TRIP_PERSONS,
-			TRIP_TPRICE,
-			TRIP_PPRICE
-			
+      
+         SELECT
+         TRIP_IDX,
+         TRIP_IMAGE,
+         TRIP_AREA,
+         TRIP_FIRST_DATE,
+         TRIP_LAST_DATE,
+         TRIP_LANGUAGE,
+         TRIP_NAME,
+         TRIP_INTRO,
+         TRIP_INCLUDE,
+         TRIP_ZIPCODE,
+         TRIP_ADDR1,
+         TRIP_ADDR2,
+         TRIP_ADDR3,
+         TRIP_PERSONS,
+         TRIP_TPRICE,
+         TRIP_PPRICE
+         
           FROM
             TRIP
             
           ORDER BY HOUSE_IDX DESC
-	
-	</select>
-	
-	<select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
-		
-			SELECT
-			REPORT_IDX,
-			REPORT_TITLE,
-			REPORT_CONTENT,
-			REPORT_REGDATE,
-			REPORT_TYPE
+   
+   </select>
+   
+   <select id="selectTripReportList" parameterType="hashmap" resultType="hashmap">
+      
+         SELECT
+         REPORT_IDX,
+         REPORT_TITLE,
+         REPORT_CONTENT,
+         REPORT_REGDATE,
+         REPORT_TYPE
 
           FROM
             REPORT_BOARD
@@ -341,8 +407,29 @@
             WHERE REPORT_TYPE=2
             
           ORDER BY REPORT_IDX DESC
-	
+   
+   </select>
+   
+    <!-- 회원 검색 -->
+   <!--이메일로 회원 검색 -->
+	<select id="search3" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEMBER
+		 WHERE MEMBER_EMAIL like '%'||#{isSearch}||'%'
+		 ORDER BY MEMBER_IDX DESC
 	</select>
+	
+	<select id="search4" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEMBER
+		 WHERE MEMBER_IDX like '%'||#{isSearch}||'%'
+		 ORDER BY MEMBER_IDX DESC
+	</select>
+	
+	<select id="search5" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEMBER
+		 WHERE MEMBER_ADDR like '%'||#{isSearch}||'%'
+		 ORDER BY MEMBER_IDX DESC
+	</select>
+
 
     
 </mapper>
