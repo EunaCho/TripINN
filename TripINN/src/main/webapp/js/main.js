@@ -85,7 +85,6 @@ jQuery(function($){
         return false;
        });
     
-    
     //Hide Window - login
     login_layerWindow.find('>.bg').mousedown(function(event){
        login_layerWindow.removeClass('open');

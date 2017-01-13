@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TripINN</title>
+<title>함께하는 즐거움, TripINN</title>
 <style>html {height:100%;}</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body style="width:100%;height:100%;margin:0px;padding:0px;">
-	<div id="header" style="height:55px;" >
+	<div id="header" style="height:75px;" >
 		<tiles:insertAttribute name="header"/>
 	</div>
 	
