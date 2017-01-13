@@ -3,10 +3,6 @@ var cnt = 0;
 	function review_l_check(index, divTag, hrb_idx, house_idx){
 		
 		var cnt = 0;
-//		alert(index);
-//		alert(divTag.style.backgroundColor == 'rgb(255, 90, 95)');
-//		alert(hrb_idx);
-//		alert(house_idx);
 		
 		if(divTag.style.backgroundColor == 'rgb(255, 90, 95)'){ //추천 취소
 			divTag.style.backgroundColor = '#ffffff';
@@ -80,15 +76,11 @@ $(document).ready(function() {
 	//위시 리스트 버튼 클릭
 	$('#wishIcon').click(function() {
 		var str = $("#wishIcon").css('background-image');
-		
-		/*alert(str.match("_white"));*/
 		var wish_check = 1;
 		var HOUSE_IDX = $("#house_idx").val();
 		
-//		alert(MEMBER_IDX);
-		
 		if(str.match("white") != null){
-			/*alert($("#house_idx").val());*/
+		
 		$("#wishIcon").css({'background':'url(/TripINN/images/house/icon_heart_red.png) no-repeat','background-size': '100% 100%'});
 		
 		$.ajax({
@@ -108,7 +100,7 @@ $(document).ready(function() {
 		}else{
 			$("#wishIcon").css({'background':'url(/TripINN/images/house/icon_heart_white.png) no-repeat','background-size': '100% 100%'});
 			wish_check = 0;
-			/*alert($("#house_idx").val());*/
+			
 			$.ajax({
 				type:'GET',
 				url: '/TripINN/house/houseDetail.do',
@@ -123,10 +115,5 @@ $(document).ready(function() {
 				}
 			})
 		}
-	});
-	/*function() {
-		
-	}*/
-	
-	
+	});	
 });

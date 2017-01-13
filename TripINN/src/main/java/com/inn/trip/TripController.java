@@ -24,8 +24,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.common.common.CommandMap;
 import com.common.common.ConvertAddress;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-
 @Controller
 public class TripController {
 	
@@ -46,13 +44,9 @@ public class TripController {
 		for(String inc : inc_list) {
 			trip_include = trip_include + inc + "|";
 		}
-		// 엔터값 처리-------------------------------
-		String trip_intro = (String) commandMap.get("trip_intro");
-		trip_intro = trip_intro.replace("\r\n", "<br />");
-		commandMap.put("trip_intro", trip_intro);
-		// 엔터값 처리-------------------------------
+		
 		//commandMap.put("member_idx", session.getAttribute("member_idx"));
-		commandMap.put("member_idx", session.getAttribute("member_idx"));
+		commandMap.put("member_idx", 1);
 		commandMap.put("trip_include", trip_include);
 		tripService.tripRegist(commandMap.getMap(), request);
 		return mv;
@@ -70,16 +64,9 @@ public class TripController {
 	@RequestMapping(value="/tripList.do", method=RequestMethod.GET) //트립 리스트
 	public ModelAndView tripList(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("tripList");
-		//List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
-		Map<String,Object> resultMap = null;
+		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
 		
-		if(commandMap.get("trip_type") == null) {
-			resultMap = tripService.selectTripList(commandMap.getMap()); // 검색 아닐때
-		} else {
-			resultMap = tripService.selectTripListSearch(commandMap.getMap()); // 검색
-		}
-	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
-	    mv.addObject("list",resultMap.get("result")); 
+		mv.addObject("list",list); 
 		mv.addObject("area", commandMap.get("trip_area"));
 		return mv;
 	}
@@ -123,40 +110,20 @@ public class TripController {
 		ModelAndView mv = new ModelAndView("tripList");
 		commandMap.put("trip_area", request.getParameter("area"));
 		
-		Map<String,Object> resultMap = tripService.selectTripList(commandMap.getMap());
+		List<Map<String, Object>> list = tripService.selectTripList(commandMap.getMap());
 		
-	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
-	    mv.addObject("list",resultMap.get("result")); 
+		mv.addObject("list", list);
 		mv.addObject("area", commandMap.get("trip_area"));
 		return mv;
 	}
 	
 	// 트립 상세 페이지
 	@RequestMapping(value="/tripDetail.do", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView tripDetail(CommandMap commandMap, HttpSession session) throws Exception {
+	public ModelAndView tripDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("tripDetail");
-		if(session.getAttribute("member_idx") == null) {
-			commandMap.put("member_idx", "0");
-		} else {
-			commandMap.put("member_idx", session.getAttribute("member_idx"));
-		}
 		
-		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap()); // 트립 정보 map
-		String include = (String) map.get("TRIP_INCLUDE");
-		String[] inc = include.split("\\|");
-		String[] total_inc = {"식사","간식","음료","숙박","교통비","티켓","장비","봉사료","여행자보험","기타개인비용"};
-		
-		
-		if(inc.length > 0) {
-			List<String> incList = new ArrayList<>();
-			List<String> total_incList = new ArrayList<>();
-			for(String s : inc) incList.add(s);
-			for(String s : total_inc) total_incList.add(s);
-			
-			total_incList.removeAll(incList);
-			map.put("TRIP_NOT_INCLUDE", total_incList);
-			map.put("TRIP_INCLUDE", inc); 
-		}
+		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap());
+		System.out.println("trip_idx : " + commandMap.get("trip_idx"));
 		//==============================지도 뷰==============================
 		String addr1 = (String) map.get("TRIP_ADDR1");
 		
@@ -176,13 +143,8 @@ public class TripController {
 		//사진뷰
 		
 		//==============================리뷰 가져오기==============================
-		Map<String,Object> resultMap = tripService.reviewList(commandMap.getMap());
-		Map<String,Object> subMap = tripService.getReviewInfoSub(commandMap.getMap());
-		List<Map<String, Object>> likeCheckList = tripService.likeCheckList(commandMap.getMap());
-	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
-	    mv.addObject("rlist", resultMap.get("result"));
-	    mv.addObject("likeList", likeCheckList);
-	    mv.addObject("subMap", subMap);
+		List<Map<String, Object>> rlist = tripService.reviewList(commandMap.getMap());
+		mv.addObject("rlist", rlist);
 		//==============================리뷰 가져오기==============================
 		
 		mv.addObject("trip", map);
@@ -215,9 +177,7 @@ public class TripController {
 	@RequestMapping(value="/tripReview.do", method=RequestMethod.POST)
 	public ModelAndView tripReview(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
-		String trb_content = (String) commandMap.get("trb_content");
-		trb_content = trb_content.replace("\r\n", "<br />");
-		commandMap.put("trb_content", trb_content);
+		
 		tripService.tripReview(commandMap.getMap());
 		mv.addObject("trip_idx", commandMap.get("trip_idx"));
 		
@@ -229,19 +189,10 @@ public class TripController {
 	public ModelAndView reviewLike(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("/trip/reviewLike");
 		Map<String, Object> map = new HashMap<>();
-		int cnt = Integer.parseInt(request.getParameter("cnt"));
 		map.put("trb_idx", request.getParameter("trb_idx"));
-		map.put("cnt", cnt);
-		map.put("member_idx", request.getParameter("member_idx"));
-		map.put("trip_idx", request.getParameter("trip_idx"));
-		
-		if(cnt == -1) { // 추천 취소(delete 쿼리)
-			tripService.deleteLike(map);
-		} else { // 추천 (insert 쿼리)
-			tripService.insertLike(map);
-		}
+		map.put("cnt", Integer.parseInt(request.getParameter("cnt")));
 		tripService.reviewLike(map);
-		String trb_like = tripService.getLikeCnt(request.getParameter("trb_idx")); // TRB_LIKE(추천수) UPDATE
+		String trb_like = tripService.getLikeCnt(request.getParameter("trb_idx"));
 		mv.addObject("trb_like", trb_like);
 		return mv;
 	}

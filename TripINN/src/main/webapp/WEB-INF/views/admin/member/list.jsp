@@ -45,7 +45,7 @@ li{margin-right:50px }
 <!-- 가운데 우측영역 -->
 <div style="width:1025px;height:85%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
 
-   <!-- 회원 테이블 영역 -->
+	<!-- 회원 테이블 영역 -->
         <h2>회원 리스트</h2>
      <div style="width:1001px; height:75%; margin:10px; border:1px solid red;"> <!-- table div start -->
  

@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services"></script>
 
 <link rel="stylesheet" href="/TripINN/css/trip/trip.css" />
@@ -29,63 +28,46 @@ var member_idx = "${sessionScope.member_idx}";
 		}
 	}
 	function review() {
-		var reviewForm = document.reviewForm;
-		
-		if(reviewForm.trb_content.value == "") {
-			alert("리뷰를 작성해 주세요.");
-			return;
-		}
 		if(member_idx != null && member_idx!="") {
+			var reviewForm = document.reviewForm;
 			reviewForm.action = "/TripINN/tripReview.do";
 			reviewForm.submit();
-		} else {
+		}  else {
 			alert("로그인 후 이용 가능합니다.");
 			return;
 		}
 	}
 	
-	function r_like(index, spanTag, trb_idx, trip_idx) {
+	function r_like(index, spanTag, trb_idx) {
 		var cnt = 0;
-		if(member_idx != null && member_idx!="") {
-			if(spanTag.style.backgroundColor == "rgb(255, 235, 240)") {  // 추천을 취소할 때
-				spanTag.style.backgroundColor = "#fff";
-				cnt = -1;
-				$.ajax({
-					url: "/TripINN/reviewLike.do",
-					type: "GET",
-					async:true, 
-					dataType: "Text", 
-					data: {"trb_idx": trb_idx, "cnt": cnt, "member_idx":member_idx, "trip_idx": trip_idx},
-					success: function(data) {
-						$("#cu_cnt"+index).html(data);
-					}
-				});
-			} else { // 추천 눌렀을 떄
-				spanTag.style.backgroundColor = "rgb(255, 235, 240)";
-				cnt = 1;
-				$.ajax({
-					url: "/TripINN/reviewLike.do",
-					type: "GET",
-					async:true,
-					dataType: "Text", 
-					data: {"trb_idx": trb_idx, "cnt": cnt, "member_idx":member_idx, "trip_idx": trip_idx},
-					success: function(data) {
-						$("#cu_cnt"+index).html(data);
-					}
-				});
-			}
-		} else {
-			alert("로그인 후 이용 가능합니다.");
-			return;
+		if(spanTag.style.backgroundColor == "rgb(255, 235, 240)") {  // 추천을 취소할 때
+			spanTag.style.backgroundColor = "#fff";
+			cnt = -1;
+			$.ajax({
+				url: "/TripINN/reviewLike.do",
+				type: "GET",
+				async:true, 
+				dataType: "Text", 
+				data: {"trb_idx": trb_idx, "cnt": cnt},
+				success: function(data) {
+					$("#cu_cnt"+index).html(data);
+				}
+			});
+		} else { // 추천 눌렀을 떄
+			spanTag.style.backgroundColor = "rgb(255, 235, 240)";
+			cnt = 1;
+			$.ajax({
+				url: "/TripINN/reviewLike.do",
+				type: "GET",
+				async:true,
+				dataType: "Text", 
+				data: {"trb_idx": trb_idx, "cnt": cnt},
+				success: function(data) {
+					$("#cu_cnt"+index).html(data);
+				}
+			});
 		}
 	}
-	
-	function fn_search(pageNo){
-        var reviewForm = document.reviewForm;
-        reviewForm.action = "/TripINN/tripDetail.do";
-        reviewForm.currentPageNo.value = pageNo;
-        reviewForm.submit();
-    }
 </script>
 <form name="rform" method="post">
 	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}"/>
@@ -119,13 +101,7 @@ var member_idx = "${sessionScope.member_idx}";
 					<h3>포함사항</h3>
 					<div class="txt">
 		                <span style="BACKGROUND: #ffffff; FONT-SIZE: 9pt; mso-fareast-font-family: 굴림">
-		                	<p class="cts">
-		                	<c:forEach items="${trip.TRIP_INCLUDE}" var="inc" varStatus="status">
-		                		${inc}
-		                		<c:if test="${!status.last}">
-		                		,
-		                		</c:if>
-		                	</c:forEach></p>
+		                	<p class="cts">왕복교통비, 가이드, 차량보험, 도로비, 봉사료</p>
 		                </span>
             		</div>
 				</div>
@@ -133,14 +109,7 @@ var member_idx = "${sessionScope.member_idx}";
 					<h3>불포함사항</h3>
 					<div class="txt">
 		                <span style="BACKGROUND: #ffffff; FONT-SIZE: 9pt; mso-fareast-font-family: 굴림">
-		                	<p class="cts">
-		                	<c:forEach var="notInc" items="${trip.TRIP_NOT_INCLUDE }" varStatus="stat">
-		                		${notInc }
-		                		<c:if test="${!stat.last }">
-		                		,
-		                		</c:if>
-		                	</c:forEach>
-		                	</p>
+		                	<p class="cts">여행자보험, 기타개인비용</p>
 		                </span>
             		</div>
 				</div>
@@ -172,8 +141,7 @@ var member_idx = "${sessionScope.member_idx}";
 			<hr />
 			<div class="trDiv">
 				<div class="tdDiv-left"><p>1인당 비용</p></div>
-				<div class="tdDiv-right"><p><fmt:formatNumber>${trip.TRIP_PPRICE }</fmt:formatNumber> 원
-				 </p></div>
+				<div class="tdDiv-right"><p>${trip.TRIP_PPRICE } </p></div>
 			</div>
 			<hr />
 			<div class="trDiv">
@@ -198,7 +166,6 @@ var member_idx = "${sessionScope.member_idx}";
 <form name="reviewForm" method="post">
 <input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}"/>
 <input type="hidden" name="member_idx" value="${sessionScope.member_idx}"/>
-<input type="hidden" id="currentPageNo" name="currentPageNo"/>
 			<div class="trDiv">
 				<div class="tdDiv-col" style="margin-top:20px;">
 					<div class="Clear" style="height:50px;float:left;width:120px;margin-top:10px;">
@@ -220,37 +187,28 @@ var member_idx = "${sessionScope.member_idx}";
 			</div>
 			<hr />
 			<!-- 후기 리스트 -->
-			<c:if test="${subMap.TOTAL_CNT > 0}">
-				<fmt:formatNumber var="sum" value="${subMap.STAR_SUM}" pattern="#.##"/>
-				<fmt:formatNumber var="cnt" value="${subMap.TOTAL_CNT}" pattern="#.##"/>
-
+			<c:forEach items="${rlist }" var="rlist">
+				<c:set var="sum" value="${sum+rlist.TRB_STAR}"/>
+			</c:forEach>
 			<div class="trDiv">
 				<div class="tdDiv-col">
-					<span style="float:left;width:80px;font-size:14px;"><b>후기 ${cnt } 개 </b></span> 
-					<div style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
-							<p style="WIDTH: ${sum * 20 / cnt}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
-							</p>
+				<span style="float:left;width:80px;font-size:14px;"><b>후기 ${rlist.size() } 개 </b></span> 
+				<div style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
+						<p style="WIDTH: ${sum * 20 / rlist.size()}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+						</p>
 					</div>
-					<span style="float:left;width:80px;font-size:14px;margin-left:10px;">
-					<b><font color="#cb4646">
-					<fmt:formatNumber value="${sum / cnt}" pattern="#.#"/>점 </font></b>
-					</span>
 				</div>
 			</div>
 			<hr />
-			
 			<c:forEach items="${rlist }" var="rlist" varStatus="stat">
 			<div class="trDiv" style="border-bottom:1px solid #a6a6a6;">
 				<div class="tdDiv-left" style="font-size:12px;width:20%;height:auto;font-family:'Nanum Gothic',malgun Gothic,dotum;padding:5px;">
 					<img src="/TripINN/images/공유.png" class="hostImg" /><br />
-					<span style="padding:3px;">${rlist.MEMBER_NAME } 님</span>
+					<span style="padding:3px;">${rlist.MEMBER_NAME }</span>
 					<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
 						<p style="WIDTH: ${rlist.TRB_STAR * 20}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
 						</p>
 					</div>
-					<span style="padding:5px;font-size:11px;color:#a6a6a6;">
-						<fmt:formatDate value="${rlist.TRB_REGDATE }" pattern="yy-MM-dd" />
-					</span>
 				</div>
 				<div class="tdDiv-right" id="tdDiv-right${stat.index}" style="font-size:12px;display:;height:auto;font-family:'Nanum Gothic',malgun Gothic,dotum;padding:5px;padding-top:10px;padding-bottom:10px;">
 					 ${fn:substring(rlist.TRB_CONTENT,0, 100) }
@@ -264,15 +222,10 @@ var member_idx = "${sessionScope.member_idx}";
 				</div>
 				
 				<!-- ///////////추천 버튼////////// -->
-				<span id="cu${stat.index}" class="cu" 
+				<span id="cu${stat.index}" class="cu"
 				 style="width:100px;height:30px;float:right;margin-top:7%;vertical-align:middle;text-align: center;
-				border:1px solid #c4c4c4;border-radius:10px;padding-top:3px;margin-bottom:10px;cursor:pointer;
-				<c:forEach items='${likeList}' var='lList'>
-					<c:if test='${lList.TRB_IDX eq rlist.TRB_IDX }'>
-					background-color:rgb(255, 235, 240);
-					</c:if>
-				</c:forEach>"
-				onclick="r_like('${stat.index}', this, '${rlist.TRB_IDX }', '${trip.TRIP_IDX}');">
+				border:1px solid #c4c4c4;border-radius:10px;padding-top:3px;margin-bottom:10px;cursor:pointer;"
+				onclick="r_like('${stat.index}', this, '${rlist.TRB_IDX }');">
 				
 					<span style="width:22px;height:22px;margin-top:3px;background-image:url(/TripINN/images/cu33.png);
 						background-size: 100%;background-repeat:no-repeat;float:left;margin-left:7px;">
@@ -285,23 +238,6 @@ var member_idx = "${sessionScope.member_idx}";
 				<!-- ///////////추천 버튼////////// -->
 			</div>
 			</c:forEach>
-			
-			<!-- ///////////////페이징처리/////////////// -->	
-			<style>
-			#pagingDiv {height:40px;}
-			#pagingDiv a { font-size:12px;width:20px; height:20px; border:1px solid #a6a6a6; margin-right:5px; border-radius:7px;padding:7px;}
-			#pagingDiv a:hover {background-color:rgb(255, 235, 240);}
-			#pagingDiv strong { font-size:12px;border:1px solid #a6a6a6;border-radius:7px;padding:7px;color:#cb4646;margin-right:5px;}
-			</style>			
-			<c:if test="${not empty paginationInfo}">
-			<div class="trDiv">
-				<div class="tdDiv-col" id="pagingDiv" style="text-align:center;height:30px;margin-top:10px;">
-        		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
-        		</div>
-        	</div>
-    		</c:if>
-     		<!-- ///////////////페이징처리/////////////// -->
-     		</c:if>
 </form>
 		</div>
 		

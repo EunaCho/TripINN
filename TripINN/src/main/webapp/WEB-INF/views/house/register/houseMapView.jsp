@@ -3,16 +3,12 @@
 <html>
 <head>
 <script>
-	
-	/* alert(${lat} + "            lat");
-	alert(${lng} + "            lng"); */
 	var mapContainer = document.getElementById('mapView'), // 지도를 표시할 div 
     mapOption = { 
         center: new daum.maps.LatLng(${lat}, ${lng}), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
-	/* alert("ggg"); */
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 	var map = new daum.maps.Map(mapContainer, mapOption); 
 	

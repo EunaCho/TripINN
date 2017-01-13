@@ -140,7 +140,7 @@ input, textarea, keygen, select, button, meter, progress {
 .houseInfo div {max-width:520px; }
 .houseInfo .house_subject {border-bottom:1.5px solid gray; display:block; height:120px;}
 .houseInfo .house_subject .house_name {width:60%; float:left;}
-<<<<<<< HEAD
+
 .houseInfo .house_subject .house_name .addr {font-size:13px;}
 .hosueInfo .house_subject .userProfile { width:30%; height:50px; float:right; border:1px solid red;}
 
@@ -156,7 +156,7 @@ input, textarea, keygen, select, button, meter, progress {
 .review .reviewBlock { border-bottom:1px solid gray;height:150px; width:90%;}
 .review .reviewBlock div {}
 .review .reviewBlock .writer{float:left; width:18%; height:148px; }
-=======
+
 .houseInfo .house_subject .testt {float:right; margin-top:15px;}
 .houseInfo .house_subject .testt span {font-size:10px;}
 .houseInfo .house_subject .testt span img {width:80px; height:80px; border-radius:74px;}
@@ -168,15 +168,6 @@ input, textarea, keygen, select, button, meter, progress {
 
 .pictures {width:22%;height:500px;float:right; right:1%; border:1px solid blue; position:relative;}
 
-/* ¸®ºä ºí·Ï */
-.review {width:70%; left:1%;float:left; padding: 20px; border:1px solid black; color:#7878aa; font-size:12px;}
-.review .reviewBlock { border-bottom:1px solid gray;height:150px; width:90%;}
-.review .reviewBlock div {}
-.review .reviewBlock .writer{float:left; width:18%; height:100px; margin-top:30px;}
-.review .reviewBlock .writer span {font-size:10px;}
-.review .reviewBlock .writer span img {width:50px; height:50px; border-radius:74px;}
-
-.review .reviewBlock .reviewContent{float:left; width:80%; height:110px; }
 .review .reviewBlock .reviewDate {float:left; width:200px;}
 .review .reviewBlock .like {float:right; text-align:center; background-color: #ffdbc1; padding:2px; width:40px; border:1px solid; color:#fafab4; border-radius:5px;}
 #reviewForm {border:1px solid green; width: 465px;} 

@@ -63,8 +63,6 @@ public class AdminQnaDAO extends AbstractDAO{
 		public void updateQnaReadCount(Map<String, Object> map) throws Exception{
 			
 		    update("admin.updateQnaReadCount", map);
-		   
-		    
 		}
 		
 		//댓글목록
@@ -84,11 +82,8 @@ public class AdminQnaDAO extends AbstractDAO{
 		
 		//댓글삭제
 		public void qnaCommDelete(Map<String, Object> map) throws Exception{
-			System.out.println(3);
-			System.out.println(map);
 			delete("admin.qnaCommDelete", map);
-			System.out.println(4);
-			System.out.println(map);
+			
 		}
 		
 		
@@ -101,13 +96,8 @@ public class AdminQnaDAO extends AbstractDAO{
 	
 	//삭제하기
 	public void adminQnaDelete(Map<String, Object> map) throws Exception{
-		System.out.println(3);
-		System.out.println(map);
-		
 	    delete("admin.adminQnaDelete", map);
-	    
-	    System.out.println(6);
-	    System.out.println(map);
+	   
 	}
 	
 }

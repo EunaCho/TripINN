@@ -17,26 +17,10 @@
 	</insert>
 	
 	<select id="tripList" parameterType="HashMap" resultType="HashMap">
-	<include refid="common.pagingPre"/> 
-		select 
-		ROW_NUMBER() OVER (ORDER BY trip_idx desc) RNUM, 
-		trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
 		where trip_area = #{trip_area}
-	<include refid="common.pagingPost"/> 
-	</select>
-	
-	<select id="selectTripListSearch" parameterType="hashmap" resultType="hashmap">
-		<include refid="common.pagingPre"/> 
-		select 
-		ROW_NUMBER() OVER (ORDER BY trip_idx desc) RNUM, 
-		trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
-			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
-			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
-		where trip_area = #{trip_area} and trip_type=#{trip_type} and trip_persons>=#{trip_persons}
-				and trip_first_date>=#{trip_first_date}
-		<include refid="common.pagingPost"/> 
 	</select>
 	
 	<select id="tripDetail" parameterType="HashMap" resultType="HashMap">
@@ -67,18 +51,11 @@
 	</insert>
 	
 	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
-		<include refid="common.pagingPre"/> 
-		select 
-		ROW_NUMBER() OVER (ORDER BY trb_like DESC, trb_regdate desc) RNUM, 
-		trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_name,
+		select trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_name,
 		 member_image, m.member_idx from trip_review_board t 
   			inner join member m on m.member_idx = t.member_idx 
   				where trip_idx=#{trip_idx}
-		<include refid="common.pagingPost"/> 
-	</select>
-	
-	<select id="getReviewInfoSub" parameterType="hashmap" resultType="hashMap">
-		select sum(trb_star)  star_sum, count(*) total_cnt from trip_review_board where trip_idx=#{trip_idx}
+  					order by trb_like desc, trb_regdate desc
 	</select>
 	
 	<update id="reviewLike" parameterType="hashmap">
@@ -87,20 +64,6 @@
 	
 	<select id="getLikeCnt" parameterType="String" resultType="String">
 		select trb_like from trip_review_board where trb_idx=#{trb_idx}
-	</select>
-	
-	<delete id="deleteLike" parameterType="hashmap">
-		delete from trb_like_check where trb_idx=#{trb_idx} and member_idx=#{member_idx}
-	</delete>
-	
-	<insert id="insertLike" parameterType="hashmap">
-		insert into trb_like_check(trb_like_idx, trb_idx, member_idx, trip_idx)
-			values(trb_like_seq.nextVal, #{trb_idx}, #{member_idx}, #{trip_idx})
-	</insert>
-	
-	<select id="likeCheckList" parameterType="hashmap" resultType="hashmap">
-		select trb_like_idx, trb_idx, member_idx from trb_like_check
-			where trip_idx=#{trip_idx} and member_idx=#{member_idx}
 	</select>
 </mapper>
 

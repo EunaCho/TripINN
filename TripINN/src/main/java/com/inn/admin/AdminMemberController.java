@@ -45,7 +45,7 @@ public class AdminMemberController {
                || request.getParameter("currentPage").equals("0")) {
             currentPage = 1;
          } else {
-           System.out.println("뭐라고"+currentPage);
+        	System.out.println("뭐라고"+currentPage);
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
             System.out.println("떴냐?"+currentPage);
          }

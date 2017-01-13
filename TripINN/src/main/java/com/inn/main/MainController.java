@@ -31,9 +31,9 @@ public class MainController {
 		mv.addObject("houseList", houseList);
 		
 		//트립 미리보기 출력용 리스트 생성
-		Map<String, Object> tripList = tripService.selectTripList(commandMap.getMap());
+		List<Map<String, Object>> tripList = tripService.selectTripList(commandMap.getMap());
 		 if(tripList != null) {
-				mv.addObject("tripList", tripList.get("result")); 
+				mv.addObject("tripList", tripList); 
 		 }
 
 		return mv; 

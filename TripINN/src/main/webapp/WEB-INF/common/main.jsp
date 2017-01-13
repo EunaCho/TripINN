@@ -26,142 +26,25 @@ function preSearch() {
 }
 
 </script>
-<style>
-        * { margin:0px; padding:0px; }
-        /* Animation Canvas */
-        .animation_canvas  {
-            overflow:hidden;
-            position:relative;     
-            margin:30px;     
-            float:left; 
-            width:900px; height:400px;
-        }
-    
-        /* Slider Panel */
-        .slider_panel { width:4500px; position:relative; }
-        .slider_image { float:left; width:900px; height:400px; }
-    
-        /* Slider Text Panel */
-        .slider_text_panel { position:absolute; top:200px; left:50px; }
-        .slider_text { position:absolute; width:250px; height:150px; color:white;}
-    
-        /* Control Panel */
-        .control_panel  {
-            position:absolute; top:380px; 
-            left:270px; height:13px; 
-            overflow:hidden; 
-        }
-
-        .control_button {
-            width:12px; height:46px;
-            position:relative; 
-    
-            float:left; cursor:pointer;  
-            background:url('/TripINN/images/point_button.png');
-        }
-        .control_button:hover { top:-16px; }
-        .control_button.active { top:-31px; }
-    </style>
-    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
-    <script>
-        $(document).ready(function () {
-            // 슬라이더를 움직여주는 함수
-            function moveSlider(index) {
-                // 슬라이더를 이동합니다.
-                var willMoveLeft = -(index * 900);
-                $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
-
-                // control_button에 active클래스를 부여/제거합니다.
-                $('.control_button[data-index=' + index + ']').addClass('active');
-                $('.control_button[data-index!=' + index + ']').removeClass('active');
-
-                // 글자를 이동합니다.
-                $('.slider_text[data-index=' + index + ']').show().animate({
-                    left: 0
-                }, 'slow');
-                $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
-                    $(this).css('left', -300);
-                });
-            }
-
-            // 초기 텍스트 위치 지정 및 data-index 할당
-            $('.slider_text').css('left', -300).each(function (index) {
-                $(this).attr('data-index', index);
-            });
-
-            // 컨트롤 버튼의 클릭 핸들러 지정 및 data-index 할당
-            $('.control_button').each(function (index) {
-                $(this).attr('data-index', index);
-            }).click(function () {
-                var index = $(this).attr('data-index');
-                moveSlider(index);
-            });
-
-            // 초기 슬라이더 위치 지정
-            var randomNumber = Math.round(Math.random() * 3);
-            moveSlider(randomNumber);
-        });
-        
-      /*   //3초마다 이미지 오른쪽으로 이동
-        var auto_slider = setlnterval(function() {
-        	if (auto_slider > 4) {
-        		auto_slider = 0;
-        	}
-        	moveSlider(auto_slider);
-        }, auto_time); */
-        
-
-        
-    </script>
-
 <!-- 메인 바디 -->
 <div style="width:100%;height:1300px;border:;text-align:center;">
 
 
 	<!-- 슬라이드 롤링 --> 
 
-    <div class="animation_canvas">
-        <div class="slider_panel">
-            <img src="<%= cp %>/images/roll1.jpg" class="slider_image"/>
-            <img src="<%= cp %>/images/roll2.jpg" class="slider_image"/>
-            <img src="<%= cp %>/images/roll3.jpg" class="slider_image"/>
-            <img src="<%= cp %>/images/roll4.jpg" class="slider_image"/>
-            <img src="<%= cp %>/images/roll5.jpg" class="slider_image"/>
-        </div>
-        <div class="slider_text_panel">
-            <div class="slider_text">
-                <h1>Functional Loft</h1>
-                <p>with green terrace.</p>
-            </div>
-            <div class="slider_text">
-                <h1>Renovated 1930's cottage</h1>
-                <p>Adorable on a beautiful, lush, gated property.</p>
-            </div>
-            <div class="slider_text">
-                <h1>Miamo,</h1>
-                <p>Amazing view</p>
-            </div>
-           <div class="slider_text">
-                <h1>Donec</h1>
-                <p>Donec a ligula lectus, eu iaculis justo.</p>
-            </div>
-            <div class="slider_text">
-                <h1>Vivamus scelerisque</h1>
-                <p>Vivamus scelerisque mauris id nunc dictum sit amet.</p>
-            </div>
-        </div>
-        <div class="control_panel">
-            <div class="control_button"></div>
-            <div class="control_button"></div>
-            <div class="control_button"></div>
-          	<div class="control_button"></div>
-            <div class="control_button"></div>
-        </div>
-    </div>
+	<div class="noti" id="rolling">
+		<ul>
+			<li><img src="<%= cp %>/images/roll1.jpg"></li>
+			<li><img src="<%= cp %>/images/roll2.jpg"></li>
+			<li><img src="<%= cp %>/images/roll3.jpg"></li>
+		</ul>
+	</div>
 
+					
+	
 	<!-- 왼쪽 간편검색바 -->
 	<div id="leftDiv">
-	<form method="POST" action="house/houseMain.do" name="preSearchForm" id="preSearchForm">
+	<form method="POST" action="house/houseMain.do" name="preSearchForm">
 		<div> 
 			<h3>숙소 검색하기</h3><br/>
 			<input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
@@ -183,13 +66,21 @@ function preSearch() {
 				<option value="4" <c:if test="${room eq 4}">selected="selected"</c:if> >4개</option>
 				<option value="5" <c:if test="${room eq 5}">selected="selected"</c:if> >5개</option>
 			</select>
-			인원: <select name="person"> 
-				<option value="">인원</option>
+			성인: <select name="adult"> 
+				<option value="">성인</option>
 				<option value="1" <c:if test="${adult eq 1}">selected="selected"</c:if> >1명</option>
 				<option value="2" <c:if test="${adult eq 2}">selected="selected"</c:if> >2명</option>
 				<option value="3" <c:if test="${adult eq 3}">selected="selected"</c:if> >3명</option>
 				<option value="4" <c:if test="${adult eq 4}">selected="selected"</c:if> >4명</option>
 				<option value="5" <c:if test="${adult eq 5}">selected="selected"</c:if> >5명</option>
+			</select>
+			소아: <select name="child"> 
+				<option value="">소아</option>
+				<option value="1" <c:if test="${child eq 1}">selected="selected"</c:if> >1명</option>
+				<option value="2" <c:if test="${child eq 2}">selected="selected"</c:if> >2명</option>
+				<option value="3" <c:if test="${child eq 3}">selected="selected"</c:if> >3명</option>
+				<option value="4" <c:if test="${child eq 4}">selected="selected"</c:if> >4명</option>
+				<option value="5" <c:if test="${child eq 5}">selected="selected"</c:if> >5명</option>
 			</select>
 		</div>
 		
@@ -198,7 +89,7 @@ function preSearch() {
 		//<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a> -->
 		
 		<!-- <span class="btn_join" onclick="preSearch();">검색</span> -->
-		<button class="btn_search" type="submit">검색</button>
+		<button class="btn_join" type="submit">검색</button>
 	</form>	
 	</div>
 	
@@ -209,7 +100,7 @@ function preSearch() {
 		<!-- 하우스 미리보기 블럭 -->
 		<div class="subject">
 			<span>등록된 숙소</span>
-			<span><a href="/house/houseMain.do">전체보기>></a></span>
+			<span><a href="">전체보기>></a></span>
 		</div>
 
 		<!-- 하우스 미리보기 리스트 출력 -->

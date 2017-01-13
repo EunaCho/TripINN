@@ -13,6 +13,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 #rolling { width: 100%; height:400px; float:left; margin-left:-30px; }
 #rolling ul, li {list-style:none}
 #rolling .rolling_wrap { } 	
+<<<<<<< HEAD
 
 #leftDiv {/* width:30%; min-width:350px; */}
 #preSearchForm { background-color:#6482B9; min-height:400px; width:280px; float:left; margin:30px;  border-radius: 3px;border:2px solid #9BC3FF;}
@@ -30,6 +31,20 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 			line-height:30px;text-align:center; margin:40px 40px 10px; display:block;
 			cursor: pointer;
 			}
+=======
+  
+
+/* ¿ÞÂÊ °£Æí °Ë»ö¹Ù */
+#leftDiv { background-color:#6482B9; min-height:500px; width:300px; float:left; margin:20px 20px 5px;  border-radius: 3px;border:2px solid #9BC3FF;}
+#leftDiv div { text-align:center;}
+#leftDiv div h3 { color:white;}
+#leftDiv div .pre_srch_input { height:23px; width:280px; border-radius: 3px;}
+#leftDiv .pre_srch_submit img {margin-top:30px;}
+#leftDiv div .date { color:white; width:130px; float:left; text-align:left; margin:7px; list-style: none; font-family:'³ª´® °íµñ º¼µå',Nanum Gothic-Bold,'¸¼Àº °íµñ',Malgun Gothic,sans-serif; font-size:13px; margin-bottom:20px; cursor:pointer;}
+#leftDiv div .datepicker { width:130px;  border-radius: 2px;}
+#leftDiv .select {font-size:13px; color:white; font-family:'³ª´® °íµñ º¼µå','¸¼Àº °íµñ',Malgun Gothic,sans-serif; ; border-radius: 3px;}
+#leftDiv select {border-radius: 3px;}
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
  
  
 /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ */ 
@@ -39,7 +54,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 
 /* ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ */
 #rightDiv .pre_List {width:100%; height:200px; border:2px solid #9BC3FF; overflow:hidden; margin-bottom:20px;}
-#rightDiv .pre_List li {float:left; width:200px; height:180px; display:inline-block; margin:10px;}
+#rightDiv .pre_List li {float:left; width:200px; display:inline-block; margin:10px;}
 #rightDiv .pre_List li a {text-decoration:none; color:gray;}
 #rightDiv .pre_List li a span {display:block; font-size:12px; float:left; white-space:normal;}
 #rightDiv .pre_List li a span strong{font-size:15px;}
