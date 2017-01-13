@@ -14,7 +14,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 
 /* main.jsp */
 /* 상단 롤링 블록 */
- * { margin:0px; padding:0px; }
         /* Animation Canvas */
         .animation_canvas  {
             overflow:hidden;
@@ -31,7 +30,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
         /* Slider Text Panel */
         .slider_text_panel { position:absolute; top:200px; left:50px; }
         .slider_text { position:absolute; width:250px; height:150px; color:white;}
-    
+    	.slider_text p {font-size:15px;}
         /* Control Panel */
         .control_panel  {
             position:absolute; top:380px; 
@@ -48,6 +47,9 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
         }
         .control_button:hover { top:-16px; }
         .control_button.active { top:-31px; }
+        
+        
+        
 /* 공지사항 블록 */
 .noticeBlock{
   /*   border: 1px solid; */
@@ -55,7 +57,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
     width: 350px;
     height: 400px;
     float: left;
-    padding:30px;
+    padding:30px 0px;
 }
 
 .noticeCont {
@@ -167,17 +169,16 @@ a:link {
     color: #666;
 }
 
-ul, ol, li {
+ul, ol, li, h4, p  {
     list-style: none;
-}
-
-html, body, form, input, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd {
     margin: 0;
     padding: 0;
+    font-size: 12px;
 }
+
 td, div, li, dt, dd, input, textarea, select, h4, h5 {
     font-family: Verdana, "돋움", dotum;
-    font-size: 12px;
+   /*  font-size: 12px; */
     word-spacing: 1px;
     font-weight: normal;
     color: #000;
@@ -204,21 +205,22 @@ div {
 /* 왼쪽 간편 검색바 */
 
 #leftDiv {/* width:30%; min-width:350px; */}
-#preSearchForm { background-color:#6482B9; min-height:400px; width:280px; float:left; margin:50px 30px;  border-radius: 3px;/* border:2px solid #9BC3FF; */}
+#preSearchForm { background-color:#376B6A; min-height:480px; width:280px; float:left; margin:50px 30px;  border-radius: 3px;/* border:2px solid #9BC3FF; */}
 #preSearchForm div { text-align:center; color: white; font-family:'나눔 고딕 볼드','맑은 고딕',Malgun Gothic,sans-serif; }
-#preSearchForm div h2 { color:white; margin-top:30px; padding:10px;}
+#preSearchForm div h3 { color:white; margin:30px 0px 20px; padding:10px;}
 #preSearchForm div .pre_srch_input { height:23px; width:230px; border-radius: 3px;}
 #preSearchForm .pre_srch_submit img {margin-top:30px;}
 #preSearchForm div .date {margin:-5px -3px 0px 15px; padding:8px; width:100px; float:left; text-align:left; list-style: none; font-size:13px; cursor:pointer;}
 #preSearchForm div .datepicker { width:100px;  height:23px; border-radius: 2px;}
 #preSearchForm .select {margin:-5px -3px 10px 15px; padding:8px; width:100px; float:left; text-align:left; list-style: none; font-size:13px; cursor:pointer;}
-#preSearchForm select {width:103px; height:28px; color:#b0b0b0; margin:5px; border-style: inset; border-style: inset;border-color: initial;border-image: initial; border-width: 2px;}
+#preSearchForm select {width:103px; height:28px; color:#b0b0b0; border-style: inset; border-style: inset;border-color: initial;border-image: initial; border-width: 2px;}
 /* 여행목적 */
 #preSearchForm .hc_f_triptype {
     width: 235px;
     float: left;
-    margin: 0px 20px 30px;
+    margin: 0px 20px 40px;
     text-align: left;
+    font-size: 12px;
     font-weight: normal;
 }
 #preSearchForm .hc_f_triptype .hc_f_triptype_label {
@@ -324,19 +326,19 @@ div {
 } 
  
  .btn_search{
-			width:205px;height:35px;background:#3C467D;color:white;
+			width:205px;height:40px;background:#4DA07E;color:white;font-size:18px; font-weight:bold;
 			line-height:30px;text-align:center; margin:40px 40px 10px; display:block;
 			cursor: pointer;
 			}
  
  
 /* 오른쪽 미리보기 블럭 */ 
-#rightDiv { width:65%; position:relative; float:left;margin:20px 10px 5px; } 
+#rightDiv { width:70%; position:relative; float:left;margin:20px 10px 5px; } 
 #rightDiv .subject { color:gray; text-align:left; position:relative; margin-top:20px; margin-bottom:10px; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:800;}
 #rightDiv .subject span a {float:right; text-decoration:none; color:gray; font-style:bold;}
 
 /* 미리보기 블럭 */
-#rightDiv .pre_List {width:100%; height:200px; border:2px solid #9BC3FF; overflow:hidden; margin-bottom:20px;}
+#rightDiv .pre_List {width:100%; height:200px; border:2px solid #F5E5B5; overflow:hidden; margin-bottom:20px;}
 #rightDiv .pre_List li {float:left; width:200px; height:180px; display:inline-block; margin:15px;}
 #rightDiv .pre_List ul:first-child{ margin-left:15px;}
 #rightDiv .pre_List li a {text-decoration:none; color:gray;}
