@@ -14,7 +14,7 @@ public class TripServiceImpl implements TripService {
 	@Resource(name="tripDAO")
 	private TripDAO tripDAO;
 	
-	@Resource(name="tripFileUtils")
+	@Resource(name="tripFileUtils") 
 	private FileUtils fileUtils;
 	
 	@Override
@@ -27,7 +27,7 @@ public class TripServiceImpl implements TripService {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectTripList(Map<String, Object> map) throws Exception{
 		return tripDAO.selectTripList(map);
 	}
 
@@ -39,6 +39,56 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public Map<String, Object> selectTripDetail(Map<String, Object> map) {
 		return tripDAO.selectTripDetail(map);
+	}
+
+	@Override 
+	public void tripReserve(Map<String, Object> map) {
+		tripDAO.tripReserve(map);
+	}
+
+	@Override
+	public void tripReview(Map<String, Object> map) {
+		tripDAO.tripReview(map);
+	}
+
+	@Override
+	public Map<String, Object> reviewList(Map<String, Object> map) {
+		return tripDAO.reviewList(map);
+	}
+
+	@Override
+	public void reviewLike(Map<String, Object> map) {
+		tripDAO.reviewLike(map);
+	}
+
+	@Override
+	public String getLikeCnt(String parameter) {
+		return tripDAO.getLikeCnt(parameter);
+	}
+
+	@Override
+	public Map<String, Object> getReviewInfoSub(Map<String, Object> map) {
+		return tripDAO.getReviewInfoSub(map);
+	}
+
+	@Override
+	public void deleteLike(Map<String, Object> map) {
+		tripDAO.deleteLike(map);
+	}
+
+	@Override
+	public void insertLike(Map<String, Object> map) {
+		tripDAO.insertLike(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
+		return tripDAO.likeCheckList(map);
+	}
+
+	@Override
+	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
+		return tripDAO.selectTripListSearch(map);
 	}
 
 }

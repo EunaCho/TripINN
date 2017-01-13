@@ -47,31 +47,34 @@
 	
    <!--숙소관리-> 내가 등록한 숙소  리스트-->
    <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-   		  SELECT h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
+      SELECT h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
 				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,
-				HI_SPACE, HI_BAD,HI_TOTAL_STAR, 
-			    (select count(*) from HOUSE_REVIEW_BOARD hrb where hrb.house_idx=h.house_idx)  HCNT
-		 from house h inner join house_info hf on h.house_idx=hf.house_idx 
+				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,HOUSE_CNT,
+				HI_SPACE, HI_BAD,HI_TOTAL_STAR 
+			from house h inner join house_info hf on h.house_idx=hf.house_idx 
 			where member_idx=#{member_idx}
-				order by h.house_idx desc
+			order by h.house_idx desc
    </select>
+<<<<<<< HEAD
 
    <!-- 숙소관리->숙소리스트->상세보기  -->
+=======
+   
+   <!-- 숙소 상세보기  -->
+>>>>>>> refs/remotes/origin/master
    <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
    		select h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
 				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,
-				HI_SPACE, HI_BAD,HI_TOTAL_STAR,
-			    (select count(*) from HOUSE_REVIEW_BOARD hrb where hrb.house_idx=h.house_idx)  HCNT
+				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,HOUSE_CNT,
+				HI_SPACE, HI_BAD,HI_TOTAL_STAR
 		 from house h inner join house_info hf on h.HOUSE_IDX = hf.HOUSE_IDX
-			 where h.HOUSE_IDX=#{HOUSE_IDX}	
-				 order by h.house_idx desc	
+		 where h.HOUSE_IDX=#{HOUSE_IDX}	
+		 order by h.house_idx desc	
    </select>
    
    <!--숙소목록->숙소리스트->상세보기의 해당  예약 현황 리스트  -->
    <select id ="selectH_ReserList" parameterType="hashmap" resultType="hashmap">
-   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_PERSONS, HOUSE_IDX, HR_MONEY_STATE
+   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, MEMBER_IDX, HOUSE_IDX
    		from HOUSE_RSV 
    		where HOUSE_IDX = #{HOUSE_IDX}
    		order by HR_IDX DESC  
@@ -80,10 +83,11 @@
    <!--숙소목록->숙소리스트->상세보기의 해당 숙소의 메시지  -->
    <select id="selectH_MsgList" parameterType="hashmap" resultType="hashmap">
    		select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
-      		  HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
+      		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
       	where HOUSE_IDX = #{HOUSE_IDX}
      	order by msg_idx desc
    </select>
+<<<<<<< HEAD
    
    <!-- 숙소목록->에약관리 리스트  -->
    <select id="selectMy_ReserList" parameterType="hashMap" resultType="hashmap">
@@ -244,4 +248,8 @@
    		where MEMBER_IDX = #{MEMBER_IDX}
    </select>
    
+=======
+   <!-- 내가 등록한 트립 리스트 -->
+   <!-- 트립 상세보기  -->
+>>>>>>> refs/remotes/origin/master
 </mapper>

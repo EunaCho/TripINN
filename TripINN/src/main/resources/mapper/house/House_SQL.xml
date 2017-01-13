@@ -4,7 +4,6 @@
 <mapper namespace="house">
 
 	<!-- house list sql -->
-	
 	<select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
@@ -15,28 +14,41 @@
 			ORDER BY HOUSE_IDX DESC
 		]]>
 	</select>
-	
+	<!-- house Map 리스트 뽑기 idx, addr1 필요 -->
+	<select id="selectHouseMapList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT HOUSE_IDX, HOUSE_ADDR1 
+			FROM HOUSE 
+			ORDER BY HOUSE_IDX DESC
+		]]>
+	</select>
 	
 	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
-	
-			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
-					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX<!-- , HR_FIRST_DATE, HR_LAST_DATE -->
-			FROM HOUSE <!-- H
-						 INNER JOIN HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX  -->
-			<!-- <where>
-			<if test="preSearch_keyword != null">
-				(HOUSE_NAME like '%' || #{preSearch_keyword} || '%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%'
-				or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
-			</if> -->
-			<!-- <if test="hr_first_date != null and hr_last_date != null">
-			<![CDATA[AND ((HR_FIRST_DATE >= #{hr_first_date} and #{hr_last_date} >= HR_LAST_DATE))]]>
-			</if> 
-		</where>-->
 		
-			ORDER BY HOUSE_IDX DESC
+		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX 
+		FROM (Select H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX 
+				From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 				
+					
+			<where>
+				<if test="preSearch_keyword != null">
+					(HOUSE_NAME like '%'||#{preSearch_keyword}||'%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' 
+					or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' 
+					or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
+				</if>
+				<if test="person != null">
+					<![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
+				</if> 
+			</where>
+			<if test="hr_first_date != null and hr_last_date != null">
+				minus
+					(select H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX  
+					From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 
+					where <![CDATA[((HR_FIRST_DATE <= TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') and TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') < HR_LAST_DATE) 
+								OR (HR_FIRST_DATE <= TO_DATE(#{hr_last_date}, 'mm/dd/yyyy') and  TO_DATE(#{hr_last_date}, 'mm/dd/yyyy') < HR_LAST_DATE))]]>
+					)
+			</if>	
 			
+			ORDER BY HOUSE_IDX DESC)
 			
 	</select>
 	
@@ -51,7 +63,7 @@
 				   HI_CHECKIN, HI_CHECKOUT, HI_TOTAL_STAR
 			FROM HOUSE H 
 						LEFT JOIN HOUSE_INFO HI on H.HOUSE_IDX = HI.HOUSE_IDX
-			WHERE H.HOUSE_IDX = #{house_idx}
+			WHERE H.HOUSE_IDX = #{HOUSE_IDX}
 			ORDER BY H.HOUSE_IDX DESC
 	</select>
 	
@@ -59,7 +71,7 @@
 		<![CDATA[
 			SELECT HRB_IDX, HRB_TITLE, HRB_CONTENT, HRB_PWD, HRB_REGDATE, HRB_STAR, HRB_LIKE, MEMBER_IDX, HOUSE_IDX
 			FROM HOUSE_REVIEW_BOARD
-			WHERE HOUSE_IDX = #{house_idx}
+			WHERE HOUSE_IDX = #{HOUSE_IDX}
 			ORDER BY HRB_IDX DESC
 		]]>
 	</select>
@@ -95,7 +107,7 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		<![CDATA[
 			INSERT INTO HOUSE_INFO(
 				HI_IDX, HOUSE_IDX, HI_SALE, HI_DEPOSIT, HI_GUEST, 
-				HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE
+				HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE, 
 				HI_CHECKIN, HI_CHECKOUT
 			)VALUES(
 				HI_IDX_SEQ.NEXTVAL, #{HOUSE_IDX}, #{HI_SALE}, #{HI_DEPOSIT}, 
@@ -114,4 +126,48 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 			)
 		]]>
 	</insert>
+	
+	<insert id="insertReview" parameterType="hashmap">
+		INSERT INTO HOUSE_REVIEW_BOARD (
+		 	HRB_IDX, HRB_TITLE, HRB_CONTENT, HOUSE_IDX, HRB_PWD
+		 ) VALUES (
+		 	HRB_IDX_SEQ.NEXTVAL, #{HRB_TITLE}, #{HRB_CONTENT}, #{HOUSE_IDX}, #{HRB_PWD}
+		 )
+	</insert>
+	
+	<insert id="insertWish" parameterType="hashmap" useGeneratedKeys="true" keyProperty="FVR_IDX">
+		<selectKey keyProperty="FVR_IDX" resultType="string" order="BEFORE">
+			SELECT FVR_IDX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+		INSERT INTO FAVORITES (
+			FAR_IDX, HOUSE_IDX
+		)VALUES(
+			#{FVR_IDX}, #{HOUSE_IDX}
+		)
+		]]>
+		
+	</insert>
+	<select id="selectFVR_IDX" parameterType="hashmap" resultType="string">
+		
+		<![CDATA[
+			 SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL 
+		]]>
+		
+	</select>
+	<delete id="deleteWish" parameterType="hashmap">
+	<!-- SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL -->
+	
+		<![CDATA[
+			DELETE FAVORITES
+			 WHERE FAR_IDX = #{FVR_IDX}
+		]]>
+	</delete>
+	
+	<select id="selectMember" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT*FROM MEMBER
+			WHERE MEMBER_IDX = #{MEMBER_IDX}
+		]]>
+	</select>
 </mapper>

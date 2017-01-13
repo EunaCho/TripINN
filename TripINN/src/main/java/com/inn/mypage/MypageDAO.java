@@ -62,6 +62,7 @@ public class MypageDAO extends AbstractDAO {
 	public List<Map<String, Object>> selectH_MsgList(Map<String, Object> map) throws Exception{
 		return (List<Map<String, Object>>)selectList("mypage.selectH_MsgList", map);
 	}
+<<<<<<< HEAD
 	//예약관리리스트
 	public List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception{
 		return (List<Map<String, Object>>)selectList("mypage.selectMy_ReserList", map);
@@ -146,4 +147,6 @@ public class MypageDAO extends AbstractDAO {
 	public void deleteT_ReserDelete(Map<String, Object> map) throws Exception{
 		delete("mypage.deleteT_ReserDelete", map);
 	}
+=======
+>>>>>>> refs/remotes/origin/master
 }

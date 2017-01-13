@@ -33,12 +33,14 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
 	}
+
 	//보낸 메시지 상세보기 
 	@Override
 	public Map<String, Object> selectSendMsgDetail(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectSendMsgDetail(map);
 	}
 	//받은메시지 상세보기 
+
 	@Override
 	public Map<String, Object> selectReceiveMsgDetail(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgDetail(map);
@@ -61,6 +63,7 @@ public class MypageServiceImpl implements MypageService{
 	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectHouseList(map);
 	}
+
 	//숙소 상세보기 
 	@Override
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception{
@@ -75,6 +78,7 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<Map<String, Object>> selectH_MsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectH_MsgList(map);
+<<<<<<< HEAD
 	}
 	//에약 관리 리스트 
 	@Override
@@ -111,6 +115,8 @@ public class MypageServiceImpl implements MypageService{
 	@Override 
 	public Map<String, Object> countDate(Map<String, Object> map) throws Exception{
 		return mypageDAO.countDate(map);
+=======
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	

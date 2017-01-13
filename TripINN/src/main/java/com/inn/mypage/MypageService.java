@@ -24,6 +24,7 @@ public interface MypageService {
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
 	
+<<<<<<< HEAD
 	List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception; //예약관리 리스트
 	List<Map<String, Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception;//예약취소 관리 리스트 
 	Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception; //예약관리상세보기 
@@ -57,4 +58,6 @@ public interface MypageService {
 	void deleteT_ReserDelete(Map<String, Object> map) throws Exception; //예약취소 목록에서 해당 트립 목록 삭제 
 	
 	//트립이용 날짜 
+=======
+>>>>>>> refs/remotes/origin/master
 }

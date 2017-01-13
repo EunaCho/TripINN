@@ -6,15 +6,16 @@
    <!-- Qna리스트, 페이징을 위해 수정됨 -->
    <select id="qnaBoardList" parameterType="hashmap" resultType="hashmap">
    <!-- MyBatis의 기능으로 쿼리의 일부분을 만들어놓고, 그것을 여러곳에서 가져다 사용할 수 있도록 함. 페이징 쿼리에서 항상 똑같이 사용되는 부분-->
-       SELECT
-            ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
-            QNA_IDX,
-            QNA_TITLE,
-            QNA_READCOUNT,
-            QNA_REGDATE
-        FROM
-            QNA_BOARD
-        ORDER BY QNA_IDX DESC
+       SELECT 
+          ROW_NUMBER() OVER (ORDER BY QNA_IDX DESC) RNUM,
+         QNA_IDX, 
+         QNA_TITLE,
+         QNA_CONTENT, 
+         QNA_READCOUNT, 
+         QNA_REGDATE, 
+         MEMBER_NAME
+      FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
+      ORDER BY QNA_IDX DESC
    </select>
    
    <!-- 게시판 검색 -->
@@ -32,14 +33,12 @@
       ORDER BY QNA_IDX DESC
    </select>
 
-   <!-- 작성자검색,보류 -->
-   <!--  
+   <!-- 작성자검색 -->
    <select id="search2" parameterType="hashmap" resultType="hashmap">
-      SELECT * FROM QNA_BOARD
-      WHERE member_id like #{search}
+      SELECT * FROM QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
+      WHERE MEMBER_NAME like '%'||#{isSearch}||'%'
       ORDER BY QNA_IDX DESC
    </select>
-   -->
    
       
    
@@ -62,10 +61,10 @@
            QNA_IDX_SEQ.NEXTVAL, 
             #{QNA_TITLE}, 
             #{QNA_CONTENT}, 
-            '11', 
+            #{QNA_PWD}, 
             SYSDATE, 
             0, 
-            1
+            #{MEMBER_IDX}
         )
     ]]>
    </insert>
@@ -77,11 +76,13 @@
             QNA_IDX,
             QNA_TITLE,
             QNA_CONTENT,
-            QNA_PWD,
             QNA_REGDATE,
-            QNA_READCOUNT
+            QNA_READCOUNT,
+            MEMBER_NAME,
+            MEMBER_LEVEL,
+            M.MEMBER_IDX
         FROM
-            QNA_BOARD
+            QNA_BOARD Q inner join MEMBER M on Q.MEMBER_IDX=M.MEMBER_IDX
         WHERE
             QNA_IDX = #{QNA_IDX}        
        ]]>
@@ -140,12 +141,91 @@
         WHERE QNA_IDX = #{QNA_IDX}
     ]]>
    </delete>
+   
+   
+     <!-- faq 리스트 -->
+    <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+         SELECT FAQ_IDX, FAQ_TITLE, FAQ_CONTENT, FAQ_TYPE
+         FROM FAQ_BOARD 
+         WHERE FAQ_TYPE = 1
+      ORDER BY FAQ_IDX DESC
+      
+        ]]>
+    </select>
+    
+    <!-- faq 글쓰기 처리 -->
+   <insert id="adminFaqInsert" parameterType="hashmap">
+    <![CDATA[
+        INSERT INTO FAQ_BOARD
+        (
+            FAQ_IDX,
+            FAQ_TITLE,
+            FAQ_CONTENT,
+            FAQ_PWD,
+            FAQ_REGDATE,
+            FAQ_READCOUNT,
+            MEMBER_IDX,
+            FAQ_TYPE
+        )
+        VALUES
+        (
+           FAQ_IDX_SEQ.NEXTVAL, 
+            #{FAQ_TITLE}, 
+            #{FAQ_CONTENT},
+            '11',
+            SYSDATE, 
+            0, 
+            #{MEMBER_IDX},
+            #{FAQ_TYPE}
+        )
+    ]]>
+   </insert>
+   
+    <!--Faq 상세보기 -->
+   <select id="adminFaqSelectDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            FAQ_IDX,
+            FAQ_TITLE,
+            FAQ_CONTENT,
+            MEMBER_IDX,
+            FAQ_TYPE,
+            FAQ_IMAGE
+        FROM
+            FAQ_BOARD
+        WHERE
+            FAQ_IDX = #{FAQ_IDX}       
+       ]]>
+   </select>
+   
+   
+   <!-- faq글 수정 -->
+   <update id="adminFaqUpdate1" parameterType="hashmap">
+    <![CDATA[
+        UPDATE FAQ_BOARD
+        SET
+           FAQ_TITLE = #{FAQ_TITLE},
+           FAQ_CONTENT = #{FAQ_CONTENT}
+        WHERE
+           FAQ_IDX = #{FAQ_IDX}
+    ]]>
+   </update>
 
+   <!-- faq글 삭제 -->
+   <delete id="adminFaqDelete" parameterType="hashmap">
+    <![CDATA[
+        DELETE FROM FAQ_BOARD
+        WHERE FAQ_IDX = #{FAQ_IDX}
+    ]]>
+   </delete>
+   
 
    <!-- 멤버리스트 -->
    <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
+           
             MEMBER_IDX,
             MEMBER_EMAIL,
             MEMBER_NAME,
@@ -207,21 +287,7 @@
 
    
    
-   <!-- faq 리스트 -->
-
-    <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
-        <![CDATA[
-           SELECT
-             FAQ_IDX,
-             FAQ_TITLE,
-             FAQ_READCOUNT,
-            FAQ_REGDATE
-      FROM
-          FAQ_BOARD
-      ORDER BY FAQ_IDX DESC
-      
-        ]]>
-    </select>
+ 
     
      <!-- 댓글쓰기 -->
     <insert id="qnaCommWrite" parameterType="hashmap">

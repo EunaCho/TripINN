@@ -70,6 +70,7 @@ public class MypageController {
 		list=(ArrayList<Map<String, Object>>)mypageService.selectSendMsgList(commandMap.getMap()); // list 객체에 불러온 sendMessage값을 저장 
 		
 		mv.addObject("list", list); //moderAndView 값에 list 추가 
+		System.out.println("sendMessageList: " + list);
 		
 		return mv;
 	}
@@ -89,6 +90,7 @@ public class MypageController {
 		list = (ArrayList<Map<String, Object>>)mypageService.selectReceiveMsgList(commandMap.getMap());
 		
 		mv.addObject("list", list);
+		System.out.println("receiveMessageList:" + list);
 		
 		return mv;
 	}
@@ -143,13 +145,10 @@ public class MypageController {
 		/*session_member_idx = (Integer)session.getAttribute("member_idx");
 		commandMap.put("member_idx", session_member_idx);*/
 		commandMap.put("MEMBER_IDX", "12");
-		
 		System.out.println("test3");
 		System.out.println("member_idx : " + commandMap.get("MEMBER_IDX"));
-		
 		mypageService.insertMsgWrite(commandMap.getMap());
 		System.out.println("test4");
-		
 		return mv;
 	}
 	
@@ -176,12 +175,14 @@ public class MypageController {
 	@RequestMapping(value="/houseDetail.do",method=RequestMethod.POST )
 	public ModelAndView houseDetail(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{
 		
-		ModelAndView mv = new ModelAndView("my_HouseDetail");
+		ModelAndView mv = new ModelAndView("houseDetail");
 		
 		int house_idx = Integer.parseInt(request.getParameter("HOUSE_IDX"));
 		session_member_email  = (String)session.getAttribute("member_email");
 		commandMap.put("HOUSE_IDX", house_idx);
 		commandMap.put("MEMBER_EMAIL", session_member_email);
+		System.out.println("MEMBER_EMAIL:" + session_member_email);
+		System.out.println("HOUSE_IDX: "+house_idx);
 		
 		Map<String, Object> houseMap = mypageService.selectHouseDetail(commandMap.getMap()); //숙소 상세보기 
 		ArrayList<Map<String, Object>> reserList = (ArrayList<Map<String, Object>>) mypageService.selectH_ReserList(commandMap.getMap()); //해당 숙소의 예약 현황 리스트 
@@ -195,8 +196,9 @@ public class MypageController {
 	}
 	//*숙소목록=>예약관리 리스트
 	@RequestMapping("/houseReser.do")
-	public ModelAndView houseReserForm(CommandMap commandMap, HttpSession session) throws Exception{
+	public String houseReserForm(CommandMap commandMap) throws Exception{
 		
+<<<<<<< HEAD
 		ModelAndView mv = new ModelAndView("houseReserForm");
 		
 		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
@@ -295,6 +297,9 @@ public class MypageController {
 		mypageService.deleteReserDelete(commandMap.getMap());
 		
 		return mv;
+=======
+		return "houseReserForm";
+>>>>>>> refs/remotes/origin/master
 	}
 	
 //--------------------------------------------트립목록 시작---------------------------------------------

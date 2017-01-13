@@ -14,5 +14,7 @@ public interface AdminMemberService {
 	void updateMemberModify(Map<String, Object> map) throws Exception;
     
 	void deleteList(Map<String, Object> map) throws Exception;
+	
+	
 
 }

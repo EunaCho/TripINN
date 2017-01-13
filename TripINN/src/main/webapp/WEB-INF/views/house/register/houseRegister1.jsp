@@ -9,11 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=1.0">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services"></script>
 <script type="text/javascript" src="/TripINN/js/house/openHouseRegister.js"></script>
-<script>
 
-</script>
 </head>
 <body>
 <div style="clear:both"></div>
@@ -26,12 +24,23 @@
 							<progress class="progressBar" max="100" value="33"></progress>
 						</div>
 					</div>
-					<div class="hrLabelName">님 안녕하세요! <br /> &nbsp;&nbsp;&nbsp; 호스트가 될 준비를 시작해보세요.</div>
+					<div class="hrLabelName">님의<!--  <br />  &nbsp;-->&nbsp;&nbsp; 숙소 등록하기</div>
 				</div>
 		</div><div style="clear:both"></div>
+		<div id="leftDiv">
+		<ul>
+		<div style="color:#fff;height:30px;"><h4>숙소 정보 입력</h4></div>
+			<li onclick="fnMove('1')">숙소 이름 & 소개</li>
+			<li onclick="fnMove('2')">숙소 주소</li>
+			<li onclick="fnMove('3')">숙소 유형</li>
+			<li onclick="fnMove('4')">숙박가능 인원</li>
+			<li onclick="fnMove('5')">이용료</li>
 		
+		</ul>
+		</div>	
 		<!-- *********data start********* -->
 		<form method="post" action="houseRegister2.do" enctype="multipart/form-data" name="registerFrm" onsubmit="return check();">	
+		
 		
 		
 		<div class="hrBody">
@@ -45,11 +54,11 @@
 					<div class="hrBorder">
 					
 					<div class="hr_left">
-					<div class="hrLabel1">숙소 이름은 무엇인가요?</div>
+					<div class="hrLabel1">숙소 이름</div>
 					<div class="hrData"><input type="text" name="HOUSE_NAME" class="hrText"/></div>
 					
 					<!-- house_info -->
-					<div class="hrLabel1">숙소를 소개해주세요.</div>
+					<div class="hrLabel1">숙소 소개</div>
 					<div class="hrData"><textarea rows="20" cols="20" class="hrTextArea" name="HOUSE_INFO"></textarea></div>
 					</div><!-- hr_left end -->
 					
@@ -57,20 +66,17 @@
 					
 					</div><!-- hr_right end -->
 					</div><!-- brBorder -->
-				
-				
-					
-					
+		
 				</div>
-				
-				
-				
-				<div style="clear:both"></div>
+			
+
+				<div style="clear:both;"></div>
+				<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
 					<!-- house_zipcode, addr1, addr2, add3 -->	
 				<div class="hrDiv">
 				<div class="hrBorder">
 					<div class="hrAddrLeft">
-					<div class="hrLabel1">숙소 주소는 무엇인가요?</div>
+					<div class="hrLabel1">숙소 주소</div>
 					<div class="hrData">
 					
 					<!-- 수정 추가 작업 -->
@@ -100,11 +106,14 @@
 					</div>
 				</div>
 			</div>
+			
+			<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
+			
 				<div class="hrDiv">
 					<div class="hrBorder">
 					<!-- house_kind -->
 					<div class="hr_left">
-					<div class="hrLabel1">회원님의 숙소 유형은 무엇인가요?</div>
+					<div class="hrLabel1">숙소 유형</div>
 					<div class="hrData">
 						<select class="hrSelect" name="HOUSE_KIND">
 							<option value="">선택</option>
@@ -115,23 +124,23 @@
 					</div>
 				
 					<!-- house_total_persons -->
-					<div class="hrLabel1">숙박 가능한 인원은 몇명인가요?</div>
+					<div class="hrLabel1">숙박 가능 인원</div>
 					<div class="hrData">
-						<div class="hr-persons-div-text"><input type="number" class="hrText" name="HOUSE_TOTAL_PERSONS"></div>
+						<div class="hr-persons-div-text"><input type="number" class="hrText2" name="HOUSE_TOTAL_PERSONS"></div>
 					</div>
 				</div><!-- left -->
 				
 				<div class="hr_right">
 					<!-- hosue_price -->
-					<div class="hrLabel1">이용료는 얼마인가요?</div>
+					<div class="hrLabel1">이용료</div>
 					<div class="hrData">
 						<label>숙소 가격</label>
 						<div>
-							<input type="number" class="hrText" name="HOUSE_PRICE">
+							<input type="number" class="hrText2" name="HOUSE_PRICE">
 						</div>
 						<label>인원당 가격</label>
 						<div>
-							<input type="number" class="hrText" name="HOUSE_PERSON_PRICE">
+							<input type="number" class="hrText2" name="HOUSE_PERSON_PRICE">
 						</div>
 					</div>
 				</div><!-- right end -->
@@ -148,7 +157,6 @@
 		<div style="clear:both"></div>
 	</form>
 	</div>
-	
 </body>
 <script type="text/javascript" src="/TripINN/js/house/mapView.js"></script>
 </html>
