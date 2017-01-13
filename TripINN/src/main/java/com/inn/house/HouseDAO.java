@@ -115,6 +115,9 @@ public class HouseDAO extends AbstractDAO{
 		insert("house.insertReview", map);
 	}
 	
+	public void deleteReview(Map<String, Object> map){
+		delete("house.deleteReview", map);
+	}
 	
 	//wish 리스트 삽입
 	public void insertWish(Map<String, Object> map) throws Exception{
@@ -132,5 +135,29 @@ public class HouseDAO extends AbstractDAO{
 		// TODO Auto-generated method stub
 		return (Map<String, Object>) selectOne("house.selectMember", map);
 	}
+	
+	//좋아요 기능
+	public void deleteLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		delete("house.deleteLike", map);
+	}
+	public void insertLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		insert("house.insertLike",map);
+	}
+	public void reviewLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		update("house.reviewLike", map);
+	}
+	public String selectLikeCnt(String parameter) {
+		// TODO Auto-generated method stub
+		return (String) selectOne("house.selectLikeCnt", parameter);
+	}
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return selectList("house.likeCheckList",map);
+	}
+	
 	
 }

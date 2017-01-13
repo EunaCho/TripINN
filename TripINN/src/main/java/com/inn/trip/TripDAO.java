@@ -71,4 +71,9 @@ public class TripDAO extends AbstractDAO {
 	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
 		return selectList("trip.likeCheckList", map);
 	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
+		return selectPagingList("trip.selectTripListSearch", map);
+	}
 }

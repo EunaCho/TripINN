@@ -112,10 +112,11 @@
 	}
  
 .review .reviewBlock {
-	border-bottom:1px solid gray;
+	min-height: 100px;
+    width: initial;
+	/* border-bottom:1px solid gray; */
 	margin-top: 2%;
 	height:150px;
-	width:100%;
 	margin: 0 auto;
 	}
 .review #review_left{/* 
@@ -132,6 +133,7 @@
 	float: left;
 	width: 85%;
 	height: auto;
+	margin-bottom: 4px;
 }
 .review .reviewBlock .writer{
 	width: 100%;
@@ -155,7 +157,7 @@
 
 .review .reviewBlock .reviewContent{
 	width: 100%;
-    height: 100%;
+    min-height: 100px;
     font-size: 16px;
     color: black;
     }
@@ -165,10 +167,27 @@
 	color : #abacb0;
     text-align: center;
 	}
-.review .reviewBlock .like {
-	float:right;
-	text-align:center; background-color: #ffdbc1; padding:2px; width:40px; border:1px solid; color:#fafab4; border-radius:5px;
-	}
+ .review .reviewBlock .like {
+	float: right;
+    text-align: center;
+    background-color: white;
+    padding: 2px;
+    width: auto;
+    border: 1px solid #BABABB;
+    color: #black;
+    border-radius: 5px;
+    }
+    
+.review .reviewBlock .like:HOVER{
+	float: right;
+    text-align: center;
+	font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    outline: none !important;
+    background-color: #ff5a5f !important;
+}
 
 #reviewForm button{
     width: 100%;
@@ -263,6 +282,24 @@
     height: 100%;
 }
 
+.u_d_btn{
+	float: right;
+    text-align: center;
+    background-color: white;
+    padding: 2px;
+    width: 40px;
+    border: 1px solid #BABABB;
+    color: #black;
+    border-radius: 5px;
+}
+.u_d_btn:HOVER{
+	font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    outline: none !important;
+    background: #ff5a5f;
+}	
 
 /* 오른쪽: 예약바 */
 
@@ -281,3 +318,20 @@
 
 #reserveBar .report {margin:40px; width: 80%; margin-left: 10%; color:#7878c1; text-align:center;font-weight: 700; font-size:13px;}
 #reserveBar .report img {width:20px; height:22px; margin-bottom:-6px;}
+
+.hrb_pwd_check_btn{
+	width: 20%;
+    height: 30px;
+    background: white;
+    border-radius: 5px;
+    border: 2px solid #BABABB;
+    color: #787878;
+}
+
+.hrb_pwd_check_btn:HOVER {
+    border: 2px solid white;
+    color: white;
+    outline: none !important;
+    background: #ff5a5f;
+}
+ 

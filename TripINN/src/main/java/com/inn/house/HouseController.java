@@ -41,17 +41,16 @@ public class HouseController {
 	@RequestMapping(value="/house/houseMain.do", method=RequestMethod.POST)
 	public ModelAndView houseList(CommandMap map, HttpSession session)throws Exception{
 		
-		System.out.println(session.getAttribute("member_idx")+"44444444444444444444");
+//		System.out.println(session.getAttribute("member_idx")+"44444444444444444444");
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 		if(session.getAttribute("member_idx")!=null){
-//			System.out.println("ssssssssssssssssss");
 			mv.addObject("search",map.getMap()); //검색키워드 넘기기
 		
 			List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
 			mv.addObject("search", map.getMap()); //검색키워드 넘기기
 			List<Map<String,Object>> map_list = houseService.selectHouseMapList(map.getMap());
-//			System.out.println(list.get(1).+"2222222222222");
+
 			String str_total_addr = "";
 			String str_addr = "";
 			String str_idx = "";
@@ -76,8 +75,6 @@ public class HouseController {
 					}
 					store_img[i] = str_img; // IMG DATA
 					list.get(i).put("HOUSE_IMAGE", str_img);
-//					System.out.println(store_img[i]+"++++++++++++++++++++");
-					
 				}
 				
 			}
@@ -112,7 +109,6 @@ public class HouseController {
 
 
 			map.put("store_addr", store_addr);
-			
 			mv.addObject("img",store_img);
 			mv.addObject("list",list); // list에 담은 데이터를 보여주기 위함.
 			mv.addObject("map_list",store_addr);
@@ -169,7 +165,7 @@ public class HouseController {
 	public ModelAndView houseMapView(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("house/register/houseMapView");
 		String addr1 = request.getParameter("addr");
-//		System.out.println(addr1+"111111111111111111");
+		
 
 		String map = ConvertAddress.conAddr(addr1);
 		String lat = map.substring(map.indexOf("lat")+5, map.indexOf("lat")+16).trim();
@@ -195,7 +191,6 @@ public class HouseController {
 				img2 = img.split(","),
 				name2 = name.split(","),
 				idx2 = idx.split(",");
-		
 		String map = "",
 				lat = "",
 				lng = "",
@@ -261,61 +256,118 @@ public class HouseController {
         multipart.transferTo(convFile);
         return convFile;
 }
+	
+	//review like 리뷰 추천
+	@RequestMapping(value="/house/hrbLike.do", method=RequestMethod.GET)
+	public ModelAndView hrbLike(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("/house/review/reviewLike");
+		Map<String, Object> map = new HashMap<>();
+		int cnt = Integer.parseInt(request.getParameter("cnt"));
+		System.out.println(cnt+"cccccccccccccc");
+		System.out.println(request.getParameter("HOUSE_IDX")+"HHHHHHH");
+		System.out.println(request.getParameter("MEMBER_IDX")+"HHHHHHH");
+		System.out.println(request.getParameter("HRB_IDX")+"HHHHHHH");
+		map.put("CNT", cnt);
+		map.put("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
+		map.put("MEMBER_IDX", request.getParameter("MEMBER_IDX"));
+		map.put("HRB_IDX", request.getParameter("HRB_IDX"));
+		
+		if(cnt == -1){
+			houseService.deleteLike(map);
+		}else{
+			houseService.insertLike(map);
+		}
+		houseService.reviewLike(map); // review like 업데이트 해줌.
+		String hrb_like = houseService.selectLikeCnt(request.getParameter("HRB_IDX"));
+		mv.addObject("hrb_like",hrb_like);
+		return mv;
+	}
+	//message 메시지
+	@RequestMapping(value="/house/houseMessage.do",method=RequestMethod.GET)
+	public ModelAndView houseMessage(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView("house/review/message");
+		
+		return mv;
+	}
+	//hr_pwd check
+	@RequestMapping(value="/house/hrbPwdCheck.do",method=RequestMethod.GET)
+	public ModelAndView hrbPwdCheck(CommandMap map, HttpServletRequest request, HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView("house/review/pwdCheck");
+		String str_hrb_idx = request.getParameter("HRB_IDX");
+		String str_hrb_pwd = request.getParameter("HRB_PWD");
+		String str_input_pwd = request.getParameter("INPUT_PWD");
+		String str_pwdCheck = request.getParameter("pwdCheck");
+	
+		if(str_pwdCheck!=null){
+			if(str_pwdCheck.equals("1")){
+				System.out.println("비밀번호 통과");
+				System.out.println(str_hrb_idx);
+				System.out.println(str_hrb_pwd);
+				System.out.println(str_input_pwd);
+				
+				houseService.deleteReview(map.getMap());
+				mv = new ModelAndView("redirect:/house/houseDetail.do?MEBER_IDX="+session.getAttribute("member_idx")+"&HOUSE_IDX="+str_hrb_idx);
+			}
+		}
+		return mv;
+	}
+	
+	
+	
 	//하우스 상세정보 보기
 	@RequestMapping(value="/house/houseDetail.do", method=RequestMethod.GET) 
-	public ModelAndView houseDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView houseDetail(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
+		
+		if(session.getAttribute("member_idx") == null) {
+			commandMap.put("MY_MEMBER_IDX", "0");
+		} else {
+			commandMap.put("MY_MEMBER_IDX", session.getAttribute("member_idx"));
+		}
 		
 		ModelAndView mv = new ModelAndView("HouseInfoDetail");
 		//하우스 상세정보 꺼내오기
 		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap()); 
-		Map<String, Object> map = houseService.selectHouseDetail(commandMap.getMap()); //하우스 상세정보 꺼내오기
-		
-
-		
 		
 		//하우스 리뷰 리스트 꺼내오기
 		List<Map<String, Object>> reviewList = houseService.selectReviewList(commandMap.getMap());
+
+		System.out.println(commandMap.getMap()+"00000000000");
+		//좋아요 기능 내가 좋아요 한 리스트 뽑기
+		List<Map<String, Object>> likeCheckList = houseService.likeCheckList(commandMap.getMap());
+
 		
-		
-		/*System.out.println(request.getParameter("HOUSE_IDX")+ "////////////////////");
-		System.out.println(request.getParameter("HOUSE_WISH")+ "////////////////////");
-		*/
 		//wishList 기능
 		String wish = request.getParameter("HOUSE_WISH");
-//		System.out.println("-------------------------" + wish);
+		String member_idx = request.getParameter("MEMBER_IDX");
+		
 		if(wish != null){
 		if(wish.contains("1")){ // wish 리스트 체크
-			
-			houseService.insertWish(map, request);
-			
-			
+			commandMap.put("MEMBER_IDX", member_idx);
+			houseService.insertWish(commandMap.getMap(), request);
 		}else if(wish.contains("0")){// wish 리스트 체크 취소
-			
 			String wishIdx = houseService.selectWishIdx(commandMap.getMap());
-			
 			commandMap.put("FVR_IDX", wishIdx);
 			houseService.deleteWish(commandMap.getMap(), request);
-			
-			
 		}
 		}
-		
 
-		commandMap.put("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
+		
 		commandMap.put("HRB_TITLE", request.getParameter("HRB_TITLE"));
 		commandMap.put("HRB_CONTENT", request.getParameter("HRB_CONTENT"));
 		commandMap.put("HRB_PWD", request.getParameter("HRB_PWD"));
+		commandMap.put("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
 		
-
-		System.out.println( request.getParameter("MEMBER_IDX")+"**************************SDAF");
-		Map<String, Object> member = houseService.selectMember(commandMap.getMap()); //member 정보 꺼내오기
-		mv.addObject("member",member);
+		mv.addObject("likeList",likeCheckList);
 		mv.addObject("house", house);
-		mv.addObject("detail", map);//map에 상세정보 넣기
 		mv.addObject("review", reviewList);
 		mv.addObject("house_idx", commandMap.get("HOUSE_IDX"));
 		mv.addObject("review_size", reviewList.size());
 
+
+		System.out.println(commandMap.getMap()+"0000000000000");
+		System.out.println(request.getParameter("HRB_IDX")+ "88888888888888");
+		
+		
 		return mv; //mv 값 넘기기
 	}
 	
@@ -324,30 +376,14 @@ public class HouseController {
 	public ModelAndView houseReviewWrite(CommandMap map, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/house/houseDetail.do");
  		
+//		System.out.println(request.getParameter("hrb_star")+"리뷰 벌점");
 		
-		System.out.println(request.getParameter("HOUSE_IDX")+"000000000000000000000000");
-		/*String str_house_idx = "";
-		String str_hrb_title = "";
-		String str_hrb_content = "";
-		String str_hrb_pwd = "";
-		
-		str_house_idx = request.getParameter("HOUSE_IDX");
-		str_hrb_title = request.getParameter("HRB_TITLE");
-		str_hrb_content = request.getParameter("HRB_CONTENT");
-		str_hrb_pwd = request.getParameter("HRB_PWD");*/
-		
-		/*map.put("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
-		map.put("HRB_TITLE", request.getParameter("HRB_TITLE"));
-		map.put("HRB_CONTENT", request.getParameter("HRB_CONTENT"));
-		map.put("HRB_PWD", request.getParameter("HRB_PWD"));
-		*/
-		System.out.println(map.get("HRB_TITLE")+"*********************");
-		System.out.println(map.get("HRB_CONTENT")+"*********************");
-		System.out.println(map.get("HRB_PWD")+"*********************");
+		map.put("HRB_STAR", request.getParameter("hrb_star"));
 		//작성된 리뷰 내용 전송
 		houseService.insertReview(map.getMap());
 		
 		mv.addObject("HOUSE_IDX", map.get("HOUSE_IDX"));
+		mv.addObject("MEMBER_IDX", request.getParameter("MEMBER_IDX"));
 		return mv; 
 	}
 	

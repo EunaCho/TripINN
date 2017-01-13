@@ -27,6 +27,18 @@
 	<include refid="common.pagingPost"/> 
 	</select>
 	
+	<select id="selectTripListSearch" parameterType="hashmap" resultType="hashmap">
+		<include refid="common.pagingPre"/> 
+		select 
+		ROW_NUMBER() OVER (ORDER BY trip_idx desc) RNUM, 
+		trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
+			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
+		where trip_area = #{trip_area} and trip_type=#{trip_type} and trip_persons>=#{trip_persons}
+				and trip_first_date>=#{trip_first_date}
+		<include refid="common.pagingPost"/> 
+	</select>
+	
 	<select id="tripDetail" parameterType="HashMap" resultType="HashMap">
 		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,

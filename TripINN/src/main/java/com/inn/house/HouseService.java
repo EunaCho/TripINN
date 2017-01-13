@@ -32,6 +32,8 @@ public interface HouseService {
 
 	void insertReview(Map<String, Object> map) throws Exception;
 
+	void deleteReview(Map<String, Object> map) throws Exception;
+	
 	List<Map<String, Object>> selectHouseMapList(Map<String, Object> map) throws Exception;
 	
 	void insertWish(Map<String, Object> map, HttpServletRequest request) throws Exception;
@@ -41,4 +43,17 @@ public interface HouseService {
 	String selectWishIdx(Map<String, Object> map) throws Exception;
 
 	Map<String, Object> selectMember(Map<String, Object> map);
+
+	//리뷰 좋아요 기능
+	void deleteLike(Map<String, Object> map);
+
+	void insertLike(Map<String, Object> map);
+
+	void reviewLike(Map<String, Object> map);
+
+	String selectLikeCnt(String parameter);
+
+	List<Map<String, Object>> likeCheckList(Map<String, Object> map);
+	
+
 }

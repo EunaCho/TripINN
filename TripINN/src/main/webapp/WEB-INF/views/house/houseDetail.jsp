@@ -13,19 +13,22 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="/TripINN/css/house/houseDetail.css">
+<link href='/TripINN/css/trip/jquery.rating.css' type="text/css" rel="stylesheet"/>
+
 <script src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/TripINN/js/house/houseDetail.js"></script>
-<link rel="stylesheet" href="/TripINN/css/house/houseDetail.css">
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 
-<link href='/TripINN/css/trip/jquery.rating.css' type="text/css" rel="stylesheet"/>
+<script src="/TripINN/js/trip/jquery-1.11.3.min.js" type="text/javascript" data-library="jquery" data-version="1.11.3"></script>
+<script src="/TripINN/js/trip/jssor.slider-22.0.15.mini.js" type="text/javascript" data-library="jssor.slider.mini" data-version="22.0.15"></script>
+<script src="/TripINN/js/trip/jquery.MetaData.js" type="text/javascript" language="javascript"></script>
+<script src="/TripINN/js/trip/jquery.rating.js" type="text/javascript" language="javascript"></script>
 <script src="/TripINN/js/trip/main.js" type="text/javascript"></script>
-<script src='/TripINN/js/trip/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
-<script src='/TripINN/js/trip/jquery.rating.js' type="text/javascript" language="javascript"></script>
 
 	<script>
-	
+	var MEMBER_IDX = "${sessionScope.member_idx}";
 	$(function () {
 	    $("#datepicker_in_reserveBar").datepicker({
 	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
@@ -72,17 +75,23 @@
 				<label>${house.HOUSE_ADDR2}</label><label id="label_plus">+</label><label>${house.HOUSE_ADDR1}</label>
 			</div>
 			
-			
 			<div class="subject_middle">
 			
 				<div class="subject_name">
-				<label>호스트 : ${member.MEMBER_NAME} 님</label><br>
-				<input class="star" type="radio" name="trb_star" value="1" />
-				<input class="star" type="radio" name="trb_star" value="2" />
-				<input class="star" type="radio" name="trb_star" value="3" />
-				<input class="star" type="radio" name="trb_star" value="4" />
-				<input class="star" type="radio" name="trb_star" value="5" checked="checked" />
+				<label>호스트 : ${house.MEMBER_NAME} 님</label><br>
+				
+				<fmt:formatNumber var="sum" value="${house.STAR_SUM}" pattern="#.##"/>
+				<fmt:formatNumber var="cnt" value="${house.STAR_COUNT}" pattern="#.##"/>
+				
+				<div style="background: url(/TripINN/images/trip/icon_star2.gif) 0px 0px; width: 87px; margin-top: 10px;">
+						<p style="WIDTH: ${sum * 20 / cnt}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+						</p>
 				</div>
+				
+				</div>
+				
+				
+				
 				<div class="subject_img">
 				<img src="/TripINN/images/공유.png"/>
 				</div>
@@ -146,7 +155,7 @@
 			<div class="block_left">
 				<label>가격</label>
 			</div>
-			
+			<input type="hidden" name="HOUSE_MEMBER_IDX" id="HOUSE_MEMBER_IDX" value="${house.MEMBER_IDX }">
 			<div class="block_right">
 				<label>일박 비용 : ${house.HOUSE_PRICE} 원</label><br>
 				<label>인원 비용 : ${house.HOUSE_PERSON_PRICE } 원</label><br>
@@ -159,29 +168,30 @@
 		<hr class="block_hr">
 		
 		
-			<!-- 후기 입력하기 -->
+		<!-- 후기 입력하기 -->
 		<div id="review_div">
-		
-		
-		
 		<form name="reviewForm" id="reviewForm" action="<%=cp %>/house/houseReviewWrite.do" method="post">
 		<label id="review_size_label">후기 ${review_size } 개</label>
+			
 			<input type="hidden" name="HOUSE_IDX" id="HOUSE_IDX" value="${house_idx }" class="review_text">
+			<input type="hidden" name="MEMBER_IDX" id="MEMBER_IDX" value="${sessionScope.member_idx}" class="review_text">
 			<input type="text" name="HRB_TITLE" id="HRB_TITLE" value="" placeholder="제목을 입력하세요." class="review_text">
 			<input type="password" name="HRB_PWD" id="HRB_PWD" value="" placeholder="비밀번호를 입력하세요." class="review_text"> 
-			<div class="Clear trDiv tdDiv-col" style="height:50px;float:left;width:140px;margin-top:10px;">
-					 <input class="star" type="radio" name="trb_star" value="1" />
-					 <input class="star" type="radio" name="trb_star" value="2" />
-					 <input class="star" type="radio" name="trb_star" value="3" />
-					 <input class="star" type="radio" name="trb_star" value="4" />
-					 <input class="star" type="radio" name="trb_star" value="5" checked="checked" />
+			<div class="Clear" style="height:50px;float:left;width:140px;margin-top:10px;">
+					 <input class="star" type="radio" name="hrb_star" value="1" />
+					 <input class="star" type="radio" name="hrb_star" value="2" />
+					 <input class="star" type="radio" name="hrb_star" value="3" />
+					 <input class="star" type="radio" name="hrb_star" value="4" />
+					 <input class="star" type="radio" name="hrb_star" value="5" checked="checked" />
 			</div>
+			
 			<textarea id="HRB_CONTENT" name="HRB_CONTENT" cols="60" rows="8" class="review_textArea" placeholder="내용을 입력하세요."></textarea>
+			
 			
 			<br>
 			<!-- <div class="reviewBtn" id="reviewBtn">리뷰작성</div> -->
 			
-			<button type="submit" id="reviewBtn">리뷰작성</button>
+			<button type="submit">리뷰작성</button>
 			
 		</form>
 		</div>
@@ -309,14 +319,11 @@
 				<div id="review_left">
 				<div class="writer">
 					<img src="/TripINN/images/공유.png"/><br/>
-					<label>작성자: ${review.MEMBER_IDX} 님</label>
-					<div class="Clear trDiv tdDiv-col" style="height: 18px; width: 140px;">
-					 <input class="star" type="radio" name="trb_star" value="1" />
-					 <input class="star" type="radio" name="trb_star" value="2" />
-					 <input class="star" type="radio" name="trb_star" value="3" />
-					 <input class="star" type="radio" name="trb_star" value="4" />
-					 <input class="star" type="radio" name="trb_star" value="5" checked="checked" />
-					 </div>
+					<label>작성자: ${review.MEMBER_NAME} 님</label>
+						<div style="background: url(/TripINN/images/trip/icon_star2.gif) 0px 0px; margin: 0 auto; width: 87px;">
+						<p style="WIDTH: ${review.HRB_STAR * 20 }%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+						</p>
+				</div>
 					<div class="reviewDate">
 				 <fmt:formatDate value="${review.HRB_REGDATE }" pattern="yy-MM-dd"/>
 				</div>
@@ -329,13 +336,46 @@
 				<div class="reviewContent">
 				<p> ${review.HRB_CONTENT}</p>
 				</div>
-				<!-- 추천하기 버튼 -->
-				<div class="like">추천</div>
+				
+				<input type="hidden" value="${review.HRB_IDX }" id="review_hrb_idx">
+				<input type="hidden" value="${review.HRB_PWD }" id="review_hrb_pwd">
+				
+				<c:set var="list_member_idx" value="${review.MEMBER_IDX}"/>
+				<c:set var="my_member_idx" value="${sessionScope.member_idx}"/>
+				<c:choose>
+					<c:when test="${list_member_idx eq  my_member_idx}">
+						<!-- 추천하기 버튼 -->
+						<div class="like my_like" id="my_like">추천 ${review.HRB_LIKE }개</div>
+						<div class="u_d_btn">
+						<label class="u_d_btn_delete" id="u_d_btn_delete">삭제</label>
+						</div>
+					</c:when>
+					
+					<c:otherwise>
+						<div class="like" id="other_like"
+						style="float: right; text-align: center; background-color: white; padding: 2px;
+						width: auto; border: 1px solid #BABABB; color: #black; border-radius: 5px;
+						<c:forEach items='${likeList }' var= 'lList'>
+							<c:if test='${lList.HRB_IDX eq review.HRB_IDX }'>
+								border: 2px solid white;
+    							color: white;
+    							background: #ff5a5f;
+							</c:if>
+						</c:forEach>"
+						 onclick="review_l_check('${stat.index}', this, '${review.HRB_IDX }', '${review.HOUSE_IDX }');">
+						 	추천 <label id="like_cnt${stat.index }">${review.HRB_LIKE }개</label>
+						 </div>
+					</c:otherwise>
+				</c:choose>
+				
 				</div>
 			</div>
+			<hr style="width:100%;">
 		</c:forEach>
 	</div>
 </div><!-- houseDetail end -->
+
+
 
 </body>
 <script type="text/javascript">
