@@ -132,5 +132,8 @@ public class HouseDAO extends AbstractDAO{
 		// TODO Auto-generated method stub
 		return (Map<String, Object>) selectOne("house.selectMember", map);
 	}
+	public void insertHouseRSV(Map<String, Object> map) {
+		insert("house.insertHouseRSV", map);
+	}
 	
 }

@@ -80,7 +80,7 @@ input, textarea, keygen, select, button, meter, progress {
 	
 	float:center;
 	margin:15px;
-	border: 2px solid /* #6e6e6e */ #ebca00;
+	/* border: 2px solid #6e6e6e #ebca00; */
 	border-radius: 2px;
     padding: 10px;
 	min-width: 480px;
@@ -94,24 +94,24 @@ input, textarea, keygen, select, button, meter, progress {
 	
 #searchForm .border_date { border-bottom:1px solid #787878; width:100%; height:80px; position:relative; float:center;}
 #searchForm .border_date div {margin-left: 15px; float: left;}
-#searchForm .border_date h4 { margin-right:30px; margin-top:30px;}
+#searchForm .border_date h4 { margin-right:30px; margin-top:30px; color:#8c8c8c;}
 #searchForm .border_date label {color:#8c8c8c; font-weight: 400; font-size: 14px;	}
 #searchForm .border_date .checkinout {height:30px; width:110px; /* border-radius: 5px; */}  
 #searchForm .border_date select {width:110px; height:38px; color:#aaaaaa; /* border-radius: 5px; */}
 
-#searchForm .border_category { border-bottom:1px solid #787878; width:100%; height:80px; position:relative;}
+#searchForm .border_category { border-bottom:1px solid #8c8c8c; width:100%; height:80px; position:relative;}
 #searchForm .border_category div {margin-left: 15px; float: left; text-align:center; border:#679467;}
-#searchForm .border_category h4 { margin-top:30px;}
+#searchForm .border_category h4 { margin-top:30px;  color:#8c8c8c;}
 #searchForm .border_category .h_category {margin-top:27px; height:30px; width:110px; border-radius: 2px; background-color:/* #8fbc8f */ #ffdaaa; color:#5a5a5a;   font-size: 14px;  font-weight: 600;}
 #searchForm .border_category .h_category input {    width: 15px; height: 15px; margin-top: 5px;}
 
 
 #searchForm .border_price {border-bottom:1px solid #787878; height:80px; width:100%; position:relative;}
-#searchForm .border_price h4 {margin-left: 15px; margin-top:30px; float:left; position:relative;} 
+#searchForm .border_price h4 {margin-left: 15px; margin-top:30px; float:left;  color:#8c8c8c;position:relative;} 
 #searchForm .border_price .price_range {margin-left: 15px; float:left; display:inline-block; width:75%; height:50px; margin-top:10px;}
 #searchForm .border_price .price_range label {color:#8c8c8c;width:100px; float:left; font-weight: 400;}
 #searchForm .border_price .price_range input {width:150px; background-color: #dcdcdc; margin-bottom:15px;}
-#searchForm .button {background-color:/* #00d775 */#f5af64; margin-top:10px; color:white;width:180px;height:40px; border-radius: 1px; float: right; clear: right; text-align:center;display: inline-block; font-weight: 700;padding:3px; font-size:22px;}
+#searchForm .button {background-color:/* #00d775 */#f5af64; margin-top:10px; color:white;width:150px;height:40px; border-radius: 1px; float: right; clear: right; text-align:center;display: inline-block; font-weight: 700;padding:3px; font-size:22px;}
  .slider { width:200px;}
 
 

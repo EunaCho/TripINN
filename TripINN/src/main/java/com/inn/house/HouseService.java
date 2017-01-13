@@ -41,4 +41,6 @@ public interface HouseService {
 	String selectWishIdx(Map<String, Object> map) throws Exception;
 
 	Map<String, Object> selectMember(Map<String, Object> map);
+
+	void houseReserve(Map<String, Object> map);
 }

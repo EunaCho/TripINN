@@ -350,5 +350,28 @@ public class HouseController {
 		return mv; 
 	}
 	
+	
+	//하우스 예약 폼
+	
+	@RequestMapping(value="/house/houseReserveForm.do",method=RequestMethod.GET)
+	public ModelAndView houseReserveForm(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("HouseReserveForm");
+		
+		Map<String, Object> houseReserve = houseService.selectHouseDetail(commandMap.getMap());
+		mv.addObject("houseReserve", houseReserve);
+		return mv;
+	}
+	
+	//하우스 예약하기
+	@RequestMapping(value="/house/houseReserve.do",method=RequestMethod.POST)
+	public ModelAndView houseReserve(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/house/houseMain.do");
+		
+		houseService.houseReserve(commandMap.getMap());
+		
+		return mv;
+	}
+	
+	
 
 }

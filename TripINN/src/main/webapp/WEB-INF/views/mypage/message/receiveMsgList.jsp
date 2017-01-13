@@ -7,6 +7,7 @@
 	.side_menu{
 		border:1px solid black;
 		margin-bottom:20px;
+		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;
@@ -47,8 +48,8 @@
 	}
 	.right_div1{
 		border:1px solid black;
-		margin:5px;
-		width:1060px;
+		margin-left:40px;
+		width:970px;
 		height:100%x;
 		float:left;
 		top:114px; 	
@@ -118,11 +119,14 @@
 		border-bottom:1px solid black;
 		border-left:1px solid black;
 		margin:0px;
-		width:460px;
+		width:380px;
 		height:25px;
 		font-size:10px;
 		padding-left:3px;
 		float:left;
+		text-overflow:ellipsis; 
+		overflow:hidden;
+		white-space:nowrap;
 	}
 	
 	

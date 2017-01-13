@@ -80,7 +80,10 @@ public class HouseServiceImpl implements HouseService{
 	//house detail
 	@Override
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception {
+		System.out.println("1");
+		System.out.println(map);
 		return houseDAO.selectHouseDetail(map);
+		
 	}
 	
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
@@ -159,6 +162,14 @@ public class HouseServiceImpl implements HouseService{
 	public Map<String, Object> selectMember(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return houseDAO.selectMember(map);
+	}
+	
+	public void houseReserve(Map<String, Object> map) {
+		System.out.println("1");
+		System.out.println(map);
+		houseDAO.insertHouseRSV(map);
+		System.out.println("2");
+		System.out.println(map);
 	}
 
 }
