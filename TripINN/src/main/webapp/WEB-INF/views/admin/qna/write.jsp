@@ -1,13 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+
 <!-- 작성자: 이진욱 -->
-<!-- 이 파일엔 화면의 메타정보, 스타일 시트 및 화면 호출이 완료되기 전에 가져와야하는 스크립트 등이 선언되어 있음-->
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
-</head>
-<body>
+
+<!-- 작성자: 이진욱 -->
+	<!-- 스타일 적용1 -->
+	<style>   
+	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:15px;}
+
+	li{margin-right:50px }
+
+	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+	</style> 
+	
+	<!-- 가운데 윗 영역 -->
+  		<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+   			<h5>게시글 작성 페이지 입니다.</h5>
+  		</div>
+  	
+  	<!-- 가운데 영역 전체(좌측+우측) -->
+  	<div style="width:100%;height:90%;border:1px solid black;">
+
+  	<!-- 가운데 좌측영역 -->
+		<div style="width:15%;height:380px;border:1px solid black;text-align:center;">
+   
+   	<ul>
+ 	 <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
+
+      <li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
+      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+
+      <li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+      
+      <li><a><h2>문의게시판</h2></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+
+
+   </ul>
+   </div><!-- 가운데 좌측영역 끝-->
+   
+   <!-- 가운데 우측 영역 -->
+ 		<div style="width:80%;height:381px;border:1px solid black;text-align:center; position:absolute;top:170px;left:240px;">
+		
+		<!-- 글쓰기폼 감싸는 영역 -->
+		<div class="row" style="padding-left:15px;width:1100px; text-align:center;">
+
     <form id="frm">
         <table class="board_view">
             <colgroup>
@@ -15,14 +60,19 @@
                 <col width="15%">
                 <col width="*"/>
             </colgroup>
-            <caption>게시글 작성</caption>
+            
+     <!-- 글씨 덮는 영역 -->
+     <div class="row" style="width:1100px; height:35px; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+   		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>게시글 작성</strong></font>
+	 </div>
+				
+		<br>
             <tbody>
                 <tr>
                     <th scope="row">제목</th>
                     <td><input type="text" id="QNA_TITLE" name="QNA_TITLE" class="wdp_90"></input></td>
                 </tr>
                 	<!-- 글 작성자값, 회원번호값을 세션으로 받아오고 hidden으로 숨겨서 컨트롤러에 전송 -->
-                	<input type="text" id="MEMBER_NAME" name="MEMBER_NAME" value="<%=session.getAttribute("member_name") %>" />
                 	<input type="hidden" id="MEMBER_IDX" name="MEMBER_IDX" value="<%=session.getAttribute("member_idx") %>" />
                 <tr>
                 	<th scope="row">비밀번호</th>
@@ -36,11 +86,12 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
-         
-        <a href="#this" class="btn" id="write" >작성하기</a>
-        <a href="#this" class="btn" id="list" >목록으로</a>
+        </table>          
     </form>
+    
+    <br> 
+   	<a href="#this" class="btn_list" id="list" >목록으로</a> 
+   	<a href="#this" class="btn_write" id="write" >작성하기</a>  
      
     <%@ include file="/WEB-INF/include/include-body.jspf" %>
     
@@ -70,6 +121,7 @@
         comSubmit.submit();
     }
 	</script>
- 
-</body>
-</html>
+	
+			</div> <!-- 수정폼 감싸는 영역 끝 -->
+		</div><!-- 가운데 우측영역 끝 -->
+	</div><!-- 가운데 전체(좌측+우측)영역 끝 -->

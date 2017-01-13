@@ -91,6 +91,8 @@ public class HouseServiceImpl implements HouseService{
 		houseDAO.insertReview(map);
 	}
 	
+	
+	
 	//hi_space, hi_cspace 문자열 변경 기능
 	public void util(Map<String, Object> map){
 		
@@ -159,6 +161,44 @@ public class HouseServiceImpl implements HouseService{
 	public Map<String, Object> selectMember(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return houseDAO.selectMember(map);
+	}
+
+	@Override
+	public void deleteReview(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		houseDAO.deleteReview(map);
+		
+	}
+
+	//review like
+	@Override
+	public void deleteLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.deleteLike(map);
+	}
+
+	@Override
+	public void insertLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.insertLike(map);
+	}
+
+	@Override
+	public void reviewLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.reviewLike(map);
+	}
+
+	@Override
+	public String selectLikeCnt(String parameter) {
+		// TODO Auto-generated method stub
+		return houseDAO.selectLikeCnt(parameter);
+	}
+
+	@Override
+	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return houseDAO.likeCheckList(map);
 	}
 
 }

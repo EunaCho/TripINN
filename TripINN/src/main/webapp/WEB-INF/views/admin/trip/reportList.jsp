@@ -31,19 +31,17 @@
 		width:1040px;
 		height:100%;
 		border-radius:4px;
-		background-color:white;
+		background-color:#F4FFFF;
 		margin:auto;
 		margin-left:220px;
 		margin-top:-383px;
 		
 	}
 	.report_list{
-	border:0px solid black;
-	width:100px;
+	border:1px solid black;
+	width:150px;
 	height:30px;
 	margin:10px;
-	font-size:21px;
-	background-color:#eee;
 	}
 	
    .list1{
@@ -53,67 +51,54 @@
 	margin:40px;
 	}
 	.picture{
-	border:0px solid black;
+	border:1px solid black;
 	width:200px;
 	height:180px;
 	margin:10px;
 	}
 	.picture1{
-	border:0px solid black;
+	border:1px solid black;
 	width:180px;
 	height:160px;
 	margin:10px;
 	}
 	.house_idx{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:-190px;
-	background-color:#eee;
-	font-size:14px;
 	
 	}
 	.house_info{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
-	background-color:#eee;
-	font-size:14px;
 	}
 	.house_name{
-	border:0px solid black;
-	width:630px;
-	height:100px;
-	margin-left:220px;
-	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
-	}
-	.house_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
 	}
-	.house_type{
-	border:0px solid black;
+	.house_price{
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
-	background-color:#eee;
-	font-size:14px;
 	}
-	.paging{
-    font-size:17px;
-    margin-left:450px;
-    }
+	.house_type{
+	border:1px solid black;
+	width:300px;
+	height:20px;
+	margin-left:550px;
+	margin-top:10px;
+	}
+	
 	
 	
 	
@@ -197,10 +182,6 @@
 				</div>
 		</c:otherwise>
     </c:choose>
-     <!-- 현재 페이지 번호를 저장 -->
-    <div class="paging">
-       ${pagingHtml}
-    </div>
    </div>
      <!--스크립트 정의  -->
 <script type="text/javascript">
@@ -209,13 +190,7 @@
 		document.frm.REPORT_IDX.value = REPORT_IDX;
 		document.frm.submit();
 	}
-	 //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
-    function fn_search(pageNo){
-        var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/admin/adminTripReportList.do' />");
-        comSubmit.addParam("currentPageNo", pageNo);
-        comSubmit.submit();
-	 }
+	
 </script>
  
     

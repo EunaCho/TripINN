@@ -20,7 +20,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
    </div>
 
 <!-- 가운데 영역 전체 -->
-<div style="width:100%;height:80%;border:1px solid black;">
+<div style="width:100%;height:500px;border:1px solid black;">
 
 <!-- 가운데 좌측영역 -->
 <!-- height 380 -->
@@ -39,21 +39,20 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
       <li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-
-
+ 
    </ul>
 </div>
 
 
 <!-- 가운데 우측 영역 , height 380 , 포지션 left: 230 대체할수 있는 퍼센트-->   
 <!-- position:absolute;top:210px;left:230px; -->
-<div style="width:82%;height:80%;float:left;border:0px solid black;">
+<div style="width:82%;height:550px;float:left;border:0px solid black;">
 
 <!-- 900 -->
 <div class="row" style="padding-left:15px;width:95%;height:90%; margin-left:20px;">    
 	
 	<!-- Qna게시판 글씨 덮는 영역 -->
-	<div class="row" style="width:1000px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+	<div class="row" style="width:1172px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>QnA</strong> 게시판</font>
 	</div>
 	
@@ -102,10 +101,6 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
         	</c:choose>        
     	</tbody>
 	</table>
-
-    	<!-- 현재 페이지 번호를 저장 -->
-    	<input type="hidden" id="currentPageNo" name="currentPageNo"/> 
-      
     
     	<!--  <div class="paging" style="text-align: center;">${pagingHtml}</div>-->
     
@@ -119,20 +114,20 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
             	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin:30px 0px 0px 0px;">
  					<form  action="">
  						
-                     <select class="searchOption btn btn-default " name="searchNum" id="searchNum">
+                     <select class="btn_select " name="searchNum" id="searchNum">
                      	<option value="0">제목</option>
                      	<option value="1">내용</option>
                       	<option value="2">작성자</option>
                       	
                      </select><input  type="text" name="isSearch" id="isSearch" style="margin-left:15px;width:200px;height:24px;border-radius :5px 5px 5px 5px;"/>            
                      
-                     <span class="inputb">
-                          <input type="submit" value="검색"  style="font-size: 14px; padding-bottom: 1; vertical-align: middle;height:20px;"/>
+                     <span class="btn_search">
+                          <input type="image" src="/TripINN/images/search.jpg" value="검색"  style="font-size: 14px; padding-bottom: 1; vertical-align: middle;height:20px;"/>
                   	 </span>
                   	 
                   	 <!-- 비회원의 경우 문의게시판 글쓰기 버튼이 안보임 -->
 				<c:if test="${member_level != null}">
-					<a href="#this" class="btn" id="write">글쓰기</a>	
+					<a href="#this" class="btn_write" id="write">글쓰기</a>
 				</c:if>	
                	  </form>
                	  
@@ -191,14 +186,6 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 	</div>
 
 </div>
-   
-   <!-- 우측 영역 -->
-  <!-- 
-   </div>
-   <div style="color:black;width:20%;height:380px;border:1px solid black;text-align:left; position:absolute;top:200px;left:1133px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 290px; height:381px;">
-   </div>
-    -->
 
  
 

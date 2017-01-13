@@ -19,35 +19,90 @@
 
 <!-- 스타일적용1 -->    
 <style>	
-	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
-	li{margin-right:50px }
-	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+	#dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:300px;
+			
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
 </style>
 <!-- 스타일 적용2 -->
 <style>
 	
 	.house_div{
-		border:2px solid black;
+		border:0px solid black;
 		width:1040px;
-		height:100%;
-		border-radius:4px;
-		background-color:white;
+		height:85%;
 		margin:auto;
 		margin-left:220px;
-		margin-top:-383px;
+		margin-top:-70px;
 		
 	}
 	.report_list{
 	border:0px solid black;
-	width:150px;
+	width:200px;
 	height:30px;
 	margin:10px;
-	background-color:#eee;
 	font-size:21px;
 	}
 	
 	.list1{
-	   border:0px solid black;
+	   border-top:1px solid blue;
+	   border-bottom:1px solid blue;
 	   width:900px;
 	   height:260px;
 	   margin:40px;
@@ -57,12 +112,14 @@
 	width:200px;
 	height:180px;
 	margin:10px;
+	border-radius:7px;
 	}
 	.picture1{
 	border:0px solid black;
 	width:180px;
 	height:160px;
 	margin:10px;
+	border-radius:7px;
 	}
 	.house_idx{
 	border:0px solid black;
@@ -72,6 +129,7 @@
 	margin-top:-190px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_info{
 	border:0px solid black;
@@ -81,6 +139,7 @@
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_name{
 	border:0px solid black;
@@ -90,6 +149,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_price{
 	border:0px solid black;
@@ -99,6 +159,7 @@
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_delete{
 	border:0px solid black;
@@ -108,6 +169,7 @@
 	margin-top:50px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.report_listNo{
 	border:0px solid black;
@@ -116,6 +178,7 @@
 	margin:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	
 	.house_zipcode{
@@ -126,6 +189,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_addr{
 	border:0px solid black;
@@ -135,6 +199,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_persons{
 	border:0px solid black;
@@ -144,6 +209,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_total_price{
 	border:0px solid black;
@@ -153,6 +219,7 @@
 	margin-top:-97px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.house_person_price{
 	border:0px solid black;
@@ -162,6 +229,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	
     .house_kind{
@@ -172,6 +240,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	 .trip_pprice{
 	border:0px solid black;
@@ -181,6 +250,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.trip_tprice{
 	border:0px solid black;
@@ -190,6 +260,7 @@
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	 .trip_persons{
 	border:0px solid black;
@@ -199,6 +270,7 @@
 	margin-top:-53px;
 	background-color:#eee;
 	font-size:14px;
+	border-radius:7px;
 	}
 	.paging{
     font-size:17px;
@@ -206,6 +278,10 @@
     }
 	
 	
+</style>
+
+<style type="text/css">
+#STATICMENU {margin:0pt;padding:0pt;position:absolute;left:0px;top:0px;}
 </style>
     
   </head>
@@ -215,32 +291,57 @@
  	 
  	 
  <!-- 가운데 윗 영역 -->	 
-    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+    <div style="width:100%;height:100px;border:0px solid black;text-align:center;">
 	<h2>투어관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
-  
+   <body onload="InitializeStaticMenu();">
+   
    <!-- 좌측 영역 -->
-   <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
-	   <ul>   
-        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
-		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-		<li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+   <div id="STATICMENU" style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
+	   <section>
+				<nav style="height:400px;width:250px;">
 
-	</ul>
+					<ul id="dropdown2">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
+						<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/memberList.do">회원관리</a></li>
+						</ul>
+						</li>
+						
+						<li><a href="http://localhost:8080/TripINN/admin/houseList.do">숙소관리</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+						
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do">투어관리</a>
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do">신고하기</a></li>
+							
+							</ul>
+						</li>
+						
+						<li>문의게시판
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do">Q&A</a></li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">FAQ</a></li>
+							
+							</ul>
+						</li>
+						
+					</ul>
+				</nav>
+		</section>
    
    </div>
    
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div class="report_list">
-   전체 투어 목록
+  <h4>&nbsp;&nbsp;전체 투어 목록</h4>
+   </div>
+   <div style="width:1030px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
@@ -252,43 +353,43 @@
     <img class="picture1" src="<%=cp%>/images/trip/${tripImg}">
       </div>
       <div class="house_idx">
-      번호: ${adminTrip.TRIP_IDX}
+      &nbsp;번호: ${adminTrip.TRIP_IDX}
       </div>
        <div class="house_info">
-      지역: ${adminTrip.TRIP_AREA}
+      &nbsp;지역: ${adminTrip.TRIP_AREA}
       </div>
       <div class="house_name">
-   투어 테마: ${adminTrip.TRIP_TYPE}
+   &nbsp;투어 테마: ${adminTrip.TRIP_TYPE}
       </div>
       <div class="house_price">
-     언어: ${adminTrip.TRIP_LANGUAGE}
+     &nbsp;언어: ${adminTrip.TRIP_LANGUAGE}
       </div>
       <div class="house_zipcode">
-     투어이름: ${adminTrip.TRIP_NAME}
+     &nbsp;투어이름: ${adminTrip.TRIP_NAME}
       </div>
       <div class="house_addr">
-     소개:${adminTrip.TRIP_INTRO}
+     &nbsp;소개:${adminTrip.TRIP_INTRO}
       </div>
      <div class="house_persons">
-   투어기간:${adminTrip.TRIP_FIRST_DATE} ~ ${adminTrip.TRIP_LAST_DATE}
+   &nbsp;투어기간:${adminTrip.TRIP_FIRST_DATE} ~ ${adminTrip.TRIP_LAST_DATE}
       </div>
        <div class="house_total_price">
-  포함사항:${adminTrip.TRIP_INCLUDE}
+  &nbsp;포함사항:${adminTrip.TRIP_INCLUDE}
       </div>
        <div class="house_person_price">
-   우편번호:${adminTrip.TRIP_ZIPCODE}
+   &nbsp;우편번호:${adminTrip.TRIP_ZIPCODE}
       </div>
       <div class="house_kind">
-  주소:${adminTrip.TRIP_ADDR1} ${adminTrip.TRIP_ADDR2} ${adminTrip.TRIP_ADDR3}
+  &nbsp;주소:${adminTrip.TRIP_ADDR1} ${adminTrip.TRIP_ADDR2} ${adminTrip.TRIP_ADDR3}
       </div>
        <div class="trip_pprice">
-  인원당 가격: ${adminTrip.TRIP_PPRICE}
+  &nbsp;인원당 가격: ${adminTrip.TRIP_PPRICE}
       </div>
        <div class="trip_tprice">
-  총 가격: ${adminTrip.TRIP_TPRICE}
+  &nbsp;총 가격: ${adminTrip.TRIP_TPRICE}
       </div>
       <div class="trip_persons">
-  인원수: ${adminTrip.TRIP_PERSONS}
+  &nbsp;인원수: ${adminTrip.TRIP_PERSONS}
       </div>
       
     </div>
@@ -317,6 +418,32 @@
         comSubmit.addParam("currentPageNo", pageNo);
         comSubmit.submit();
     }
+  //스크롤에 따라서 드롭다운이 따라감
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 150; // 스크롤 시작위치 
+    var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 30; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+        var stmnStartPoint, stmnEndPoint; 
+        stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10); 
+        stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+        if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+        if (stmnStartPoint != stmnEndPoint) { 
+         stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+         document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+         stmnRefreshTimer = stmnScrollSpeed; 
+         }
+        stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+        } 
+       function InitializeStaticMenu() {
+        document.getElementById('STATICMENU').style.left = stmnLEFT + 'px';  //처음에 왼쪽 위치
+        document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+        RefreshStaticMenu();
+        }
 </script>
    
     

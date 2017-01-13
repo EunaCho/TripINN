@@ -22,8 +22,7 @@ public class AdminQnaServiceImpl implements AdminQnaService{
      
     @Resource(name="adminQnaDAO")
     private AdminQnaDAO adminQnaDAO;
-	//private SqlSessionTemplate sqlSessionTemplate;
-     
+    
     //리스트
     @Override
     public List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception {
@@ -35,25 +34,19 @@ public class AdminQnaServiceImpl implements AdminQnaService{
   		@Override
   		public List<Map<String,Object>> search0(Map<String,Object> map) {
   			return adminQnaDAO.search0(map);
-  			//return sqlSessionTemplate.selectList("admin.search0", map);
   		}
   		
   		//내용으로 검색
   		@Override
   		public List<Map<String,Object>> search1(Map<String,Object> map) {
   			return adminQnaDAO.search1(map);
-  			//return sqlSessionTemplate.selectList("admin.search1", map); 
   		}
   		
   		//작성자로 검색
   		@Override
   		public List<Map<String,Object>> search2(Map<String,Object> map) {
   			return adminQnaDAO.search2(map);
-  			//return sqlSessionTemplate.selectList("admin.search2", "%"+search+"%"); 
   		}
-    
-    
-    
     
     //글쓰기
     @Override
@@ -90,13 +83,9 @@ public class AdminQnaServiceImpl implements AdminQnaService{
     	//댓글삭제
     	@Override
     	public void qnaCommDelete(Map<String, Object> map) throws Exception {
-    		//System.out.println(2);
-    		//System.out.println(map);
-    		
+
     		adminQnaDAO.qnaCommDelete(map);
-    		
-    		//System.out.println(5);
-    		//System.out.println(map);
+
     		
     	}
     
@@ -111,13 +100,9 @@ public class AdminQnaServiceImpl implements AdminQnaService{
     //삭제하기
     @Override
     public void adminQnaDelete(Map<String, Object> map) throws Exception {
-    	System.out.println(2);
-    	System.out.println(map);
-    	
+
         adminQnaDAO.adminQnaDelete(map);
-        
-        System.out.println(map);
-        System.out.println(5);
+
     }
 
 	

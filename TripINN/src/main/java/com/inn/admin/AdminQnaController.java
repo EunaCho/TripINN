@@ -193,14 +193,9 @@ public class AdminQnaController {
     @RequestMapping(value="/admin/qnaDelete.do")
     public ModelAndView deleteBoard(CommandMap commandMap) throws Exception{
         
-    	ModelAndView mv = new ModelAndView("redirect:/admin/qnaList.do");
-    	System.out.println(1);
-    	System.out.println(commandMap.getMap());
-    	
+    	ModelAndView mv = new ModelAndView("redirect:/admin/qnaList.do");	
         adminQnaService.adminQnaDelete(commandMap.getMap());
 
-        System.out.println(6);
-        System.out.println(commandMap.getMap());
         return mv;
     }
 

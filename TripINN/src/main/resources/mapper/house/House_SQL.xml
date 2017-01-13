@@ -24,33 +24,29 @@
 	</select>
 	
 	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
-		
-		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX 
-		FROM (Select H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX 
-				From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 				
-					
+		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE 
+		FROM (SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+					  HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX
+					  , HR_FIRST_DATE, HR_LAST_DATE
+			FROM HOUSE H
+						 LEFT JOIN HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 
 			<where>
-				<if test="preSearch_keyword != null">
-					(HOUSE_NAME like '%'||#{preSearch_keyword}||'%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' 
-					or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' 
-					or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
-				</if>
-				<if test="person != null">
-					<![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
-				</if> 
-			</where>
+			<if test="preSearch_keyword != null">
+				(HOUSE_NAME like '%'||#{preSearch_keyword}||'%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%'
+				or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
+			</if>
 			<if test="hr_first_date != null and hr_last_date != null">
-				minus
-					(select H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX  
-					From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 
-					where <![CDATA[((HR_FIRST_DATE <= TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') and TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') < HR_LAST_DATE) 
-								OR (HR_FIRST_DATE <= TO_DATE(#{hr_last_date}, 'mm/dd/yyyy') and  TO_DATE(#{hr_last_date}, 'mm/dd/yyyy') < HR_LAST_DATE))]]>
-					)
-			</if>	
-			
+				<![CDATA[AND ((HR_FIRST_DATE >= #{hr_first_date} and #{hr_last_date} >= HR_LAST_DATE))]]>
+			</if> 
+			<if test="person != null">
+				<![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
+			</if> 
+		</where>
 			ORDER BY HOUSE_IDX DESC)
-			
 	</select>
+
 	
 	
 	<!-- House Detail -->
@@ -58,21 +54,31 @@
 			SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
 					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
 					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX, 
+					  HOUSE_PERSON_PRICE, HOUSE_CNT,
 					HI_IDX, HI_CLEAN_PRICE, HI_DEPOSIT, HI_GUEST, HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM,
-				   HI_CHECKIN, HI_CHECKOUT, HI_TOTAL_STAR
+				   HI_CHECKIN, HI_CHECKOUT, HI_TOTAL_STAR,
+					MEMBER_IDX, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PWD, MEMBER_BIRTH, MEMBER_PHONE, MEMBER_SEX, MEMBER_ADDR, MEMBER_IMAGE, MEMBER_LEVEL,
+					
+					(SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
+					(SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
 			FROM HOUSE H 
-						LEFT JOIN HOUSE_INFO HI on H.HOUSE_IDX = HI.HOUSE_IDX
+			LEFT JOIN HOUSE_INFO HI on H.HOUSE_IDX = HI.HOUSE_IDX 
+			LEFT JOIN MEMBER M ON H.MEMBER_IDX = M.MEMBER_IDX
 			WHERE H.HOUSE_IDX = #{HOUSE_IDX}
 			ORDER BY H.HOUSE_IDX DESC
 	</select>
 	
 	<select id="selectReviewList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT HRB_IDX, HRB_TITLE, HRB_CONTENT, HRB_PWD, HRB_REGDATE, HRB_STAR, HRB_LIKE, MEMBER_IDX, HOUSE_IDX
-			FROM HOUSE_REVIEW_BOARD
-			WHERE HOUSE_IDX = #{HOUSE_IDX}
-			ORDER BY HRB_IDX DESC
+			SELECT HRB_IDX, HRB_TITLE, HRB_CONTENT, HRB_PWD, HRB_REGDATE, 
+			HRB_STAR, HRB_LIKE, HRB.MEMBER_IDX, HOUSE_IDX, 
+			MEMBER_NAME, MEMBER_EMAIL, MEMBER_PWD, MEMBER_BIRTH, MEMBER_PHONE, MEMBER_ADDR, MEMBER_JOINDATE, MEMBER_IMAGE, MEMBER_LEVEL
+
+			FROM HOUSE_REVIEW_BOARD HRB
+			LEFT JOIN MEMBER M on HRB.MEMBER_IDX = M.MEMBER_IDX
+			WHERE HOUSE_IDX = #{HOUSE_IDX} 
+			ORDER BY HRB.HRB_IDX DESC
+
 		]]>
 	</select>
 	
@@ -129,9 +135,9 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 	
 	<insert id="insertReview" parameterType="hashmap">
 		INSERT INTO HOUSE_REVIEW_BOARD (
-		 	HRB_IDX, HRB_TITLE, HRB_CONTENT, HOUSE_IDX, HRB_PWD
+		 	HRB_IDX, HRB_TITLE, HRB_CONTENT, HOUSE_IDX, HRB_PWD, MEMBER_IDX, HRB_STAR
 		 ) VALUES (
-		 	HRB_IDX_SEQ.NEXTVAL, #{HRB_TITLE}, #{HRB_CONTENT}, #{HOUSE_IDX}, #{HRB_PWD}
+		 	HRB_IDX_SEQ.NEXTVAL, #{HRB_TITLE}, #{HRB_CONTENT}, #{HOUSE_IDX}, #{HRB_PWD}, #{MEMBER_IDX}, #{HRB_STAR} 
 		 )
 	</insert>
 	
@@ -141,9 +147,9 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		</selectKey>
 		<![CDATA[
 		INSERT INTO FAVORITES (
-			FAR_IDX, HOUSE_IDX
+			FAR_IDX, HOUSE_IDX, MEMBER_IDX
 		)VALUES(
-			#{FVR_IDX}, #{HOUSE_IDX}
+			#{FVR_IDX}, #{HOUSE_IDX}, #{MEMBER_IDX}
 		)
 		]]>
 		
@@ -164,10 +170,58 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		]]>
 	</delete>
 	
+	<delete id="deleteReview" parameterType="hashmap">
+		<![CDATA[
+			DELETE HOUSE_REVIEW_BOARD 
+			 WHERE HRB_IDX = #{HRB_IDX}
+		]]>
+	
+	</delete>
 	<select id="selectMember" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT*FROM MEMBER
 			WHERE MEMBER_IDX = #{MEMBER_IDX}
 		]]>
 	</select>
+	
+	<insert id="insertLike" parameterType="hashmap">
+		<![CDATA[
+		 INSERT INTO HRB_LIKE_CHECK(
+			HRB_LIKE_IDX, HRB_IDX, MEMBER_IDX, HOUSE_IDX
+			)VALUES(
+			HRB_LIKE_IDX_SEQ.NEXTVAL, #{HRB_IDX}, #{MEMBER_IDX}, #{HOUSE_IDX}
+			)
+		]]>
+	</insert>
+	
+	<delete id="deleteLike" parameterType="hashmap">
+		<![CDATA[
+		DELETE FROM HRB_LIKE_CHECK 
+		WHERE 
+		HRB_IDX = #{HRB_IDX} AND MEMBER_IDX = #{MEMBER_IDX}
+		]]>
+	</delete>
+	
+	<update id="reviewLike" parameterType="hashmap">
+		<![CDATA[
+		UPDATE HOUSE_REVIEW_BOARD 
+		SET HRB_LIKE = HRB_LIKE + #{CNT} 
+		WHERE HOUSE_IDX = #{HOUSE_IDX}
+		]]>
+	</update>
+	
+	<select id="selectLikeCnt" parameterType="String" resultType="String">
+	<![CDATA[
+		SELECT HRB_LIKE 
+		FROM HOUSE_REVIEW_BOARD 
+		WHERE HRB_IDX = #{HRB_IDX}
+	]]>
+	</select>
+	
+	<select id="likeCheckList" parameterType="hashmap" resultType="hashmap">
+		SELECT HRB_LIKE_IDX, HRB_IDX, MEMBER_IDX 
+		FROM HRB_LIKE_CHECK 
+		WHERE HOUSE_IDX = #{HOUSE_IDX} AND MEMBER_IDX = #{MY_MEMBER_IDX}
+	</select>
+
 </mapper>

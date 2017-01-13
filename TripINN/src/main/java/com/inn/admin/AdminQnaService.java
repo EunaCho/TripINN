@@ -7,7 +7,6 @@ import com.common.common.CommandMap;
 
 
 public interface AdminQnaService {
-	//리턴값을 list에서 Map으로 변경하였음
 	//리스트
 	List<Map<String, Object>> qnaBoardList(Map<String, Object> map) throws Exception;
 	
