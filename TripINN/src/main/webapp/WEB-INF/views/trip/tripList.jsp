@@ -99,13 +99,13 @@ var curNum = 1;
 	   form.submit();
    }
    $(function () {
-	    $("#datepicker_in_sub").datepicker({
+	    $("#datepicker_in").datepicker({
 	         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
 	         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	         monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-	         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         monthNamesShort: ['1월.','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	         monthNames: ['1월.','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 	         minDate: new Date(),
-	         altField: "#datepicker",
+	         altField: "#datepicker_in",
 	         altFormat: "yy-mm-dd"
 	  });
 	});
@@ -120,6 +120,15 @@ var curNum = 1;
 	         altFormat: "yy-mm-dd"
 	  });
 	});
+	
+	function tripSearch() {
+		var sform = document.serForm;
+		if(serForm.trip_first_date.value == "") {
+			alert("출발일을 선택해주세요.");
+			return;
+		}
+		sform.submit();
+	}
 </script>
 <style>
 	#wrap{ width:100%;height:100%;padding:0px; display: table; margin:0px auto; margin-bottom:20px;}
@@ -158,43 +167,60 @@ var curNum = 1;
 <div id="wrap">
 <div id="divBackGround" style="display: none; background-color: #fff; filter: alpha(opacity=50); opacity: 0.5; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 50;"></div>
 <div id="HotelPhotoView" class="popContainer02" style="display: block; position: fixed; top: 50%; left: 50%; z-index: 100;"></div>
-	<hr />
 	
-	<div id="header_container">
-	<form id="house_searchForm" method="POST" action="/TripINN/house/houseMain.do">
+	<div id="header_container" style="background-color:#FFEFD5;margin:0px auto;padding:0px;">
+	<form id="house_searchForm" name="serForm" action="/TripINN/tripList.do">
  
+	<div style="margin-left:40px;margin-right:20px;">
+		<label>지역</label>
+		<select name="trip_area">	
+			<option value="서울">서울</option>
+			<option value="인천">인천</option>
+			<option value="경기">경기</option>
+			<option value="강원">강원</option>
+			<option value="충청">충청</option>
+			<option value="전라">전라</option>
+			<option value="경상">경상</option>
+			<option value="제주">제주</option>
+		</select>
+	</div>
 	<div>
-		<label>위치</label>
-		<input class="location" type="text" name="preSearch_keyword" placeholder="여행지, 트립 유형" value="${search.preSearch_keyword}">
+		<label>유형</label>
+		<select name="trip_type">	
+			<option value="엔터테인먼트">엔터테인먼트</option>
+			<option value="예술 및 디자인">예술 및 디자인</option>
+			<option value="패션">패션</option>
+			<option value="스포츠">스포츠</option>
+			<option value="웰빙">웰빙</option>
+			<option value="자연">자연</option>
+			<option value="음료 및 식사">음료 및 식사</option>
+			<option value="라이프스타일">라이프스타일</option>
+			<option value="역사">역사</option>
+			<option value="음악">음악</option>
+			<option value="비즈니스">비즈니스</option>
+			<option value="바/클럽">바/클럽</option>
+		</select>
 	</div>
 	<div>
 		<div>
-		<label>체크인</label>
-		<input class="checkinout" type="text" name="hri_first_date" id="datepicker_in" value="${search.hri_first_date}" placeholder="체크인" >
-		</div>
-		<div><img src="/TripINN/images/arrow.png"  style="width:30px;"></div>
-		<div>
-		<label>체크아웃</label>
-		<input class="checkinout" type="text" name="hri_last_date" id="datepicker_out" value="${search.hri_last_date}" placeholder="체크아웃">
+		<label>출발일</label>
+		<input class="checkinout" type="text" name="trip_first_date" id="datepicker_in"  placeholder="출발일" />
 		</div>
 	</div>
 
-	<div style="margin-left:30px;">
+	<div style="margin-left:30px;margin-right:20px;">
 		<label>인원</label>
-		<select name="person" placeholder="인원 1명">	
-			<option value="인원 1명">인원 1명</option>
-			<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
-			<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>
-			<option value="3" <c:if test="${person eq 3}">selected="selected"</c:if> >인원 3명</option>
-			<option value="4" <c:if test="${person eq 4}">selected="selected"</c:if> >인원 4명</option>
-			<option value="5" <c:if test="${person eq 5}">selected="selected"</c:if> >인원 5명</option>
+		<select name="trip_persons" >	
+			<option value="1" >인원 1명</option>
+			<option value="2" >인원 2명</option>
+			<option value="3" >인원 3명</option>
+			<option value="4" >인원 4명</option>
+			<option value="5" >인원 5명</option>
 		</select>
 	</div>
-		<input type="image" id="searchBtn" src="/TripINN/images/searchBtn.png">
+		<img id="searchBtn" src="/TripINN/images/searchBtn.png" style="cursor:pointer;" onclick="tripSearch();"/>
 	</form>	
 </div>
-	
-	<hr />
 	<div class="list-container">
 		<div class="list-left">
 		<div style="width:100%;height:100%;text-align:center;margin:50px auto;">
@@ -216,14 +242,18 @@ var curNum = 1;
 				</div>
 				<hr style="margin-top:-1px;width:100%;" />
 				<div class="right-middle">
-				<c:if test="${empty list }">
+				
+				<c:forEach var="trip" items="${list }" >
+				<c:if test="${trip.TOTAL_COUNT == 0}">
 					<div style="width:100%;height:100%;background-color:#F8F8F8;padding-top:120px;">
 						<h2><font style="color:#000;font-size:20px;margin-top:100px;">조회된 결과가 없습니다.</font></h2>
 					</div>
 				</c:if>
-				<c:forEach var="trip" items="${list }" >
+				<c:if test="${trip.TOTAL_COUNT != 0}">
 				<c:set var="fullImg" value="${trip.TRIP_IMAGE }"/>
 					<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+						<fmt:formatNumber var="sum" value="${trip.TRB_STAR}" pattern="#.##"/>
+						<fmt:formatNumber var="cnt" value="${trip.TOTAL_CNT}" pattern="#.##"/>
 					<div class="trip-info">
 						<div class="trip-img" style="background-image:url('/TripINN/images/trip/${tripImg }');cursor:pointer;"
 							onclick="newShowHotelPhoto('${trip.TRIP_IDX}')"></div>
@@ -233,8 +263,25 @@ var curNum = 1;
 								<span style="float:right">
 									최대 <font color="#cb4242">${trip.TRIP_PERSONS}</font> 명
 								</span>
-								<br />
-								<span>
+								<div style="clear:both;padding:2px;"></div>
+								<span style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
+									<p style="<c:if test="${trip.TOTAL_CNT != 0}">width:${sum * 20 / cnt}%;</c:if>
+											  <c:if test="${trip.TOTAL_CNT == 0}">width:0%;</c:if>
+									 PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+									</p>&nbsp;&nbsp;
+								</span>
+								<span style="float:left;width:50px;margin-left:10px;">
+										<font color="#cb4646" size="2">
+										<c:if test="${trip.TOTAL_CNT != 0}">
+										<fmt:formatNumber value="${sum / cnt}" pattern="#.#"/>
+										</c:if> 
+										<c:if test="${trip.TOTAL_CNT == 0}">
+										0
+										</c:if>
+										</font>점
+								</span>
+								<div style="clear:both;padding:2px;"></div>
+								<span style="margin-top:-5px;">
 								${trip.TRIP_ADDR1 } <br />
 								<fmt:formatDate value="${trip.TRIP_FIRST_DATE }"/>
 								 ~
@@ -255,10 +302,11 @@ var curNum = 1;
 							</div>
 						</div>
 					</div>
+					</c:if>
 				</c:forEach>
 				<c:if test="${not empty paginationInfo}">
 				<div style="clear:both;"></div>
-				<div class="trDiv" style="width:100%;">
+				<div class="trDiv" style="width:100%;margin-top:20px;">
 					<div class="tdDiv-col" id="pagingDiv" style="text-align:center;height:30px;margin-top:10px;">
 	        		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
 	        		</div>

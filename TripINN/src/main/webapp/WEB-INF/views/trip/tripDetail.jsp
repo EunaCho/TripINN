@@ -190,7 +190,7 @@ var member_idx = "${sessionScope.member_idx}";
 					</div>
 					<div style="width:20%;height:25px;background:#cb4242;color:#fff;  margin-right:30px;
 						text-align:center;  border-radius: 15px; padding:6px; float:right;
-						cursor:pointer" onclick="history.back();">
+						cursor:pointer" onclick="location.href='/TripINN/tripList.do'">
 							<b>이전으로</b>
 					</div>
 				</div>

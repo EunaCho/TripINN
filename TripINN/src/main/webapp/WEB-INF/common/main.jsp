@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% String cp = request.getContextPath(); %>
 
 
@@ -277,21 +278,43 @@
 		</div>
 		<!-- 트립 미리보기 리스트 출력 -->
 			
-		<div class="pre_List">
+		<div class="pre_List" style="">
 		<ul>
+		
 			<c:forEach items="${tripList}" var="tripList" varStatus="stat">
 				<c:set var="fullImg" value="${tripList.TRIP_IMAGE }"/>
 				<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+				<fmt:formatNumber var="sum" value="${tripList.TRB_STAR}" pattern="#.##"/>
+				<fmt:formatNumber var="cnt" value="${tripList.TOTAL_CNT}" pattern="#.##"/>
 				<!-- 미리보기 개체 -->
 				<li>
 				<a href="javascript:tripDetail('${tripList.TRIP_IDX }');">
 					<img src="<%= cp %>/images/trip/${tripImg}" class="houseImage" alt="트립 사진"/>
 					<br/>
-						<span><strong>${tripList.TRIP_NAME}</strong></span>
-						<span>${tripList.TRIP_INFO}</span>
+						<span style="width:100%;height:20px;text-align:left;">
+							<strong>
+								${tripList.TRIP_NAME}&nbsp;&nbsp;
+								<font color="#cb4646" size="2">
+								<c:if test="${tripList.TOTAL_CNT != 0}">
+								<fmt:formatNumber value="${sum / cnt}" pattern="#.#"/>
+								</c:if> 
+								<c:if test="${tripList.TOTAL_CNT == 0}">
+								0
+								</c:if>
+								점 </font>
+							</strong> 
+						</span>
 					<br/>
-						<span>${tripList.TRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
-						<span> 후기 ?? 개</span>
+						<span style="width:100%;height:20px;text-align:left;">
+						<b><font color="#0886C4" size="2">[ ${tripList.TRIP_TYPE } ]</font></b>
+						</span>
+						<span style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
+							<p style="<c:if test="${tripList.TOTAL_CNT != 0}">width:${sum * 20 / cnt}%;</c:if>
+									  <c:if test="${tripList.TOTAL_CNT == 0}">width:0%;</c:if>
+							 PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+							</p>
+						</span> 
+						<span style="margin-right:10px;float:right;"> 후기 <b>${cnt }</b> 개</span>
 				</a>
 				</li>  
 			</c:forEach>

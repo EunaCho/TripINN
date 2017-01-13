@@ -34,7 +34,6 @@ public class MainController {
 		 if(tripList != null) {
 				mv.addObject("tripList", tripList.get("result")); 
 		 }
-
 		return mv; 
 	}
 }

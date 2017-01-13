@@ -29,7 +29,7 @@ public class AdminMemberController {
    //페이징 구현을 위해 추가한 변수들
       private int currentPage = 1;    //처음 표시되는 페이지 
       private int totalCount;         //총 글 갯수
-      private int blockCount = 10;   //1페이지당 글 몇개 할건지 정하는 변수
+      private int blockCount = 5;   //1페이지당 글 몇개 할건지 정하는 변수
       private int blockPage = 5;     //한 화면에 페이지번호 몇개까지 띄울 것인지 정하는 변수
       private String requestName;
       private String pagingHtml;  

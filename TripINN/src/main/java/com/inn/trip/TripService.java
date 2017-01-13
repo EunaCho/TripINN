@@ -33,5 +33,7 @@ public interface TripService {
 
 	List<Map<String, Object>> likeCheckList(Map<String, Object> map);
 
+	Map<String, Object> selectTripListSearch(Map<String, Object> map);
+
 	
 }

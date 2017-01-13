@@ -2,7 +2,7 @@ package com.inn.admin;
 
 public class AdminPaging {
 
-   private int currentPage; // 현재페이지
+   private int currentPage;   // 현재페이지
    private int totalCount;    // 전체 게시물 수
    private int totalPage;    // 전체 페이지 수
    private int blockCount;    // 한 페이지의  게시물의 수
@@ -52,7 +52,7 @@ public class AdminPaging {
       // 이전 block 페이지
       pagingHtml = new StringBuffer();
       if (currentPage > blockPage) {
-         pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + ">");
+         pagingHtml.append("<a class='page prv' href=" + requestName + ".do?currentPage=" + (startPage - 1) + "><font color='black'> ");
          pagingHtml.append("&lt;");
          pagingHtml.append("</a>");
       }
@@ -69,11 +69,12 @@ public class AdminPaging {
          }
          if(i == currentPage)
          {
-            pagingHtml.append("&nbsp;<b> <font color='red'>");
+            pagingHtml.append("&nbsp;<b> <font color='blue'>");
             pagingHtml.append(i);
             pagingHtml.append("</font></b>");
          }else{
-            pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + ">");
+            pagingHtml.append("&nbsp;<a class='page' href=" + requestName + ".do?currentPage=" + i + "> <font color='black'>");
+
             pagingHtml.append(i);
             pagingHtml.append("</a>");
             
@@ -89,7 +90,7 @@ public class AdminPaging {
       // 다음 block 페이지
       if(totalPage - startPage >= blockPage)
       {
-         pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1) + ">");
+         pagingHtml.append("<a class='page next' href=" + requestName + ".do?currentPage=" + (endPage + 1) + "> <font color='black'>");
          //pagingHtml.append((endPage+1));
          pagingHtml.append(">");
          //pagingHtml.append("다음");
@@ -171,8 +172,6 @@ public class AdminPaging {
             pagingHtml.append("다음");
             pagingHtml.append("</a>");
          }
-
-            
       }
 
    

@@ -200,6 +200,10 @@
 	background-color:#eee;
 	font-size:14px;
 	}
+	.paging{
+    font-size:17px;
+    margin-left:450px;
+    }
 	
 	
 </style>
@@ -297,7 +301,23 @@
 				</div>
 		</c:otherwise>
     </c:choose>
+    <!-- 현재 페이지 번호를 저장 -->
+    <div class="paging">
+       ${pagingHtml}
+    </div>
    </div>
+   
+    <!--스크립트 정의  -->
+<script type="text/javascript">
+   
+   //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
+    function fn_search(pageNo){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/adminTripList.do' />");
+        comSubmit.addParam("currentPageNo", pageNo);
+        comSubmit.submit();
+    }
+</script>
    
     
    
