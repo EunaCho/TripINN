@@ -16,8 +16,13 @@ public class MypageServiceImpl implements MypageService{
 	@Resource(name="mypageDAO")// @Repository에 DAO 등록 
 	private MypageDAO mypageDAO;
 	
+	//---------------------------------알림판 -------------------------------------------
+	@Override
+	public Map<String, Object> selectMember(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectMember(map);
+	}
 	
-	//-------메시지 ------//
+	//-----------------------------------------메시지 ---------------------------------------------//
 	//보낸메시지 리스트 
 	@Override
 	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception{
@@ -49,7 +54,7 @@ public class MypageServiceImpl implements MypageService{
 		mypageDAO.insertMsgWrite(map);
 	}
 	
-	//-------숙소목록------//
+	//----------------------------------------숙소목록---------------------------------------------//
 	
 	//숙소목록 리스트
 	@Override
@@ -75,6 +80,11 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectMy_ReserList(map);
+	}
+	//예약 취소 리스트 
+	@Override
+	public List<Map<String,Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectH_ReserDeleteList(map);
 	}
 	//예약관리 상세보기 
 	@Override
@@ -104,8 +114,72 @@ public class MypageServiceImpl implements MypageService{
 	}
 	
 	
-	//-------트립목록 ------//
-
+	//------------------------------트립목록 ------------------------------------//
+	//트립목록
+	@Override 
+	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectTripList(map);
+	}
+	//트립리스트 상세보기 
+	@Override 
+	public Map<String, Object> selectTripDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectTripDetail(map);
+	}
+	//해당트립 예약 현황 리스트
+	@Override 
+	public List<Map<String, Object>> selectT_ReserList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectT_ReserList(map);
+	}
+	//해당 트립 메시지 리스트 
+	@Override 
+	public List<Map<String, Object>> selectT_MsgList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectT_MsgList(map);
+	}
+	//예약관리 리스트 
+	@Override 
+	public List<Map<String, Object>> selectMy_TReserList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectMy_TReserList(map);
+	}
+	//예약관리 예약 상세보기 
+	@Override 
+	public Map<String, Object> selectT_ReserDetail(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectT_ReserDetail(map);
+	}
+	//예약취소 목록에서 숙소 삭제
+	@Override
+	public void deleteReserDelete(Map<String, Object> map) throws Exception{
+		mypageDAO.deleteReserDelete(map);
+	}
+	
+	//에약 취소 상태 update
+	@Override 
+	public void updateTr_delete_state1(Map<String, Object> map) throws Exception{
+		mypageDAO.updateTr_delete_state1(map);
+	}
+	@Override 
+	public void updateTr_delete_state2(Map<String, Object> map) throws Exception{
+		mypageDAO.updateTr_delete_state2(map);
+	}
+	@Override 
+	public void updateTr_delete_state3(Map<String, Object> map) throws Exception{
+		mypageDAO.updateTr_delete_state3(map);
+	}
+	//deletedate update
+	@Override 
+	public void updateTr_delete_date(Map<String, Object> map) throws Exception{
+		mypageDAO.updateTr_delete_date(map);
+	}
+	//예약 취소 리스트
+	@Override
+	public List<Map<String, Object>> selectT_ReserDeleteList(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectT_ReserDeleteList(map);
+	}
+	
+	//예약취소 리스트에서 예약취소 목록 삭제하기 
+	@Override
+	public void deleteT_ReserDelete(Map<String, Object> map) throws Exception{
+		mypageDAO.deleteT_ReserDelete(map);
+	}
 	//-------프로필------//
 
 	//-------프로필------//

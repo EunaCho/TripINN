@@ -95,7 +95,7 @@ function reserDetail(idx, hr_idx){
 					<td width="150px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>사진</strong></font>
 					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>입실일~퇴실일</strong></font></td>
 					<td width="150px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>지불가격</strong></font></td>
-					<td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>대금지급여부</strong></font></td>
+					<td width="110px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>대금지급여부</strong></font></td>
 				</tr>
 					
 				<tr>
@@ -159,7 +159,7 @@ function reserDetail(idx, hr_idx){
 					<td colspan="7" align="center">예약한 숙소가 없습니다. 지금 숙소를 예약해 보세요~!</td>
 				</tr>
 				<tr bgcolor="#777777">
-					<td height="1" colspan="1"></td>
+					<td height="1" colspan="7"></td>
 				</tr>
 			</c:otherwise>
 			</c:choose> 

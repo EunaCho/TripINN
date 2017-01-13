@@ -60,9 +60,9 @@
 
 </style>
 <script>
-function reserD_Detail(idx, hr_idx){
-	document.detailForm.HOUSE_IDX.value=idx;
-	document.detailForm.HR_IDX.value=hr_idx;
+function reserD_Detail(idx, tr_idx){
+	document.detailForm.TRIP_IDX.value=idx;
+	document.detailForm.TR_IDX.value=tr_idx;
 	document.detailForm.submit();
 }
 </script>
@@ -70,16 +70,16 @@ function reserD_Detail(idx, hr_idx){
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/house.do" class="side-text">숙소목록</a>
+			<a href="<%=cp%>/mypage/trip.do" class="side-text">트립목록</a>
 		</div>
 	
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>	
+			<a href="<%=cp%>/mypage/tripReser.do" class="side-text">예약관리</a>	
 		</div>
 		
 		<div class="side_list">
-				<a href="<%=cp%>/mypage/H_reserDelete.do" class="side-text">예약취소 관리</a>
-		</div>	
+				<a href="<%=cp%>/mypage/T_reserDelete.do" class="side-text">예약취소 관리</a>
+		</div>		
 	</div>
 
 	<div class="right_div">
@@ -91,7 +91,7 @@ function reserD_Detail(idx, hr_idx){
 				<tr>
 					<td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>번호</strong></font></td>
 					<td width="150px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약자명</strong></font></td>
-					<td width="330px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>숙소명</strong></font></td>
+					<td width="330px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>트립명</strong></font></td>
 					<td width="150px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>사진</strong></font>
 					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>취소신청 날짜</strong></font></td>
 					<td width="170px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>환불가격</strong></font></td>
@@ -104,9 +104,9 @@ function reserD_Detail(idx, hr_idx){
 				</tr>
 		<c:choose>
 			<c:when test="${fn:length(list)>0}">
-			<form method="post" action="<%=cp%>/mypage/houseReserD_Detail.do" name="detailForm">
-			<input type="hidden" name="HOUSE_IDX" value=""/>
-			<input type="hidden" name="HR_IDX" value=""/>
+			<form method="post" action="<%=cp%>/mypage/tripReserD_Detail.do" name="detailForm">
+			<input type="hidden" name="TRIP_IDX" value=""/>
+			<input type="hidden" name="TR_IDX" value=""/>
 				<c:forEach var="list" items="${list}" varStatus="status">
 				<tr>
 					<td align="center" bgcolor="#f3f3f3">
@@ -116,22 +116,25 @@ function reserD_Detail(idx, hr_idx){
 					</td>
 					<td align="center" bgcolor="#f3f3f3">
 						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
-							${list.HR_NAME} / ${list.HR_IDX}
+							${list.TR_NAME} / ${list.TR_IDX}
 						</font>
 					</td>
 					<td align="center" bgcolor="#f3f3f3">
-						<a href="javascript:reserD_Detail(${list.HOUSE_IDX}, ${list.HR_IDX});" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
-						${list.HOUSE_NAME}
+						<a href="javascript:reserD_Detail(${list.TRIP_IDX}, ${list.TR_IDX});" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						${list.TRIP_NAME}
 						</a>
 					</td>
+					
 					<td>
-						<img height="80px" width="145px;" src="<%=cp%>/images/house/${list.HOUSE_IMAGE}">
+						<img height="80px" width="145px;" src="<%=cp%>/images/trip/${list.TRIP_IMAGE}">
 					</td>
+					
 					<td align="center" bgcolor="#f3f3f3">
 						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
-						${list.HR_DELETE_DATE}
+						${list.TR_DELETE_DATE}
 						</font>
 					</td>
+					
 					<td align="center" bgcolor="#f3f3f3">
 						<font style="color:#3c3c3c; letter-spacing:1px; font-size:12px; font-style:'바탕체'">
 						환불가격
@@ -140,7 +143,7 @@ function reserD_Detail(idx, hr_idx){
 				
 					<td align="center" bgcolor="#f3f3f3">
 					<c:choose>
-						<c:when test="${list.HR_DELETE_STATE eq '1'}">
+						<c:when test="${list.TR_DELETE_STATE eq '1'}">
 							<font style="color:#3c3c3c; letter-spacing:2px; font-size:12px; font-style:'바탕체'">요청중</font>
 						</c:when>
 						
@@ -152,7 +155,7 @@ function reserD_Detail(idx, hr_idx){
 					
 					<td align="center" bgcolor="#f3f3f3">
 					<c:choose>
-						<c:when test="${list.HR_DELETE_STATE eq '3'}">
+						<c:when test="${list.TR_DELETE_STATE eq '3'}">
 							<font style="color:#3c3c3c; letter-spacing:2px; font-size:12px; font-style:'바탕체'">완료</font>
 						</c:when>
 						<c:otherwise>
@@ -161,17 +164,18 @@ function reserD_Detail(idx, hr_idx){
 					</c:choose>
 					</td>
 				</tr>
+				
 				<tr>
 					<td colspan="8"><hr/></td>
 				</tr>
 					
 				</c:forEach>
-				</form>
+			</form>
 			</c:when>
 			
 			<c:otherwise>
 				<tr bgcolor="#FFFFFF" align="center">
-					<td colspan="8" align="center">예약취소 신청한 숙소가 없습니다.</td>
+					<td colspan="8" align="center">예약취소 한  트립이 숙소가 없습니다.</td>
 				</tr>
 				<tr bgcolor="#777777">
 					<td height="1" colspan="8"></td>

@@ -27,11 +27,12 @@
 	}
 	
 	.right_div{
-		border:1px solid black;
+/* 		border:1px solid black; */
 		margin-left:40px;
 		width:900px;
-		height:100%;
 		
+		overflow:hidden;
+		height:auto;
 		float:left;
 		top:114px;
 		left:220px;
@@ -158,7 +159,9 @@ function houseDetail(idx) {
 						<img class="poto_div1" src="<%= cp %>/images/house/${list.HOUSE_IMAGE}">
 						</div>
 						<div class="price_div">
-							${list.HOUSE_TOTAL_PRICE}\
+							<font style="color:#3c3c3c; font-weight:solid; font-size:15px; font-style:'바탕체'">
+								가격: ${list.HOUSE_TOTAL_PRICE}&nbsp;&nbsp;<strong>\</strong>
+							</font>
 						</div>
 					</div>
 					
