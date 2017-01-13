@@ -5,9 +5,9 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 
 <!-- 작성자: 이진욱 -->
-<!-- 스타일 적용1 -->
+<!-- 좌측영역 스타일 적용1 -->
 <style>   
-ul{width:172px;height:340px;background-color:#c2e4e7;opacity:0.45;list-style:none;padding-top:1px;}
+ul{width:172px;height:340px;background-color:#c2e4e7;list-style:none;padding-top:1px;}
 li{margin-right:50px }
 a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 </style>
@@ -16,7 +16,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 
  <!-- 가운데 윗 영역 -->
 <div style="width:100%;height:10%;border:1px solid black;text-align:center;">
-   <h2>Q&A 페이지에 오신걸 환영합니다.</h2>
+   <h2>FAQ 페이지에 오신걸 환영합니다.</h2>
    </div>
 
 <!-- 가운데 영역 전체 -->
@@ -27,15 +27,18 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 <div style="width:15%; height:380px;  float:left;text-align:center; ">
    
    <ul>
-  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>시작하기</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>호스팅</h2></a></li>
+  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
 
-      <li><a href = "http://www.naver.com"><h2>여행</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>트립</h3></a></li>
+      <li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
+      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
 
-      <li><a href = "http://www.daum.net"><h2>후기</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>정책</h3></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>문의하기</h3></a></li>
+      <li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+      
+      <li><a><h2>문의게시판</h2></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
 
 
    </ul>
@@ -51,14 +54,14 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 	
 	<!-- Qna게시판 글씨 덮는 영역 -->
 	<div class="row" style="width:1172px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
-   		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>QnA</strong> 게시판</font>
+   		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>Faq</strong> 도움말</font>
 	</div>
 	
 	<table class="board_list">
 	<!--<table style="border:1px solid #ccc">-->
     <colgroup>
         <col width="10%"/>
-        <col width="*"/>
+        <col width="*";">
         <col width="15%"/>
         <col width="15%"/>
         <col width="20%"/>
@@ -66,7 +69,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
     <thead>
         <tr>
             <th scope="col">글번호</th>
-            <th scope="col">제목</th>
+            <th scope="col">문제해결</th>
             <th scope="col">작성자</th>
             <th scope="col">조회수</th>
             <th scope="col">작성일</th>
@@ -99,9 +102,6 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
         	</c:choose>        
     	</tbody>
 	</table>
-
-    	<!-- 현재 페이지 번호를 저장 -->
-    	<input type="hidden" id="currentPageNo" name="currentPageNo"/> 
       
     
     	<!--  <div class="paging" style="text-align: center;">${pagingHtml}</div>-->

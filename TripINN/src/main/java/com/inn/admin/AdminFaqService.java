@@ -5,7 +5,22 @@ import java.util.Map;
 
 
 public interface AdminFaqService {
+	//faq에 나타내는 리스트
+	List<Map<String, Object>> faqBoardList(Map<String, Object> map) throws Exception;
 
-	List<Map<String, Object>> FaqBoardList(Map<String, Object> map) throws Exception;
+	//faq 이용방법 글쓰기 
+    void adminFaqInsert(Map<String, Object> map) throws Exception;
+
+    //faq 수정
+	void adminFaqUpdate(Map<String, Object> map) throws Exception;
+
+	//faq 상세보기역
+    Map<String, Object> adminFaqSelectDetail(Map<String, Object> map) throws Exception;
+
+    //faq 삭제
+	void adminFaqDelete(Map<String, Object> map) throws Exception;
+	
+	
+    
 
 }
