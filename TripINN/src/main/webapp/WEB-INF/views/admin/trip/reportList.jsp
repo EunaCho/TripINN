@@ -110,7 +110,10 @@
 	background-color:#eee;
 	font-size:14px;
 	}
-	
+	.paging{
+    font-size:17px;
+    margin-left:450px;
+    }
 	
 	
 	
@@ -194,6 +197,10 @@
 				</div>
 		</c:otherwise>
     </c:choose>
+     <!-- 현재 페이지 번호를 저장 -->
+    <div class="paging">
+       ${pagingHtml}
+    </div>
    </div>
      <!--스크립트 정의  -->
 <script type="text/javascript">
@@ -202,7 +209,13 @@
 		document.frm.REPORT_IDX.value = REPORT_IDX;
 		document.frm.submit();
 	}
-	
+	 //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
+    function fn_search(pageNo){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/adminTripReportList.do' />");
+        comSubmit.addParam("currentPageNo", pageNo);
+        comSubmit.submit();
+	 }
 </script>
  
     
