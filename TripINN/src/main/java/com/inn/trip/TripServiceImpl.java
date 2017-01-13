@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
+import com.common.common.CommandMap;
+
 @Service("tripService")
 public class TripServiceImpl implements TripService {
 	
@@ -89,6 +91,16 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
 		return tripDAO.selectTripListSearch(map);
+	}
+
+	@Override
+	public void insertBookMark(Map<String, Object> map) {
+		tripDAO.insertBookMark(map);
+	}
+
+	@Override
+	public void deleteBookMark(Map<String, Object> map) {
+		tripDAO.deleteBookMark(map);
 	}
 
 }

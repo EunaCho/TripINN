@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.common.common.CommandMap;
+
 public interface TripService {
 
 	void tripRegist(Map<String, Object> map, HttpServletRequest request) throws Exception;
@@ -34,6 +36,10 @@ public interface TripService {
 	List<Map<String, Object>> likeCheckList(Map<String, Object> map);
 
 	Map<String, Object> selectTripListSearch(Map<String, Object> map);
+
+	void insertBookMark(Map<String, Object> map);
+
+	void deleteBookMark(Map<String, Object> map);
 
 	
 }

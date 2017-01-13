@@ -17,7 +17,8 @@
 <script src="/TripINN/js/trip/main.js" type="text/javascript"></script>
 <script>
 var member_idx = "${sessionScope.member_idx}";
-
+var fav = "${trip.FAV}";
+var favNum = 0;
 	function tripReserve() {
 		if(member_idx != null && member_idx!="") {
 			var rform = document.rform;
@@ -74,12 +75,41 @@ var member_idx = "${sessionScope.member_idx}";
 					}
 				});
 			}
+			
+			
 		} else {
 			alert("로그인 후 이용 가능합니다.");
 			return;
 		}
 	}
-	
+	//즐겨찾기 기능
+	function tripFav(idx) {
+		if(member_idx != null && member_idx!="") {
+			var cnt = 0;
+			if($("#heartImg").attr("class")=="heartImg " || $("#heartImg").attr("class")=="heartImg") { //즐겨찾기 추가 
+				var _url = "/TripINN/tripBookmark.do";
+				$("#heartImg").attr("class", "heartImg on");
+			} else { // 삭제
+				cnt = -1;
+				var _url = "/TripINN/tripBookmarkDelete.do";
+				$("#heartImg").attr("class", "heartImg");
+			}
+			
+			$.ajax({
+				url: _url,
+				type: "GET",
+				async:true,
+				dataType: "Text", 
+				data: {"trip_idx": idx, "cnt": cnt, "member_idx":member_idx},
+				success: function(data) {
+					
+				}
+			});
+		} else {
+			alert("로그인 후 이용 가능합니다.");
+			return;
+		}
+	}
 	function fn_search(pageNo){
         var reviewForm = document.reviewForm;
         reviewForm.action = "/TripINN/tripDetail.do";
@@ -87,6 +117,12 @@ var member_idx = "${sessionScope.member_idx}";
         reviewForm.submit();
     }
 </script>
+<style>
+.heartImg { width:25px;height:25px;float:right;margin:20px;margin-right:50px;cursor:pointer;
+			background-image:url(/TripINN/images/house/icon_heart_white.png);background-size:100% 100%;background-repeat: no-repeat; }
+.heartImg:hover {background-image:url(/TripINN/images/house/icon_heart_red.png);}
+.on{background-image:url(/TripINN/images/house/icon_heart_red.png);}
+</style>
 <form name="rform" method="post">
 	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}"/>
 </form>
@@ -95,7 +131,10 @@ var member_idx = "${sessionScope.member_idx}";
 		<div id="left-info">
 			<div class="trDiv">
 				<div class="tdDiv-col" style="height:auto;">
-					<p><b><font style="font-size:20px;">${trip.TRIP_NAME }</font> - ${trip.TRIP_AREA }</b></p> 
+					<p style="float:left;"><b><font style="font-size:20px;">${trip.TRIP_NAME }</font> - ${trip.TRIP_AREA }</b></p>
+					<span class="heartImg <c:if test='${trip.FAV != 0 }'>on</c:if>" 
+						id="heartImg"  title="즐겨찾기" onclick="tripFav('${trip.TRIP_IDX}');">
+					</span>
 				</div>
 				
 			</div>
@@ -108,7 +147,7 @@ var member_idx = "${sessionScope.member_idx}";
 				
 				<p style="width:350px;float:left;">호스트 : <font color="#1E6198">${trip.MEMBER_NAME }</font> 님
 					<div style="width:150px;height:auto;float:right;margin-top:-30px;">
-						<img src="/TripINN/images/공유.png" class="hostImg" />
+						<img src="/TripINN/images/${trip.MEMBER_IMAGE }" class="hostImg"/>
 					</div>
 				</p>
 				</div>
@@ -242,7 +281,7 @@ var member_idx = "${sessionScope.member_idx}";
 			<c:forEach items="${rlist }" var="rlist" varStatus="stat">
 			<div class="trDiv" style="border-bottom:1px solid #a6a6a6;">
 				<div class="tdDiv-left" style="font-size:12px;width:20%;height:auto;font-family:'Nanum Gothic',malgun Gothic,dotum;padding:5px;">
-					<img src="/TripINN/images/공유.png" class="hostImg" /><br />
+					<img src="/TripINN/images/${rlist.MEMBER_IMAGE }" class="hostImg" /><br />
 					<span style="padding:3px;">${rlist.MEMBER_NAME } 님</span>
 					<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
 						<p style="WIDTH: ${rlist.TRB_STAR * 20}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">

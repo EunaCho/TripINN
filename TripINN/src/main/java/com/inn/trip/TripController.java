@@ -245,4 +245,26 @@ public class TripController {
 		mv.addObject("trb_like", trb_like);
 		return mv;
 	}
+	
+	@RequestMapping(value="/tripBookmark.do", method=RequestMethod.GET)
+	public void tripBookmark(HttpServletRequest request) throws Exception{
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_idx", request.getParameter("member_idx"));
+		map.put("trip_idx", request.getParameter("trip_idx"));
+
+		tripService.insertBookMark(map);
+		
+	}
+	
+	@RequestMapping("/tripBookmarkDelete.do")
+	public void tripBookmarkDelete(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_idx", request.getParameter("member_idx"));
+		map.put("trip_idx", request.getParameter("trip_idx"));
+		
+		System.out.println("get(member_idx) : " + map.get("member_idx"));
+		System.out.println("get(trip_idx) : " + map.get("trip_idx"));
+		tripService.deleteBookMark(map);
+	}
 }
