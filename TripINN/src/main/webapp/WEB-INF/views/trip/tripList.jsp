@@ -242,14 +242,18 @@ var curNum = 1;
 				</div>
 				<hr style="margin-top:-1px;width:100%;" />
 				<div class="right-middle">
-				<c:if test="${empty list }">
+				
+				<c:forEach var="trip" items="${list }" >
+				<c:if test="${trip.TOTAL_COUNT == 0}">
 					<div style="width:100%;height:100%;background-color:#F8F8F8;padding-top:120px;">
 						<h2><font style="color:#000;font-size:20px;margin-top:100px;">조회된 결과가 없습니다.</font></h2>
 					</div>
 				</c:if>
-				<c:forEach var="trip" items="${list }" >
+				<c:if test="${trip.TOTAL_COUNT != 0}">
 				<c:set var="fullImg" value="${trip.TRIP_IMAGE }"/>
 					<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+						<fmt:formatNumber var="sum" value="${trip.TRB_STAR}" pattern="#.##"/>
+						<fmt:formatNumber var="cnt" value="${trip.TOTAL_CNT}" pattern="#.##"/>
 					<div class="trip-info">
 						<div class="trip-img" style="background-image:url('/TripINN/images/trip/${tripImg }');cursor:pointer;"
 							onclick="newShowHotelPhoto('${trip.TRIP_IDX}')"></div>
@@ -259,8 +263,25 @@ var curNum = 1;
 								<span style="float:right">
 									최대 <font color="#cb4242">${trip.TRIP_PERSONS}</font> 명
 								</span>
-								<br />
-								<span>
+								<div style="clear:both;padding:2px;"></div>
+								<span style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
+									<p style="<c:if test="${trip.TOTAL_CNT != 0}">width:${sum * 20 / cnt}%;</c:if>
+											  <c:if test="${trip.TOTAL_CNT == 0}">width:0%;</c:if>
+									 PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+									</p>&nbsp;&nbsp;
+								</span>
+								<span style="float:left;width:50px;margin-left:10px;">
+										<font color="#cb4646" size="2">
+										<c:if test="${trip.TOTAL_CNT != 0}">
+										<fmt:formatNumber value="${sum / cnt}" pattern="#.#"/>
+										</c:if> 
+										<c:if test="${trip.TOTAL_CNT == 0}">
+										0
+										</c:if>
+										</font>점
+								</span>
+								<div style="clear:both;padding:2px;"></div>
+								<span style="margin-top:-5px;">
 								${trip.TRIP_ADDR1 } <br />
 								<fmt:formatDate value="${trip.TRIP_FIRST_DATE }"/>
 								 ~
@@ -281,10 +302,11 @@ var curNum = 1;
 							</div>
 						</div>
 					</div>
+					</c:if>
 				</c:forEach>
 				<c:if test="${not empty paginationInfo}">
 				<div style="clear:both;"></div>
-				<div class="trDiv" style="width:100%;">
+				<div class="trDiv" style="width:100%;margin-top:20px;">
 					<div class="tdDiv-col" id="pagingDiv" style="text-align:center;height:30px;margin-top:10px;">
 	        		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
 	        		</div>
