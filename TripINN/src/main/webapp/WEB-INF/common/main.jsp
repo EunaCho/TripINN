@@ -7,112 +7,12 @@
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
-<script type="text/javascript" src="<%= cp %>/js/scrollnews.js"></script> <!-- 롤링 스클 -->
-
+<script src="http://code.jquery.com/jquery-1.7.1.js"></script><!-- 롤링 스크롤 -->
+  
 <script src="<%= cp %>/js/main.js"></script>
 <link rel="stylesheet" href="/TripINN/css/main.css" />
 
 
-
-<script>
-
-function preSearch() {
-	if(confirm("확인요?")) {
-		return true;
-	} else {
-	return false;
-	}
-	document.preSearchForm.submit();
-}
-
-</script>
-<style>
-        * { margin:0px; padding:0px; }
-        /* Animation Canvas */
-        .animation_canvas  {
-            overflow:hidden;
-            position:relative;     
-            margin:30px;     
-            float:left; 
-            width:900px; height:400px;
-        }
-    
-        /* Slider Panel */
-        .slider_panel { width:4500px; position:relative; }
-        .slider_image { float:left; width:900px; height:400px; }
-    
-        /* Slider Text Panel */
-        .slider_text_panel { position:absolute; top:200px; left:50px; }
-        .slider_text { position:absolute; width:250px; height:150px; color:white;}
-    
-        /* Control Panel */
-        .control_panel  {
-            position:absolute; top:380px; 
-            left:270px; height:13px; 
-            overflow:hidden; 
-        }
-
-        .control_button {
-            width:12px; height:46px;
-            position:relative; 
-    
-            float:left; cursor:pointer;  
-            background:url('/TripINN/images/point_button.png');
-        }
-        .control_button:hover { top:-16px; }
-        .control_button.active { top:-31px; }
-    </style>
-    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
-    <script>
-        $(document).ready(function () {
-            // 슬라이더를 움직여주는 함수
-            function moveSlider(index) {
-                // 슬라이더를 이동합니다.
-                var willMoveLeft = -(index * 900);
-                $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
-
-                // control_button에 active클래스를 부여/제거합니다.
-                $('.control_button[data-index=' + index + ']').addClass('active');
-                $('.control_button[data-index!=' + index + ']').removeClass('active');
-
-                // 글자를 이동합니다.
-                $('.slider_text[data-index=' + index + ']').show().animate({
-                    left: 0
-                }, 'slow');
-                $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
-                    $(this).css('left', -300);
-                });
-            }
-
-            // 초기 텍스트 위치 지정 및 data-index 할당
-            $('.slider_text').css('left', -300).each(function (index) {
-                $(this).attr('data-index', index);
-            });
-
-            // 컨트롤 버튼의 클릭 핸들러 지정 및 data-index 할당
-            $('.control_button').each(function (index) {
-                $(this).attr('data-index', index);
-            }).click(function () {
-                var index = $(this).attr('data-index');
-                moveSlider(index);
-            });
-
-            // 초기 슬라이더 위치 지정
-            var randomNumber = Math.round(Math.random() * 3);
-            moveSlider(randomNumber);
-        });
-        
-      /*   //3초마다 이미지 오른쪽으로 이동
-        var auto_slider = setlnterval(function() {
-        	if (auto_slider > 4) {
-        		auto_slider = 0;
-        	}
-        	moveSlider(auto_slider);
-        }, auto_time); */
-        
-
-        
-    </script>
 
 <!-- 메인 바디 -->
 <div style="width:100%;height:1300px;border:;text-align:center;">
@@ -158,14 +58,114 @@ function preSearch() {
             <div class="control_button"></div>
         </div>
     </div>
+    
 
+	<!-- 공지사항 블록 -->
+	<div class="noticeBlock">
+	
+	 <!-- 공지사항 -->
+    <div class="noticeCont">
+    	<div class="tab">
+        	<h4 class="tab1 on"><a href="#tabNotice">공지사항</a></h4>
+            	<div class="tabContent" id="tabNotice" style="display: block;">
+                	<h4 class="hide_el">공지사항</h4>
+                    	<ul>
+                        	<li>
+                            	<a id="rptNotice_ctl00_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15719" style="font-weight:bold;">공지사항을</a>
+                                <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
+                            </li>
+							<li>
+                                <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">넣읍시다</a>
+                                <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl02_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15679" style="font-weight:bold;">누가좀</a>
+                                <img id="rptNotice_ctl02_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl02_lblDate">2017/01/10</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl03_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15639" style="font-weight:bold;">만들어주새오</a>
+                                <img id="rptNotice_ctl03_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl03_lblDate">2017/01/09</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl04_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15619" style="font-weight:normal;">아직도 안끝났네</a>
+                                <span id="rptNotice_ctl04_lblDate">2017/01/04</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl05_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15559" style="font-weight:normal;">줄은 더 못늘리겠네</a>
+                                <span id="rptNotice_ctl05_lblDate">2017/01/02</span>
+                            </li>
+                                        
+                      </ul>
+                </div>
+                <p class="more">
+               		<a href="javascript:MoreNews();">
+               		<img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
+                </p>
+        </div>
+    </div>
+    
+    <!-- 사용가이드 -->
+
+    <div class="noticeCont">
+    	<div class="tab">
+        	<h4 class="tab2 on"><a href="#tabNotice">FAQ</a></h4>
+            	<div class="tabContent" id="tabNotice" style="display: block;">
+                	<h4 class="hide_el">FAQ</h4>
+                    	<ul>
+                        	<li>
+                            	<a id="rptNotice_ctl00_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15719" style="font-weight:bold;">호놀룰룰루</a>
+                                <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
+                            </li>
+							<li>
+                                <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">3일남았당</a>
+                                <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl02_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15679" style="font-weight:bold;">FAQ넣기 넣기넣기</a>
+                                <img id="rptNotice_ctl02_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl02_lblDate">2017/01/10</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl03_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15639" style="font-weight:bold;">금요일에 야근하는거 아니야</a>
+                                <img id="rptNotice_ctl03_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
+                                <span id="rptNotice_ctl03_lblDate">2017/01/09</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl04_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15619" style="font-weight:normal;">금요일에 야근하는거 아니야</a>
+                                <span id="rptNotice_ctl04_lblDate">2017/01/04</span>
+                            </li>
+                            <li>
+                                <a id="rptNotice_ctl05_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15559" style="font-weight:normal;">금요일에 야근하는거 아니야</a>
+                                <span id="rptNotice_ctl05_lblDate">2017/01/02</span>
+                            </li>
+                                        
+                      </ul>
+                </div>
+                <p class="more">
+               		<a href="javascript:MoreNews();">
+               		<img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
+                </p>
+        </div>
+    </div>
+
+	</div>
+	
+	    
+   
 	<!-- 왼쪽 간편검색바 -->
 	<div id="leftDiv">
 	<form method="POST" action="house/houseMain.do" name="preSearchForm" id="preSearchForm">
 		<div> 
-			<h3>숙소 검색하기</h3><br/>
+			<h2>숙소 검색하기</h2><br/>
 			<input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
 		</div>
+		
 		<div style="margin-top:10px;">
 			<div class="date">체크인<br/>
 			<input type="text" name="hri_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
@@ -174,8 +174,9 @@ function preSearch() {
 			<input type="text" name="hri_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
 			</div>
 		</div>
-		<div class="select">
-			객실: <select name="room"> 
+		<!-- <div style="clear:both;"></div> -->
+		<div class="select">객실<br/>
+		<select name="room"> 
 				<option value="">객실 수</option>
 				<option value="1" <c:if test="${room eq 1}">selected="selected"</c:if> >1개</option>
 				<option value="2" <c:if test="${room eq 2}">selected="selected"</c:if> >2개</option>
@@ -183,7 +184,9 @@ function preSearch() {
 				<option value="4" <c:if test="${room eq 4}">selected="selected"</c:if> >4개</option>
 				<option value="5" <c:if test="${room eq 5}">selected="selected"</c:if> >5개</option>
 			</select>
-			인원: <select name="person"> 
+		</div>
+		<div class="select">인원<br/>
+		<select name="person"> 
 				<option value="">인원</option>
 				<option value="1" <c:if test="${adult eq 1}">selected="selected"</c:if> >1명</option>
 				<option value="2" <c:if test="${adult eq 2}">selected="selected"</c:if> >2명</option>
@@ -192,7 +195,35 @@ function preSearch() {
 				<option value="5" <c:if test="${adult eq 5}">selected="selected"</c:if> >5명</option>
 			</select>
 		</div>
-		
+		<!-- 여행 목적 선택 -->
+		<div class="hc_f_triptype">
+                <div class="hc_f_triptype_label">
+                    <span>여행목적</span> <em>(선택사항)</em>
+                </div>
+                <div class="hc_f_triptype_options">
+                    <label for="hc_f_id_triptype_2_1">
+                        <span>휴가</span>
+                        <input type="radio" name="hc_f_triptype_1" id="hc_f_id_triptype_2_1" value="2" data-triptype="Leisure">
+                    </label>
+                    <label for="hc_f_id_triptype_1_1">
+                        <span>출장</span>
+                        <input type="radio" name="hc_f_triptype_1" id="hc_f_id_triptype_1_1" value="1" data-triptype="Business">
+                    </label>
+                    <div class="hc_f_triptype_help">
+                        <div class="hc_f_triptype_tooltip_wrapper">
+                            <div class="hc_f_triptype_tooltip" data-triptypetooltip="" style="top: -45px; display: none;">
+                                <h3>여행 목적:</h3>
+                                <ul>
+                                    <li class="hc_f_triptype_tooltip_personal"><strong>여행:</strong> 예산, 위치, 이용 후기 등을 고려하여 최고의 숙소를 추천해 드립니다.</li>
+                                    <li class="hc_f_triptype_tooltip_business"><strong>출장:</strong> 비즈니스 여행자에게 인기 있는 숙소를 추천해 드립니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0);" class="hc_f_triptype_help_icon" data-triptypeicon=""></a>
+                    </div>
+                    <div class="cDivBoth"></div>
+                </div>
+            </div>
 
 	<!-- 	<a href="/TripINN/house/houseMain.do" onclick="preSearch();" class="pre_srch_submit">
 		//<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a> -->
