@@ -102,10 +102,6 @@
 	
 <!-- 마이페이지  -->
 
-
-	
-	<!-- 마이페이지  -->
-
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -157,7 +153,7 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
-	<definition name="houseDetail" template="/WEB-INF/common/layout.jsp">
+	<definition name="my_HouseDetail" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/houseDetail.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
@@ -169,7 +165,6 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
-
 	<definition name="houseReserDetail" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserDetail.jsp"/>
@@ -188,7 +183,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserDelete.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-
+	
 
 		<!-- 트립목록 -->
 	<definition name="tripForm" template="/WEB-INF/common/layout.jsp">
@@ -261,6 +256,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/tripWishForm.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
+
 
 	<!-- **********************house_start**********************-->
 	<!-- house layout -->

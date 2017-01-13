@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <% String cp = request.getContextPath(); %>
-
 <style>
-	.left-menu{
+	.left_div{
 		border:1px solid black;
 		margin-bottom:20px;
+		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;
@@ -17,49 +17,75 @@
     	width:150px;
     	height:27px;	
 	} 
-	
 	.side-text{
 		padding: 6px 0;
    	 	font-size: 16px;
     	color: #767676;
     	text-decoration:none
 	}
-	
-	.house_list{
+	.right_div{
 		border:1px solid black;
-		margin:5px;
-		width:900px;
-		height:450px;
-		
+	
+		margin-left:40px;
+		width:820px;
+		height:100%;
 		float:left;
 		top:114px;
 		left:220px;
 	}
-	.pro_menu2{
-		border:1px solid black;
-		margin:5px;
-		width:890px;
-		height:435px;
+	.reser_div{
+		border-bottom:2px solid #828282;
+		margin:2px;
+		width:98%;
+		height:25px;
+		
+		/* background-color:#31b0d5; */
+		font-size:16px;
+		color:#aaaaaa;
+		font-weight: 400;
+		text-align:center;
+		padding-top:5px;
 	}
-</style>
+	.reser_table{
+		margin:10px;
+		width:800px; 
+	    border:0;
+	    cellspacing:0;
+	    cellpadding:0;
+	}
+	#drop_bar ul li:hover {
+		diaplay:none;
+		float:none;
+	}
 
+</style>
+<script>
+function reserDetail(idx, hr_idx){
+	document.detailForm.HOUSE_IDX.value=idx;
+	document.detailForm.HR_IDX.value=hr_idx;
+	document.detailForm.submit();
+}
+</script>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
-	<div class="left-menu">
+	<div class="left_div">
 		<div class="side_list">
 			<a href="<%=cp%>/mypage/house.do" class="side-text">숙소목록</a>
 		</div>
 	
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>
+			<a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>	
 		</div>
+		
+		<div class="side_list">
+				<a href="<%=cp%>/mypage/H_reserDelete.do" class="side-text">예약취소 관리</a>
+		</div>	
 	</div>
 
-	<div class="house_list">
-		<div class="pro_menu2">
-			예약관리 
+	<div class="right_div">
+		<div class="reser_div">
+		 	내 숙소예약목록  
 		</div>
-<<<<<<< HEAD
 		<div>
 			<table class="reser_table">
 				<tr>
@@ -138,9 +164,8 @@
 			</c:otherwise>
 			</c:choose> 
 		</table>
-=======
->>>>>>> refs/remotes/origin/master
 		
-	</div>
+		</div><!--예약리스트   -->
+	</div><!-- 오른쪽 div -->
 </div>
 <div style="clear:both;"></div>
