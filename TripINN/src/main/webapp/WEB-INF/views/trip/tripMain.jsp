@@ -94,7 +94,7 @@
 		<div id="ment1">
 			<h4>열정을 가진 분야를 전 세계와 나누세요.</h4>
 			<span>회원님의 도시에서 체험할 수 있는 이색적인 트립을 호스팅하여 부수입을 올려보세요.</span> <br /><br />
-			<a href="javascript:fnMove('3')">트립 만들기</a>
+			<a href="javascript:tripRegist();">트립 만들기</a>
 		</div>
 	</div>
 	</div>
