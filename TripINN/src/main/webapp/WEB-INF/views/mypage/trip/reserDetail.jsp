@@ -75,67 +75,66 @@
 <script>
 	function mySubmit(idx){
 		if(idx==1){
-			document.detail.action="<%=cp%>/mypage/houseReser.do";
+			document.detail.action="<%=cp%>/mypage/tripReser.do";
 		}
 		
 		if(idx==2){
 			if(confirm("예약 취소신청을 하시겠습니까? 호스트가 확인하면 취소가 완료 됩니다.")) {
-				document.detail.action="<%=cp%>/mypage/H_reserDeleteOk.do";
+				document.detail.action="<%=cp%>/mypage/T_reserDeleteOk.do";
 			}
 		}
 	document.detail.submit();
 }
-
 </script>
 
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
+			<a href="<%=cp%>/mypage/trip.do" class="side-text">트립목록</a>
 		</div>
 	
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>
+			<a href="<%=cp%>/mypage/tripReser.do" class="side-text">예약관리</a>	
 		</div>
 		
 		<div class="side_list">
-				<a href="<%=cp%>/mypage/H_reserDelete.do" class="side-text">예약취소목록</a>
+				<a href="<%=cp%>/mypage/T_reserDelete.do" class="side-text">예약취소 관리</a>
 		</div>	
 	</div>
 
 	<div class="right_div">
-		<div class="right_div2"><strong>숙소</strong>예약내역</div>
+		<div class="right_div2"><strong>트립</strong>예약내역</div>
 		
 		<form name="detail" method="post">
-		<input type="hidden" name="HOUSE_IDX" value="${map.HOUSE_IDX}">
-		<input type="hidden" name="HR_IDX" value="${map.HR_IDX}">
+		<input type="hidden" name="TRIP_IDX" value="${map.TRIP_IDX}">
+		<input type="hidden" name="TR_IDX" value="${map.TR_IDX}">
 		<table id="reser_table">
 			<tr>
 				<th>숙소이름</th>
 				<td>
-					${map.HOUSE_NAME}
+					${map.TRIP_NAME}
 				</td>
 			</tr>
 			
 			<tr>
 				<th>위치</th>
 				<td>
-					${map.HOUSE_ADDR1} &nbsp;&nbsp; ${map.HOUSE_ADDR2} &nbsp;&nbsp; ${map.HOUSE_ADDR3}
+					${map.TRIP_ADDR1} &nbsp;&nbsp; ${map.TRIP_ADDR2} &nbsp;&nbsp; ${map.TRIP_ADDR3}
 				</td>
 			</tr>
 			
 			<tr>
 				<th>에약일시</th>
 				<td>
-					${map.HR_TIME}
+					${map.TR_TIME}
 				</td>
 			</tr>
 			
 			<tr>
 				<th>이용일</th>
 				<td>
-					${map.HR_FIRST_DATE} ~ ${map.HR_LAST_DATE}
+					${map.TR_FIRST_DATE} ~ ${map.TR_LAST_DATE}
 				</td>
 			</tr>
 			
@@ -149,21 +148,22 @@
 			<tr>
 				<th>예약인원</th>
 				<td>
-					${map.HR_PERSONS}
+					${map.TR_PERSONS}
 				</td>
 			</tr>
 			
 			<tr>
-				<th>숙소가격</th>
+				<th>트립가격</th>
 				<td>
-					${map.HOUSER_PRICE}
+					트립 총 가격: ${map.TRIP_TPRICE}
+					트립 인원당 가격: ${map.TRIP_PPRICE}
 				</td>
 			</tr>
 			
 			<tr>
 				<th>지불가격</th>
 				<td>
-					${map.HOUSE_PRICE*countDate.count_date}
+					트립 지불가격
 				</td>
 			</tr>
 			
@@ -171,7 +171,7 @@
 				<th>주의사항</th>
 				<td>
 					-예약 후 서비스 진행을 위해 정확한 휴대폰번호를 기입해주세요.<br>
-					-숙소최대 수용인원이 넘어가게 되면 추가 금액이 발생할 수 있으니 호스트에게 꼭 문의해주세요.
+					-트립 수용인원이 넘어가게 되면 추가 금액이 발생할 수 있으니 호스트에게 꼭 문의해주세요.
 				</td>
 			</tr>
 			

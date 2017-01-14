@@ -27,19 +27,21 @@
 	}
 	
 	.right_div{
-		border:1px solid #31b0d5;
+/* 		border:1px solid black; */
 		margin-left:40px;
 		width:900px;
-		height:100%;
-	
+		
+		overflow:hidden;
+		height:auto;
 		float:left;
 		top:114px;
 		left:220px;
 	}
-	.house_div{
+	.trip_div{
 		margin:2px;
 		width:98%;
 		height:25px;
+
 		font-size:16px;
 		color:#FFF;
 		font-weight: 400;
@@ -47,7 +49,7 @@
 		padding-top:5px;
 		font-style:'바탕체'
 		letter-spacing:2px;
-		
+		/* border-top:2px solid #828282; */
 		border-bottom:2px solid #828282;
 		margin:2px;
 		width:98%;
@@ -85,13 +87,13 @@
 		padding-bottom:3px;
 	}
 	
-	.h_list_div{
+	.t_list_div{
 		/* border:1px solid black;   */
 		width: 885px; 
 		height:396px;
 		margin:2px;
 	}
-	.house_menu_div{
+	.trip_menu_div{
 		border-bottom:2px solid #d2d2d2;  
 		border-top:2px solid #d2d2d2;  
 		width: 880px; 
@@ -109,15 +111,15 @@
 		float:left;
 	}
 	.position_div{
-		border-top:1px solid #3c3c3c;
 		border-bottom:1px solid #3c3c3c;
+		border-top:1px solid #3c3c3c;
 		margin:2px;
 		width:620px;
 		height:45px;
 	}
-	.h_inp_div{
+	.t_inp_div{
 		border-top:1px solid #3c3c3c;
-		
+	/* 	border-bottom:1px solid #3c3c3c; */
 		margin:2px;
 		width:620px;
 		height:113px;
@@ -198,146 +200,159 @@
 		text-align:center;
 		font-style:'바탕체'
 	}
-	.right-con { width:98%; height:100%; border: 2px solid green; margin:5px ; display: block; }
-	.list-right { width:99%; height:100%; border: 5px solid #a6a6a6; float:left; }
-	.top_div { width:50%; text-align:center; height:30px; float:left; padding-top:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:bold; }
-	.top_div:hover {border-bottom:5px solid #1E6198;cursor:pointer;}
-	.on {border-bottom:5px solid #1E6198;cursor:pointer; background-color: #f8f8f8;}
 	
 </style>
-<script>
-   function searchKind(wish_kind) {
-	   var form = document.form_kind;
-	   if(wish_kind == 1){
-	   		form.action="/TripINN/mypage/houseDetail.do";
-   		}
-	   
-	   if(wish_kind == 2){
-	   		form.action="/TripINN/mypage/houseDetail_2.do";
-  		}
-	   form.submit();
-   }
-   
-function joinConf(){
-	
-	var form=document.houseForm;
-	
-	form.action="/TripINN/house/houseModify.do";
-	
-}
-</script>
+
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
+			<a href="<%=cp%>/mypage/trip.do" class="side-text">트립목록</a>
 		</div>
 	
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>
+			<a href="<%=cp%>/mypage/tripReser.do" class="side-text">예약관리</a>
 		</div>
 	</div>
 
 	<div class="right_div">
 		
-			<div class="house_div">
-				${houseMap.HOUSE_NAME}&nbsp;&nbsp;
+			<div class="trip_div">
+				${map.TRIP_NAME}트립&nbsp;&nbsp;<strong style="font-color:#007a87;">상세보기</strong>
 			</div>
-					<div class="house_menu_div">
+				<div class="trip_menu_div">
 					<div class="menu_div">
 						<div class="poto_div">
-						<img class="poto_div1" src="<%= cp %>/images/house/${houseMap.HOUSE_IMAGE}">
+						<img class="poto_div1" src="<%= cp %>/images/trip/${map.TRIP_IMAGE}">
 						</div>
 						<div class="price_div">
 							<font style="color:#3c3c3c; font-weight:solid; font-size:15px; font-style:'바탕체'">
-								가격: ${houseMap.HOUSE_TOTAL_PRICE}&nbsp;&nbsp;<strong>\</strong>
+								가격: ${map.TRIP_PPRICE}&nbsp;<strong>\</strong>
 							</font>
 						</div>
 					</div>
 					
 					<div class="menu_div2">
-					<form name="houseForm" method="post">
-						<div class="name_div" onclick="houseDetail('${houseMap.HOUSE_IDX}')">
-							<div style="width:200px; height:auto; float:left;">
-								<font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
-								<br>
-								${status.index+1}.
-								</font>
-								<a href="javascript:houseDetail(${houseMap.HOUSE_IDX});"  style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
-									${houseMap.HOUSE_NAME}
-								</a>
-							</div>
-							<div style= " width:100px; height:auto; float:left; margin-left:307px;margin-top:14px;">
-								<input type="button" value="호스팅 수정하기" onclick="joinConf()" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; "/>
-							</div>
+						<div class="name_div" onclick="tripDetail('${map.TRIP_IDX}')">
+							<font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
+							<br>
+								${index}.
+							</font>
+							<a href="javascript:houseDetail(${map.TRIP_IDX});"  style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
+								${map.TRIP_NAME}
+							</a>
 						</div>
 						
 						<div class="position_div">
-							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:13px; font-style:'바탕체'">${houseMap.HOUSE_ADDR1} ${houseMap.HOUSE_ADDR2} ${houseMap.HOUSE_ADDR3}</font>
+							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:13px; font-style:'바탕체'; padding-left:8px;">
+								${map.TRIP_ADDR1} ${map.TRIP_ADDR2} ${map.TRIP_ADDR3}</font>
 							<br>
-							<div style="CLEAR: both;   PADDING-RIGHT: 0px;   PADDING-LEFT: 0px;   BACKGROUND: url(/TripINN/images/icon_star2.gif) 0px 0px;   FLOAT: left;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   WIDTH: 90px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
-							   <p style="WIDTH: ${houseMap.HI_TOTAL_STAR * 20}%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;"></p>
-						   </div>
-						   <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-						  	 	(${houseMap.HI_TOTAL_STAR}점)
-						   		|&nbsp;후기개수:&nbsp;${list.HCNT}개
+						   <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'; padding-left:8px;">
+						   		<strong>language:</strong> ${map.TRIP_LANGUAGE} &nbsp;| &nbsp; <strong> trip date:</strong>  ${map.TRIP_FIRST_DATE} ~${map.TRIP_LAST_DATE}
 						   	</font> 
 						</div>
-						<div class="h_inp_div">
-							<div style="border:1px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
-								<img src="<%= cp %>/images/mypage/house.jpg" style="width:35px; height:35px; float:center;">
-								<br/>
-								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-								 	kind
-								 </font>
-								 <br/>	
-								<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
-									${houseMap.HOUSE_KIND}
-								</font>
-							</div>
-							<div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
-							 	<img src="<%= cp %>/images/mypage/people.png" style="width:35px; height:35px; float:center;">
-								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+						<div class="t_inp_div">
+							<%-- <div style="border:1px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
+								<img src="<%= cp %>/images/mypage/house_kind.jpg" style="width:35px; height:35px; float:center;">
+								<br>
+								<span>${list.TRIP_INCLUDE}</span> 
+							</div>--%>
+							<div style="margin:17px 20px 15px 160px; width:70px; height:70px; float:left; text-align:center;">
+							 	<img src="<%= cp %>/images/mypage/people.png" style="width:35px; height:33px; float:center; ">
+								 	<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
 								 		persons
-								 </font>
+								 	</font>
 								<div style="width:70px; height:20px;">
 									<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
-									${houseMap.HOUSE_TOTAL_PERSONS}명 
+										${list.TRIP_PERSONS}명 
 									</font>
 								</div>
 							</div>
-							<div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
-								<img src="<%= cp %>/images/mypage/bed.jpg" style="width:35px; height:35px; float:center;">	
-								<br/>
-								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-									bed 		
-								</font>
-								<br/>
-								${houseMap.HI_BAD}개
+							
+							<div style="margin:17px 20px 15px 120px; width:70px; height:70px; float:left; text-align:center;">
+								<img src="<%= cp %>/images/mypage/active.png" style="width:33px; height:33px; float:center; padding-top:3px;">	
+									<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+										active
+									</font> 
+									
+								<div style="margin:0px; width:70px; height:20px; text-align:center;">
+									<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
+										${list.TRIP_TYPE}
+									</font>
+								</div>
 							</div>
-						</div>
-					</form>
-					</div>		
-				</div> <!-- house_menu_div End -->
+						
+						</div> <!-- t_inp_div -->
+					</div><!-- menu_div2 -->		
+				</div> <!-- trip_menu_div End -->
 				
-		
-				<div class="right-con">
-					<form name="form_kind" method="post">
-						<div class="right-top" style="border:1px solid red;">
-							<div class='top_div <c:if test="${Type eq 'reser'}">on</c:if>' onclick="searchKind(1)">예약현황</div>
-							<div class=top_div <c:if test="${Type == 'msg'}">on</c:if> onclick="searchKind(2)">메시지 현황</div>
+				<div style="border:1px solid #31b0d5; width: 880px; height:230px; margin:5px;">
+					<div class="trip_div2">
+						${map.TRIP_NAME} 예약현황
+					</div>
+					<div class="msg_menu">
+						<div class="reser_number" style="background-color: #f7f7f7; background-size:700%;">
+							예약번호
 						</div>
-					</form>
-					
-					<hr/>
-					
+						<div class="reser_div" style="background-color: #f7f7f7; background-size:700%;">
+							예약자명
+						</div>
+						<div class="reser_div" style="background-color: #f7f7f7; background-size:700%;">
+							예약인원
+						</div>
+						<div class="reser_div" style="background-color: #f7f7f7; background-size:700%;">
+							예약일자
+						</div>
+						<div class="reser_date" style="background-color: #f7f7f7; background-size:700%;">
+							입실/퇴실일자
+						</div>
+						<div class="reser_number" style="background-color: #f7f7f7; background-size:700%;">
+							대금지급여부
+						</div>
+					</div>
+			<c:choose>
+			<c:when test="${fn:length(reserList)>0 }">	
+				<c:forEach var="reserList" items="${reserList}" varStatus="status">
+					<div class="msg_menu">
+						<div class="reser_number">
+							${status.index+1}
+						</div>
+						<div class="reser_div">
+							${reserList.TR_NAME}
+						</div>
+						<div class="reser_div">
+							${reserList.TR_PERSONS}
+						</div>
+						<div class="reser_div">
+							${reserList.TR_TIME}
+						</div>
+						<div class="reser_date" >
+							${reserList.TR_FIRST_DATE} ~
+							${reserList.TR_LAST_DATE}
+						</div>
+						<div class="reser_number">
+							<c:if test="${reserList.TR_MONEY_STATE eq '1'}">
+								<p>지급완료</p>
+							</c:if>
+							<c:if test="${reserList.TR_MONEY_STATE eq '0'}">
+								<p>미지급</p>
+							</c:if>
+						</div>
+					</div>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+					<div class="msg_menu">
+						현재 예약자가 없습니다.
+					</div>
+			</c:otherwise>
+			</c:choose>
 				</div>
-	
 				
 				
-				<%-- <div style="border:1px solid blue; width:880px; height:230px; margin:5px;">
-					<div class="house_div2">
-						${houseMap.HOUSE_NAME} 숙소메시지
+				<div style="border:1px solid blue; width:880px; height:230px; margin:5px;">
+					<div class="trip_div2">
+						${map.TRIP_NAME} 숙소메시지
 					</div>
 					<div class="msg_menu">
 						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
@@ -379,7 +394,7 @@ function joinConf(){
 				</c:otherwise>
 				</c:choose>
 					
-				</div> --%>
+				</div>
 	
 	</div><!-- right_div End -->
 	
