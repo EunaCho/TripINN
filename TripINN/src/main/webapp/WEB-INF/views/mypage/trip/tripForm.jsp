@@ -36,6 +36,57 @@
 		top:114px;
 		left:220px;
 	}
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
+=======
+	.trip_div{
+		margin:2px;
+		width:98%;
+		height:25px;
+		font-size:16px;
+		color:#FFF;
+		font-weight: 400;
+		text-align:center;
+		padding-top:5px;
+		font-style:'바탕체'
+		letter-spacing:2px;
+		/* border-top:2px solid #828282; */
+		border-bottom:2px solid #828282;
+		margin:2px;
+		width:98%;
+		height:25px;
+		color:#aaaaaa;
+		text-align:center;
+		padding-top:5px;
+	}
+	.poto_div1{
+		margin:2px;
+		width:225px;
+		height:188px;
+	}
+	.poto_div{
+	 	/* border:1px solid black;  */
+		margin:2px;
+		width:230px;
+		height:193px;
+	}
+	.name_div{
+		/* border-t:1px solid #3c3c3c; */
+		border-bottom:1px solid #3c3c3c;
+		margin:2px;
+		width:615px;
+		height:55px;
+		padding-left:5px;
+	}
+	.price_div{
+		border-top:1px solid black; 
+	/* 	border-bottom:1px solid #3c3c3c; */
+		margin-top:2.5px;
+		width:230px;
+		height:20px;
+		padding-left:3px;
+		padding-bottom:3px;
+	}
+>>>>>>> 7cc560a 마이페이지 
 	
 	.pro_menu2{
 		border:1px solid black;

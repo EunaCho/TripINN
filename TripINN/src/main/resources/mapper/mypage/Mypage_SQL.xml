@@ -81,6 +81,194 @@
       	where HOUSE_IDX = #{HOUSE_IDX}
      	order by msg_idx desc
    </select>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
    <!-- 내가 등록한 트립 리스트 -->
    <!-- 트립 상세보기  -->
+=======
+   
+   <!-- 숙소목록->에약관리 리스트  -->
+   <select id="selectMy_ReserList" parameterType="hashMap" resultType="hashmap">
+   	<![CDATA[		
+   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE, hr.HOUSE_IDX, 
+   				HR_DELETE_STATE, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE
+		from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
+		where hr.MEMBER_IDX =#{MEMBER_IDX} and HR_DELETE_STATE =0
+		order by HR_IDX desc
+	]]>	
+   </select>
+   <!-- 숙소관리->예약관리-> 예약취소  리스트  -->
+   <select id="selectH_ReserDeleteList" parameterType="hashmap" resultType="hashmap">
+   	 <![CDATA[	
+   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE,hr.HOUSE_IDX, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE,
+				HR_DELETE_DATE, HR_DELETE_STATE
+		from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
+		where hr.MEMBER_IDX =#{MEMBER_IDX} and HR_DELETE_STATE >= 1
+		order by HR_IDX desc
+   	]]>
+   </select>
+   
+   <!-- 숙소관리->예약관리 ->예약관리 상세보기 -->
+   <select id="selectReserDetail" parameterType="hashMap" resultType="hashmap">
+		select hr.HOUSE_IDX, HOUSE_NAME, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_PRICE,
+   				HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE,
+   				HR_DELETE_DATE, HR_DELETE_STATE
+   		from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
+   		where hr.HOUSE_IDX = #{HOUSE_IDX} and HR_IDX=#{HR_IDX}
+   </select>
+   
+   <!-- 숙소관리->예약관리 ->예약취소 상세보기->예약취소목록 삭제 -->
+   <delete id="deleteReserDelete" parameterType="hashMap">
+		delete from HOUSE_RSV
+   		where HOUSE_IDX = #{HOUSE_IDX} and HR_IDX=#{HR_IDX}
+   </delete>
+   
+   <!-- 예약 취소 신청 예약취소 신청 상태  defalut:0 /1:신청요청중 /2:신청완료 /3:환불 완료-->
+   <update id="updateHr_delete_state_1" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_STATE = '1' where HOUSE_IDX = #{HOUSE_IDX} and HR_IDX =#{HR_IDX}
+   </update>
+   
+   <update id="updateHr_delete_state_2" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_STATE = '2' where HOUSE_IDX = #{HOUSE_IDX} and HR_IDX =#{HR_IDX}
+   </update>
+   
+    <update id="updateHr_delete_state_3" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_STATE = '3' where HOUSE_IDX = #{HOUSE_IDX} and HR_IDX =#{HR_IDX}
+   </update>
+   
+   <!-- 예약취소 신청 날자 update -->
+   <update id="updateHr_delete_date" parameterType="hashMap">
+   		update HOUSE_RSV set HR_DELETE_DATE = sysdate where HOUSE_IDX = #{HOUSE_IDX} and HR_IDX =#{HR_IDX}
+   </update>
+   
+   <!-- 숙소 머무는 날 계산  -->
+   <select id="countDate" parameterType="hashMap" resultType="hashMap">
+   		select (HR_LAST_DATE-HR_FIRST_DATE) count_date from HOUSE_RSV
+   		where HOUSE_IDX = #{HOUSE_IDX} and HR_IDX=#{HR_IDX}
+   </select>
+
+   <!--트립목록-> 내가 등록한 트립 리스트 -->
+   <select id="selectTripList" parameterType="hashmap" resultType="hashmap">
+   		select *from TRIP 
+   		where MEMBER_IDX = #{MEMBER_IDX}
+   		order by TRIP_IDX DESC
+   </select>   
+  
+   <!--트립목록->트립리스트-> 트립 상세보기  -->
+   <select id="selectTripDetail" parameterType="hashmap" resultType="hashmap">
+   		select * from TRIP
+   		where TRIP_IDX = #{TRIP_IDX}
+   </select>
+
+   <!-- 트립목록->트립상세보기-> 해당트립의 메시지 리트스 -->
+   <select id="selectT_MsgList" parameterType="hashmap" resultType="hashmap">
+   		select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+      		  HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
+      	where TRIP_IDX = #{TRIP_IDX}
+     	order by msg_idx desc
+   </select>
+   
+   <!-- 트립목록->트립상세보기->해당 트립의 예약현황 리스트  -->
+   <select id="selectT_ReserList" parameterType="hashmap" resultType="hashmap">
+   		select * from TRIP_RSV
+   		where TRIP_IDX = #{TRIP_IDX}
+   		order by TR_IDX DESC  
+   </select>
+   
+   <!-- 트립목록->예약관리->내가 예약한 트립 리스트  -->
+   <select id="selectMy_TReserList" parameterType="hashmap" resultType="hashmap">
+   	<![CDATA[		
+   		select TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE, TR_MONEY_STATE, tr.TRIP_IDX, 
+   				 TRIP_NAME, TRIP_TPRICE, TRIP_PPRICE, TRIP_IMAGE
+		from TRIP_RSV tr inner join TRIP t on tr.TRIP_IDX = t.TRIP_IDX
+		where tr.MEMBER_IDX =#{MEMBER_IDX} and TR_DELETE_STATE =0
+		order by TR_IDX desc
+	]]>
+   </select>
+   
+   <!-- 트립목록->예약관리->예약관리 상세보기 -->
+   <select id="selectT_ReserDetail" parameterType="hashMap" resultType="hashmap">
+		select tr.TRIP_IDX, TRIP_NAME, TRIP_ADDR1, TRIP_ADDR2, TRIP_ADDR3, TRIP_TPRICE ,TRIP_PPRICE,
+   				TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE,
+   				TR_DELETE_STATE, TR_DELETE_DATE
+   		from TRIP_RSV tr inner join TRIP t on tr.TRIP_IDX = t.TRIP_IDX
+   		where tr.TRIP_IDX = #{TRIP_IDX} and TR_IDX=#{TR_IDX}
+   </select>
+   
+   <!-- 예약 취소 신청 예약취소 신청 상태  defalut:0 /1:신청요청중 /2:신청완료 /3:환불 완료-->
+   <update id="updateTr_delete_state1" parameterType="hashmap">
+   		update TRIP_RSV set TR_DELETE_STATE='1' where TRIP_IDX=#{TRIP_IDX} and TR_IDX = #{TR_IDX}
+   </update>
+   
+   <update id="updateTr_delete_state2" parameterType="hashmap">
+   		update TRIP_RSV set TR_DELETE_STATE='2' where TRIP_IDX=#{TRIP_IDX} and TR_IDX = #{TR_IDX}
+   </update>
+   
+   <update id="updateTr_delete_state3" parameterType="hashmap">
+   		update TRIP_RSV set TR_DELETE_STATE='3' where TRIP_IDX=#{TRIP_IDX} and TR_IDX = #{TR_IDX}
+   </update>
+   
+   <!-- 예약취소 날짜 update -->
+   <update id = "updateTr_delete_date" parameterType="hashmap">
+   		update TRIP_RSV set TR_DELETE_DATE=sysdate where TRIP_IDX=#{TRIP_IDX} and TR_IDX = #{TR_IDX}
+   </update>
+   
+   <!--예약관리 예약취소 리스트   -->
+   <select id="selectT_ReserDeleteList" parameterType="hashmap" resultType="hashmap">
+   	<![CDATA[		
+   		select TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE, TR_MONEY_STATE, tr.TRIP_IDX,
+   				TR_DELETE_STATE, TR_DELETE_DATE,
+   				 TRIP_NAME, TRIP_TPRICE, TRIP_PPRICE, TRIP_IMAGE
+		from TRIP_RSV tr inner join TRIP t on tr.TRIP_IDX = t.TRIP_IDX
+		where tr.MEMBER_IDX =#{MEMBER_IDX} and TR_DELETE_STATE > 0
+		order by TR_IDX desc
+	]]>
+   </select>
+   
+    <!-- 트립관리->예약관리 ->예약취소 상세보기->예약취소목록 삭제 -->
+   <delete id="deleteT_ReserDelete" parameterType="hashMap">
+		delete from TRIP_RSV
+   		where TRIP_IDX = #{TRIP_IDX} and TR_IDX=#{TR_IDX}
+   </delete>
+   
+	<!-- 위시리스트 start -->
+   
+   <!-- 숙소 위시리스트  -->
+   <select id="selectMy_HouseList" parameterType="HashMap" resultType="HashMap">
+  	 <include refid="common.pagingPre"/>
+   			 select Row_NUMBER() OVER
+               (order by FAR_IDX DESC)  RNUM,
+               h.HOUSE_IDX, HOUSE_ADDR1,HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_KIND, HOUSE_PERSONS, HOUSE_PERSON_PRICE, HOUSE_NAME,
+               HOUSE_INFO, HOUSE_ZIPCODE, HOUSE_IMAGE, f.MEMBER_IDX,
+                 nvl((select sum(h2.HRB_STAR) from HOUSE_REVIEW_BOARD h2 where h2.HOUSE_idx=h.HOUSE_idx),'0') HRB_STAR,
+                 nvl((select count(*) from house_review_board h2 where h2.HOUSE_IDX=h.HOUSE_IDX),'0') total_cnt   
+            from HOUSE h inner join FAVORITES f on h.HOUSE_IDX = f.HOUSE_IDX 
+            where f.MEMBER_IDX = #{MEMBER_IDX}
+  	 <include refid="common.pagingPost"/> 
+   </select>
+ 
+ <!-- 트립 위시리스트  -->
+   <select id="selectMy_TripList" parameterType="HashMap" resultType="HashMap">
+	<include refid="common.pagingPre"/> 
+		select Row_NUMBER() OVER
+               (order by FAR_IDX DESC)  RNUM,
+               t.TRIP_IDX, TRIP_AREA,TRIP_TYPE, TRIP_PERSONS, TRIP_ADDR1, TRIP_ADDR2, TRIP_ADDR3, TRIP_NAME,TRIP_INTRO,
+               TRIP_ZIPCODE, TRIP_IMAGE, TRIP_LANGUAGE, TRIP_FIRST_DATE, TRIP_LAST_DATE, TRIP_INCLUDE, 
+			   TRIP_PPRICE, 
+			   f.MEMBER_IDX,FAR_IDX,
+                  nvl((select sum(t2.TRB_STAR) from TRIP_REVIEW_BOARD t2 where t2.TRIP_idx=t.TRIP_idx),'0') TRB_STAR,
+                  nvl((select count(*) from TRIP_review_board t2 where t2.TRIP_IDX=t.TRIP_IDX),'0') total_cnt   
+            from TRIP t inner join FAVORITES f on t.TRIP_IDX = f.TRIP_IDX 
+            where f.MEMBER_IDX = #{MEMBER_IDX}
+	<include refid="common.pagingPost"/> 
+	</select>
+ <!-- 알림판  -->
+     <!-- 알림판 회원 정보 불러오기  -->
+   <select id ="selectMember" parameterType="hashmap" resultType="hashmap">
+   		select MEMBER_IDX, MEMBER_EMAIL, MEMBER_NAME, MEMBER_PWD, MEMBER_BIRTH, 
+   				MEMBER_PHONE, MEMBER_SEX, MEMBER_ADDR, MEMBER_IMAGE, MEMBER_LEVEL
+   		from MEMBER
+   		where MEMBER_IDX = #{MEMBER_IDX}
+   </select>
+   
+>>>>>>> 7cc560a 마이페이지 
 </mapper>
