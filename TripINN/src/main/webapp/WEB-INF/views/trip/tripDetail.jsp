@@ -197,7 +197,18 @@ var favNum = 0;
 			<hr />
 			<div class="trDiv">
 				<div class="tdDiv-left"><p>예약 가능 인원</p></div>
-				<div class="tdDiv-right"><p>${trip.TRIP_PERSONS } 명</p></div>
+				<div class="tdDiv-right">
+				<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM <= 0}">
+					<p><b><font color="#cb4242">예약이 가득찼습니다. 다른 트립을 이용해주세요.</font></b></p>
+				</c:if>
+				<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM > 0}">
+					<p style="float:left;"><b>${trip.RESERVED_NUM } 명 / </b></p>
+					<p style="float:left;margin-left:10px;"><b>${trip.TRIP_PERSONS } 명</b></p>
+					<p style="float:left;margin-left:10px;">
+						(총 <b><font color="#cb4242">${trip.TRIP_PERSONS - trip.RESERVED_NUM }</font></b> 명 예약 가능합니다.)
+					</p>
+				</c:if>						
+				</div>
 			</div>
 			<hr />
 			<div class="trDiv">
@@ -224,7 +235,10 @@ var favNum = 0;
 				<div class="tdDiv-col">
 					<div style="width:20%;height:25px;background:#00A2E8;color:#fff;
 					text-align:center;  border-radius: 15px; padding:6px;float:right; margin-right:50px;
-					cursor:pointer"  onclick="tripReserve();">
+					cursor:pointer" 
+			<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM > 0}">onclick="tripReserve();"</c:if>
+			<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM <= 0}">onclick="alert('예약이 가득찼습니다. 다른 트립을 이용해주세요.');"</c:if>
+			>
 						<b>트립 신청</b>
 					</div>
 					<div style="width:20%;height:25px;background:#cb4242;color:#fff;  margin-right:30px;
@@ -351,14 +365,14 @@ var favNum = 0;
 			<div class="trDiv" style="margin:20px;">
 				<div class="tdDiv-col">
 	<!-- 슬라이드 시작 -->		
-	<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 700px; height: 456px; overflow: hidden; visibility: visible; background-color: #24262e;"
-		  jssor-slider="true">
+	<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 550px; height: 456px; overflow: hidden; visibility: visible; background-color: #24262e;"
+		  jssor-slider="true"> 
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('/TripINN/images/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 700px; height: 356px; overflow: hidden;">
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 550px; height: 356px; overflow: hidden;">
 
               <c:forEach items="${imgs}" var="img" varStatus="status">
            <div data-p="144.50" <c:if test="${status.index != 0 }">style="display:none;"</c:if>>
@@ -375,7 +389,7 @@ var favNum = 0;
             <a data-u="any" href="http://www.jssor.com" style="display:none">Image Gallery</a>
         </div>
         <!-- Thumbnail Navigator -->
-        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:700px;height:100px;" data-autocenter="1">
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:550px;height:100px;" data-autocenter="1">
             <!-- Thumbnail Item Skin Begin -->
             <div data-u="slides" style="cursor: default;">
                 <div data-u="prototype" class="p">
