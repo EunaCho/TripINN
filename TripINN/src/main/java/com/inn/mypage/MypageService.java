@@ -6,6 +6,9 @@ import java.util.Map;
 //DAO 기능 구현
 public interface MypageService {
 	
+	//------------------------------알림판------------------------------
+	Map<String, Object> selectMember(Map<String, Object> map) throws Exception; //회원정보 
+	
 	//------------------------------메시지----------------------------- 
 	List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception; //보낸메시지 리스트
 	List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception; //받은 메시지 리스트 
@@ -21,8 +24,6 @@ public interface MypageService {
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
 	
-<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
-=======
 	List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception; //예약관리 리스트
 	List<Map<String, Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception;//예약취소 관리 리스트 
 	Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception; //예약관리상세보기 
@@ -59,5 +60,4 @@ public interface MypageService {
 	
 	Map<String, Object> selectMy_HouseList(Map<String, Object> map) throws Exception; //내 숙소 위시리스트  
 	Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception; //내 트립 위시리스트 
->>>>>>> 7cc560a 마이페이지 
 }
