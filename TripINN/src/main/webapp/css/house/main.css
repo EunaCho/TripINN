@@ -119,9 +119,63 @@ input, textarea, keygen, select, button, meter, progress {
 
 
 /* 미리보기 블럭 */
-#house_div .pre_List {width:100%; min-width: 480px; overflow:hidden; margin-bottom:20px; float:center;}
-#house_div .pre_List li {float:center; width:260px; display:inline-block; margin:5px;}
-#house_div .pre_List li a {text-decoration:none; color:gray;}
-#house_div .pre_List li a span {display:block; font-size:12px; float:left; white-space:normal;}
-#house_div .pre_List li a span strong{font-size:15px;}
-#house_div .pre_List li img {with:240px; height:160px;}
+#house_div{
+	width: 95%;
+    height: auto;
+    margin: 0 auto;
+}
+.pre_view_container{
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.pre_view_img{
+	float: left;
+	margin-right: 20px;
+	text-align: center;
+}
+.pre_view_img img{
+	width: 70px;
+    height: 70px;
+}
+.pre_view_info{
+	float: left;
+    width: 80%;
+    height: 70px;
+    margin-bottom: 10px;
+}
+.pre_view_info label{
+	font-size: 20px;
+    letter-spacing: 2px;
+    width: auto;
+    height: auto;
+    }
+
+.pre_info_name{
+	    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.view_left{
+	width: auto;
+    height: auto;
+    float: left;
+    color: back;
+    font-size: 18px;
+    margin-right: 25px;
+}
+.view_right{
+	width: auto;
+    height: auto;
+    float: left;
+    position: absolute;
+    left: 300px;
+}
+.pre_view_container a {text-decoration:none; color:gray;}
+/* #house_div .pre_List {width:94%; min-width: 480px; overflow:hidden; margin-bottom:20px; margin: 0 auto;}
+#house_div .pre_List .pre_view_container {float:center; width:260px; display:inline-block; margin:5px;}
+#house_div .pre_List .pre_view_container a {text-decoration:none; color:gray;}
+#house_div .pre_List .pre_view_container a span {display:block; font-size:12px; float:left; white-space:normal;}
+#house_div .pre_List .pre_view_container span strong{font-size:15px;}
+#house_div .pre_List .pre_view_container img {with:240px; height:160px;} */
