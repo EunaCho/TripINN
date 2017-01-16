@@ -85,4 +85,12 @@ public class TripDAO extends AbstractDAO {
 	public void deleteBookMark(Map<String, Object> map) {
 		delete("trip.deleteBookMark", map);
 	}
+
+	public void tripReport(Map<String, Object> map) {
+		insert("trip.tripReport", map);
+	}
+
+	public void reviewDel(String parameter) {
+		delete("trip.reviewDel", parameter);
+	}
 }

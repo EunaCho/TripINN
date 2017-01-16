@@ -57,5 +57,12 @@ public interface HouseService {
 
 	List<Map<String, Object>> likeCheckList(Map<String, Object> map);
 	
+	void sendMssg(Map<String, Object> map) throws Exception;
+
+	void increaseHouseCnt(Map<String, Object> map);
+
+	void insertReportHouse(Map<String, Object> map);
+
+	void updateTotalPrice(Map<String, Object> map);
 
 }

@@ -122,6 +122,7 @@ var favNum = 0;
 			background-image:url(/TripINN/images/house/icon_heart_white.png);background-size:100% 100%;background-repeat: no-repeat; }
 .heartImg:hover {background-image:url(/TripINN/images/house/icon_heart_red.png);}
 .on{background-image:url(/TripINN/images/house/icon_heart_red.png);}
+.reserve_layerWindow { display:none; }
 </style>
 <form name="rform" method="post">
 	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}"/>
@@ -233,6 +234,12 @@ var favNum = 0;
 			<hr />
 			<div class="trDiv" style="margin-top:20px;">
 				<div class="tdDiv-col">
+					<div style="width:20%;height:25px;background:orange;color:#fff;  margin-right:30px;
+						text-align:center;  border-radius: 15px; padding:6px; float:left;
+						cursor:pointer" onclick="r_confirm('open')">
+							<b>트립 신고</b>
+					</div>
+					
 					<div style="width:20%;height:25px;background:#00A2E8;color:#fff;
 					text-align:center;  border-radius: 15px; padding:6px;float:right; margin-right:50px;
 					cursor:pointer" 
@@ -315,7 +322,14 @@ var favNum = 0;
 					 	 </span>
 					 </c:if>
 				</div>
+				<!-- //////////삭제버튼////////////// -->
 				
+				<c:if test="${rlist.M_IDX eq sessionScope.member_idx }">
+				<div style="width:20px;height:20px;margin-right:10px;margin-top:10px;float:right;cursor:pointer;
+					background-image:url(/TripINN/images/xxx.png); 
+						background-repeat:no-repeat; background-size:100% 100%;"
+						onclick="reviewDelete('${rlist.TRB_IDX}');"></div>
+				</c:if>
 				<!-- ///////////추천 버튼////////// -->
 				<span id="cu${stat.index}" class="cu" 
 				 style="width:100px;height:30px;float:right;margin-top:7%;vertical-align:middle;text-align: center;
@@ -440,4 +454,88 @@ var favNum = 0;
 			</div>
 		</div>
 	</div>
+	
+<form action="/TripINN/tripReport.do" method="post" name="reportForm">
+<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX }" />
+<input type="hidden" name="member_idx" value="${sessionScope.member_idx }" />
+<input type="hidden" name="report_state" value="0" /> <!-- 0 진행중, 1 경고, 2 삭제 -->
+<input type="hidden" name="report_type" value="1" /> <!-- 0 숙소신고, 1 투어신고 -->
+<div class="report_layerWindow">
+
+	 <div class="bg"></div>
+	 <div id="report_layer">
+	 	<h2 style="border-bottom:1px solid black;">신고하기</h2>
+	 	<p>허위 신고시 불이익을 당할 수 있습니다.</p>
+		 <div class="login_line">
+		 	<div class="box_in">
+
+		 		<input type="text" name="report_title" id="" placeholder="제목" style="width:450px;height:30px;padding:5px;"><br />
+				<textarea name="report_content" placeholder="내용" style="width:450px;height:200px;padding:5px;"></textarea>
+			</div>
+			<div style="clear:both;"></div>
+		 </div>
+
+	    <div class="close" >
+          <table width="100%" id="reportTbl">
+             <tr>
+                <td width="100%" align="right" style="text-align:right;">
+                    <a href="javascript:r_confirm('close')" title="레이어 닫기" class="btn_login" >닫기</a>
+                	<a href="javascript:tripReport();" class="btn_login" style="color:red" >신고하기</a>
+                </td>
+             </tr>
+          </table>
+       </div>
+	 </div>
 </div>
+</form>
+</div>
+<form name="reviewDel" action="/TripINN/reviewDel.do" method="post">
+	<input type="hidden" name="trb_idx" value="" />
+	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}" />
+</form>
+
+<style>
+
+.report_layerWindow{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
+.report_layerWindow.open{display:block}
+.report_layerWindow .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+#report_layer{
+	position:absolute;width:500px;top:20%;left:35%;margin:0px auto;padding:0px 28px 0 28px;
+	border:2px solid #9BC3FF; background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
+	color:#767676;line-height:normal;white-space:normal; 
+}
+.login_line{margin:10px 0 0;height:300px;}
+.box_in{float:left;margin:0 10px 0; }
+.box_in input{width:120px;height:24px;display:block;margin:3px 0 0;}
+.btn_login{
+			width:72px;background:#363636;color:#a6a6a6;float:right;
+			text-align:center;margin-top:5px;margin:10px;
+			cursor: pointer;
+			}
+#report_layer h2{color:#636363;font-size:24px;line-height:40px;}
+.close { margin-bottom:10px; text-decoration: none; width:100%; text-align:right; cursor: pointer}
+.close a { color: #9BC3FF; }
+#reportTbl tr td{
+	font-size:11px;
+	font-family : 'NanumGothic';
+}
+</style>
+
+
+<script>
+function reviewDelete(review_idx) {
+	var form = document.reviewDel;
+	form.trb_idx.value = review_idx;
+	form.submit();
+}
+function tripReport() {
+	var rform = document.reportForm;
+	rform.submit();
+	alert("신고가 성공적으로 접수되었습니다.");
+}
+function r_confirm (confirm) {
+	confirm == "open" ? 
+			$(".report_layerWindow").css("display", "block") :
+				$(".report_layerWindow").css("display", "none");
+}
+</script>

@@ -15,7 +15,7 @@ $(function() {
 	$("#postcodify_search_button").postcodifyPopUp();
 });
 
-/*function check(){
+function check(){
 	var reg = document.registerFrm;
 
 
@@ -48,7 +48,7 @@ $(function() {
 		reg.HOUSE_TOTAL_PERSONS.focus();
 		return false;
 	}
-}*/
+}
 
 //img 추가 등록
 /*var createNum = 4;*/

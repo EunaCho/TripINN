@@ -103,4 +103,14 @@ public class TripServiceImpl implements TripService {
 		tripDAO.deleteBookMark(map);
 	}
 
+	@Override
+	public void tripReport(Map<String, Object> map) {
+		tripDAO.tripReport(map);
+	}
+
+	@Override
+	public void reviewDel(String parameter) {
+		tripDAO.reviewDel(parameter);
+	}
+
 }
