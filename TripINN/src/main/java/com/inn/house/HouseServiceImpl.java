@@ -61,7 +61,7 @@ public class HouseServiceImpl implements HouseService{
 //		file img 등록
 		String HouseImgList = fileUtils.parseInsertFileInfo(map, request);
 		map.put("HOUSE_IMAGE", HouseImgList);
-		System.out.println(map.get("HOUSE_ADDR1")+"************************** 서비스 임플");
+		
 		houseDAO.insertHouse(map); // HOUSE 등록
 		houseDAO.insertHouseInfo(map); // HOUSEINFO 등록
 	}
@@ -204,4 +204,27 @@ public class HouseServiceImpl implements HouseService{
 		return houseDAO.likeCheckList(map);
 	}
 
+	//insert mssg
+	@Override
+	public void sendMssg(Map<String, Object> map)throws Exception{
+		houseDAO.sendMssg(map);
+	}
+
+	@Override
+	public void increaseHouseCnt(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.increaseHouseCnt(map);
+	}
+
+	@Override
+	public void insertReportHouse(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.insertReportHouse(map);
+	}
+
+	@Override
+	public void updateTotalPrice(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.updateTotalPrice(map);
+	}
 }

@@ -1,80 +1,34 @@
-var cnt = 0;
-			
-	function review_l_check(index, divTag, hrb_idx, house_idx){
-		
-		var cnt = 0;
-		
-		if(divTag.style.backgroundColor == 'rgb(255, 90, 95)'){ //추천 취소
-			divTag.style.backgroundColor = '#ffffff';
-			divTag.style.color = 'black';
-			divTag.style.border = '1px solid #BABABB';
-			divTag.style.padding = '2px';
-			cnt = -1;
-			$.ajax({
-				type: 'GET',
-				url: '/TripINN/house/hrbLike.do',
-				async: true,
-				dataType: 'text',
-				error: function(){
-					alert("server error");
-				},
-				data : {
-					"cnt": cnt,
-					"HRB_IDX" : hrb_idx,
-					"MEMBER_IDX" : MEMBER_IDX,
-					"HOUSE_IDX": house_idx
-				},
-				success: function(data){
-					$("#like_cnt"+index).html(data);
-				}
-			});
-		}else{
-			divTag.style.backgroundColor = 'rgb(255, 90, 95)';
-			divTag.style.color = 'white';
-			divTag.style.border = '1px solid white';
-			divTag.style.padding = '2px';
-			cnt = 1;
-			$.ajax({
-				type: 'GET',
-				url: '/TripINN/house/hrbLike.do',
-				async: true,
-				dataType: 'text',
-				error: function(){
-					alert("server error");
-				},
-				data : {
-					"cnt": cnt,
-					"HRB_IDX" : hrb_idx,
-					"MEMBER_IDX" : MEMBER_IDX,
-					"HOUSE_IDX": house_idx
-				},
-				success: function(data){
-					$("#like_cnt"+index).html(data);
-				}
-			});
-			
-		}
-		}
+function u_d_btn(index){
+	alert("gd");
+	alert(index);
+	var HOUSE_MEMBER_IDX = $("#HOUSE_MEMBER_IDX").val();
+	var HOUSE_IDX = $("#house_idx").val();
+	var REVIEW_HRB_IDX = $("#review_hrb_idx"+index).val();
+	var REVIEW_HRB_PWD = $("#review_hrb_pwd"+index).val();
+	var pageLocation = "http://localhost:8080/TripINN/house/hrbPwdCheck.do?HRB_IDX="+ REVIEW_HRB_IDX +
+	"&HRB_PWD="+REVIEW_HRB_PWD + "&HOUSE_MEMBER_IDX="+HOUSE_MEMBER_IDX+"&HOUSE_IDX="+HOUSE_IDX;
+	var pageOption = "width=400px, height=200px, resizable=no, scrollbar=no, status=no, toolbar=no";
+	
+	window.open(pageLocation,'',pageOption);
+}
 
 $(document).ready(function() {
-	var REVIEW_HRB_IDX = $("#review_hrb_idx").val();
-	var REVIEW_HRB_PWD = $("#review_hrb_pwd").val();
+	
 	var HOUSE_MEMBER_IDX = $("#HOUSE_MEMBER_IDX").val();
-	var pageLocation = "http://localhost:8080/TripINN/house/hrbPwdCheck.do?HRB_IDX="+REVIEW_HRB_IDX+
-	"&HRB_PWD="+REVIEW_HRB_PWD + "&HOUSE_MEMBER_IDX="+HOUSE_MEMBER_IDX;
-	var pageOption = "width=400px, height=200px, resizable=no, scrollbar=no, status=no, toolbar=no";
+	var HOUSE_IDX = $("#house_idx").val();
+	var review_size = $("#review_size").val();
+	
 	$('.my_like').click(function(){
 		alert("본인은 '좋아요' 기능을 사용할 수 없습니다.");
 	});
+
 	
-	
-//	review update delete btn
-	$('.u_d_btn_delete').click(function(){
-		window.open(pageLocation,'',pageOption);
+	$('.report').click(function(){
+		window.open('http://localhost:8080/TripINN/house/houseReport.do?HOUSE_IDX='+HOUSE_IDX+'&MEMBER_IDX='+MEMBER_IDX,'','width=500px, height=500px, scrollbar=yes');
 	});
 	
 	//위시 리스트 버튼 클릭
-	$('#wishIcon').click(function() {
+	$('.wishList').click(function() {
 		var str = $("#wishIcon").css('background-image');
 		var wish_check = 1;
 		var HOUSE_IDX = $("#house_idx").val();
@@ -117,3 +71,62 @@ $(document).ready(function() {
 		}
 	});	
 });
+
+
+var cnt = 0;
+
+function review_l_check(index, divTag, hrb_idx, house_idx){
+	
+	var cnt = 0;
+	
+	if(divTag.style.backgroundColor == 'rgb(255, 90, 95)'){ //추천 취소
+		divTag.style.backgroundColor = '#ffffff';
+		divTag.style.color = 'black';
+		divTag.style.border = '1px solid #BABABB';
+		divTag.style.padding = '2px';
+		cnt = -1;
+		$.ajax({
+			type: 'GET',
+			url: '/TripINN/house/hrbLike.do',
+			async: true,
+			dataType: 'text',
+			error: function(){
+				alert("server error");
+			},
+			data : {
+				"cnt": cnt,
+				"HRB_IDX" : hrb_idx,
+				"MEMBER_IDX" : MEMBER_IDX,
+				"HOUSE_IDX": house_idx
+			},
+			success: function(data){
+				$("#like_cnt"+index).html(data);
+			}
+		});
+	}else{
+		divTag.style.backgroundColor = 'rgb(255, 90, 95)';
+		divTag.style.color = 'white';
+		divTag.style.border = '1px solid white';
+		divTag.style.padding = '2px';
+		cnt = 1;
+		$.ajax({
+			type: 'GET',
+			url: '/TripINN/house/hrbLike.do',
+			async: true,
+			dataType: 'text',
+			error: function(){
+				alert("server error");
+			},
+			data : {
+				"cnt": cnt,
+				"HRB_IDX" : hrb_idx,
+				"MEMBER_IDX" : MEMBER_IDX,
+				"HOUSE_IDX": house_idx
+			},
+			success: function(data){
+				$("#like_cnt"+index).html(data);
+			}
+		});
+		
+	}
+	}
