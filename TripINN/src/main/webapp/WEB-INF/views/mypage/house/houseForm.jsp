@@ -187,7 +187,7 @@ function houseDetail(idx) {
 						   	</font> 
 						</div>
 						<div class="h_inp_div">
-							<div style="border:1px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
+							<div style="border:0px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
 								<img src="<%= cp %>/images/mypage/house.jpg" style="width:35px; height:35px; float:center;">
 								<br/>
 								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
@@ -198,7 +198,7 @@ function houseDetail(idx) {
 									${list.HOUSE_KIND}
 								</font>
 							</div>
-							<div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
+							<div style="border:0px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
 							 	<img src="<%= cp %>/images/mypage/people.png" style="width:35px; height:35px; float:center;">
 								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
 								 		persons
@@ -209,7 +209,7 @@ function houseDetail(idx) {
 									</font>
 								</div>
 							</div>
-							<div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
+							<div style="border:0px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
 								<img src="<%= cp %>/images/mypage/bed.jpg" style="width:35px; height:35px; float:center;">	
 								<br/>
 								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">

@@ -99,7 +99,7 @@ public class MypageController {
 		return mv;
 	}
 	//*메시지-->받은메시지상세보기 
-	@RequestMapping("receiveMsgDetail")
+	@RequestMapping("/receiveMsgDetail.do")
 	public ModelAndView receiveMsgDetail(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("receiveMsgDetail");
