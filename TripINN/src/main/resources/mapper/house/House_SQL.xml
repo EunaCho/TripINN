@@ -24,15 +24,15 @@
 	</select>
 	
 	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
-		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE 
-		FROM (SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
-					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX
-					  , HR_FIRST_DATE, HR_LAST_DATE
-			FROM HOUSE H
-						 LEFT JOIN HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 
-			<where>
+      SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, 
+				MEMBER_IDX, STAR_SUM, STAR_COUNT, (STAR_SUM/STAR_COUNT) STAR, HOUSE_TOTAL_PRICE
+     FROM (SELECT H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX ,HOUSE_TOTAL_PRICE,
+			(SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
+					(SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
+
+	
+            From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX
+      <where>
 			<if test="preSearch_keyword != null">
 				(HOUSE_NAME like '%'||#{preSearch_keyword}||'%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%'
 				or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
@@ -93,12 +93,12 @@
 			HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_KIND, 
 			HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, 
 			HOUSE_TOTAL_PERSONS, HOUSE_PERSON_PRICE, 
-			HOUSE_PRICE, HOUSE_IMAGE
+			HOUSE_PRICE, HOUSE_IMAGE, MEMBER_IDX, HOUSE_PERSONS
 	    )VALUES(
 			#{HOUSE_IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_KIND}, 
 			#{HOUSE_ZIPCODE}, #{HOUSE_ADDR1}, #{HOUSE_ADDR2}, #{HOUSE_ADDR3},
 			#{HOUSE_TOTAL_PERSONS}, #{HOUSE_PERSON_PRICE}, 
-			#{HOUSE_PRICE}, #{HOUSE_IMAGE}
+			#{HOUSE_PRICE}, #{HOUSE_IMAGE}, #{MY_MEMBER_IDX}, 0
 		)
 	]]>
 	</insert>
@@ -122,6 +122,15 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 				)		
 		]]>
 	</insert>
+	
+	<update id="updateTotalPrice" parameterType="hashmap">
+	<![CDATA[
+	UPDATE HOUSE 
+	SET HOUSE_TOTAL_PRICE = 
+	(#{HOUSE_PRICE}+#{HOUSE_PERSON_PRICE}+#{HI_DEPOSIT}+#{HI_CLEAN_PRICE})/(#{HI_SALE}*0.01)
+	WHERE HOUSE_IDX = #{HOUSE_IDX}
+	]]>
+	</update>
 	
 	<insert id="insertHouseImg" parameterType="hashmap">
 		<![CDATA[
@@ -224,4 +233,39 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		WHERE HOUSE_IDX = #{HOUSE_IDX} AND MEMBER_IDX = #{MY_MEMBER_IDX}
 	</select>
 
+	<insert id="sendMssg" parameterType="hashmap">
+	
+	<![CDATA[
+		insert into message (
+		msg_idx, receive_member_email, member_idx, msg_state, msg_type, msg_content, 
+		msg_title, house_idx, send_date
+		)values(
+		MSG_IDX_SEQ.NEXTVAL, #{RECEIVE_MEMBER_EMAIL}, #{MEMBER_IDX}, 0, 1, 
+		#{MSG_CONTENT}, #{MSG_TITLE}, #{HOUSE_IDX}, SYSDATE
+		)
+	]]>
+	
+	</insert>
+	
+	<insert id="insertReportHouse" parameterType="hashmap">
+	<![CDATA[
+	INSERT INTO REPORT_BOARD (
+		REPORT_IDX, REPORT_TITLE, REPORT_CONTENT, 
+		REPORT_REGDATE, REPORT_STATE, REPORT_TYPE, MEMBER_IDX, HOUSE_IDX
+		)VALUES(
+		REPORT_IDX_SEQ.NEXTVAL, #{REPORT_TITLE}, #{REPORT_CONTENT}, 
+		SYSDATE, 0, 0, #{MEMBER_IDX}, #{HOUSE_IDX}
+		)
+	]]>
+	</insert>
+	
+	<update id="increaseHouseCnt" parameterType="hashmap">
+	<![CDATA[
+		UPDATE HOUSE 
+		SET HOUSE_CNT = HOUSE_CNT + 1 
+		WHERE HOUSE_IDX = #{HOUSE_IDX}
+	]]>
+	</update>
+	
+	
 </mapper>

@@ -15,6 +15,8 @@
 		var hrbPwd = $("#HRB_PWD").val();
 		var inputPwd = $("#INPUT_PWD").val();
 		var pwdCheck = $("#pwdCheck").val();
+		var house_member_idx = $("#HOUSE_MEMBER_IDX").val();
+		var house_idx = $("HOUSE_IDX").val();
 		
 			if(hrbPwd==inputPwd){
 				pwdCheck = "1";
@@ -30,7 +32,9 @@
 						"pwdCheck":pwdCheck,
 						"HRB_IDX":hrbIdx,
 						"HRB_PWD":hrbPwd,
-						"INPUT_PWD":inputPwd
+						"INPUT_PWD":inputPwd,
+						"HOUSE_MEMBER_IDX" : house_member_idx,
+						"HOUSE_IDX": house_idx
 					},
 					success: function(){
 						window.opener.location.reload();
@@ -53,7 +57,9 @@
 		<input type="hidden" id="HRB_IDX" name="HRB_IDX" value="<%=request.getParameter("HRB_IDX")%>">
 		<input type="hidden" id="HRB_PWD" name="HRB_PWD" value="<%=request.getParameter("HRB_PWD")%>">
 		<input type="hidden" id="HOUSE_MEMBER_IDX" name="HOUSE_MEMBER_IDX" value="<%=request.getParameter("HOUSE_MEMBER_IDX") %>">
+		<input type="hidden" id="HOUSE_IDX" name="HOUSE_IDX" value="<%=request.getParameter("HOUSE_IDX")%>">
 		<input type="hidden" id="pwdCheck" name="pwdCheck" value="0">
+		
 		
 		<label style="font-weight: bold;">비밀번호를 입력해주세요</label>
 		<div>

@@ -203,10 +203,11 @@
 	</definition>
 	
 	<!-- main -->
-	<definition name="houseMain" extends="main">
-		<put-attribute name="body" value="houseList_layout"/>
+	<definition name="houseMain" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/house/houseList.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-	
 	<!-- open register -->
  	<definition name="openHouseRegister" extends="main">
 		<put-attribute name="body" value="/WEB-INF/views/house/houseRegister.jsp"/>	

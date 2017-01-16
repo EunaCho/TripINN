@@ -46,7 +46,6 @@ public class HouseDAO extends AbstractDAO {
 	// insert DAO
 	// 등록 페이지 1
 	public void insertHouse(Map<String, Object> map) throws Exception {
-		System.out.println(map.get("HOUSE_ADDR1") + "************************** 다오");
 		insert("house.insertHouse", map);
 	}
 
@@ -156,5 +155,23 @@ public class HouseDAO extends AbstractDAO {
 		// TODO Auto-generated method stub
 		return selectList("house.likeCheckList", map);
 	}
+	
+	public void sendMssg(Map<String, Object> map){
+		insert("house.sendMssg", map);
+	}
 
+	public void increaseHouseCnt(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		update("house.increaseHouseCnt", map);
+	}
+
+	public void insertReportHouse(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		insert("house.insertReportHouse",map);
+	}
+
+	public void updateTotalPrice(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		insert("house.updateTotalPrice",map);
+	}
 }

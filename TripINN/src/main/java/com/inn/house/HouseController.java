@@ -117,8 +117,7 @@ public class HouseController {
 	// house register view mapping
 	@RequestMapping(value = "/house/houseRegisterMain.do")
 	public ModelAndView houseRegisterMain(CommandMap map, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("openHouseRegister"); // tilse에 등록된
-																	// jsp
+		ModelAndView mv = new ModelAndView("openHouseRegister");
 		return mv;
 	}
 
@@ -143,9 +142,17 @@ public class HouseController {
 
 	// house register view mapping detail 2-1
 	@RequestMapping(value = "/house/houseRegisterInput.do")
-	public ModelAndView houseRegisterInsert2(CommandMap map, HttpServletRequest request) throws Exception {
+	public ModelAndView houseRegisterInsert2(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/house/houseRegister3.do");
+		if(session.getAttribute("member_idx") == null) {
+			map.put("MY_MEMBER_IDX", "0");
+		} else {
+			map.put("MY_MEMBER_IDX", session.getAttribute("member_idx"));
+		}
+		System.out.println(map.getMap()+"dddddddddddddddddd");
 		houseService.insertHouse(map.getMap(), request);
+		
+		houseService.updateTotalPrice(map.getMap());
 		return mv;
 	}
 
@@ -176,22 +183,31 @@ public class HouseController {
 
 	// map multi view 숙소 리스트 다중 마커
 	@RequestMapping(value = "/house/houseMapListView.do")
-	public ModelAndView houseMapListView(HttpServletRequest request) {
+	public ModelAndView houseMapListView(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("house/register/houseMapListView");
 		String addr = request.getParameter("addr");
 		String img = request.getParameter("img");
 		String name = request.getParameter("name");
 		String idx = request.getParameter("idx");
-
-		String[] addr2 = addr.split(","), img2 = img.split(","), name2 = name.split(","), idx2 = idx.split(",");
-		String map = "", lat = "", lng = "", ba = "", img3 = "", name3 = "", idx3 = "", addr3 = "";
+		String price = request.getParameter("price");
+		String house_member_idx = request.getParameter("house_member_idx");
+		System.out.println(house_member_idx+"sssssssss");
+		/*commandMap.put("HOUSE_IDX", idx);
+		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap());*/
+		String[] addr2 = addr.split(","), img2 = img.split(","), name2 = name.split(","), idx2 = idx.split(","),
+				price2 = price.split(",");
+		
+		String map = "", lat = "", lng = "", ba = "", img3 = "", name3 = "", idx3 = "", addr3 = "", price3="";
 
 		String[] latArry = new String[addr2.length], lngArry = new String[addr2.length],
 				baArry = new String[addr2.length];
 
 		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 		HashMap<String, Object> hashMap = null;
+		for(int i = 0; i<price2.length; i++){
 
+			price3 = price3 + price2[i] + "/";
+		}
 		for (int i = 0; i < addr2.length; i++) {
 			System.out.println(addr2[i]);
 			map = ConvertAddress.conAddr(addr2[i]);
@@ -224,6 +240,7 @@ public class HouseController {
 		/* System.out.println(idx3 + "--------------------"); */
 		System.out.println(addr3 + "///////////");
 		mv.addObject("addr_size", addr2.length);
+		mv.addObject("price_size", price2.length);
 		mv.addObject("addr", addr3);
 		mv.addObject("lat", lat);
 		mv.addObject("lng", lng);
@@ -231,6 +248,8 @@ public class HouseController {
 		mv.addObject("img", img3);
 		mv.addObject("name", name3);
 		mv.addObject("idx", idx3);
+		mv.addObject("price",price3);
+		mv.addObject("house_member_idx",house_member_idx);
 		return mv;
 	}
 
@@ -246,10 +265,7 @@ public class HouseController {
 		ModelAndView mv = new ModelAndView("/house/review/reviewLike");
 		Map<String, Object> map = new HashMap<>();
 		int cnt = Integer.parseInt(request.getParameter("cnt"));
-		System.out.println(cnt + "cccccccccccccc");
-		System.out.println(request.getParameter("HOUSE_IDX") + "HHHHHHH");
-		System.out.println(request.getParameter("MEMBER_IDX") + "HHHHHHH");
-		System.out.println(request.getParameter("HRB_IDX") + "HHHHHHH");
+
 		map.put("CNT", cnt);
 		map.put("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
 		map.put("MEMBER_IDX", request.getParameter("MEMBER_IDX"));
@@ -266,13 +282,6 @@ public class HouseController {
 		return mv;
 	}
 
-	// message 메시지
-	@RequestMapping(value = "/house/houseMessage.do", method = RequestMethod.GET)
-	public ModelAndView houseMessage(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
-		ModelAndView mv = new ModelAndView("house/review/message");
-
-		return mv;
-	}
 
 	// hr_pwd check
 	@RequestMapping(value = "/house/hrbPwdCheck.do", method = RequestMethod.GET)
@@ -282,17 +291,15 @@ public class HouseController {
 		String str_hrb_pwd = request.getParameter("HRB_PWD");
 		String str_input_pwd = request.getParameter("INPUT_PWD");
 		String str_pwdCheck = request.getParameter("pwdCheck");
-
+		String str_house_member_idx = request.getParameter("HOUSE_MEMBER_IDX");
+		String str_house_idx = request.getParameter("HOUSE_IDX");
 		if (str_pwdCheck != null) {
 			if (str_pwdCheck.equals("1")) {
 				System.out.println("비밀번호 통과");
 				System.out.println(str_hrb_idx);
 				System.out.println(str_hrb_pwd);
 				System.out.println(str_input_pwd);
-
 				houseService.deleteReview(map.getMap());
-				mv = new ModelAndView("redirect:/house/houseDetail.do?MEBER_IDX=" + session.getAttribute("member_idx")
-						+ "&HOUSE_IDX=" + str_hrb_idx);
 			}
 		}
 		return mv;
@@ -313,6 +320,8 @@ public class HouseController {
 		mv.addObject("house", house);
 		Map<String, Object> map = houseService.selectHouseDetail(commandMap.getMap()); //하우스 상세정보 꺼내오기
 		mv.addObject("detail", map);//map에 상세정보 넣기
+		
+		houseService.increaseHouseCnt(commandMap.getMap());//하우스 cnt 증가
 
 		//하우스 리뷰 리스트 꺼내오기
 		List<Map<String, Object>> reviewList = houseService.selectReviewList(commandMap.getMap());
@@ -324,6 +333,20 @@ public class HouseController {
 		String wish = request.getParameter("HOUSE_WISH");
 		String member_idx = request.getParameter("MEMBER_IDX");
 		
+		
+		String str_img = (String) house.get("HOUSE_IMAGE"); // img str
+		String[] store_img = null;// 저장된 img
+		int index = 0;
+		
+		
+		if (str_img!=null) {
+			if(str_img.contains("|")){
+				store_img = str_img.split("\\|");
+			}else{
+				store_img = new String[1];
+				store_img[0] = str_img;
+			}
+		}
 		if(wish != null){
 		if(wish.contains("1")){ // wish 리스트 체크
 			commandMap.put("MEMBER_IDX", member_idx);
@@ -341,18 +364,19 @@ public class HouseController {
 		commandMap.put("HRB_PWD", request.getParameter("HRB_PWD"));
 		commandMap.put("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
 		
+		mv.addObject("review_size",reviewList.size());
 		mv.addObject("likeList",likeCheckList);
 		mv.addObject("house", house);
 		mv.addObject("review", reviewList);
 		mv.addObject("house_idx", commandMap.get("HOUSE_IDX"));
 		mv.addObject("review_size", reviewList.size());
+		mv.addObject("imgList", store_img);
 		return mv; //mv 값 넘기기
 	}
 
 	// 하우스 리뷰 작성하기
 	@RequestMapping(value="/house/houseReviewWrite.do", method=RequestMethod.POST)
 	public ModelAndView houseReviewWrite(CommandMap map, HttpServletRequest request) throws Exception {
-
 		ModelAndView mv = new ModelAndView("redirect:/house/houseDetail.do");
 
 		map.put("HRB_STAR", request.getParameter("hrb_star"));
@@ -362,6 +386,44 @@ public class HouseController {
 		mv.addObject("HOUSE_IDX", map.get("HOUSE_IDX"));
 		mv.addObject("MEMBER_IDX", request.getParameter("MEMBER_IDX"));
 		return mv; 
+	}
+	// 신고하기
+	@RequestMapping(value = "/house/houseReport.do", method = RequestMethod.GET)
+	public ModelAndView houseReport(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView("house/review/report");
+		System.out.println("신고하기");
+		String house_idx = request.getParameter("HOUSE_IDX");
+		String member_idx = request.getParameter("MEMBER_IDX");
+		String report_title = request.getParameter("REPORT_TITLE");
+		String report_content = request.getParameter("REPORT_CONTENT");
+		
+		if(report_content != null && report_title !=null){
+		map.put("REPORT_TITLE", report_title);
+		map.put("REPORT_CONTENT", report_content);
+		map.put("MEMBER_IDX", member_idx);
+		map.put("HOUSE_IDX", house_idx);
+		houseService.insertReportHouse(map.getMap());
+		}
+		return mv;
+	}
+	
+	// message 메시지
+	@RequestMapping(value = "/house/sendMssg.do", method = RequestMethod.GET)
+	public ModelAndView houseMessage(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/house/houseDetail.do?HOUSE_IDX="+request.getParameter("HOUSE_IDX")+"&MEMBER_IDX="+request.getParameter("HOUSE_MEMBER_IDX"));
+		
+		String house_idx = request.getParameter("HOUSE_IDX"); // 숙소 idx
+		String receive_member_email = request.getParameter("RECEIVE_MEMBER_EMAIL"); //받는 이메일
+		String msg_title = request.getParameter("MSG_TITLE");
+		String msg_content = request.getParameter("MSG_CONTENT");
+		
+		map.put("RECEIVE_MEMBER_EMAIL", receive_member_email);
+		map.put("MEMBER_IDX", session.getAttribute("member_idx"));
+		map.put("MSG_CONTENT", msg_content);
+		map.put("MSG_TITLE", msg_title);
+		map.put("HOUSE_IDX", house_idx);
+		houseService.sendMssg(map.getMap());
+		return mv;
 	}
 
 }
