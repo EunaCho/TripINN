@@ -117,14 +117,14 @@
 	   margin:40px;
 	}
 	.picture{
-	border:1px solid black;
+	border:0px solid black;
 	width:200px;
 	height:180px;
 	margin:10px;
 	border-radius:7px;
 	}
 	.picture1{
-	border:1px solid black;
+	border:0px solid black;
 	width:180px;
 	height:160px;
 	margin:10px;
@@ -325,8 +325,6 @@
    <c:forEach var="house" items="${list}">
     <div class="list1">
      <div class="picture">
-     <c:set var="fullImg" value="${house.HOUSE_IMAGE }"/>
-	 <c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
     <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
       </div>
       <div class="house_idx">
