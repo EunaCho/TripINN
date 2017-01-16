@@ -229,12 +229,37 @@
    		where TRIP_IDX = #{TRIP_IDX} and TR_IDX=#{TR_IDX}
    </delete>
    
+	<!-- 위시리스트 start -->
    
-   
-   
-   
-   
-   
+   <!-- 숙소 위시리스트  -->
+   <select id="selectMy_HouseList" parameterType="HashMap" resultType="HashMap">
+  	 <include refid="common.pagingPre"/>
+   			 select Row_NUMBER() OVER
+               (order by FAR_IDX DESC)  RNUM,
+               h.HOUSE_IDX, HOUSE_ADDR1,HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_KIND, HOUSE_PERSONS, HOUSE_PERSON_PRICE, HOUSE_NAME,
+               HOUSE_INFO, HOUSE_ZIPCODE, HOUSE_IMAGE, f.MEMBER_IDX,
+                 nvl((select sum(h2.HRB_STAR) from HOUSE_REVIEW_BOARD h2 where h2.HOUSE_idx=h.HOUSE_idx),'0') HRB_STAR,
+                 nvl((select count(*) from house_review_board h2 where h2.HOUSE_IDX=h.HOUSE_IDX),'0') total_cnt   
+            from HOUSE h inner join FAVORITES f on h.HOUSE_IDX = f.HOUSE_IDX 
+            where f.MEMBER_IDX = #{MEMBER_IDX}
+  	 <include refid="common.pagingPost"/> 
+   </select>
+ 
+ <!-- 트립 위시리스트  -->
+   <select id="selectMy_TripList" parameterType="HashMap" resultType="HashMap">
+	<include refid="common.pagingPre"/> 
+		select Row_NUMBER() OVER
+               (order by FAR_IDX DESC)  RNUM,
+               t.TRIP_IDX, TRIP_AREA,TRIP_TYPE, TRIP_PERSONS, TRIP_ADDR1, TRIP_ADDR2, TRIP_ADDR3, TRIP_NAME,TRIP_INTRO,
+               TRIP_ZIPCODE, TRIP_IMAGE, TRIP_LANGUAGE, TRIP_FIRST_DATE, TRIP_LAST_DATE, TRIP_INCLUDE, 
+			   TRIP_PPRICE, 
+			   f.MEMBER_IDX,FAR_IDX,
+                  nvl((select sum(t2.TRB_STAR) from TRIP_REVIEW_BOARD t2 where t2.TRIP_idx=t.TRIP_idx),'0') TRB_STAR,
+                  nvl((select count(*) from TRIP_review_board t2 where t2.TRIP_IDX=t.TRIP_IDX),'0') total_cnt   
+            from TRIP t inner join FAVORITES f on t.TRIP_IDX = f.TRIP_IDX 
+            where f.MEMBER_IDX = #{MEMBER_IDX}
+	<include refid="common.pagingPost"/> 
+	</select>
  <!-- 알림판  -->
      <!-- 알림판 회원 정보 불러오기  -->
    <select id ="selectMember" parameterType="hashmap" resultType="hashmap">

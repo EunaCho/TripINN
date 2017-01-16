@@ -15,10 +15,38 @@ public class AdminFaqServiceImpl implements AdminFaqService{
 	@Resource(name="adminFaqDAO")
     private AdminFaqDAO adminFaqDAO;
 	
+	//리스트
 	@Override
-	public List<Map<String, Object>> FaqBoardList(Map<String, Object> map) throws Exception {
-		return adminFaqDAO.FaqBoardList(map);
+	public List<Map<String, Object>> faqBoardList(Map<String, Object> map) throws Exception {
+		return adminFaqDAO.faqBoardList(map);
+		
+	}
+
+	//글쓰기
+	@Override
+	public void adminFaqInsert(Map<String, Object> map) throws Exception {
+		adminFaqDAO.adminFaqInsert(map);
 	}
 	
+	
+	//수정하기
+	@Override
+	public void adminFaqUpdate(Map<String, Object> map) throws Exception {
+		adminFaqDAO.adminFaqUpdate(map);
+	}
+	
+	//상세보기
+    @Override
+    public Map<String, Object> adminFaqSelectDetail(Map<String, Object> map) throws Exception {
+ 
+        Map<String, Object> resultMap = adminFaqDAO.adminFaqSelectDetail(map);
+        return resultMap;
+    }
+    
+    //삭제하기
+    @Override
+    public void adminFaqDelete(Map<String, Object> map) throws Exception {
+        adminFaqDAO.adminFaqDelete(map);
+    }
 	
 }

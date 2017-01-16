@@ -17,7 +17,8 @@
 <script src="/TripINN/js/trip/main.js" type="text/javascript"></script>
 <script>
 var member_idx = "${sessionScope.member_idx}";
-
+var fav = "${trip.FAV}";
+var favNum = 0;
 	function tripReserve() {
 		if(member_idx != null && member_idx!="") {
 			var rform = document.rform;
@@ -74,12 +75,41 @@ var member_idx = "${sessionScope.member_idx}";
 					}
 				});
 			}
+			
+			
 		} else {
 			alert("로그인 후 이용 가능합니다.");
 			return;
 		}
 	}
-	
+	//즐겨찾기 기능
+	function tripFav(idx) {
+		if(member_idx != null && member_idx!="") {
+			var cnt = 0;
+			if($("#heartImg").attr("class")=="heartImg " || $("#heartImg").attr("class")=="heartImg") { //즐겨찾기 추가 
+				var _url = "/TripINN/tripBookmark.do";
+				$("#heartImg").attr("class", "heartImg on");
+			} else { // 삭제
+				cnt = -1;
+				var _url = "/TripINN/tripBookmarkDelete.do";
+				$("#heartImg").attr("class", "heartImg");
+			}
+			
+			$.ajax({
+				url: _url,
+				type: "GET",
+				async:true,
+				dataType: "Text", 
+				data: {"trip_idx": idx, "cnt": cnt, "member_idx":member_idx},
+				success: function(data) {
+					
+				}
+			});
+		} else {
+			alert("로그인 후 이용 가능합니다.");
+			return;
+		}
+	}
 	function fn_search(pageNo){
         var reviewForm = document.reviewForm;
         reviewForm.action = "/TripINN/tripDetail.do";
@@ -87,6 +117,13 @@ var member_idx = "${sessionScope.member_idx}";
         reviewForm.submit();
     }
 </script>
+<style>
+.heartImg { width:25px;height:25px;float:right;margin:20px;margin-right:50px;cursor:pointer;
+			background-image:url(/TripINN/images/house/icon_heart_white.png);background-size:100% 100%;background-repeat: no-repeat; }
+.heartImg:hover {background-image:url(/TripINN/images/house/icon_heart_red.png);}
+.on{background-image:url(/TripINN/images/house/icon_heart_red.png);}
+.reserve_layerWindow { display:none; }
+</style>
 <form name="rform" method="post">
 	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}"/>
 </form>
@@ -95,7 +132,10 @@ var member_idx = "${sessionScope.member_idx}";
 		<div id="left-info">
 			<div class="trDiv">
 				<div class="tdDiv-col" style="height:auto;">
-					<p><b><font style="font-size:20px;">${trip.TRIP_NAME }</font> - ${trip.TRIP_AREA }</b></p> 
+					<p style="float:left;"><b><font style="font-size:20px;">${trip.TRIP_NAME }</font> - ${trip.TRIP_AREA }</b></p>
+					<span class="heartImg <c:if test='${trip.FAV != 0 }'>on</c:if>" 
+						id="heartImg"  title="즐겨찾기" onclick="tripFav('${trip.TRIP_IDX}');">
+					</span>
 				</div>
 				
 			</div>
@@ -108,7 +148,7 @@ var member_idx = "${sessionScope.member_idx}";
 				
 				<p style="width:350px;float:left;">호스트 : <font color="#1E6198">${trip.MEMBER_NAME }</font> 님
 					<div style="width:150px;height:auto;float:right;margin-top:-30px;">
-						<img src="/TripINN/images/공유.png" class="hostImg" />
+						<img src="/TripINN/images/${trip.MEMBER_IMAGE }" class="hostImg"/>
 					</div>
 				</p>
 				</div>
@@ -158,7 +198,18 @@ var member_idx = "${sessionScope.member_idx}";
 			<hr />
 			<div class="trDiv">
 				<div class="tdDiv-left"><p>예약 가능 인원</p></div>
-				<div class="tdDiv-right"><p>${trip.TRIP_PERSONS } 명</p></div>
+				<div class="tdDiv-right">
+				<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM <= 0}">
+					<p><b><font color="#cb4242">예약이 가득찼습니다. 다른 트립을 이용해주세요.</font></b></p>
+				</c:if>
+				<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM > 0}">
+					<p style="float:left;"><b>${trip.RESERVED_NUM } 명 / </b></p>
+					<p style="float:left;margin-left:10px;"><b>${trip.TRIP_PERSONS } 명</b></p>
+					<p style="float:left;margin-left:10px;">
+						(총 <b><font color="#cb4242">${trip.TRIP_PERSONS - trip.RESERVED_NUM }</font></b> 명 예약 가능합니다.)
+					</p>
+				</c:if>						
+				</div>
 			</div>
 			<hr />
 			<div class="trDiv">
@@ -183,9 +234,18 @@ var member_idx = "${sessionScope.member_idx}";
 			<hr />
 			<div class="trDiv" style="margin-top:20px;">
 				<div class="tdDiv-col">
+					<div style="width:20%;height:25px;background:orange;color:#fff;  margin-right:30px;
+						text-align:center;  border-radius: 15px; padding:6px; float:left;
+						cursor:pointer" onclick="r_confirm('open')">
+							<b>트립 신고</b>
+					</div>
+					
 					<div style="width:20%;height:25px;background:#00A2E8;color:#fff;
 					text-align:center;  border-radius: 15px; padding:6px;float:right; margin-right:50px;
-					cursor:pointer"  onclick="tripReserve();">
+					cursor:pointer" 
+			<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM > 0}">onclick="tripReserve();"</c:if>
+			<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM <= 0}">onclick="alert('예약이 가득찼습니다. 다른 트립을 이용해주세요.');"</c:if>
+			>
 						<b>트립 신청</b>
 					</div>
 					<div style="width:20%;height:25px;background:#cb4242;color:#fff;  margin-right:30px;
@@ -242,7 +302,7 @@ var member_idx = "${sessionScope.member_idx}";
 			<c:forEach items="${rlist }" var="rlist" varStatus="stat">
 			<div class="trDiv" style="border-bottom:1px solid #a6a6a6;">
 				<div class="tdDiv-left" style="font-size:12px;width:20%;height:auto;font-family:'Nanum Gothic',malgun Gothic,dotum;padding:5px;">
-					<img src="/TripINN/images/공유.png" class="hostImg" /><br />
+					<img src="/TripINN/images/${rlist.MEMBER_IMAGE }" class="hostImg" /><br />
 					<span style="padding:3px;">${rlist.MEMBER_NAME } 님</span>
 					<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
 						<p style="WIDTH: ${rlist.TRB_STAR * 20}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
@@ -262,7 +322,14 @@ var member_idx = "${sessionScope.member_idx}";
 					 	 </span>
 					 </c:if>
 				</div>
+				<!-- //////////삭제버튼////////////// -->
 				
+				<c:if test="${rlist.M_IDX eq sessionScope.member_idx }">
+				<div style="width:20px;height:20px;margin-right:10px;margin-top:10px;float:right;cursor:pointer;
+					background-image:url(/TripINN/images/xxx.png); 
+						background-repeat:no-repeat; background-size:100% 100%;"
+						onclick="reviewDelete('${rlist.TRB_IDX}');"></div>
+				</c:if>
 				<!-- ///////////추천 버튼////////// -->
 				<span id="cu${stat.index}" class="cu" 
 				 style="width:100px;height:30px;float:right;margin-top:7%;vertical-align:middle;text-align: center;
@@ -312,14 +379,14 @@ var member_idx = "${sessionScope.member_idx}";
 			<div class="trDiv" style="margin:20px;">
 				<div class="tdDiv-col">
 	<!-- 슬라이드 시작 -->		
-	<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 700px; height: 456px; overflow: hidden; visibility: visible; background-color: #24262e;"
-		  jssor-slider="true">
+	<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 550px; height: 456px; overflow: hidden; visibility: visible; background-color: #24262e;"
+		  jssor-slider="true"> 
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('/TripINN/images/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 700px; height: 356px; overflow: hidden;">
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 550px; height: 356px; overflow: hidden;">
 
               <c:forEach items="${imgs}" var="img" varStatus="status">
            <div data-p="144.50" <c:if test="${status.index != 0 }">style="display:none;"</c:if>>
@@ -336,7 +403,7 @@ var member_idx = "${sessionScope.member_idx}";
             <a data-u="any" href="http://www.jssor.com" style="display:none">Image Gallery</a>
         </div>
         <!-- Thumbnail Navigator -->
-        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:700px;height:100px;" data-autocenter="1">
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:550px;height:100px;" data-autocenter="1">
             <!-- Thumbnail Item Skin Begin -->
             <div data-u="slides" style="cursor: default;">
                 <div data-u="prototype" class="p">
@@ -387,4 +454,88 @@ var member_idx = "${sessionScope.member_idx}";
 			</div>
 		</div>
 	</div>
+	
+<form action="/TripINN/tripReport.do" method="post" name="reportForm">
+<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX }" />
+<input type="hidden" name="member_idx" value="${sessionScope.member_idx }" />
+<input type="hidden" name="report_state" value="0" /> <!-- 0 진행중, 1 경고, 2 삭제 -->
+<input type="hidden" name="report_type" value="1" /> <!-- 0 숙소신고, 1 투어신고 -->
+<div class="report_layerWindow">
+
+	 <div class="bg"></div>
+	 <div id="report_layer">
+	 	<h2 style="border-bottom:1px solid black;">신고하기</h2>
+	 	<p>허위 신고시 불이익을 당할 수 있습니다.</p>
+		 <div class="login_line">
+		 	<div class="box_in">
+
+		 		<input type="text" name="report_title" id="" placeholder="제목" style="width:450px;height:30px;padding:5px;"><br />
+				<textarea name="report_content" placeholder="내용" style="width:450px;height:200px;padding:5px;"></textarea>
+			</div>
+			<div style="clear:both;"></div>
+		 </div>
+
+	    <div class="close" >
+          <table width="100%" id="reportTbl">
+             <tr>
+                <td width="100%" align="right" style="text-align:right;">
+                    <a href="javascript:r_confirm('close')" title="레이어 닫기" class="btn_login" >닫기</a>
+                	<a href="javascript:tripReport();" class="btn_login" style="color:red" >신고하기</a>
+                </td>
+             </tr>
+          </table>
+       </div>
+	 </div>
 </div>
+</form>
+</div>
+<form name="reviewDel" action="/TripINN/reviewDel.do" method="post">
+	<input type="hidden" name="trb_idx" value="" />
+	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}" />
+</form>
+
+<style>
+
+.report_layerWindow{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
+.report_layerWindow.open{display:block}
+.report_layerWindow .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+#report_layer{
+	position:absolute;width:500px;top:20%;left:35%;margin:0px auto;padding:0px 28px 0 28px;
+	border:2px solid #9BC3FF; background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
+	color:#767676;line-height:normal;white-space:normal; 
+}
+.login_line{margin:10px 0 0;height:300px;}
+.box_in{float:left;margin:0 10px 0; }
+.box_in input{width:120px;height:24px;display:block;margin:3px 0 0;}
+.btn_login{
+			width:72px;background:#363636;color:#a6a6a6;float:right;
+			text-align:center;margin-top:5px;margin:10px;
+			cursor: pointer;
+			}
+#report_layer h2{color:#636363;font-size:24px;line-height:40px;}
+.close { margin-bottom:10px; text-decoration: none; width:100%; text-align:right; cursor: pointer}
+.close a { color: #9BC3FF; }
+#reportTbl tr td{
+	font-size:11px;
+	font-family : 'NanumGothic';
+}
+</style>
+
+
+<script>
+function reviewDelete(review_idx) {
+	var form = document.reviewDel;
+	form.trb_idx.value = review_idx;
+	form.submit();
+}
+function tripReport() {
+	var rform = document.reportForm;
+	rform.submit();
+	alert("신고가 성공적으로 접수되었습니다.");
+}
+function r_confirm (confirm) {
+	confirm == "open" ? 
+			$(".report_layerWindow").css("display", "block") :
+				$(".report_layerWindow").css("display", "none");
+}
+</script>

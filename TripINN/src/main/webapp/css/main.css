@@ -14,6 +14,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 
 /* main.jsp */
 /* 상단 롤링 블록 */
+ * { margin:0px; padding:0px; }
         /* Animation Canvas */
         .animation_canvas  {
             overflow:hidden;
@@ -30,7 +31,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
         /* Slider Text Panel */
         .slider_text_panel { position:absolute; top:200px; left:50px; }
         .slider_text { position:absolute; width:250px; height:150px; color:white;}
-    	.slider_text p {font-size:15px;}
+        .slider_text p {font-size:15px;}
+    
         /* Control Panel */
         .control_panel  {
             position:absolute; top:380px; 
@@ -47,9 +49,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
         }
         .control_button:hover { top:-16px; }
         .control_button.active { top:-31px; }
-        
-        
-        
 /* 공지사항 블록 */
 .noticeBlock{
   /*   border: 1px solid; */
@@ -171,11 +170,12 @@ a:link {
 
 ul, ol, li, h4, p  {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
 }
 
+html, body, form, input, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd {
+    margin: 0;
+    padding: 0;
+}
 td, div, li, dt, dd, input, textarea, select, h4, h5 {
     font-family: Verdana, "돋움", dotum;
    /*  font-size: 12px; */
@@ -213,14 +213,13 @@ div {
 #preSearchForm div .date {margin:-5px -3px 0px 15px; padding:8px; width:100px; float:left; text-align:left; list-style: none; font-size:13px; cursor:pointer;}
 #preSearchForm div .datepicker { width:100px;  height:23px; border-radius: 2px;}
 #preSearchForm .select {margin:-5px -3px 10px 15px; padding:8px; width:100px; float:left; text-align:left; list-style: none; font-size:13px; cursor:pointer;}
-#preSearchForm select {width:103px; height:28px; color:#b0b0b0; border-style: inset; border-style: inset;border-color: initial;border-image: initial; border-width: 2px;}
+#preSearchForm select {width:103px; height:28px; color:#b0b0b0; margin:5px; border-style: inset; border-style: inset;border-color: initial;border-image: initial; border-width: 2px;}
 /* 여행목적 */
 #preSearchForm .hc_f_triptype {
     width: 235px;
     float: left;
     margin: 0px 20px 40px;
     text-align: left;
-    font-size: 12px;
     font-weight: normal;
 }
 #preSearchForm .hc_f_triptype .hc_f_triptype_label {

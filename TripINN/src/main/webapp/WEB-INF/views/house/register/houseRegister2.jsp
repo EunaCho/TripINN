@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=1.0">
 <script src="/TripINN/js/house/openHouseRegister.js"></script>
 <script>
-
 var imgArray = new Array();
 var imgNum = 2;
 function createImg() {
@@ -32,7 +31,6 @@ function createImg() {
 	$("#house_img_container"+ imgNum).append(chtml);
 	imgArray.push("house_img_file"+imgNum);
 	imgNum++;
-
 //	alert("배열 길이"+imgArray.length+"배열"+imgArray);
 	
 	

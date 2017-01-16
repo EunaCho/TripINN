@@ -316,17 +316,3 @@ function checkInfo() {
 		$("#r_hr_email").html(hr_email);
 	}
 	</script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

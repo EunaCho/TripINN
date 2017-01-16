@@ -108,7 +108,7 @@
 	
    .list1{
     border-top:1px solid blue;
-    border-botton:1px solid blue;
+    border-bottom:1px solid blue;
 	width:900px;
 	height:200px;
 	margin:40px;
@@ -117,8 +117,8 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:130px;
-	margin-top:10px;
+	margin-left:230px;
+	margin-top:-150px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -128,7 +128,7 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:460px;
+	margin-left:560px;
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
@@ -137,18 +137,20 @@
 	.house_name{
 	border:0px solid black;
 	width:630px;
-	height:100px;
-	margin-left:130px;
+	height:60px;
+	margin-left:230px;
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
+	overflow-y:scroll;
+	
 	}
 	.house_price{
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:130px;
+	margin-left:230px;
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
@@ -158,7 +160,7 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:460px;
+	margin-left:560px;
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
@@ -168,7 +170,28 @@
     font-size:17px;
     margin-left:450px;
     }
-	
+    .picture1{
+	border:0px solid black;
+	width:150px;
+	height:130px;
+	margin:10px;
+	border-radius:7px;
+	}
+	.house_name2{
+	border:0px solid black;
+	width:150px;
+	height:20px;
+	margin-top:25px;
+	margin-left:20px;
+	text-align:center;
+	}
+	.picture{
+	border:0px solid black;
+	width:170px;
+	height:150px;
+	margin:10px;
+	border-radius:7px;
+	}
 	
 	
 	
@@ -245,6 +268,12 @@
    <c:when test="${fn:length(list)>0}">
    <c:forEach var="adminTrip" items="${list}">
     <div class="list1">
+     <div class="picture">
+     <c:set var="fullImg" value="${adminTrip.HOUSE_IMAGE }"/>
+	 <c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+    <img class="picture1" src="<%=cp%>/images/house/${adminTrip.HOUSE_IMAGE}">
+      </div>
+      
       <div class="house_idx">
      &nbsp;번호: <a href="javascript:formSubmit('${adminTrip.REPORT_IDX}');">${adminTrip.REPORT_IDX }</a>
       </div>
@@ -259,6 +288,9 @@
       </div>
        <div class="house_type">
       &nbsp;신고유형: ${adminTrip.REPORT_TYPE}
+      </div>
+      <div class="house_name2">
+      ${adminTrip.HOUSE_NAME}
       </div>
       
     </div>

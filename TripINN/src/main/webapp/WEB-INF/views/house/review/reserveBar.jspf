@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<!-- 오른쪽 :예약바-->
+				<div id="reserveBar">
+					<form id="reservation" action="" method="post">
+						<div class="price">가격 : ${house.HOUSE_PRICE}원 </div>
+						<div class="checkinout">
+							<label>체크인</label> <input type="text" name="hr_first_date"
+								id="datepicker_in_reserveBar" value="${search.hr_first_date}"
+								placeholder="체크인"> 
+						</div>
+						<div class="checkinout">
+							<label>체크아웃</label> <input type="text" name="hr_last_date"
+								id="datepicker_out_reserveBar" value="${search.hr_last_date}"
+								placeholder="체크아웃">
+						</div>
+						<div class="checkinout">
+							<label>인원</label> <select name="person">
+								<option value="인원 1명">인원 1명</option>
+								<option value="1"
+									<c:if test="${person eq 1}">selected="selected"</c:if>>인원
+									1명</option>
+								<option value="2"
+									<c:if test="${person eq 2}">selected="selected"</c:if>>인원
+									2명</option>
+								<option value="3"
+									<c:if test="${person eq 3}">selected="selected"</c:if>>인원
+									3명</option>
+								<option value="4"
+									<c:if test="${person eq 4}">selected="selected"</c:if>>인원
+									4명</option>
+								<option value="5"
+									<c:if test="${person eq 5}">selected="selected"</c:if>>인원
+									5명</option>
+							</select>
+						</div>
+
+						<button class="button" type="submit">예약하기</button>
+					</form>
+					<div class="state">
+						<p>결제액이 청구되지 않습니다.</p>
+						<p>이 숙소는 지난주에 총 ${house.HOUSE_CNT }번 조회되었습니다.</p>
+					</div>
+
+					<div class="wishList">
+						<div id="wishIcon"></div>
+						<!-- <img src="/TripINN/images/house/icon_heart_white.png"> -->
+						<div style="margin-top: 5px;">위시리스트 담기</div>
+					</div>
+					
+					<div class="report">
+						<span>
+						<img src="/TripINN/images/house/report.png"></span>
+						<span>숙소 신고하기</span>
+					</div>
+					<div class="reserveBarEnd">
+					
+					</div>
+				</div>

@@ -182,6 +182,18 @@ public class MypageServiceImpl implements MypageService{
 	}
 	//-------프로필------//
 
+	//----------------------------------------------위시리스트 --------------------------
+	@Override
+	public Map<String, Object> selectMy_HouseList(Map<String, Object> map) throws Exception {
+		return mypageDAO.selectMy_HouseList(map);
+	}
+
+	@Override
+	public Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception {
+
+		return mypageDAO.selectMy_TripList(map) ;
+	}
+
 	//-------프로필------//
 
 }

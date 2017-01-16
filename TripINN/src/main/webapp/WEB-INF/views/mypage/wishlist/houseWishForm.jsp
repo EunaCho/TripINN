@@ -35,11 +35,11 @@ var curNum = 1;
         ShowBackLayer();
         var objId = document.getElementById('HotelPhotoView');  //팝업레이어
         $.ajax({
-    		url: "/TripINN/tripPhotoInfo.do",
+    		url: "/TripINN/mypage/hosuePhotoInfo.do",
     		type: "POST",
     		async:true,
     		dataType: "Text", 
-    		data: {"trip_idx": trip_idx, "curNum": curNum},
+    		data: {"house_idx": trip_idx, "curNum": curNum},
     		success: function(data) {
     			$("#HotelPhotoView").html(data);
     		}
@@ -85,40 +85,25 @@ var curNum = 1;
         $('#HotelPhotoView #img_photo_nm').html(ImgNM + '&nbsp;');
 
     }
-   function searchArea(area) {
-	   var form = document.formArea;
-	   form.area.value = area;
+   function searchWish_kind(wish_kind) {
+	   var form = document.formWish_kind;
+	   if(wish_kind == 1){
+	   		form.action="/TripINN/mypage/houseWishList.do";
+   		}
+	   
+	   if(wish_kind == 2){
+	   		form.action="/TripINN/mypage/tripWishList.do";
+  		}
 	   form.submit();
    } 
-   function tripDetail(idx) {
+   function houseDetail(idx) {
 	   var form = document.formDetail;
-	   form.trip_idx.value = idx;
+	   form.HOUSE_IDX.value = idx;
 	   form.submit();
    }
 </script>
 
 <style>
-	.left_div{
-		border:1px solid black;
-		margin-bottom:20px;
-		margin-left:50px;
-		width: 200px;
-		height:450px;
-		float:left;
-	}
-	.side_list{
-		border:1px solid black;
-		margin:20px;
-    	width:150px;
-    	height:27px;	
-	} 
-	
-	.side-text{
-		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
-    	text-decoration:none
-	}
 	#wrap{ width:100%;height:100%;padding:0px; display: table; margin:0px auto; margin-bottom:20px;}
 	.list-container{ width:1000px; height:100%; margin:20px auto;margin-bottom:20px; display: block; }
 	.list-left { width:15%;height:100%;float:left;background-color:#ffd4df;}
@@ -129,8 +114,9 @@ var curNum = 1;
 	
 	.top_div { width:50%; text-align:center; height:30px; float:left; padding-top:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:bold; }
 	.top_div:hover {border-bottom:5px solid #1E6198;cursor:pointer;}
-			
-	.right-middle .trip-info { width: 30%; float:left; height:300px;  margin:10px;}
+	.on {border-bottom:5px solid #1E6198;cursor:pointer; background-color: #f8f8f8;}
+	
+	.right-middle .trip-info { width: 30%; float:left; height:356px;  margin:10px;}
 	.trip-info .trip-img { width:98%; height:200px; background-size:100% 100%; background-repeat: no-repeat; border-radius:5px;}
 	.trip-info .trip-info-ment { width:100%; }
 	.trip-info-ment div {width:92%;padding:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;
@@ -143,11 +129,11 @@ var curNum = 1;
 	#selected { border-bottom:5px solid #1E6198; color:#cb4242; background-color:#f8f8f8; }
 </style>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
-<form action="/TripINN/tripSearchArea.do" method="post" name="formArea">
-	<input type="hidden" name="area"  value=""/>
-</form>
+<!-- <form  method="post" name="formWish_kind" >
+	<input type="hidden" name="wish_kind"  value=""/>
+</form>  -->
 <form action="/TripINN/house/houseDetail.do" method="post" name="formDetail">
-	<input type="hidden" name="trip_idx" value=""/>
+	<input type="hidden" name="HOUSE_IDX" value=""/>
 </form>
 
 <div id="wrap">
@@ -164,49 +150,71 @@ var curNum = 1;
 		</div>
 		<div class="list-right">
 			<div class="right-con">
-				<div class="right-top">
-					<div class="top_div" onclick="searchArea('숙소')">숙소 </div>
-					<div class="top_div" onclick="searchArea('트립')">트립</div>
+			<form name="formWish_kind" meth	od="post">
+				<div class="right-top" style="border:1px solid red;">
+					<div class='top_div <c:if test="${wishType eq 'house'}">on</c:if>' onclick="searchWish_kind(1)">숙소</div>
+					<div class=top_div <c:if test="${wishType == 'trip'}">on</c:if> onclick="searchWish_kind(2)">트립</div>
 				</div>
+			</form>
 				<hr style="margin-top:-1px;width:100%;" />
-				<div class="right-middle">
-				<c:if test="${empty list }">
+				<div class="right-middle" style="border:1px solid black;">
+				<c:if test="${empty list}">
 					<div style="width:100%;height:100%;background-color:#F8F8F8;padding-top:120px;">
 						<h2><font style="color:#000;font-size:20px;margin-top:100px;">조회된 결과가 없습니다.</font></h2>
 					</div>
 				</c:if>
 				<c:forEach var="list" items="${list}" >
 				<c:set var="fullImg" value="${list.HOUSE_IMAGE}"/>
-					<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
-					<div class="trip-info">
-						<div class="trip-img" style="background-image:url('/TripINN/images/house/${tripImg}');cursor:pointer;"
-							onclick="newShowHotelPhoto('${trip.TRIP_IDX}')"></div>
-						<div class="trip-info-ment">
+					<c:set var="houseImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+						<fmt:formatNumber var="sum" value="${list.HRB_STAR}" pattern="#.##"/>
+						<fmt:formatNumber var="cnt" value="${list.total_cnt }" pattern="#.##"/>
+					<div class="trip-info" style="border:1px solid red;">
+						<div style="border:1px solid blue;background-image:url('/TripINN/images/house/${houseImg}');cursor:pointer;" class="trip-img"
+							onclick="newShowHotelPhoto('${list.HOUSE_IDX}')">
+						</div>
+						<div class="trip-info-ment" style="border:1px solid blue;">
 							<div class="info1">
-								${trip.TRIP_NAME } [ ${trip.TRIP_TYPE } ] 
+								${list.HOUSE_NAME} [ ${list.HOUSE_TYPE} ] ${list.FAR_IDX}
 								<span style="float:right">
-									최대 <font color="#cb4242">${trip.TRIP_PERSONS}</font> 명
+									최대 <font color="#cb4242">${list.HOUSE_PERSONS}</font> 명
 								</span>
-								<br />
-								<span>
-								${trip.TRIP_ADDR1 } <br />
-								<fmt:formatDate value="${trip.TRIP_FIRST_DATE }"/>
-								 ~
-								  <fmt:formatDate value="${trip.TRIP_LAST_DATE }"/>
+								
+								<div style="clear:both;padding:2px;"></div>
+								<span style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
+									<p style="<c:if test="${list.total_cnt != 0}">width:${sum * 20 / cnt}%;</c:if>
+											  <c:if test="${list.total_cnt  == 0}">width:0%;</c:if>
+									 PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+									</p>&nbsp;&nbsp;
+								</span>
+								<span style="float:left;width:50px;margin-left:10px;">
+										<font color="#cb4646" size="2">
+										<c:if test="${list.total_cnt  != 0}">
+										<fmt:formatNumber value="${sum / cnt}" pattern="#.#"/>
+										</c:if> 
+										<c:if test="${list.total_cnt  == 0}">
+										0
+										</c:if>
+										</font>점
+								</span>
+								
+								<div style="clear:both;padding:2px;"></div>
+								<span style="margin-top:-5px;">
+									${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}
 								 </span>
 							</div>
-							<div style="color:#cb4242;text-align:right;">
-								<div style="width:120px;float:left;margin-top:-8px;text-align:left;margin-left:-15px;">
-								<img src="http://openimage.interpark.com/tourpark/tour/common/button/btn_detail_view02.gif"
-									style="cursor:pointer" width="70px" height="25px" onclick="tripDetail('${trip.TRIP_IDX}');"/>
-								<img src="http://openimage.interpark.com/tourpark/tour/sub_depth/icon_search.gif"
-									 alt="포토" style="cursor:pointer" onclick="newShowHotelPhoto('${trip.TRIP_IDX}')">
+							<div style="color:#cb4242;text-align:right; ">
+								<div style="width:120px;float:left;margin-top:-8px;text-align:left;margin-left:-7px;">
+									<img src="http://openimage.interpark.com/tourpark/tour/common/button/btn_detail_view02.gif"
+										style="cursor:pointer" width="70px" height="25px" onclick="houseDetail('${list.HOUSE_IDX}');"/>
 								</div>
-								<img style="width:11px;height:11px;"
-									src="http://openimage.interpark.com/tourpark/tour/common/icon/icon_won_pink.gif" />
-								<fmt:formatNumber>${trip.TRIP_PPRICE }</fmt:formatNumber>
-								<font>원</font>
+								<img style="width:11px;height:11px;" src="http://openimage.interpark.com/tourpark/tour/common/icon/icon_won_pink.gif" />
+									<fmt:formatNumber>${list.HOUSE_PERSON_PRICE}</fmt:formatNumber><font>원</font>
 							</div>
+				
+							<div style="color:#cb4242; text-align:right; border:1px solid #dce0e0; width:95%; margin-top:2px;">
+								<img style="width:25px; height:25px;" src="<%=cp%>/images/mypage/wishlist.jpg"/>
+							</div>
+						
 						</div>
 					</div>
 				</c:forEach>

@@ -191,9 +191,13 @@ public class TripController {
 	
 	//트립 예약 폼 이동
 	@RequestMapping(value="/tripReserveForm.do", method=RequestMethod.POST)
-	public ModelAndView tripReserveForm(CommandMap commandMap) throws Exception {
+	public ModelAndView tripReserveForm(CommandMap commandMap, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("tripReserveForm");
-		
+		if(session.getAttribute("member_idx") == null) {
+			commandMap.put("member_idx", "0");
+		} else {
+			commandMap.put("member_idx", session.getAttribute("member_idx"));
+		}
 		Map<String, Object> tripInfo = tripService.selectTripDetail(commandMap.getMap());
 		
 		mv.addObject("tripInfo", tripInfo);
@@ -243,6 +247,47 @@ public class TripController {
 		tripService.reviewLike(map);
 		String trb_like = tripService.getLikeCnt(request.getParameter("trb_idx")); // TRB_LIKE(추천수) UPDATE
 		mv.addObject("trb_like", trb_like);
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripBookmark.do", method=RequestMethod.GET)
+	public void tripBookmark(HttpServletRequest request) throws Exception{
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_idx", request.getParameter("member_idx"));
+		map.put("trip_idx", request.getParameter("trip_idx"));
+
+		tripService.insertBookMark(map);
+		
+	}
+	
+	@RequestMapping("/tripBookmarkDelete.do")
+	public void tripBookmarkDelete(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_idx", request.getParameter("member_idx"));
+		map.put("trip_idx", request.getParameter("trip_idx"));
+		
+		System.out.println("get(member_idx) : " + map.get("member_idx"));
+		System.out.println("get(trip_idx) : " + map.get("trip_idx"));
+		tripService.deleteBookMark(map);
+	}
+	
+	@RequestMapping(value="/tripReport.do", method=RequestMethod.POST)
+	public ModelAndView tripReport(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		
+		tripService.tripReport(commandMap.getMap());
+		
+		mv.addObject("trip_idx", commandMap.get("trip_idx"));
+		return mv;
+	}
+	
+	@RequestMapping(value="/reviewDel.do", method=RequestMethod.POST)
+	public ModelAndView reviewDel(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		tripService.reviewDel(request.getParameter("trb_idx"));
+		
+		mv.addObject("trip_idx", request.getParameter("trip_idx"));
 		return mv;
 	}
 }

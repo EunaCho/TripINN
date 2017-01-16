@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.common.common.CommandMap;
 import com.inn.member.MemberService;
 
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
@@ -442,10 +444,20 @@ public class MypageController {
 //-------------------------------------------위시리스트 시작---------------------------------------------
 	
 	//숙소 위시리스트 목록
-	@RequestMapping("/houseWishList.do")
-	public ModelAndView houseWishListForm(CommandMap commandMap) throws Exception{
+	@RequestMapping(value="/houseWishList.do" , method={RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView houseWishListForm(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("houseWishList");
+		
+		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
+		commandMap.put("MEMBER_IDX", session_member_idx);*/
+		commandMap.put("MEMBER_IDX", "12");
+		
+		Map<String, Object> resultMap = mypageService.selectMy_HouseList(commandMap.getMap());
+		
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result"));
+		mv.addObject("wishType", "house");
 		
 		return mv;
 	}
@@ -456,9 +468,35 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("tripWishList");
 		
-		return mv;
+		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
+		commandMap.put("MEMBER_IDX", session_member_idx);*/
+		commandMap.put("MEMBER_IDX", "12");
 		
+		Map<String, Object> resultMap = mypageService.selectMy_TripList(commandMap.getMap());
+		
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result"));
+		mv.addObject("wishType", "trip");
+		
+		return mv;
 	}
+	
+	/*//리스트에서 사진정보 ajax로 가져옴 
+	@RequestMapping(value="/housePhotoInfo.do", method=RequestMethod.POST)
+	public ModelAndView housePhotoInfo(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("/mypage/potoInfo");
+		String house_idx = request.getParameter("HOUSE_IDX");
+		
+		String images = mypageService.selectImage(house_idx);
+		System.out.println("images: " + images);
+		
+		String[] imgs = images.split("\\|");
+		mv.addObject("img", imgs);
+		return mv;
+	}
+	*/
+
+	
 //--------------------------------------------프로필 시작---------------------------------------------
 	//*프로필 수정(프로필 메인)
 	@RequestMapping("/profile.do")

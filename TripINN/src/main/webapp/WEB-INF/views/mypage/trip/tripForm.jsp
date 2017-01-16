@@ -41,7 +41,6 @@
 		margin:2px;
 		width:98%;
 		height:25px;
-
 		font-size:16px;
 		color:#FFF;
 		font-weight: 400;

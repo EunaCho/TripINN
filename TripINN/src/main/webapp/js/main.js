@@ -1,4 +1,3 @@
-
 /*header.jsp*/
 function logout() {
 	if(confirm("로그아웃을 하시겠습니까?")) {
@@ -84,6 +83,7 @@ jQuery(function($){
         }
         return false;
        });
+    
     
     //Hide Window - login
     login_layerWindow.find('>.bg').mousedown(function(event){

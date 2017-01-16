@@ -61,7 +61,7 @@ public class HouseServiceImpl implements HouseService{
 //		file img 등록
 		String HouseImgList = fileUtils.parseInsertFileInfo(map, request);
 		map.put("HOUSE_IMAGE", HouseImgList);
-		System.out.println(map.get("HOUSE_ADDR1")+"************************** 서비스 임플");
+		
 		houseDAO.insertHouse(map); // HOUSE 등록
 		houseDAO.insertHouseInfo(map); // HOUSEINFO 등록
 	}
@@ -80,10 +80,7 @@ public class HouseServiceImpl implements HouseService{
 	//house detail
 	@Override
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception {
-		System.out.println("1");
-		System.out.println(map);
 		return houseDAO.selectHouseDetail(map);
-		
 	}
 	
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
@@ -93,6 +90,11 @@ public class HouseServiceImpl implements HouseService{
 	public void insertReview(Map<String, Object> map) throws Exception {
 		houseDAO.insertReview(map);
 	}
+	
+	public void houseReserve(Map<String, Object> map) {
+		houseDAO.insertHouseRSV(map);
+	}
+	
 	
 	//hi_space, hi_cspace 문자열 변경 기능
 	public void util(Map<String, Object> map){
@@ -163,13 +165,66 @@ public class HouseServiceImpl implements HouseService{
 		// TODO Auto-generated method stub
 		return houseDAO.selectMember(map);
 	}
-	
-	public void houseReserve(Map<String, Object> map) {
-		System.out.println("1");
-		System.out.println(map);
-		houseDAO.insertHouseRSV(map);
-		System.out.println("2");
-		System.out.println(map);
+
+	@Override
+	public void deleteReview(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		houseDAO.deleteReview(map);
+		
 	}
 
+	//review like
+	@Override
+	public void deleteLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.deleteLike(map);
+	}
+
+	@Override
+	public void insertLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.insertLike(map);
+	}
+
+	@Override
+	public void reviewLike(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.reviewLike(map);
+	}
+
+	@Override
+	public String selectLikeCnt(String parameter) {
+		// TODO Auto-generated method stub
+		return houseDAO.selectLikeCnt(parameter);
+	}
+
+	@Override
+	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return houseDAO.likeCheckList(map);
+	}
+
+	//insert mssg
+	@Override
+	public void sendMssg(Map<String, Object> map)throws Exception{
+		houseDAO.sendMssg(map);
+	}
+
+	@Override
+	public void increaseHouseCnt(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.increaseHouseCnt(map);
+	}
+
+	@Override
+	public void insertReportHouse(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.insertReportHouse(map);
+	}
+
+	@Override
+	public void updateTotalPrice(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		houseDAO.updateTotalPrice(map);
+	}
 }

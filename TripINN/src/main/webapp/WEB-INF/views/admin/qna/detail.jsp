@@ -130,30 +130,23 @@ li{margin-right:50px }
 .left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
 .tbl { width:1000px; border:1px; }
 
-<!--빨-->
-.tbl tr th {  border:1px solid #CD1039;height:30px;text-align:center; background:#eee; }
-<!--파-->
-.tbl tr td { border:1px solid #0000FF; padding:5px;height:30px; }
-<!--녹-->
-.tbl tr td a { text-decoration: none; color:#64CD3C; }
-<!--주황-->
-.tbl tr td a:hover { color: #FF7F50; vertical-align: middle; }
-#tbl {}
+
 </style> 
 
   <br><br>
   
  <!-- 가운데 윗 영역 -->
- <!-- 빨강 -->
 <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
          <h2>회원관리 페이지에 오신걸 환영합니다.</h2>
 </div>
 
-<!-- 좌측  + 중앙 영역,빨강-->
-<div style="height:100%; border:1px solid red; margin:0px auto; display:table;">
-
-	<!-- 좌측영역,노랑 -->
-	<div style="width:215px;height:380px;border:3px solid yellow;text-align:center; float:left;">
+<!-- 가운데 영역 전체(좌측+우측) -->
+  	<div style="width:100%;height:90%;border:1px solid black;">
+	<!--
+	<div style="height:100%; border:1px solid black; margin:0px auto; display:table;">
+	-->
+	<!-- 가운데 좌측영역 -->
+	<div style="width:215px;height:380px;border:1px solid black;text-align:center; float:left;">
   	 	<ul class="left-ul">
      	 	<li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
          	<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
@@ -171,22 +164,25 @@ li{margin-right:50px }
   	 	</ul>
 	</div><!-- 좌측side div End -->
 
-	<!-- 가운데영역,초록 -->
-	<div style="width:1025px;height:100%; border:1px solid green; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
-	<h2>회원 리스트</h2>
-		<!-- table div start -->
-		<!-- 민트색 -->
+	<!-- 가운데 우측영역 -->
+	<div style="width:1050px;height:100%; border:1px; text-align:center; top:208px;left:400px; margin:auto;">
+      
+
       <!-- 상세보기,편집 할 수 없도록 <input> 태그를 사용하지 않았음. -->
 	  <table class="board_view" >
       	<colgroup>
         	<col width="15%"/>
-            <col width="30%"/>
+            <col width="35%"/>
             <col width="15%"/>
             <col width="35%"/>
         </colgroup>
         <br>
+      
+        <!-- Qna게시판 글씨 덮는 영역 -->
+	<div class="row" style="width:1100px; height:35px; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+   		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>게시글 상세보기</strong></font>
+	</div>
         
-        <caption>게시글 상세보기</caption>
         <tbody>
             <tr>
                 <th scope="row">글 번호</th>
@@ -210,112 +206,86 @@ li{margin-right:50px }
             <tr>
                 <td colspan="4">${map.QNA_CONTENT }</td>
             </tr>
-            <!-- 임시 테스트용 글작성자의  멤버레벨 출력 -->
-            <tr>
-                <td colspan="4">${map.MEMBER_LEVEL }</td>
-            </tr>
-            <!-- 임시 테스트용 글작성자의 멤버IDX 출력 -->
-            <tr>
-                <td colspan="4">${map.MEMBER_IDX }</td>
-            </tr>
-            
-            <!-- 임시 테스트용 세션멤버레벨 출력 -->
-            <tr>
-                <td colspan="4">${member_level }</td>
-            </tr>
-            <!-- 임시 테스트용 세션멤버IDX 출력 -->
-            <tr>
-                <td colspan="4">${member_idx }</td>
-            </tr>
         </tbody>
-    </table>
-     
-    <a href="#this" class="btn" id="list">목록으로</a>
+    </table>  
     
-    <!-- 글쓴이의 멤버idx와  로그인중인 멤버idx가 같아야만 수정하기 버튼 보이도록 함 -->
-	<c:if test="${map.MEMBER_IDX == member_idx}">
-		<a href="#this" class="btn" id="update">수정하기</a>
-	</c:if>
+    <!-- 목록으로,수정하기,삭제하기 버튼 감싸는 영역 -->
+    <div style="text-align:center;">
+    <br>
+    	<a href="#this" class="btn_list" id="list">목록으로</a>
     
-    <!-- 글쓴이의 멤버idx와  로그인중인 멤버idx가 같거나 또는  로그인중인 멤버레벨이 관리자여야 글 삭제하기 버튼이 보이도록 함> -->
-    <c:if test="${(map.MEMBER_IDX == member_idx) || (member_level == 1) }">
-    	<a href="#this" class="btn" id="delete">삭제하기</a>
-    </c:if>
-    <%@ include file="/WEB-INF/include/include-body.jspf" %>
-
+    	<!-- 글쓴이의 멤버idx와  로그인중인 멤버idx가 같아야만 수정하기 버튼 보이도록 함 -->
+		<c:if test="${map.MEMBER_IDX == member_idx}">
+			<a href="#this" class="btn_edit" id="update">수정하기</a>
+		</c:if>
+    
+    	<!-- 글쓴이의 멤버idx와  로그인중인 멤버idx가 같거나 또는  로그인중인 멤버레벨이 관리자여야 글 삭제하기 버튼이 보이도록 함> -->
+    	<c:if test="${(map.MEMBER_IDX == member_idx) || (member_level == 1) }">
+    		<a href="#this" class="btn_del" id="delete">삭제하기</a>
+   	 	</c:if>
+    	<%@ include file="/WEB-INF/include/include-body.jspf" %>
+    	
+    	<br>
+	</div><!-- 목록으로,수정하기,삭제하기 버튼 감싸는 영역  끝-->
 
 
 <!-- 댓글쓰는 창,파랑-->
 	<!-- 댓글영역1 , 댓글폼 , 작성자값-->
-	<div class="inner" style ="border:1px solid blue;">
+	<div class="inner" style ="border:1px; margin-left:80px">
 		<form class="commentForm" method="post" onsubmit="return validation();">
 			<input type="hidden" name="QNA_IDX" value="${map.QNA_IDX}"/>
-			<!--  <input type="hidden" name="commenter" value="${session_member_id}"/> -->
+			
 
 
-	<!-- 댓글영역2,검정 -->
-	<div class="comm_grp" style ="border:1px solid black;" >
-		<!-- 댓글영역3,빨강 --> 
-    	<div class="comm_form" style ="border:1px solid red;">
+	<!-- 댓글영역2 -->
+	<div class="comm_grp" style ="border:1px;" >
+		<!-- 댓글영역3--> 
+    	<div class="comm_form" style ="border:1px;">
     		<!-- 댓글영역4,노랑 -->
-        	<div class="comm_write" style ="border:1px solid yellow;">
-        		 <!-- 댓글영역5,초록(가로길이 1000) -->
-         		 <div class="textarea_grp" style="width: 1000px; border:1px solid green;">
+        	<div class="comm_write" style ="border:1px;">
+        		 <!-- 댓글영역5, -->
+         		 <div class="textarea_grp" style="width: 950px; border:1px;">
          		 
            			   <!-- 로그인안했을 때 보여주는 댓글 요청 내용 -->
-           			   <!-- 테스트용으로 일부러 로그인 안했을때 댓글창 보여주도록 하였음-->
 	      				<br/>
-	      				<c:if test="${session.getAttribute(member_name) != null}">
-	     			 		<input type="text" style="align:center; margin: 10px; width: 950px; height: 55px;" value="로그인 후에  댓글 작성이 가능합니다." readonly="readonly"/>
+	      				<c:if test="${member_level == null}">
+	     			 		<input type="text" style="align:center; margin: 10px; width: 900px; height: 60px;" value="로그인 후에  댓글 작성이 가능합니다." readonly="readonly"/>
 	     			 	</c:if>
 	     			 	
-	      			   <!-- 댓글 쓰는 창(일부러 로그인 안했을때 댓글창 보여주도록 함,테스트용) -->
-	      			   	<c:if test="${session_member_id == null}">
-	      			   	
+	      			   <!-- 댓글 쓰는 창 -->
+	      			   	<c:if test="${member_level == 1}">
 	      			   		<!-- 글자 수 제한 200?,가로 885,세로55-->
-	      					<textarea name="QCO_CONTENT" style="width: 885px; height: 55px;"onKeyUp="javascript:fnChkByte(this,'200')"></textarea>
-	      					<button type="button" class="btn1 btn-primary1" onclick="onComment()">입력</button>
-	      			
+	      					<textarea name="QCO_CONTENT" style="border-radius:3px; width: 880px; height: 60px; vertical-align:middle;"onKeyUp="javascript:fnChkByte(this,'200')"></textarea>
+	      					<button type="button" class="btn_write_2" onclick="onComment()">댓글입력</button>
+	
 	      					<!-- 댓글영역 6 -->
-	      					<div style="margin-bottom:10px; border:1px solid blue;"><br/>&nbsp;&nbsp;&nbsp;<span id="byteInfo">0</span>/200Byte</div>
+	      					<div style="margin-bottom:1px; border:1px;"><span id="byteInfo">0</span>/200Byte</div>
+	      					<br><br>
 	      				</c:if>
 	      				
 				</div><!-- 댓글영역5 끝 -->
 			</div><!-- 댓글영역4 끝 -->
 				
-				
-			<!--  <p class="comm_num"> <strong>댓글 총 개수 :   ${comment_count}</strong></p>-->
-			
+	
 		</div ><!-- 댓글영역3 끝 -->
 			
 		<!-- 댓글 차례로 보여주는 창 -->
-			<c:forEach var="list" items="${commList}">	
-				<!-- 댓글영역 7,검정 -->	
-				<div style="margin-bottom:50px; border:1px solid black;">
-					<!-- 댓글영역 8,빨강 -->
-					<div class="comm_view" style = "border:1px solid red;">
-						<!-- 댓글영역 9,노랑   댓글작성자,댓글작성일자 -->
-						<div class="comm_tit" style = "border:1px solid yellow;">
-							  <!--<p class="tit"><strong>${list.commenter}</strong>님  <fmt:formatDate value="${list.reg_date}" pattern="yy.MM.dd"></fmt:formatDate><span class="ip"></span> </p>-->
-							
-							
-							<!-- 입력되어 있는 작성자와 아이디가 같거나, 아이디가 관리자 일때만 삭제  창을 띄운다. -->
-							
-							<c:if test="${member_level == 1}">
-								<td align="left">
-									<%-- <a href="qnaCommDelete.do?QCO_IDX=${list.QCO_IDX}&QNA_IDX=${map.QNA_IDX}"> --%>
-										<input type="button" onclick="qnaCommDelete(${list.QCO_IDX})"  value="삭제" class="btn btnC_01 btnP_02"/>
-									<!-- </a> -->
-								</td>			
-							</c:if>
-						</div><!-- 댓글영역 9 끝 -->
-						
-						<!-- 댓글영역 10 , 글내용 표시-->
-						<div class="comm_cts" style = "border:1px solid green;">
-							<p>${list.QCO_CONTENT}</p><br/>
-						</div><!-- 댓글영역 10 끝 -->
-					</div><!-- 댓글영역 8 끝 -->
+			<c:forEach var="list" items="${commList}">
+				
+				<!-- 댓글영역 7 -->	
+			<div style="border:1px;margin-bottom:5px;width:830px;float:left;">	
+				<div style="border:1px;margin-bottom:15px;width:95%;float:left;">
+					<div class="comm_cts" style = "border:1px solid black;border-radius:3px; width: 800px; height: 70px;margin:0px;margin-right:0px;">
+						${list.QCO_CONTENT}
+					</div>
 				</div><!-- 댓글영역 7 끝 -->
+			</div>	
+				<!-- 댓글영역8(댓글삭제버튼 감쌈) -->
+				<div style="width:120px; height:40px; float:left;margin-top:10px;">
+					<c:if test="${member_level == 1}">
+						<input type="button" class="btn_del_2" onclick="qnaCommDelete(${list.QCO_IDX})" value="댓글삭제"/>
+					</c:if>
+				</div>
 			</c:forEach>
 			
 			</div><!-- 댓글영역 2 끝 -->

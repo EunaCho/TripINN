@@ -144,19 +144,20 @@
 	.house_info{
 	border:0px solid black;
 	width:300px;
-	height:20px;
+	height:60px;
 	margin-left:550px;
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
+	overflow-y:scroll;
 	}
 	.house_name{
 	border:0px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:10px;
+	margin-top:-30px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -166,7 +167,7 @@
 	width:300px;
 	height:20px;
 	margin-left:550px;
-	margin-top:-20px;
+	margin-top:20px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -213,8 +214,8 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:550px;
-	margin-top:10px;
+	margin-left:220px;
+	margin-top:-105px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -224,7 +225,7 @@
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:-105px;
+	margin-top:15px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -339,13 +340,13 @@
       &nbsp;숙소가격: ${house.HOUSE_PRICE}
       </div>
       <div class="house_zipcode">
-     &nbsp; 우편번호: ${house.HOUSE_ZIPCODE}
+     &nbsp;우편번호: ${house.HOUSE_ZIPCODE}
       </div>
       <div class="house_addr">
       &nbsp;주소: ${house.HOUSE_ADDR1}  ${house.HOUSE_ADDR2}  ${house.HOUSE_ADDR3}
       </div>
      <div class="house_persons">
-     &nbsp; 최대수용인원: ${house.HOUSE_PERSONS}
+     &nbsp;최대수용인원: ${house.HOUSE_PERSONS}
       </div>
        <div class="house_total_price">
       &nbsp;총 가격: ${house.HOUSE_TOTAL_PRICE}

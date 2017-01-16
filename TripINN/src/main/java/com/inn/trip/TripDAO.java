@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Repository;
 
 import com.common.common.AbstractDAO;
+import com.common.common.CommandMap;
 
 @Repository("tripDAO")
 public class TripDAO extends AbstractDAO {
@@ -75,5 +76,21 @@ public class TripDAO extends AbstractDAO {
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
 		return selectPagingList("trip.selectTripListSearch", map);
+	}
+
+	public void insertBookMark(Map<String, Object> map) {
+		insert("trip.insertBookMark", map);
+	}
+
+	public void deleteBookMark(Map<String, Object> map) {
+		delete("trip.deleteBookMark", map);
+	}
+
+	public void tripReport(Map<String, Object> map) {
+		insert("trip.tripReport", map);
+	}
+
+	public void reviewDel(String parameter) {
+		delete("trip.reviewDel", parameter);
 	}
 }

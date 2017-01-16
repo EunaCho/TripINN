@@ -218,7 +218,6 @@ body {
     float: left;
     margin: 7px;
 }
-
 .hrBtnImg {
 	width: 40px;
 	height: 40px;
@@ -247,7 +246,6 @@ body {
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 }
-
 .hrLabel_file {
 	display: inline-block;
 	padding: .5em .75em;

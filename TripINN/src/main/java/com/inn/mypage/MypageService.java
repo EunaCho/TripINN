@@ -56,5 +56,8 @@ public interface MypageService {
 	
 	void deleteT_ReserDelete(Map<String, Object> map) throws Exception; //예약취소 목록에서 해당 트립 목록 삭제 
 	
-	//트립이용 날짜 
+	//------------------------------위시리스트 -------------------------------------------------
+	
+	Map<String, Object> selectMy_HouseList(Map<String, Object> map) throws Exception; //내 숙소 위시리스트  
+	Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception; //내 트립 위시리스트 
 }

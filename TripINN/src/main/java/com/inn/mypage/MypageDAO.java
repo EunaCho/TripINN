@@ -146,4 +146,14 @@ public class MypageDAO extends AbstractDAO {
 	public void deleteT_ReserDelete(Map<String, Object> map) throws Exception{
 		delete("mypage.deleteT_ReserDelete", map);
 	}
+	
+	//------------------위시리스트 
+	//내 숙소 위시리스트 
+	public Map<String, Object> selectMy_HouseList(Map<String, Object> map) throws Exception{
+		return selectPagingList("mypage.selectMy_HouseList", map);
+	}
+	//내 트립 위시시트스 
+	public Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception{
+		return selectPagingList("mypage.selectMy_TripList", map);
+	}
 }

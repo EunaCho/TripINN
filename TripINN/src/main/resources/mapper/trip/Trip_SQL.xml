@@ -25,7 +25,8 @@
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx,
 			   nvl((select sum(trb_star) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') trb_star,
-        		nvl((select count(*) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') total_cnt
+        		nvl((select count(*) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') total_cnt,
+          		nvl((select sum(tr_persons) from trip_rsv tr where tr.trip_idx=t.trip_idx), 0) reserved_num
 			   from trip t
 		where trip_area = #{trip_area}
 	<include refid="common.pagingPost"/> 
@@ -39,7 +40,8 @@
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx,
 			   nvl((select sum(trb_star) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') trb_star,
-        		nvl((select count(*) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') total_cnt
+        		nvl((select count(*) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') total_cnt,
+         		 nvl((select sum(tr_persons) from trip_rsv tr where tr.trip_idx=t.trip_idx), 0) reserved_num
         		 from trip t
 		where trip_area = #{trip_area} and trip_type=#{trip_type} and trip_persons>=#{trip_persons}
 				and trip_first_date>=#{trip_first_date}
@@ -50,7 +52,9 @@
 		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, t.member_idx, house_idx,
-          member_email, member_name, member_phone, member_image
+          member_email, member_name, member_phone, nvl(member_image, 'basic_profile.png') member_image,
+          nvl((select trip_idx from favorites f where f.trip_idx=t.trip_idx and f.member_idx=#{member_idx}), 0) fav,
+          nvl((select sum(tr_persons) from trip_rsv tr where tr.trip_idx=t.trip_idx), 0) reserved_num
         from trip t inner join member m on m.member_idx = t.member_idx 
         	where t.trip_idx=#{trip_idx}
 	</select>
@@ -78,7 +82,7 @@
 		select 
 		ROW_NUMBER() OVER (ORDER BY trb_like DESC, trb_regdate desc) RNUM, 
 		trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_name,
-		 member_image, m.member_idx from trip_review_board t 
+		 nvl(member_image, 'basic_profile.png') member_image, m.member_idx m_idx from trip_review_board t 
   			inner join member m on m.member_idx = t.member_idx 
   				where trip_idx=#{trip_idx}
 		<include refid="common.pagingPost"/> 
@@ -109,6 +113,26 @@
 		select trb_like_idx, trb_idx, member_idx from trb_like_check
 			where trip_idx=#{trip_idx} and member_idx=#{member_idx}
 	</select>
+	
+	<insert id="insertBookMark" parameterType="java.util.HashMap">
+		insert into favorites(far_idx, member_idx, trip_idx)
+			values(fvr_idx_seq.nextval, #{member_idx}, #{trip_idx})
+	</insert>
+	
+	<delete id="deleteBookMark" parameterType="java.util.HashMap">
+		delete from favorites where trip_idx=#{trip_idx} and member_idx=#{member_idx}
+	</delete>
+	
+	<insert id="tripReport" parameterType="HashMap">
+		insert into report_board(report_idx, report_title, report_content, report_regdate,
+report_state, report_type, member_idx, trip_idx)
+		values(report_idx_seq.nextval, #{report_title}, #{report_content}, sysdate, #{report_state}, 
+		#{report_type},#{member_idx}, #{trip_idx})
+	</insert>
+	
+	<delete id="reviewDel" parameterType="String">
+		delete from trip_review_board where trb_idx=#{parameter}
+	</delete>
 </mapper>
 
 
