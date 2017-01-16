@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+.reportContainer{
+	width: 100%;
+	height: 100%; 
+	text-align: center; 
+	margin: 0 auto;
+}
+
+.reportContainer input[type=text]{
+	width: 90%;
+    height: 30px;
+    margin: 15px 0px;
+    outline: none !important;
+}
+
+.reportContainer textarea {
+	width: 90%;
+	height: 60%;
+    margin: 0 0 15px;
+    outline: none !important;
+}
+
+.reportContainer input[type=button]{
+	width: 15%;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #BABABB;
+    color: #787878;
+    outline: none !important;
+    background: white
+}
+.reportContainer input[type=button]:HOVER{
+    border: 2px solid white;
+    color: white;
+    outline: none !important;
+    background: #ff5a5f;
+}

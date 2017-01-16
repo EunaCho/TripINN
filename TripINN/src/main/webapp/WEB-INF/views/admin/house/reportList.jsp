@@ -117,8 +117,8 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:130px;
-	margin-top:10px;
+	margin-left:230px;
+	margin-top:-160px;
 	font-size:14px;
 	background-color:#eee;
 	border-radius:4px;
@@ -127,7 +127,7 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:460px;
+	margin-left:560px;
 	margin-top:-20px;
 	font-size:14px;
 	background-color:#eee;
@@ -137,7 +137,7 @@
 	border:0px solid black;
 	width:630px;
 	height:60px;
-	margin-left:130px;
+	margin-left:230px;
 	margin-top:10px;
 	font-size:14px;
 	background-color:#eee;
@@ -149,7 +149,7 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:130px;
+	margin-left:230px;
 	margin-top:10px;
 	font-size:14px;
 	background-color:#eee;
@@ -159,7 +159,7 @@
 	border:0px solid black;
 	width:300px;
 	height:20px;
-	margin-left:460px;
+	margin-left:560px;
 	margin-top:-20px;
 	background-color:#eee;
 	font-size:14px;
@@ -169,9 +169,28 @@
     font-size:17px;
     margin-left:450px;
     }
-	
-	
-	
+    .picture{
+	border:0px solid black;
+	width:170px;
+	height:150px;
+	margin:10px;
+	border-radius:7px;
+	}
+	.picture1{
+	border:0px solid black;
+	width:150px;
+	height:130px;
+	margin:10px;
+	border-radius:7px;
+	}
+	.house_name2{
+	border:0px solid black;
+	width:150px;
+	height:20px;
+	margin-top:25px;
+	margin-left:20px;
+	text-align:center;
+	}
 	
 	
 </style>
@@ -247,7 +266,12 @@
    <c:when test="${fn:length(list)>0}">
    <c:forEach var="house" items="${list}">
     <div class="list1">
-    
+     <div class="picture">
+     <c:set var="fullImg" value="${house.HOUSE_IMAGE }"/>
+	 <c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+    <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
+      </div>
+      
       <div class="house_idx">
     &nbsp;번호: <a href="javascript:formSubmit('${house.REPORT_IDX}');">${house.REPORT_IDX }</a>
       </div>
@@ -262,6 +286,9 @@
       </div>
        <div class="house_type">
       &nbsp;신고유형: ${house.REPORT_TYPE}
+      </div>
+      <div class="house_name2">
+      ${house.HOUSE_NAME}
       </div>
       
     </div>

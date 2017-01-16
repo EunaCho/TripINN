@@ -42,74 +42,73 @@ public class HouseController {
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 
-		/*if (session.getAttribute("member_idx") != null) {*/
-			mv.addObject("search", map.getMap()); // 검색키워드 넘기기
+		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
 
-			List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
-			mv.addObject("search", map.getMap()); // 검색키워드 넘기기
-			List<Map<String, Object>> map_list = houseService.selectHouseMapList(map.getMap());
+		List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
+		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
+		List<Map<String, Object>> map_list = houseService.selectHouseMapList(map.getMap());
 
-			String str_total_addr = "";
-			String str_addr = "";
-			String str_idx = "";
-			String str_img = ""; // img str
-			String[] store_total_addr = null; // 저장된 주소, idx 값
-			String[] store_addr = null; // 저장된 주소
-			String[] store_idx = null;
-			String[] store_img = null;// 저장된 img
+		String str_total_addr = "";
+		String str_addr = "";
+		String str_idx = "";
+		String str_img = ""; // img str
+		String[] store_total_addr = null; // 저장된 주소, idx 값
+		String[] store_addr = null; // 저장된 주소
+		String[] store_idx = null;
+		String[] store_img = null;// 저장된 img
 
-			Iterator mapIterator = map_list.iterator();
-			Iterator listIterator = list.iterator();
+		Iterator mapIterator = map_list.iterator();
+		Iterator listIterator = list.iterator();
 
-			int index = 0;
+		int index = 0;
 
-			if (!list.isEmpty()) {
-				store_img = new String[map_list.size()];
+		if (!list.isEmpty()) {
+			store_img = new String[map_list.size()];
 
-				for (int i = 0; i < list.size(); i++) {
-					str_img = listIterator.next().toString();
-					str_img = str_img.substring(str_img.indexOf("IMAGE") + 6, str_img.indexOf(", HOUSE_IDX")).trim();
-					if (str_img.contains("|")) {
-						str_img = str_img.substring(0, str_img.indexOf("|"));
-					}
-					store_img[i] = str_img; // IMG DATA
-					list.get(i).put("HOUSE_IMAGE", str_img);
+			for (int i = 0; i < list.size(); i++) {
+				str_img = listIterator.next().toString();
+				str_img = str_img.substring(str_img.indexOf("IMAGE") + 6, str_img.indexOf(", HOUSE_IDX")).trim();
+				if (str_img.contains("|")) {
+					str_img = str_img.substring(0, str_img.indexOf("|"));
 				}
-
+				store_img[i] = str_img; // IMG DATA
+				list.get(i).put("HOUSE_IMAGE", str_img);
 			}
+		}
 
-			if (!map_list.isEmpty()) {
-				store_total_addr = new String[map_list.size()];
-				store_addr = new String[map_list.size()];
-				store_idx = new String[map_list.size()];
 
-				for (int i = 0; i < map_list.size(); i++) {
+		if (!map_list.isEmpty()) {
+			store_total_addr = new String[map_list.size()];
+			store_addr = new String[map_list.size()];
+			store_idx = new String[map_list.size()];
 
-					str_total_addr = mapIterator.next().toString();
-					str_total_addr = str_total_addr.substring(1, str_total_addr.length() - 1);
+			for (int i = 0; i < map_list.size(); i++) {
 
-					// 주소 값, idx 받기
-					store_total_addr[index] = str_total_addr;
+				str_total_addr = mapIterator.next().toString();
+				str_total_addr = str_total_addr.substring(1, str_total_addr.length() - 1);
 
-					// 주소 값 받기
-					str_addr = store_total_addr[index].substring(store_total_addr[index].indexOf("ADDR1=") + 6,
-							store_total_addr[index].indexOf(", "));
-					store_addr[index] = str_addr;
+				// 주소 값, idx 받기
+				store_total_addr[index] = str_total_addr;
 
-					// idx 값 받기
-					str_idx = store_total_addr[index].substring(store_total_addr[index].indexOf("IDX=") + 4,
-							store_total_addr[index].length());
-					store_idx[index] = str_idx;
-					index++;
-				}
+				// 주소 값 받기
+				str_addr = store_total_addr[index].substring(store_total_addr[index].indexOf("ADDR1=") + 6,
+						store_total_addr[index].indexOf(", "));
+				store_addr[index] = str_addr;
+
+				// idx 값 받기
+				str_idx = store_total_addr[index].substring(store_total_addr[index].indexOf("IDX=") + 4,
+						store_total_addr[index].length());
+				store_idx[index] = str_idx;
+				index++;
 			}
+		}
 
-			map.put("store_addr", store_addr);
-			mv.addObject("img", store_img);
-			mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
-			mv.addObject("map_list", store_addr);
-			mv.addObject("map_list_length", store_addr.length);
-		/*}*/
+		map.put("store_addr", store_addr);
+		mv.addObject("img", store_img);
+		mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
+		mv.addObject("map_list", store_addr);
+		mv.addObject("map_list_length", store_addr.length);
+
 		return mv;
 
 	}

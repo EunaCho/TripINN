@@ -89,12 +89,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/house/reportList.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
-	<!-- 숙소신고 리스트 페이지 -->
-	<definition name="houseReportList" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/admin/house/reportList.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
 	<!-- 트립 관리 리스트 페이지 -->
 	<definition name="adminTripList" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
@@ -108,10 +102,16 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+
+<<<<<<< HEAD
+
 	<!--  ==========================================================================================-->
 
 	
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 <!-- 마이페이지  -->
+
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -261,11 +261,7 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 
-	<definition name="tripWishList" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/mypage/wishlist/tripWishForm.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
+	
 
 
 	<definition name="tripWishList" template="/WEB-INF/common/layout.jsp">
@@ -287,11 +283,9 @@
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
 	</definition>
 	
-	<!-- main -->
 	<definition name="houseMain" extends="main">
-		<put-attribute name="body" value="houseList_layout"/>
-	</definition>
-	
+      <put-attribute name="body" value="houseList_layout"/>
+   </definition>
 	<!-- open register -->
  	<definition name="openHouseRegister" extends="main">
 		<put-attribute name="body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
@@ -356,10 +350,9 @@
 	<!-- 하우스 예약화면 -->
 	<definition name="HouseReserveForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
- 		<put-attribute name="body" value="/WEB-INF/views/house/houseReserve.jsp"/>
- 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
- 	</definition>
-	
+		<put-attribute name="body" value="/WEB-INF/views/house/houseReserve.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
 	
 	
 	
