@@ -29,7 +29,7 @@
 
 	<div style="margin-left:30px;">
 		<label>인원</label>
-		<select name="person" placeholder="">	
+		<select name="person">	
 			<option value="0">인원 1명</option>
 			<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
 			<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>

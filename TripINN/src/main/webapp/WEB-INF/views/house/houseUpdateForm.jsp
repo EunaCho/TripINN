@@ -24,7 +24,7 @@
 							<progress class="progressBar" max="100" value="33"></progress>
 						</div>
 					</div>
-					<div class="hrLabelName">님의<!--  <br />  &nbsp;-->&nbsp;&nbsp; 숙소 등록하기</div>
+					<div class="hrLabelName">님의<!--  <br />  &nbsp;-->&nbsp;&nbsp; 숙소 수정하기</div>
 				</div>
 		</div><div style="clear:both"></div>
 		<div id="leftDiv">
@@ -35,19 +35,20 @@
 			<li onclick="fnMove('3')">숙소 유형</li>
 			<li onclick="fnMove('4')">숙박가능 인원</li>
 			<li onclick="fnMove('5')">이용료</li>
+			<li onclick="fnMove('6')">숙소 이미지 등록</li>
+			<li onclick="fnMove('7')">적합한 게스트 유형</li>
+			<li onclick="fnMove('8')">체크인, 체크아웃</li>
+			<li onclick="fnMove('9')">요금 관련</li>
+			<li onclick="fnMove('10')">제공하는 공간</li>
 		
 		</ul>
 		</div>	
 		<!-- *********data start********* -->
-		<form method="post" action="houseRegister2.do" enctype="multipart/form-data" name="registerFrm" onsubmit="return check();">	
+		<form method="post" action="<%=cp %>/house/houseUpdate.do" enctype="multipart/form-data" name="updateForm" onsubmit="return check();">	
 		
 		
 		
 		<div class="hrBody">
-				<div class="hrDiv">
-					<div class="hrLabel">1단계</div>
-					<div class="hrLabelSub">*필수 항목입니다</div>
-				</div>
 				
 				<!-- house_name -->
 				<div class="hrDiv">
@@ -55,11 +56,11 @@
 					
 					<div class="hr_left">
 					<div class="hrLabel1">숙소 이름</div>
-					<div class="hrData"><input type="text" name="HOUSE_NAME" class="hrText"/></div>
+					<div class="hrData"><input type="text" name="HOUSE_NAME" value="${house.HOUSE_NAME }" class="hrText"/></div>
 					
 					<!-- house_info -->
 					<div class="hrLabel1">숙소 소개</div>
-					<div class="hrData"><textarea rows="20" cols="20" class="hrTextArea" name="HOUSE_INFO"></textarea></div>
+					<div class="hrData"><textarea rows="20" cols="20" class="hrTextArea" name="HOUSE_INFO">${house.HOUSE_INFO }</textarea></div>
 					</div><!-- hr_left end -->
 					
 					<div class="hr_right">
@@ -83,7 +84,7 @@
 						<div class="hrDiv2">
 							<div class="hrDivSuv hrDivAddr">
 							<span><label for="addr1" class="hrLabel2">우편번호</label>
-							<input type="text" id="addr1" name="HOUSE_ZIPCODE" class="hrText hrText_Addr input-small postcodify_postcode5">
+							<input type="text" id="addr1" name="HOUSE_ZIPCODE" value="${house.HOUSE_ZIPCODE }" class="hrText hrText_Addr input-small postcodify_postcode5">
 							<input type="button" value="검색" class="hrAddrBtn" id="postcodify_search_button">
 							<input type="button" value="지도 업데이트" class="hrAddrBtn" onclick="mapView()"/></span>
 							</div>
@@ -91,13 +92,13 @@
 						
 						<div class="hrLabel2">
 							<label>도로명 주소</label>
-							<input type="text" id="addr2" class="hrText hrText_Addr2 input-large postcodify_address" name="HOUSE_ADDR1">
+							<input type="text" id="addr2" class="hrText hrText_Addr2 input-large postcodify_address" value="${house.HOUSE_ADDR1 }" name="HOUSE_ADDR1">
 							
 							<label>상세주소</label>
-							<input type="text" id="addr3" class="hrText hrText_Addr2 input-large postcodify_details" name="HOUSE_ADDR2">
+							<input type="text" id="addr3" class="hrText hrText_Addr2 input-large postcodify_details" value="${house.HOUSE_ADDR2 }" name="HOUSE_ADDR2">
 							
 							<label>참고항목</label>
-							<input type="text" id="addr4" class="hrText hrText_Addr2 input-large postcodify_extra_info" name="HOUSE_ADDR3">
+							<input type="text" id="addr4" class="hrText hrText_Addr2 input-large postcodify_extra_info" value="${house.HOUSE_ADDR3 }" name="HOUSE_ADDR3">
 					</div>
 					</div>
 					</div>
@@ -113,44 +114,41 @@
 					<div class="hrBorder">
 					<!-- house_kind -->
 					<div class="hr_left">
-					<div class="hrLabel1">숙소 유형</div>
-					<div class="hrData">
-						<select class="hrSelect" name="HOUSE_KIND">
-							<option value="">선택</option>
-							<option value="집 전체">집 전체</option>
-							<option value="개인실">개인실</option>
-							<option value="다인실">다인실</option>
-						</select>
-					</div>
+						<div class="hrLabel1">숙소 유형</div>
+						<div class="hrData">
+							<select class="hrSelect" name="HOUSE_KIND">
+								<option value="">선택</option>
+								<option value="집 전체">집 전체</option>
+								<option value="개인실">개인실</option>
+								<option value="다인실">다인실</option>
+							</select>
+						</div>
 				
 					<!-- house_total_persons -->
-					<div class="hrLabel1">숙박 가능 인원</div>
-					<div class="hrData">
-						<div class="hr-persons-div-text"><input type="number" class="hrText2" name="HOUSE_TOTAL_PERSONS"></div>
-					</div>
-				</div><!-- left -->
+						<div class="hrLabel1">숙박 가능 인원</div>
+						<div class="hrData">
+							<div class="hr-persons-div-text"><input type="number" value="${house.HOUSE_TOTAL_PERSONS }" class="hrText2" name="HOUSE_TOTAL_PERSONS"></div>
+						</div>
+					</div><!-- left -->
 				
-				<div class="hr_right">
-					<!-- hosue_price -->
-					<div class="hrLabel1">이용료</div>
-					<div class="hrData">
-						<label>숙소 가격</label>
-						<div>
-							<input type="number" class="hrText2" name="HOUSE_PRICE">
+					<div class="hr_right">
+					<!-- hi_guest -->
+						<div class="hrLabel1">적합한 게스트 유형</div>
+						<div class="hrData">
+							<select class="hrSelect" name="HI_GUEST">
+								<option value="">선택</option>
+								<option value="개인">개인</option>
+								<option value="친구">친구</option>
+								<option value="커플">커플</option>
+								<option value="가족">가족</option>
+							</select>
 						</div>
-						<label>인원당 가격</label>
-						<div>
-							<input type="number" class="hrText2" name="HOUSE_PERSON_PRICE">
-						</div>
-					</div>
+
+				
+					
 				</div><!-- right end -->
 				</div><!-- border end -->
 				</div><!-- div end -->
-				
-				<div class="hrDiv">
-					<div class="hrLabel">2단계</div>
-					<div class="hrLabelSub">*추가 정보 항목입니다</div>
-				</div>
 				
 				<!-- house_image -->
 					<div class="hrDiv">
@@ -184,46 +182,32 @@
 					<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
 				
 				<!-- 적합한 게스트 유형 -->
-				<!-- hi_guest -->
-				<div class="hrDiv">
-					<div class="hrBorder">
-					<div class="hrLabel1">적합한 게스트 유형</div>
-					<div class="hrData">
-						<select class="hrSelect" name="HI_GUEST">
-							<option value="">선택</option>
-							<option value="개인">개인</option>
-							<option value="친구">친구</option>
-							<option value="커플">커플</option>
-							<option value="가족">가족</option>
-						</select>
-					</div>
-					</div>
-				</div>
+				
 				
 				<!-- hi_checkin, hi_checkout -->
 				<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">체크인, 체크아웃</div>
-					<div class="hrData"><input type="date" name="HI_CHECKIN" class="hrText2"></div>
-					<div class="hrData"><input type="date" name="HI_CHECKOUT" class="hrText2"></div>
+						<div class="hr_left">
+							<div class="hrLabel1">체크인, 체크아웃</div>
+							<div class="hrData"><input type="date" name="HI_CHECKIN" value="${house.HI_CHECKIN }" class="hrText2"></div>
+							<div class="hrData"><input type="date" name="HI_CHECKOUT" value="${house.HI_CHECKOUT }" class="hrText2"></div>
+						</div>
+						<!-- hi_room, hi_bad -->
+						<div class="hr_right">
+							<div class="hrLabel1">제공하는 방 개수</div>
+							<div class="hrData">
+								<input type="number" class="hrText2"  value="${house.HI_ROOM }" name="HI_ROOM">
+							</div>
+							<div class="hrLabel1">제공하는 침대 개수</div>
+							<div class="hrData">
+								<input type="number" class="hrText2" value="${house.HI_BAD }" name="HI_BAD">
+							</div>
+
+						</div>
 					</div>
 				</div>
+
 				
-				<!-- hi_room, hi_bad -->
-				<div class="hrDiv">
-					<div class="hrBorder">
-					<div class="hrLabel1">제공하는 방 개수</div>
-					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_ROOM">
-					</div>
-					
-					<div class="hrLabel1">제공하는 침대 개수</div>
-					<div class="hrData">
-					<input type="number" class="hrText2" name="HI_BAD">
-					</div>
-					
-					</div>
-				</div>
 				<div style="clear:both"></div>
 				
 				<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
@@ -231,28 +215,45 @@
 				<!-- hi_deposit, hi_clean_price, hi_sale-->
 				<div class="hrDiv">
 					
-				<div class="hrBorder">
-				<!-- 요금관련 -->
-				<div class="hrLabel1">요금관련</div>
+					<div class="hrBorder">
+					<!-- 요금관련 -->
+						<div class="hr_left">
+							<div class="hrLabel1">요금관련</div>
 				
-					<div class="hrAddrLeft">
-					<div class="hrLabel1">할인율</div>
-					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_SALE">
-					</div>
+							<div class="hrAddrLeft">
+								<div class="hrLabel1">할인율</div>
+								<div class="hrData">
+									<input type="number" class="hrText2" name="HI_SALE">
+								</div>
+				
+								<div class="hrLabel1">청소비</div>
+								<div class="hrData">
+									<input type="number" class="hrText2" name="HI_CLEAN_PRICE">
+								</div>
 					
-					<div class="hrLabel1">청소비</div>
-					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_CLEAN_PRICE">
-					</div>
+								<div class="hrLabel1">보증금</div>
+								<div class="hrData">
+									<input type="number" class="hrText2" name="HI_DEPOSIT">
+								</div>
 					
-					<div class="hrLabel1">보증금</div>
-					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_DEPOSIT">
+							</div>
+						</div>
+						<div class="hr_right">
+							<div class="hrLabel1"> &nbsp;</div>
+						<div class="hrAddrLeft">
+							<div class="hrLabel1">숙소 가격</div>
+							<div class="hrData">
+								<input type="number" class="hrText2" value="${house.HOUSE_PRICE }" name="HOUSE_PRICE">
+							</div>
+							
+							<div class="hrLabel1">인원당 가격</div>
+							<div class="hrData">
+								<input type="number" class="hrText2" value="${house.HOUSE_PRICE }" name="HOUSE_PRICE">
+							</div>
+						</div>
 					</div>
-					
-					</div>
-				</div>
+				
+
 				</div>
 				<div style="clear:both"></div>
 				
