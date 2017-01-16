@@ -350,8 +350,6 @@
     <div class="list1">
     <c:set var="fullImg" value="${adminTrip.TRIP_IMAGE }"/>
 	 <c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
-	 <fmt:formatNumber var="sum" value="${trip.TRB_STAR}" pattern="#.##"/>
-	 <fmt:formatNumber var="cnt" value="${trip.TOTAL_CNT}" pattern="#.##"/>
      <div class="picture">
     <img class="picture1" src="<%=cp%>/images/trip/${adminTrip.TRIP_IMAGE}">
       </div>
