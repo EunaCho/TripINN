@@ -69,7 +69,7 @@
 	<div id="left" style="width:48%; height:100%; /* overflow-y:scroll; */ min-width: 530px; border:1px solid black; float:left; align:center;">
 
 	<!-- 상세검색폼 -->
-	<form id="searchForm" >
+	<form id="searchForm" method="POST" action="/TripINN/house/houseMain.do">
 	
 	<!-- 날짜 설정 -->
 	<div class="border_date">
@@ -84,7 +84,7 @@
 		</div>
 		<div>
 			<label>인원</label>
-			<select name="person" placeholder="인원 1명">	
+			<select name="person">	
 				<option value="0">인원 1명</option>
 				<option value="1" <c:if test="${person eq 1}">selected="selected"</c:if> >인원 1명</option>
 				<option value="2" <c:if test="${person eq 2}">selected="selected"</c:if> >인원 2명</option>

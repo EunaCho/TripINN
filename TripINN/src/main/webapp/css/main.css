@@ -36,7 +36,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
         /* Control Panel */
         .control_panel  {
             position:absolute; top:380px; 
-            left:270px; height:13px; 
+            left:400px; height:13px; 
             overflow:hidden; 
         }
 
@@ -74,7 +74,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
     left: 0;
 }
 .noticeCont h4.tab1 a {
-    background-image: url(/TripINN/images/news_t01.gif);
+    background-image: url(/TripINN/images/news_t03.gif);
 }
 
 .noticeCont h4 {
@@ -94,7 +94,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 }
 .noticeCont h4 a {
     display: block;
-    width: 66px;
+    width: 79px;
     height: 23px;
     overflow: hidden;
     text-indent: -999em;

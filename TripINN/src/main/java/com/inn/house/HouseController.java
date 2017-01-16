@@ -166,7 +166,8 @@ public class HouseController {
 	@RequestMapping(value = "/house/houseUpdateForm.do", method=RequestMethod.GET)
 	public ModelAndView houseUpdateForm(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("houseUpdateForm");
-		
+		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap());//하우스 상세정보 꺼내오기
+		mv.addObject("house", house);
 		return mv;
 	}
 	
