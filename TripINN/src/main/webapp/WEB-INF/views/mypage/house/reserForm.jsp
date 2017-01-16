@@ -53,10 +53,7 @@
 	    cellspacing:0;
 	    cellpadding:0;
 	}
-	#drop_bar ul li:hover {
-		diaplay:none;
-		float:none;
-	}
+
 
 </style>
 <script>

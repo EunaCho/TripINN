@@ -26,7 +26,7 @@
    
    function deleteWish(idx){
 	   
-	   var form = document.formDelete;
+	   var form = document.formDelete;_
 	   form.HOUSE_IDX.value=idx;
 	   form.submit();
 	   
@@ -66,9 +66,11 @@
 	<input type="hidden" name="trip_idx" value=""/>
 </form>
 
+<form action="/TripINN/mypage/deleteTripWish.do" method="post" name="formDelete">
+	<input type="hidden" name="TRIP_IDX" value=""/>
+</form>
+
 <div id="wrap">
-<!-- <div id="divBackGround" style="display: none; background-color: #fff; filter: alpha(opacity=50); opacity: 0.5; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 50;"></div>
-<div id="HotelPhotoView" class="popContainer02" style="display: block; position: fixed; top: 50%; left: 50%; z-index: 100;"></div> -->
 	<hr/>
 
 	<div class="list-container">
@@ -81,19 +83,19 @@
 		<div class="list-right">
 			<div class="right-con">
 			<form name="formWish_kind" meth	od="post">
-				<div class="right-top" style="border:1px solid red;">
+				<div class="right-top">
 					<div class='top_div <c:if test="${wishType eq 'house'}">on</c:if>' onclick="searchWish_kind(1)">숙소</div>
-					<div class=top_div <c:if test="${wishType == 'trip'}">on</c:if> onclick="searchWish_kind(2)">트립</div>
+					<div class='top_div <c:if test="${wishType == 'trip'}">on</c:if>' onclick="searchWish_kind(2)">트립</div>
 				</div>
 			</form>
 				<hr style="margin-top:-1px;width:100%;" />
-				<div class="right-middle" style="border:1px solid black;">
+				<div class="right-middle">
 				<c:if test="${empty list}">
 					<div style="width:100%;height:100%;background-color:#F8F8F8;padding-top:120px;">
 						<h2><font style="color:#000;font-size:20px;margin-top:100px;">조회된 결과가 없습니다.</font></h2>
 					</div>
 				</c:if>
-				<c:forEach var="list" items="${list }" >
+				<c:forEach var="list" items="${list}" >
 				<c:if test="${list.TOTAL_COUNT == 0}">
 					<div style="width:100%;height:100%;background-color:#F8F8F8;padding-top:120px;">
 						<h2><font style="color:#000;font-size:20px;margin-top:100px;">조회된 결과가 없습니다.</font></h2>
@@ -105,14 +107,15 @@
 						<fmt:formatNumber var="sum" value="${list.TRB_STAR}" pattern="#.##"/>
 						<fmt:formatNumber var="cnt" value="${list.TOTAL_CNT}" pattern="#.##"/>
 					<div class="trip-info">
-						<div class="trip-img" style="background-image:url('/TripINN/images/trip/${tripImg }');cursor:pointer;"
-							onclick="newShowHotelPhoto('${listTRIP_IDX}')"></div>
+						<div style="background-image:url('/TripINN/images/trip/${tripImg }');" class="trip-img"></div>
+						
 						<div class="trip-info-ment" style="border:1px solid #dce0e0; border-radius:5px;">
 							<div class="info1">
 								${list.TRIP_NAME } [ ${list.TRIP_TYPE } ] 
 								<span style="float:right">
 									최대 <font color="#cb4242">${list.TRIP_PERSONS}</font> 명
 								</span>
+								
 								<div style="clear:both;padding:2px;"></div>
 								<span style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
 									<p style="<c:if test="${list.TOTAL_CNT != 0}">width:${sum * 20 / cnt}%;</c:if>
@@ -130,6 +133,7 @@
 										</c:if>
 										</font>점
 								</span>
+								
 								<div style="clear:both;padding:2px;"></div>
 								<span style="margin-top:-5px;">
 								${list.TRIP_ADDR1 } <br />
@@ -140,19 +144,17 @@
 							</div>
 							<div style="color:#cb4242;text-align:right;">
 								<div style="width:120px;float:left;margin-top:-8px;text-align:left;">
-								<img src="http://openimage.interpark.com/tourpark/tour/common/button/btn_detail_view02.gif"
-									style="cursor:pointer" width="70px" height="25px" onclick="tripDetail('${list.TRIP_IDX}');"/>
-								<img src="http://openimage.interpark.com/tourpark/tour/sub_depth/icon_search.gif"
-									 alt="포토" style="cursor:pointer" onclick="newShowHotelPhoto('${list.TRIP_IDX}')">
+									<img src="http://openimage.interpark.com/tourpark/tour/common/button/btn_detail_view02.gif"
+										style="cursor:pointer" width="70px" height="25px" onclick="tripDetail('${list.TRIP_IDX}');"/>
+									<img src="http://openimage.interpark.com/tourpark/tour/sub_depth/icon_search.gif" alt="포토">
 								</div>
-								<img style="width:11px;height:11px;"
-									src="http://openimage.interpark.com/tourpark/tour/common/icon/icon_won_pink.gif" />
+								<img style="width:11px;height:11px;" src="http://openimage.interpark.com/tourpark/tour/common/icon/icon_won_pink.gif" />
 								<fmt:formatNumber>${list.TRIP_PPRICE }</fmt:formatNumber><font>원</font>
 							</div>
 							
 							<div style="color:#cb4242; text-align:right; border-top:1px solid #dce0e0; width:95%; margin-top:2px;">
 								<img style="width:25px; height:25px; cursor:pointer;" src="<%=cp%>/images/mypage/wishlist.jpg" 
-								onclick="javascript:deleteWish(${list.HOUSE_IDX})"/>
+								onclick="javascript:deleteWish(${list.TRIP_IDX})"/>
 							</div>
 						</div>
 					</div>

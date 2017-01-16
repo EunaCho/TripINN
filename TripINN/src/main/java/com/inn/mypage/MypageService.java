@@ -10,8 +10,8 @@ public interface MypageService {
 	Map<String, Object> selectMember(Map<String, Object> map) throws Exception; //회원정보 
 	
 	//------------------------------메시지----------------------------- 
-	List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception; //보낸메시지 리스트
-	List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception; //받은 메시지 리스트 
+	Map<String, Object> selectSendMsgList(Map<String, Object> map) throws Exception; //보낸메시지 리스트
+	Map<String, Object> selectReceiveMsgList(Map<String, Object> map) throws Exception; //받은 메시지 리스트 
 	Map<String, Object> selectSendMsgDetail(Map<String, Object> map) throws Exception; //보낸 메시지 상세보기
 	Map<String, Object> selectReceiveMsgDetail(Map<String, Object> map) throws Exception; //받은 메시지 상세보기 
 	void updateMsg_state(Map<String, Object> map) throws Exception; //msg_sate update 
@@ -64,5 +64,7 @@ public interface MypageService {
 	Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception; //내 트립 위시리스트 
 	void deleteHouseWish(Map<String, Object> map) throws Exception;//숙소위시리스트 삭제 
 	void deleteTripWish(Map<String, Object> map) throws Exception;//트립 위시리스트 삭제 
+
+	void messageDel(String msg_idx);
 	
 }
