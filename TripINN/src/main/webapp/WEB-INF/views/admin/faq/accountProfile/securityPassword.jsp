@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
-<% String cp = request.getContextPath(); %>
 
 <!-- 작성자: 이진욱 -->
 <!-- 좌측영역 스타일적용1 -->
@@ -73,9 +72,9 @@
 
 <!-- 우측영역 스타일 적용 -->
 <style>
-   .howToUse_div{
-      border:2px;
-      width:900px;
+   .secuPassword_div{
+      border:1px;
+      width:1000px;
       overflow:hidden;
       height:auto;
       border-radius:4px;
@@ -84,12 +83,12 @@
       margin-top:10px;
       
    }
-   .howToUse{
-   border:0px solid black;
+   .secuPassword{
+   border-bottom:1px solid #ccc;
    
-   width:200px;
-   height:30px;
-   margin:10px 10px 50px 10px;
+   width:400px;
+   height:60px;
+   margin:0px 10px 0px -85px;
    font-size:21px;
    text-align: center;
    }
@@ -97,12 +96,12 @@
    .list1{
     border:1px solid #828282;
     border-radius:4px;
-   width:895px;
+   width:995px;
    height:auto;
    margin-bottom:20px;
    }
-   .howToUse_title{
-   border:0px solid black;c
+   .secuPassword_title{
+   border:0px solid black;
    border-radius:4px;
    width:99%;
    height:20%;
@@ -112,7 +111,7 @@
    vertical-align:middle;
 	   
    }
-   .howToUse_content{
+   .secuPassword_content{
    border:0px solid black;
    border-radius:4px;
    width:98%;
@@ -191,79 +190,91 @@
 <div style="width:82%;height:auto;border:1px solid black;float:left;">
 
 <!-- 이용방법 영역 -->   
-   <div class="howToUse_div">
+   <div class="secuPassword_div">
   
    	<!-- 글자 감싸는 영역 -->
-   	<div class="howToUse">
-   		<h1>여행 방법</h1>
-   </div>
-   
-   <!--글쓰기버튼 감싸는 영역  -->
-	<!-- 관리자인가 아닌가 구분하는 조건 -->
-    <c:if test="${member_level == 1}">
-    	<div style="text-align:right;margin-top:-50px;margin-bottom:30px;">    
-			<a href="#this" class="btn_write" id="write">글쓰기</a>	
-		</div>
-	</c:if>	
-   
-   
-   <form name="frm" method="post" action="/TripINN/admin/faqList.do">
-	 
-   
-   <c:choose>
-   	<c:when test="${fn:length(list)>0}">
-		<!-- 조건문 -->
+   	<div class="secuPassword">
+   		<h2>보안과 비밀번호</h2>
+   </div>	
+
+    <!-- 리스트 -->
+    <table class="board_list2">
+    <colgroup>
+        <col width="10%"/>
+        <col width="*"/>
+        <col width="10%"/>
+        <col width="15%"/>
+        <col width="10%"/>
+    </colgroup>
+    <thead>
+        <tr>
+        <c:if test="${member_level == 1}"> 
+            <th scope="col">글번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">조회수</th>
+            <th scope="col">작성일</th>
+            <th scope="col">도움말 유형</th>
+        </c:if>
+        </tr>
+    </thead>
 		
-   	<c:forEach var="howToUse" items="${list}">
-   		<c:if test="${howToUse.FAQ_TYPE == 2}">
-							
-    <!-- 리스트1 -->
-    <div class="list1">  
-      	<!-- 제목 -->
-      	<div class="howToUse_title">
-    	  <a style = "font-size:19px;color:black;">${howToUse.FAQ_TITLE }</a>
-     	</div> 
-      
-      	<!-- 내용 -->
-     	 <div class="howToUse_content">
-      		<font style="font-size:13px;line-height:2.3em">${howToUse.FAQ_CONTENT} </font>
-      	</div>
-      	
-      	<!-- 이미지 -->
-      	<!--  
-      	<div class="picture">
-      		<img class="picture1" src="<%=cp%>/images/house/${howToUse.FAQ_IMAGE}">
-      	</div>
-      	-->
-    </div><!-- 리스트1 영역끝 -->
-    	
-    	<!-- 관리자인가 아닌가 구분하는 조건 -->
-    	<c:if test="${member_level == 1}">
-					
-    	<!--버튼을 감싸는 영역  -->
-    	<div style="margin-bottom: 30px;text-align:right">
-    		<a href="javascript:fn_faqBoardUpdate('${howToUse.FAQ_IDX }');" class="btn_edit" id="update">수정하기</a>
-			<a href="javascript:fn_faqDeleteBoard('${howToUse.FAQ_IDX }');" class="btn_del" id="delete">삭제하기</a>
-		</div>
-		
-		</c:if><!-- 관리자여부 구분하는 조건 끝 -->
-		
-		
-		</c:if><!--FAQ_TYPE 조건 끝 -->
-   	</c:forEach>		
-    </c:when>
-    		<c:otherwise>
-				<div>
-					현재 등록된 내용이 없습니다. 내용을 등록해주세요.
-				</div>
-			</c:otherwise>
-	    </c:choose>
 	
-			
-</form>
-
-
-   	 </div> <!-- faq 영역 끝 -->
+    <tbody>
+        <c:choose>
+            <c:when test="${fn:length(list) > 0}">
+            	<c:forEach var="row" items="${list}" varStatus="status">
+            		<!-- FAQ_TYPE이 해당 숫자인 글만 나오도록 하는 조건 -->
+            		<c:if test="${row.FAQ_TYPE == 4}">            
+                    <tr>
+                    	<c:if test="${member_level == 1}"> 
+           					<td>${row.FAQ_IDX }</td>
+			       		 </c:if>
+                        
+                        
+                        <td class="title">
+                        <!-- a태그를 이용하여 링크 가능하도록 함 -->
+                                <a href="#this" name="title">${row.FAQ_TITLE }</a>
+                        <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->
+                                <input type="hidden" id="FAQ_IDX" value="${row.FAQ_IDX }">
+                        </td>
+                        
+                        
+                        <c:if test="${member_level == 1}"> 
+           					<td>${row.FAQ_READCOUNT }</td>
+                        	<td>${row.FAQ_REGDATE }</td>
+                        	 <td>${row.FAQ_TYPE }</td>
+			        	</c:if>
+                    </tr>
+                    
+                    <!-- 관리자인가 아닌가 구분하는 조건 -->
+                    <c:url var="writeURL" value="/admin/faqWrite.do">
+                    	<c:param name="faq_type" value="${row.FAQ_TYPE }"/>
+                    </c:url>
+                    
+                    </c:if><!--FAQ_TYPE 조건 끝 -->
+                </c:forEach>
+                
+                <c:if test="${member_level == 1}">
+    				<div style="text-align:right;margin-top:-50px; margin-right:0px">    
+					<a href="${writeURL }" class="btn_write" id="write">글쓰기</a>	
+					<!--  <a href="javascript:fn_faqBoardUpdate('${howToUse.FAQ_IDX }');" class="btn_edit" id="update">수정하기</a>-->
+					</div>
+					<br>
+				</c:if>
+                
+                
+            </c:when>
+            	<c:otherwise>
+                	<tr>
+                    	<td colspan="4">조회된 결과가 없습니다.</td>
+                	</tr>
+            	</c:otherwise>
+        	</c:choose>        
+    	</tbody>
+	</table>
+   	</div> <!-- faq 영역 끝 -->
+   	<br><br><br>
+	
    </div><!-- 가운데 우측영역 끝-->
 </div><!-- 가운데영역 전체(좌+우) 끝 -->
 
@@ -273,38 +284,39 @@
     <!--스크립트 정의  -->
 	<script type="text/javascript">
 	$(document).ready(function(){
-    	$("#write").on("click", function(e){ //글쓰기 버튼
+    	/*$("#write").on("click", function(e){ //글쓰기 버튼
         	e.preventDefault();
         	fn_faqBoardWrite();
+    	});*/
+    	
+    	$("a[name='title']").on("click", function(e){ //제목 
+        	e.preventDefault();
+    
+     	 //아래의 함수를 실행, 여기서 $(this)가 jQuery 객체를 뜻하며 게시글 제목인 <a>태그를 의미함.
+     	   fn_faqBoardDetail($(this));
     	});
+    	
 	});
     
 	//게시글 쓰기
-	function fn_faqBoardWrite(){
+	function fn_faqBoardWrite(type){
+		var faq_type = type;
     	var comSubmit = new ComSubmit();
-    	comSubmit.setUrl("<c:url value='/admin/faqWrite1.do' />");
+    	comSubmit.setUrl("<c:url value='/admin/faqWrite.do' />");
     	comSubmit.addParam("FAQ_TYPE",faq_type);
    		comSubmit.submit();
 	}
 	
-	 //게시글 수정
-    function fn_faqBoardUpdate(idx){
-        var faq_idx = idx;
-        var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/admin/faqUpdate1.do' />");
-        comSubmit.addParam("FAQ_IDX", faq_idx);
-      
-        comSubmit.submit();
-    }
-    
-    //게시글 삭제
-    function fn_faqDeleteBoard(idx){
-    	var faq_idx = idx;
-        var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/admin/faqDelete.do' />");
-        comSubmit.addParam("FAQ_IDX", faq_idx);
-        comSubmit.submit();
-    }
+	//상세보기
+	function fn_faqBoardDetail(obj){
+		//ComSubmit 객체를 만든 이유중 하나가 폼에 동적으로 값을 추가하는 기능을 편하게 사용하기 위함이며 addParam 함수가 그 역할을 담당한다.
+    	var comSubmit = new ComSubmit();
+    	comSubmit.setUrl("<c:url value='/admin/faqDetail2.do' />");
+    	//서버로 전송될 키 값
+    	//jQuery를 이용하여 선택된 <a> 태그의 부모 노드 내에서 IDX라는 값을 가진 태그를 찾고 그 태그의 값을 가져오도록 한 것 
+   	 comSubmit.addParam("FAQ_IDX", obj.parent().find("#FAQ_IDX").val());
+    	comSubmit.submit();
+	} 
 	
 </script>
 

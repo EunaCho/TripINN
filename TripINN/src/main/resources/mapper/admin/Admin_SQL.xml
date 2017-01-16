@@ -143,18 +143,23 @@
 	</delete>
 	
 	
-	  <!-- faq 리스트 -->
+	  <!-- faq 리스트1(이용방법,여행방법 등) -->
     <select id="faqBoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
          SELECT FAQ_IDX, FAQ_TITLE, FAQ_CONTENT, FAQ_TYPE
 			FROM FAQ_BOARD 
 		ORDER BY FAQ_IDX DESC
-		
-      
         ]]>
     </select>
     
-    
+    <!-- faq 리스트2(나머지 게시판유형) -->
+    <select id="faqBoardList2" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+         SELECT FAQ_IDX, FAQ_TITLE, FAQ_REGDATE, FAQ_READCOUNT, FAQ_TYPE
+			FROM FAQ_BOARD 
+		ORDER BY FAQ_IDX DESC
+        ]]>
+    </select>
     
     <!-- faq 글쓰기 처리 -->
    <insert id="adminFaqInsert" parameterType="hashmap">
@@ -184,6 +189,7 @@
     ]]>
    </insert>
    
+   
     <!--Faq 상세보기 -->
    <select id="adminFaqSelectDetail" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
@@ -191,15 +197,28 @@
             FAQ_IDX,
             FAQ_TITLE,
             FAQ_CONTENT,
-            MEMBER_IDX,
+            FAQ_REGDATE,
+            FAQ_READCOUNT,
             FAQ_TYPE,
-            FAQ_IMAGE
+            M.MEMBER_IDX,
+            MEMBER_NAME
         FROM
-            FAQ_BOARD
+            FAQ_BOARD F inner join MEMBER M on F.MEMBER_IDX=M.MEMBER_IDX
         WHERE
             FAQ_IDX = #{FAQ_IDX}       
        ]]>
    </select>
+   
+   <!-- faq 조회수 증가 -->
+   		<update id="updateFaqReadCount" parameterType="hashmap">
+    	<![CDATA[
+       	 	UPDATE FAQ_BOARD 
+        	SET
+            FAQ_READCOUNT = NVL(FAQ_READCOUNT, 0) + 1
+        	WHERE
+            FAQ_IDX = #{FAQ_IDX}    
+    	]]>
+   		</update>
    
    
    <!-- faq글 수정 -->
@@ -221,6 +240,9 @@
         WHERE FAQ_IDX = #{FAQ_IDX}
     ]]>
 	</delete>
+   
+   
+   
    
 
    <!-- 멤버리스트 -->

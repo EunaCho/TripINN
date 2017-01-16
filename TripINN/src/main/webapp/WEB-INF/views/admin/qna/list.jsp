@@ -5,59 +5,132 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 
 <!-- 작성자: 이진욱 -->
-<!-- 스타일 적용1 -->
-<style>   
-ul{width:172px;height:340px;background-color:#c2e4e7;list-style:none;padding-top:1px;}
-li{margin-right:50px }
-a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
+<!--가운데 좌측영역 스타일 적용-->
+<style>
+ 
+ #dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:300px;
+			margin-top:-20px;
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
 </style>
 
 
 
  <!-- 가운데 윗 영역 -->
-<div style="width:100%;height:10%;border:1px solid black;text-align:center;">
+<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>Q&A 페이지에 오신걸 환영합니다.</h2>
    </div>
 
-<!-- 가운데 영역 전체 -->
-<div style="width:100%;height:500px;border:1px solid black;">
+<!-- 가운데 영역 전체(좌+우) -->
+<div style="width:100%;height:auto;border:0px solid black;">
 
-<!-- 가운데 좌측영역 -->
-<!-- height 380 -->
-<div style="width:15%; height:380px;  float:left;text-align:center; ">
+<!-- 가운데 좌측 영역 -->
+   <div style="width:16.8%;height:420px;border:0px solid black;text-align:center;float:left;">	
+	   <section>
+				<nav style="width:250px;height:400px;margin-top:30px;">
+
+					<ul id="dropdown2">
+					<c:if test="${member_level == '1'}">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
+						<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/memberList.do">회원관리</a></li>
+						</ul>
+						</li>
+						
+						<li><a href="http://localhost:8080/TripINN/admin/houseList.do">숙소관리</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+						
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do">투어관리</a>
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+					</c:if>
+						<li>문의게시판
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do">Q&A</a></li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">FAQ</a></li>
+							
+							</ul>
+						</li>
+						
+					</ul>
+				</nav>
+		</section>
    
-   <ul>
-  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-
-      <li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-
-      <li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-      
-      <li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
- 
-   </ul>
-</div>
+   </div>
 
 
-<!-- 가운데 우측 영역 , height 380 , 포지션 left: 230 대체할수 있는 퍼센트-->   
-<!-- position:absolute;top:210px;left:230px; -->
-<div style="width:82%;height:550px;float:left;border:0px solid black;">
-
-<!-- 900 -->
-<div class="row" style="padding-left:15px;width:95%;height:90%; margin-left:20px;">    
+<!-- 가운데 우측 영역-->
+<div style="width:82%;height:auto;border:0px solid black;float:left;">
+	<div class="row" style="padding-left:5px;width:80%;height:95%; margin-left:10px;">    
+	
 	
 	<!-- Qna게시판 글씨 덮는 영역 -->
-	<div class="row" style="width:1172px; height:35px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+	<div class="row" style="width:600px; height:35px; border-bottom:1px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>QnA</strong> 게시판</font>
 	</div>
 	
 	<table class="board_list">
-	<!--<table style="border:1px solid #ccc">-->
     <colgroup>
         <col width="10%"/>
         <col width="*"/>
@@ -81,7 +154,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
             	<c:forEach var="row" items="${list}" varStatus="status">                
                     <tr>
                         <td>${row.QNA_IDX }</td>
-                        <td class="title">
+                        <td class="title2">
                         <!-- a태그를 이용하여 링크 가능하도록 함 -->
                                 <a href="#this" name="title">${row.QNA_TITLE }</a>
                         <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->
@@ -108,13 +181,25 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
 	   	 <!-- 검색파트 영역1 -->
       		<div class="row">
       	 		<!-- 페이징, 검색파트 영역2 -->
-         	<div style="text-align: center;margin:20px 0px 0px 0px;">
-				${pagingHtml}	
+         	<div style="margin:20px 0px 0px 0px;">
+         	
+         		<!-- 페이징 영역 -->
+         		<div style="text-align: center;">
+					${pagingHtml}
+				</div>	
+				
+				 <!-- 비회원의 경우 문의게시판 글쓰기 버튼이 안보임 -->
+				<div style="text-align: right;margin-top:-30px">	 
+					<c:if test="${member_level != null}">
+						<a href="#this" class="btn_write" id="write">글쓰기</a>
+					</c:if>
+				</div>		
+						<br>
          		<!-- 검색파트 영역3 -->
-            	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin:30px 0px 0px 0px;">
+            	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin:0px 0px 0px 0px;">
  					<form  action="">
  						
-                     <select class="btn_select " name="searchNum" id="searchNum">
+                     <select class="btn_select" name="searchNum" id="searchNum">
                      	<option value="0">제목</option>
                      	<option value="1">내용</option>
                       	<option value="2">작성자</option>
@@ -125,10 +210,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
                           <input type="image" src="/TripINN/images/search.jpg" value="검색"  style="font-size: 14px; padding-bottom: 1; vertical-align: middle;height:20px;"/>
                   	 </span>
                   	 
-                  	 <!-- 비회원의 경우 문의게시판 글쓰기 버튼이 안보임 -->
-				<c:if test="${member_level != null}">
-					<a href="#this" class="btn_write" id="write">글쓰기</a>
-				</c:if>	
+                  	
                	  </form>
                	  
                	
@@ -182,10 +264,10 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
    			</script> 
 
 
-		</div>
-	</div>
+		</div> 
+	</div><!-- 우측영역 끝-->
 
-</div>
+</div><!-- 가운데 전체(좌+우)영역 끝 -->
 
  
 
