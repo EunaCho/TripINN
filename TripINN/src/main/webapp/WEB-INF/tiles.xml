@@ -109,19 +109,8 @@
 	</definition>
 	
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-	<!--  ==========================================================================================-->
-
-	
 <!-- 마이페이지  -->
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/notice/noticeForm.jsp"/>
@@ -297,12 +286,9 @@
 		<put-attribute name="house_body" value="/WEB-INF/views/house/houseList.jsp"/>
 	</definition>
 	
-	<!-- main -->
-	<definition name="houseMain" template="/WEB-INF/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/house/houseList.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
-	</definition>
+	<definition name="houseMain" extends="main">
+      <put-attribute name="body" value="houseList_layout"/>
+   </definition>
 	<!-- open register -->
  	<definition name="openHouseRegister" extends="main">
 		<put-attribute name="body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
