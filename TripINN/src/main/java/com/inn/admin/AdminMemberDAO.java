@@ -33,5 +33,20 @@ public class AdminMemberDAO extends AbstractDAO {
 		delete("admin.deleteList", map);
 	}
 	
+	//이메일로 검색
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> search3(Map<String, Object> map) {
+			return (List<Map<String,Object>>)selectList("admin.search3", map);
+		}
+	//번호로 검색
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> search4(Map<String, Object> map) {
+			return (List<Map<String,Object>>)selectList("admin.search4", map);
+		}
+	//주소로 검색
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> search5(Map<String, Object> map) {
+			return (List<Map<String,Object>>)selectList("admin.search5", map);
+		}
 	
 }

@@ -22,25 +22,96 @@ public class AdminHouseController {
 	@Resource(name="AdminHouseService")
 	private AdminHouseService adminHouseService;
 	
+	//페이징 구현을 위해 추가한 변수들
+    private int currentPage = 1;    //처음 표시되는 페이지 
+    private int totalCount;         //총 글 갯수
+    private int blockCount = 2;   //1페이지당 글 몇개 할건지 정하는 변수
+    private int blockPage = 2;     //한 화면에 페이지번호 몇개까지 띄울 것인지 정하는 변수
+    private String requestName;
+    private String pagingHtml;  
+    private AdminPaging page;  
+	
 //----------------------------------------------------------------------------//	
 	@RequestMapping(value="/admin/houseList.do")
-	  public ModelAndView houseList(CommandMap commandMap) throws Exception{
+	  public ModelAndView houseList(HttpServletRequest request, CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("houseList");
 		
-		List<Map<String,Object>> list = adminHouseService.selectHouseList(commandMap.getMap());
-		mv.addObject("list",list);
+		//페이징  부분
+	      if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
+	               || request.getParameter("currentPage").equals("0")) {
+	            currentPage = 1;
+	         } else {
+	           System.out.println("뭐라고"+currentPage);
+	            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	            System.out.println("떴냐?"+currentPage);
+	         }
 		
-		return mv;
+		List<Map<String,Object>> list = adminHouseService.selectHouseList(commandMap.getMap());
+		//mv.addObject("list",list);
+		
+		
+		totalCount = list.size();
+        
+        page = new AdminPaging(currentPage, totalCount, blockCount, blockPage,"houseList");
+        pagingHtml = page.getPagingHtml().toString();
+
+        int lastCount = totalCount;
+
+        if (page.getEndCount() < totalCount) {
+           lastCount = page.getEndCount() + 1;
+        }
+              
+        list = list.subList(page.getStartCount(), lastCount);
+
+       
+        mv.addObject("totalCount", totalCount);
+        mv.addObject("pagingHtml", pagingHtml);
+        mv.addObject("currentPage", currentPage);
+        mv.addObject("list", list);
+        mv.setViewName("houseList");  
+     
+     return mv;
+		
 	}
 	//-------------------------------------------------------------------------//
 	@RequestMapping(value="/admin/houseReportList.do")
-	  public ModelAndView houseReportList(CommandMap commandMap) throws Exception{
+	  public ModelAndView houseReportList(HttpServletRequest request, CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("houseReportList");
 		
-		List<Map<String,Object>> list = adminHouseService.selectHouseReportList(commandMap.getMap());
-		mv.addObject("list",list);
+		//페이징  부분
+	      if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
+	               || request.getParameter("currentPage").equals("0")) {
+	            currentPage = 1;
+	         } else {
+	           System.out.println("뭐라고"+currentPage);
+	            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	            System.out.println("떴냐?"+currentPage);
+	         }
 		
-		return mv;
+		List<Map<String,Object>> list = adminHouseService.selectHouseReportList(commandMap.getMap());
+		//mv.addObject("list",list);
+		
+totalCount = list.size();
+        
+        page = new AdminPaging(currentPage, totalCount, blockCount, blockPage,"houseReportList");
+        pagingHtml = page.getPagingHtml().toString();
+
+        int lastCount = totalCount;
+
+        if (page.getEndCount() < totalCount) {
+           lastCount = page.getEndCount() + 1;
+        }
+              
+        list = list.subList(page.getStartCount(), lastCount);
+
+       
+        mv.addObject("totalCount", totalCount);
+        mv.addObject("pagingHtml", pagingHtml);
+        mv.addObject("currentPage", currentPage);
+        mv.addObject("list", list);
+        mv.setViewName("houseReportList");  
+     
+     return mv;
 	}
 	//-----------------------------------------------------------------------------//
 	@RequestMapping(value="/admin/houseReportDelete.do", method=RequestMethod.POST)
