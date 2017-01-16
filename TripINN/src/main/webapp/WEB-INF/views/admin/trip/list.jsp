@@ -194,12 +194,13 @@
 	.house_addr{
 	border:0px solid black;
 	width:300px;
-	height:20px;
+	height:60px;
 	margin-left:550px;
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
+	overflow-y:scroll;
 	}
 	.house_persons{
 	border:0px solid black;
@@ -216,7 +217,7 @@
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:-97px;
+	margin-top:-140px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -267,7 +268,7 @@
 	width:300px;
 	height:20px;
 	margin-left:550px;
-	margin-top:-53px;
+	margin-top:-10px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;

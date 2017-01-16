@@ -69,7 +69,7 @@
 	<div id="left" style="width:48%; height:100%; /* overflow-y:scroll; */ min-width: 530px; border:1px solid black; float:left; align:center;">
 
 	<!-- 상세검색폼 -->
-	<form id="searchForm" >
+	<form id="searchForm" method="POST" action="/TripINN/house/houseMain.do">
 	
 	<!-- 날짜 설정 -->
 	<div class="border_date">
@@ -96,9 +96,9 @@
 	</div>
 	<div class="border_category">
 		<div><h4>숙소 유형</h4></div>
-		<div class="h_category">집 전체<input type="checkbox" name="" id="" style="color:"></div>
-		<div class="h_category" >개인실<input type="checkbox" name="" id=""></div>
-		<div class="h_category" >다인실<input type="checkbox" name="" id=""></div>
+		<div class="h_category">집 전체<input type="checkbox" name="whole" id="" style="color:"></div>
+		<div class="h_category" >개인실<input type="checkbox" name="private" id=""></div>
+		<div class="h_category" >다인실<input type="checkbox" name="domitory" id=""></div>
 	</div>
 	
 	
@@ -169,6 +169,44 @@
 			</c:forEach>
 		</div>
 	</div>
+	
+	
+	
+	<!-- 하우스 미리보기 블럭 : 은아 버전-->
+	<div id="house_div">
+		<!-- 하우스 미리보기 리스트 출력 -->
+		<div class="pre_List">
+		<ul>
+			<c:forEach items="${list}" var="house" varStatus="stat">
+			
+				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
+				<c:url var="houseViewURL" value="/house/houseDetail.do">
+					<c:param name="HOUSE_IDX" value="${house.HOUSE_IDX}"/>
+					<c:param name="MEMBER_IDX" value="${house.MEMBER_IDX }"/>
+				</c:url>
+				
+				<!-- 미리보기 개체 -->
+				<li>
+				<a href="${houseViewURL}">
+					<input type="hidden" id="HOUSE_NAME${stat.index }" value="${house.HOUSE_NAME }" >
+					<input type="hidden" id="HOUSE_IMAGE${stat.index }"value="${house.HOUSE_IMAGE }">
+					<input type="hidden" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
+
+					<img src="<%= cp %>/images/house/${house.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
+					<br/>
+						<span><strong>${house.HOUSE_NAME}</strong></span>
+						<span>${house.HOUSE_INFO}</span>
+					<br>
+						<span>${house.HRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
+						<span> 후기 ?? 개</span>
+				</a>
+				</li>  
+			</c:forEach>
+			</ul>
+		</div>
+	</div>
+	
+	
 	</div>
 	
 	<!-- 오른쪽 -->

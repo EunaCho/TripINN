@@ -22,27 +22,28 @@
 		</div>
 		
 		<div class="hostInfo_body">
-		<div class="info">
-			<div class="info_div1">부가수입</div>
-			<div class="info_img"><img src="/TripINN/images/house/money.png"></div>
-			<div class="info_div2">집 수리에서 꿈꿔온 여행까지, 호스팅 수입으로 진짜 하고 싶은 일을 하세요.</div>
-		</div>
-		
-		<div class="info">
-			<div class="info_div1">호스트 지원</div>
-			<div class="info_img"><img src="/TripINN/images/house/persons.png"></div>
-			<div class="info_div2">유용한 팁과 필요한 도구를 지원받고 전세계 다른 호스트와 교류하세요.</div>
-		</div>
-		
-		<div class="info">
-			<div class="info_div1">유연성</div>
-			<div class="info_img"><img src="/TripINN/images/house/pen.png"></div>
-			<div class="info_div2">요금, 호스팅 시기 및 빈도 모두 호스트가 전적으로 결정합니다.</div>
-		</div>
+			<div class="info">
+				<div class="info_div1">부가수입</div>
+				<div class="info_img"><img src="/TripINN/images/house/money.png"></div>
+				<div class="info_div2">집 수리에서 꿈꿔온 여행까지, 호스팅 수입으로 진짜 하고 싶은 일을 하세요.</div>
+			</div>
+			
+			<div class="info">
+				<div class="info_div1">호스트 지원</div>
+				<div class="info_img"><img src="/TripINN/images/house/persons.png"></div>
+				<div class="info_div2">유용한 팁과 필요한 도구를 지원받고 전세계 다른 호스트와 교류하세요.</div>
+			</div>
+			
+			<div class="info">
+				<div class="info_div1">유연성</div>
+				<div class="info_img"><img src="/TripINN/images/house/pen.png"></div>
+				<div class="info_div2">요금, 호스팅 시기 및 빈도 모두 호스트가 전적으로 결정합니다.</div>
+			</div>
 		</div>
 		
 		<div class="hostInfo_bottom">
-			<button type="button" class="btn btn-default houseStartBtn" onclick="openHouseRegister()">등록 하기</button>
+			<button type="button" class="btn btn-default houseStartBtn" onclick="openHouseRegister()">숙소 호스팅</button>
+			<button type="button" class="btn btn-default houseStartBtn" onclick="location.href='/TripINN/trip.do'">트립 호스팅</button>
 		</div>	
 	</div>
 </div>

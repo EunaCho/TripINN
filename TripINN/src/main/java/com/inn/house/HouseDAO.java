@@ -129,6 +129,9 @@ public class HouseDAO extends AbstractDAO {
 		return (Map<String, Object>) selectOne("house.selectMember", map);
 	}
 
+	public void insertHouseRSV(Map<String, Object> map) {
+		insert("house.insertHouseRSV", map);
+	}
 	// 좋아요 기능
 	public void deleteLike(Map<String, Object> map) {
 		// TODO Auto-generated method stub

@@ -15,7 +15,7 @@
 		<!-- 로그인상태 -->
 		<c:if test="${sessionScope.member_email != null}">
 			<span><a href="/TripINN/member/memberLogout.do" onclick="logout();">로그아웃</a></span>
-			<span><a href="<%=cp %>/hosting.do">호스팅하기</a></span>	
+			<span><a href="<%=cp %>/house/houseRegisterMain.do">호스팅하기</a></span>	
 			<span><a href="<%=cp %>/qnaList.do">도움말</a></span>
 			<span><a href="<%=cp %>/mypage/main.do">마이페이지</a></span>
 			<span><a href="<%=cp %>/qnaWrite.do">1:1문의</a></span>
@@ -26,7 +26,7 @@
 		<c:if test="${sessionScope.member_email == null}">
 			<span><a href="#login_layer" class="layer_trigger_login">로그인</a></span>
 			<span><a href="#join_layer" class="layer_trigger_join">회원가입</a></span>
-			<span><a href="<%=cp %>/hosting.do">호스팅하기</a></span>
+			<span><a href="<%=cp %>/house/houseRegisterMain.do">호스팅하기</a></span>
 		</c:if>
 		
 		<!-- 관리자 로그인 -->
