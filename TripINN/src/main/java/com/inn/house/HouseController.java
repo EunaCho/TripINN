@@ -42,7 +42,7 @@ public class HouseController {
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 
-		if (session.getAttribute("member_idx") != null) {
+		/*if (session.getAttribute("member_idx") != null) {*/
 			mv.addObject("search", map.getMap()); // 검색키워드 넘기기
 
 			List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
@@ -111,7 +111,7 @@ public class HouseController {
 			mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
 			mv.addObject("map_list", store_addr);
 			mv.addObject("map_list_length", store_addr.length);
-		}
+		/*}*/
 		return mv;
 
 	}
