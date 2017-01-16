@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <% String cp = request.getContextPath(); %>
 <style>
+* { font-family: 'Nanum Gothic',malgun Gothic,dotum;  }
 	.side_menu{
 		border:1px solid black;
 		margin-bottom:20px;
@@ -34,7 +35,6 @@
     	margin-bottom: 0;
     	font-size: 14px;
     	font-weight: 400;
-    	
     	background-image: none;
     	border: 1px solid transparent;
     	border-radius: 4px;
@@ -60,30 +60,16 @@
 		margin:3px;
 		height:100%;
 	}
-	.selectBox_div{
-		border:1px solid black;
-		margin:3px;
-		width:190px;
-		height:50px;
-	}
-	.selectBox {
-		width: 500px;
-		height:500px;
-		border:1px solid #46AAFF;
-		border-radius:6px;
-		background:#fff;
-	}
-	
 
 	.msg_check{
-
-		border-bottom:1px solid black;
-		border-left:1px solid black;
+		border-bottom:1px solid #dedede;
+		border-left:1px solid #dedede;
 		margin:0px;
 		width:40px;
 		height:25px;
-		font-size:5px;
+		font-size:12px;
 		float:left;
+		padding:5px;
 	}
  	ul{
 		list-style:none;
@@ -98,38 +84,40 @@
 	}
 	
 	.msg_menu{
-		
-		border: 1px solid red;
 		margin:0px;
 		height:25px;
-		font-size:5px;
+		font-size:12px;
 		float:left;
 	}
+	.msg_menu div {text-align:center;}
 	.msg_title{
-		border-bottom:1px solid black;
-		border-left:1px solid black;
+		border-bottom:1px solid #dedede;
+		border-left:1px solid #dedede;
+		border-right:1px solid #dedede;
 		margin:0px;
 		width:154px;
 		height:25px;
-		font-size:10px;
+		font-size:12px;
 		padding-left:3px;
 		float:left;
+		text-align:center;
+		padding:5px;
 	}
 	.msg_content{
-		border-bottom:1px solid black;
-		border-left:1px solid black;
+		border-bottom:1px solid #dedede;
+		border-left:1px solid #dedede
 		margin:0px;
 		width:380px;
 		height:25px;
-		font-size:10px;
+		font-size:12px;
 		padding-left:3px;
 		float:left;
 		text-overflow:ellipsis; 
 		overflow:hidden;
 		white-space:nowrap;
+		text-align:center;
+		padding:5px;
 	}
-	
-	
 </style>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 
@@ -148,23 +136,13 @@
 		</div>
 	</div>
 
-	<div class="right_div1">
-			<div class="selectBox_div">
-				<div style="inline-block;">
-						<select id="selectbox">
-							<option selected="selected">메시지</option>
-							<option>숙소</option>
-							<option>트립</option>
-						</select>
-				</div>
-			</div>
-			
+	<div class="right_div1" style="border:0px;">
+			<h3 style="margin:10px;">받은 메세지</h3>
+			<hr style="margin:0px;padding:0px;border:1px solid #dedede;"/>
 			<div class="right_div2">
 			
-					<div class="msg_menu">
-						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%;">
-							선택
-						</div>
+					<div class="msg_menu" style="padding:5px;">
+						
 						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%;">
 							상태
 						</div>
@@ -178,7 +156,7 @@
 						<div class="msg_content" style="background-color: #f7f7f7; background-size:700%;">
 							내용
 						</div>
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid black;">
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid #dedede;">
 							 보낸 날짜
 						</div>
 					</div>

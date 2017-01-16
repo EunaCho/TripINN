@@ -5,6 +5,7 @@
 <% String cp = request.getContextPath(); %>
 
 <style>
+	* { font-family: 'Nanum Gothic',malgun Gothic,dotum;  }
 	.side_menu{
 		border:1px solid black;
 		margin-bottom:20px;
@@ -61,27 +62,15 @@
 		margin:3px;
 		height:100%;
 	}
-	.selectBox_div{
-		border:1px solid black;
-		margin:3px;
-		width:190px;
-		height:50px;
-	}
-	.selectBox {
-		width: 500px;
-		height:500px;
-		border:1px solid #46AAFF;
-		border-radius:6px;
-		background:#fff;
-	}
 	.msg_check{
-		border-bottom:1px solid black;
-		border-left:1px solid black;
+		border-bottom:1px solid #dedede;
+		border-left:1px solid #dedede;
 		margin:0px;
 		width:40px;
 		height:25px;
-		font-size:5px;
+		font-size:12px;
 		float:left;
+		padding:5px;
 	}
  	ul{
 		list-style:none;
@@ -95,37 +84,42 @@
 		float:left;
 	}
 	.msg_menu{
-		border: 1px solid red;
 		margin:0px;
 		height:25px;
-		font-size:5px;
+		font-size:12px;
 		float:left;
+		text-align:center;
+		padding: 5px;
 	}
 	.msg_title{
-		border-bottom:1px solid black;
-		border-left:1px solid black;
+		border-bottom:1px solid #dedede;
+		border-left:1px solid #dedede;
+		/* border-right:1px solid #dedede; */
 		margin:0px;
 		width:154px;
 		height:25px;
-		font-size:10px;
+		font-size:12px;
 		padding-left:3px;
 		float:left;
 		text-overflow:ellipsis; 
 		overflow:hidden;
 		white-space:nowrap;
+		padding:5px;
 	}
 	.msg_content{
-		border-bottom:1px solid black;
-		border-left:1px solid black;
+		border-bottom:1px solid #dedede;
+		border-left:1px solid #dedede;
 		margin:0px;
 		width:380px;
 		height:25px;
-		font-size:10px;
+		font-size:12px;
+		text-align:center;
 		padding-left:3px;
 		float:left;
 		text-overflow:ellipsis; 
 		overflow:hidden;
 		white-space:nowrap;
+		padding:5px;
 	}
 </style>
 
@@ -146,23 +140,13 @@
 		</div>
 	</div>
 
-	<div class="right_div1">
-			<div class="selectBox_div">
-				<div style="inline-block;">
-						<select id="selectbox">
-							<option selected="selected">메시지</option>
-							<option>숙소</option>
-							<option>트립</option>
-						</select>
-				</div>
-			</div>
+	<div class="right_div1" style="height: 100%;border:0px;">
 			
+			<h3 style="margin:10px;">보낸 메세지</h3>
+			<hr style="margin:0px;padding:0px;border:1px solid #dedede;"/>
 			<div class="right_div2">
 	
 					<div class="msg_menu">
-						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%; align=center;">
-							선택
-						</div>
 						<div class="msg_check" style="background-color: #f7f7f7; background-size:700%; align=center;">
 							상태
 						</div>
@@ -176,7 +160,7 @@
 						<div class="msg_content" style="background-color: #f7f7f7; background-size:700%; align:center;">
 							내용
 						</div>
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid black; align:center;">
+						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid #dedede; align:center;">
 							 보낸 날짜
 						</div>
 					</div>
@@ -187,9 +171,6 @@
 			
 					<div class="msg_menu">
 						<div class="msg_check">
-							체크
-						</div>
-						<div class="msg_check">
 					<c:if test="${list.MSG_STATE eq '1'}">
 						<img src="<%=cp%>/images/mypage/Mail-Open-icon.png" alt="" style="width:20px; height:20px; padding:5px;"/>
 					</c:if>
@@ -197,17 +178,17 @@
 						<img src="<%=cp%>/images/mypage/mail-icon1.png" alt="" style="width:20px; height:20px; padding:5px;"/>
 					</c:if>
 						</div>
-						<div class="msg_title">
+						<div class="msg_title" style="paddig:5px;">
 						 	<a href="${viewURL}"  style="text-decoration:none;">${list.RECEIVE_MEMBER_EMAIL}</a>
 						</div>
-						<div class="msg_title">
+						<div class="msg_title" style="paddig:5px;">
 						 	<a href="${viewURL}" style="text-decoration:none;">${list.MSG_TITLE}</a>
 						</div>
 			
-						<div class="msg_content">
+						<div class="msg_content" style="paddig:5px;">
 							<a href="${viewURL}" style="text-decoration:none;">${list.MSG_CONTENT}</a>
 						</div>
-						<div class="msg_title" style="border-right:1px solid black;">
+						<div class="msg_title" style="border-right:1px solid #dedede; padding:5px;">
 							${list.SEND_DATE}
 						</div>
 					</div>

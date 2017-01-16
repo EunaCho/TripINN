@@ -68,10 +68,16 @@
 					</div><!-- brBorder -->
 		
 				</div>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
 			
 
 				<div style="clear:both;"></div>
 				<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
+=======
+				
+			
+				<div style="clear:both"></div>
+>>>>>>> 5f0e415 마이페이지 
 					<!-- house_zipcode, addr1, addr2, add3 -->	
 				<div class="hrDiv">
 				<div class="hrBorder">
@@ -95,10 +101,10 @@
 							
 							<label>상세주소</label>
 							<input type="text" id="addr3" class="hrText hrText_Addr2 input-large postcodify_details" name="HOUSE_ADDR2">
-							
-							<label>참고항목</label>
-							<input type="text" id="addr4" class="hrText hrText_Addr2 input-large postcodify_extra_info" name="HOUSE_ADDR3">
-					</div>
+								
+								<label>참고항목</label>
+								<input type="text" id="addr4" class="hrText hrText_Addr2 input-large postcodify_extra_info" name="HOUSE_ADDR3">
+						</div>
 					</div>
 					</div>
 					<div class="hrAddrRight">
