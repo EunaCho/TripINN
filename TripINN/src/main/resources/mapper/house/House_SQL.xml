@@ -24,27 +24,32 @@
 	</select>
 	
 	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
-		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE 
-		FROM (SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
-					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX
-					  , HR_FIRST_DATE, HR_LAST_DATE
-			FROM HOUSE H
-						 LEFT JOIN HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 
+		
+		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX 
+		FROM (Select H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX 
+				From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 				
+					
 			<where>
-			<if test="preSearch_keyword != null">
-				(HOUSE_NAME like '%'||#{preSearch_keyword}||'%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%'
-				or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
-			</if>
+				<if test="preSearch_keyword != null">
+					(HOUSE_NAME like '%'||#{preSearch_keyword}||'%' or HOUSE_INFO like '%' || #{preSearch_keyword} || '%' 
+					or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' 
+					or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
+				</if>
+				<if test="person != null">
+					<![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
+				</if> 
+			</where>
 			<if test="hr_first_date != null and hr_last_date != null">
-				<![CDATA[AND ((HR_FIRST_DATE >= #{hr_first_date} and #{hr_last_date} >= HR_LAST_DATE))]]>
-			</if> 
-			<if test="person != null">
-				<![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
-			</if> 
-		</where>
+				minus
+					(select H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX  
+					From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX 
+					where <![CDATA[((HR_FIRST_DATE <= TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') and TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') < HR_LAST_DATE) 
+								OR (HR_FIRST_DATE <= TO_DATE(#{hr_last_date}, 'mm/dd/yyyy') and  TO_DATE(#{hr_last_date}, 'mm/dd/yyyy') < HR_LAST_DATE))]]>
+					)
+			</if>	
+			
 			ORDER BY HOUSE_IDX DESC)
+			
 	</select>
 
 	
@@ -154,7 +159,15 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		]]>
 		
 	</insert>
-	<select id="selectFVR_IDX" parameterType="hashmap" resultType="string">
+	
+	
+	<!-- 숙소 예약 -->
+	<insert id="insertHouseRSV" parameterType="hashmap">
+		insert into HOUSE_RSV ( HR_NAME, HR_IDX, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, MEMBER_IDX, HOUSE_IDX, HR_PHONE, HR_EMAIL)
+		values (#{hr_name}, hr_idx_seq.nextval, #{hr_persons}, #{hr_first_date}, #{hr_last_date}, #{member_idx}, #{HOUSE_IDX}, #{hr_phone}, #{hr_email})
+	</insert>
+	
+		<select id="selectFVR_IDX" parameterType="hashmap" resultType="string">
 		
 		<![CDATA[
 			 SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL 

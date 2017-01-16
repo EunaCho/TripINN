@@ -2,20 +2,55 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% String cp = request.getContextPath(); %>
 
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
-<script src="http://code.jquery.com/jquery-1.7.1.js"></script><!-- 롤링 스크롤 -->
+
   
 <script src="<%= cp %>/js/main.js"></script>
 <link rel="stylesheet" href="/TripINN/css/main.css" />
-
+<script src="http://code.jquery.com/jquery-1.7.1.js"></script><!-- 롤링 스크롤 -->
+<script>
+$(document).ready(function () {
+    // 슬라이더를 움직여주는 함수
+    function moveSlider(index) {
+        // 슬라이더를 이동합니다.
+        var willMoveLeft = -(index * 900);
+        $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
+        // control_button에 active클래스를 부여/제거합니다.
+        $('.control_button[data-index=' + index + ']').addClass('active');
+        $('.control_button[data-index!=' + index + ']').removeClass('active');
+        // 글자를 이동합니다.
+        $('.slider_text[data-index=' + index + ']').show().animate({
+            left: 0
+        }, 'slow');
+        $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
+            $(this).css('left', -300);
+        });
+    }
+    // 초기 텍스트 위치 지정 및 data-index 할당
+    $('.slider_text').css('left', -300).each(function (index) {
+        $(this).attr('data-index', index);
+    });
+    // 컨트롤 버튼의 클릭 핸들러 지정 및 data-index 할당
+    $('.control_button').each(function (index) {
+        $(this).attr('data-index', index);
+    }).click(function () {
+        var index = $(this).attr('data-index');
+        moveSlider(index);
+    });
+    // 초기 슬라이더 위치 지정
+    var randomNumber = Math.round(Math.random() * 3);
+    moveSlider(randomNumber);
+});
+</script>
 
 
 <!-- 메인 바디 -->
-<div style="width:100%;height:1300px;border:;text-align:center;">
+<div style="width:1350px;height:1300px;border:;text-align:center;">
 
 
 	<!-- 슬라이드 롤링 --> 
@@ -162,7 +197,7 @@
 	<div id="leftDiv">
 	<form method="POST" action="house/houseMain.do" name="preSearchForm" id="preSearchForm">
 		<div> 
-			<h2>숙소 검색하기</h2><br/>
+			<h3>숙소 검색하기</h3><br/>
 			<input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
 		</div>
 		
