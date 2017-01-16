@@ -271,4 +271,23 @@ public class TripController {
 		System.out.println("get(trip_idx) : " + map.get("trip_idx"));
 		tripService.deleteBookMark(map);
 	}
+	
+	@RequestMapping(value="/tripReport.do", method=RequestMethod.POST)
+	public ModelAndView tripReport(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		
+		tripService.tripReport(commandMap.getMap());
+		
+		mv.addObject("trip_idx", commandMap.get("trip_idx"));
+		return mv;
+	}
+	
+	@RequestMapping(value="/reviewDel.do", method=RequestMethod.POST)
+	public ModelAndView reviewDel(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		tripService.reviewDel(request.getParameter("trb_idx"));
+		
+		mv.addObject("trip_idx", request.getParameter("trip_idx"));
+		return mv;
+	}
 }
