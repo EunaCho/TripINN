@@ -337,6 +337,14 @@
 		<put-attribute name="body" value="insertHouseRegister_Layout"/>
 	</definition>
 	
+	<!-- 하우스 정보 수정페이지 -->
+	<definition name="houseUpdateForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/house/houseUpdateForm.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+
+	
 	
 	<!-- 하우스 상세보기 -->
 	<definition name="HouseInfoDetail" template="/WEB-INF/common/layout.jsp">
@@ -351,6 +359,8 @@
  		<put-attribute name="body" value="/WEB-INF/views/house/houseReserve.jsp"/>
  		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
  	</definition>
+	
+	
 	
 	
 	<!-- **********************house_end**********************-->

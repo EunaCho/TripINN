@@ -162,6 +162,24 @@ public class HouseController {
 		ModelAndView mv = new ModelAndView("houseRegister3");
 		return mv;
 	}
+	
+	//숙소 정보 수정폼
+	@RequestMapping(value = "/house/houseUpdateForm.do", method=RequestMethod.GET)
+	public ModelAndView houseUpdateForm(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("houseUpdateForm");
+		
+		return mv;
+	}
+	
+	//숙소 정보 수정하기
+		@RequestMapping(value = "/house/houseUpdate.do", method=RequestMethod.POST)
+		public ModelAndView houseUpdate(CommandMap commandMap) throws Exception {
+			ModelAndView mv = new ModelAndView("houseUpdate");
+			
+			return mv;
+		}
+		
+	
 
 	// map view
 	@RequestMapping(value = "/house/houseMapView.do")
