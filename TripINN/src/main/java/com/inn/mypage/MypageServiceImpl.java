@@ -66,6 +66,11 @@ public class MypageServiceImpl implements MypageService{
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectHouseDetail(map);
 	}
+	//숙소 목록 리스트 상세보기 ->숙소 수정하기 
+	@Override
+	public Map<String, Object> selectHouseModify(Map<String, Object> map) throws Exception{
+		return mypageDAO.selectHouseModify(map);
+	}
 	//해당 숙소 예약 현황 리스트
 	@Override
 	public List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception{
@@ -193,7 +198,17 @@ public class MypageServiceImpl implements MypageService{
 
 		return mypageDAO.selectMy_TripList(map) ;
 	}
-
+	//숙소 위시리스트 삭제
+	@Override
+	public void deleteHouseWish(Map<String, Object> map) throws Exception{
+		mypageDAO.deleteHouseWish(map);
+	}
+	//트립위시리스트 삭제 
+	@Override
+	public void deleteTripWish(Map<String, Object> map) throws Exception{
+		mypageDAO.deleteTripWish(map);
+	}
+	
 	//-------프로필------//
 
 }

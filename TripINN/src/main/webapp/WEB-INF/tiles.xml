@@ -161,6 +161,14 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+	<definition name="houseModifyForm" template="/WEB-INF/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/house/houseModify.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+	</definition>
+	
+	
+	
 	<definition name="houseReserForm" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/mypage/house/reserForm.jsp"/>
@@ -368,6 +376,7 @@
 	</definition>
 	
 	<definition name="tripDetail" template="/WEB-INF/common/layout.jsp">
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/trip/tripDetail.jsp"/>
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
@@ -379,6 +388,20 @@
 		<put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
 	</definition>
 	
+=======
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/trip/tripDetail.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   <definition name="tripReserveForm" template="/WEB-INF/common/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
+      <put-attribute name="body" value="/WEB-INF/views/trip/tripReserve.jsp"/>
+      <put-attribute name="bottom" value="/WEB-INF/common/bottom.jsp"/>
+   </definition>
+   
+   
+>>>>>>> 5f0e415 마이페이지 
 	<definition name="test2" template="/WEB-INF/common/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/common/header.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/test/test2.jsp"/>

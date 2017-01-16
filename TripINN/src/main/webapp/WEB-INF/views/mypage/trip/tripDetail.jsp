@@ -200,9 +200,50 @@
 		text-align:center;
 		font-style:'바탕체'
 	}
-	
+   .right-con { width:98%; height:45%; border: 2px solid green; margin:5px ; display: block;min-height: 300px; }
+   .list-right { width:99%; height:100%; border: 5px solid #a6a6a6; float:left; }
+   .top_div { width:50%; text-align:center; height:30px; float:left; padding-top:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:bold; }
+   .top_div:hover {border-bottom:5px solid #1E6198;cursor:pointer;}
+   .on {border-bottom:5px solid #1E6198;cursor:pointer; background-color: #f8f8f8;}
 </style>
+<script>
+   function searchKind(wish_kind) {
+    if(wish_kind == 2) { // 메세지 현황 클릭 시
+      $("#reserDiv").css("display", "none");
+      $("#msgDiv").css("display", "block"); 
+      $("#reser").attr("class", "top_div"); // id가 reser인 태그의 class명을 top_div로 변경
+      $("#msg").attr("class", "top_div on");
+    } else { // 예약 현황 클릭 시
+      $("#msgDiv").css("display", "none"); 
+      $("#reserDiv").css("display", "block");
+      $("#reser").attr("class", "top_div on");
+      $("#msg").attr("class", "top_div");
+    }
+   }
+   
+   function contentView(msg_idx) {
+      if($("#m_content"+msg_idx).css("display") == "none") {
+            $("#m_content"+msg_idx).css("display", "block");
+      } else {
+         $("#m_content"+msg_idx).css("display", "none");
+      }
+   }
+function deleteTrip(trip_idx){
+	
+	document.houseForm.TRIP_IDX = trip_idx;
+	
+	document.tripForm.action="/TripINN/trip/deleteTrip.do";
+	document.tripForm.submit();
+}
+function modifyTrip(trip_idx){
+	
+	document.tripForm.TRIP_IDX = trip_idx;
+	
+	document.tripForm.action="/TripINN/trip/tripModifyForm.do";
+	document.tripForm.submit();
+}
 
+</script>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
@@ -218,7 +259,7 @@
 	<div class="right_div">
 		
 			<div class="trip_div">
-				${map.TRIP_NAME}트립&nbsp;&nbsp;<strong style="font-color:#007a87;">상세보기</strong>
+				<strong style="font-color:#007a87;">${map.TRIP_NAME} 트립</strong>
 			</div>
 				<div class="trip_menu_div">
 					<div class="menu_div">
@@ -234,6 +275,7 @@
 					
 					<div class="menu_div2">
 						<div class="name_div" onclick="tripDetail('${map.TRIP_IDX}')">
+						<div style="width:200px; height:auto; float:left;">
 							<font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
 							<br>
 								${index}.
@@ -242,6 +284,13 @@
 								${map.TRIP_NAME}
 							</a>
 						</div>
+						
+					 	<div style= " width:250px; height:auto; float:left; margin-left:370px; margin-top:-35px; border:1px solid red;">
+                        	<input type="button" value="호스팅 수정하기" onclick="javascript:modifyTrip${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; float:left; margin-right:25px;"/>
+                    		<input type="button" value="호스팅 삭제하기" onclick="javascript:deleteTrip(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; float:left; "/>
+                    	</div>
+                     
+					</div><!-- name_div -->
 						
 						<div class="position_div">
 							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:13px; font-style:'바탕체'; padding-left:8px;">
@@ -286,117 +335,102 @@
 					</div><!-- menu_div2 -->		
 				</div> <!-- trip_menu_div End -->
 				
-				<div style="border:1px solid #31b0d5; width: 880px; height:230px; margin:5px;">
-					<div class="trip_div2">
-						${map.TRIP_NAME} 예약현황
-					</div>
-					<div class="msg_menu">
-						<div class="reser_number" style="background-color: #f7f7f7; background-size:700%;">
-							예약번호
-						</div>
-						<div class="reser_div" style="background-color: #f7f7f7; background-size:700%;">
-							예약자명
-						</div>
-						<div class="reser_div" style="background-color: #f7f7f7; background-size:700%;">
-							예약인원
-						</div>
-						<div class="reser_div" style="background-color: #f7f7f7; background-size:700%;">
-							예약일자
-						</div>
-						<div class="reser_date" style="background-color: #f7f7f7; background-size:700%;">
-							입실/퇴실일자
-						</div>
-						<div class="reser_number" style="background-color: #f7f7f7; background-size:700%;">
-							대금지급여부
-						</div>
-					</div>
-			<c:choose>
-			<c:when test="${fn:length(reserList)>0 }">	
-				<c:forEach var="reserList" items="${reserList}" varStatus="status">
-					<div class="msg_menu">
-						<div class="reser_number">
-							${status.index+1}
-						</div>
-						<div class="reser_div">
-							${reserList.TR_NAME}
-						</div>
-						<div class="reser_div">
-							${reserList.TR_PERSONS}
-						</div>
-						<div class="reser_div">
-							${reserList.TR_TIME}
-						</div>
-						<div class="reser_date" >
-							${reserList.TR_FIRST_DATE} ~
-							${reserList.TR_LAST_DATE}
-						</div>
-						<div class="reser_number">
-							<c:if test="${reserList.TR_MONEY_STATE eq '1'}">
-								<p>지급완료</p>
-							</c:if>
-							<c:if test="${reserList.TR_MONEY_STATE eq '0'}">
-								<p>미지급</p>
-							</c:if>
-						</div>
-					</div>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-					<div class="msg_menu">
-						현재 예약자가 없습니다.
-					</div>
-			</c:otherwise>
-			</c:choose>
-				</div>
-				
-				
-				<div style="border:1px solid blue; width:880px; height:230px; margin:5px;">
-					<div class="trip_div2">
-						${map.TRIP_NAME} 숙소메시지
-					</div>
-					<div class="msg_menu">
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
-							 보낸사람
-						</div>
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%;">
-							 제목
-						</div>
-						<div class="msg_content" style="background-color: #f7f7f7; background-size:700%; text-align:center;">
-							내용
-						</div>
-						<div class="msg_title" style="background-color: #f7f7f7; background-size:700%; border-right:1px solid black;">
-							 보낸 날짜
-						</div>
-					</div>
-				<c:choose>
-				<c:when test="${fn:length(msgList)>0}">
-					<c:forEach var="msgList" items="${msgList}" varStatus="status">
-					<div class="msg_menu">
-						<div class="msg_title">
-							 ${msgList.MEMBER_EMAIL}
-						</div>
-						<div class="msg_title" >
-							 ${msgList.MSG_TITLE}
-						</div>
-						<div class="msg_content" >
-							${msgList.MSG_CONTENT}
-						</div>
-						<div class="msg_title" >
-							${msgList.SEND_DATE}
-						</div>
-					</div>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<div class="msg_menu">
-						해당 숙소에 받은메시지가 없습니다. 
-					</div>
-				</c:otherwise>
-				</c:choose>
-					
-				</div>
-	
-	</div><!-- right_div End -->
+			
+            <div class="right-con">
+               <form name="form_kind" method="post">
+                  <div class="right-top" style="border:1px solid red;">
+                     <div id="reser" class='top_div <c:if test="${Type eq 'reser'}">on</c:if>' onclick="searchKind(1)">
+                      			  예약현황
+                     </div>
+                     <div id="msg" class=top_div <c:if test="${Type == 'msg'}">on</c:if> onclick="searchKind(2)">
+                      			  메시지 현황
+                     </div>
+                  </div>
+               </form>
+               <hr/>
+<style>
+   #reserDiv { display: block; }
+    .reserDiv { width:90%;height:30px; margin:0px auto; }
+    .reserDiv .r_num { width:9%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px; }
+    .reserDiv .r_name { width:16%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px;  }
+    .reserDiv .r_person { width:9%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px;}
+    .reserDiv .r_date { width:20%; float:left; border:1px solid black; text-align:center; padding:3px; height:25px; }
+    
+    #msgDiv { display: none; }
+    .msgDiv { width:90%;height:30px; margin:0px auto; }
+    .msgDiv .m_num { width:9%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px; }
+    .msgDiv .m_email { width:25%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px;  }
+    .msgDiv .m_title { width:45%; float:left; border:1px solid black; text-align:center; padding:3px; cursor:pointer;  height:25px; }
+    .msgDiv .m_date { width:17%; float:left; border:1px solid black; text-align:center; padding:3px; height:25px; }
+    .msgDiv .m_content { width:98%; float:left; border:1px solid black; text-align:center; padding:3px; height:25px; }
+</style>
+
+   <div id="reserDiv">
+      <div class="reserDiv" >
+         <div class="r_num" style="background-color:#dedede;">번호</div>
+         <div class="r_name" style="background-color:#dedede;">예약자 명</div>
+         <div class="r_person" style="background-color:#dedede;">인원</div>
+         <div class="r_date" style="background-color:#dedede;">예약일</div>
+         <div class="r_date" style="background-color:#dedede;">입실일</div>
+         <div class="r_date" style="background-color:#dedede;">퇴실일</div>
+      </div>
+      <c:if test="${empty reserList}">
+      	<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
+			<font style="color:#000;font-size:20px;margin-top:100px; ">조회된 결과가 없습니다.</font>
+		</div>
+      </c:if>
+      <c:forEach items="${reserList}" var="rList" varStatus="stat">
+      <div class="reserDiv">
+         <div class="r_num">${stat.index + 1 }</div>
+         <div class="r_name">${rList.HR_NAME }</div>
+         <div class="r_person">${rList.HR_PERSONS } 명</div>
+         <div class="r_date">
+            <fmt:formatDate value="${rList.HR_TIME }" pattern="yyyy-MM-dd HH:mm"/>
+         </div>
+         <div class="r_date">
+            <fmt:formatDate value="${rList.HR_FIRST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
+         </div>
+         <div class="r_date">
+            <fmt:formatDate value="${rList.HR_LAST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
+         </div>
+      </div>
+      </c:forEach>
+   </div>
+   
+   <!-- ///////////////////// 메세지 -->
+   <!-- msg_idx, receive_member_email, msg_state, msg_type, msg_content, send_date, msg_title  -->
+   <div id="msgDiv">
+      <div class="msgDiv" >
+         <div class="m_num" style="background-color:#dedede;">번호</div>
+         <div class="m_email" style="background-color:#dedede;">이메일</div>
+         <div class="m_title" style="background-color:#dedede;">제목</div>
+         <div class="m_date" style="background-color:#dedede;">보낸 날짜</div>
+      </div>
+       <c:if test="${empty msgList}">
+      	<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
+			<font style="color:#000;font-size:20px;margin-top:100px; ">조회된 결과가 없습니다.</font>
+		</div>
+      </c:if>
+      <c:forEach items="${msgList}" var="mList" varStatus="stat">
+      <div class="msgDiv">
+         <div class="m_num">${stat.index + 1 }</div>
+         <div class="m_email">${mList.MEMBER_EMAIL }</div>
+         <div class="m_title" onclick="contentView('${mList.MSG_IDX }');" style="color:red; font-weight:bold;">
+            ${mList.MSG_TITLE }
+         </div>
+         <div class="m_date">
+            <fmt:formatDate value="${mList.SEND_DATE}" pattern="yyyy-MM-dd"/>
+         </div>
+      </div>
+      <div class="msgDiv" style="display:none;" id="m_content${mList.MSG_IDX }">
+         <div class="m_content" style="padding:10px;min-height:150px;background-color:#ededed;">${mList.MSG_CONTENT }</div>
+      </div>
+      </c:forEach>
+   </div>
+   
+  
+   </div><!-- right-con -->
+</div><!-- right_div End -->
 	
 	
 </div>

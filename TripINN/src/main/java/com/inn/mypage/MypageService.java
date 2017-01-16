@@ -20,7 +20,9 @@ public interface MypageService {
 	
 	//------------------------------숙소 목록---------------------
 	List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception; //숙소 목록 리스트 
-	Map<String, Object>  selectHouseDetail(Map<String, Object> map) throws Exception; //숙소 상세보기
+	Map<String, Object>  selectHouseDetail(Map<String, Object> map) throws Exception; //숙소 리스트 상세보기
+	Map<String, Object> selectHouseModify(Map<String, Object> map) throws Exception;//숙소 리스트 상세보기->숙소 수정하기 
+	
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
 	
@@ -60,4 +62,7 @@ public interface MypageService {
 	
 	Map<String, Object> selectMy_HouseList(Map<String, Object> map) throws Exception; //내 숙소 위시리스트  
 	Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception; //내 트립 위시리스트 
+	void deleteHouseWish(Map<String, Object> map) throws Exception;//숙소위시리스트 삭제 
+	void deleteTripWish(Map<String, Object> map) throws Exception;//트립 위시리스트 삭제 
+	
 }

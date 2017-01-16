@@ -39,18 +39,11 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("noticeForm"); //noticeForm으로 설정된 ModelAndView 객체 선언 
 
-		/*session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 세션값
+		session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 세션값
 		commandMap.put("MEMBER_IDX", session_member_idx);
-		
-		if(session_member_idx == null){
-			mv.setViewName("redirect:/main.do");
-		}*/
-		
-		commandMap.put("MEMBER_IDX", "12");
+	
 		Map<String, Object> map = mypageService.selectMember(commandMap.getMap());
-		
-
-		
+	
 		mv.addObject("map", map);
 		
 		return mv;
@@ -62,11 +55,9 @@ public class MypageController {
 	public ModelAndView sendMsgForm(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{ 	//보낸 메시지를 select박스를이용해서 숙소와 트립의 선택에 따라 리스트를 뽑는다. 
 		
 		ModelAndView mv = new ModelAndView("sendMsgForm");  //sendMsgForm으로 된 ModelAndView 객체 선언 
-		
-		/*session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 
+	
+		session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 
 		commandMap.put("member_idx", session_member_idx); //commandMap 객체에 불러온 세션값 과 키값 저장 
-		 */		
-		commandMap.put("member_idx", "12");
 
 		ArrayList<Map<String, Object>> list = new ArrayList<>(); //seletSendMessage 리스트를 저장할 list객체 선언 
 		list=(ArrayList<Map<String, Object>>)mypageService.selectSendMsgList(commandMap.getMap()); // list 객체에 불러온 sendMessage값을 저장 
@@ -82,10 +73,8 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("receiveMsgForm");
 		
-		/*session_member_email = (String)session.getAttribute("member_email"); //selectReceiveMessage 리스트를 저장할 list 객체
+		session_member_email = (String)session.getAttribute("member_email"); //selectReceiveMessage 리스트를 저장할 list 객체
 		commandMap.put("member_email", session_member_email);
-		*/
-		commandMap.put("member_email", "jieunkyung@naver.com");
 		
 		ArrayList<Map<String, Object>> list = new ArrayList<>(); //selectReceiveMessage 를 저장할 ArrayList<Map<String, Object>> 객체 생성 
 		list = (ArrayList<Map<String, Object>>)mypageService.selectReceiveMsgList(commandMap.getMap());
@@ -141,12 +130,11 @@ public class MypageController {
 	public ModelAndView messageWriteOk(CommandMap commandMap, HttpSession session) throws Exception{
 		System.out.println("test1");
 		ModelAndView mv = new ModelAndView("messageWriteOk"); //messageWriteOk.jsp로 타일즈 설정된 뷰 messageWriteOk.jsp에서  다시 mypage/notice.do 실행 
-		System.out.println("test2");									  
-		/*session_member_idx = (Integer)session.getAttribute("member_idx");
-		commandMap.put("member_idx", session_member_idx);*/
-		commandMap.put("MEMBER_IDX", "12");
+		System.out.println("test2");
 		
-		System.out.println("test3");
+		session_member_idx = (Integer)session.getAttribute("member_idx");
+		commandMap.put("member_idx", session_member_idx);
+		
 		System.out.println("member_idx : " + commandMap.get("MEMBER_IDX"));
 		
 		mypageService.insertMsgWrite(commandMap.getMap());
@@ -162,10 +150,8 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("houseForm"); //tilse맵핑된 ModelAndView 객체 선언 
 		
-		/*session_member_idx = (Integer)session.getAttribute("member_idx"); //member_idx 세션값
-		commandMap.put("member_idx", session_member_idx);*/
-		
-		commandMap.put("member_idx", "12");
+		session_member_idx = (Integer)session.getAttribute("member_idx"); //member_idx 세션값
+		commandMap.put("member_idx", session_member_idx);
 		
 		ArrayList<Map<String, Object>> list = new ArrayList<>(); //숙소 리스트를 저장할 ArrayList 객체를 선언 
 		list =(ArrayList<Map<String, Object>>)mypageService.selectHouseList(commandMap.getMap()); // selectHouseList를 실행
@@ -174,14 +160,15 @@ public class MypageController {
 		
 		return mv;
 	}
-	//숙소목록->숙소상세보기 
-	@RequestMapping(value="/houseDetail.do",method=RequestMethod.POST )
+	//숙소목록->숙소리스트 상세 
+	@RequestMapping(value="/houseDetail.do",method={RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView houseDetail(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("my_HouseDetail");
 		
 		int house_idx = Integer.parseInt(request.getParameter("HOUSE_IDX"));
-		session_member_email  = (String)session.getAttribute("member_email");
+		session_member_email  = (String)session.getAttribute("MEMBER_EMAIL");
+		
 		commandMap.put("HOUSE_IDX", house_idx);
 		commandMap.put("MEMBER_EMAIL", session_member_email);
 		
@@ -195,16 +182,17 @@ public class MypageController {
 		
 		return mv;
 	}
+
+	
 	//*숙소목록=>예약관리 리스트
 	@RequestMapping("/houseReser.do")
 	public ModelAndView houseReserForm(CommandMap commandMap, HttpSession session) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("houseReserForm");
 		
-		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);*/
-		
-		commandMap.put("MEMBER_IDX", "12");
+		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
+		commandMap.put("MEMBER_IDX", session_member_idx);
+	
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_ReserList(commandMap.getMap()); //예약목록 리스트 
 		
 		mv.addObject("list", list);		
@@ -238,6 +226,7 @@ public class MypageController {
 		
 		int house_idx = Integer.parseInt(request.getParameter("HOUSE_IDX"));  //예약취소할 house_idx 값을 jsp에서 받는다
 		int hr_idx = Integer.parseInt(request.getParameter("HR_IDX"));
+		
 		commandMap.put("HOUSE_IDX", house_idx); //받은 house_idx값을 map에 저장  
 		commandMap.put("HR_IDX", hr_idx);
 		
@@ -253,10 +242,9 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("H_reserDelete");
 		
-		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
+		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
 		commandMap.put("MEMBER_IDX", session_member_idx);
-		*/
-		commandMap.put("MEMBER_IDX", "12");
+		
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectH_ReserDeleteList(commandMap.getMap());
 		
 		mv.addObject("list", list);
@@ -307,10 +295,9 @@ public class MypageController {
 		
 		ModelAndView mv = new  ModelAndView("tripForm");
 		
-		/*session_member_idx=(Integer)session.getAttribute("MEMBER_IDX");
+		session_member_idx=(Integer)session.getAttribute("MEMBER_IDX");
 		commandMap.put("MEMBER_IDX", session_member_idx);
-		*/
-		commandMap.put("MEMBER_IDX", "12");
+		
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>)mypageService.selectTripList(commandMap.getMap());
 		
 		mv.addObject("list", list);
@@ -345,9 +332,9 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("tripReserForm");
 		
-//		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-//		commandMap.put("MEMBER_IDX", session_member_idx);
-//		
+		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
+		commandMap.put("MEMBER_IDX", session_member_idx);
+		
 		commandMap.put("MEMBER_IDX", "12");
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_TReserList(commandMap.getMap());
 		
@@ -394,8 +381,8 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("T_reserDelete");
 		
-		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);*/
+		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
+		commandMap.put("MEMBER_IDX", session_member_idx);
 		
 		commandMap.put("MEMBER_IDX", "12");
 		
@@ -461,6 +448,19 @@ public class MypageController {
 		
 		return mv;
 	}
+	//숙소 위시리스트 삭제 
+	@RequestMapping(value="/deleteHouseWish.do", method=RequestMethod.POST)
+	public ModelAndView deleteHouseWish(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		
+		ModelAndView mv = new ModelAndView("redirect:/mypage/houseWishList.do");
+		
+		int house_idx = Integer.parseInt(request.getParameter("HOUSE_IDX"));
+		commandMap.put("HOUSE_IDX", house_idx);
+		
+		mypageService.deleteHouseWish(commandMap.getMap());
+		
+		return mv;
+	}
 	
 	//트립위시리스트 목록 
 	@RequestMapping("/tripWishList.do")
@@ -481,20 +481,6 @@ public class MypageController {
 		return mv;
 	}
 	
-	/*//리스트에서 사진정보 ajax로 가져옴 
-	@RequestMapping(value="/housePhotoInfo.do", method=RequestMethod.POST)
-	public ModelAndView housePhotoInfo(HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("/mypage/potoInfo");
-		String house_idx = request.getParameter("HOUSE_IDX");
-		
-		String images = mypageService.selectImage(house_idx);
-		System.out.println("images: " + images);
-		
-		String[] imgs = images.split("\\|");
-		mv.addObject("img", imgs);
-		return mv;
-	}
-	*/
 
 	
 //--------------------------------------------프로필 시작---------------------------------------------

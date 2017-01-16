@@ -8,7 +8,7 @@
 		margin-bottom:20px;
 		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:450px;.reser_div
 		float:left;
 	}
 	.side_list{
@@ -68,7 +68,7 @@ function reserD_Detail(idx, hr_idx){
 </script>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
-	<div class="left_div">
+	<div class="left_div" style="float:left;">
 		<div class="side_list">
 			<a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
 		</div>
@@ -84,7 +84,7 @@ function reserD_Detail(idx, hr_idx){
 
 	<div class="right_div">
 		<div class="reser_div">
-		 	내 예약취소 목록 
+		 	내 <font style="font-color:red;">예약취소</font> 목록 
 		</div>
 		<div>
 			<table class="reser_table">
