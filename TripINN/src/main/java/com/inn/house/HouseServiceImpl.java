@@ -91,6 +91,9 @@ public class HouseServiceImpl implements HouseService{
 		houseDAO.insertReview(map);
 	}
 	
+	public void houseReserve(Map<String, Object> map) {
+		houseDAO.insertHouseRSV(map);
+	}
 	
 	
 	//hi_space, hi_cspace 문자열 변경 기능

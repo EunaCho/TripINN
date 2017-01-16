@@ -7,6 +7,7 @@
 	.left_div{
 		border:1px solid black;
 		margin-bottom:20px;
+		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;
@@ -26,25 +27,33 @@
 	}
 	
 	.right_div{
-		border:1px solid black;
-		margin:5px;
+/* 		border:1px solid black; */
+		margin-left:40px;
 		width:900px;
-		height:100%;
 		
+		overflow:hidden;
+		height:auto;
 		float:left;
 		top:114px;
 		left:220px;
 	}
 	.house_div{
-		border:1px solid black;
 		margin:2px;
 		width:98%;
 		height:25px;
-		border-radius:4px;
-		background-color:#31b0d5;
 		font-size:16px;
 		color:#FFF;
 		font-weight: 400;
+		text-align:center;
+		padding-top:5px;
+		font-style:'바탕체'
+		letter-spacing:2px;
+		
+		border-bottom:2px solid #828282;
+		margin:2px;
+		width:98%;
+		height:25px;
+		color:#aaaaaa;
 		text-align:center;
 		padding-top:5px;
 	}
@@ -54,24 +63,27 @@
 		height:188px;
 	}
 	.poto_div{
-	 	border:1px solid black; 
+	 	/* border:1px solid black;  */
 		margin:2px;
 		width:230px;
 		height:193px;
 	}
 	.name_div{
+		/* border-t:1px solid #3c3c3c; */
 		border-bottom:1px solid #3c3c3c;
 		margin:2px;
-		width:620px;
+		width:615px;
 		height:55px;
 		padding-left:5px;
 	}
 	.price_div{
-		border-top:1px solid black;
-		border-bottom:1px solid black;
-		margin:2px;
+		border-top:1px solid black; 
+	/* 	border-bottom:1px solid #3c3c3c; */
+		margin-top:2.5px;
 		width:230px;
 		height:20px;
+		padding-left:3px;
+		padding-bottom:3px;
 	}
 	
 	.h_list_div{
@@ -81,37 +93,36 @@
 		margin:2px;
 	}
 	.house_menu_div{
-		border:1px solid #31b0d5;  
+		border-bottom:2px solid #d2d2d2;  
+		border-top:2px solid #d2d2d2;  
 		width: 880px; 
-		height:230px;
-		margin:2px;
+		height:225px;
+		margin-top:13px;
+		margin-left:4px;
 	}
 	.menu_div{
-		
 		margin:2px;
 		width: 236px; 
 		float:left
 	}
 	.menu_div2{
-		
 		width:632px;
 		float:left;
 	}
 	.position_div{
-		
+		border-top:1px solid #3c3c3c;
+		border-bottom:1px solid #3c3c3c;
 		margin:2px;
 		width:620px;
 		height:45px;
 	}
 	.h_inp_div{
 		border-top:1px solid #3c3c3c;
-		border-bottom:1px solid #3c3c3c;
+		
 		margin:2px;
 		width:620px;
 		height:113px;
 	}
-	
-	
 </style>
 <script>
 function houseDetail(idx) {
@@ -123,7 +134,7 @@ function houseDetail(idx) {
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/house.do" class="side-text">숙소목록</a>
+			<a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
 		</div>
 	
 		<div class="side_list">
@@ -147,7 +158,9 @@ function houseDetail(idx) {
 						<img class="poto_div1" src="<%= cp %>/images/house/${list.HOUSE_IMAGE}">
 						</div>
 						<div class="price_div">
-							${list.HOUSE_TOTAL_PRICE}
+							<font style="color:#3c3c3c; font-weight:solid; font-size:15px; font-style:'바탕체'">
+								가격: ${list.HOUSE_TOTAL_PRICE}&nbsp;&nbsp;<strong>\</strong>
+							</font>
 						</div>
 					</div>
 					
@@ -163,31 +176,52 @@ function houseDetail(idx) {
 						</div>
 						
 						<div class="position_div">
-							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:12px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>
+							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:13px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>
 							<br>
-							${list.HI_TOTAL_STAR} (별점)| 후기개수 
+							<div style="CLEAR: both;   PADDING-RIGHT: 0px;   PADDING-LEFT: 0px;   BACKGROUND: url(/TripINN/images/icon_star2.gif) 0px 0px;   FLOAT: left;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   WIDTH: 90px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
+							   <p style="WIDTH: ${list.HI_TOTAL_STAR * 20}%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;"></p>
+						   </div>
+						   <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+						  	 	(${list.HI_TOTAL_STAR}점)
+						   		|&nbsp;후기개수:&nbsp;${list.HCNT}개
+						   	</font> 
 						</div>
 						<div class="h_inp_div">
 							<div style="border:1px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
-								<img src="<%= cp %>/images/mypage/house_kind.jpg" style="width:35px; height:35px; float:center;">
-								<br>
-								<span>${list.HI_SPACE}</span> 
+								<img src="<%= cp %>/images/mypage/house.jpg" style="width:35px; height:35px; float:center;">
+								<br/>
+								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+								 	kind
+								 </font>
+								 <br/>	
+								<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
+									${list.HOUSE_KIND}
+								</font>
 							</div>
 							<div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
-							 	<img src="<%= cp %>/images/mypage/house_persons.jpg" style="width:35px; height:35px; float:center;">
-								<br>
-								${list.HOUSE_TOTAL_PERSONS}명 
+							 	<img src="<%= cp %>/images/mypage/people.png" style="width:35px; height:35px; float:center;">
+								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+								 		persons
+								 </font>
+								<div style="width:70px; height:20px;">
+									<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
+									${list.HOUSE_TOTAL_PERSONS}명 
+									</font>
+								</div>
 							</div>
 							<div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
-								<img src="<%= cp %>/images/mypage/hi_bad.jpg" style="width:35px; height:35px; float:center;">	
-								<br>
+								<img src="<%= cp %>/images/mypage/bed.jpg" style="width:35px; height:35px; float:center;">	
+								<br/>
+								<font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
+									bed 		
+								</font>
+								<br/>
 								${list.HI_BAD}개
 							</div>
 						</div>
 					</div>		
 				</div> <!-- house_menu_div End -->
-				
-			
+	
 			</c:forEach>
 			</form>
 		</c:when>

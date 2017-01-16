@@ -145,7 +145,7 @@ var curNum = 1;
 	.top-area { width:12.5%; text-align:center; height:30px; float:left; padding-top:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:bold; }
 	.top-area:hover {border-bottom:5px solid #1E6198;cursor:pointer;}
 	
-	.right-middle .trip-info { width: 30%; float:left; height:300px;  margin:10px;}
+	.right-middle .trip-info { width: 30%; float:left; height:320px;  margin:10px;}
 	.trip-info .trip-img { width:98%; height:200px; background-size:100% 100%; background-repeat: no-repeat; border-radius:5px;}
 	.trip-info .trip-info-ment { width:100%; }
 	.trip-info-ment div {width:92%;padding:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;
@@ -254,7 +254,7 @@ var curNum = 1;
 					<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
 						<fmt:formatNumber var="sum" value="${trip.TRB_STAR}" pattern="#.##"/>
 						<fmt:formatNumber var="cnt" value="${trip.TOTAL_CNT}" pattern="#.##"/>
-					<div class="trip-info">
+					<div class="trip-info" style="margin-bottom:20px;">
 						<div class="trip-img" style="background-image:url('/TripINN/images/trip/${tripImg }');cursor:pointer;"
 							onclick="newShowHotelPhoto('${trip.TRIP_IDX}')"></div>
 						<div class="trip-info-ment">

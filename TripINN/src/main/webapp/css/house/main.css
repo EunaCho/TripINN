@@ -80,7 +80,7 @@ input, textarea, keygen, select, button, meter, progress {
 	
 	float:center;
 	margin:15px;
-	border: 2px solid /* #6e6e6e */ #ebca00;
+	/* border: 2px solid #6e6e6e #ebca00; */
 	border-radius: 2px;
     padding: 10px;
 	min-width: 480px;

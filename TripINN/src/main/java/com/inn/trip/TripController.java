@@ -191,9 +191,13 @@ public class TripController {
 	
 	//트립 예약 폼 이동
 	@RequestMapping(value="/tripReserveForm.do", method=RequestMethod.POST)
-	public ModelAndView tripReserveForm(CommandMap commandMap) throws Exception {
+	public ModelAndView tripReserveForm(CommandMap commandMap, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("tripReserveForm");
-		
+		if(session.getAttribute("member_idx") == null) {
+			commandMap.put("member_idx", "0");
+		} else {
+			commandMap.put("member_idx", session.getAttribute("member_idx"));
+		}
 		Map<String, Object> tripInfo = tripService.selectTripDetail(commandMap.getMap());
 		
 		mv.addObject("tripInfo", tripInfo);

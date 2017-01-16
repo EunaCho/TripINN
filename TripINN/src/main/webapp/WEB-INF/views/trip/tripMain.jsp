@@ -2,25 +2,31 @@
     pageEncoding="UTF-8"%>
 <% String cp = request.getContextPath(); %>
 <script>
+var member_idx = "${sessionScope.member_idx}";
 	function fnMove(seq) {
 		var offset = $("#tripDiv" + seq).offset();
 		$("html, body").animate({scrollTop:offset.top-60}, 400);
 	}
 	function tripRegist() {
-		var t_form = document.tripForm;
-		var trip_area = t_form.trip_area.value;
-		var trip_type = t_form.trip_type.value;
-		
-		if(trip_area == "") {
-			alert("지역 정보를 입력해주세요.");
+		if(member_idx != null && member_idx!="") {		
+			var t_form = document.tripForm;
+			var trip_area = t_form.trip_area.value;
+			var trip_type = t_form.trip_type.value;
+			
+			if(trip_area == "") {
+				alert("지역 정보를 입력해주세요.");
+				return;
+			}
+			if(trip_type == "") {
+				alert("유형 정보를 입력해주세요.");
+				return;
+			}
+			
+			t_form.submit();
+		} else {
+			alert("로그인 후 이용 가능합니다.");
 			return;
 		}
-		if(trip_type == "") {
-			alert("유형 정보를 입력해주세요.");
-			return;
-		}
-		
-		t_form.submit();
 	}
 </script>
 <style>
@@ -94,7 +100,7 @@
 		<div id="ment1">
 			<h4>열정을 가진 분야를 전 세계와 나누세요.</h4>
 			<span>회원님의 도시에서 체험할 수 있는 이색적인 트립을 호스팅하여 부수입을 올려보세요.</span> <br /><br />
-			<a href="javascript:tripRegist();">트립 만들기</a>
+			<a href="/TripINN/tripList.do">등록된 트립 목록</a>
 		</div>
 	</div>
 	</div>

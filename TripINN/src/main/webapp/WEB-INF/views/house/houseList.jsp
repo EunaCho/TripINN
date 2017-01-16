@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -23,7 +22,7 @@
 	$( function() {
 		$( "#slider-range" ).slider({
 			range: true,
-			min: 10000,
+			min: 10000,	
 			max: 500000,
 			values: [ 30000, 100000],
 			slide: function( event, ui ) {
@@ -79,7 +78,7 @@ scrollbar-shadow-color:#FFFFFF}
 	<div id="left" style="width:48%; height:600px; overflow-y:scroll; min-width: 530px; border:1px solid black; float:left; align:center;">
 
 	<!-- 상세검색폼 -->
-	<form id="searchForm" >
+	<form id="searchForm" method="POST" action="/TripINN/house/houseMain.do">
 	
 	<!-- 날짜 설정 -->
 	<div class="border_date">
@@ -102,13 +101,13 @@ scrollbar-shadow-color:#FFFFFF}
 				<option value="4" <c:if test="${person eq 4}">selected="selected"</c:if> >인원 4명</option>
 				<option value="5" <c:if test="${person eq 5}">selected="selected"</c:if> >인원 5명</option>
 			</select>	
-		</div>
+		</div> 	
 	</div>
 	<div class="border_category">
 		<div><h4>숙소 유형</h4></div>
-		<div class="h_category">집 전체<input type="checkbox" name="" id="" style="color:"></div>
-		<div class="h_category" >개인실<input type="checkbox" name="" id=""></div>
-		<div class="h_category" >다인실<input type="checkbox" name="" id=""></div>
+		<div class="h_category">집 전체<input type="checkbox" name="whole" id="" style="color:"></div>
+		<div class="h_category" >개인실<input type="checkbox" name="private" id=""></div>
+		<div class="h_category" >다인실<input type="checkbox" name="domitory" id=""></div>
 	</div>
 	
 	
@@ -210,7 +209,7 @@ scrollbar-shadow-color:#FFFFFF}
 		
 		var addr, img, name, idx;
 		var addr2 = "";
-		var img2 = ""; 
+		var img2 = "";
 		var name2 = "";
 		var idx2 = "";
 		
