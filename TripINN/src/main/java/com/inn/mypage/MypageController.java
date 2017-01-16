@@ -39,9 +39,9 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("noticeForm"); //noticeForm으로 설정된 ModelAndView 객체 선언 
 
-		session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 세션값
-		commandMap.put("MEMBER_IDX", session_member_idx);
-	
+		//String member_idx = session.getAttribute("member_idx"); //로그인한 member_idx 세션값
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx"));
+		System.out.println("test::::: + " + commandMap.get("MEMBER_IDX"));
 		Map<String, Object> map = mypageService.selectMember(commandMap.getMap());
 	
 		mv.addObject("map", map);
@@ -56,8 +56,8 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("sendMsgForm");  //sendMsgForm으로 된 ModelAndView 객체 선언 
 	
-		session_member_idx = (Integer)session.getAttribute("member_idx"); //로그인한 member_idx 
-		commandMap.put("member_idx", session_member_idx); //commandMap 객체에 불러온 세션값 과 키값 저장 
+	
+		commandMap.put("member_idx", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 
 		ArrayList<Map<String, Object>> list = new ArrayList<>(); //seletSendMessage 리스트를 저장할 list객체 선언 
 		list=(ArrayList<Map<String, Object>>)mypageService.selectSendMsgList(commandMap.getMap()); // list 객체에 불러온 sendMessage값을 저장 
@@ -73,8 +73,8 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("receiveMsgForm");
 		
-		session_member_email = (String)session.getAttribute("member_email"); //selectReceiveMessage 리스트를 저장할 list 객체
-		commandMap.put("member_email", session_member_email);
+		
+		commandMap.put("member_email", session.getAttribute("member_email"));
 		
 		ArrayList<Map<String, Object>> list = new ArrayList<>(); //selectReceiveMessage 를 저장할 ArrayList<Map<String, Object>> 객체 생성 
 		list = (ArrayList<Map<String, Object>>)mypageService.selectReceiveMsgList(commandMap.getMap());
@@ -132,9 +132,8 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("messageWriteOk"); //messageWriteOk.jsp로 타일즈 설정된 뷰 messageWriteOk.jsp에서  다시 mypage/notice.do 실행 
 		System.out.println("test2");
 		
-		session_member_idx = (Integer)session.getAttribute("member_idx");
-		commandMap.put("member_idx", session_member_idx);
-		
+		commandMap.put("member_idx", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
+	
 		System.out.println("member_idx : " + commandMap.get("MEMBER_IDX"));
 		
 		mypageService.insertMsgWrite(commandMap.getMap());
@@ -150,8 +149,7 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("houseForm"); //tilse맵핑된 ModelAndView 객체 선언 
 		
-		session_member_idx = (Integer)session.getAttribute("member_idx"); //member_idx 세션값
-		commandMap.put("member_idx", session_member_idx);
+		commandMap.put("member_idx", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		ArrayList<Map<String, Object>> list = new ArrayList<>(); //숙소 리스트를 저장할 ArrayList 객체를 선언 
 		list =(ArrayList<Map<String, Object>>)mypageService.selectHouseList(commandMap.getMap()); // selectHouseList를 실행
@@ -167,10 +165,10 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("my_HouseDetail");
 		
 		int house_idx = Integer.parseInt(request.getParameter("HOUSE_IDX"));
-		session_member_email  = (String)session.getAttribute("MEMBER_EMAIL");
 		
+		commandMap.put("MEMBER_EMAIL", session.getAttribute("member_email")); //commandMap 객체에 불러온 세션값 과 키값 저장 
+			
 		commandMap.put("HOUSE_IDX", house_idx);
-		commandMap.put("MEMBER_EMAIL", session_member_email);
 		
 		Map<String, Object> houseMap = mypageService.selectHouseDetail(commandMap.getMap()); //숙소 상세보기 
 		ArrayList<Map<String, Object>> reserList = (ArrayList<Map<String, Object>>) mypageService.selectH_ReserList(commandMap.getMap()); //해당 숙소의 예약 현황 리스트 
@@ -190,8 +188,7 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("houseReserForm");
 		
-		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 	
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_ReserList(commandMap.getMap()); //예약목록 리스트 
 		
@@ -242,8 +239,7 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("H_reserDelete");
 		
-		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectH_ReserDeleteList(commandMap.getMap());
 		
@@ -295,8 +291,7 @@ public class MypageController {
 		
 		ModelAndView mv = new  ModelAndView("tripForm");
 		
-		session_member_idx=(Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>)mypageService.selectTripList(commandMap.getMap());
 		
@@ -332,8 +327,7 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("tripReserForm");
 		
-		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		commandMap.put("MEMBER_IDX", "12");
 		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_TReserList(commandMap.getMap());
@@ -381,8 +375,7 @@ public class MypageController {
 		
 		ModelAndView mv = new ModelAndView("T_reserDelete");
 		
-		session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		commandMap.put("MEMBER_IDX", "12");
 		
@@ -432,13 +425,11 @@ public class MypageController {
 	
 	//숙소 위시리스트 목록
 	@RequestMapping(value="/houseWishList.do" , method={RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView houseWishListForm(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	public ModelAndView houseWishListForm(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("houseWishList");
 		
-		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);*/
-		commandMap.put("MEMBER_IDX", "12");
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		Map<String, Object> resultMap = mypageService.selectMy_HouseList(commandMap.getMap());
 		
@@ -464,13 +455,11 @@ public class MypageController {
 	
 	//트립위시리스트 목록 
 	@RequestMapping("/tripWishList.do")
-	public ModelAndView tripWishListForm(CommandMap commandMap) throws Exception{
+	public ModelAndView tripWishListForm(CommandMap commandMap, HttpSession session) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("tripWishList");
 		
-		/*session_member_idx = (Integer)session.getAttribute("MEMBER_IDX");
-		commandMap.put("MEMBER_IDX", session_member_idx);*/
-		commandMap.put("MEMBER_IDX", "12");
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
 		Map<String, Object> resultMap = mypageService.selectMy_TripList(commandMap.getMap());
 		
