@@ -194,6 +194,9 @@
 						</div>
 					</div>
 			</c:forEach>
+			
+			
+			
 			<c:if test="${not empty paginationInfo}">
 			<div style="clear:both;"></div>
 			<div class="trDiv" style="width:100%;margin-top:20px;">
@@ -202,6 +205,8 @@
         		</div>
         	</div>
     		</c:if>
+    		
+    		
 			</div><!-- sendMsglist-->
     		
 			<!-- ///////////////페이징처리/////////////// -->
