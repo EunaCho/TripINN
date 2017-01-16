@@ -41,5 +41,9 @@ public interface TripService {
 
 	void deleteBookMark(Map<String, Object> map);
 
+	void tripReport(Map<String, Object> map);
+
+	void reviewDel(String parameter);
+
 	
 }
