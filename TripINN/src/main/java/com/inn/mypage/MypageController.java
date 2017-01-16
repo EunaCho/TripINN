@@ -194,7 +194,16 @@ public class MypageController {
 		
 		return mv;
 	}
-
+	// 숙소 상세 -> 예약관리 -> 예약 취소
+	@RequestMapping(value="/house_rsv_del.do", method=RequestMethod.POST)
+	public ModelAndView house_rsv_del(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("redirect:/mypage/houseDetail.do");
+		String hr_idx = request.getParameter("hr_idx");
+		mypageService.house_rsv_del(hr_idx);
+		
+		mv.addObject("HOUSE_IDX", request.getParameter("HOUSE_IDX"));
+		return mv;
+	}
 	
 	//*숙소목록=>예약관리 리스트
 	@RequestMapping("/houseReser.do")

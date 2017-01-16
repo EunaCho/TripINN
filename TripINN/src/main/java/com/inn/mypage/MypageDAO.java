@@ -173,4 +173,8 @@ public class MypageDAO extends AbstractDAO {
 	public void messageDel(String msg_idx) {
 		delete("mypage.messageDel", msg_idx);
 	}
+
+	public void house_rsv_del(String hr_idx) {
+		delete("mypage.houseRsvDel", hr_idx);
+	}
 }

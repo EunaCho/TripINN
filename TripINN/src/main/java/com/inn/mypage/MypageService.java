@@ -66,5 +66,7 @@ public interface MypageService {
 	void deleteTripWish(Map<String, Object> map) throws Exception;//트립 위시리스트 삭제 
 
 	void messageDel(String msg_idx);
+
+	void house_rsv_del(String hr_idx);
 	
 }
