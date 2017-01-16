@@ -290,4 +290,22 @@ public class TripController {
 		mv.addObject("trip_idx", request.getParameter("trip_idx"));
 		return mv;
 	}
+	
+	@RequestMapping("/trip/sendMssg.do")
+	public ModelAndView sendMssg(HttpServletRequest request, HttpSession session) {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do?trip_idx="+request.getParameter("trip_idx"));
+		Map<String, Object> map = new HashMap<>();
+		String house_idx = request.getParameter("trip_idx");
+		String receive_member_email = request.getParameter("receive_member_email"); //받는 이메일
+		String msg_title = request.getParameter("msg_title");
+		String msg_content = request.getParameter("msg_content");
+		
+		map.put("receive_member_email", receive_member_email);     // 받는 사람
+		map.put("member_idx", session.getAttribute("member_idx")); // 보내는 사람
+		map.put("msg_content", msg_content);
+		map.put("msg_title", msg_title);
+		map.put("trip_idx", house_idx);
+		tripService.sendMssg(map);
+		return mv;
+	}
 }

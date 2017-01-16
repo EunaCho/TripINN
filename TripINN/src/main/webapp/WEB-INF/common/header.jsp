@@ -18,7 +18,7 @@
 			<span><a href="<%=cp %>/house/houseRegisterMain.do">호스팅하기</a></span>	
 			<span><a href="<%=cp %>/qnaList.do">도움말</a></span>
 			<span><a href="<%=cp %>/mypage/notice.do">마이페이지</a></span>
-			<span><a href="<%=cp %>/qnaWrite.do">1:1문의</a></span>
+			<span><a href="<%=cp %>/admin/qnaWrite.do">1:1문의</a></span>
 		</c:if>
 		
 

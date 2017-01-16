@@ -45,5 +45,7 @@ public interface TripService {
 
 	void reviewDel(String parameter);
 
+	void sendMssg(Map<String, Object> map);
+
 	
 }

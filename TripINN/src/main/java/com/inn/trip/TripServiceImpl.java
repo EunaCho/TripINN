@@ -113,4 +113,9 @@ public class TripServiceImpl implements TripService {
 		tripDAO.reviewDel(parameter);
 	}
 
+	@Override
+	public void sendMssg(Map<String, Object> map) {
+		tripDAO.sendMsg(map);
+	}
+
 }

@@ -13,10 +13,10 @@
       <span class="sr-only">Close</span>
       </button> 
       <img id="member_img" src="/TripINN/images/공유.png"/>
-      <span class="title_house_name">${house.HOUSE_NAME}<label> + </label></span>
+      <span class="title_house_name">${trip.TRIP_NAME}<label> + </label></span>
       <span class="title_member_name">
       	<label class="sendPerson">받는 사람</label>
-      	<label class="modal-title" id="myModalLabel">${house.MEMBER_NAME} 님</label></span>
+      	<label class="modal-title" id="myModalLabel">${trip.MEMBER_NAME} 님</label></span>
       </div> 
       
       <div class="modal-body">

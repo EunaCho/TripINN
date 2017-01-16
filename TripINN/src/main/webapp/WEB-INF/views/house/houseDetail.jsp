@@ -1,427 +1,392 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<% String cp = request.getContextPath(); %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+   String cp = request.getContextPath();
+%>
 
-<style>
-   .left_div{
-      border:1px solid black;
-      margin-bottom:20px;
-      margin-left:50px;
-      width: 200px;
-      height:450px;
-      float:left;
-   }
-   .side_list{
-      border:1px solid black;
-      margin:20px;
-       width:150px;
-       height:27px;   
-   } 
-   
-   .side-text{
-      padding: 6px 0;
-          font-size: 16px;
-       color: #767676;
-       text-decoration:none
-   }
-   
-   .right_div{
-      border:1px solid #31b0d5;
-      margin-left:40px;
-      width:900px;
-      height:100%;
-   
-      float:left;
-      top:114px;
-      left:220px;
-   }
-   .house_div{
-      margin:2px;
-      width:98%;
-      height:25px;
-      font-size:16px;
-      color:#FFF;
-      font-weight: 400;
-      text-align:center;
-      padding-top:5px;
-      font-style:'바탕체'
-      letter-spacing:2px;
-      
-      border-bottom:2px solid #828282;
-      margin:2px;
-      width:98%;
-      height:25px;
-      color:#aaaaaa;
-      text-align:center;
-      padding-top:5px;
-   }
-   .poto_div1{
-      margin:2px;
-      width:225px;
-      height:188px;
-   }
-   .poto_div{
-       /* border:1px solid black;  */
-      margin:2px;
-      width:230px;
-      height:193px;
-   }
-   .name_div{
-      /* border-t:1px solid #3c3c3c; */
-      border-bottom:1px solid #3c3c3c;
-      margin:2px;
-      width:615px;
-      height:55px;
-      padding-left:5px;
-   }
-   .price_div{
-      border-top:1px solid black; 
-   /*    border-bottom:1px solid #3c3c3c; */
-      margin-top:2.5px;
-      width:230px;
-      height:20px;
-      padding-left:3px;
-      padding-bottom:3px;
-   }
-   
-   .h_list_div{
-      /* border:1px solid black;   */
-      width: 885px; 
-      height:396px;
-      margin:2px;
-   }
-   .house_menu_div{
-      border-bottom:2px solid #d2d2d2;  
-      border-top:2px solid #d2d2d2;  
-      width: 880px; 
-      height:225px;
-      margin-top:13px;
-      margin-left:4px;
-   }
-   .menu_div{
-      margin:2px;
-      width: 236px; 
-      float:left
-   }
-   .menu_div2{
-      width:632px;
-      float:left;
-   }
-   .position_div{
-      border-top:1px solid #3c3c3c;
-      border-bottom:1px solid #3c3c3c;
-      margin:2px;
-      width:620px;
-      height:45px;
-   }
-   .h_inp_div{
-      border-top:1px solid #3c3c3c;
-      
-      margin:2px;
-      width:620px;
-      height:113px;
-   }
-   .msg_menu{
-      border: 1px solid red;
-      margin:0px;
-      height:25px;
-      font-size:5px;
-      float:left;
-   }
-   .msg_title{
-      border-bottom:1px solid black;
-      border-left:1px solid black;
-      margin:0px;
-      width:152px;
-      height:25px;
-      font-size:10px;
-      padding-left:3px;
-      float:left;
-      text-overflow:ellipsis; 
-      overflow:hidden;
-      white-space:nowrap;
-      text-align:center;
-      font-style:'바탕체'
-   }
-   .msg_content{
-      border-bottom:1px solid black;
-      border-left:1px solid black;
-      margin:0px;
-      width:402px;
-      height:25px;
-      font-size:10px;
-      padding-left:3px;
-      float:left;
-      text-overflow:ellipsis; 
-      overflow:hidden;
-      white-space:nowrap;
-      font-style:'바탕체'
-   
-   }
-   .reser_number{
-      border-bottom:1px solid black;
-      border-left:1px solid black;
-      margin:0px;
-      width:63px;
-      height:25px;
-      font-size:10px;
-      padding-left:3px;
-      float:left;
-      white-space:nowrap;
-      text-align:center;
-      font-style:'바탕체'
-   }
-   .reser_div{
-      border-bottom:1px solid black;
-      border-left:1px solid black;
-      margin:0px;
-      width:166px;
-      height:25px;
-      font-size:10px;
-      padding-left:3px;
-      float:left;
-      white-space:nowrap;
-      text-align:center;
-      font-style:'바탕체'
-   }
-   .reser_date{
-      border-bottom:1px solid black;
-      border-left:1px solid black;
-      margin:0px;
-      width:228px;
-      height:25px;
-      font-size:10px;
-      padding-left:3px;
-      float:left;
-      white-space:nowrap;
-      text-align:center;
-      font-style:'바탕체'
-   }
-   .right-con { width:98%; height:100%; border: 2px solid green; margin:5px ; display: block; }
-   .list-right { width:99%; height:100%; border: 5px solid #a6a6a6; float:left; }
-   .top_div { width:50%; text-align:center; height:30px; float:left; padding-top:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:bold; }
-   .top_div:hover {border-bottom:5px solid #1E6198;cursor:pointer;}
-   .on {border-bottom:5px solid #1E6198;cursor:pointer; background-color: #f8f8f8;}
-   
-</style>
+
+<html>
+<head>
+
+<title>HOUSE DETAIL</title>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="/TripINN/css/house/houseDetail.css">
+<link href='/TripINN/css/trip/jquery.rating.css' type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="/TripINN/css/house/slide.css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- modal -->
+<link rel="stylesheet" href="/TripINN/css/house/message.css">
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/TripINN/js/house/houseDetail.js"></script>
+<script src="/TripINN/js/house/message.js"></script>
+
+<script src="/TripINN/js/trip/jquery-1.11.3.min.js"   type="text/javascript" data-library="jquery" data-version="1.11.3"></script>
+<script src="/TripINN/js/trip/jssor.slider-22.0.15.mini.js"   type="text/javascript" data-library="jssor.slider.mini"   data-version="22.0.15"></script>
+<script src="/TripINN/js/trip/jquery.MetaData.js" type="text/javascript" language="javascript"></script>
+<script src="/TripINN/js/trip/jquery.rating.js" type="text/javascript"   language="javascript"></script>
+<script src="/TripINN/js/trip/main.js" type="text/javascript"></script>
+<script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <script>
-   function searchKind(wish_kind) {
-    if(wish_kind == 2) { // 메세지 현황 클릭 시
-      $("#reserDiv").css("display", "none");
-      $("#msgDiv").css("display", "block"); 
-      $("#reser").attr("class", "top_div"); // id가 reser인 태그의 class명을 top_div로 변경
-      $("#msg").attr("class", "top_div on");
-    } else { // 예약 현황 클릭 시
-      $("#msgDiv").css("display", "none"); 
-      $("#reserDiv").css("display", "block");
-      $("#reser").attr("class", "top_div on");
-      $("#msg").attr("class", "top_div");
-    }
-   }
-   
-   function contentView(msg_idx) {
-      if($("#m_content"+msg_idx).css("display") == "none") {
-            $("#m_content"+msg_idx).css("display", "block");
-      } else {
-         $("#m_content"+msg_idx).css("display", "none");
-      }
-   }
-   
-function modify(house_idx){
-   
-   document.houseForm.HOUSE_IDX = house_idx;
-   
-   document.houseForm.action="/TripINN/mypage/houseModifyForm.do";
-   document.houseForm.submit();
-}
+   var MEMBER_IDX = "${sessionScope.member_idx}";
+
+   $(function() {
+      $("#datepicker_in_reserveBar").datepicker(
+            {
+               dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+                     '일요일' ],
+               dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+               monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
+                     '7월', '8월', '9월', '10월', '11월', '12월' ],
+               monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+                     '8월', '9월', '10월', '11월', '12월' ],
+               minDate : new Date(),
+               altField : "#datepicker",
+               altFormat : "yy-mm-dd"
+            });
+   });
+   $(function() {
+      $("#datepicker_out_reserveBar").datepicker(
+            {
+               dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+                     '일요일' ],
+               dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+               monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
+                     '7월', '8월', '9월', '10월', '11월', '12월' ],
+               monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+                     '8월', '9월', '10월', '11월', '12월' ],
+               minDate : new Date(),
+               altField : "#datepicker2",
+               altFormat : "yy-mm-dd"
+            });
+   });
 </script>
 
-<div style="width:1200px; height:100%; margin:0px auto;">
-   <div class="left_div">
-      <div class="side_list">
-         <a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
-      </div>
-   
-      <div class="side_list">
-         <a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>
-      </div>
-   </div>
+</head>
+<body>
 
-   <div class="right_div">
-      
-         <div class="house_div">
-            ${houseMap.HOUSE_NAME}&nbsp;&nbsp;
-         </div>
-               <div class="house_menu_div">
-               <div class="menu_div">
-                  <div class="poto_div">
-                  <img class="poto_div1" src="<%= cp %>/images/house/${houseMap.HOUSE_IMAGE}">
+   <div style="clear: both;"></div>
+   <!-- 왼쪽: 숙소상세 -->
+   <div id="houseDetail">
+      <!-- 숙소 정보 블록 -->
+      <div class="houseHead">
+         <div class="houseInfo">
+            <!-- 숙소 제목 -->
+            <div class="house_subject">
+               <input type="hidden" name="FVR_IDX" value="${house_idx }">
+               <input type="hidden" name="FVR_IDX" value="${FVR_IDX }">
+               <input type="hidden" id="house_idx" value="${house.HOUSE_IDX}"> 
+               <input type="hidden" id="receiveEmail" value="${house.MEMBER_EMAIL }">
+               <input type="hidden" id="house_member_idx" value="${house.MEMBER_IDX }">
+               <div class="house_name">
+                  <label>${house.HOUSE_NAME}</label>
+               </div>
+               <div>
+                  <label>${house.HOUSE_ADDR2}</label><label id="label_plus">+</label><label>${house.HOUSE_ADDR1}</label>
+               </div>
+
+               <div class="subject_middle">
+
+                  <div class="subject_name">
+                     <label>호스트 : ${house.MEMBER_NAME} 님</label><br>
+
+                     <fmt:formatNumber var="sum" value="${house.STAR_SUM}" pattern="#.##" />
+                     <fmt:formatNumber var="cnt" value="${house.STAR_COUNT}"   pattern="#.##" />
+
+                     <div style="background: url(/TripINN/images/trip/icon_star2.gif) 0px 0px; width: 87px; margin-top: 10px;">
+                        <p style="WIDTH: ${sum * 20 / cnt}%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
+                        </p>
+                     </div>
+                     <div style="margin-top: 10px">
+                        <button type="button" class="btn btn-primary btn-lg"
+                           data-toggle="modal" data-target="#Message">메시지 보내기</button>
+                     </div>
                   </div>
-                  <div class="price_div">
-                     <font style="color:#3c3c3c; font-weight:solid; font-size:15px; font-style:'바탕체'">
-                        가격: ${houseMap.HOUSE_TOTAL_PRICE}&nbsp;&nbsp;<strong>\</strong>
-                     </font>
+
+
+
+                  <div class="subject_img">
+                     <img src="/TripINN/images/공유.png" />
                   </div>
                </div>
-               
-               <div class="menu_div2">
-               <form name="houseForm" method="post">
-               <input type="hidden" name="HOUSE_IDX" value=""/>
-                  <div class="name_div">
-                     <div style="width:200px; height:auto; float:left;">
-                        <font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
-                        <br>
-                        ${status.index+1}.
-                        </font>
-                        <a href="javascript:houseDetail(${houseMap.HOUSE_IDX});"  style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
-                           ${houseMap.HOUSE_NAME}
-                        </a>
-                     </div>
-                     <div style= " width:100px; height:auto; float:left; margin-left:307px;margin-top:14px;">
-                        <input type="button" value="호스팅 수정하기" onclick="javascript:modify(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; "/>
-                     </div>
+
+            </div>
+            <hr style="width: 98%">
+
+            <div class="house_info_space">
+               <div class="hi_space_left">
+                  이용공간<br> ${house.HI_SPACE }
+               </div>
+
+               <div class="hi_space_right">
+                  편의시설<br> ${house.HI_CSPACE }
+               </div>
+            </div>
+            <hr style="width: 98%; margin-bottom: 2%">
+
+
+            <div style="clear: both;"></div>
+            <!-- 숙소상세정보 -->
+            <div class="house_info_block">
+               <div class="block_left">
+                  <label>소개</label>
+               </div>
+
+               <div class="block_right">
+                  <label>${house.HOUSE_INFO }</label>
+               </div>
+            </div>
+            <hr class="block_hr">
+
+            <div class="house_info_block">
+               <div class="block_left">
+                  <label>숙소</label>
+               </div>
+
+               <div class="block_right">
+                  <div class="house_right_info">
+                     <label>수용 인원 : ${house.HI_DEPOSIT } 명</label><br> <label>침실
+                        : ${house.HI_BAD } 개</label><br> <label>방 : ${house.HI_ROOM }
+                        개</label><br>
+
                   </div>
-                  
-                  <div class="position_div">
-                     <font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:13px; font-style:'바탕체'">${houseMap.HOUSE_ADDR1} ${houseMap.HOUSE_ADDR2} ${houseMap.HOUSE_ADDR3}</font>
-                     <br>
-                     <div style="CLEAR: both;   PADDING-RIGHT: 0px;   PADDING-LEFT: 0px;   BACKGROUND: url(/TripINN/images/icon_star2.gif) 0px 0px;   FLOAT: left;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   WIDTH: 90px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
-                        <p style="WIDTH: ${houseMap.HI_TOTAL_STAR * 20}%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;"></p>
-                     </div>
-                     <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-                           (${houseMap.HI_TOTAL_STAR}점)
-                           |&nbsp;후기개수:&nbsp;${list.HCNT}개
-                        </font> 
+
+                  <div class="house_left_info">
+                     <label>체크인 : ${house.HI_DEPOSIT } 원</label><br> <label>체크아웃
+                        : ${house.HI_CLEAN_PRICE }원</label><br> <label>인원 비용 :
+                        ${house.HOUSE_PERSON_PRICE } 원</label><br>
                   </div>
-                  <div class="h_inp_div">
-                     <div style="border:1px solid red; margin:17px 20px 15px 155px; width:70px; height:70px; float:left; text-align:center;">
-                        <img src="<%= cp %>/images/mypage/house.jpg" style="width:35px; height:35px; float:center;">
-                        <br/>
-                        <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-                            kind
-                         </font>
-                         <br/>   
-                        <font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
-                           ${houseMap.HOUSE_KIND}
-                        </font>
+               </div>
+            </div>
+            <hr class="block_hr">
+
+
+
+            <div class="house_info_block">
+               <div class="block_left">
+                  <label>가격</label>
+               </div>
+               <input type="hidden" name="HOUSE_MEMBER_IDX" id="HOUSE_MEMBER_IDX"
+                  value="${house.MEMBER_IDX }">
+               <div class="block_right">
+                  <label>일박 비용 : ${house.HOUSE_PRICE} 원</label><br> <label>인원
+                     비용 : ${house.HOUSE_PERSON_PRICE } 원</label><br> <label>보증 비용
+                     : ${house.HI_DEPOSIT } 원</label><br> <label>청소 비용 :
+                     ${house.HI_CLEAN_PRICE }원</label><br> <label>일박 비용 :
+                     ${house.HOUSE_PRICE} 원</label><br> <label>인원 비용 :
+                     ${house.HOUSE_PERSON_PRICE } 원</label><br>
+               </div>
+            </div>
+            <hr class="block_hr">
+
+            <!-- 후기 입력하기 -->
+            <div id="review_div">
+               <form name="reviewForm" id="reviewForm"
+                  action="<%=cp%>/house/houseReviewWrite.do" method="post">
+                  <label id="review_size_label">후기 ${review_size } 개</label>
+                  <input type="hidden" name="HOUSE_IDX" id="HOUSE_IDX" value="${house_idx }" class="review_text">
+                  <input type="hidden" name="MEMBER_IDX" id="MEMBER_IDX" value="${sessionScope.member_idx}" class="review_text">
+                  <input type="text" name="HRB_TITLE" id="HRB_TITLE" value="" placeholder="제목을 입력하세요." class="review_text">
+                  <input type="password" name="HRB_PWD" id="HRB_PWD" value="" placeholder="비밀번호를 입력하세요." class="review_text">
+                  <div class="Clear" style="height: 50px; float: left; width: 140px; margin-top: 10px;">
+                     <input class="star" type="radio" name="hrb_star" value="1" /> <input
+                        class="star" type="radio" name="hrb_star" value="2" /> <input
+                        class="star" type="radio" name="hrb_star" value="3" /> <input
+                        class="star" type="radio" name="hrb_star" value="4" /> <input
+                        class="star" type="radio" name="hrb_star" value="5"
+                        checked="checked" />
+                  </div>
+
+                  <textarea id="HRB_CONTENT" name="HRB_CONTENT" cols="60" rows="8" class="review_textArea" placeholder="내용을 입력하세요."></textarea>
+
+
+                  <br>
+                  <!-- <div class="reviewBtn" id="reviewBtn">리뷰작성</div> -->
+
+                  <button type="submit">리뷰작성</button>
+
+               </form>
+            </div>
+
+
+
+
+
+         </div>
+         <!-- info end -->
+
+         <div class="header_right">
+            <!-- 슬라이드 시작 -->
+            <div id="jssor_1"
+               style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 583px; height: 456px; overflow: hidden; visibility: visible; background-color: #24262e;"   jssor-slider="true">
+               <!-- Loading Screen -->
+               <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                  <div style="filter: alpha(opacity = 70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                  <div style="position: absolute; display: block; background: url('/TripINN/images/loading.gif') no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+               </div>
+               <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 583px; height: 356px; overflow: hidden;">
+
+                  <c:forEach items="${imgList}" var="img" varStatus="status">
+                     <div data-p="144.50"
+                        <c:if test="${status.index != 0 }">style="display:none;"</c:if>>
+                        <img data-u="image" src="/TripINN/images/house/${img}" /> <img
+                           data-u="thumb" src="/TripINN/images/house/${img}"
+                           style="width: 70px; height: 70px;" />
                      </div>
-                     <div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
-                         <img src="<%= cp %>/images/mypage/people.png" style="width:35px; height:35px; float:center;">
-                        <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-                               persons
-                         </font>
-                        <div style="width:70px; height:20px;">
-                           <font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
-                           ${houseMap.HOUSE_TOTAL_PERSONS}명 
-                           </font>
+                  </c:forEach>
+                  <c:forEach items="${imgList}" var="img" varStatus="status">
+                     <div data-p="144.50" style="display: none;">
+                        <img data-u="image" src="/TripINN/images/house/${img}" /> <img
+                           data-u="thumb" src="/TripINN/images/house/${img}"
+                           style="width: 70px; height: 70px;" />
+                     </div>
+                  </c:forEach>
+                  <a data-u="any" href="http://www.jssor.com" style="display: none">Image
+                     Gallery</a>
+               </div>
+               <!-- Thumbnail Navigator -->
+               <div data-u="thumbnavigator" class="jssort01"
+                  style="position: absolute; left: 0px; bottom: 0px; width: 100%; height: 100px;"
+                  data-autocenter="1">
+                  <!-- Thumbnail Item Skin Begin -->
+                  <div data-u="slides" style="cursor: default;">
+                     <div data-u="prototype" class="p">
+                        <div class="w">
+                           <div data-u="thumbnailtemplate" class="t"></div>
                         </div>
-                     </div>
-                     <div style="border:1px solid red; margin:17px 20px 15px 35px; width:70px; height:70px; float:left; text-align:center;">
-                        <img src="<%= cp %>/images/mypage/bed.jpg" style="width:35px; height:35px; float:center;">   
-                        <br/>
-                        <font style="color:#3c3c3c; font-weight:solid; font-size:13px; font-style:'바탕체'">
-                           bed       
-                        </font>
-                        <br/>
-                        ${houseMap.HI_BAD}개
+                        <div class="c"></div>
                      </div>
                   </div>
-               </form>
-               </div>      
-            </div> <!-- house_menu_div End -->
-            
+                  <!-- Thumbnail Item Skin End -->
+               </div>
+               <!-- Arrow Navigator -->
+               <span data-u="arrowleft" class="jssora05l"
+                  style="top: 158px; left: 8px; width: 40px; height: 40px;"></span>
+               <span data-u="arrowright" class="jssora05r"
+                  style="top: 158px; right: 8px; width: 40px; height: 40px;"></span>
+            </div>
+            <!-- 슬라이드 끝 -->
+
+
+            <div class="map">
+               <input type="hidden" value="${house.HOUSE_ADDR1}" id="addr2">
+               <div id="mapView"></div>
+            </div>
+
+            <%@ include file="/WEB-INF/views/house/review/reserveBar.jspf"%>
+
+
+         </div>
+
+      </div>
+
+      <div style="clear: both;"></div>
+      <!-- 후기 블록 -->
+      <div class="review">
       
-            <div class="right-con">
-               <form name="form_kind" method="post">
-                  <div class="right-top" style="border:1px solid red;">
-                     <div id="reser" class='top_div <c:if test="${Type eq 'reser'}">on</c:if>' onclick="searchKind(1)">
-                                 예약현황
+      <input type="hidden" value="${review_size }" id="review_size">
+      
+
+         <!-- 후기 리스트 출력 -->
+         <c:forEach items="${review}" var="review" varStatus="stat">
+            <!-- 리뷰블록 -->
+            <div class="reviewBlock">
+               <!-- 작성자정보 -->
+               <div id="review_left">
+                  <div class="writer">
+                     <img src="/TripINN/images/공유.png" /><br /> <label>작성자:
+                        ${review.MEMBER_NAME} 님</label>
+                     <div style="background: url(/TripINN/images/trip/icon_star2.gif) 0px 0px; margin: 0 auto; width: 87px;">
+                        <p style="WIDTH: ${review.HRB_STAR * 20 }%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
+                        </p>
                      </div>
-                     <div id="msg" class=top_div <c:if test="${Type == 'msg'}">on</c:if> onclick="searchKind(2)">
-                                 메시지 현황
+                     <div class="reviewDate">
+                        <fmt:formatDate value="${review.HRB_REGDATE }"
+                           pattern="yy-MM-dd" />
                      </div>
+
                   </div>
-               </form>
-               <hr/>
-<style>
-   #reserDiv { display: block; }
-    .reserDiv { width:90%;height:30px; margin:0px auto; }
-    .reserDiv .r_num { width:9%; float:left; border:1px solid black; text-align:center; padding:3px; }
-    .reserDiv .r_name { width:16%; float:left; border:1px solid black; text-align:center; padding:3px;  }
-    .reserDiv .r_person { width:9%; float:left; border:1px solid black; text-align:center; padding:3px;}
-    .reserDiv .r_date { width:20%; float:left; border:1px solid black; text-align:center; padding:3px; }
-    
-    #msgDiv { display: none; }
-    .msgDiv { width:90%;height:30px; margin:0px auto; }
-    .msgDiv .m_num { width:9%; float:left; border:1px solid black; text-align:center; padding:3px; }
-    .msgDiv .m_email { width:25%; float:left; border:1px solid black; text-align:center; padding:3px;  }
-    .msgDiv .m_title { width:45%; float:left; border:1px solid black; text-align:center; padding:3px; cursor:pointer;   }
-    .msgDiv .m_date { width:17%; float:left; border:1px solid black; text-align:center; padding:3px;  }
-    .msgDiv .m_content { width:98%; float:left; border:1px solid black; text-align:center; padding:3px;  }
-</style>
-   <div id="reserDiv">
-      <div class="reserDiv" >
-         <div class="r_num" style="background-color:#dedede;">번호</div>
-         <div class="r_name" style="background-color:#dedede;">예약자 명</div>
-         <div class="r_person" style="background-color:#dedede;">인원</div>
-         <div class="r_date" style="background-color:#dedede;">예약일</div>
-         <div class="r_date" style="background-color:#dedede;">입실일</div>
-         <div class="r_date" style="background-color:#dedede;">퇴실일</div>
+                  <!-- writer end -->
+               </div>
+               <!-- review_left end -->
+
+               <div id="review_right">
+                  <!-- 리뷰내용 -->
+                  <div class="reviewContent">
+                     <p>${review.HRB_CONTENT}</p>
+                  </div>
+                  <c:set var="list_member_idx" value="${review.MEMBER_IDX}" />
+                  <c:set var="my_member_idx" value="${sessionScope.member_idx}" />
+                  <input type="hidden" id="reviewDelBtnIndex${stat.index}" value="${stat.index}">
+                  <c:choose>
+                     <c:when test="${list_member_idx eq  my_member_idx}">
+                     
+                  
+                        <input type="hidden" value="${review.HRB_IDX }" id="review_hrb_idx${stat.index }">
+                        <input type="hidden" value="${review.HRB_PWD }" id="review_hrb_pwd${stat.index }">
+                     
+                        <!-- 추천하기 버튼 -->
+                        <div class="review_btn">
+                           <div class="my_like" id="my_like">추천 ${review.HRB_LIKE }개</div>
+                           <div class="u_d_btn" onclick="u_d_btn(${stat.index})">삭제</div>
+                        </div>
+                     </c:when>
+
+                     <c:otherwise>
+                        <div class="like" id="other_like"
+                           style="float: right; text-align: center; background-color: white; padding: 2px;
+                  width: auto; border: 1px solid #BABABB; color: #black; border-radius: 5px;
+                  <c:forEach items='${likeList }' var= 'lList'>
+                     <c:if test='${lList.HRB_IDX eq review.HRB_IDX }'>
+                        border: 2px solid white;
+                         color: white;
+                         background: #ff5a5f;
+                     </c:if>
+                  </c:forEach>"
+                           onclick="review_l_check('${stat.index}', this, '${review.HRB_IDX }', '${review.HOUSE_IDX }');">
+                           추천 <label id="like_cnt${stat.index }">${review.HRB_LIKE }개</label>
+                        </div>
+                     </c:otherwise>
+                  </c:choose>
+
+               </div>
+            </div>
+            <hr style="width: 100%;">
+         </c:forEach>
       </div>
-      <c:forEach items="${reserList}" var="rList" varStatus="stat">
-      <div class="reserDiv">
-         <div class="r_num">${stat.index + 1 }</div>
-         <div class="r_name">${rList.HR_NAME }</div>
-         <div class="r_person">${rList.HR_PERSONS } 명</div>
-         <div class="r_date">
-            <fmt:formatDate value="${rList.HR_TIME }" pattern="yyyy-MM-dd HH:mm"/>
-         </div>
-         <div class="r_date">
-            <fmt:formatDate value="${rList.HR_FIRST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
-         </div>
-         <div class="r_date">
-            <fmt:formatDate value="${rList.HR_LAST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
-         </div>
-      </div>
-      </c:forEach>
+      <%@ include file="/WEB-INF/views/house/review/message.jspf"%>
+
+
    </div>
-   
-   <!-- ///////////////////// 메세지 -->
-   <!-- msg_idx, receive_member_email, msg_state, msg_type, msg_content, send_date, msg_title  -->
-   <div id="msgDiv">
-      <div class="msgDiv" >
-         <div class="m_num" style="background-color:#dedede;">번호</div>
-         <div class="m_email" style="background-color:#dedede;">이메일</div>
-         <div class="m_title" style="background-color:#dedede;">제목</div>
-         <div class="m_date" style="background-color:#dedede;">보낸 날짜</div>
-      </div>
-      <c:forEach items="${msgList}" var="mList" varStatus="stat">
-      <div class="msgDiv">
-         <div class="m_num">${stat.index + 1 }</div>
-         <div class="m_email">${mList.MEMBER_EMAIL }</div>
-         <div class="m_title" onclick="contentView('${mList.MSG_IDX }');" style="color:red; font-weight:bold;">
-            ${mList.MSG_TITLE }
-         </div>
-         <div class="m_date">
-            <fmt:formatDate value="${mList.SEND_DATE }" pattern="yyyy-MM-dd"/>
-         </div>
-      </div>
-      <div class="msgDiv" style="display:none;" id="m_content${mList.MSG_IDX }">
-         <div class="m_content" style="padding:10px;min-height:150px;background-color:#ededed;">${mList.MSG_CONTENT }</div>
-      </div>
-      </c:forEach>
-   </div>
-   
-   
-   
-   
-   </div>
-         
-           
-   </div><!-- right_div End -->
-   
-   
-</div>
-<div style="clear:both;"></div>
+   <!-- houseDetail end -->
+
+
+
+</body>
+<script type="text/javascript">
+   (function() {
+      /* alert("gd"); */
+      var addr = $("#addr2").val();
+      $.ajax({
+         url : "/TripINN/house/houseMapView.do",
+         type : "GET",
+         async : true,
+         dataType : "Text",
+         data : {
+            "addr" : addr
+         },
+         success : function(data) {
+            $("#mapView").html(data);
+         }
+      });
+   })()
+</script>
+</html>

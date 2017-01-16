@@ -9,12 +9,17 @@
 <link rel="stylesheet" href="/TripINN/css/trip/trip.css" />
 <link rel="stylesheet" href="/TripINN/css/trip/slide.css" />
 <link href='/TripINN/css/trip/jquery.rating.css' type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/TripINN/css/house/message.css">
 
+<script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="/TripINN/js/trip/jquery-1.11.3.min.js" type="text/javascript" data-library="jquery" data-version="1.11.3"></script>
 <script src="/TripINN/js/trip/jssor.slider-22.0.15.mini.js" type="text/javascript" data-library="jssor.slider.mini" data-version="22.0.15"></script>
 <script src='/TripINN/js/trip/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
 <script src='/TripINN/js/trip/jquery.rating.js' type="text/javascript" language="javascript"></script>
 <script src="/TripINN/js/trip/main.js" type="text/javascript"></script>
+<script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/TripINN/js/trip/message.js"></script>
 <script>
 var member_idx = "${sessionScope.member_idx}";
 var fav = "${trip.FAV}";
@@ -127,12 +132,18 @@ var favNum = 0;
 <form name="rform" method="post">
 	<input type="hidden" name="trip_idx" value="${trip.TRIP_IDX}"/>
 </form>
+
+<form action="">
+	<input type="hidden" id="receiveEmail" value="${trip.MEMBER_EMAIL }"/>
+	<input type="hidden" id="trip_idx" value="${trip.TRIP_IDX }"/>
+</form>
+<hr style="margin:0px;padding:0px;"/>
 <div id="wrap">
 	<div id="left-wrap">
 		<div id="left-info">
 			<div class="trDiv">
 				<div class="tdDiv-col" style="height:auto;">
-					<p style="float:left;"><b><font style="font-size:20px;">${trip.TRIP_NAME }</font> - ${trip.TRIP_AREA }</b></p>
+					<p style="float:left;margin-top:10px;"><b><font style="font-size:20px;">${trip.TRIP_NAME }</font> - ${trip.TRIP_AREA }</b></p>
 					<span class="heartImg <c:if test='${trip.FAV != 0 }'>on</c:if>" 
 						id="heartImg"  title="즐겨찾기" onclick="tripFav('${trip.TRIP_IDX}');">
 					</span>
@@ -144,10 +155,14 @@ var favNum = 0;
 				<p>
 				<fmt:formatDate value="${trip.TRIP_FIRST_DATE }" pattern="yyyy-MM-dd HH:mm"/> - 
 				<fmt:formatDate value="${trip.TRIP_LAST_DATE }" pattern="yyyy-MM-dd HH:mm"/> 
-				 일정의 <font color="#1E6198">${trip.TRIP_TYPE }</font> 트립</p>
+				 일정의 <b><font color="#1E6198">${trip.TRIP_TYPE }</font></b> 트립</p>
 				
-				<p style="width:350px;float:left;">호스트 : <font color="#1E6198">${trip.MEMBER_NAME }</font> 님
-					<div style="width:150px;height:auto;float:right;margin-top:-30px;">
+				<p style="width:350px;float:left;">호스트 : <b><font color="#1E6198">${trip.MEMBER_NAME }</font></b> 님
+					<div style="margin-top: 10px;width:150px;height:50px;">
+                        <button type="button" class="btn btn-primary btn-lg"
+                           data-toggle="modal" data-target="#Message">메시지 보내기</button>
+                     </div>
+					<div style="width:150px;height:auto;float:right;margin-top:-50px;margin-right:-30px;">
 						<img src="/TripINN/images/${trip.MEMBER_IMAGE }" class="hostImg"/>
 					</div>
 				</p>
@@ -234,22 +249,22 @@ var favNum = 0;
 			<hr />
 			<div class="trDiv" style="margin-top:20px;">
 				<div class="tdDiv-col">
-					<div style="width:20%;height:25px;background:orange;color:#fff;  margin-right:30px;
-						text-align:center;  border-radius: 15px; padding:6px; float:left;
+					<div style="width:20%;height:40px;background:orange;color:#fff;  margin-right:30px;
+						text-align:center;  border-radius: 15px; padding:6px; float:left; padding-top:10px;
 						cursor:pointer" onclick="r_confirm('open')">
 							<b>트립 신고</b>
 					</div>
 					
-					<div style="width:20%;height:25px;background:#00A2E8;color:#fff;
+					<div style="width:20%;height:40px;background:#00A2E8;color:#fff; 
 					text-align:center;  border-radius: 15px; padding:6px;float:right; margin-right:50px;
-					cursor:pointer" 
+					cursor:pointer; padding-top:10px;" 
 			<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM > 0}">onclick="tripReserve();"</c:if>
 			<c:if test="${trip.TRIP_PERSONS - trip.RESERVED_NUM <= 0}">onclick="alert('예약이 가득찼습니다. 다른 트립을 이용해주세요.');"</c:if>
 			>
 						<b>트립 신청</b>
 					</div>
-					<div style="width:20%;height:25px;background:#cb4242;color:#fff;  margin-right:30px;
-						text-align:center;  border-radius: 15px; padding:6px; float:right;
+					<div style="width:20%;height:40px;background:#cb4242;color:#fff;  margin-right:30px;
+						text-align:center;  border-radius: 15px; padding:6px; float:right; padding-top:10px;
 						cursor:pointer" onclick="location.href='/TripINN/tripList.do'">
 							<b>이전으로</b>
 					</div>
@@ -332,7 +347,7 @@ var favNum = 0;
 				</c:if>
 				<!-- ///////////추천 버튼////////// -->
 				<span id="cu${stat.index}" class="cu" 
-				 style="width:100px;height:30px;float:right;margin-top:7%;vertical-align:middle;text-align: center;
+				 style="width:100px;height:33px;float:right;margin-top:7%;vertical-align:middle;text-align: center;
 				border:1px solid #c4c4c4;border-radius:10px;padding-top:3px;margin-bottom:10px;cursor:pointer;
 				<c:forEach items='${likeList}' var='lList'>
 					<c:if test='${lList.TRB_IDX eq rlist.TRB_IDX }'>
@@ -344,7 +359,7 @@ var favNum = 0;
 					<span style="width:22px;height:22px;margin-top:3px;background-image:url(/TripINN/images/cu33.png);
 						background-size: 100%;background-repeat:no-repeat;float:left;margin-left:7px;">
 					</span>
-				 	<span style="float:left;margin-top:1px;margin-left:3px;">
+				 	<span style="float:left;margin-top:3px;margin-left:3px;">
 				 		<font style="font-size:12px;"> 추천 |</font>
 				 		<font style="font-size:12px;color:#a6a6a6;" id="cu_cnt${stat.index}">${rlist.TRB_LIKE} 개</font>
 				 	</span>
@@ -379,14 +394,14 @@ var favNum = 0;
 			<div class="trDiv" style="margin:20px;">
 				<div class="tdDiv-col">
 	<!-- 슬라이드 시작 -->		
-	<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 550px; height: 456px; overflow: hidden; visibility: visible; background-color: #24262e;"
-		  jssor-slider="true"> 
+	<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; 
+	height: 456px; overflow: hidden; visibility: visible; background-color: #24262e; "> 
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('/TripINN/images/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 550px; height: 356px; overflow: hidden;">
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 500px; height: 356px; overflow: hidden;">
 
               <c:forEach items="${imgs}" var="img" varStatus="status">
            <div data-p="144.50" <c:if test="${status.index != 0 }">style="display:none;"</c:if>>
@@ -403,7 +418,7 @@ var favNum = 0;
             <a data-u="any" href="http://www.jssor.com" style="display:none">Image Gallery</a>
         </div>
         <!-- Thumbnail Navigator -->
-        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:550px;height:100px;" data-autocenter="1">
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:500px;height:100px;" data-autocenter="1" jssor-slider="true">
             <!-- Thumbnail Item Skin Begin -->
             <div data-u="slides" style="cursor: default;">
                 <div data-u="prototype" class="p">
@@ -427,7 +442,7 @@ var favNum = 0;
 			</div>
 			<div class="trDiv" style="margin:20px;">
 				<div class="tdDiv-col">
-					<div id="map" style="width:500px;height:400px;"></div>
+					<div id="map" style="width:550px;height:400px;"></div>
 					<script>
 						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 					    mapOption = { 
@@ -539,3 +554,4 @@ function r_confirm (confirm) {
 				$(".report_layerWindow").css("display", "none");
 }
 </script>
+ <%@ include file="/WEB-INF/views/house/review/message.jspf"%>

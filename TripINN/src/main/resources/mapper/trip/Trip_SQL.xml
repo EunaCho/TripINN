@@ -133,6 +133,16 @@ report_state, report_type, member_idx, trip_idx)
 	<delete id="reviewDel" parameterType="String">
 		delete from trip_review_board where trb_idx=#{parameter}
 	</delete>
+	
+	<insert id="sendMsg" parameterType="HashMap">
+	insert into message (
+		msg_idx, receive_member_email, member_idx, msg_state, msg_type, msg_content, 
+		msg_title, trip_idx, send_date
+		)values(
+		MSG_IDX_SEQ.NEXTVAL, #{receive_member_email}, #{member_idx}, 0, 1, 
+		#{msg_content}, #{msg_title}, #{trip_idx}, SYSDATE
+		)
+	</insert>
 </mapper>
 
 

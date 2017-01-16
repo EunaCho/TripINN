@@ -93,4 +93,8 @@ public class TripDAO extends AbstractDAO {
 	public void reviewDel(String parameter) {
 		delete("trip.reviewDel", parameter);
 	}
+
+	public void sendMsg(Map<String, Object> map) {
+		insert("trip.sendMsg", map);
+	}
 }
