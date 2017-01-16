@@ -25,12 +25,12 @@ public class MypageServiceImpl implements MypageService{
 	//-----------------------------------------메시지 ---------------------------------------------//
 	//보낸메시지 리스트 
 	@Override
-	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectSendMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectSendMsgList(map);
 	}
 	//받은메시지 리스트 
 	@Override
-	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectReceiveMsgList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectReceiveMsgList(map);
 	}
 	//보낸 메시지 상세보기 
@@ -207,6 +207,11 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public void deleteTripWish(Map<String, Object> map) throws Exception{
 		mypageDAO.deleteTripWish(map);
+	}
+
+	@Override
+	public void messageDel(String msg_idx) {
+		mypageDAO.messageDel(msg_idx);
 	}
 	
 	//-------프로필------//

@@ -19,13 +19,13 @@ public class MypageDAO extends AbstractDAO {
 	//--------------------------------------메시지 ----------------------------------------//
 	//보낸 메시지 리스트
 	@SuppressWarnings("unchecked")//경고 제외 어노테이션
-	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map){
-		return (List<Map<String, Object>>) selectList("mypage.selectSendMsgList", map);
+	public Map<String, Object> selectSendMsgList(Map<String, Object> map){
+		return (Map<String, Object>) selectPagingList("mypage.selectSendMsgList", map);
 	}
 	@SuppressWarnings("unchecked")//경고 제외 어노테이션
 	//받은 메시지 리트스 
-	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map){
-		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
+	public Map<String, Object> selectReceiveMsgList(Map<String, Object> map){
+		return (Map<String, Object>) selectPagingList("mypage.selectReceiveMsgList", map);
 	}
 	//보낸 메시지 상세보기 
 	public Map<String, Object> selectSendMsgDetail(Map<String, Object> map){
@@ -168,5 +168,9 @@ public class MypageDAO extends AbstractDAO {
 	//트립위시리스트 삭제 
 	public void deleteTripWish(Map<String, Object> map) throws Exception{
 		delete("mypage.deleteTripWish", map);
+	}
+
+	public void messageDel(String msg_idx) {
+		delete("mypage.messageDel", msg_idx);
 	}
 }

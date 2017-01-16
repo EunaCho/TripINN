@@ -58,12 +58,13 @@ public class MypageController {
 	
 	
 		commandMap.put("member_idx", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
-
-		ArrayList<Map<String, Object>> list = new ArrayList<>(); //seletSendMessage 리스트를 저장할 list객체 선언 
-		list=(ArrayList<Map<String, Object>>)mypageService.selectSendMsgList(commandMap.getMap()); // list 객체에 불러온 sendMessage값을 저장 
 		
-		mv.addObject("list", list); //moderAndView 값에 list 추가 
-		
+		Map<String,Object> resultMap = null;
+		resultMap = mypageService.selectSendMsgList(commandMap.getMap()); 
+		System.out.println("test ::::::::::::: "  + resultMap.get("paginationInfo"));
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+	    mv.addObject("list",resultMap.get("result")); 
+		 
 		return mv;
 	}
 	
@@ -72,14 +73,13 @@ public class MypageController {
 	public ModelAndView receiveMsgForm(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{ //받은 메시지를 select박스를 이용해 숙소와 트립의 선택에 따라 리스트를 뽑는다.
 		
 		ModelAndView mv = new ModelAndView("receiveMsgForm");
-		
+		Map<String,Object> resultMap = null;
 		
 		commandMap.put("member_email", session.getAttribute("member_email"));
+		resultMap = mypageService.selectReceiveMsgList(commandMap.getMap()); 
 		
-		ArrayList<Map<String, Object>> list = new ArrayList<>(); //selectReceiveMessage 를 저장할 ArrayList<Map<String, Object>> 객체 생성 
-		list = (ArrayList<Map<String, Object>>)mypageService.selectReceiveMsgList(commandMap.getMap());
-		
-		mv.addObject("list", list);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+	    mv.addObject("list",resultMap.get("result")); 
 		
 		return mv;
 	}
@@ -95,7 +95,7 @@ public class MypageController {
 		Map<String, Object> map = mypageService.selectSendMsgDetail(commandMap.getMap()); //mypageService에 선언된 selectDetail 실행 
 		
 		mv.addObject("map",map);
-		
+		mv.addObject("msgType", request.getParameter("msgType"));
 		return mv;
 	}
 	//*메시지-->받은메시지상세보기 
@@ -118,10 +118,24 @@ public class MypageController {
 	
 	//*메시지->메시지쓰기 폼이동 
 	@RequestMapping("/messageWrite.do")
-	public ModelAndView messageWrite(CommandMap commandMap) throws Exception{
+	public ModelAndView messageWrite(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("messageWrite");
 
+		mv.addObject("receive_email", request.getParameter("receive_member_email"));
+		return mv;
+	}
+	// 메세지 삭제
+	@RequestMapping(value="/messageDel.do", method=RequestMethod.POST)
+	public ModelAndView messageDel(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		if(request.getParameter("msgType").equals("r")){
+			mv.setViewName("redirect:/mypage/receiveMessage.do");
+		} else {
+			mv.setViewName("redirect:/mypage/sendMessage.do");
+		}
+		String msg_idx = request.getParameter("msg_idx");
+		mypageService.messageDel(msg_idx);
 		return mv;
 	}
 	
@@ -132,7 +146,7 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("messageWriteOk"); //messageWriteOk.jsp로 타일즈 설정된 뷰 messageWriteOk.jsp에서  다시 mypage/notice.do 실행 
 		System.out.println("test2");
 		
-		commandMap.put("member_idx", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 	
 		System.out.println("member_idx : " + commandMap.get("MEMBER_IDX"));
 		

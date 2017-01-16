@@ -3,23 +3,34 @@
 
 <mapper namespace="mypage">
    
+   <!-- 메세지 삭제 -->
+   <delete id="messageDel" parameterType="String">
+   		delete from message where msg_idx = #{msg_idx}
+   </delete>
    <!-- 보낸메시지 리스트 -->
    <select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
-      select MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX from message where member_idx = #{member_idx}
-      order by msg_idx desc
+   <include refid="common.pagingPre"/> 
+      select ROW_NUMBER() OVER 
+			(order by MSG_IDX desc) RNUM,
+      MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX 
+      from message where member_idx = #{member_idx}
+        <include refid="common.pagingPost"/> 
    </select>
    
    <!-- 받은메시지 리스트-->
    <select id="selectReceiveMsgList" parameterType="hashmap" resultType="hashmap">
-      select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+   <include refid="common.pagingPre"/> 
+      select ROW_NUMBER() OVER 
+			(order by MSG_IDX desc) RNUM,
+			MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
       		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
       where receive_member_email =#{member_email}
-      order by msg_idx desc
+      <include refid="common.pagingPost"/> 
    </select>
    
    <!-- 받은 메시지 상세보기 -->
    <select id="selectReceiveMsgDetail" parameterType="hashmap" resultType="hashmap">
-   		select MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+   		select MSG_IDX,MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
       		   HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
      	where receive_member_email =#{member_email} and msg_idx = #{msg_idx}
       	order by msg_idx desc
@@ -27,7 +38,7 @@
    
    <!-- 보낸 메시지 상세보기-->
    <select id="selectSendMsgDetail" parameterType="hashmap" resultType="hashmap">
-      select MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX
+      select MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX
       from message where msg_idx=#{msg_idx}
    </select>   
  
