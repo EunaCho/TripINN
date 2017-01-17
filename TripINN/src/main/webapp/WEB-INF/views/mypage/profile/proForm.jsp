@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% String cp = request.getContextPath(); %>
 <style>
 	.left_div{
@@ -146,27 +147,41 @@
 		  
 	 }
 </style>
-
+<script>
+function getThumbnailPrivew(html, $target) {
+    if (html.files && html.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $target.css('display', '');
+            $target.css('background-image', 'url(\"' + e.target.result + '\")');
+            $target.css('background-size', '100% 100%');
+            $(".")
+            //$target.html('<img src="' + e.target.result + '" border="0" alt="" />');
+        }
+        reader.readAsDataURL(html.files[0]);
+    }
+}
+</script>
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
+	<form id="profile_form" action="/TripINN/mypage/profileModify.do" method="post" enctype="multipart/form-data">	
 	<div class="left_div">
 		<div class="side_list">
 			<a href="<%=cp%>/mypage/profile.do" class="side-text" style="border-bottom:2px solid #cb4242;">프로필 수정</a>
 		</div>
 	
-	<form id="profile_form" action="<%=cp%>/mypage/profileModify.do" method="post" enctype="multipart/form-data">	
 		
 		<div class="filebox">
 			<label for="MEMBER_IMAGE">사진 바꾸기</label>
-			<input type="file" name="MEMBER_IMAGE" id="MEMBER_IMAGE"/>
+			<input type="file" name="MEMBER_IMAGE" id="MEMBER_IMAGE" onchange="getThumbnailPrivew(this,$('#member_img'))"/>
 		</div>
 	</div>
 	
 
 	<div class="profile">
 		<div class="pro_menu">
-			<div class="poto">
-				<img style="width:250px; height:170px;"src="<%=cp%>/images/member/${map.MEMBER_IMAGE}"/>
+			<div class="poto" id="member_img" style="width:250px; height:170px;
+				background-size:100% 100%; background-repeat:no-repeat;background-image:url('/TripINN/images/member/${map.MEMBER_IMAGE}');">
 			</div>
 	
 			<div class="poto_text">
@@ -195,14 +210,19 @@
 						성별(여자/남자)
 					</div>
 					<div class="input_form">
-						<input type="text" id="MEMBER_SEX" name="MEMBER_SEX" size="30" value="${map.MEMBER_SEX}">
+						<select name="MEMBER_SEX" id="" style="height:20px;width:80px;padding:0px;">
+						<option value="0" <c:if test="${map.MEMBER_SEX == 0}">selected="selected"</c:if>>남자</option>
+						<option value="1" <c:if test="${map.MEMBER_SEX == 1}">selected="selected"</c:if>>여자</option>
+						</select>
+						
 					</div>
 		
 					<div class="input_name">
 						생년월일(0000-00-00)
 					</div>
 					<div class="input_form">
-						<input type="text" id="MEMBER_BIRTH" name="MEMBER_BIRTH" size="30" value="${map.MEMBER_BIRTH}">
+						<input type="text" id="MEMBER_BIRTH" name="MEMBER_BIRTH" 
+						size="30" value='<fmt:formatDate value="${map.MEMBER_BIRTH}" pattern="yyyy-MM-dd"/>'>
 					</div>
 			
 					<div class="input_name">
@@ -249,7 +269,7 @@
 				<input type="submit" value="수정완료" style="height:40px;" class="bottomBnt"/>
 			</div>
 			
-		</form>
 </div>
+		</form>
 <div style="clear:both;"></div>
 </div>

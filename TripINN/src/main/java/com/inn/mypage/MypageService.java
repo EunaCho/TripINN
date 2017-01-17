@@ -3,6 +3,8 @@ package com.inn.mypage;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 //DAO 기능 구현
 public interface MypageService {
 	
@@ -67,6 +69,6 @@ public interface MypageService {
 
 	void messageDel(String msg_idx);
 	//--------------------프로필 
-	void updateMemberPlofile(Map<String, Object> map) throws Exception; //프로필 수정하기
+	void updateMemberPlofile(Map<String, Object> map, HttpServletRequest request) throws Exception; //프로필 수정하기
 	
 }

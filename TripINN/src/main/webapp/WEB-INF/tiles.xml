@@ -582,26 +582,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/house/houseRegister.jsp"/>	
 	</definition>
 	
-			<!-- 숙소 등록 상세 페이지 레이아웃 -->
-	<definition name="houseRegister_form" template="/WEB-INF/views/house/layout/register/layout.jsp">
-		<put-attribute name="left" value="/WEB-INF/views/house/layout/register/left.jsp"/>
-		<put-attribute name="right" value="/WEB-INF/views/house/layout/register/right.jsp"/>
-	</definition>
-	
-	<!-- 숙소 기본정보 등록 페이지 정의 -->
-	<definition name="houseRegister_layout" extends="houseRegister_form">
-		<put-attribute name="left" value="/WEB-INF/views/house/register/houseRegister1.jsp"/>
-	</definition>
-	
 	<!-- open register detail1 -->
 	<definition name="houseRegister1" extends="main">
 		<put-attribute name="body" value="/WEB-INF/views/house/register/houseRegister1.jsp"/>
 	</definition>						
-	
-	<!-- 숙소 추가정보 등록 페이지 정의 -->
-	<definition name="houseRegister2_layout" extends="houseRegister_form">
-		<put-attribute name="left" value="/WEB-INF/views/house/register/houseRegister2.jsp"/>
-	</definition>
+
 	<!-- open register detail2 -->
 	<definition name="houseRegister2" extends="main">
 		<put-attribute name="body" value="/WEB-INF/views/house/register/houseRegister2.jsp"/>

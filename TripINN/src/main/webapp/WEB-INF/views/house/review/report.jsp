@@ -4,40 +4,8 @@
 <title>신고하기</title>
 <link rel="stylesheet" href="/TripINN/css/house/houseReport.css?ver=1.0">
 <script src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/TripINN/js/house/report.js"></script>
 <% String cp = request.getContextPath(); %>
-<script>
-	$(document).ready(function(){
-		var house_idx = $("#HOUSE_IDX").val();
-		var member_idx = $("#MEMBER_IDX").val();
-		
-		$("#submitBtn").click(function(){
-			
-			var report_title = $("#report_title").val();
-			var report_content = $("#report_content").val();
-			$.ajax({
-				type: 'GET',
-				url: '/TripINN/house/houseReport.do',
-				async: true,
-				dataType: 'text',
-				error: function(){
-					alert("server error");
-				},
-				data : {
-					"HOUSE_IDX": house_idx,
-					"MEMBER_IDX" : member_idx,
-					"REPORT_TITLE" : report_title,
-					"REPORT_CONTENT": report_content
-						},
-				success: function(data){
-					alert("접수 되었습니다.");
-					window.opener.location.reload();
-					window.close();
-				}
-			})
-		});
-		
-	})
-</script>
 
 </head>
 <body>
