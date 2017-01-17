@@ -1,6 +1,26 @@
+
+
+function house_rsv(){
+	var person = $('#person').val();
+	var checkin = $('#datepicker_in_reserveBar').val();
+	var checkout = $('#datepicker_out_reserveBar').val();
+	var house_idx = $("#house_idx").val();
+	var house_member_idx = $("#HOUSE_MEMBER_IDX").val();
+	var pageLocation = "http://localhost:8080/TripINN/house/houseReserveForm.do?HOUSE_IDX="+ house_idx +
+	"&MEMBER_IDX="+ MEMBER_IDX + "&HR_FIRST_DATE="+checkin+"&HR_LAST_DATE="+checkout+"&HR_PERSONS="+person;
+	
+	if(checkin==""){
+		alert("체크 인을 설정 해주세요.");
+	}else if(checkout==""){
+		alert("체크 아웃을 설정 해주세요.");
+	}else if(person=="0"){
+		alert("인원수를 입력하세요.");
+	}else{
+	window.open(pageLocation,"_black");
+	}
+}
+
 function u_d_btn(index){
-	alert("gd");
-	alert(index);
 	var HOUSE_MEMBER_IDX = $("#HOUSE_MEMBER_IDX").val();
 	var HOUSE_IDX = $("#house_idx").val();
 	var REVIEW_HRB_IDX = $("#review_hrb_idx"+index).val();

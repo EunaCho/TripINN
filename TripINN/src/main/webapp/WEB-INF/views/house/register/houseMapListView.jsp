@@ -190,6 +190,6 @@
 
 </head>
 <body>
-<div id="map" class="houseMap"></div>
+<div id="map" class="houseMap" style="height: 630px;"></div>
 </body>
 </html>

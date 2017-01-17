@@ -13,11 +13,11 @@
 </head>
 
 <body id="houseContainer">
-	<div id="header" style="border:1px solid black;">
+	<div id="header">
 		<tiles:insertAttribute name="house_header"/>
 	</div>
 	
-	<div id="body" style="border:1px solid black;">
+	<div id="body">
 		<tiles:insertAttribute name="house_body"/>
 	</div>
 </body>

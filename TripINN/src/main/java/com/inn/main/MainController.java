@@ -29,6 +29,7 @@ public class MainController {
 		ModelAndView mv = new ModelAndView("main");//tiles definition name
 		//하우스 미리보기 출력용 리스트 생성
 		List<Map<String, Object>> houseList = houseService.selectHouseList(commandMap.getMap());
+		
 		mv.addObject("houseList", houseList);
 		
 		//트립 미리보기 출력용 리스트 생성

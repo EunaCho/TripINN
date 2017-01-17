@@ -54,18 +54,6 @@
 
 <div style="clear:both"></div>
 
-	<div id="dropPerson">
-		<ul class="dropInfo">
-			<li><label>인원</label>
-				<ul>
-				<li><h1>성인 1명<input type="button" value="+"> <input type="button" value="-"></h1>  </li>
-				<li><h1>어린이 0명<input type="button" value="+"> <input type="button" value="-"></h1></li>
-				<li><h1>유아 0명<input type="button" value="+"> <input type="button" value="-"></h1></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
 	
 	
 </div>

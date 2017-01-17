@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository; //DAO 클래스 등록 어너�
 import org.springframework.beans.factory.annotation.Autowired;
 import org.mybatis.spring.SqlSessionTemplate;
 import com.common.common.AbstractDAO; //SQL 오버로딩
+import com.common.common.CommandMap;
 
 @Repository("houseDAO") // DAO 클래스 등록
 public class HouseDAO extends AbstractDAO {
@@ -177,4 +178,20 @@ public class HouseDAO extends AbstractDAO {
 		// TODO Auto-generated method stub
 		insert("house.updateTotalPrice",map);
 	}
+
+	public void increaseHouseRSV(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		update("house.increaseHouseRSV",map);
+	}
+
+	public Map<String, Object> selectOneMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) selectOne("house.selectOneMember", map);
+	}
+
+	public List<Map<String, Object>> selectHouseList2(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return (List<Map<String, Object>>) selectList("house.selectHouseList2", map);
+	}
+
 }

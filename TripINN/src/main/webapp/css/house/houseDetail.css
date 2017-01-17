@@ -62,10 +62,10 @@
     margin-left: 12px
 }
 .map {
-	width: 589px;
+	 width: 560px;
     height: 100%;
-    float: left;
-    margin-left: 1%;
+    margin-left: 33px;
+
     }
 .houseMap{
 	width: 100%;
@@ -176,7 +176,7 @@
     padding: 2px;
     width: auto;
     border: 1px solid #BABABB;
-    color: #black;
+    color: black;
     border-radius: 5px;
     position: relative;
     right: 10px;
@@ -351,16 +351,16 @@
 
 /* 오른쪽: 예약바 */
 
-#reserveBar { width:200px; height: 440px; top:60px; right:1%; position:fixed; border:2px solid #428bca; color:dimgrey; background-color: white; font-size:12px;}
+#reserveBar { width:220px; height: 440px; top:75px; right:1%; position:fixed; border:2px solid #428bca; color:dimgrey; background-color: white; font-size:12px;}
 #reserveBar .price {
 	height:35px; padding:8px; background-color:#428bca; color:white; margin-bottom:10px;
 	text-align: center;
 
 }
-#reserveBar .checkinout { width:65px; padding:5px; float:left; /* border-radius: 5px; */}  
+#reserveBar .checkinout { width:70px; padding:5px; float:left; /* border-radius: 5px; */}  
 #reserveBar .checkinout label {font-size:12px;}
-#reserveBar .checkinout input{width:55px; height:20px;}
-#reserveBar select {width:55px; height:27px; color:#aaaaaa; /* border-radius: 5px; */}
+#reserveBar .checkinout input{width:65px; height:28px;}
+#reserveBar select {width:70px; height:27px; color:#aaaaaa; /* border-radius: 5px; */}
 #reserveBar .button {
     background-color: #428bca;
     margin: 20px;

@@ -65,4 +65,8 @@ public interface HouseService {
 
 	void updateTotalPrice(Map<String, Object> map);
 
+	Map<String, Object> selectOneMember(Map<String, Object> map);
+
+	List<Map<String, Object>> selectHouseList2(Map<String, Object> map);
+
 }

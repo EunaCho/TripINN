@@ -93,6 +93,7 @@ public class HouseServiceImpl implements HouseService{
 	
 	public void houseReserve(Map<String, Object> map) {
 		houseDAO.insertHouseRSV(map);
+		houseDAO.increaseHouseRSV(map);
 	}
 	
 	
@@ -227,4 +228,17 @@ public class HouseServiceImpl implements HouseService{
 		// TODO Auto-generated method stub
 		houseDAO.updateTotalPrice(map);
 	}
+
+	@Override
+	public Map<String, Object> selectOneMember(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) houseDAO.selectOneMember(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectHouseList2(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return houseDAO.selectHouseList2(map);
+	}
+
 }

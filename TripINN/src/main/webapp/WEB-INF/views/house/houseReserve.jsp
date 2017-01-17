@@ -69,13 +69,14 @@ function checkInfo() {
 	}
 </script>
 <div id="wrap">
-<form name="rform" action="/TripINN/house/houseReserve.do" method="post">
+<form name="rform" action="/TripINN/house/houseReserve.do" method="POST">
 <input type="hidden" name="HOUSE_IDX" value="${houseReserve.HOUSE_IDX }" />
-<input type="hidden" name="hr_phone" value=""/>
-<input type="hidden" name="hr_email" value=""/>
+<input type="hidden" name="hr_phone" value="${houseReserve.MEMBER_PHONE }"/>
+<input type="hidden" name="hr_email" value="${houseReserve.MEMBER_EMAIL }"/>
 <input type="hidden" name="hr_price" id="hr_price" value="${houseReserve.HOUSE_PRICE }" />
-<input type="hidden" name="hr_first_date" value="<fmt:formatDate value='${houseReserve.HR_FIRST_DATE }' pattern='yyyy-MM-dd HH:mm'/>" />
-<input type="hidden" name="hr_last_date" value="<fmt:formatDate value='${houseReserve.HR_LAST_DATE }' pattern='yyyy-MM-dd HH:mm'/>" />
+<input type="hidden" name="hr_first_date" value="${HR_FIRST_DATE }" />
+<input type="hidden" name="hr_last_date" value="${HR_LAST_DATE }" />
+
 <input type="hidden" name="member_idx" value="${sessionScope.member_idx}" />
 	<div id="container">
 			<div class="hrDiv">
@@ -109,10 +110,11 @@ function checkInfo() {
 			<div class="hrDiv">
 				<div class="hdDiv-left"><p>예약 인원</p></div>
 				<div class="hdDiv-right"><p style="float:left;font-size:15px;">
-					<select name="hr_persons" id="" class="select-short" onchange="calc('${houseReserve.HOUSE_PRICE}', this.value);">
+					<select name="hr_persons" id="hr_persons" class="select-short" onchange="calc('${houseReserve.HOUSE_PRICE}', this.value);">
 					<c:forEach var="person" begin="1" end="${houseReserve.HOUSE_TOTAL_PERSONS }">
-						<option value="${person}">${person } 명</option>
+						<option value="${person}" <c:if test="${person == HR_PERSONS }">selected="selected"</c:if>>${person } 명</option>
 					</c:forEach>
+						
 					</select>
 				</p>
 				</div>
@@ -216,8 +218,8 @@ function checkInfo() {
 		 	<div class="hrDiv">
 		 		<div class="hdDiv-left">상품 명</div>
 		 		<div class="hdDiv-right">${houseReserve.HOUSE_NAME }
-		 			<span class="fc_blue1">(<fmt:formatDate value='${houseReserve.HR_FIRST_DATE }' pattern='yyyy-MM-dd HH:mm'/> - 
-					<fmt:formatDate value='${houseReserve.HR_LAST_DATE }' pattern='yyyy-MM-dd HH:mm'/>) </span>
+		 			<span class="fc_blue1">${HR_FIRST_DATE } - 
+					${HR_LAST_DATE } </span>
 		 		</div>
 		 	</div>
 		 	<div class="hrDiv">

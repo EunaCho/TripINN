@@ -275,7 +275,7 @@ $(document).ready(function () {
 		<!-- 하우스 미리보기 블럭 -->
 		<div class="subject">
 			<span>등록된 숙소</span>
-			<span><a href="/house/houseMain.do">전체보기>></a></span>
+			<span><a href="<%=cp%>/house/houseMain.do">전체보기>></a></span>
 		</div>
 
 		<!-- 하우스 미리보기 리스트 출력 -->
@@ -283,25 +283,45 @@ $(document).ready(function () {
 		<ul>
 			<c:forEach items="${houseList}" var="houseList" varStatus="stat">
 			
+			<fmt:formatNumber var="sum" value="${houseList.STAR}" pattern="#.##"/>
+			<fmt:formatNumber var="cnt" value="${houseList.STAR_COUNT}" pattern="#.##"/>
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
 				<c:url var="houseViewURL" value="/house/houseDetail.do">
-					<c:param name="house_idx" value="${houseList.HOUSE_IDX}"/>
-					<c:param name=""/>
+					<c:param name="HOUSE_IDX" value="${houseList.HOUSE_IDX}"/>
+					<c:param name="MEMBER_IDX" value="${houseList.MEMBER_IDX }"/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
 				<li>
 				<a href="${houseViewURL}">
+					<div>
 					<img src="<%= cp %>/images/house/${houseList.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
-					<br/>
-						<span><strong>${houseList.HOUSE_NAME}</strong></span>
-						<span>${houseList.HOUSE_INFO}</span>
-					<br>
-						<span>${houseList.HRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
-						<span> 후기 ?? 개</span>
+					</div>
+					<div style="width: 100%; height: 37px;">
+								<div style="float: left; width: auto; font-weight: bold; font-size: 15px; margin-right: 25px; color: gray;">${houseList.HOUSE_NAME}</div>
+								<div style="float: left; width: auto; color: rgb(203, 70, 70); font-size: small;">
+									<c:if test="${houseList.STAR_COUNT != 0}">
+										<b><fmt:formatNumber value="${sum / cnt}" pattern="#.#" /></b>
+									</c:if>
+									<c:if test="${houseList.STAR_COUNT == 0}">
+								<b>0</b>
+								</c:if>
+									점
+								</div>
+							</div>
+							<div>
+						<div style="PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 87px; float:left;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
+							<p style="<c:if test="${houseList.STAR_COUNT != 0}">width:${sum * 20 / cnt}%;</c:if>
+									  <c:if test="${houseList.STAR_COUNT == 0}">width:0%;</c:if>
+							 PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
+							</p>
+						</div> 
+						<div style="float: right; width: 50%; color: gray;"> 후기  <b>${houseList.STAR_COUNT}</b> 개</div>
+					</div>
 				</a>
 				</li>  
 			</c:forEach>
+			
 			</ul>
 		</div>
 		

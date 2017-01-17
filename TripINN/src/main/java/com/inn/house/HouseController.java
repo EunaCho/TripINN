@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller; //controller 클래스 등록 위함
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping; //jsp와 클래스 연결
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -37,7 +38,7 @@ public class HouseController {
 	private HouseService houseService; // interface 연결
 
 	// house list mapping
-	@RequestMapping(value = "/house/houseMain.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/house/houseMain.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView houseList(CommandMap map, HttpSession session) throws Exception {
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
@@ -122,20 +123,24 @@ public class HouseController {
 
 	// house register view mapping detail 1
 	@RequestMapping(value = "/house/houseRegister1.do")
-	public ModelAndView houseRegisterView1(CommandMap map, HttpServletRequest request) throws Exception {
+	public ModelAndView houseRegisterView1(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
+		
 		ModelAndView mv = new ModelAndView("houseRegister1");
-		/* String str = str.contains("house_img_file"); */
+		map.put("MEMBER_IDX", session.getAttribute("member_idx"));
+		Map<String, Object> list = houseService.selectOneMember(map.getMap());
+		mv.addObject("MEMBER", list);
 		return mv;
 	}
 
 	// house register insert view mapping detail 2
 	// INSERT 후의 페이지
 	@RequestMapping(value = "/house/houseRegister2.do")
-	public ModelAndView houseRegisterView2(CommandMap map, HttpServletRequest request) throws Exception {
+	public ModelAndView houseRegisterView2(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("houseRegister2");
+		map.put("MEMBER_IDX", session.getAttribute("member_idx"));
+		Map<String, Object> list = houseService.selectOneMember(map.getMap());
+		mv.addObject("MEMBER", list);
 		mv.addObject("map", map.getMap());
-
-		System.out.println(map.get("HOUSE_ADDR1") + "**************************");
 		return mv;
 	}
 
@@ -148,9 +153,7 @@ public class HouseController {
 		} else {
 			map.put("MY_MEMBER_IDX", session.getAttribute("member_idx"));
 		}
-		System.out.println(map.getMap()+"dddddddddddddddddd");
 		houseService.insertHouse(map.getMap(), request);
-		
 		houseService.updateTotalPrice(map.getMap());
 		return mv;
 	}
@@ -428,24 +431,40 @@ public class HouseController {
 	//하우스 예약 폼
 	
 	@RequestMapping(value="/house/houseReserveForm.do",method=RequestMethod.GET)
-	public ModelAndView houseReserveForm(CommandMap commandMap) throws Exception {
+	public ModelAndView houseReserveForm(CommandMap map) throws Exception {
 		ModelAndView mv = new ModelAndView("HouseReserveForm");
 		
-		Map<String, Object> houseReserve = houseService.selectHouseDetail(commandMap.getMap());
+		Map<String, Object> houseReserve = houseService.selectHouseDetail(map.getMap());
+		
 		mv.addObject("houseReserve", houseReserve);
+		mv.addObject("HR_PERSONS", map.get("HR_PERSONS"));
+		mv.addObject("HR_FIRST_DATE",map.get("HR_FIRST_DATE"));
+		mv.addObject("HR_LAST_DATE",map.get("HR_LAST_DATE"));
 		return mv;
 	}
 	
 	//하우스 예약하기
-	@RequestMapping(value="/house/houseReserve.do",method=RequestMethod.POST)
-	public ModelAndView houseReserve(CommandMap commandMap) throws Exception {
+	@RequestMapping(value="/house/houseReserve.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView houseReserve(CommandMap map, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/house/houseMain.do");
 		
-		houseService.houseReserve(commandMap.getMap());
+		houseService.houseReserve(map.getMap());
 		
 		return mv;
 	}
-	
+	@RequestMapping(value="/pluseList.do", method = RequestMethod.GET)
+	public ModelAndView pluseList(CommandMap map, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("/house/houseList_ajax");
+		map.put("FIRST_INDEX", request.getParameter("FIRST_INDEX"));
+		map.put("LAST_INDEX", request.getParameter("LAST_INDEX"));
+		System.out.println( request.getParameter("FIRST_INDEX")+"00000000000000"+request.getParameter("LAST_INDEX"));
+		List<Map<String, Object>> list = houseService.selectHouseList2(map.getMap());
+		List<Map<String, Object>> list_size = houseService.searchHouseList(map.getMap());
+		mv.addObject("list", list);
+		mv.addObject("last_index",request.getParameter("LAST_INDEX"));
+		mv.addObject("list_size",list_size.size());
+		return mv;
+	}
 	
 
 }
