@@ -194,4 +194,9 @@ public class HouseDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("house.selectHouseList2", map);
 	}
 
+	public void updateHouseInfo(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

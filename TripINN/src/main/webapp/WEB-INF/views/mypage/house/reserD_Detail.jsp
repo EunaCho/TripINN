@@ -4,27 +4,32 @@
 <% String cp = request.getContextPath(); %>
 <style>
 	.left_div{
-		border:1px solid black;
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
 		margin-bottom:20px;
 		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:210px;
 		float:left;
 	}
 	.side_list{
-		border:1px solid black;
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
 		margin:20px;
     	width:150px;
-    	height:27px;	
+    	height:27px;
+    	text-align:center;	
 	} 
 	.side-text{
 		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
-    	text-decoration:none
+   	 	font-size: 15px;
+    	color:#6a6c6d;
+    	text-decoration:none;
 	}
 	.right_div{
-		border:1px solid black;
+	/* 	border:1px solid black; */
 	
 		margin-left:40px;
 		width:825px;
@@ -101,7 +106,7 @@
 		</div>
 		
 		<div class="side_list">
-				<a href="<%=cp%>/mypage/H_reserDelete.do" class="side-text">예약취소목록</a>
+				<a href="<%=cp%>/mypage/H_reserDelete.do" class="side-text" style="border-bottom:2px solid #cb4242;">예약취소목록</a>
 		</div>	
 	</div>
 

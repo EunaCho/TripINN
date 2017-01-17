@@ -14,7 +14,7 @@
     to_date(#{trip_first_date}, 'YYYY-MM-DD HH24:MI'), to_date(#{trip_last_date}, 'YYYY-MM-DD HH24:MI'),
      #{trip_include}, #{trip_zipcode}, #{trip_addr1}, #{trip_addr2}, #{trip_addr3},
       #{trip_image}, #{trip_pprice}, #{trip_tprice}, #{trip_persons}, #{member_idx}, 0)
-	</insert>
+	</insert> 
 	
 	<select id="tripList" parameterType="HashMap" resultType="HashMap">
 	<include refid="common.pagingPre"/> 
@@ -133,6 +133,27 @@ report_state, report_type, member_idx, trip_idx)
 	<delete id="reviewDel" parameterType="String">
 		delete from trip_review_board where trb_idx=#{parameter}
 	</delete>
+	
+	<insert id="sendMsg" parameterType="HashMap">
+	insert into message (
+		msg_idx, receive_member_email, member_idx, msg_state, msg_type, msg_content, 
+		msg_title, trip_idx, send_date
+		)values(
+		MSG_IDX_SEQ.NEXTVAL, #{receive_member_email}, #{member_idx}, 0, 1, 
+		#{msg_content}, #{msg_title}, #{trip_idx}, SYSDATE
+		)
+	</insert>
+	
+	<update id="tripUpdate" parameterType="HashMap">
+		update trip set 
+			trip_area=#{trip_area}, trip_type=#{trip_type}, trip_language=#{trip_language},
+			trip_name=#{trip_name}, trip_intro=#{trip_intro}, 
+			trip_first_date=to_date(#{trip_first_date}, 'YYYY-MM-DD HH24:MI'),
+			 trip_last_date=to_date(#{trip_last_date}, 'YYYY-MM-DD HH24:MI'),
+			trip_zipcode=#{trip_zipcode}, trip_addr1=#{trip_addr1}, trip_addr2=#{trip_addr2}, trip_addr3=#{trip_addr3},
+			trip_pprice=#{trip_pprice}, trip_persons=#{trip_persons}, trip_tprice=#{trip_tprice} 
+		where trip_idx=#{trip_idx}
+	</update>
 </mapper>
 
 

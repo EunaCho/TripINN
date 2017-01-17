@@ -27,7 +27,7 @@ import com.common.common.ConvertAddress;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
-public class TripController {
+public class TripController { 
 	
 	@Resource(name="tripService")
 	private TripService tripService;
@@ -288,6 +288,50 @@ public class TripController {
 		tripService.reviewDel(request.getParameter("trb_idx"));
 		
 		mv.addObject("trip_idx", request.getParameter("trip_idx"));
+		return mv;
+	}
+	
+	@RequestMapping("/trip/sendMssg.do")
+	public ModelAndView sendMssg(HttpServletRequest request, HttpSession session) {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do?trip_idx="+request.getParameter("trip_idx"));
+		Map<String, Object> map = new HashMap<>();
+		String house_idx = request.getParameter("trip_idx");
+		String receive_member_email = request.getParameter("receive_member_email"); //받는 이메일
+		String msg_title = request.getParameter("msg_title");
+		String msg_content = request.getParameter("msg_content");
+		
+		map.put("receive_member_email", receive_member_email);     // 받는 사람
+		map.put("member_idx", session.getAttribute("member_idx")); // 보내는 사람
+		map.put("msg_content", msg_content);
+		map.put("msg_title", msg_title);
+		map.put("trip_idx", house_idx);
+		tripService.sendMssg(map);
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripUpdateForm.do")
+	public ModelAndView tripUpdateForm(CommandMap commandMap, HttpSession session) {
+		ModelAndView mv = new ModelAndView("tripUpdateForm");
+		
+		if(session.getAttribute("member_idx") == null) {
+			commandMap.put("member_idx", "0");
+		} else {
+			commandMap.put("member_idx", session.getAttribute("member_idx"));
+		}
+		
+		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap()); // 트립 정보 map
+		
+		
+		mv.addObject("trip", map);
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripUpdate.do", method=RequestMethod.POST)
+	public ModelAndView tripUpdate(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		tripService.tripUpdate(commandMap.getMap());
+		
+		mv.addObject("trip_idx", commandMap.get("trip_idx"));
 		return mv;
 	}
 }

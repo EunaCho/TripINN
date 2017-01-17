@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
-<% String cp = request.getContextPath(); %>
+
 
 <!-- 작성자: 이진욱 -->
 <!-- 스타일적용1 -->
@@ -62,7 +62,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
   
    	<!-- 글자 감싸는 영역 -->
    	<div class="howToUse" style="text-align:center">
-   		<h1>이용 방법</h1>
+   		<h1>글쓰기 페이지</h1>
    </div>
    
    <form id="frm">
@@ -78,7 +78,6 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
    		<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>Faq 글작성</strong></font>
 	 </div>
 				
-		<br>
             <tbody>
                 <tr>
                     <th scope="row">제목</th>
@@ -86,8 +85,7 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
                 </tr>
                 	<!-- 회원번호값, FAQ유형값을 세션으로 받아오고 hidden으로 숨겨서 컨트롤러에 전송 -->
                 	<input type="hidden" id="MEMBER_IDX" name="MEMBER_IDX" value="<%=session.getAttribute("member_idx") %>" />
-                	<input type="hidden" id="FAQ_TYPE" name="FAQ_TYPE" value="1" />
-				
+                	<input type="hidden" id="FAQ_TYPE" name="FAQ_TYPE" value="${faq_type}" />
                 <tr>
                 	<th scope="row">내용</th>
                     <td colspan="2" class="view_text">
@@ -98,13 +96,75 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
         </table>
     </form>
     
-    <br> 
-   	<a href="#this" class="btn_list" id="list" >목록으로</a> 
+    	<c:if test="${faq_type == '1'}">
+			<a href="#this" class="btn_list" id="list" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '2'}">
+			<a href="#this" class="btn_list" id="list1" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '3'}">
+			<a href="#this" class="btn_list" id="list2" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '4'}">
+			<a href="#this" class="btn_list" id="list3" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '5'}">
+			<a href="#this" class="btn_list" id="list4" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '6'}">
+			<a href="#this" class="btn_list" id="list5" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '7'}">
+			<a href="#this" class="btn_list" id="list6" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '8'}">
+			<a href="#this" class="btn_list" id="list7" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '9'}">
+			<a href="#this" class="btn_list" id="list8" >목록으로</a>
+		</c:if>
+		<c:if test="${faq_type == '10'}">
+			<a href="#this" class="btn_list" id="list9" >목록으로</a>
+		</c:if>
+		
+   	 
    	
-   	<!-- 작성하기버튼 감싸는 영역 -->
-   	<div style="text-align:right; margin-right:280px;"> 	
-   		<a href="#this" class="btn_write" id="write" >작성하기</a>  
-    </div>  
+	<!-- 작성하기버튼 감싸는 영역 -->
+   	<div style="text-align:right; margin-right:280px;"> 
+   		<c:if test="${faq_type == '1'}">
+			<a href="#this" class="btn_write" id="write" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '2'}">
+			<a href="#this" class="btn_write" id="write1" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '3'}">
+			<a href="#this" class="btn_write" id="write2" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '4'}">
+			<a href="#this" class="btn_write" id="write3" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '5'}">
+			<a href="#this" class="btn_write" id="write4" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '6'}">
+			<a href="#this" class="btn_write" id="write5" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '7'}">
+			<a href="#this" class="btn_write" id="write6" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '8'}">
+			<a href="#this" class="btn_write" id="write7" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '9'}">
+			<a href="#this" class="btn_write" id="write8" >작성하기</a>
+		</c:if>
+		<c:if test="${faq_type == '10'}">
+			<a href="#this" class="btn_write" id="write9" >작성하기</a>
+		</c:if>
+ 			
+		
+   		  
+    </div>
     
    
      
@@ -116,11 +176,85 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
             e.preventDefault();
             fn_faqBoardList();
         });
-         
+        $("#list1").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList1();
+        });
+        $("#list2").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList2();
+        });
+        $("#list3").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList3();
+        });
+        $("#list4").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList4();
+        });
+        $("#list5").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList5();
+        });
+        $("#list6").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList6();
+        });
+        $("#list7").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList7();
+        });
+        $("#list8").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList8();
+        });
+        $("#list9").on("click", function(e){ //목록으로 버튼
+            e.preventDefault();
+            fn_faqBoardList9();
+        });
+        
         $("#write").on("click", function(e){ //작성하기 버튼
             e.preventDefault();
             fn_faqInsertBoard();
         });
+        $("#write1").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard1();
+        });
+        $("#write2").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard2();
+        });
+        $("#write3").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard3();
+        });
+        $("#write4").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard4();
+        });
+        $("#write5").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard5();
+        });
+        $("#write6").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard6();
+        });
+        $("#write7").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard7();
+        });
+        $("#write8").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard8();
+        });
+        $("#write9").on("click", function(e){ //작성하기 버튼
+            e.preventDefault();
+            fn_faqInsertBoard9();
+        });
+
+        
     });
      
     function fn_faqBoardList(){
@@ -128,10 +262,101 @@ a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
         comSubmit.setUrl("<c:url value='/admin/faqList.do' />");
         comSubmit.submit();
     }
+    function fn_faqBoardList1(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList1.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList2(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList2.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList3(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList3.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList4(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList4.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList5(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList5.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList6(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList6.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList7(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList7.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList8(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList8.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqBoardList9(){
+        var comSubmit = new ComSubmit();
+        comSubmit.setUrl("<c:url value='/admin/faqList9.do' />");
+        comSubmit.submit();
+    }
+    
      
     function fn_faqInsertBoard(){
         var comSubmit = new ComSubmit("frm");
         comSubmit.setUrl("<c:url value='/admin/faqWriteInsert.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard1(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert1.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard2(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert2.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard3(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert3.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard4(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert4.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard5(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert5.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard6(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert6.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard7(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert7.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard8(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert8.do' />");
+        comSubmit.submit();
+    }
+    function fn_faqInsertBoard9(){
+        var comSubmit = new ComSubmit("frm");
+        comSubmit.setUrl("<c:url value='/admin/faqWriteInsert9.do' />");
         comSubmit.submit();
     }
 	</script>

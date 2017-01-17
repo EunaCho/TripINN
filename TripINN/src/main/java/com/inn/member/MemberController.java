@@ -37,17 +37,34 @@ public class MemberController {
 	//회원가입
 	@RequestMapping(value="/memberJoin.do", method=RequestMethod.POST)
 	public ModelAndView memberJoin(CommandMap commandMap) throws Exception {
-		//Validate Binding ??
-		//new MemberValidator().validate(member, result);
-		//memberService로 넘어가서 memberJoin 메서드 실행
-		System.out.println("맵");
-		System.out.println(commandMap.getMap());
-		memberService.memberJoin(commandMap.getMap());
-		//회원가입 완료 후 메인페이지로 돌아감
-		mav.setViewName("redirect:/main.do"); 
-		return mav;
+		
+		int chk = (int)memberService.memberEmailCheck(commandMap.getMap());
+		
+		//기존 DB에 이메일이 없으면
+		if (chk == 0) {
+			memberService.memberJoin(commandMap.getMap()); //회원정보 MEMBER 테이블에 insert
+			//회원가입 완료 후 이전페이지로 돌아감
+			mav.setViewName("member/joinSuccess"); 
+		} else {
+			//회원정보가 없으면 에러 페이지 출력
+			mav.setViewName("member/joinError");
+		}
+		return mav; 
 	}   
-
+	
+	/*//가입된 이메일인지 체크
+	@RequestMapping(value="/memberEmailCheck.do", method=RequestMethod.POST)
+	public int memberEmailCheck(CommandMap commandMap) throws Exception {
+	
+		System.out.println("이메일체크 : chk 값");
+		int chk = (int)memberService.memberEmailCheck(commandMap.getMap());
+		System.out.println(chk);
+		System.out.println("체크완료");
+				
+				
+		return chk;
+	}
+*/
 	//로그인
 	@RequestMapping(value="/memberLogin.do", method=RequestMethod.POST) //'memberLogin.do' 명령을 받을 경우 실행되는 로직
 	public ModelAndView memberLogin(HttpServletRequest request, CommandMap commandMap) throws Exception {
@@ -64,7 +81,6 @@ public class MemberController {
 			session.setAttribute("member_email", memberMap.get("MEMBER_EMAIL"));
 			session.setAttribute("member_name", memberMap.get("MEMBER_NAME"));
 			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
-			session.setAttribute("member_phone", memberMap.get("MEMBER_PHONE"));
 			//로그인 완료 후 메인페이지로 돌아감
 			mav.setViewName("redirect:/main.do"); 
 			//System.out.println(memberMap.get("MEMBER_IDX"));
@@ -72,7 +88,7 @@ public class MemberController {
 			
 		}
 		//회원정보가 없으면 에러 페이지 출력
-		//mav.setViewName("member/loginError");
+		mav.setViewName("member/loginError");
 		return mav;
 	}
 	

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service("testService")
-public class TestServiceImpl implements TestService {
+public class TestServiceImpl implements TestService { 
 	
 	@Resource(name="testDAO")
 	private TestDAO testDAO;

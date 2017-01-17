@@ -9,6 +9,7 @@
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="/TripINN/js/house/openHouseRegister.js"></script>
 <script>
+
 var imgArray = new Array();
 var imgNum = 2;
 function createImg() {
@@ -33,6 +34,7 @@ function createImg() {
 	$("#house_img_container"+ imgNum).append(chtml);
 	imgArray.push("house_img_file"+imgNum);
 	imgNum++;
+
 //	alert("배열 길이"+imgArray.length+"배열"+imgArray);
 	
 	
@@ -50,10 +52,15 @@ function createImg() {
 							<progress class="progressBar" max="100" value="100"></progress>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="hrLabelName">${MEMBER.MEMBER_NAME }님의<!--  <br />  &nbsp;&nbsp;-->&nbsp; 숙소 등록하기</div>
+=======
+					<div class="hrLabelName">님 안녕하세요! <br /> &nbsp;&nbsp;&nbsp; 호스트가 될 준비를 시작해보세요.</div>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 				</div>
 		</div>
 		<div style="clear:both"></div>
+<<<<<<< HEAD
 		<div id="leftDiv2">
 		<ul>
 		<div style="color:#fff;height:30px;"><h4>숙소 정보 입력</h4></div>
@@ -62,9 +69,7 @@ function createImg() {
 			<li onclick="fnMove('8')" id="title3">체크인, 체크아웃</li>
 			<li onclick="fnMove('9')" id="title4">요금 관련</li>
 			<li onclick="fnMove('10')" id="title5">제공하는 공간</li>
-		
-		</ul>
-		</div>
+
 		<!-- *********data start********* -->
 		<form name="registerFrm" method="post" action="houseRegisterInput.do" enctype="multipart/form-data" onsubmit="return check2();">
 		
@@ -90,11 +95,16 @@ function createImg() {
 				<!-- house_image -->
 					<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">숙소 이미지 등록</div>
+					<div class="hrLabel1">숙소 이미지를 등록해주세요.</div>
 					<div class="hrData">
 						<div class="hrLabelSub">
+<<<<<<< HEAD
 						<label class="hrLabelImg">사용자에게 제공할 이미지를 등록해주세요</label> <br/>
 						<input type="button" value="이미지 추가" onclick="javascript:createImg()" class="hrPersonsBtn" id="HOUSE_IMG" onclick="titleNI2"/>
+=======
+						<label class="hrLabelImg">사용자에게 제공할 이미지를 등록해주세요</label>
+						<input type="button" value="이미지 추가" onclick="javascript:createImg()" class="hrPersonsBtn"/>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 						</div>
 						
 						<!-- 이미지 추가 -->
@@ -117,14 +127,18 @@ function createImg() {
 					</div>
 					</div>
 					</div>
+<<<<<<< HEAD
 					<div style=" width:90%; margin:1%; color: #B9B9B9; border-bottom:1px solid;"></div>
 				
+=======
+					
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 				<!-- 적합한 게스트 유형 -->
 				<!-- hi_guest -->
 				<div>
 				<div class="hrDiv3">
 					<div class="hrBorder">
-					<div class="hrLabel1">적합한 게스트 유형</div>
+					<div class="hrLabel1">적합한 게스트 유형은 무엇입니까?</div>
 					<div class="hrData">
 						<select class="hrSelect" name="HI_GUEST" id="HI_GUEST" onchange="titleNI2();">
 							<option value="">선택</option>
@@ -140,27 +154,41 @@ function createImg() {
 				<!-- hi_checkin, hi_checkout -->
 				<div class="hrDiv3">
 					<div class="hrBorder">
+<<<<<<< HEAD
 					<div class="hrLabel1">체크인, 체크아웃</div>
 					<div class="hrData"><input type="date" name="HI_CHECKIN" class="hrText2" id="HOUSE_CHECKIN"/></div>
 					<div class="hrData"><input type="date" name="HI_CHECKOUT" class="hrText2" id="HOUSE_CHECKOUT"/></div>
+=======
+					<div class="hrLabel1">체크인, 체크아웃을 설정해주세요</div>
+					<div class="hrData"><input type="date" name="HI_CHECKIN" class="hrText"/></div>
+					<div class="hrData"><input type="date" name="HI_CHECKOUT" class="hrText"/></div>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 					</div>
 				</div>
 				
 				<!-- hi_room, hi_bad -->
 				<div class="hrDiv3">
 					<div class="hrBorder">
-					<div class="hrLabel1">제공하는 방 개수</div>
+					<div class="hrLabel1">제공하는 방 개수를 설정해주세요.</div>
 					<div class="hrData">
+<<<<<<< HEAD
 						<input type="number" class="hrText2" style="width:165px;" name="HI_ROOM" id="HI_ROOM" readonly="readonly" placeholder="버튼을 이용하세요.">
 						<input type="button" class="optionBtn" onclick="optionBtn(7);" value="+">
 						<input type="button" class="optionBtn" onclick="optionBtn(8);" value="-">
+=======
+						<input type="number" class="hrText" name="HI_ROOM">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 					</div>
 					
-					<div class="hrLabel1">제공하는 침대 개수</div>
+					<div class="hrLabel1">제공하는 침대 개수를 설정해주세요.</div>
 					<div class="hrData">
+<<<<<<< HEAD
 					<input type="number" class="hrText2" style="width:165px;" name="HI_BAD" id="HI_BAD" readonly="readonly" placeholder="버튼을 이용하세요.">
 					<input type="button" class="optionBtn" onclick="optionBtn(9);" value="+">
 					<input type="button" class="optionBtn" onclick="optionBtn(10);" value="-">
+=======
+					<input type="number" class="hrText" name="HI_BAD">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 					</div>
 					
 					</div>
@@ -168,42 +196,55 @@ function createImg() {
 				</div>
 				<div style="clear:both"></div>
 				
+<<<<<<< HEAD
 				<div style=" width:90%; margin:1%; color: #B9B9B9; border-bottom:1px solid;"></div>
+=======
+				<!-- 요금관련 -->
+				<div>요금관련</div>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 				
 				<!-- hi_deposit, hi_clean_price, hi_sale-->
 				<div class="hrDiv">
-					
 				<div class="hrBorder">
-				<!-- 요금관련 -->
-				<div class="hrLabel1">요금관련</div>
-				
 					<div class="hrAddrLeft">
 					
 					<div class="hrDivPrice">
 					<div class="hrLabel1">할인율</div>
 					<div class="hrData">
+<<<<<<< HEAD
 						<input type="number" class="hrText2 hrText3" name="HI_SALE" id="HI_SALE" readonly="readonly" placeholder="버튼을 이용하세요.">
 						<input type="button" class="optionBtn" onclick="optionBtn(1);" value="+">
 						<input type="button" class="optionBtn" onclick="optionBtn(2);" value="-">
 					</div>
+=======
+						<input type="number" class="hrText" name="HI_SALE">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 					</div>
 					
 					<div class="hrDivPrice">
 					<div class="hrLabel1">청소비</div>
 					<div class="hrData">
+<<<<<<< HEAD
 						<input type="number" class="hrText2 hrText3" name="HI_CLEAN_PRICE" id="HI_CLEAN_PRICE" readonly="readonly" placeholder="버튼을 이용하세요.">
 						<input type="button" class="optionBtn" onclick="optionBtn(3);" value="+">
 						<input type="button" class="optionBtn" onclick="optionBtn(4);" value="-">
 					</div>
+=======
+						<input type="number" class="hrText" name="HI_CLEAN_PRICE">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 					</div>
 					
 					<div class="hrDivPrice">
 					<div class="hrLabel1">보증금</div>
 					<div class="hrData">
+<<<<<<< HEAD
 						<input type="number" class="hrText2 hrText3" name="HI_DEPOSIT" id="HI_DEPOSIT" readonly="readonly" placeholder="버튼을 이용하세요.">
 						<input type="button" class="optionBtn" onclick="optionBtn(5);" value="+">
 						<input type="button" class="optionBtn" onclick="optionBtn(6);" value="-">
 					</div>
+=======
+						<input type="number" class="hrText" name="HI_DEPOSIT">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 					</div>
 					
 					</div>
@@ -211,20 +252,28 @@ function createImg() {
 				</div>
 				<div style="clear:both"></div>
 				
+<<<<<<< HEAD
 				<div style=" width:90%; margin:1%; color: #B9B9B9; border-bottom:1px solid;"></div>
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 				
 				
 				<!-- 제공하는 이용공간 및 편의시설 -->
 				<!-- hi_space, hi_cspace -->
 				<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">제공하는 공간</div>
+					<div class="hrLabel1">제공하는 공간을 선택해주세요.</div>
 					
 					<div class="hrDiv4">
 					<div class="hrLabel1">편의 시설</div>
 					<div class="hrData selectFont">
+<<<<<<< HEAD
 						<input type="checkbox" name="HI_SPACE" value="필수 품목" id="HI_SPACE" checked="checked">필수 품목 :&nbsp;
 						<label style="color:rgba(52, 42, 42, 0.68); font-size:10px;">수건, 침대시트, 비누, 화장지</label><br/>
+=======
+						<input type="checkbox" name="HI_SPACE" value="필수 품목">필수 품목<br/>
+						<label>수건, 침대시트, 비누, 화장지</label><br/>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN
 						<input type="checkbox" name="HI_SPACE" value="무선 인터넷">무선 인터넷<br/>
 						<input type="checkbox" name="HI_SPACE" value="샴푸">샴푸<br/>
 						<input type="checkbox" name="HI_SPACE" value="옷장/서랍장">옷장/서랍장<br/>

@@ -9,10 +9,10 @@
 			INSERT INTO MEMBER 
 				(member_idx, member_email, 
 				  member_name, member_pwd, 
-				  member_phone)
+				  member_phone, member_image)
 			VALUES (member_idx_seq.nextval, #{member_email}, 
 			#{member_name}, #{member_pwd}, 
-			#{member_phone})   
+			#{member_phone}, 'basic_profile.png')   
 	</insert>
 	
 	<!-- 로그인 -->
@@ -21,5 +21,11 @@
 		FROM MEMBER
 		WHERE member_email = #{member_email} and member_pwd = #{member_pwd}
 	</select>
+	
+	<select id="memberEmailCheck" parameterType="hashmap" resultType="int">
+		select count(*) from Member where MEMBER_EMAIL=#{member_email}
+	</select>
+
+
 
 </mapper>

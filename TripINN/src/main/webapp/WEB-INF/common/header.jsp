@@ -7,6 +7,8 @@
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
 
+
+
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
 <a href="<%=cp %>/main.do"><img src="<%=cp %>/images/logo.png"/> </a>
 	<div class="inner">	
@@ -16,9 +18,9 @@
 		<c:if test="${sessionScope.member_email != null}">
 			<span><a href="/TripINN/member/memberLogout.do" onclick="logout();">로그아웃</a></span>
 			<span><a href="<%=cp %>/house/houseRegisterMain.do">호스팅하기</a></span>	
-			<span><a href="<%=cp %>/qnaList.do">도움말</a></span>
+			<span><a href="<%=cp %>/admin/faqList.do">도움말</a></span>
 			<span><a href="<%=cp %>/mypage/notice.do">마이페이지</a></span>
-			<span><a href="<%=cp %>/qnaWrite.do">1:1문의</a></span>
+			<span><a href="<%=cp %>/admin/qnaList.do">1:1문의</a></span>
 		</c:if>
 		
 

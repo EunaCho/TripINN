@@ -152,8 +152,7 @@ public class AdminQnaController {
         public ModelAndView qnaCommDelete(CommandMap commandMap) throws Exception{
         	ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
  
-        	System.out.println(commandMap.getMap());
-        	
+   
             adminQnaService.qnaCommDelete(commandMap.getMap());
             
             mv.addObject(commandMap.getMap());
@@ -181,9 +180,14 @@ public class AdminQnaController {
 
     	
         ModelAndView mv = new ModelAndView("redirect:/admin/qnaDetail.do");
-         
+        
+        System.out.println("뭐라고");
+        System.out.println(commandMap.getMap());
+        
         adminQnaService.adminQnaUpdatePro(commandMap.getMap());
-
+        
+        System.out.println(commandMap.getMap());
+        
         //해당 게시글의 글 번호를 mv.addObject 메서드를 이용하여 다시 전송
         mv.addObject("QNA_IDX", commandMap.get("QNA_IDX"));
         return mv;

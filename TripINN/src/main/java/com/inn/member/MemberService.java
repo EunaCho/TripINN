@@ -14,6 +14,8 @@ public interface MemberService {
 	void memberEmailFind(Map<String, Object> map) throws Exception;
 	
 	void memberPwFind(Map<String, Object> map) throws Exception;
+
+	Object memberEmailCheck(Map<String, Object> map) throws Exception;
 	
 
 }

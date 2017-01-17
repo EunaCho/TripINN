@@ -19,13 +19,13 @@ public class MypageDAO extends AbstractDAO {
 	//--------------------------------------메시지 ----------------------------------------//
 	//보낸 메시지 리스트
 	@SuppressWarnings("unchecked")//경고 제외 어노테이션
-	public List<Map<String, Object>> selectSendMsgList(Map<String, Object> map){
-		return (List<Map<String, Object>>) selectList("mypage.selectSendMsgList", map);
+	public Map<String, Object> selectSendMsgList(Map<String, Object> map){
+		return (Map<String, Object>) selectPagingList("mypage.selectSendMsgList", map);
 	}
 	@SuppressWarnings("unchecked")//경고 제외 어노테이션
 	//받은 메시지 리트스 
-	public List<Map<String, Object>> selectReceiveMsgList(Map<String, Object> map){
-		return (List<Map<String, Object>>) selectList("mypage.selectReceiveMsgList", map);
+	public Map<String, Object> selectReceiveMsgList(Map<String, Object> map){
+		return (Map<String, Object>) selectPagingList("mypage.selectReceiveMsgList", map);
 	}
 	//보낸 메시지 상세보기 
 	public Map<String, Object> selectSendMsgDetail(Map<String, Object> map){
@@ -47,12 +47,16 @@ public class MypageDAO extends AbstractDAO {
 
 	//----------------------------------------숙소목록-----------------------------------------//
 	//숙소목록 리스트
-	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>)selectList("mypage.selectHouseList", map);
+	public Map<String, Object> selectHouseList(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectPagingList("mypage.selectHouseList", map);
 	}
 	//숙소 상세보기 
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>)selectOne("mypage.selectHouseDetail", map);
+	}
+	//숙소 상세보기 ->숙소 수정하기 
+	public Map<String, Object> selectHouseModify(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectOne("mypage.selectHouseModify", map);
 	}
 	//해당 숙소예약 리스트
 	public List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception{
@@ -99,8 +103,8 @@ public class MypageDAO extends AbstractDAO {
 	
 	//--------------------------------트립목록------------------------------------------
 	//내가 등록한 트립 리스트
-	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>) selectList("mypage.selectTripList", map);
+	public Map<String, Object> selectTripList(Map<String, Object> map) throws Exception{
+		return  (Map<String, Object>) selectPagingList("mypage.selectTripList", map);
 	}
 	//트립리스트 상세보기 
 	public Map<String, Object> selectTripDetail(Map<String, Object> map) throws Exception{
@@ -155,5 +159,24 @@ public class MypageDAO extends AbstractDAO {
 	//내 트립 위시시트스 
 	public Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception{
 		return selectPagingList("mypage.selectMy_TripList", map);
+	}
+	
+	//숙소 위시리스트 삭제
+	public void deleteHouseWish(Map<String, Object> map) throws Exception{
+		delete("mypage.deleteHouseWish", map);
+	}
+	//트립위시리스트 삭제 
+	public void deleteTripWish(Map<String, Object> map) throws Exception{
+		delete("mypage.deleteTripWish", map);
+	}
+
+	public void messageDel(String msg_idx) {
+		delete("mypage.messageDel", msg_idx);
+	}
+	
+	//----------------프로필---------------
+	//프로필 수정 
+	public void updateMemberPlofile(Map<String, Object> map) throws Exception{
+		update("mypage.updateMemberPlofile", map);
 	}
 }

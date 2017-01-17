@@ -121,17 +121,70 @@
 
 
 
-<!-- 스타일 적용2 -->
-<style>   
-ul{width:172px;height:340px;background:blue;opacity:0.4;list-style:none;padding-top:15px;}
+<!--가운데 좌측영역 스타일 적용-->
+<style>
+ 
+ #dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:300px;
+			margin-top:-20px;
+			}
 
-li{margin-right:50px }
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
 
-.left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
-.tbl { width:1000px; border:1px; }
-
-
-</style> 
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+</style>
 
   <br><br>
   
@@ -141,28 +194,50 @@ li{margin-right:50px }
 </div>
 
 <!-- 가운데 영역 전체(좌측+우측) -->
-  	<div style="width:100%;height:90%;border:1px solid black;">
+  	<div style="width:100%;height:auto;">
 	<!--
 	<div style="height:100%; border:1px solid black; margin:0px auto; display:table;">
 	-->
-	<!-- 가운데 좌측영역 -->
-	<div style="width:215px;height:380px;border:1px solid black;text-align:center; float:left;">
-  	 	<ul class="left-ul">
-     	 	<li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-         	<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
+	
+	<!-- 가운데 좌측 영역 -->
+   <div style="width:16.8%;height:100%;border:0px solid black;text-align:center;float:left;">	
+	   <section>
+				<nav style="width:250px;height:400px;margin-top:30px;">
 
-         	<li><a href = "http://www.naver.com"><h2>숙소관리</h2></a></li>
-         	<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-
-         	<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-         	<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-      
-        	<li><a><h2>문의게시판</h2></a></li>
-         	<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-
-       		<li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-  	 	</ul>
-	</div><!-- 좌측side div End -->
+					<ul id="dropdown2">
+					<c:if test="${member_level == '1'}">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
+						<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/memberList.do">회원관리</a></li>
+						</ul>
+						</li>
+						
+						<li><a href="http://localhost:8080/TripINN/admin/houseList.do">숙소관리</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+						
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do">투어관리</a>
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+					</c:if>
+						<li>문의게시판
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do">Q&A</a></li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">FAQ</a></li>
+							
+							</ul>
+						</li>
+						
+					</ul>
+				</nav>
+		</section>
+   
+   </div>
+	
 
 	<!-- 가운데 우측영역 -->
 	<div style="width:1050px;height:100%; border:1px; text-align:center; top:208px;left:400px; margin:auto;">
@@ -265,27 +340,41 @@ li{margin-right:50px }
 	      				
 				</div><!-- 댓글영역5 끝 -->
 			</div><!-- 댓글영역4 끝 -->
-				
-	
+			
+			<!-- 댓글목록 글씨 감싸는 영역 -->		
+			<div style="text-align:left;">
+				댓글목록<br><br>
+			</div>
+		
 		</div ><!-- 댓글영역3 끝 -->
 			
 		<!-- 댓글 차례로 보여주는 창 -->
+		
 			<c:forEach var="list" items="${commList}">
-				
-				<!-- 댓글영역 7 -->	
-			<div style="border:1px;margin-bottom:5px;width:830px;float:left;">	
-				<div style="border:1px;margin-bottom:15px;width:95%;float:left;">
-					<div class="comm_cts" style = "border:1px solid black;border-radius:3px; width: 800px; height: 70px;margin:0px;margin-right:0px;">
-						${list.QCO_CONTENT}
+			
+			<!-- Admin글씨와 댓글창을 감싸는 영역 -->
+			<div>
+				<!-- Admin글씨 감싸는 영역 -->
+				<div style="width:100%;text-align:left;float:left">
+					Admin:
+				</div>	
+					<!-- 댓글영역 7 -->	
+				<div style="border:1px;width:830px;float:left;margin-bottom:20px">	
+					<div style="border:1px;margin-bottom:0px;width:95%;">
+						<div class="comm_cts" style = "border:1px solid black;border-radius:3px; width: 800px; height: 70px;margin:0px;margin-right:0px;">
+							${list.QCO_CONTENT}
+						</div>
 					</div>
 				</div><!-- 댓글영역 7 끝 -->
-			</div>	
+				
+			</div><!-- Admin글씨와 댓글창을 감싸는 영역 끝 -->
 				<!-- 댓글영역8(댓글삭제버튼 감쌈) -->
-				<div style="width:120px; height:40px; float:left;margin-top:10px;">
-					<c:if test="${member_level == 1}">
+				<c:if test="${member_level == 1}">
+				<div style="width:120px; height:40px; float:left;margin-top:0px;margin-left:-60px">
+					
 						<input type="button" class="btn_del_2" onclick="qnaCommDelete(${list.QCO_IDX})" value="댓글삭제"/>
-					</c:if>
 				</div>
+					</c:if>
 			</c:forEach>
 			
 			</div><!-- 댓글영역 2 끝 -->
@@ -297,8 +386,8 @@ li{margin-right:50px }
 
 
 		</div><!-- 댓글쓰는 창(댓글영역 1) 끝 -->
-	</div><!-- 가운데 영역 끝 -->
+	</div><!-- 가운데 우측 영역 끝 -->
 </div><!-- 전체  -->
  
 <!-- 댓글영역 11? -->
-<div style="clear:both; border:1px solid green;" ></div>
+<div style="clear:both;" ></div>

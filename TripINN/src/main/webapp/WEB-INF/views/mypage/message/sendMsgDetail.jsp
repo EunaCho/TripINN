@@ -5,31 +5,37 @@
 <% String cp = request.getContextPath(); %>
 <style>
 	.side_menu{
-		border:1px solid black;
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
 		margin-bottom:20px;
-		margin-left:100px;
+		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:210px;
 		float:left;
 	}
 	.side_list{
-		border:1px solid black;
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
 		margin:20px;
     	width:150px;
-    	height:27px;	
+    	height:27px;
+    	text-align:center;	
 	} 
 	.side-text{
 		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
+   	 	font-size: 15px;
+    	color:#6a6c6d;
     	text-decoration:none;
 	}
 	.side_button{
 		color: #fff;
-		background-color:#31b0d5;
+		background-color:#b0bdbe;
 		border-color:#269abc;
 		border-radius:2px;
 		width:150px;
+		height:30px;
 		display: inline-block;
     	margin-bottom: 0;
     	font-size: 14px;
@@ -40,14 +46,14 @@
     	border-radius: 4px;
 	}
 	.button_div{
-		border:1px solid black;
+		border:0px solid black;
 		margin-top:50px;
 		margin-left:20px;
 		width:150px;
 		height:30px;
 	}
 	.right_div1{
-		border:1px solid black;
+	
 		margin-left:60px;
 		width:850px;
 		height:450px;
@@ -166,8 +172,8 @@
 	}
 	
 	#joinDiv {
-		width: 820px;
-		border: 1px solid #a6a6a6;
+		width: 804px;
+		border: 1px solid #b0bdbe;
 		margin:10px;
 		margin-bottom: 15px;
 	}
@@ -177,7 +183,9 @@
 		padding: 10px;
 		font-size: 14px; font-family : 'Noto Sans', sans-serif;
 	}
-	
+	.bottomBnt{
+		 background-color:#fff; border:2px solid #b0bdbe; border-radius:5px;
+	}
 </style>
 
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
@@ -185,7 +193,7 @@
 <div style="width:1300px; height:100%; margin:0px auto;">
 	<div class="side_menu">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/sendMessage.do" class="side-text">보낸메시지</a>
+			<a href="<%=cp%>/mypage/sendMessage.do" class="side-text" style="border-bottom:2px solid #cb4242;">보낸메시지</a>
 		</div>
 	
 		<div class="side_list">
@@ -228,13 +236,32 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center" style="height:60px;border:1px solid white; padding-top:5px;">
-						<input type="button" value="답장보내기" onclick="joinConf();" style="height:40px;"/>
-						<input type="button" value="삭제하기" onclick="joinConf();" style="height:40px;"/>
+						<input type="button" value="답장보내기" onclick="sendEmail('${map.RECEIVE_MEMBER_EMAIL}');" style="height:40px;" class="bottomBnt"/>
+						<input type="button" value="삭제하기" onclick="delEmail('${map.MSG_IDX}');" style="height:40px;" class="bottomBnt"/>
 					</td>
 				</tr>
 			</table>
 		</div><!-- joinDiv End -->
 	</div><!-- right_div End -->
 </div>
+<form action="/TripINN/mypage/messageWrite.do" name="eform">
+	<input type="hidden" name="receive_member_email"  value=""/>
+</form>
+<form action="/TripINN/mypage/messageDel.do" name="dform" method="post">
+	<input type="hidden" name="msg_idx" value="" />
+	<input type="hidden" name="msgType" value="${msgType }" />
+</form>
 <div style="clear:both;"></div>
-
+<script>
+	function sendEmail(email) {
+		var form = document.eform;
+		form.receive_member_email.value = email;
+		form.submit();
+	}
+	function delEmail(idx) {
+		var form = document.dform;
+		form.msg_idx.value = idx;
+		form.submit();
+		alert("메세지가 삭제되었습니다.");
+	}
+</script>

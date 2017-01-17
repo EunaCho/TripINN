@@ -164,6 +164,29 @@ public class HouseController {
 		ModelAndView mv = new ModelAndView("houseRegister3");
 		return mv;
 	}
+	
+	//숙소 정보 수정폼
+	@RequestMapping(value = "/house/houseUpdateForm.do", method=RequestMethod.GET)
+	public ModelAndView houseUpdateForm(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("houseUpdateForm");
+		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap());//하우스 상세정보 꺼내오기
+		mv.addObject("house", house);
+		return mv;
+	}
+	
+	//숙소 정보 수정하기
+		@RequestMapping(value = "/house/houseUpdate.do", method=RequestMethod.POST)
+		public ModelAndView houseUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
+			ModelAndView mv = new ModelAndView("redirect:/house/houseDetail.do");
+			System.out.println("맵 확인");
+			System.out.println(commandMap.getMap());
+			//입력한 값으로 house table 업데이트 하기
+			houseService.updateHouse(commandMap.getMap(), request);
+			mv.addObject("HOUSE_IDX", commandMap.get("HOUSE_IDX"));
+			return mv;
+		}
+		
+	
 
 	// map view
 	@RequestMapping(value = "/house/houseMapView.do")

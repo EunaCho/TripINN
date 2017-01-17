@@ -125,12 +125,12 @@ $(function(){
 	<div class="head_div">
 		<div class="circle"><strong style="font-size:30px; font-weight:bold; color:#007a87; vertical-align:center;">\</strong></div>
 		
-		<div style="padding-left:7px; float:left; border:1px solid black; margin:3px 0px 5px 20px;">
+		<div style="padding-left:7px; float:left; border:0px solid black; margin:3px 0px 5px 20px;">
 			<p style="font-family:'Noto Sans', sans-serif; font-size:16px;"><strong>지금 숙소를  등록하고 호스트가 되어보세요.</strong></p>
 			<p style="font-family:'Noto Sans', sans-serif; color:#767676; font-size:13px; ">숙소등록을 하고 이윤을 남겨보세요~!</p> 
 		</div>
 		
-		<div style="border:1px solid black; padding-left:97px; margin-top:94px; overflow:hidden; width:auto;">
+		<div style="border:0px solid black; padding-left:97px; margin-top:94px; overflow:hidden; width:auto;">
 			<input type="button" value="숙소등록하기" onclick="location.href='<%=cp%>/house/houseRegister1.do'" class="head_button1" />
 			<input type="button" value="나중에 등록하기" class="head_button" />
 		</div>
@@ -138,7 +138,7 @@ $(function(){
 	
 	<div class="left-menu">
 		<div class="side_poto">
-			<img style="width:250px; height:200px;padding-left:16px;" src="<%=cp%>/images/${map.MEMBER_IMAGE}">
+			<img style="width:275px; height:200px;" src="<%=cp%>/images/${map.MEMBER_IMAGE}">
 		</div>
 	
 		<div class="side_text">

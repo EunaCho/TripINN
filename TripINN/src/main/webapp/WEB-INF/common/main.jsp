@@ -5,48 +5,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% String cp = request.getContextPath(); %>
 
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
-
   
 <script src="<%= cp %>/js/main.js"></script>
 <link rel="stylesheet" href="/TripINN/css/main.css" />
 <script src="http://code.jquery.com/jquery-1.7.1.js"></script><!-- 롤링 스크롤 -->
-<script>
-$(document).ready(function () {
-    // 슬라이더를 움직여주는 함수
-    function moveSlider(index) {
-        // 슬라이더를 이동합니다.
-        var willMoveLeft = -(index * 900);
-        $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
-        // control_button에 active클래스를 부여/제거합니다.
-        $('.control_button[data-index=' + index + ']').addClass('active');
-        $('.control_button[data-index!=' + index + ']').removeClass('active');
-        // 글자를 이동합니다.
-        $('.slider_text[data-index=' + index + ']').show().animate({
-            left: 0
-        }, 'slow');
-        $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
-            $(this).css('left', -300);
-        });
-    }
-    // 초기 텍스트 위치 지정 및 data-index 할당
-    $('.slider_text').css('left', -300).each(function (index) {
-        $(this).attr('data-index', index);
-    });
-    // 컨트롤 버튼의 클릭 핸들러 지정 및 data-index 할당
-    $('.control_button').each(function (index) {
-        $(this).attr('data-index', index);
-    }).click(function () {
-        var index = $(this).attr('data-index');
-        moveSlider(index);
-    });
-    // 초기 슬라이더 위치 지정
-    var randomNumber = Math.round(Math.random() * 3);
-    moveSlider(randomNumber);
-});
-</script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
+<link rel="stylesheet" href="/TripINN/js/main.js" />
+
 
 
 <!-- 메인 바디 -->
@@ -101,43 +68,43 @@ $(document).ready(function () {
 	 <!-- 공지사항 -->
     <div class="noticeCont">
     	<div class="tab">
-        	<h4 class="tab1 on"><a href="#tabNotice">공지사항</a></h4>
+        	<h4 class="tab1 on"><a href="#tabNotice">문의게시판</a></h4>
             	<div class="tabContent" id="tabNotice" style="display: block;">
-                	<h4 class="hide_el">공지사항</h4>
+                	<h4 class="hide_el">문의게시판</h4>
                     	<ul>
                         	<li>
-                            	<a id="rptNotice_ctl00_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15719" style="font-weight:bold;">공지사항을</a>
+                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=821" style="font-weight:bold;">예약 취소하고 싶어요</a>
                                 <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
                             </li>
 							<li>
-                                <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">넣읍시다</a>
+                                <a id="rptNotice_ctl01_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=825" style="font-weight:bold;">인원 변경하려고 합니다</a>
                                 <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl02_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15679" style="font-weight:bold;">누가좀</a>
+                                <a id="rptNotice_ctl02_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=822" style="font-weight:bold;">예약 가능일자 문의!! 빠른 답변 바랍니다</a>
                                 <img id="rptNotice_ctl02_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl02_lblDate">2017/01/10</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl03_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15639" style="font-weight:bold;">만들어주새오</a>
+                                <a id="rptNotice_ctl03_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=827" style="font-weight:bold;">이벤트는 안하는지</a>
                                 <img id="rptNotice_ctl03_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl03_lblDate">2017/01/09</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl04_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15619" style="font-weight:normal;">아직도 안끝났네</a>
+                                <a id="rptNotice_ctl04_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=824" style="font-weight:normal;">날짜는 다가오는데...나는 초조하고... 관리자는 대답도</a>
                                 <span id="rptNotice_ctl04_lblDate">2017/01/04</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl05_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15559" style="font-weight:normal;">줄은 더 못늘리겠네</a>
+                                <a id="rptNotice_ctl05_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=823" style="font-weight:normal;">예약 취소할게요 ㅠㅠㅠㅠㅠㅠ</a>
                                 <span id="rptNotice_ctl05_lblDate">2017/01/02</span>
                             </li>
                                         
                       </ul>
                 </div>
                 <p class="more">
-               		<a href="javascript:MoreNews();">
+               		<a href="<%=cp%>/admin/qnaList.do">
                		<img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
                 </p>
         </div>
@@ -152,38 +119,28 @@ $(document).ready(function () {
                 	<h4 class="hide_el">FAQ</h4>
                     	<ul>
                         	<li>
-                            	<a id="rptNotice_ctl00_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15719" style="font-weight:bold;">호놀룰룰루</a>
-                                <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
-                            </li>
+                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=108" style="font-weight:bold;">TripINN 계정은 어떻게 만드나요?</a>
+                             </li>
 							<li>
-                                <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">3일남았당</a>
-                                <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
+                                <a id="rptNotice_ctl01_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=111" style="font-weight:bold;">TripINN에 등록한 이메일 주소를 변경하려면 어떻게 하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl02_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15679" style="font-weight:bold;">FAQ넣기 넣기넣기</a>
-                                <img id="rptNotice_ctl02_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl02_lblDate">2017/01/10</span>
+                                <a id="rptNotice_ctl02_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=109" style="font-weight:bold;">비밀번호 변경은 어떻게 하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl03_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15639" style="font-weight:bold;">금요일에 야근하는거 아니야</a>
-                                <img id="rptNotice_ctl03_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl03_lblDate">2017/01/09</span>
+                                <a id="rptNotice_ctl03_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=107" style="font-weight:bold;">계정 설정 또는 프로필은 어떻게 수정하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl04_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15619" style="font-weight:normal;">금요일에 야근하는거 아니야</a>
-                                <span id="rptNotice_ctl04_lblDate">2017/01/04</span>
+                                <a id="rptNotice_ctl04_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=106" style="font-weight:bold;">TripINN 프로필 혹은 프로필 사진이 왜 필요한가요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl05_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15559" style="font-weight:normal;">금요일에 야근하는거 아니야</a>
-                                <span id="rptNotice_ctl05_lblDate">2017/01/02</span>
+                                <a id="rptNotice_ctl05_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=118" style="font-weight:bold;">'트립'이란 무엇인가요?</a>     
                             </li>
                                         
                       </ul>
                 </div>
                 <p class="more">
-               		<a href="javascript:MoreNews();">
+               		<a href="<%=cp%>/admin/faqList.do">
                		<img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
                 </p>
         </div>
@@ -203,10 +160,10 @@ $(document).ready(function () {
 		
 		<div style="margin-top:10px;">
 			<div class="date">체크인<br/>
-			<input type="text" name="hri_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
+			<input type="text" name="hr_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
 			</div>
 			<div class="date">체크아웃<br/>
-			<input type="text" name="hri_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
+			<input type="text" name="hr_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
 			</div>
 		</div>
 		<!-- <div style="clear:both;"></div> -->
@@ -254,8 +211,7 @@ $(document).ready(function () {
                                 </ul>
                             </div>
                         </div>
-                        <a href="javascript:void(0);" class="hc_f_triptype_help_icon" data-triptypeicon=""></a>
-                    </div>
+                     </div>
                     <div class="cDivBoth"></div>
                 </div>
             </div>

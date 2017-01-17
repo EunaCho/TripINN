@@ -14,7 +14,7 @@ import com.common.common.CommandMap;
 public class TripServiceImpl implements TripService {
 	
 	@Resource(name="tripDAO")
-	private TripDAO tripDAO;
+	private TripDAO tripDAO; 
 	
 	@Resource(name="tripFileUtils") 
 	private FileUtils fileUtils;
@@ -111,6 +111,16 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public void reviewDel(String parameter) {
 		tripDAO.reviewDel(parameter);
+	}
+
+	@Override
+	public void sendMssg(Map<String, Object> map) {
+		tripDAO.sendMsg(map);
+	}
+
+	@Override
+	public void tripUpdate(Map<String, Object> map) {
+		tripDAO.tripUpdate(map);
 	}
 
 }

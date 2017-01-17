@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.common.common.CommandMap;
 
-public interface TripService {
+public interface TripService { 
 
 	void tripRegist(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
@@ -44,6 +44,10 @@ public interface TripService {
 	void tripReport(Map<String, Object> map);
 
 	void reviewDel(String parameter);
+
+	void sendMssg(Map<String, Object> map);
+
+	void tripUpdate(Map<String, Object> map);
 
 	
 }

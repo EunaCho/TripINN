@@ -10,9 +10,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.common.common.CommandMap;
 
 //DAO 기능 구현
-public interface HouseService {
-	//리스트 목록 보기 기능
-	List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception;
+public interface HouseService { 
+   //리스트 목록 보기 기능
+   List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception;
 
 	//하우스검색 정렬
 	List<Map<String, Object>> searchHouseList(Map<String, Object> map) throws Exception;
@@ -65,8 +65,11 @@ public interface HouseService {
 
 	void updateTotalPrice(Map<String, Object> map);
 
-	Map<String, Object> selectOneMember(Map<String, Object> map);
 
-	List<Map<String, Object>> selectHouseList2(Map<String, Object> map);
+ 	Map<String, Object> selectOneMember(Map<String, Object> map);
+
+  	List<Map<String, Object>> selectHouseList2(Map<String, Object> map);
 
 }
+
+

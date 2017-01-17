@@ -11,7 +11,7 @@ import com.common.common.AbstractDAO;
 import com.common.common.CommandMap;
 
 @Repository("tripDAO")
-public class TripDAO extends AbstractDAO {
+public class TripDAO extends AbstractDAO { 
 	public void tripRegist(Map<String, Object> map) throws Exception {
 		insert("trip.tripRegist", map);
 	}
@@ -92,5 +92,13 @@ public class TripDAO extends AbstractDAO {
 
 	public void reviewDel(String parameter) {
 		delete("trip.reviewDel", parameter);
+	}
+
+	public void sendMsg(Map<String, Object> map) {
+		insert("trip.sendMsg", map);
+	}
+
+	public void tripUpdate(Map<String, Object> map) {
+		update("trip.tripUpdate", map);
 	}
 }
