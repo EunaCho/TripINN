@@ -5,55 +5,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% String cp = request.getContextPath(); %>
 
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
-
   
 <script src="<%= cp %>/js/main.js"></script>
 <link rel="stylesheet" href="/TripINN/css/main.css" />
 <script src="http://code.jquery.com/jquery-1.7.1.js"></script><!-- 롤링 스크롤 -->
-<script>
-$(document).ready(function () {
-    // 슬라이더를 움직여주는 함수
-    function moveSlider(index) {
-        // 슬라이더를 이동합니다.
-        var willMoveLeft = -(index * 900);
-        $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
-        // control_button에 active클래스를 부여/제거합니다.
-        $('.control_button[data-index=' + index + ']').addClass('active');
-        $('.control_button[data-index!=' + index + ']').removeClass('active');
-        // 글자를 이동합니다.
-        $('.slider_text[data-index=' + index + ']').show().animate({
-            left: 0
-        }, 'slow');
-        $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
-            $(this).css('left', -300);
-        });
-    }
-    // 초기 텍스트 위치 지정 및 data-index 할당
-    $('.slider_text').css('left', -300).each(function (index) {
-        $(this).attr('data-index', index);
-    });
-    // 컨트롤 버튼의 클릭 핸들러 지정 및 data-index 할당
-    $('.control_button').each(function (index) {
-        $(this).attr('data-index', index);
-    }).click(function () {
-        var index = $(this).attr('data-index');
-        moveSlider(index);
-    });
-    // 초기 슬라이더 위치 지정
-    var randomNumber = Math.round(Math.random() * 3);
-    moveSlider(randomNumber);
-});
-</script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
+<link rel="stylesheet" href="/TripINN/js/main.js" />
+
 
 
 <!-- 메인 바디 -->
 <div style="width:1350px;height:1300px;border:;text-align:center;">
 
 
-   <!-- 슬라이드 롤링 --> 
+	<!-- 슬라이드 롤링 --> 
 
     <div class="animation_canvas">
         <div class="slider_panel">
@@ -89,28 +56,28 @@ $(document).ready(function () {
             <div class="control_button"></div>
             <div class="control_button"></div>
             <div class="control_button"></div>
-             <div class="control_button"></div>
+          	<div class="control_button"></div>
             <div class="control_button"></div>
         </div>
     </div>
     
 
-   <!-- 공지사항 블록 -->
-   <div class="noticeBlock">
-   
-    <!-- 공지사항 -->
+	<!-- 공지사항 블록 -->
+	<div class="noticeBlock">
+	
+	 <!-- 공지사항 -->
     <div class="noticeCont">
-       <div class="tab">
-           <h4 class="tab1 on"><a href="#tabNotice">공지사항</a></h4>
-               <div class="tabContent" id="tabNotice" style="display: block;">
-                   <h4 class="hide_el">공지사항</h4>
-                       <ul>
-                           <li>
-                               <a id="rptNotice_ctl00_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15719" style="font-weight:bold;">공지사항을</a>
+    	<div class="tab">
+        	<h4 class="tab1 on"><a href="#tabNotice">문의게시판</a></h4>
+            	<div class="tabContent" id="tabNotice" style="display: block;">
+                	<h4 class="hide_el">문의게시판</h4>
+                    	<ul>
+                        	<li>
+                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/qnaDetail.do?faq_idx=108" style="font-weight:bold;">공지사항을</a>
                                 <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
                             </li>
-                     <li>
+							<li>
                                 <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">넣읍시다</a>
                                 <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
@@ -137,8 +104,8 @@ $(document).ready(function () {
                       </ul>
                 </div>
                 <p class="more">
-                     <a href="javascript:MoreNews();">
-                     <img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
+               		<a href="<%=cp%>/admin/qnaList.do">
+               		<img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
                 </p>
         </div>
     </div>
@@ -146,92 +113,82 @@ $(document).ready(function () {
     <!-- 사용가이드 -->
 
     <div class="noticeCont">
-       <div class="tab">
-           <h4 class="tab2 on"><a href="#tabNotice">FAQ</a></h4>
-               <div class="tabContent" id="tabNotice" style="display: block;">
-                   <h4 class="hide_el">FAQ</h4>
-                       <ul>
-                           <li>
-                               <a id="rptNotice_ctl00_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15719" style="font-weight:bold;">호놀룰룰루</a>
-                                <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
-                            </li>
-                     <li>
-                                <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">3일남았당</a>
-                                <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
+    	<div class="tab">
+        	<h4 class="tab2 on"><a href="#tabNotice">FAQ</a></h4>
+            	<div class="tabContent" id="tabNotice" style="display: block;">
+                	<h4 class="hide_el">FAQ</h4>
+                    	<ul>
+                        	<li>
+                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=108" style="font-weight:bold;">TripINN 계정은 어떻게 만드나요?</a>
+                             </li>
+							<li>
+                                <a id="rptNotice_ctl01_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=111" style="font-weight:bold;">TripINN에 등록한 이메일 주소를 변경하려면 어떻게 하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl02_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15679" style="font-weight:bold;">FAQ넣기 넣기넣기</a>
-                                <img id="rptNotice_ctl02_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl02_lblDate">2017/01/10</span>
+                                <a id="rptNotice_ctl02_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=109" style="font-weight:bold;">비밀번호 변경은 어떻게 하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl03_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15639" style="font-weight:bold;">금요일에 야근하는거 아니야</a>
-                                <img id="rptNotice_ctl03_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
-                                <span id="rptNotice_ctl03_lblDate">2017/01/09</span>
+                                <a id="rptNotice_ctl03_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=107" style="font-weight:bold;">계정 설정 또는 프로필은 어떻게 수정하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl04_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15619" style="font-weight:normal;">금요일에 야근하는거 아니야</a>
-                                <span id="rptNotice_ctl04_lblDate">2017/01/04</span>
+                                <a id="rptNotice_ctl04_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=106" style="font-weight:bold;">TripINN 프로필 혹은 프로필 사진이 왜 필요한가요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl05_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15559" style="font-weight:normal;">금요일에 야근하는거 아니야</a>
-                                <span id="rptNotice_ctl05_lblDate">2017/01/02</span>
+                                <a id="rptNotice_ctl05_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=110" style="font-weight:bold;">페이스북 계정으로 로그인하지만, TripINN 비밀번호를 만들고 싶은 경우</a>     
                             </li>
                                         
                       </ul>
                 </div>
                 <p class="more">
-                     <a href="javascript:MoreNews();">
-                     <img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
+               		<a href="<%=cp%>/admin/faqList.do">
+               		<img src="http://www.jinair.com/images/newMain/news_more_new.gif" alt="more"></a>
                 </p>
         </div>
     </div>
 
-   </div>
+	</div>
+	
+	    
    
-       
-   
-   <!-- 왼쪽 간편검색바 -->
-   <div id="leftDiv">
-   <form method="POST" action="house/houseMain.do" name="preSearchForm" id="preSearchForm">
-      <div> 
-         <h3>숙소 검색하기</h3><br/>
-         <input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
-      </div>
-      
-      <div style="margin-top:10px;">
-         <div class="date">체크인<br/>
-         <input type="text" name="hri_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
-         </div>
-         <div class="date">체크아웃<br/>
-         <input type="text" name="hri_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
-         </div>
-      </div>
-      <!-- <div style="clear:both;"></div> -->
-      <div class="select">객실<br/>
-      <select name="room"> 
-            <option value="">객실 수</option>
-            <option value="1" <c:if test="${room eq 1}">selected="selected"</c:if> >1개</option>
-            <option value="2" <c:if test="${room eq 2}">selected="selected"</c:if> >2개</option>
-            <option value="3" <c:if test="${room eq 3}">selected="selected"</c:if> >3개</option>
-            <option value="4" <c:if test="${room eq 4}">selected="selected"</c:if> >4개</option>
-            <option value="5" <c:if test="${room eq 5}">selected="selected"</c:if> >5개</option>
-         </select>
-      </div>
-      <div class="select">인원<br/>
-      <select name="person"> 
-            <option value="">인원</option>
-            <option value="1" <c:if test="${adult eq 1}">selected="selected"</c:if> >1명</option>
-            <option value="2" <c:if test="${adult eq 2}">selected="selected"</c:if> >2명</option>
-            <option value="3" <c:if test="${adult eq 3}">selected="selected"</c:if> >3명</option>
-            <option value="4" <c:if test="${adult eq 4}">selected="selected"</c:if> >4명</option>
-            <option value="5" <c:if test="${adult eq 5}">selected="selected"</c:if> >5명</option>
-         </select>
-      </div>
-      <!-- 여행 목적 선택 -->
-      <div class="hc_f_triptype">
+	<!-- 왼쪽 간편검색바 -->
+	<div id="leftDiv">
+	<form method="POST" action="house/houseMain.do" name="preSearchForm" id="preSearchForm">
+		<div> 
+			<h3>숙소 검색하기</h3><br/>
+			<input type="text" class="pre_srch_input" name="preSearch_keyword" placeholder="장소, 지역, 숙소명 검색"/>
+		</div>
+		
+		<div style="margin-top:10px;">
+			<div class="date">체크인<br/>
+			<input type="text" name="hr_first_date" id="datepicker_in" placeholder="체크인" class="datepicker"/>
+			</div>
+			<div class="date">체크아웃<br/>
+			<input type="text" name="hr_last_date" id="datepicker_out" placeholder="체크아웃" class="datepicker"/>
+			</div>
+		</div>
+		<!-- <div style="clear:both;"></div> -->
+		<div class="select">객실<br/>
+		<select name="room"> 
+				<option value="">객실 수</option>
+				<option value="1" <c:if test="${room eq 1}">selected="selected"</c:if> >1개</option>
+				<option value="2" <c:if test="${room eq 2}">selected="selected"</c:if> >2개</option>
+				<option value="3" <c:if test="${room eq 3}">selected="selected"</c:if> >3개</option>
+				<option value="4" <c:if test="${room eq 4}">selected="selected"</c:if> >4개</option>
+				<option value="5" <c:if test="${room eq 5}">selected="selected"</c:if> >5개</option>
+			</select>
+		</div>
+		<div class="select">인원<br/>
+		<select name="person"> 
+				<option value="">인원</option>
+				<option value="1" <c:if test="${adult eq 1}">selected="selected"</c:if> >1명</option>
+				<option value="2" <c:if test="${adult eq 2}">selected="selected"</c:if> >2명</option>
+				<option value="3" <c:if test="${adult eq 3}">selected="selected"</c:if> >3명</option>
+				<option value="4" <c:if test="${adult eq 4}">selected="selected"</c:if> >4명</option>
+				<option value="5" <c:if test="${adult eq 5}">selected="selected"</c:if> >5명</option>
+			</select>
+		</div>
+		<!-- 여행 목적 선택 -->
+		<div class="hc_f_triptype">
                 <div class="hc_f_triptype_label">
                     <span>여행목적</span> <em>(선택사항)</em>
                 </div>
@@ -254,29 +211,28 @@ $(document).ready(function () {
                                 </ul>
                             </div>
                         </div>
-                        <a href="javascript:void(0);" class="hc_f_triptype_help_icon" data-triptypeicon=""></a>
-                    </div>
+                     </div>
                     <div class="cDivBoth"></div>
                 </div>
             </div>
 
-   <!--    <a href="/TripINN/house/houseMain.do" onclick="preSearch();" class="pre_srch_submit">
-      //<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a> -->
-      
-      <!-- <span class="btn_join" onclick="preSearch();">검색</span> -->
-      <button class="btn_search" type="submit">검색</button>
-   </form>   
-   </div>
-   
-   
-   <!-- 숙소/트립 미리보기 -->
-   <div id="rightDiv">
-   
-      <!-- 하우스 미리보기 블럭 -->
-      <div class="subject">
-         <span>등록된 숙소</span>
-         <span><a href="<%=cp%>/house/houseMain.do">전체보기>></a></span>
-      </div>
+	<!-- 	<a href="/TripINN/house/houseMain.do" onclick="preSearch();" class="pre_srch_submit">
+		//<img src="http://openimage.interpark.com/tourpark/tour/main/btn_search.gif" alt="검색하기"></a> -->
+		
+		<!-- <span class="btn_join" onclick="preSearch();">검색</span> -->
+		<button class="btn_search" type="submit">검색</button>
+	</form>	
+	</div>
+	
+	
+	<!-- 숙소/트립 미리보기 -->
+	<div id="rightDiv">
+	
+		<!-- 하우스 미리보기 블럭 -->
+		<div class="subject">
+			<span>등록된 숙소</span>
+			<span><a href="<%=cp %>/house/houseMain.do">전체보기>></a></span>
+		</div>
 
       <!-- 하우스 미리보기 리스트 출력 -->
       <div class="pre_List">
@@ -379,7 +335,7 @@ $(document).ready(function () {
 </div>
 
 <form action="/TripINN/tripDetail.do" method="post" name="formDetail">
-   <input type="hidden" name="trip_idx" value=""/>
+	<input type="hidden" name="trip_idx" value=""/>
 </form>
 <script>
 function tripDetail(trip_idx) {
