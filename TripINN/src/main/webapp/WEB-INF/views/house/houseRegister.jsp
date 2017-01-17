@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=1.0">
 <script type="text/javascript" src="/TripINN/js/house/openHouseRegister.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%@ include file = "/WEB-INF/common/login.jsp" %>
 
 <title>숙소 등록 페이지</title>
 </head>

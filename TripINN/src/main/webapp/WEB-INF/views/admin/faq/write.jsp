@@ -126,6 +126,10 @@
          }
          hr{ width:95%; color:#eee;}
          
+         .board_view{
+         width:80%;
+         }
+         
          
 >>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
