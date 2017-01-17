@@ -47,8 +47,8 @@ public class MypageDAO extends AbstractDAO {
 
 	//----------------------------------------숙소목록-----------------------------------------//
 	//숙소목록 리스트
-	public List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>)selectList("mypage.selectHouseList", map);
+	public Map<String, Object> selectHouseList(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectPagingList("mypage.selectHouseList", map);
 	}
 	//숙소 상세보기 
 	public Map<String, Object> selectHouseDetail(Map<String, Object> map) throws Exception{
@@ -103,8 +103,8 @@ public class MypageDAO extends AbstractDAO {
 	
 	//--------------------------------트립목록------------------------------------------
 	//내가 등록한 트립 리스트
-	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>) selectList("mypage.selectTripList", map);
+	public Map<String, Object> selectTripList(Map<String, Object> map) throws Exception{
+		return  (Map<String, Object>) selectPagingList("mypage.selectTripList", map);
 	}
 	//트립리스트 상세보기 
 	public Map<String, Object> selectTripDetail(Map<String, Object> map) throws Exception{
@@ -173,8 +173,16 @@ public class MypageDAO extends AbstractDAO {
 	public void messageDel(String msg_idx) {
 		delete("mypage.messageDel", msg_idx);
 	}
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	public void house_rsv_del(String hr_idx) {
 		delete("mypage.houseRsvDel", hr_idx);
+=======
+	
+	//----------------프로필---------------
+	//프로필 수정 
+	public void updateMemberPlofile(Map<String, Object> map) throws Exception{
+		update("mypage.updateMemberPlofile", map);
+>>>>>>> 51e9c86 마이페이지 
 	}
 }

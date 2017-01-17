@@ -6,6 +6,7 @@
 
 <style>
   .left_div{
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
       border:1px solid #b0bdbe;
       background-color:rgba(219, 219, 219, 0.22);
       border-radius:5px;
@@ -30,6 +31,32 @@
        color:#6a6c6d;
        text-decoration:none;
    }
+=======
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
+		margin-bottom:20px;
+		margin-left:50px;
+		width: 200px;
+		height:210px;
+		float:left;
+	}
+	.side_list{
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
+		margin:20px;
+    	width:150px;
+    	height:27px;
+    	text-align:center;	
+	} 
+	.side-text{
+		padding: 6px 0;
+   	 	font-size: 15px;
+    	color:#6a6c6d;
+    	text-decoration:none;
+	}
+>>>>>>> 51e9c86 마이페이지 
    
    .right_div{
    /*    border:1px solid #31b0d5; */
@@ -279,7 +306,7 @@ function reserDetail(idx, hr_idx){
                   </div>
                   <div class="price_div">
                      <font style="color:#3c3c3c; font-weight:solid; font-size:15px; font-style:'바탕체'">
-                        가격: ${houseMap.HOUSE_TOTAL_PRICE}&nbsp;&nbsp;<strong>\</strong>
+                     	   가격: ${houseMap.HOUSE_TOTAL_PRICE}&nbsp;&nbsp;<strong>\</strong>
                      </font>
                   </div>
                </div>
@@ -299,8 +326,13 @@ function reserDetail(idx, hr_idx){
                      </div>
          
                     <div style= " width:250px; height:auto; float:left; margin-left:370px; margin-top:-35px; border:0px solid red;">
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
                         <input type="button" value="호스팅 수정하기" onclick="javascript:modifyHouse${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; float:left; margin-right:25px;"/>
                        <input type="button" value="호스팅 삭제하기" onclick="javascript:deleteHouse(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; float:left; "/>
+=======
+                        <input type="button" value="호스팅 수정하기" onclick="javascript:modifyHouse${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; margin-right:25px;"/>
+                    	<input type="button" value="호스팅 삭제하기" onclick="javascript:deleteHouse(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; "/>
+>>>>>>> 51e9c86 마이페이지 
                     </div>
                      
                   </div><!-- name_div -->
@@ -384,6 +416,7 @@ function reserDetail(idx, hr_idx){
 </style>
 
    <div id="reserDiv">
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
          <table class="reser_table">
             <tr>
                <td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>번호</strong></font></td>
@@ -428,6 +461,52 @@ function reserDetail(idx, hr_idx){
                   <a href="javascript:reserDetail(${rList.HOUSE_IDX}, ${rList.HR_IDX});" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
                      ${rList.HR_NAME }
                   </a>
+=======
+   		<table class="reser_table">
+				<tr>
+					<td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>번호</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약 상태</strong></font></td>
+					<td width="330px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약자명</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>인원</strong></font></td>
+					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약일</strong></font>
+					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>입실일</strong></font></td>
+					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>퇴실일</strong></font></td>
+				</tr>
+	
+				<tr>
+					<td colspan="7"><hr/></td>
+				</tr>
+			<form method="post" action="<%=cp%>/mypage/houseReserDetail.do" name="detailForm">
+			<input type="hidden" name="HOUSE_IDX" value=""/>
+			<input type="hidden" name="HR_IDX" value=""/>
+			
+			<c:if test="${empty reserList}">
+      			<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
+					<font style="color:rgb(128, 128, 128);font-size:15px;margin-top:100px; ">현재 예약자가 없습니다.</font>
+				</div>
+      		</c:if>
+      		
+			<c:forEach var="rList" items="${reserList}" varStatus="status">
+				<tr>
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						${status.index+1} 
+						</font>
+					</td>
+					<td align="center" bgcolor="#f3f3f3">
+						<c:if test="${rList.HR_DELETE_STATE == 0}">
+							<font style="color:#3c3c3c; letter-spacing:2px; font-size:12px; font-style:'바탕체'">예약</font>
+						</c:if>
+						<c:if test="${rList.HR_DELETE_STATE == 1}">	
+							<font style="color:red;  letter-spacing:2px; font-size:12px; font-style:'바탕체'">취소신청</font>
+						</c:if>
+					</td>
+					<td align="center" bgcolor="#f3f3f3">
+						
+						<a href="javascript:reserDetail(${rList.HOUSE_IDX}, ${rList.HR_IDX});" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+							${rList.HR_NAME }
+						</a>
+>>>>>>> 51e9c86 마이페이지 
 
                </td>
                
@@ -470,6 +549,7 @@ function reserDetail(idx, hr_idx){
    
    <!-- msg_idx, receive_member_email, msg_state, msg_type, msg_content, send_date, msg_title  -->
    <div id="msgDiv">
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
          
          <table class="reser_table">
       <c:choose>
@@ -529,6 +609,67 @@ function reserDetail(idx, hr_idx){
          </c:otherwise>
       </c:choose>
          </table>
+=======
+   		
+   		<table class="reser_table">
+		<c:choose>
+			<c:when test="${fn:length(list)>0}">
+				<tr>
+					<td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>번호</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>보낸사람</strong></font></td>
+					<td width="330px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>제목</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>보낸날짜</strong></font></td>
+				</tr>
+				
+				<tr>
+					<td colspan="4"><hr/></td>
+				</tr>
+			<form method="post" action="<%=cp%>/mypage/receiveMsgDetail.do" name="msg_detailForm">
+			<input type="hidden" name="msg_idx" value=""/>
+			
+			
+			<c:forEach var="mList" items="${msgList}" varStatus="status">
+				<tr>
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						${status.index+1}
+						</font>
+					</td>
+					<td align="center" bgcolor="#f3f3f3">
+						
+						<a href="javascript:contentView('${mList.MSG_IDX }');" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+							${mList.MEMBER_EMAIL}
+						</a>
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						 	 <fmt:formatDate value="${mList.SEND_DATE }" pattern="yyyy-MM-dd"/>
+						</font>
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						  	<fmt:formatDate value="${rList.HR_TIME }" pattern="yyyy-MM-dd HH:mm"/>
+						</font>	
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4"><hr/></td>
+				</tr>
+				</c:forEach>
+			</form>
+				</form>
+			</c:when>
+				
+			<c:otherwise>
+				<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
+					<font style="color:rgb(128, 128, 128);font-size:15px;margin-top:100px; ">받은메세지가 없습니다.</font>
+				</div>
+			</c:otherwise>
+		</c:choose>
+   		</table>
+>>>>>>> 51e9c86 마이페이지 
    </div>
 </div><!-- right_div End -->
    

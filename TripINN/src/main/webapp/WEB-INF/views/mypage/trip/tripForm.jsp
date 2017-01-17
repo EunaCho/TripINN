@@ -1,30 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %> 
 <% String cp = request.getContextPath(); %>
 
 <style>
 	.left_div{
-		border:1px solid black;
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
 		margin-bottom:20px;
 		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:210px;
 		float:left;
 	}
 	.side_list{
-		border:1px solid black;
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
 		margin:20px;
     	width:150px;
-    	height:27px;	
+    	height:27px;
+    	text-align:center;	
 	} 
-	
 	.side-text{
 		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
-    	text-decoration:none
+   	 	font-size: 15px;
+    	color:#6a6c6d;
+    	text-decoration:none;
 	}
+   
 	
 	.right_div{
 /* 		border:1px solid black; */
@@ -134,7 +140,7 @@ function tripDetail(idx) {
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/trip.do" class="side-text">트립목록</a>
+			<a href="<%=cp%>/mypage/trip.do" class="side-text" style="border-bottom:2px solid #cb4242;">트립목록</a>
 		</div>
 	
 		<div class="side_list">
@@ -230,9 +236,38 @@ function tripDetail(idx) {
 				</div>
 		</c:otherwise>
 	</c:choose>
+	
+	<c:if test="${not empty paginationInfo}">
+		<div style="clear:both;"></div>
+		<div class="trDiv" style="width:100%;margin-top:20px;">
+			<div class="tdDiv-col" id="pagingDiv" style="text-align:center;height:30px;margin-top:10px;">
+        		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
+        	</div>
+        </div>
+    </c:if>
 
 	
 	</div><!-- right_div End -->
+	
+	<!-- ///////////////페이징처리/////////////// -->
+			<form name="listForm" >
+			 <input type="hidden" name="currentPageNo" value="" />
+			</form>	
+			<style>
+			#pagingDiv {height:40px;}
+			#pagingDiv a { font-size:12px;width:20px; height:20px; border:1px solid #a6a6a6; margin-right:5px; border-radius:7px;padding:7px;}
+			#pagingDiv a:hover {background-color:rgb(255, 235, 240);}
+			#pagingDiv strong { font-size:12px;border:1px solid #a6a6a6;border-radius:7px;padding:7px;color:#cb4646;margin-right:5px;}
+			</style>			
+			<script>
+			function fn_search(pageNo){
+			    var listForm = document.listForm;
+			    listForm.action = "/TripINN/mypage/trip.do";
+			    listForm.currentPageNo.value = pageNo;
+			    listForm.submit();
+			}
+			</script>
+     		<!-- ///////////////페이징처리/////////////// -->
 	
 	
 </div>

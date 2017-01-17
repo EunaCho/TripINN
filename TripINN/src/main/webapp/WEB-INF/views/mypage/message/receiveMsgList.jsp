@@ -7,48 +7,55 @@
 <style>
 * { font-family: 'Nanum Gothic',malgun Gothic,dotum;  }
 	.side_menu{
-		border:1px solid black;
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
 		margin-bottom:20px;
 		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:210px;
 		float:left;
 	}
 	.side_list{
-		border:1px solid black;
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
 		margin:20px;
     	width:150px;
-    	height:27px;	
+    	height:27px;
+    	text-align:center;	
 	} 
 	.side-text{
 		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
+   	 	font-size: 15px;
+    	color:#6a6c6d;
     	text-decoration:none;
 	}
 	.side_button{
 		color: #fff;
-		background-color:#31b0d5;
+		background-color:#b0bdbe;
 		border-color:#269abc;
 		border-radius:2px;
 		width:150px;
+		height:30px;
 		display: inline-block;
     	margin-bottom: 0;
     	font-size: 14px;
     	font-weight: 400;
+    	
     	background-image: none;
     	border: 1px solid transparent;
     	border-radius: 4px;
 	}
 	.button_div{
-		border:1px solid black;
+		border:0px solid black;
 		margin-top:50px;
 		margin-left:20px;
 		width:150px;
 		height:30px;
 	}
 	.right_div1{
-		border:1px solid black;
+		border:0px solid black;
 		margin-left:40px;
 		width:970px;
 		height:100%x;
@@ -130,7 +137,7 @@
 		</div>
 	
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/receiveMessage.do" class="side-text">받은메시지</a>
+			<a href="<%=cp%>/mypage/receiveMessage.do" class="side-text" style="border-bottom:2px solid #cb4242;">받은메시지</a>
 		</div>
 		
 		<div class="button_div">
@@ -163,7 +170,7 @@
 						</div>
 					</div>
 			<c:forEach var="list" items="${list}" varStatus="stat">
-			<c:url var="viewURL" value="/mypage/sendMsgDetail.do">
+			<c:url var="viewURL" value="/mypage/receiveMsgDetail.do">
 				<c:param name="msg_idx" value="${list.MSG_IDX}"/>
 				<c:param name="msgType" value="r"/>
 			</c:url>
@@ -171,7 +178,12 @@
 				
 					<div class="msg_menu" style="padding: 5px;">
 						<div class="msg_check">
-							상태
+					<c:if test="${list.MSG_STATE eq '1'}">
+						<img src="<%=cp%>/images/mypage/Mail-Open-icon.png" alt="" style="width:20px; height:20px; padding:5px;"/>
+					</c:if>
+					<c:if test="${list.MSG_STATE eq '0'}">
+						<img src="<%=cp%>/images/mypage/mail-icon1.png" alt="" style="width:20px; height:20px; padding:5px;"/>
+					</c:if>
 						</div>
 						<div class="msg_title">
 						 	<a href="${viewURL}" style="text-decoration:none;">${list.MEMBER_EMAIL}</a>

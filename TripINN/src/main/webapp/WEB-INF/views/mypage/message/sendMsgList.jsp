@@ -8,31 +8,37 @@
 <style>
 	* { font-family: 'Nanum Gothic',malgun Gothic,dotum;  }
 	.side_menu{
-		border:1px solid black;
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
 		margin-bottom:20px;
 		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:210px;
 		float:left;
 	}
 	.side_list{
-		border:1px solid black;
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
 		margin:20px;
     	width:150px;
-    	height:27px;	
+    	height:27px;
+    	text-align:center;	
 	} 
 	.side-text{
 		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
+   	 	font-size: 15px;
+    	color:#6a6c6d;
     	text-decoration:none;
 	}
 	.side_button{
 		color: #fff;
-		background-color:#31b0d5;
+		background-color:#b0bdbe;
 		border-color:#269abc;
 		border-radius:2px;
 		width:150px;
+		height:30px;
 		display: inline-block;
     	margin-bottom: 0;
     	font-size: 14px;
@@ -43,7 +49,7 @@
     	border-radius: 4px;
 	}
 	.button_div{
-		border:1px solid black;
+		border:0px solid black;
 		margin-top:50px;
 		margin-left:20px;
 		width:150px;
@@ -128,8 +134,8 @@
 
 <div style="width:1300px; height:100%; margin:0px auto;">
 	<div class="side_menu">
-		<div class="side_list">
-			<a href="<%=cp%>/mypage/sendMessage.do" class="side-text">보낸메시지</a>
+		<div class="side_list" >
+			<a href="<%=cp%>/mypage/sendMessage.do" class="side-text" style="border-bottom:2px solid #cb4242;" >보낸메시지</a>
 		</div>
 	
 		<div class="side_list">
@@ -228,7 +234,7 @@
 			}
 			</script>
      		<!-- ///////////////페이징처리/////////////// -->
-		</div>
-		</div><!-- selectBox+ sendMsglist-->
+		</div><!-- right_div -->
+	</div><!-- selectBox+ sendMsglist-->
 </div><!-- 전체-->
 <div style="clear:both;"></div>

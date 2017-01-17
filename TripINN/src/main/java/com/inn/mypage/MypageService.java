@@ -19,7 +19,7 @@ public interface MypageService {
 	
 	
 	//------------------------------숙소 목록---------------------
-	List<Map<String, Object>> selectHouseList(Map<String, Object> map) throws Exception; //숙소 목록 리스트 
+	Map<String, Object> selectHouseList(Map<String, Object> map) throws Exception; //숙소 목록 리스트 
 	Map<String, Object>  selectHouseDetail(Map<String, Object> map) throws Exception; //숙소 리스트 상세보기
 	Map<String, Object> selectHouseModify(Map<String, Object> map) throws Exception;//숙소 리스트 상세보기->숙소 수정하기 
 	
@@ -41,7 +41,7 @@ public interface MypageService {
 	Map<String, Object> countDate(Map<String, Object> map) throws Exception;  //숙소 이용 날짜 
 	
 	//------------------------------트립목록-------------------------------------------------
-	List<Map<String, Object>> selectTripList(Map<String,Object> map) throws Exception; //내가 등록한 트립 목록 리스트 
+	Map<String, Object> selectTripList(Map<String,Object> map) throws Exception; //내가 등록한 트립 목록 리스트 
 	Map<String, Object> selectTripDetail(Map<String, Object> map) throws Exception; //트립 리스트 상세보기 
 	List<Map<String, Object>> selectT_ReserList(Map<String, Object> map) throws Exception; //해당트립 예약현황리스트 
 	List<Map<String, Object>> selectT_MsgList(Map<String, Object> map) throws Exception; //해당 트립 메시지 리스트 
@@ -67,7 +67,12 @@ public interface MypageService {
 	void deleteTripWish(Map<String, Object> map) throws Exception;//트립 위시리스트 삭제 
 
 	void messageDel(String msg_idx);
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	void house_rsv_del(String hr_idx);
+=======
+	//--------------------프로필 
+	void updateMemberPlofile(Map<String, Object> map) throws Exception; //프로필 수정하기
+>>>>>>> 51e9c86 마이페이지 
 	
 }

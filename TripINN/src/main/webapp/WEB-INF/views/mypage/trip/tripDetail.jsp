@@ -5,26 +5,31 @@
 
 <style>
 	.left_div{
-		border:1px solid black;
+		border:1px solid #b0bdbe;
+		background-color:rgba(219, 219, 219, 0.22);
+		border-radius:5px;
 		margin-bottom:20px;
 		margin-left:50px;
 		width: 200px;
-		height:450px;
+		height:210px;
 		float:left;
 	}
 	.side_list{
-		border:1px solid black;
+		border:2px solid rgb(224, 224, 224);
+		background-color:#fff;
+		border-radius:8px;
 		margin:20px;
     	width:150px;
-    	height:27px;	
+    	height:27px;
+    	text-align:center;	
 	} 
-	
 	.side-text{
 		padding: 6px 0;
-   	 	font-size: 16px;
-    	color: #767676;
-    	text-decoration:none
+   	 	font-size: 15px;
+    	color:#6a6c6d;
+    	text-decoration:none;
 	}
+   
 	
 	.right_div{
 /* 		border:1px solid black; */
@@ -200,7 +205,7 @@
 		text-align:center;
 		font-style:'바탕체'
 	}
-   .right-con { width:98%; height:45%; border: 2px solid green; margin:5px ; display: block;min-height: 300px; }
+   .right-con { width:98%; height:45%;  margin:5px ; display: block;min-height: 300px; }
    .list-right { width:99%; height:100%; border: 5px solid #a6a6a6; float:left; }
    .top_div { width:50%; text-align:center; height:30px; float:left; padding-top:5px;font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:bold; }
    .top_div:hover {border-bottom:5px solid #1E6198;cursor:pointer;}
@@ -248,7 +253,7 @@ function modifyTrip(){
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/trip.do" class="side-text">트립목록</a>
+			<a href="<%=cp%>/mypage/trip.do" class="side-text" style="border-bottom:2px solid #cb4242;">트립목록</a>
 		</div>
 	
 		<div class="side_list">
@@ -274,6 +279,7 @@ function modifyTrip(){
 					</div>
 					
 					<div class="menu_div2">
+					
 						<div class="name_div" onclick="tripDetail('${map.TRIP_IDX}')">
 						<div style="width:200px; height:auto; float:left;">
 							<font style="color:#3c3c3c; font-weight:bold; letter-spacing:2px; font-size:18px; font-style:'바탕체'">
@@ -285,9 +291,15 @@ function modifyTrip(){
 							</a>
 						</div>
 						
+<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
 					 	<div style= " width:250px; height:auto; float:left; margin-left:370px; margin-top:-35px; border:1px solid red;">
                         	<input type="button" value="호스팅 수정하기" onclick="javascript:modifyTrip();" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; float:left; margin-right:25px;"/>
                     		<input type="button" value="호스팅 삭제하기" onclick="javascript:deleteTrip(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid blue; background-color:#fff; float:left; "/>
+=======
+					 	<div style= " width:250px; height:auto; float:left; margin-left:370px; margin-top:-35px; border:0px solid red;">
+                        	<input type="button" value="호스팅 수정하기" onclick="javascript:modifyTrip${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; margin-right:25px;"/>
+                    		<input type="button" value="호스팅 삭제하기" onclick="javascript:deleteTrip(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; "/>
+>>>>>>> 51e9c86 마이페이지 
                     	</div>
                      
 					</div><!-- name_div -->
@@ -335,10 +347,9 @@ function modifyTrip(){
 					</div><!-- menu_div2 -->		
 				</div> <!-- trip_menu_div End -->
 				
-			
-            <div class="right-con">
+			<div class="right-con">
                <form name="form_kind" method="post">
-                  <div class="right-top" style="border:1px solid red;">
+                  <div class="right-top" style="border:1px solid #828282;">
                      <div id="reser" class='top_div <c:if test="${Type eq 'reser'}">on</c:if>' onclick="searchKind(1)">
                       			  예약현황
                      </div>
@@ -347,7 +358,7 @@ function modifyTrip(){
                      </div>
                   </div>
                </form>
-               <hr/>
+               <hr style="border:1px solid #828282;"/>
 <style>
    #reserDiv { display: block; }
     .reserDiv { width:90%;height:30px; margin:0px auto; }
@@ -358,80 +369,162 @@ function modifyTrip(){
     
     #msgDiv { display: none; }
     .msgDiv { width:90%;height:30px; margin:0px auto; }
-    .msgDiv .m_num { width:9%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px; }
-    .msgDiv .m_email { width:25%; float:left; border:1px solid black; text-align:center; padding:3px;height:25px;  }
-    .msgDiv .m_title { width:45%; float:left; border:1px solid black; text-align:center; padding:3px; cursor:pointer;  height:25px; }
-    .msgDiv .m_date { width:17%; float:left; border:1px solid black; text-align:center; padding:3px; height:25px; }
-    .msgDiv .m_content { width:98%; float:left; border:1px solid black; text-align:center; padding:3px; height:25px; }
+    .msgDiv .m_num { width:9%; float:left; border:1px solid black; text-align:center; padding:3px; }
+    .msgDiv .m_email { width:25%; float:left; border:1px solid black; text-align:center; padding:3px;  }
+    .msgDiv .m_title { width:45%; float:left; border:1px solid black; text-align:center; padding:3px; cursor:pointer;   }
+    .msgDiv .m_date { width:17%; float:left; border:1px solid black; text-align:center; padding:3px;  }
+    .msgDiv .m_content { width:98%; float:left; border:1px solid black; text-align:center; padding:3px;  }
 </style>
 
    <div id="reserDiv">
-      <div class="reserDiv" >
-         <div class="r_num" style="background-color:#dedede;">번호</div>
-         <div class="r_name" style="background-color:#dedede;">예약자 명</div>
-         <div class="r_person" style="background-color:#dedede;">인원</div>
-         <div class="r_date" style="background-color:#dedede;">예약일</div>
-         <div class="r_date" style="background-color:#dedede;">입실일</div>
-         <div class="r_date" style="background-color:#dedede;">퇴실일</div>
-      </div>
-      <c:if test="${empty reserList}">
-      	<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
-			<font style="color:#000;font-size:20px;margin-top:100px; ">조회된 결과가 없습니다.</font>
-		</div>
-      </c:if>
-      <c:forEach items="${reserList}" var="rList" varStatus="stat">
-      <div class="reserDiv">
-         <div class="r_num">${stat.index + 1 }</div>
-         <div class="r_name">${rList.HR_NAME }</div>
-         <div class="r_person">${rList.HR_PERSONS } 명</div>
-         <div class="r_date">
-            <fmt:formatDate value="${rList.HR_TIME }" pattern="yyyy-MM-dd HH:mm"/>
-         </div>
-         <div class="r_date">
-            <fmt:formatDate value="${rList.HR_FIRST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
-         </div>
-         <div class="r_date">
-            <fmt:formatDate value="${rList.HR_LAST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
-         </div>
-      </div>
-      </c:forEach>
-   </div>
+   		<table class="reser_table">
+			<c:if test="${empty reserList}">
+      			<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
+					<font style="color:rgb(128, 128, 128);font-size:15px;margin-top:100px; ">현재 예약자가 없습니다.</font>
+				</div>
+      		</c:if>
+      		<c:if test="${!empty reserList}">
+				<tr>
+					<td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>번호</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약 상태</strong></font></td>
+					<td width="330px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약자명</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>인원</strong></font></td>
+					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>예약일</strong></font>
+					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>입실일</strong></font></td>
+					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>퇴실일</strong></font></td>
+				</tr>
+	
+				<tr>
+					<td colspan="7"><hr/></td>
+				</tr>
+			<form method="post" action="<%=cp%>/mypage/houseReserDetail.do" name="detailForm">
+			<input type="hidden" name="HOUSE_IDX" value=""/>
+			<input type="hidden" name="HR_IDX" value=""/>
+			
+			<c:forEach var="rList" items="${reserList}" varStatus="status">
+				<tr>
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						${status.index+1} 
+						</font>
+					</td>
+					<td align="center" bgcolor="#f3f3f3">
+						<c:if test="${rList.HR_DELETE_STATE == 0}">
+							<font style="color:#3c3c3c; letter-spacing:2px; font-size:12px; font-style:'바탕체'">예약</font>
+						</c:if>
+						<c:if test="${rList.HR_DELETE_STATE == 1}">	
+							<font style="color:red;  letter-spacing:2px; font-size:12px; font-style:'바탕체'">취소신청</font>
+						</c:if>
+					</td>
+					<td align="center" bgcolor="#f3f3f3">
+						
+						<a href="javascript:reserDetail(${rList.HOUSE_IDX}, ${rList.HR_IDX});" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+							${rList.HR_NAME }
+						</a>
+
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						 	${rList.HR_PERSONS} 명
+						</font>
+
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						  	<fmt:formatDate value="${rList.HR_TIME }" pattern="yyyy-MM-dd HH:mm"/>
+						</font>	
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c; letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+							<fmt:formatDate value="${rList.HR_FIRST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
+						</font>
+
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c; letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+							<fmt:formatDate value="${rList.HR_LAST_DATE }" pattern="yyyy-MM-dd HH:mm"/>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="7"><hr/></td>
+				</tr>
+					
+				</c:forEach>
+				</c:if>
+			</form>
+   		</table>
+   </div><!-- reserDiv -->
    
    <!-- ///////////////////// 메세지 -->
+   
    <!-- msg_idx, receive_member_email, msg_state, msg_type, msg_content, send_date, msg_title  -->
    <div id="msgDiv">
-      <div class="msgDiv" >
-         <div class="m_num" style="background-color:#dedede;">번호</div>
-         <div class="m_email" style="background-color:#dedede;">이메일</div>
-         <div class="m_title" style="background-color:#dedede;">제목</div>
-         <div class="m_date" style="background-color:#dedede;">보낸 날짜</div>
-      </div>
-       <c:if test="${empty msgList}">
-      	<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
-			<font style="color:#000;font-size:20px;margin-top:100px; ">조회된 결과가 없습니다.</font>
-		</div>
-      </c:if>
-      <c:forEach items="${msgList}" var="mList" varStatus="stat">
-      <div class="msgDiv">
-         <div class="m_num">${stat.index + 1 }</div>
-         <div class="m_email">${mList.MEMBER_EMAIL }</div>
-         <div class="m_title" onclick="contentView('${mList.MSG_IDX }');" style="color:red; font-weight:bold;">
-            ${mList.MSG_TITLE }
-         </div>
-         <div class="m_date">
-            <fmt:formatDate value="${mList.SEND_DATE}" pattern="yyyy-MM-dd"/>
-         </div>
-      </div>
-      <div class="msgDiv" style="display:none;" id="m_content${mList.MSG_IDX }">
-         <div class="m_content" style="padding:10px;min-height:150px;background-color:#ededed;">${mList.MSG_CONTENT }</div>
-      </div>
-      </c:forEach>
+   		
+   		<table class="reser_table">
+		<c:choose>
+			<c:when test="${fn:length(list)>0}">
+				<tr>
+					<td width="90px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>번호</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>보낸사람</strong></font></td>
+					<td width="330px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>제목</strong></font></td>
+					<td width="120px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>보낸날짜</strong></font></td>
+				</tr>
+				
+				<tr>
+					<td colspan="4"><hr/></td>
+				</tr>
+			<form method="post" action="<%=cp%>/mypage/receiveMsgDetail.do" name="msg_detailForm">
+			<input type="hidden" name="msg_idx" value=""/>
+			
+			
+			<c:forEach var="mList" items="${msgList}" varStatus="status">
+				<tr>
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						${status.index+1}
+						</font>
+					</td>
+					<td align="center" bgcolor="#f3f3f3">
+						
+						<a href="javascript:contentView('${mList.MSG_IDX }');" style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+							${mList.MEMBER_EMAIL}
+						</a>
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						 	 <fmt:formatDate value="${mList.SEND_DATE }" pattern="yyyy-MM-dd"/>
+						</font>
+					</td>
+					
+					<td align="center" bgcolor="#f3f3f3">
+						<font style="color:#3c3c3c;  letter-spacing:1px; font-size:12px; font-style:'바탕체'">
+						  	<fmt:formatDate value="${rList.HR_TIME }" pattern="yyyy-MM-dd HH:mm"/>
+						</font>	
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4"><hr/></td>
+				</tr>
+				</c:forEach>
+			</form>
+				</form>
+			</c:when>
+				
+			<c:otherwise>
+				<div style="height:50%;background-color:#F8F8F8; padding-top:120px; text-align:center;">
+					<font style="color:rgb(128, 128, 128);font-size:15px;margin-top:100px; ">받은메세지가 없습니다.</font>
+				</div>
+			</c:otherwise>
+		</c:choose>
+   		</table>
    </div>
-   
-  
-   </div><!-- right-con -->
 </div><!-- right_div End -->
-	
 	
 </div>
 <div style="clear:both;"></div>

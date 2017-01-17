@@ -14,7 +14,7 @@
 			(order by MSG_IDX desc) RNUM,
       MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX 
       from message where member_idx = #{member_idx}
-        <include refid="common.pagingPost"/> 
+   <include refid="common.pagingPost"/> 
    </select>
    
    <!-- 받은메시지 리스트-->
@@ -58,14 +58,17 @@
 	
    <!--숙소관리-> 내가 등록한 숙소  리스트-->
    <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-   		  SELECT h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
+    <include refid="common.pagingPre"/> 
+   		  SELECT  ROW_NUMBER() OVER 
+			(order by  h.HOUSE_IDX desc) RNUM,
+   		  h.HOUSE_IDX, HOUSE_NAME, HOUSE_IMAGE,HOUSE_KIND, 
 				HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
 				HOUSE_TOTAL_PERSONS, HOUSE_TOTAL_PRICE,
 				HI_SPACE, HI_BAD,HI_TOTAL_STAR, 
 			    (select count(*) from HOUSE_REVIEW_BOARD hrb where hrb.house_idx=h.house_idx)  HCNT
 		 from house h inner join house_info hf on h.house_idx=hf.house_idx 
 			where member_idx=#{member_idx}
-				order by h.house_idx desc
+	  <include refid="common.pagingPost"/> 
    </select>
 
    <!-- 숙소관리->숙소리스트->상세보기  -->
@@ -166,9 +169,16 @@
 
    <!--트립목록-> 내가 등록한 트립 리스트 -->
    <select id="selectTripList" parameterType="hashmap" resultType="hashmap">
-   		select *from TRIP 
-   		where MEMBER_IDX = #{MEMBER_IDX}
-   		order by TRIP_IDX DESC
+   	 <include refid="common.pagingPre"/> 
+   		  SELECT ROW_NUMBER() OVER 
+			(order by TRIP_IDX desc) RNUM, 
+			TRIP_IDX, TRIP_AREA, TRIP_TYPE, TRIP_LANGUAGE,TRIP_NAME, TRIP_INTRO, 
+			TRIP_FIRST_DATE, TRIP_LAST_DATE, TRIP_INCLUDE, TRIP_ZIPCODE, 
+			TRIP_ADDR1, TRIP_ADDR2, TRIP_ADDR3, TRIP_IMAGE, TRIP_PPRICE, TRIP_TPRICE,
+			TRIP_PERSONS, MEMBER_IDX
+			from TRIP 
+   			where MEMBER_IDX = #{MEMBER_IDX}
+   	<include refid="common.pagingPost"/> 
    </select>   
   
    <!--트립목록->트립리스트-> 트립 상세보기  -->
@@ -289,10 +299,16 @@
  <!-- 알림판  -->
      <!-- 알림판 회원 정보 불러오기  -->
    <select id ="selectMember" parameterType="hashmap" resultType="hashmap">
-   		select MEMBER_IDX, MEMBER_EMAIL, MEMBER_NAME, MEMBER_PWD, MEMBER_BIRTH, 
-   				MEMBER_PHONE, MEMBER_SEX, MEMBER_ADDR, MEMBER_IMAGE, MEMBER_LEVEL
+   		select *
    		from MEMBER
    		where MEMBER_IDX = #{MEMBER_IDX}
    </select>
+ 
+   <update id="updateMemberPlofile" parameterType="hashmap">
+   		update MEMBER set MEMBER_NAME=#{MEMBER_NAME}, MEMBER_EMAIL=#{MEMBER_EMAIL}, MEMBER_ADDR=#{MEMBER_ADDR}, 
+   						MEMBER_IMAGE=#{MEMBER_IMAGE}, MEMBER_SEX=#{MEMBER_SEX}, MEMBER_BIRTH=#{MEMBER_BIRTH} ,
+   						MEMBER_PHONE=#{MEMBER_PHONE},MEMBER_ADDR=#{MEMBER_ADDR},MEMBER_CONTENTS=#{MEMBER_CONTENTS}
+   		where MEMBER_IDX= #{MEMBER_IDX}
+   </update>
    
 </mapper>

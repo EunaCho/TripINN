@@ -100,16 +100,17 @@ public class MypageController {
 	}
 	//*메시지-->받은메시지상세보기 
 	@RequestMapping("/receiveMsgDetail.do")
-	public ModelAndView receiveMsgDetail(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	public ModelAndView receiveMsgDetail(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("receiveMsgDetail");
 		
 		int msg_idx = Integer.parseInt(request.getParameter("msg_idx"));
 		commandMap.put("msg_idx", msg_idx);
+		commandMap.put("member_email", session.getAttribute("member_email"));
+		
 		Map<String, Object> map = mypageService.selectReceiveMsgDetail(commandMap.getMap());
 		
 		mv.addObject("map", map);
-		
 		mypageService.updateMsg_state(commandMap.getMap());
 
 		return mv;
@@ -165,10 +166,10 @@ public class MypageController {
 		
 		commandMap.put("member_idx", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
-		ArrayList<Map<String, Object>> list = new ArrayList<>(); //숙소 리스트를 저장할 ArrayList 객체를 선언 
-		list =(ArrayList<Map<String, Object>>)mypageService.selectHouseList(commandMap.getMap()); // selectHouseList를 실행
-		
-		mv.addObject("list", list); //modelAndView에 넣어줌 
+		Map<String, Object> resultMap =mypageService.selectHouseList(commandMap.getMap()); // selectHouseList를 실행
+		System.out.println(resultMap);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result")); //modelAndView에 넣어줌 
 		
 		return mv;
 	}
@@ -316,9 +317,13 @@ public class MypageController {
 		
 		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
-		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>)mypageService.selectTripList(commandMap.getMap());
+	/*	ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>)mypageService.selectTripList(commandMap.getMap())
+		mv.addObject("list", list);*/
 		
-		mv.addObject("list", list);
+		Map<String, Object> resultMap =mypageService.selectTripList(commandMap.getMap()); // selectHouseList를 실행
+		System.out.println(resultMap);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result")); //modelAndView에 넣어줌 
 		
 		return mv;
 	}
@@ -496,23 +501,42 @@ public class MypageController {
 
 	
 //--------------------------------------------프로필 시작---------------------------------------------
-	//*프로필 수정(프로필 메인)
+	//*프로필 수정폼(프로필 메인)
 	@RequestMapping("/profile.do")
-	public String profileForm(CommandMap commandMap) throws Exception{
+	public ModelAndView profileForm(CommandMap commandMap, HttpSession session) throws Exception{
 		
-		return "proForm";
-	}
-	//*후기
-	@RequestMapping("/review.do")
-	public String reviewForm(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("proForm");
 		
-		return "reviewForm";
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); 
+	
+		Map<String, Object> map = mypageService.selectMember(commandMap.getMap());
+		
+		mv.addObject("map", map);
+		
+		return mv;
 	}
 	
-	//*인증현황
-	@RequestMapping("/check.do")
-	public String checkState(CommandMap commandMap) throws Exception{
-		return "checkState";
+	//프로필 수정하기 
+	@RequestMapping("/profileModify.do")
+	public ModelAndView profileModify(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{
+		
+		ModelAndView mv = new ModelAndView("redirect:/mypage/notice.do");
+		
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_dix"));
+		commandMap.put("MEMBER_EMAIL", request.getParameter("MEMBER_EMAIL"));
+		commandMap.put("MEMBER_SEX", request.getParameter("MEMBER_SEX"));
+		commandMap.put("MEMBER_ADDR", request.getParameter("MEMBER_ADDR"));
+		commandMap.put("MEMBER_BIRTH", request.getParameter("MEMBER_BIRTH"));
+		commandMap.put("MEMBER_PHONE", request.getParameter("MEMBER_PHONE"));
+		commandMap.put("MEMBER_IMAGE", request.getParameter("MEMBER_IMAGE"));
+		commandMap.put("MEMBER_NAME", request.getParameter("MEMBER_NAME"));
+		
+		commandMap.put("MEMBER_CONTENTS", request.getParameter("MEMBER_CONTENTS"));
+		
+		
+		mypageService.updateMemberPlofile(commandMap.getMap());
+		
+		return mv;
 	}
 
 }
