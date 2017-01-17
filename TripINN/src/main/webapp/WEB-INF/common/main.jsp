@@ -169,7 +169,7 @@
 		<!-- <div style="clear:both;"></div> -->
 		<div class="select">객실<br/>
 		<select name="room"> 
-				<option value="">객실 수</option>
+				<option value="0">객실 수</option>
 				<option value="1" <c:if test="${room eq 1}">selected="selected"</c:if> >1개</option>
 				<option value="2" <c:if test="${room eq 2}">selected="selected"</c:if> >2개</option>
 				<option value="3" <c:if test="${room eq 3}">selected="selected"</c:if> >3개</option>
@@ -179,7 +179,7 @@
 		</div>
 		<div class="select">인원<br/>
 		<select name="person"> 
-				<option value="">인원</option>
+				<option value="0">인원</option>
 				<option value="1" <c:if test="${adult eq 1}">selected="selected"</c:if> >1명</option>
 				<option value="2" <c:if test="${adult eq 2}">selected="selected"</c:if> >2명</option>
 				<option value="3" <c:if test="${adult eq 3}">selected="selected"</c:if> >3명</option>

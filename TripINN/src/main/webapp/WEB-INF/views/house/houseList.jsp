@@ -102,10 +102,10 @@
 	</div>
 	<div class="border_category">
 		<div><h4>숙소 유형</h4></div>
-		<div class="h_category">집 전체<input type="checkbox" name="" id="" style="color:"></div>
-		<div class="h_category" >개인실<input type="checkbox" name="" id=""></div>
-		<div class="h_category" >다인실<input type="checkbox" name="" id=""></div>
-	</div>
+		<div class="h_category">집 전체<input type="checkbox" name="HOUSE_KIND" id="" style="color:"></div>
+		<div class="h_category">개인실<input type="checkbox" name="HOUSE_KIND" id=""></div>
+		<div class="h_category">다인실<input type="checkbox" name="HOUSE_KIND" id=""></div>
+	</div> 
 	
 	
 	<!-- 가격 설정 -->
