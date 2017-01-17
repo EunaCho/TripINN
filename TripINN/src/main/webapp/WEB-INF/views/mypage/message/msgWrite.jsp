@@ -7,6 +7,7 @@
 	.side_menu{
 		border:1px solid black;
 		margin-bottom:20px;
+		margin-left:50px;
 		width: 200px;
 		height:450px;
 		float:left;
@@ -231,7 +232,7 @@ function joinConf(){
 				<tr >
 					<th>받는사람</th>
 					<td style="height:25px;">
-						<input type="text" name="RECEIVE_MEMBER_EMAIL" id="RECEIVE_MEMBER_EMAIL" style="width:60%; height:85%;" />
+						<input type="text" name="RECEIVE_MEMBER_EMAIL" id="RECEIVE_MEMBER_EMAIL" value="${receive_email }" style="width:60%; height:85%;" />
 					</td>
 				</tr>
 				<tr>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/TripINN/css/trip/trip.css" />
 <style>
 	#container { width:1100px; height:100%; border:1px solid black; margin:0px auto;  }
-	p {height: auto;}
+	p {height: auto;} 
 	.trDiv { width:100%;overflow: hidden; height: auto;}
 	.trDiv .tdDiv-col { width:98%;height:auto;float:left; padding-left: 40px;}
 	.trDiv .tdDiv-left { width:15%;height:auto;float:left;border:0px solid red;text-align:center;vertical-align:middle; }
@@ -109,11 +109,17 @@ function checkInfo() {
 			<div class="trDiv">
 				<div class="tdDiv-left"><p>예약 인원</p></div>
 				<div class="tdDiv-right"><p style="float:left;font-size:15px;">
+				<c:if test="${tripInfo.TRIP_PERSONS - tripInfo.RESERVED_NUM > 0}">
 					<select name="tr_persons" id="" class="select-short" onchange="calc('${tripInfo.TRIP_PPRICE}', this.value);">
-					<c:forEach var="person" begin="1" end="${tripInfo.TRIP_PERSONS }">
+					<c:forEach var="person" begin="1" end="${tripInfo.TRIP_PERSONS - tripInfo.RESERVED_NUM }">
 						<option value="${person}">${person } 명</option>
 					</c:forEach>
 					</select>
+				</c:if>
+				<c:if test="${tripInfo.TRIP_PERSONS - tripInfo.RESERVED_NUM <= 0}">
+					<input type="hidden" name="tr_persons" id="tr_persons" value=""/>
+					<b><font color="#cb4242">예약이 가득찼습니다. 다른 트립을 이용해주세요.</font></b>
+				</c:if>
 				</p>
 				</div>
 			</div>
@@ -293,6 +299,9 @@ function checkInfo() {
 			return;
 		} else if (tr_email1 == "" || tr_email2 == "") {
 			alert("이메일을 입력해주세요.");
+			return;
+		} else if (rform.tr_persons.value == "") {
+			alert("예약 인원이 초과되었습니다. 다른 트립을 이용해주세요.");
 			return;
 		} 
 		

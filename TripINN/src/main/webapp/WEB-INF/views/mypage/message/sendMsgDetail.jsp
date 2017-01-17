@@ -204,37 +204,56 @@
 				<tr>	
 					<th>제목</th>
 					<td style="height:25px;">
-						${MSG_TITLE} 
+						${map.MSG_TITLE} 
 					</td>
 				</tr>
 				<tr >
 					<th>받는사람</th>
 					<td style="height:25px;">
-						${RECEIVE_MEMBER_EMAIL}
+						${map.RECEIVE_MEMBER_EMAIL}
 					</td>
 				</tr>
 				<tr>
 					<th>보낸날짜</th>
 					<td style="height:25px;">
-						${SEND_DATE}
+						${map.SEND_DATE}
 					</td>
 				</tr>
 				
 				<tr>
 					<th>내용</th>
 					<td>
-						${MSG_CONTENT}
+						${map.MSG_CONTENT}
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center" style="height:60px;border:1px solid white; padding-top:5px;">
-						<input type="button" value="답장보내기" onclick="joinConf();" style="height:40px;"/>
-						<input type="button" value="삭제하기" onclick="joinConf();" style="height:40px;"/>
+						<input type="button" value="답장보내기" onclick="sendEmail('${map.RECEIVE_MEMBER_EMAIL}');" style="height:40px;"/>
+						<input type="button" value="삭제하기" onclick="delEmail('${map.MSG_IDX}');" style="height:40px;"/>
 					</td>
 				</tr>
 			</table>
 		</div><!-- joinDiv End -->
 	</div><!-- right_div End -->
 </div>
+<form action="/TripINN/mypage/messageWrite.do" name="eform">
+	<input type="hidden" name="receive_member_email"  value=""/>
+</form>
+<form action="/TripINN/mypage/messageDel.do" name="dform" method="post">
+	<input type="hidden" name="msg_idx" value="" />
+	<input type="hidden" name="msgType" value="${msgType }" />
+</form>
 <div style="clear:both;"></div>
-
+<script>
+	function sendEmail(email) {
+		var form = document.eform;
+		form.receive_member_email.value = email;
+		form.submit();
+	}
+	function delEmail(idx) {
+		var form = document.dform;
+		form.msg_idx.value = idx;
+		form.submit();
+		alert("메세지가 삭제되었습니다.");
+	}
+</script>

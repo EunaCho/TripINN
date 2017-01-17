@@ -29,8 +29,7 @@ import com.inn.house.HouseService; // interface 숙소 등록
 import com.common.common.CommandMap; // sql key 설정
 import com.common.common.ConvertAddress;
 
-@Controller
-public class HouseController {
+public class HouseController { 
 
    Logger log = Logger.getLogger(this.getClass()); // 데이터 찍기
 

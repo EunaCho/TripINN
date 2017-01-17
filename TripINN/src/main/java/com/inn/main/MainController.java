@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import com.inn.house.HouseService;
 import com.inn.trip.TripService;
 
 @Controller
-public class MainController {
+public class MainController { 
 	
 	@Resource(name="houseService")
 	private HouseService houseService;
@@ -24,17 +25,17 @@ public class MainController {
 	
 	@RequestMapping("/main.do")
 	public ModelAndView main(CommandMap commandMap) throws Exception {
+		
 		ModelAndView mv = new ModelAndView("main");//tiles definition name
 		//하우스 미리보기 출력용 리스트 생성
 		List<Map<String, Object>> houseList = houseService.selectHouseList(commandMap.getMap());
 		mv.addObject("houseList", houseList);
 		
 		//트립 미리보기 출력용 리스트 생성
-		List<Map<String, Object>> tripList = tripService.selectTripList(commandMap.getMap());
+		Map<String, Object> tripList = tripService.selectTripList(commandMap.getMap());
 		 if(tripList != null) {
-				mv.addObject("tripList", tripList); 
+				mv.addObject("tripList", tripList.get("result")); 
 		 }
-
 		return mv; 
 	}
 }
