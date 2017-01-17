@@ -163,7 +163,7 @@ var favNum = 0;
                            data-toggle="modal" data-target="#Message">메시지 보내기</button>
                      </div>
 					<div style="width:150px;height:auto;float:right;margin-top:-50px;margin-right:-30px;">
-						<img src="/TripINN/images/${trip.MEMBER_IMAGE }" class="hostImg"/>
+						<img src="/TripINN/images/member/${trip.MEMBER_IMAGE }" class="hostImg"/>
 					</div>
 				</p>
 				</div>
@@ -317,7 +317,7 @@ var favNum = 0;
 			<c:forEach items="${rlist }" var="rlist" varStatus="stat">
 			<div class="trDiv" style="border-bottom:1px solid #a6a6a6;">
 				<div class="tdDiv-left" style="font-size:12px;width:20%;height:auto;font-family:'Nanum Gothic',malgun Gothic,dotum;padding:5px;">
-					<img src="/TripINN/images/${rlist.MEMBER_IMAGE }" class="hostImg" /><br />
+					<img src="/TripINN/images/member/${rlist.MEMBER_IMAGE }" class="hostImg" /><br />
 					<span style="padding:3px;">${rlist.MEMBER_NAME } 님</span>
 					<div style="CLEAR: both;	PADDING-RIGHT: 0px;	PADDING-LEFT: 0px;	BACKGROUND: url(/TripINN/images/trip/icon_star2.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	WIDTH: 90px;	PADDING-TOP: 0px;	HEIGHT: 18px; margin:0px auto;">
 						<p style="WIDTH: ${rlist.TRB_STAR * 20}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">

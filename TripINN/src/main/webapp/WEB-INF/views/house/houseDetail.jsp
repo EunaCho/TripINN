@@ -82,7 +82,7 @@
 
 
                   <div class="subject_img">
-                     <img src="/TripINN/images/${house.MEMBER_IMAGE }" />
+                     <img src="/TripINN/images/member/${house.MEMBER_IMAGE }" />
                   </div>
                </div>
 
@@ -270,7 +270,7 @@
                <!-- 작성자정보 -->
                <div id="review_left">
                   <div class="writer">
-                     <img src="/TripINN/images/공유.png" /><br /> <label>작성자:
+                     <img src="/TripINN/images/member/${review.MEMBER_IMAGE }" /><br /> <label>작성자:
                         ${review.MEMBER_NAME} 님</label>
                      <div style="background: url(/TripINN/images/trip/icon_star2.gif) 0px 0px; margin: 0 auto; width: 87px;">
                         <p style="WIDTH: ${review.HRB_STAR * 20 }%; PADDING-RIGHT:0px;   PADDING-LEFT:0px;   BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;   PADDING-BOTTOM: 0px;   MARGIN: 0px;   PADDING-TOP: 0px;   HEIGHT: 18px;">
