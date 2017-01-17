@@ -6,7 +6,8 @@
 <% String cp = request.getContextPath(); %>
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
-
+<link rel="stylesheet" href="/TripINN/css/login/main.css" />
+<script src="<%= cp %>/js/header.js"></script>
 
 
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
@@ -42,7 +43,7 @@
 
 
 <!-- 로그인 폼 -->
-<form method="post" action="member/memberLogin.do" name="loginForm">
+<form method="post" action="<%=cp %>/member/memberLogin.do" name="loginForm">
 	<div class="login_layerWindow">
 
 	 <div class="bg"></div>
@@ -75,7 +76,7 @@
 
 
 <!-- 회원가입 폼-->
-<form method="post" action="member/memberJoin.do" name="joinForm">
+<form method="post" action="<%=cp %>/member/memberJoin.do" name="joinForm">
 	<div class="join_layerWindow">
 	 <div class="bg"></div>
 	 <div id="join_layer">
