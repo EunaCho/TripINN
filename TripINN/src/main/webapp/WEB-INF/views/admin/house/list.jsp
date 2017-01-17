@@ -17,6 +17,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<<<<<<< HEAD
 
    
  <style>
@@ -83,96 +84,89 @@
 				border: 0px solid gray;
 			}
 			hr{ width:95%; color:#eee;}
+=======
+<!-- 스타일적용1 -->    
+<style>	
+	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
+	li{margin-right:50px }
+	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
-
-
-
- 
- 
-<!-- 스타일 적용3 -->
+<!-- 스타일 적용2 -->
 <style>
 	
 	.house_div{
-		border:0px solid blue;
+		border:2px solid black;
 		width:1040px;
 		height:100%;
 		border-radius:4px;
+		background-color:#F4FFFF;
 		margin:auto;
 		margin-left:220px;
+<<<<<<< HEAD
 		margin-top:-650px;
+=======
+		margin-top:-383px;
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		
 	}
 	.report_list{
-	border:0px solid black;
-	width:200px;
+	border:1px solid black;
+	width:150px;
 	height:30px;
 	margin:10px;
+<<<<<<< HEAD
 	font-size:21px;
 	
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	}
 	
 	.list1{
-	   border-top:1px solid blue;
-	   border-bottom:1px solid blue;
+	   border:1px solid blue;
 	   width:900px;
 	   height:200px;
 	   margin:40px;
 	}
 	.picture{
-	border:0px solid black;
+	border:1px solid black;
 	width:200px;
 	height:180px;
 	margin:10px;
-	border-radius:7px;
 	}
 	.picture1{
-	border:0px solid black;
+	border:1px solid black;
 	width:180px;
 	height:160px;
 	margin:10px;
-	border-radius:7px;
 	}
 	.house_idx{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:-190px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
-	
 	}
 	.house_info{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
-	height:60px;
+	height:20px;
 	margin-left:550px;
 	margin-top:-20px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
-	overflow-y:scroll;
 	}
 	.house_name{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:-30px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
+	margin-top:10px;
 	}
 	.house_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
-	margin-top:20px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
+	margin-top:-20px;
 	}
 	.house_delete{
 	border:2px solid black;
@@ -180,90 +174,60 @@
 	height:20px;
 	margin-left:750px;
 	margin-top:50px;
-	border-radius:7px;
 	}
 	.report_listNo{
-	border:0px solid black;
+	border:1px solid black;
 	width:200px;
 	height:30px;
 	margin:10px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
 	}
 	
 	.house_zipcode{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:550px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
 	}
 	.house_addr{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
-	height:40px;
+	height:20px;
 	margin-left:550px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
 	}
 	.house_persons{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
-	margin-left:220px;
-	margin-top:-105px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
+	margin-left:550px;
+	margin-top:10px;
 	}
 	.house_total_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:15px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
+	margin-top:-85px;
 	}
 	.house_person_price{
-	border:0px solid black;
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
 	}
-    .house_kind{
-	border:0px solid black;
+	
+.house_kind{
+	border:1px solid black;
 	width:300px;
 	height:20px;
 	margin-left:220px;
 	margin-top:10px;
-	background-color:#eee;
-	font-size:14px;
-	border-radius:7px;
 	}
 	
-   .paging{
-   font-size:17px;
-   margin-left:450px;
-   }
 	
 	
-	
-</style>
-
-<style type="text/css">
-#STATICMENU {margin:0pt;padding:0pt;position:absolute;left:0px;top:0px;}
 </style>
     
   </head>
@@ -273,12 +237,18 @@
  	 
  	 
  <!-- 가운데 윗 영역 -->	 
+<<<<<<< HEAD
     <div style="width:100%;height:100px;border:0px solid black;text-align:center;">
 	<h2>숙소목록 관리 페이지에 오신걸 환영합니다.</h2>
+=======
+    <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+	<h2>숙소관리 페이지에 오신걸 환영합니다.</h2>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    </div>
    
-  <body onload="InitializeStaticMenu();">
+  
    <!-- 좌측 영역 -->
+<<<<<<< HEAD
    <div style="width:17%;height:600px;border:0px solid black;text-align:center;margin-top:-20px;background:#eeeeff;">
    <div id="STATICMENU" style="width:17.5%;height:340px;border:0px solid black;text-align:center;">	
 	<section>
@@ -313,14 +283,37 @@
 					</ul>
 				</nav>
 		</section>
+=======
+   <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
+	   <ul>   
+        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
+		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
+		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
+		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
+		<li><a><h2>문의게시판</h2></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
+        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+
+	</ul>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    </div>
+<<<<<<< HEAD
     </div>
+=======
+   
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div class="report_list">
+<<<<<<< HEAD
    </div>
    <div style="width:1030px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+=======
+   전체 숙소 목록
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
@@ -330,36 +323,35 @@
     <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
       </div>
       <div class="house_idx">
-     &nbsp;번호: ${house.HOUSE_IDX}
+      번호: ${house.HOUSE_IDX}
       </div>
        <div class="house_info">
-     &nbsp;설명: ${house.HOUSE_INFO}
+      설명: ${house.HOUSE_INFO}
       </div>
       <div class="house_name">
-      &nbsp;이름: ${house.HOUSE_NAME}
+      이름: ${house.HOUSE_NAME}
       </div>
       <div class="house_price">
-      &nbsp;숙소가격: ${house.HOUSE_PRICE}
+      숙소가격: ${house.HOUSE_PRICE}
       </div>
       <div class="house_zipcode">
-     &nbsp;우편번호: ${house.HOUSE_ZIPCODE}
+      우편번호: ${house.HOUSE_ZIPCODE}
       </div>
       <div class="house_addr">
-      &nbsp;주소: ${house.HOUSE_ADDR1}  ${house.HOUSE_ADDR2}  ${house.HOUSE_ADDR3}
+      주소: ${house.HOUSE_ADDR1}  ${house.HOUSE_ADDR2}  ${house.HOUSE_ADDR3}
       </div>
      <div class="house_persons">
-     &nbsp;최대수용인원: ${house.HOUSE_PERSONS}
+      최대수용인원: ${house.HOUSE_PERSONS}
       </div>
        <div class="house_total_price">
-      &nbsp;총 가격: ${house.HOUSE_TOTAL_PRICE}
+      총 가격: ${house.HOUSE_TOTAL_PRICE}
       </div>
        <div class="house_person_price">
-      &nbsp;인원 당 가격: ${house.HOUSE_PERSON_PRICE}
+      인원 당 가격: ${house.HOUSE_PERSON_PRICE}
       </div>
       <div class="house_kind">
-      &nbsp;종류: ${house.HOUSE_KIND}
+      종류: ${house.HOUSE_KIND}
       </div>
-      
       
     </div>
     </c:forEach>
@@ -371,50 +363,10 @@
 				</div>
 		</c:otherwise>
     </c:choose>
-     <!-- 현재 페이지 번호를 저장 -->
-    <div class="paging">
-       ${pagingHtml}
-    </div>
    </div>
    
-  
-   
-   <!--스크립트 정의  -->
-<script type="text/javascript">
-
-   
-   //게시판 목록을 호출할 때 currentPageNo 값을 같이 전송해줌
-    function fn_search(pageNo){
-        var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/admin/houseList.do' />");
-        comSubmit.addParam("currentPageNo", pageNo);
-        comSubmit.submit();
-    }
-   //스크롤에 따라서 드롭다운이 따라감
-    var stmnLEFT = 10; // 오른쪽 여백 
-    var stmnGAP1 = 0; // 위쪽 여백 
-    var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
-    var stmnBASE = 150; // 스크롤 시작위치 
-    var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
-    var stmnScrollSpeed = 30; //스크롤 속도 (클수록 느림)
-    var stmnTimer; 
     
-    function RefreshStaticMenu() { 
-     var stmnStartPoint, stmnEndPoint; 
-     stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10); 
-     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
-     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
-     if (stmnStartPoint != stmnEndPoint) { 
-      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
-      document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
-      stmnRefreshTimer = stmnScrollSpeed; 
-      }
-     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
-     } 
-    function InitializeStaticMenu() {
-     document.getElementById('STATICMENU').style.left = stmnLEFT + 'px';  //처음에 왼쪽 위치
-     document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
-     RefreshStaticMenu();
-     }
-</script>
+   
+  
+  
 </html>

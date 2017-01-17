@@ -1,3 +1,4 @@
+
 /*header.jsp*/
 function logout() {
 	if(confirm("로그아웃을 하시겠습니까?")) {
@@ -133,13 +134,19 @@ $(function () {
 
 //메인 롤링 스크립트
 
-$(document).ready(function () {
-    // 슬라이더를 움직여주는 함수
-    function moveSlider(index) {
-        // 슬라이더를 이동합니다.
-        var willMoveLeft = -(index * 900);
-        $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
+$(document).ready(function(){
+$("#rolling").Scroll({
+	line:1, 
+	speed:5000, 
+	timer:1000, 
+	up:"#topbtnid",
+	down:"#btmbtnid",
+	autoplay:'#bannerplay',
+	autostop:'#bannerstop'
+});
 
+<<<<<<< HEAD
+=======
         // control_button에 active클래스를 부여/제거합니다.
         $('.control_button[data-index=' + index + ']').addClass('active');
         $('.control_button[data-index!=' + index + ']').removeClass('active');
@@ -149,12 +156,12 @@ $(document).ready(function () {
             left: 0
         }, 'slow');
         $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
-            $(this).css('left', -300);
+            $(this).css('left', -500);
         });
     }
 
     // 초기 텍스트 위치 지정 및 data-index 할당
-    $('.slider_text').css('left', -300).each(function (index) {
+    $('.slider_text').css('left', -500).each(function (index) {
         $(this).attr('data-index', index);
     });
 
@@ -169,4 +176,5 @@ $(document).ready(function () {
     // 초기 슬라이더 위치 지정
     var randomNumber = Math.round(Math.random() * 3);
     moveSlider(randomNumber);
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 });

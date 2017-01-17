@@ -204,26 +204,26 @@
 				<tr>	
 					<th>제목</th>
 					<td style="height:25px;">
-						${map.MSG_TITLE} 
+						${MSG_TITLE} 
 					</td>
 				</tr>
 				<tr >
 					<th>받는사람</th>
 					<td style="height:25px;">
-						${map.RECEIVE_MEMBER_EMAIL}
+						${RECEIVE_MEMBER_EMAIL}
 					</td>
 				</tr>
 				<tr>
 					<th>보낸날짜</th>
 					<td style="height:25px;">
-						${map.SEND_DATE}
+						${SEND_DATE}
 					</td>
 				</tr>
 				
 				<tr>
 					<th>내용</th>
 					<td>
-						${map.MSG_CONTENT}
+						${MSG_CONTENT}
 					</td>
 				</tr>
 				<tr>

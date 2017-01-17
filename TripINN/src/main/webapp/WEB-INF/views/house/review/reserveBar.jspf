@@ -7,7 +7,7 @@
 						<div class="checkinout">
 							<label>체크인</label> <input type="text" name="hr_first_date"
 								id="datepicker_in_reserveBar" value="${search.hr_first_date}"
-								placeholder="체크인">
+								placeholder="체크인"> 
 						</div>
 						<div class="checkinout">
 							<label>체크아웃</label> <input type="text" name="hr_last_date"

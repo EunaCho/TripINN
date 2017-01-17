@@ -72,27 +72,12 @@
 		border-bottom: 1px solid #a6a6a6;
 	}
 </style>
-<script>
-	function mySubmit(idx){
-		if(idx==1){
-			document.detail.action="<%=cp%>/mypage/houseReser.do";
-		}
-		
-		if(idx==2){
-			if(confirm("예약 취소신청을 하시겠습니까? 호스트가 확인하면 취소가 완료 됩니다.")) {
-				document.detail.action="<%=cp%>/mypage/H_reserDeleteOk.do";
-			}
-		}
-	document.detail.submit();
-}
-
-</script>
 
 <jsp:include page="../mypage_layout.jsp" flush="falsh"/>
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
+			<a href="<%=cp%>/mypage/house.do" class="side-text">숙소목록</a>
 		</div>
 	
 		<div class="side_list">
@@ -107,9 +92,8 @@
 	<div class="right_div">
 		<div class="right_div2"><strong>숙소</strong>예약내역</div>
 		
-		<form name="detail" method="post">
+		<form>
 		<input type="hidden" name="HOUSE_IDX" value="${map.HOUSE_IDX}">
-		<input type="hidden" name="HR_IDX" value="${map.HR_IDX}">
 		<table id="reser_table">
 			<tr>
 				<th>숙소이름</th>
@@ -178,8 +162,8 @@
 		</table>
 		
 		<div style="width:810px; border-bottom:3px solid #f0f0f0; margin-top:5px; text-align:center; padding:5px;">
-				<input type="button" value="확인" onclick="mySubmit(1)" style="height:35px; align:center;"/>
-				<input type="button" value="예약취소" onclick="mySubmit(2)" style="height:35px; vartical-align:middle;"/> 
+				<input type="button" value="확인" onclick="location.href='<%=cp%>/mypage/houseReser.do'" style="height:35px; align:center;"/>
+				<input type="button" value="예약취소" onclick="location.href='<%=cp%>/mypage/H_reserDeleteOk.do'" style="height:35px; vartical-align:middle;"/> 
 		</div>
 		</form>
 	</div>

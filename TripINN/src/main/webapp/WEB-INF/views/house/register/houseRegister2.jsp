@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=1.0">
 <script src="/TripINN/js/house/openHouseRegister.js"></script>
 <script>
+
 var imgArray = new Array();
 var imgNum = 2;
 function createImg() {
@@ -31,6 +32,7 @@ function createImg() {
 	$("#house_img_container"+ imgNum).append(chtml);
 	imgArray.push("house_img_file"+imgNum);
 	imgNum++;
+
 //	alert("배열 길이"+imgArray.length+"배열"+imgArray);
 	
 	
@@ -48,21 +50,11 @@ function createImg() {
 							<progress class="progressBar" max="100" value="66"></progress>
 						</div>
 					</div>
-					<div class="hrLabelName">님의<!--  <br />  &nbsp;&nbsp;-->&nbsp; 숙소 등록하기</div>
+					<div class="hrLabelName">님 안녕하세요! <br /> &nbsp;&nbsp;&nbsp; 호스트가 될 준비를 시작해보세요.</div>
 				</div>
 		</div>
 		<div style="clear:both"></div>
-		<div id="leftDiv2">
-		<ul>
-		<div style="color:#fff;height:30px;"><h4>숙소 정보 입력</h4></div>
-			<li onclick="fnMove('1')">숙소 이미지 등록</li>
-			<li onclick="fnMove('2')">적합한 게스트 유형</li>
-			<li onclick="fnMove('3')">체크인, 체크아웃</li>
-			<li onclick="fnMove('4')">요금 관련</li>
-			<li onclick="fnMove('5')">제공하는 공간</li>
 		
-		</ul>
-		</div>
 		<!-- *********data start********* -->
 		<form method="post" action="houseRegisterInput.do" enctype="multipart/form-data">
 		
@@ -88,10 +80,10 @@ function createImg() {
 				<!-- house_image -->
 					<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">숙소 이미지 등록</div>
+					<div class="hrLabel1">숙소 이미지를 등록해주세요.</div>
 					<div class="hrData">
 						<div class="hrLabelSub">
-						<label class="hrLabelImg">사용자에게 제공할 이미지를 등록해주세요</label> <br/>
+						<label class="hrLabelImg">사용자에게 제공할 이미지를 등록해주세요</label>
 						<input type="button" value="이미지 추가" onclick="javascript:createImg()" class="hrPersonsBtn"/>
 						</div>
 						
@@ -115,13 +107,12 @@ function createImg() {
 					</div>
 					</div>
 					</div>
-					<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
-				
+					
 				<!-- 적합한 게스트 유형 -->
 				<!-- hi_guest -->
 				<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">적합한 게스트 유형</div>
+					<div class="hrLabel1">적합한 게스트 유형은 무엇입니까?</div>
 					<div class="hrData">
 						<select class="hrSelect" name="HI_GUEST">
 							<option value="">선택</option>
@@ -137,52 +128,49 @@ function createImg() {
 				<!-- hi_checkin, hi_checkout -->
 				<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">체크인, 체크아웃</div>
-					<div class="hrData"><input type="date" name="HI_CHECKIN" class="hrText2"/></div>
-					<div class="hrData"><input type="date" name="HI_CHECKOUT" class="hrText2"/></div>
+					<div class="hrLabel1">체크인, 체크아웃을 설정해주세요</div>
+					<div class="hrData"><input type="date" name="HI_CHECKIN" class="hrText"/></div>
+					<div class="hrData"><input type="date" name="HI_CHECKOUT" class="hrText"/></div>
 					</div>
 				</div>
 				
 				<!-- hi_room, hi_bad -->
 				<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">제공하는 방 개수</div>
+					<div class="hrLabel1">제공하는 방 개수를 설정해주세요.</div>
 					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_ROOM">
+						<input type="number" class="hrText" name="HI_ROOM">
 					</div>
 					
-					<div class="hrLabel1">제공하는 침대 개수</div>
+					<div class="hrLabel1">제공하는 침대 개수를 설정해주세요.</div>
 					<div class="hrData">
-					<input type="number" class="hrText2" name="HI_BAD">
+					<input type="number" class="hrText" name="HI_BAD">
 					</div>
 					
 					</div>
 				</div>
 				<div style="clear:both"></div>
 				
-				<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
+				<!-- 요금관련 -->
+				<div>요금관련</div>
 				
 				<!-- hi_deposit, hi_clean_price, hi_sale-->
 				<div class="hrDiv">
-					
 				<div class="hrBorder">
-				<!-- 요금관련 -->
-				<div class="hrLabel1">요금관련</div>
-				
 					<div class="hrAddrLeft">
 					<div class="hrLabel1">할인율</div>
 					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_SALE">
+						<input type="number" class="hrText" name="HI_SALE">
 					</div>
 					
 					<div class="hrLabel1">청소비</div>
 					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_CLEAN_PRICE">
+						<input type="number" class="hrText" name="HI_CLEAN_PRICE">
 					</div>
 					
 					<div class="hrLabel1">보증금</div>
 					<div class="hrData">
-						<input type="number" class="hrText2" name="HI_DEPOSIT">
+						<input type="number" class="hrText" name="HI_DEPOSIT">
 					</div>
 					
 					</div>
@@ -190,18 +178,17 @@ function createImg() {
 				</div>
 				<div style="clear:both"></div>
 				
-				<div style=" width:90%; margin:5%; color: #B9B9B9; border-bottom:1px solid;"></div>
 				
 				
 				<!-- 제공하는 이용공간 및 편의시설 -->
 				<!-- hi_space, hi_cspace -->
 				<div class="hrDiv">
 					<div class="hrBorder">
-					<div class="hrLabel1">제공하는 공간</div>
+					<div class="hrLabel1">제공하는 공간을 선택해주세요.</div>
 					
 					<div class="hrLabel1">편의 시설</div>
 					<div class="hrData selectFont">
-						<input type="checkbox" name="HI_SPACE" value="필수 품목">필수 품목 :&nbsp;
+						<input type="checkbox" name="HI_SPACE" value="필수 품목">필수 품목<br/>
 						<label>수건, 침대시트, 비누, 화장지</label><br/>
 						<input type="checkbox" name="HI_SPACE" value="무선 인터넷">무선 인터넷<br/>
 						<input type="checkbox" name="HI_SPACE" value="샴푸">샴푸<br/>

@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
-import com.common.common.CommandMap;
-
 @Service("tripService")
 public class TripServiceImpl implements TripService {
 	
@@ -29,7 +27,7 @@ public class TripServiceImpl implements TripService {
 	}
 
 	@Override
-	public Map<String, Object> selectTripList(Map<String, Object> map) throws Exception{
+	public List<Map<String, Object>> selectTripList(Map<String, Object> map) throws Exception{
 		return tripDAO.selectTripList(map);
 	}
 
@@ -54,7 +52,7 @@ public class TripServiceImpl implements TripService {
 	}
 
 	@Override
-	public Map<String, Object> reviewList(Map<String, Object> map) {
+	public List<Map<String, Object>> reviewList(Map<String, Object> map) {
 		return tripDAO.reviewList(map);
 	}
 
@@ -66,51 +64,6 @@ public class TripServiceImpl implements TripService {
 	@Override
 	public String getLikeCnt(String parameter) {
 		return tripDAO.getLikeCnt(parameter);
-	}
-
-	@Override
-	public Map<String, Object> getReviewInfoSub(Map<String, Object> map) {
-		return tripDAO.getReviewInfoSub(map);
-	}
-
-	@Override
-	public void deleteLike(Map<String, Object> map) {
-		tripDAO.deleteLike(map);
-	}
-
-	@Override
-	public void insertLike(Map<String, Object> map) {
-		tripDAO.insertLike(map);
-	}
-
-	@Override
-	public List<Map<String, Object>> likeCheckList(Map<String, Object> map) {
-		return tripDAO.likeCheckList(map);
-	}
-
-	@Override
-	public Map<String, Object> selectTripListSearch(Map<String, Object> map) {
-		return tripDAO.selectTripListSearch(map);
-	}
-
-	@Override
-	public void insertBookMark(Map<String, Object> map) {
-		tripDAO.insertBookMark(map);
-	}
-
-	@Override
-	public void deleteBookMark(Map<String, Object> map) {
-		tripDAO.deleteBookMark(map);
-	}
-
-	@Override
-	public void tripReport(Map<String, Object> map) {
-		tripDAO.tripReport(map);
-	}
-
-	@Override
-	public void reviewDel(String parameter) {
-		tripDAO.reviewDel(parameter);
 	}
 
 }

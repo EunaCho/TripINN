@@ -14,11 +14,7 @@
     .overlay_info .address {font-size: 12px; color: #333; position: absolute; left: 80px; right: 14px; top: 24px; white-space: normal}
     .overlay_info .address2{font-size: 12px; color: #333; position: absolute; left: 80px; right: 14px; top: 80px; white-space: normal}
     .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
-    .markerImg{    
-    background: #ff5a5f;
-    color: white;
-    padding: 1px;
-    border-radius: 2px;}
+    
     #closebtn {float: left; color: white; font-size: xx-large;}
     #diva{float: left;}
     .overlay_info #head{border-radius: 6px 6px 0 0; height: 43px; width: 100%; background: #d95050;}
@@ -26,10 +22,10 @@
 
 
 <script>
+alert("ddd");
  	// 지도의 중심 
  	var addr_size = ${addr_size};
  	/* alert(addr_size); */
- 	var price_size =${price_size};
  	var lat = new String("${lat }");
  	var lng = new String("${lng }");
  	var ba = new String("${ba }");
@@ -37,8 +33,9 @@
  	var name = new String("${name}");
  	var idx = new String("${idx}");
  	var addr = new String("${addr}");
- 	var price = new String("${price}");
- 	var house_member_idx = new String("${house_member_idx}");
+ 	/* alert("lat " + lat);
+ 	alert("lng " + lng);
+ 	alert("ba" + ba); */
  	
  	var latSplit = lat.split('/');
  	var lngSplit = lng.split('/');
@@ -47,8 +44,6 @@
  	var nameSplit = name.split('/');
  	var idxSplit = idx.split('/');
  	var addrSplit = addr.split('/');
- 	var priceSplit = price.split('/');
- 	var house_member_idxSplit = house_member_idx.split(',');
  	
  	var latArry = new Array(addr_size);
  	var lngArry = new Array(addr_size);
@@ -57,14 +52,6 @@
  	var nameArry = new Array(addr_size);
  	var idxArry = new Array(addr_size);
  	var addrArry = new Array(addr_size);
- 	var priceArry = new Array(price_size);
- 	
- 	for(var i=0; i<price_size; i++){
- 		priceArry[i] = priceSplit[i];
- 		if(priceArry[i]==""){
- 			priceArry[i] = "free";
- 		}
- 	}
  	
  	for(var i=0; i<addr_size; i++){
  	 latArry[i] = latSplit[i];
@@ -78,8 +65,9 @@
  	 idxArry[i] = idxSplit[i];
  	 addrArry[i] = addrSplit[i];
  	}
- 	 
-  	$(function(){
+ 	/* alert(baArry); */
+ 	
+ 	$(function(){
 		if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(pos) {
 	
@@ -119,13 +107,10 @@
     
     
     /* var markers = new Array(positions.length);//마커들을 담을 배열 생성 */
-    var imageSize = new daum.maps.Size(35, 35);// 마커 이미지의 이미지 크기 입니다
-    var imageSrc = ""; // 마커 이미지를 생성합니다  
-    /* var imageSrc = '<div style="background:red;">'+priceArry[i]+'</div>'; */
+    var imageSize = new daum.maps.Size(24, 35);// 마커 이미지의 이미지 크기 입니다
+    var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지를 생성합니다    
     var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
     var markers = new Array(positions.length);
-    var markersPrice = new Array(positions.length);
-    var total = new Array(positions.length);
     for(var i = 0; i < positions.length; i++) {
     	 markers[i] = new daum.maps.Marker({
     	 map:map,
@@ -134,15 +119,9 @@
     	 image: markerImage
     	 });
     	 
-    	 markersPrice[i] = new daum.maps.CustomOverlay({
-        	 map:map,
-        	 titile: positions[i].title,
-        	 position: positions[i].latlng,
-        	 content: '<div class="markerImg" onclick="openOverlay()">$'+priceArry[i]+'</div>'
-        });
     	 var content = '<div class="overlay_info" id="map_display'+ i +'">';
     	 	content += '<div id="head"><div id="diva"> ';
-    	    content += '    <a href="/TripINN/house/houseDetail.do?HOUSE_IDX='+idxArry[i]+'&MEMBER_IDX='+house_member_idxSplit[i]+'" target="_blank"><strong>'+ nameArry[i] +'</strong></a>';
+    	    content += '    <a href="/TripINN/main.do" target="_blank"><strong>'+ nameArry[i] +'</strong></a>';
     	    content += '</div>';
     	    content += '    <div id="closebtn" onclick="closeOverlay('+i+')">X</div>';
     	    content += '</div>';
@@ -163,9 +142,8 @@
     	 });
     	 daum.maps.event.addListener(markers[i], 'click', openOverlay(map, markers[i], overlay, i));
     	 
-    }clusterer.addMarkers(markersPrice);
-   
-	 
+    }clusterer.addMarkers(markers);
+    
     function openOverlay(map, marker, overlay, i) {
         return function() {
             overlay.setMap(map, marker);
@@ -191,5 +169,6 @@
 </head>
 <body>
 <div id="map" class="houseMap"></div>
+
 </body>
 </html>
