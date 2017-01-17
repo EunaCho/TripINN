@@ -262,7 +262,7 @@
             MEMBER_LEVEL
             FROM
             MEMBER
-            ORDER BY MEMBER_IDX DESC
+            ORDER BY MEMBER_IDX ASC
    
    </select>
 
@@ -352,27 +352,31 @@
           FROM
             HOUSE
             
-          ORDER BY HOUSE_IDX DESC
+          ORDER BY HOUSE_IDX ASC
    
    </select>
    
    <select id="selectHouseReportList" parameterType="hashmap" resultType="hashmap">
       
          SELECT
+         
          REPORT_IDX,
          REPORT_TITLE,
          REPORT_CONTENT,
          REPORT_REGDATE,
-         REPORT_TYPE
+         REPORT_TYPE,
+         HOUSE_NAME,
+         HOUSE_IMAGE
 
-          FROM
-            REPORT_BOARD
+         FROM
+         REPORT_BOARD R inner join HOUSE H on R.HOUSE_IDX=H.HOUSE_IDX
             
-            WHERE REPORT_TYPE=1
+         WHERE REPORT_TYPE=1
             
-          ORDER BY REPORT_IDX DESC
+         ORDER BY REPORT_IDX ASC
    
    </select>
+   
    
    <delete id="houseReportDelete" parameterType="hashmap">
 
@@ -410,7 +414,7 @@
           FROM
             TRIP
             
-          ORDER BY HOUSE_IDX DESC
+          ORDER BY TRIP_IDX ASC
    
    </select>
    
@@ -421,14 +425,16 @@
          REPORT_TITLE,
          REPORT_CONTENT,
          REPORT_REGDATE,
-         REPORT_TYPE
+         REPORT_TYPE,
+         HOUSE_NAME,
+         HOUSE_IMAGE
 
           FROM
-            REPORT_BOARD
+            REPORT_BOARD R inner join HOUSE H on R.HOUSE_IDX=H.HOUSE_IDX
             
             WHERE REPORT_TYPE=2
             
-          ORDER BY REPORT_IDX DESC
+          ORDER BY REPORT_IDX ASC
    
    </select>
    
