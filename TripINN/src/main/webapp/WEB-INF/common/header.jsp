@@ -7,6 +7,8 @@
 <!-- jQuery -->
 <link rel="stylesheet" href="/TripINN/css/login/layout.css" />
 
+
+
 <div class="header_menu" style="top:0px;left:0px;right:0px;">
 <a href="<%=cp %>/main.do"><img src="<%=cp %>/images/logo.png"/> </a>
 	<div class="inner">	
@@ -26,7 +28,7 @@
 		<c:if test="${sessionScope.member_email == null}">
 			<span><a href="#login_layer" class="layer_trigger_login">로그인</a></span>
 			<span><a href="#join_layer" class="layer_trigger_join">회원가입</a></span>
-			<span><a href="<%=cp %>/hosting.do">호스팅하기</a></span>
+			<span><a href="<%=cp %>/house/houseRegisterMain.do">호스팅하기</a></span>
 		</c:if>
 		
 		<!-- 관리자 로그인 -->

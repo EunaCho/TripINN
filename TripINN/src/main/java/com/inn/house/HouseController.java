@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller; //controller 클래스 등록 위함
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping; //jsp와 클래스 연결
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -29,24 +28,25 @@ import com.inn.house.HouseService; // interface 숙소 등록
 import com.common.common.CommandMap; // sql key 설정
 import com.common.common.ConvertAddress;
 
-public class HouseController { 
+@Controller
+public class HouseController {
 
-   Logger log = Logger.getLogger(this.getClass()); // 데이터 찍기
+	Logger log = Logger.getLogger(this.getClass()); // 데이터 찍기
 
-   @Resource(name = "houseService") // service class 연결
-   private HouseService houseService; // interface 연결
+	@Resource(name = "houseService") // service class 연결
+	private HouseService houseService; // interface 연결
 
-   // house list mapping
-   @RequestMapping(value = "/house/houseMain.do", method = {RequestMethod.POST, RequestMethod.GET})
-   public ModelAndView houseList(CommandMap map, HttpSession session) throws Exception {
+	// house list mapping
+	@RequestMapping(value = "/house/houseMain.do", method = RequestMethod.POST)
+	public ModelAndView houseList(CommandMap map, HttpSession session) throws Exception {
 
-      ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
+		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 
-      mv.addObject("search", map.getMap()); // 검색키워드 넘기기
+		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
 
-      List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
-      mv.addObject("search", map.getMap()); // 검색키워드 넘기기
-      List<Map<String, Object>> map_list = houseService.selectHouseMapList(map.getMap());
+		List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
+		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
+		List<Map<String, Object>> map_list = houseService.selectHouseMapList(map.getMap());
 
       String str_total_addr = "";
       String str_addr = "";
@@ -157,12 +157,35 @@ public class HouseController {
       return mv;
    }
 
-   // house register insert view mapping detail 2
-   @RequestMapping(value = "/house/houseRegister3.do")
-   public ModelAndView houseRegisterResult2(CommandMap map, HttpServletRequest request) throws Exception {
-      ModelAndView mv = new ModelAndView("houseRegister3");
-      return mv;
-   }
+	// house register insert view mapping detail 2
+	@RequestMapping(value = "/house/houseRegister3.do")
+	public ModelAndView houseRegisterResult2(CommandMap map, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("houseRegister3");
+		return mv;
+	}
+	
+	//숙소 정보 수정폼
+	@RequestMapping(value = "/house/houseUpdateForm.do", method=RequestMethod.GET)
+	public ModelAndView houseUpdateForm(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("houseUpdateForm");
+		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap());//하우스 상세정보 꺼내오기
+		mv.addObject("house", house);
+		return mv;
+	}
+	
+	//숙소 정보 수정하기
+		@RequestMapping(value = "/house/houseUpdate.do", method=RequestMethod.POST)
+		public ModelAndView houseUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
+			ModelAndView mv = new ModelAndView("redirect:/house/houseDetail.do");
+			System.out.println("맵 확인");
+			System.out.println(commandMap.getMap());
+			//입력한 값으로 house table 업데이트 하기
+			houseService.updateHouse(commandMap.getMap(), request);
+			mv.addObject("HOUSE_IDX", commandMap.get("HOUSE_IDX"));
+			return mv;
+		}
+		
+	
 
    // map view
    @RequestMapping(value = "/house/houseMapView.do")

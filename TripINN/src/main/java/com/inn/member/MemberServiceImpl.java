@@ -13,7 +13,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	Logger log = Logger.getLogger(this.getClass()); //??
 	
-	@Resource(name="memberDAO") //sql¹® ¹Þ¾Æ¿Ã DAO Resource ÁöÁ¤
+	@Resource(name="memberDAO") //sqlï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ DAO Resource ï¿½ï¿½ï¿½ï¿½
 	private MemberDAO memberDAO;
 
 	public void memberJoin(Map<String, Object> map) throws Exception {
@@ -23,6 +23,13 @@ public class MemberServiceImpl implements MemberService {
 	public Map<String, Object> memberLogin(Map<String, Object> map) throws Exception {
 		return memberDAO.memberLogin(map);
 		
+	}
+	
+	public Object memberEmailCheck(Map<String, Object> map) throws Exception {
+		Object a = memberDAO.memberEmailCheck(map);
+		System.out.println("ì„œë¹„ìŠ¤ìž…í”Œ");
+		System.out.println(a);
+		return a;
 	}
 	
 	

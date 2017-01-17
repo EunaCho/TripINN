@@ -82,6 +82,11 @@ public class HouseDAO extends AbstractDAO {
    public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception {
       return (List<Map<String, Object>>) selectList("house.selectFileList", map);
    }
+	
+	public void updateHouseInfo(Map<String, Object> map) {
+		update("house.updateHouseInfo", map);
+		
+	}
 
    // insert file
    public void insertFile(Map<String, Object> map) throws Exception {
@@ -194,4 +199,5 @@ public class HouseDAO extends AbstractDAO {
       return (List<Map<String, Object>>) selectList("house.selectHouseList2", map);
    }
 
+	
 }

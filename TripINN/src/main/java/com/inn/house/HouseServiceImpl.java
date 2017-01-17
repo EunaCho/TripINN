@@ -66,11 +66,6 @@ public class HouseServiceImpl implements HouseService{
       houseDAO.insertHouseInfo(map); // HOUSEINFO 등록
    }
 
-   //house update
-   @Override
-   public void updateHouse(Map<String, Object> map, HttpServletRequest request) throws Exception {
-      houseDAO.updateHouse(map);
-   }
 
    //house delete
    @Override
@@ -139,7 +134,14 @@ public class HouseServiceImpl implements HouseService{
       }
    }
 
-   //wish 리스트 삽입
+	//house update
+	@Override
+	public void updateHouse(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		houseDAO.updateHouse(map); // HOUSE 수정
+		houseDAO.updateHouseInfo(map); //HOUSEINFO 수정
+		
+	}
+	   //wish 리스트 삽입
    @Override
    public void insertWish(Map<String, Object> map, HttpServletRequest request) throws Exception {
       // TODO Auto-generated method stub
