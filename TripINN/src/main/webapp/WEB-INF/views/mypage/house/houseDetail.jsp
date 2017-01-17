@@ -300,7 +300,6 @@ function reserDetail(idx, hr_idx){
          
                     <div style= " width:250px; height:auto; float:left; margin-left:370px; margin-top:-35px; border:0px solid red;">
                         <input type="button" value="호스팅 수정하기" onclick="javascript:modifyHouse${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; margin-right:25px;"/>
-                    	<input type="button" value="호스팅 삭제하기" onclick="javascript:deleteHouse(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; "/>
                     </div>
                      
                   </div><!-- name_div -->
