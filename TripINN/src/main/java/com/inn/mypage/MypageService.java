@@ -28,8 +28,8 @@ public interface MypageService {
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
 	
-	List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception; //예약관리 리스트
-	List<Map<String, Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception;//예약취소 관리 리스트 
+	Map<String, Object> selectMy_ReserList(Map<String, Object> map) throws Exception; //예약관리 리스트
+	Map<String, Object> selectH_ReserDeleteList(Map<String, Object> map) throws Exception;//예약취소 관리 리스트 
 	Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception; //예약관리상세보기 
 	
 	void deleteReserDelete(Map<String, Object> map) throws Exception; //예약취소 목록에서 해당 숙소 목록 삭제 
@@ -46,7 +46,9 @@ public interface MypageService {
 	Map<String, Object> selectTripDetail(Map<String, Object> map) throws Exception; //트립 리스트 상세보기 
 	List<Map<String, Object>> selectT_ReserList(Map<String, Object> map) throws Exception; //해당트립 예약현황리스트 
 	List<Map<String, Object>> selectT_MsgList(Map<String, Object> map) throws Exception; //해당 트립 메시지 리스트 
-	List<Map<String, Object>> selectMy_TReserList(Map<String, Object> map) throws Exception;//내 예약관리 리스트 
+	
+	Map<String, Object> selectMy_TReserList(Map<String, Object> map) throws Exception;//내 예약관리 리스트 
+	Map<String, Object> selectT_ReserDeleteList(Map<String, Object> map) throws Exception;//예약 취소 리스트 
 	Map<String, Object> selectT_ReserDetail(Map<String, Object> map) throws Exception;//예약관리 상세보기 
 	//예약 취소 리스트 
 	
@@ -56,7 +58,7 @@ public interface MypageService {
 	
 	void updateTr_delete_date(Map<String, Object> map) throws Exception; //예역 취소 신청 날짜 update
 	
-	List<Map<String, Object>> selectT_ReserDeleteList(Map<String, Object> map) throws Exception;//예약 취소 리스트 
+	
 	
 	void deleteT_ReserDelete(Map<String, Object> map) throws Exception; //예약취소 목록에서 해당 트립 목록 삭제 
 	

@@ -67,12 +67,12 @@ public class MypageDAO extends AbstractDAO {
 		return (List<Map<String, Object>>)selectList("mypage.selectH_MsgList", map);
 	}
 	//예약관리리스트
-	public List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>)selectList("mypage.selectMy_ReserList", map);
+	public Map<String, Object> selectMy_ReserList(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>)selectPagingList("mypage.selectMy_ReserList", map);
 	}
 	//예약취소 리스트
-	public List<Map<String, Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>) selectList("mypage.selectH_ReserDeleteList", map);
+	public Map<String, Object> selectH_ReserDeleteList(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>)selectPagingList("mypage.selectH_ReserDeleteList", map);
 	}
 	//예약관리 상세보기
 	public Map<String, Object> selectReserDetail(Map<String, Object> map) throws Exception{
@@ -119,8 +119,8 @@ public class MypageDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("mypage.selectT_MsgList", map);
 	}
 	//내 예약관리리스트 
-	public List<Map<String, Object>> selectMy_TReserList(Map<String, Object> map) throws Exception{
-		return  (List<Map<String, Object>>)selectList("mypage.selectMy_TReserList", map);
+	public Map<String, Object> selectMy_TReserList(Map<String, Object> map) throws Exception{
+		return  (Map<String, Object>) selectPagingList("mypage.selectMy_TReserList", map);
 	}
 	//예약관리 예약 상세보기 
 	public Map<String, Object> selectT_ReserDetail(Map<String, Object> map) throws Exception{
@@ -142,8 +142,8 @@ public class MypageDAO extends AbstractDAO {
 		update("mypage.updateTr_delete_date", map);
 	}
 	//예약 취소 리스트 
-	public List<Map<String, Object>> selectT_ReserDeleteList(Map<String, Object> map) throws Exception{
-		return (List<Map<String, Object>>) selectList("mypage.selectT_ReserDeleteList", map);
+	public Map<String, Object> selectT_ReserDeleteList(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectPagingList("mypage.selectT_ReserDeleteList", map);
 	}
 	
 	//예약취소 리스트 에서 예약취소 목록 삭제하기 

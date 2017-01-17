@@ -89,12 +89,12 @@ public class MypageServiceImpl implements MypageService{
 	}
 	//에약 관리 리스트 
 	@Override
-	public List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectMy_ReserList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectMy_ReserList(map);
 	}
 	//예약 취소 리스트 
 	@Override
-	public List<Map<String,Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception{
+	public Map<String,Object> selectH_ReserDeleteList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectH_ReserDeleteList(map);
 	}
 	//예약관리 상세보기 
@@ -148,7 +148,7 @@ public class MypageServiceImpl implements MypageService{
 	}
 	//예약관리 리스트 
 	@Override 
-	public List<Map<String, Object>> selectMy_TReserList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectMy_TReserList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectMy_TReserList(map);
 	}
 	//예약관리 예약 상세보기 
@@ -182,7 +182,7 @@ public class MypageServiceImpl implements MypageService{
 	}
 	//예약 취소 리스트
 	@Override
-	public List<Map<String, Object>> selectT_ReserDeleteList(Map<String, Object> map) throws Exception{
+	public Map<String, Object> selectT_ReserDeleteList(Map<String, Object> map) throws Exception{
 		return mypageDAO.selectT_ReserDeleteList(map);
 	}
 	

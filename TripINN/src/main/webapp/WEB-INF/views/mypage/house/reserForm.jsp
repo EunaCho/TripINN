@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <% String cp = request.getContextPath(); %>
 <style>
 	.left_div{
@@ -165,9 +166,41 @@ function reserDetail(idx, hr_idx){
 				</tr>
 			</c:otherwise>
 			</c:choose> 
+		
+			
 		</table>
+			
+		<c:if test="${not empty paginationInfo}">
+		<div style="clear:both;"></div>
+		<div class="trDiv" style="width:100%;margin-top:20px;">
+			<div class="tdDiv-col" id="pagingDiv" style="text-align:center;height:30px;margin-top:10px;">
+        		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
+        	</div>
+        </div>
+    	</c:if>
 		
 		</div><!--예약리스트   -->
 	</div><!-- 오른쪽 div -->
+	<!-- ///////////////페이징처리/////////////// -->
+			<form name="listForm" >
+			 <input type="hidden" name="currentPageNo" value="" />
+			</form>	
+			<style>
+			#pagingDiv {height:40px;}
+			#pagingDiv a { font-size:12px;width:20px; height:20px; border:1px solid #a6a6a6; margin-right:5px; border-radius:7px;padding:7px;}
+			#pagingDiv a:hover {background-color:rgb(255, 235, 240);}
+			#pagingDiv strong { font-size:12px;border:1px solid #a6a6a6;border-radius:7px;padding:7px;color:#cb4646;margin-right:5px;}
+			</style>			
+			<script>
+			function fn_search(pageNo){
+			    var listForm = document.listForm;
+			    listForm.action = "/TripINN/mypage/houseReser.do";
+			    listForm.currentPageNo.value = pageNo;
+			    listForm.submit();
+			}
+			</script>
+     		<!-- ///////////////페이징처리/////////////// -->
+	
+	
 </div>
 <div style="clear:both;"></div>

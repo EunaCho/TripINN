@@ -205,9 +205,13 @@ public class MypageController {
 		
 		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 	
-		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_ReserList(commandMap.getMap()); //예약목록 리스트 
+/*		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_ReserList(commandMap.getMap()); //예약목록 리스트 
+		mv.addObject("list", list);*/	
 		
-		mv.addObject("list", list);		
+		Map<String, Object> resultMap =mypageService.selectMy_ReserList(commandMap.getMap()); // selectHouseList를 실행
+		System.out.println(resultMap);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result")); //modelAndView에 넣어줌 
 		
 		return mv;
 	}
@@ -256,9 +260,13 @@ public class MypageController {
 		
 		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
-		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectH_ReserDeleteList(commandMap.getMap());
+/*		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectH_ReserDeleteList(commandMap.getMap());
+		mv.addObject("list", list);*/
 		
-		mv.addObject("list", list);
+		Map<String, Object> resultMap =mypageService.selectH_ReserDeleteList(commandMap.getMap()); // selectHouseList를 실행
+		System.out.println(resultMap);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result")); //modelAndView에 넣어줌 
 		
 		return mv;
 	}
@@ -347,11 +355,14 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView("tripReserForm");
 		
 		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
+
+//		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_TReserList(commandMap.getMap());
+//		mv.addObject("list", list);
 		
-		commandMap.put("MEMBER_IDX", "12");
-		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectMy_TReserList(commandMap.getMap());
-		
-		mv.addObject("list", list);
+		Map<String, Object> resultMap = mypageService.selectMy_TReserList(commandMap.getMap()); // selectHouseList를 실행
+		System.out.println(resultMap);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result")); //modelAndView에 넣어줌 
 		
 		return mv;
 	}
@@ -396,11 +407,13 @@ public class MypageController {
 		
 		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx")); //commandMap 객체에 불러온 세션값 과 키값 저장 
 		
-		commandMap.put("MEMBER_IDX", "12");
+	/*	ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectT_ReserDeleteList(commandMap.getMap());
+		mv.addObject("list", list);*/
 		
-		ArrayList<Map<String, Object>> list = (ArrayList<Map<String, Object>>) mypageService.selectT_ReserDeleteList(commandMap.getMap());
-		
-		mv.addObject("list", list);
+		Map<String, Object> resultMap = mypageService.selectT_ReserDeleteList(commandMap.getMap()); // selectHouseList를 실행
+		System.out.println(resultMap);
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result")); //modelAndView에 넣어줌 
 		
 		return mv;
 	}
