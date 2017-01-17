@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<!-- 메시지 시작 -->
+	<div class="modal fade" id="Message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" > 
+      <div class="modal-dialog"> 
+      
+
+	  <div class="modal-content"> 
+    
+      <div class="modal-header header">
+      <button type="button" class="close" data-dismiss="modal">
+      <span aria-hidden="true">×</span>
+      <span class="sr-only">Close</span>
+      </button> 
+      <img id="member_img" src="/TripINN/images/공유.png"/>
+      <span class="title_house_name">${trip.TRIP_NAME}<label> + </label></span>
+      <span class="title_member_name">
+      	<label class="sendPerson">받는 사람</label>
+      	<label class="modal-title" id="myModalLabel">${trip.MEMBER_NAME} 님</label></span>
+      </div> 
+      
+      <div class="modal-body">
+      
+      		<input type="text" pattern="제목을 입력하세요." placeholder="제목을 입력하세요." class="form-control" id="msg_title">
+      		<textarea class="form-control col-sm-5" rows="5" id="msg_content" placeholder="내용을 입력하세요."></textarea>
+      		
+      </div> 
+      
+      <div class="modal-footer"> 
+      <button type="button" class="buttonSetting sendBtn" onclick="message();">보내기</button>
+      <button type="button" class="buttonSetting closeBtn" data-dismiss="modal">닫기</button>
+      
+      </div>
+      </div>
+       
+      
+       </div>
+      </div>
+      <!-- 메시지 끝 -->
