@@ -341,7 +341,6 @@
 </body>
 <script type="text/javascript">
    (function() {
-      /* alert("gd"); */
       var addr = $("#addr2").val();
       $.ajax({
          url : "/TripINN/house/houseMapView.do",

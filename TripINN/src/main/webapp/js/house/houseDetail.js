@@ -53,6 +53,9 @@ $(document).ready(function() {
 		var wish_check = 1;
 		var HOUSE_IDX = $("#house_idx").val();
 		
+		if(MEMBER_IDX == ""){
+			alert("로그인 후 이용 해주세요.");
+		}else{
 		if(str.match("white") != null){
 		
 		$("#wishIcon").css({'background':'url(/TripINN/images/house/icon_heart_red.png) no-repeat','background-size': '100% 100%'});
@@ -88,6 +91,7 @@ $(document).ready(function() {
 					
 				}
 			})
+		}
 		}
 	});	
 });

@@ -107,7 +107,7 @@ public class HouseController {
 		mv.addObject("img", store_img);
 		mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
 		mv.addObject("map_list", store_addr);
-		mv.addObject("map_list_length", store_addr.length);
+		mv.addObject("map_list_length", list.size());
 
 		return mv;
 
