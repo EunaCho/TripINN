@@ -85,12 +85,12 @@
    }
    .howToUse{
    border:0px solid black;
-   
    width:200px;
    height:30px;
    margin:10px 10px 50px 10px;
    font-size:21px;
    text-align: center;
+   font-family:'바탕체';
   
    }
    
@@ -199,7 +199,7 @@
   
       <!-- 글자 감싸는 영역 -->
       <div class="howToUse">
-         <h1>이용 방법</h1>
+         <h1>이용방법</h1>
    </div>
    
   
@@ -219,12 +219,12 @@
     <div class="list1">  
          <!-- 제목 -->
          <div class="howToUse_title">
-         <a style = "font-size:19px;color:black;">${howToUse.FAQ_TITLE }</a>
+         <a style = "font-size:19px;color:black;font-family:'바탕체'">${howToUse.FAQ_TITLE }</a>
         </div> 
       
          <!-- 내용 -->
          <div class="howToUse_content">
-            <font style="font-size:13px;line-height:2.3em">${howToUse.FAQ_CONTENT} </font>
+            <font style="font-size:13px;line-height:2.3em;font-family:'바탕체'">${howToUse.FAQ_CONTENT} </font>
          </div>
          
          
@@ -234,7 +234,7 @@
        <c:if test="${member_level == 1}">
                
        <!--버튼을 감싸는 영역  -->
-       <div style="margin-bottom:30px;text-align:right;">
+       <div style="margin-bottom:30px;margin-right:50px;text-align:right;">
           <a href="javascript:fn_faqBoardUpdate('${howToUse.FAQ_IDX }');" class="btn_edit" id="update">수정하기</a>
          <a href="javascript:fn_faqDeleteBoard('${howToUse.FAQ_IDX }');" class="btn_del" id="delete">삭제하기</a>
       </div>
@@ -253,7 +253,7 @@
    <!-- 관리자인가 아닌가 구분하는 조건 -->
     <c:if test="${member_level == 1}">
     <br><br>
-       <div style="text-align:right;margin-top:-50px; margin-left:20px">    
+       <div style="text-align:right;margin-top:-50px; margin-left:20px;margin-right:50px;">    
          <a href="${writeURL }" class="btn_write" id="write">글쓰기</a>   
       </div>
       <br>            
