@@ -81,7 +81,6 @@ public class MemberController {
 			session.setAttribute("member_email", memberMap.get("MEMBER_EMAIL"));
 			session.setAttribute("member_name", memberMap.get("MEMBER_NAME"));
 			session.setAttribute("member_level", memberMap.get("MEMBER_LEVEL"));
-			session.setAttribute("member_phone", memberMap.get("MEMBER_PHONE"));
 			//로그인 완료 후 메인페이지로 돌아감
 			mav.setViewName("redirect:/main.do"); 
 			//System.out.println(memberMap.get("MEMBER_IDX"));

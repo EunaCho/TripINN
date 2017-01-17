@@ -10,7 +10,7 @@ function message(){
       type:'GET',
       url: '/TripINN/trip/sendMssg.do',
       async : true,
-      dataType: "Text", 
+      dataType: "Text",  
       data : {"receive_member_email" : receive_member_email, "trip_idx" : trip_idx, "msg_title" : msg_title, "msg_content" : msg_content},
       success: function(data){
          alert("메세지를 보냈습니다.");

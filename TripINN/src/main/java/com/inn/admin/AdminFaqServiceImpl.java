@@ -15,13 +15,19 @@ public class AdminFaqServiceImpl implements AdminFaqService{
 	@Resource(name="adminFaqDAO")
     private AdminFaqDAO adminFaqDAO;
 	
-	//리스트
+	//faq 리스트 유형1
 	@Override
 	public List<Map<String, Object>> faqBoardList(Map<String, Object> map) throws Exception {
 		return adminFaqDAO.faqBoardList(map);
-		
+	}
+	//faq 리스트 유형2
+	@Override
+	public List<Map<String, Object>> faqBoardList2(Map<String, Object> map) throws Exception {
+		return adminFaqDAO.faqBoardList2(map);
 	}
 
+	
+	
 	//글쓰기
 	@Override
 	public void adminFaqInsert(Map<String, Object> map) throws Exception {
@@ -38,7 +44,9 @@ public class AdminFaqServiceImpl implements AdminFaqService{
 	//상세보기
     @Override
     public Map<String, Object> adminFaqSelectDetail(Map<String, Object> map) throws Exception {
- 
+    	//조회수 증가
+    	adminFaqDAO.updateFaqReadCount(map);
+    	
         Map<String, Object> resultMap = adminFaqDAO.adminFaqSelectDetail(map);
         return resultMap;
     }
@@ -48,5 +56,7 @@ public class AdminFaqServiceImpl implements AdminFaqService{
     public void adminFaqDelete(Map<String, Object> map) throws Exception {
         adminFaqDAO.adminFaqDelete(map);
     }
+
+	
 	
 }

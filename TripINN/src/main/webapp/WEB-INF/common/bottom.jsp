@@ -16,7 +16,7 @@
 	}
 </style>
 
-<div style="width:100%; background-color:;margin-top: 100px;">
+<div style="width:100%;  background-color:;margin-top: 100px;">
 
 <div style="background:#eee; margin-top:20px;">
 	<div class="frame"> 

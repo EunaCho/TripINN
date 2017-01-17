@@ -1,25 +1,25 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% String cp = request.getContextPath(); %>
 <html>
 <head>
 <title>HOUSE LIST</title>
 
-
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css"> -->
 <link rel="stylesheet" href="/TripINN/css/house/houseList.css">                                                                              
-
+<script src="http://code.jquery.com/jquery.min.js"></script>
 	<!-- daum map -->
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services,clusterer"></script>
 
-<link rel="stylesheet" type="text/css" href="/TripINN/css/house/main.css?ver=1.0">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
-<script src="/TripINN/js/trip/jquery.MetaData.js" type="text/javascript"></script>
-<script src="/TripINN/js/trip/jquery.rating.js" type="text/javascript"></script>
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--  -->
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
 	$( function() {
 		$( "#slider-range" ).slider({
 			range: true,
@@ -58,15 +58,25 @@
 	  });
 	});
 	</script>
-
+<STYLE> 
+#left { scrollbar-3dlight-color:#FFFFFF;
+scrollbar-arrow-color:#000000;
+scrollbar-track-color:#FFFFFF;
+scrollbar-darkshadow-color:#FFFFFF;
+scrollbar-face-color:#FFFFFF;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-shadow-color:#FFFFFF} 
+</STYLE> 
 </head>
 
 <body>
 
 	<div id="header">
+	
+	<!-- <a href="#this" class="btn" id="houseRegister">숙소 등록</a> -->
 	</div>
 	<!-- 왼쪽 -->
-	<div id="left" style="width:48%; height:100%; /* overflow-y:scroll; */ min-width: 530px; border:1px solid black; float:left; align:center;">
+	<div id="left" style="width:48%; height:600px; overflow-y:scroll; min-width: 530px; border:1px solid black; float:left; align:center;">
 
 	<!-- 상세검색폼 -->
 	<form id="searchForm" method="POST" action="/TripINN/house/houseMain.do">
@@ -125,51 +135,69 @@
 	<div id="house_div">
 		<!-- 하우스 미리보기 리스트 출력 -->
 		<div class="pre_List">
+		<ul>
 			<c:forEach items="${list}" var="house" varStatus="stat">
 			
 				<!-- 하우스 사진 클릭시 이벤트 : 상세 페이지로 넘어감 -->
 				<c:url var="houseViewURL" value="/house/houseDetail.do">
 					<c:param name="HOUSE_IDX" value="${house.HOUSE_IDX}"/>
-					<c:param name="MEMBER_IDX" value="${house.MEMBER_IDX }"/>
 				</c:url>
 				
 				<!-- 미리보기 개체 -->
-				<div class="pre_view_container">
+				<li>
 				<a href="${houseViewURL}">
 					<input type="hidden" id="HOUSE_NAME${stat.index }" value="${house.HOUSE_NAME }" >
 					<input type="hidden" id="HOUSE_IMAGE${stat.index }"value="${house.HOUSE_IMAGE }">
 					<input type="hidden" id="HOUSE_IDX${stat.index }" value="${house.HOUSE_IDX }">
-					<input type="hidden" id="house_total_price${stat.index }" value="${house.HOUSE_TOTAL_PRICE }">
-					<input type="hidden" id="house_member_idx${stat.index }" value="${house.MEMBER_IDX }">
-					<div class="pre_view_img">
+
 					<img src="<%= cp %>/images/house/${house.HOUSE_IMAGE}" class="houseImage" alt="숙소 사진"/>
-					</div>
-					<div class="pre_view_info">
-						<div class="view_left">
-						<label class="pre_info_name">${house.HOUSE_NAME}</label>
-						<fmt:formatNumber var="sum" value="${house.STAR_SUM}" pattern="#.##" />
-						<fmt:formatNumber var="cnt" value="${house.STAR_COUNT}"	pattern="#.##" />
-						<div style="background: url(/TripINN/images/trip/icon_star2.gif) 0px 0px; width: 87px;">
-								<p style="WIDTH: ${sum * 20 /cnt}%; PADDING-RIGHT:0px;	PADDING-LEFT:0px;	BACKGROUND: url(/TripINN/images/trip/icon_star.gif) 0px 0px;	PADDING-BOTTOM: 0px;	MARGIN: 0px;	PADDING-TOP: 0px;	HEIGHT: 18px;">
-								</p>
-						</div>
-						
-						<label class="pre_info_info2"> 후기 ${house.STAR_COUNT } 개</label>
-						
-						<label class="pre_info_info2">${house.HOUSE_INFO}</label>
-						<label class="pre_info_info2">${house.HOUSE_TOTAL_PRICE } $</label>
-						</div> 
-					</div>
+					<br/>
+						<span><strong>${house.HOUSE_NAME}</strong></span>
+						<span>${house.HOUSE_INFO}</span>
+					<br>
+						<span>${house.HRB_STAR}</span> <!-- 숙소 별점 : 조인테이블로 값 불러올것 -->
+						<span> 후기 ?? 개</span>
 				</a>
-				</div>
+				</li>  
 			</c:forEach>
+			</ul>
 		</div>
 	</div>
+
+
+	<!-- 숙소미리보기 정렬 -->
+	<%-- <table border="1">
+		<tr>
+			<td>번호</td>
+			<td>이름</td>
+			<td>소개</td>
+		</tr>
+		
+		<c:choose>
+			<c:when test="${fn:length(list) > 0}">
+				<c:forEach items="${list}" var="house">
+					<tr>
+						<td>${house.HOUSE_IDX}</td>
+						<td>${house.HOUSE_NAME}</td>
+						<td>${house.HOUSE_INFO}</td>
+						<td>${house.HOUSE_PRICE }</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+			
+			<c:otherwise>
+			<tr>
+				<td>등록된 숙소가 없습니다.</td>
+			</tr>
+		</c:otherwise>
+		</c:choose>
+		
+	</table> --%>
 	</div>
 	
 	<!-- 오른쪽 -->
 
-	<div id="right" style="width:48%;  float:left;">
+	<div id="right" style="width:48%; min-width: 530px;  border:1px solid red;  float:left;">
 		<c:forEach items="${map_list }" var="map" varStatus="stat">
 			<input type="hidden" value="${map}" id="map_addr${stat.index}">
 		</c:forEach>
@@ -179,13 +207,11 @@
 	<script>
 	window.onload = function() {
 		
-		var addr, img, name, idx, price, house_member_idx;
+		var addr, img, name, idx;
 		var addr2 = "";
-		var img2 = ""; 
+		var img2 = "";
 		var name2 = "";
 		var idx2 = "";
-		var price2 = "";
-		var house_member_idx2 = "";
 		
 		var addrArr = new Array(${map_list_length } );
 		for(var i=0; i<addrArr.length; i++){
@@ -195,14 +221,9 @@
 			img = $("#HOUSE_IMAGE"+i).val();
 			name = $("#HOUSE_NAME"+i).val(); 
 			idx = $("#HOUSE_IDX"+i).val();
-			price = $("#house_total_price"+i).val();
-			house_member_idx = $("#house_member_idx"+i).val();
 			img2 = img2 + img + ",";
 			name2 = name2 + name + ",";
 			idx2 = idx2 + idx + ",";
-			price2 = price2 + price + ",";
-			house_member_idx2 = house_member_idx2 + house_member_idx + ",";
-			
 		}
 		 /* alert(addr2); */
 		$.ajax({
@@ -210,7 +231,7 @@
 			type: "GET",
 			async:true,
 			dataType: "Text", 
-			data: {"addr": addr2, "img": img2, "name": name2, "idx" : idx2, "price" : price2, "house_member_idx" : house_member_idx2},
+			data: {"addr": addr2, "img": img2, "name": name2, "idx" : idx2},
 			success: function(data) {
 				$('#mapView').html(data);
 			}

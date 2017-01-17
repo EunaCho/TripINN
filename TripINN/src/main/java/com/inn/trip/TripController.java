@@ -27,7 +27,7 @@ import com.common.common.ConvertAddress;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
-public class TripController {
+public class TripController { 
 	
 	@Resource(name="tripService")
 	private TripService tripService;
@@ -306,6 +306,17 @@ public class TripController {
 		map.put("msg_title", msg_title);
 		map.put("trip_idx", house_idx);
 		tripService.sendMssg(map);
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripUpdateForm.do")
+	public ModelAndView tripUpdateForm(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("tripUpdateForm");
+		
+		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap()); // 트립 정보 map
+		String include = (String) map.get("TRIP_INCLUDE");
+		String[] inc = include.split("\\|");
+		String[] total_inc = {"식사","간식","음료","숙박","교통비","티켓","장비","봉사료","여행자보험","기타개인비용"};
 		return mv;
 	}
 }

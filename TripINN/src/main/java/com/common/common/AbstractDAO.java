@@ -17,7 +17,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 public class AbstractDAO {
 	protected Log log = LogFactory.getLog(AbstractDAO.class);
 
-	@Autowired
+	@Autowired 
 	private SqlSessionTemplate sqlSession;
 
 	protected void printQueryId(String queryId) {

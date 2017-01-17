@@ -121,7 +121,7 @@ var favNum = 0;
         reviewForm.currentPageNo.value = pageNo;
         reviewForm.submit();
     }
-</script>
+</script> 
 <style>
 .heartImg { width:25px;height:25px;float:right;margin:20px;margin-right:50px;cursor:pointer;
 			background-image:url(/TripINN/images/house/icon_heart_white.png);background-size:100% 100%;background-repeat: no-repeat; }

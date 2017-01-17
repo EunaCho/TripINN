@@ -177,12 +177,12 @@ $(document).ready(function () {
             left: 0
         }, 'slow');
         $('.slider_text[data-index!=' + index + ']').hide('slow', function () {
-            $(this).css('left', -500);
+            $(this).css('left', -300);
         });
     }
 
     // 초기 텍스트 위치 지정 및 data-index 할당
-    $('.slider_text').css('left', -500).each(function (index) {
+    $('.slider_text').css('left', -300).each(function (index) {
         $(this).attr('data-index', index);
     });
 

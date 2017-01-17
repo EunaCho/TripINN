@@ -36,7 +36,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
         /* Control Panel */
         .control_panel  {
             position:absolute; top:380px; 
-            left:400px; height:13px; 
+            left:270px; height:13px; 
             overflow:hidden; 
         }
 
@@ -74,7 +74,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
     left: 0;
 }
 .noticeCont h4.tab1 a {
-    background-image: url(/TripINN/images/news_t03.gif);
+    background-image: url(/TripINN/images/news_t01.gif);
 }
 
 .noticeCont h4 {
@@ -94,7 +94,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 }
 .noticeCont h4 a {
     display: block;
-    width: 79px;
+    width: 66px;
     height: 23px;
     overflow: hidden;
     text-indent: -999em;
@@ -331,7 +331,7 @@ div {
 			}
  
  
-/* 오른쪽 미리보기 블럭 */ 
+/* 오른쪽 미리보기 블럭 */  
 #rightDiv { width:70%; position:relative; float:left;margin:20px 10px 5px; } 
 #rightDiv .subject { color:gray; text-align:left; position:relative; margin-top:20px; margin-bottom:10px; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:800;}
 #rightDiv .subject span a {float:right; text-decoration:none; color:gray; font-style:bold;}
