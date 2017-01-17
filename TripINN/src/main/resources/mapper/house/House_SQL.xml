@@ -17,7 +17,7 @@
                  HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX ,
          (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
          (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
-      
+
          From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX)
             ORDER BY HOUSE_IDX DESC
       ]]>
@@ -37,7 +37,7 @@
    </select>
    
    <select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
-      SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX, HOUSE_TOTAL_PRICE,
+   SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX, HOUSE_TOTAL_PRICE,
                     STAR_SUM, STAR_COUNT<!-- , STAR -->
      FROM (SELECT H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX ,HOUSE_TOTAL_PRICE,
          (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
@@ -72,7 +72,6 @@
          
    </select>
 
-   
    
    <!-- House Detail -->
    <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
