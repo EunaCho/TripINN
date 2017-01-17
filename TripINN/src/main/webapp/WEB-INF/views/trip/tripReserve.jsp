@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/TripINN/css/trip/trip.css" />
 <style>
 	#container { width:1100px; height:100%; border:1px solid black; margin:0px auto;  }
-	p {height: auto;}
+	p {height: auto;} 
 	.trDiv { width:100%;overflow: hidden; height: auto;}
 	.trDiv .tdDiv-col { width:98%;height:auto;float:left; padding-left: 40px;}
 	.trDiv .tdDiv-left { width:15%;height:auto;float:left;border:0px solid red;text-align:center;vertical-align:middle; }

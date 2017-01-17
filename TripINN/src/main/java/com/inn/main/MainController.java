@@ -15,7 +15,7 @@ import com.inn.house.HouseService;
 import com.inn.trip.TripService;
 
 @Controller
-public class MainController {
+public class MainController { 
 	
 	@Resource(name="houseService")
 	private HouseService houseService;

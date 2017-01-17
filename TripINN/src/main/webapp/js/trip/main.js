@@ -58,7 +58,7 @@ jQuery(document).ready(function ($) {
                     window.setTimeout(ScaleSlider, 30);
                 }
             }
-            ScaleSlider();
+            ScaleSlider(); 
             $(window).bind("load", ScaleSlider);
             $(window).bind("resize", ScaleSlider);
             $(window).bind("orientationchange", ScaleSlider);

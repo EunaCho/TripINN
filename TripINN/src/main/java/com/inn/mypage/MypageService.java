@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 //DAO 기능 구현
-public interface MypageService {
+public interface MypageService { 
 	
 	//------------------------------알림판------------------------------
 	Map<String, Object> selectMember(Map<String, Object> map) throws Exception; //회원정보 

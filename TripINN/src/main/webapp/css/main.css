@@ -331,7 +331,7 @@ div {
 			}
  
  
-/* 오른쪽 미리보기 블럭 */ 
+/* 오른쪽 미리보기 블럭 */  
 #rightDiv { width:70%; position:relative; float:left;margin:20px 10px 5px; } 
 #rightDiv .subject { color:gray; text-align:left; position:relative; margin-top:20px; margin-bottom:10px; font-family:'나눔 고딕 볼드',Nanum Gothic-Bold,'맑은 고딕',Malgun Gothic,sans-serif;font-weight:800;}
 #rightDiv .subject span a {float:right; text-decoration:none; color:gray; font-style:bold;}

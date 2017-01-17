@@ -14,7 +14,7 @@ import com.common.common.CommandMap;
 public class TripServiceImpl implements TripService {
 	
 	@Resource(name="tripDAO")
-	private TripDAO tripDAO;
+	private TripDAO tripDAO; 
 	
 	@Resource(name="tripFileUtils") 
 	private FileUtils fileUtils;

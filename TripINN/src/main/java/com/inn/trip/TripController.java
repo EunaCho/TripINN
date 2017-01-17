@@ -27,7 +27,7 @@ import com.common.common.ConvertAddress;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
-public class TripController {
+public class TripController { 
 	
 	@Resource(name="tripService")
 	private TripService tripService;

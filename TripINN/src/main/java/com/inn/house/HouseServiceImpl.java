@@ -23,7 +23,7 @@ import com.inn.house.FileUtils; //Service 클래스 등록
 
 
 //서비스 클래스 등록
-@Service("houseService")
+@Service("houseService") 
 public class HouseServiceImpl implements HouseService{
    
    @Resource(name = "houseDAO") //@Repository로 등록된 DAO 클래스를 연결.

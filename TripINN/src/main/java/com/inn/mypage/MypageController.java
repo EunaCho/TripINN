@@ -21,7 +21,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 @RequestMapping("/mypage")
-public class MypageController {
+public class MypageController { 
 	@Resource
 	private MypageService mypageService; //마이페이지 서비스 
 	@Resource

@@ -5,7 +5,7 @@
 
    <!-- house list sql -->
    <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-      <![CDATA[
+      <![CDATA[ 
          SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
                 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
                  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 

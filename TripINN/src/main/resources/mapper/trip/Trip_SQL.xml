@@ -14,7 +14,7 @@
     to_date(#{trip_first_date}, 'YYYY-MM-DD HH24:MI'), to_date(#{trip_last_date}, 'YYYY-MM-DD HH24:MI'),
      #{trip_include}, #{trip_zipcode}, #{trip_addr1}, #{trip_addr2}, #{trip_addr3},
       #{trip_image}, #{trip_pprice}, #{trip_tprice}, #{trip_persons}, #{member_idx}, 0)
-	</insert>
+	</insert> 
 	
 	<select id="tripList" parameterType="HashMap" resultType="HashMap">
 	<include refid="common.pagingPre"/> 

@@ -5,7 +5,7 @@
 <mapper namespace="common">
 	
 	<select id="selectFileInfo" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
+		<![CDATA[ 
 			SELECT
 			    STORED_FILE_NAME,
 			    ORIGINAL_FILE_NAME

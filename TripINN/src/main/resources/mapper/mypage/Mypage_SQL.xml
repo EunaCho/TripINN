@@ -6,7 +6,7 @@
    <!-- 메세지 삭제 -->
    <delete id="messageDel" parameterType="String">
    		delete from message where msg_idx = #{msg_idx}
-   </delete>
+   </delete> 
    <!-- 보낸메시지 리스트 -->
    <select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
    <include refid="common.pagingPre"/> 

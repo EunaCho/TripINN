@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.common.common.AbstractDAO;
 
 @Repository("mypageDAO") //DAO 클래스 등록 
-public class MypageDAO extends AbstractDAO {
+public class MypageDAO extends AbstractDAO { 
 	
 	//-------------------------------------알림판----------------------------------------
 	@SuppressWarnings("unchecked")

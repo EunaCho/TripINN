@@ -11,7 +11,7 @@ import com.common.common.AbstractDAO; //SQL 오버로딩
 import com.common.common.CommandMap;
 
 @Repository("houseDAO") // DAO 클래스 등록
-public class HouseDAO extends AbstractDAO {
+public class HouseDAO extends AbstractDAO { 
    /*
     * @SuppressWarnings 1. all : 모든 경고를 억제 2. cast : 캐스트 연산자 관련 경고 억제 3.
     * dep-ann : 사용하지 말아야 할 주석 관련 경고 억제 4. deprecation : 사용하지 말아야 할 메소드 관련 경고 억제

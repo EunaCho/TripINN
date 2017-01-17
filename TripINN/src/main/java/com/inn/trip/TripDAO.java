@@ -11,7 +11,7 @@ import com.common.common.AbstractDAO;
 import com.common.common.CommandMap;
 
 @Repository("tripDAO")
-public class TripDAO extends AbstractDAO {
+public class TripDAO extends AbstractDAO { 
 	public void tripRegist(Map<String, Object> map) throws Exception {
 		insert("trip.tripRegist", map);
 	}
