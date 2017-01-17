@@ -47,5 +47,7 @@ public interface TripService {
 
 	void sendMssg(Map<String, Object> map);
 
+	void tripUpdate(Map<String, Object> map);
+
 	
 }

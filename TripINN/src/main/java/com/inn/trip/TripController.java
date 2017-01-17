@@ -310,13 +310,28 @@ public class TripController {
 	}
 	
 	@RequestMapping(value="/tripUpdateForm.do")
-	public ModelAndView tripUpdateForm(CommandMap commandMap) {
+	public ModelAndView tripUpdateForm(CommandMap commandMap, HttpSession session) {
 		ModelAndView mv = new ModelAndView("tripUpdateForm");
 		
+		if(session.getAttribute("member_idx") == null) {
+			commandMap.put("member_idx", "0");
+		} else {
+			commandMap.put("member_idx", session.getAttribute("member_idx"));
+		}
+		
 		Map<String, Object> map = tripService.selectTripDetail(commandMap.getMap()); // 트립 정보 map
-		String include = (String) map.get("TRIP_INCLUDE");
-		String[] inc = include.split("\\|");
-		String[] total_inc = {"식사","간식","음료","숙박","교통비","티켓","장비","봉사료","여행자보험","기타개인비용"};
+		
+		
+		mv.addObject("trip", map);
+		return mv;
+	}
+	
+	@RequestMapping(value="/tripUpdate.do", method=RequestMethod.POST)
+	public ModelAndView tripUpdate(CommandMap commandMap) {
+		ModelAndView mv = new ModelAndView("redirect:/tripDetail.do");
+		tripService.tripUpdate(commandMap.getMap());
+		
+		mv.addObject("trip_idx", commandMap.get("trip_idx"));
 		return mv;
 	}
 }

@@ -118,4 +118,9 @@ public class TripServiceImpl implements TripService {
 		tripDAO.sendMsg(map);
 	}
 
+	@Override
+	public void tripUpdate(Map<String, Object> map) {
+		tripDAO.tripUpdate(map);
+	}
+
 }

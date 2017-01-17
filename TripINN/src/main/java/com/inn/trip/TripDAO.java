@@ -97,4 +97,8 @@ public class TripDAO extends AbstractDAO {
 	public void sendMsg(Map<String, Object> map) {
 		insert("trip.sendMsg", map);
 	}
+
+	public void tripUpdate(Map<String, Object> map) {
+		update("trip.tripUpdate", map);
+	}
 }

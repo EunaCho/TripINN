@@ -143,6 +143,17 @@ report_state, report_type, member_idx, trip_idx)
 		#{msg_content}, #{msg_title}, #{trip_idx}, SYSDATE
 		)
 	</insert>
+	
+	<update id="tripUpdate" parameterType="HashMap">
+		update trip set 
+			trip_area=#{trip_area}, trip_type=#{trip_type}, trip_language=#{trip_language},
+			trip_name=#{trip_name}, trip_intro=#{trip_intro}, 
+			trip_first_date=to_date(#{trip_first_date}, 'YYYY-MM-DD HH24:MI'),
+			 trip_last_date=to_date(#{trip_last_date}, 'YYYY-MM-DD HH24:MI'),
+			trip_zipcode=#{trip_zipcode}, trip_addr1=#{trip_addr1}, trip_addr2=#{trip_addr2}, trip_addr3=#{trip_addr3},
+			trip_pprice=#{trip_pprice}, trip_persons=#{trip_persons}, trip_tprice=#{trip_tprice} 
+		where trip_idx=#{trip_idx}
+	</update>
 </mapper>
 
 
