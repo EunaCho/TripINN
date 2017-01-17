@@ -73,31 +73,31 @@
                 	<h4 class="hide_el">문의게시판</h4>
                     	<ul>
                         	<li>
-                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/qnaDetail.do?faq_idx=108" style="font-weight:bold;">공지사항을</a>
+                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=821" style="font-weight:bold;">예약 취소하고 싶어요</a>
                                 <img id="rptNotice_ctl00_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl00_lblDate">2017/01/11</span>
                             </li>
 							<li>
-                                <a id="rptNotice_ctl01_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15699" style="font-weight:bold;">넣읍시다</a>
+                                <a id="rptNotice_ctl01_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=825" style="font-weight:bold;">인원 변경하려고 합니다</a>
                                 <img id="rptNotice_ctl01_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl01_lblDate">2017/01/10</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl02_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15679" style="font-weight:bold;">누가좀</a>
+                                <a id="rptNotice_ctl02_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=822" style="font-weight:bold;">예약 가능일자 문의!! 빠른 답변 바랍니다</a>
                                 <img id="rptNotice_ctl02_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl02_lblDate">2017/01/10</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl03_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15639" style="font-weight:bold;">만들어주새오</a>
+                                <a id="rptNotice_ctl03_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=827" style="font-weight:bold;">이벤트는 안하는지</a>
                                 <img id="rptNotice_ctl03_btnNew" src="http://www.jinair.com/images/newMain/new.gif" alt="new" style="border-width:0px;">
                                 <span id="rptNotice_ctl03_lblDate">2017/01/09</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl04_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15619" style="font-weight:normal;">아직도 안끝났네</a>
+                                <a id="rptNotice_ctl04_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=824" style="font-weight:normal;">날짜는 다가오는데...나는 초조하고... 관리자는 대답도</a>
                                 <span id="rptNotice_ctl04_lblDate">2017/01/04</span>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl05_hlTitle" href="/HOM/Notice/NoticeView.aspx?seq=15559" style="font-weight:normal;">줄은 더 못늘리겠네</a>
+                                <a id="rptNotice_ctl05_hlTitle" href="<%=cp%>/admin/qnaDetail.do?QNA_IDX=823" style="font-weight:normal;">예약 취소할게요 ㅠㅠㅠㅠㅠㅠ</a>
                                 <span id="rptNotice_ctl05_lblDate">2017/01/02</span>
                             </li>
                                         
@@ -119,22 +119,22 @@
                 	<h4 class="hide_el">FAQ</h4>
                     	<ul>
                         	<li>
-                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=108" style="font-weight:bold;">TripINN 계정은 어떻게 만드나요?</a>
+                            	<a id="rptNotice_ctl00_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=108" style="font-weight:bold;">TripINN 계정은 어떻게 만드나요?</a>
                              </li>
 							<li>
-                                <a id="rptNotice_ctl01_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=111" style="font-weight:bold;">TripINN에 등록한 이메일 주소를 변경하려면 어떻게 하나요?</a>
+                                <a id="rptNotice_ctl01_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=111" style="font-weight:bold;">TripINN에 등록한 이메일 주소를 변경하려면 어떻게 하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl02_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=109" style="font-weight:bold;">비밀번호 변경은 어떻게 하나요?</a>
+                                <a id="rptNotice_ctl02_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=109" style="font-weight:bold;">비밀번호 변경은 어떻게 하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl03_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=107" style="font-weight:bold;">계정 설정 또는 프로필은 어떻게 수정하나요?</a>
+                                <a id="rptNotice_ctl03_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=107" style="font-weight:bold;">계정 설정 또는 프로필은 어떻게 수정하나요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl04_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=106" style="font-weight:bold;">TripINN 프로필 혹은 프로필 사진이 왜 필요한가요?</a>
+                                <a id="rptNotice_ctl04_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=106" style="font-weight:bold;">TripINN 프로필 혹은 프로필 사진이 왜 필요한가요?</a>
                             </li>
                             <li>
-                                <a id="rptNotice_ctl05_hlTitle" href="<%=cp%>/admin/faqDetail.do?faq_idx=110" style="font-weight:bold;">페이스북 계정으로 로그인하지만, TripINN 비밀번호를 만들고 싶은 경우</a>     
+                                <a id="rptNotice_ctl05_hlTitle" href="<%=cp%>/admin/faqDetail2.do?FAQ_IDX=118" style="font-weight:bold;">'트립'이란 무엇인가요?</a>     
                             </li>
                                         
                       </ul>

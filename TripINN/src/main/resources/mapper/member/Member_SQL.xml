@@ -9,10 +9,10 @@
 			INSERT INTO MEMBER 
 				(member_idx, member_email, 
 				  member_name, member_pwd, 
-				  member_phone)
+				  member_phone, member_image)
 			VALUES (member_idx_seq.nextval, #{member_email}, 
 			#{member_name}, #{member_pwd}, 
-			#{member_phone})   
+			#{member_phone}, 'basic_profile.png')   
 	</insert>
 	
 	<!-- 로그인 -->
