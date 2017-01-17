@@ -291,7 +291,7 @@
     function fn_faqBoardUpdate(idx){
         var faq_idx = idx;
         var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/admin/faqUpdate1.do' />");
+        comSubmit.setUrl("<c:url value='/admin/faqUpdate.do' />");
         comSubmit.addParam("FAQ_IDX", faq_idx);
       
         comSubmit.submit();

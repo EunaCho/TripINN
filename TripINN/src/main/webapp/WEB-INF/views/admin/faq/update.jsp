@@ -6,62 +6,196 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 
 <!-- 작성자: 이진욱 -->
-<!-- 스타일적용1 -->
-<style>   
-ul{width:172px;height:720px;background-color:#c2e4e7;list-style:none;padding-top:1px;}
-li{margin-right:50px }
-a{font-size:12px;color:#008489;font-weight:bold;text-decoration:none}
+<!-- 좌측영역 스타일적용1 -->
+<style>
+ 
+ #dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:300px;
+			margin-top:-20px;
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+</style>
+
+<!-- 우측영역 스타일 적용 -->
+<style>
+   .howToUse_div{
+      border:2px;
+      width:1000px;
+      overflow:hidden;
+      height:auto;
+      border-radius:4px;
+      background-color:white;
+      margin-left:50px;
+      margin-top:10px;
+      
+   }
+   .howToUse{
+   border:0px solid black;
+   
+   width:200px;
+   height:30px;
+   margin:10px 10px 50px 10px;
+   font-size:21px;
+   text-align: center;
+   }
+   
+   .list1{
+    border:1px solid #828282;
+    border-radius:4px;
+   width:995px;
+   height:auto;
+   margin-bottom:20px;
+   }
+   .howToUse_title{
+   border:0px solid black;c
+   border-radius:4px;
+   width:99%;
+   height:20%;
+   margin-left:5px;
+   margin-top:10px;
+   font-size:19px;
+   vertical-align:middle;
+	   
+   }
+   .howToUse_content{
+   border:0px solid black;
+   border-radius:4px;
+   width:98%;
+   height:60%;
+   padding:4px;   
+   margin-left:5px;
+   margin-top:10px;
+   font-size:14px;
+   
+   }
+   
+
 </style>
 
 
  <!-- 가운데 윗 영역 -->
 <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
-   <h2>FAQ 페이지에 오신걸 환영합니다.</h2>
-</div>
+   <h2>Faq 페이지에 오신걸 환영합니다.</h2>
+   </div>
 
-<!-- 가운데 영역(좌+우) 전체 -->
-<div style="width:100%;height:auto;border:1px solid black;">
+<!-- 가운데 영역 전체(좌+우) -->
+<div style="width:100%;height:auto;border:0px solid black;">
 
-<!-- 가운데 좌측영역 -->
-<!-- height 380 -->
-<div style="width:15%; height:380px;float:left;">
-   <ul>
-   	  <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-	  <li> <a><h1>시&nbsp;작&nbsp;하&nbsp;기</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h2>ㄴ이용방법</h2></a></li> 
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ여행방법</h2></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ호스팅 방법</h2></a></li>
-      
-       <a><h1>계정과&nbsp;프로필</h1></a></li>
-       <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h2>ㄴ보안,비밀번호</h2></a></li>
-       <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ알&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;림</h2></a></li>
-       <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ문제해결</h2></a></li>
-       
-       <a><h1>호&nbsp;스&nbsp;팅</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ호스트 되기</h2></a></li>
-      
-       <a><h1>여&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;행</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ숙소찾기</h2></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ숙소예약</h2></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ결제</h2></a></li>
-      
-      <a><h1>트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;립</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ트립참가</h2></a></li>
-	  <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>ㄴ트립호스팅</h2></a></li>
+<!-- 좌측 영역 -->
+   <div style="width:16.8%;height:420px;border:1px solid black;text-align:center;float:left;">	
+	   <section>
+				<nav style="width:250px;height:400px;margin-top:30px;">
 
-   </ul>
-</div>
+					<ul id="dropdown2">
+					<c:if test="${member_level == 1}">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a></li>
+					</c:if>	
+						<li><a>시작하기</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">이용방법</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList1.do">여행방법</a></li>
+							</ul>
+						</li>
+						<li><a>계정과 프로필</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList2.do">내 정보</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList3.do">보안과 비밀번호</a></li>
+							</ul>
+						</li>
+						<li><a>여행</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList4.do">숙소 찾기</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList5.do">숙소 예약</a></li>
+							</ul>
+						</li>
+						<li><a>트립</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList6.do">트립 참가</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList7.do">트립 호스팅</a></li>
+							</ul>
+						</li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList8.do">후기</a></li>
+						<li><a href="http://localhost:8080/TripINN/admin/qnaList.do">문의하기</a></li>
+						
+					</ul>
+				</nav>
+		</section>
+   
+   </div>
 
 
-<!-- 가운데 우측 영역 , height 380 , 포지션 left: 230 대체할수 있는 퍼센트-->
-<div style="width:82%;height:50%;float:left;border:0px solid black;">
+<!-- 가운데 우측 영역-->
+<div style="width:82%;height:auto;border:1px solid black;float:left;">
 
 <!-- 이용방법 영역 -->   
    <div class="howToUse_div">
   
    	<!-- 글자 감싸는 영역 -->
    	<div class="howToUse" style="text-align:center">
-   		<h1>수정 페이지</h1>
+   		<h2>수정 페이지</h2>
    </div>
    
    <form id="frm">
