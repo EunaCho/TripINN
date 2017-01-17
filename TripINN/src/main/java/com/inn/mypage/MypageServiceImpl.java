@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import com.inn.mypage.FileUtils;
 
 @Service("mypageService") //service등록 
 public class MypageServiceImpl implements MypageService{
@@ -15,6 +18,9 @@ public class MypageServiceImpl implements MypageService{
 	
 	@Resource(name="mypageDAO")// @Repository에 DAO 등록 
 	private MypageDAO mypageDAO;
+	
+	@Resource(name="memberFileUtils") 
+	private FileUtils fileUtils;
 	
 	//---------------------------------알림판 -------------------------------------------
 	@Override
@@ -187,7 +193,10 @@ public class MypageServiceImpl implements MypageService{
 	}
 	//-------프로필------//
 	@Override
-	public void updateMemberPlofile(Map<String, Object> map) throws Exception{
+	public void updateMemberPlofile(Map<String, Object> map, HttpServletRequest request) throws Exception{
+		String member_image = fileUtils.parseInsertFileInfo(map, request);
+		System.out.println("member_iamge :::::::" + member_image);
+		map.put("MEMBER_IMAGE", member_image);
 		mypageDAO.updateMemberPlofile(map);
 	}
 	//----------------------------------------------위시리스트 --------------------------

@@ -138,7 +138,7 @@ $(function(){
 	
 	<div class="left-menu">
 		<div class="side_poto">
-			<img style="width:275px; height:200px;" src="<%=cp%>/images/${map.MEMBER_IMAGE}">
+			<img style="width:275px; height:200px;" src="<%=cp%>/images/member/${map.MEMBER_IMAGE}">
 		</div>
 	
 		<div class="side_text">
