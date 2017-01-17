@@ -184,7 +184,7 @@
          	<div style="margin:20px 0px 0px 0px;">
          	
          		<!-- 페이징 영역 -->
-         		<div style="text-align: center;">
+         		<div style="text-align: center;margin-top:40px;" >
 					${pagingHtml}
 				</div>	
 				
@@ -196,7 +196,7 @@
 				</div>		
 						<br>
          		<!-- 검색파트 영역3 -->
-            	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin:0px 0px 0px 0px;">
+            	<div id="dataTables-example_filter" class="dataTables_filter" style="text-align: center;margin:0px 0px 0px 0px;margin-top:40px;">
  					<form  action="">
  						
                      <select class="btn_select" name="searchNum" id="searchNum">

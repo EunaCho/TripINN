@@ -193,8 +193,8 @@
    <div class="myInfo_div">
   
    	<!-- 글자 감싸는 영역 -->
-   	<div class="myInfo">
-   		<h2>내 정보</h2>
+   	<div class="myInfo"style="font-family:'바탕체'">
+   		<h2>나의 정보</h2>
    </div>	
 
     <!-- 리스트 -->
@@ -233,7 +233,7 @@
                         
                         <td class="title">
                         <!-- a태그를 이용하여 링크 가능하도록 함 -->
-                                <a href="#this" name="title">${row.FAQ_TITLE }</a>
+                                <a href="#this" name="title"style="font-family:'바탕체'">${row.FAQ_TITLE }</a>
                         <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->
                                 <input type="hidden" id="FAQ_IDX" value="${row.FAQ_IDX }">
                         </td>

@@ -12,12 +12,12 @@
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- 달력ui -->
-<link rel="stylesheet" href="/TripINN/js/main.js" />
+
 
 
 
 <!-- 메인 바디 -->
-<div style="width:1350px;height:1300px;border:;text-align:center;">
+<div style="width:1350px;height:1300px;border:;text-align:center;margin:0px auto;">
 
 
 	<!-- 슬라이드 롤링 --> 

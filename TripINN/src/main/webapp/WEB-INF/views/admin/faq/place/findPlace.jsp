@@ -122,6 +122,10 @@
    font-size:14px;
    
    }
+   .board_list2{
+   width:80%;
+   
+   }
    
 
 </style>
@@ -192,7 +196,7 @@
    <div class="findPlace_div">
   
    	<!-- 글자 감싸는 영역 -->
-   	<div class="findPlace">
+   	<div class="findPlace"; style="font-family:'바탕체'">
    		<h2>숙소 찾기</h2>
    </div>	
 
@@ -235,7 +239,7 @@
                         
                         <td class="title">
                         <!-- a태그를 이용하여 링크 가능하도록 함 -->
-                                <a href="#this" name="title">${row.FAQ_TITLE }</a>
+                                <a href="#this" name="title"style="font-family:'바탕체'">${row.FAQ_TITLE }</a>
                         <!-- hidden 태그를 이용하여 글번호를 숨겨둠 -->
                                 <input type="hidden" id="FAQ_IDX" value="${row.FAQ_IDX }">
                         </td>
@@ -257,7 +261,7 @@
                 </c:forEach>
                 
                 <c:if test="${member_level == 1}">
-    				<div style="text-align:right;margin-top:-50px; margin-right:0px">    
+    				<div style="text-align:right;margin-top:-50px; margin-right:200px">    
 					<a href="${writeURL }" class="btn_write" id="write">글쓰기</a>	
 					<!--  <a href="javascript:fn_faqBoardUpdate('${howToUse.FAQ_IDX }');" class="btn_edit" id="update">수정하기</a>-->
 					</div>

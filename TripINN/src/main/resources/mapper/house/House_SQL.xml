@@ -37,11 +37,13 @@
    </select>
    
    <select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
+
    SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX, HOUSE_TOTAL_PRICE,
-                    STAR_SUM, STAR_COUNT<!-- , STAR -->
+                    STAR_SUM, STAR_COUNT<!-- , HI_ROOM -->
      FROM (SELECT H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX ,HOUSE_TOTAL_PRICE,
          (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
          (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
+<!--          (SELECT HI_ROOM FROM HOUSE_INFO HI WHERE HI.HOUSE_IDX=H.HOUSE_IDX)HI_ROOM -->
          From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX
            <where>
             <if test="preSearch_keyword != null">
@@ -49,18 +51,24 @@
                or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' 
                or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
             </if>
-            <!--  <if test="person != null">
+
+            <if test="person != null">
                <![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
+            </if>
+         <!--    <if test="room != null">
+            	<![CDATA[AND ( #{room} <= HI_ROOM)]]>
             </if>  -->
+
          </where>
          <if test="hr_first_date != null and hr_last_date != null">
       minus
       (select HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX,HOUSE_TOTAL_PRICE,
-            STAR_SUM, STAR_COUNT<!-- , STAR -->
+            STAR_SUM, STAR_COUNT<!-- , HI_ROOM -->
                      
       FROM (SELECT H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX ,HOUSE_TOTAL_PRICE,
-            (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
-            (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
+            	(SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
+           	 	(SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
+            	<!-- (SELECT HI_ROOM FROM HOUSE_INFO HI WHERE HI.HOUSE_IDX=H.HOUSE_IDX)HI_ROOM -->
            From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX
          
            where <![CDATA[((HR_FIRST_DATE <= TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') and TO_DATE(#{hr_first_date}, 'mm/dd/yyyy') < HR_LAST_DATE) 
@@ -72,7 +80,6 @@
          
    </select>
 
-   
    <!-- House Detail -->
    <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
          SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
@@ -96,7 +103,7 @@
       <![CDATA[
          SELECT HRB_IDX, HRB_TITLE, HRB_CONTENT, HRB_PWD, HRB_REGDATE, 
          HRB_STAR, HRB_LIKE, HRB.MEMBER_IDX, HOUSE_IDX, 
-         MEMBER_NAME, MEMBER_EMAIL, MEMBER_PWD, MEMBER_BIRTH, MEMBER_PHONE, MEMBER_ADDR, MEMBER_JOINDATE, MEMBER_IMAGE, MEMBER_LEVEL
+         MEMBER_NAME, MEMBER_EMAIL, MEMBER_PWD, MEMBER_BIRTH, MEMBER_IMAGE, MEMBER_PHONE, MEMBER_ADDR, MEMBER_JOINDATE, MEMBER_IMAGE, MEMBER_LEVEL
 
          FROM HOUSE_REVIEW_BOARD HRB
          LEFT JOIN MEMBER M on HRB.MEMBER_IDX = M.MEMBER_IDX
@@ -314,8 +321,7 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
       WHERE HOUSE_IDX = #{HOUSE_IDX}
    ]]>
    </update>
-   
-   
+ 
    <select id="selectHouseList2" parameterType="hashmap" resultType="hashmap">
       <![CDATA[
          SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
