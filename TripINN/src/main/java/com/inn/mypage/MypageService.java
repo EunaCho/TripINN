@@ -25,6 +25,7 @@ public interface MypageService {
 	
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
+
 	
 	List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception; //예약관리 리스트
 	List<Map<String, Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception;//예약취소 관리 리스트 

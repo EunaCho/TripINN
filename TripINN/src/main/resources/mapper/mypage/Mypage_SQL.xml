@@ -89,11 +89,14 @@
    		order by HR_IDX DESC  
    </select>
    
+
+   <!-- 해당 숙소의 메시지  -->
    <delete id="houseRsvDel" parameterType="String">
    	delete from house_rsv where hr_idx=#{hr_idx}
    </delete>
    
    <!--숙소목록->숙소리스트->상세보기의 해당 숙소의 메시지  -->
+
    <select id="selectH_MsgList" parameterType="hashmap" resultType="hashmap">
    		select MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
       		  HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
