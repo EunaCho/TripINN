@@ -9,7 +9,10 @@ function logout() {
 
 
 //회원가입 체크
+var form = document.joinForm;
+
 function joinCheck() {
+	
 	   if($("#member_email").val() == "") {
 	      alert("이메일주소를 입력해주세요.");
 	      return;
@@ -23,9 +26,34 @@ function joinCheck() {
 		      alert("전화번호를 입력해주세요.");
 		      return;
 		}
-	   alert("회원가입이 완료되었습니다.");
-	   document.joinForm.submit();
+	 /*  memberEmailCheck();*/
+	   
+	   
+	   form.submit();
 	}
+
+/*//이메일 중복 체크
+function memberEmailCheck() {
+
+	$.ajax({
+		url: "/TripINN/member/memberEmailCheck.do",
+		type: "POST",
+		async:true,
+		dataType: "int", 
+		data: {"member_email": form.member_email.value},
+		success: function(data) {
+			alert(data);
+			if(data == 0) {
+				return true;
+			} else {
+				alert("<font color='red'>이미 사용중인 이메일입니다.</font>");
+				return false;
+			}
+		}
+		
+	});
+}
+*/
 
 //로그인 체크
 function loginCheck() {

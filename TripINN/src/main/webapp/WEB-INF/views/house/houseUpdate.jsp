@@ -24,7 +24,7 @@
 							<progress class="progressBar" max="100" value="33"></progress>
 						</div>
 					</div>
-					<div class="hrLabelName">님의<!--  <br />  &nbsp;-->&nbsp;&nbsp; 숙소 수정하기</div>
+					<div class="hrLabelName">님의<!--  <br />  &nbsp;&nbsp;&nbsp;--> 숙소 수정하기</div>
 				</div>
 		</div><div style="clear:both"></div>
 		<div id="leftDiv">
@@ -46,7 +46,7 @@
 		<!-- *********data start********* -->
 		<form method="post" action="<%=cp %>/house/houseUpdate.do" enctype="multipart/form-data" name="updateForm" onsubmit="return check();">	
 		
-		
+		<input type="hidden" name="HOUSE_IDX" value="${house.HOUSE_IDX }">
 		
 		<div class="hrBody">
 				
@@ -167,7 +167,7 @@
 									<div class="house_img_left">
 									
 									<label for="photo1">업로드</label>
-									<input type="file" id="photo1" accept="image/jpg, image/jpeg, image/png, image/gif" onchange="getHousePhotoPrivew(this,$('#house_image_preview1'))" name="HOUSE_IMAGE1">
+									<input type="file" id="photo1" accept="image/jpg, image/jpeg, image/png, image/gif" onchange="getHousePhotoPrivew(this,$('#house_image_preview1'))" name="HOUSE_IMAGE" value="${house.HOUSE_IMAGE }">
 									 </div>
 									 
 									 <div class="house_img_right">
@@ -223,17 +223,17 @@
 							<div class="hrAddrLeft">
 								<div class="hrLabel1">할인율</div>
 								<div class="hrData">
-									<input type="number" class="hrText2" name="HI_SALE">
+									<input type="number" class="hrText2" name="HI_SALE" value="${house.HI_SALE }">
 								</div>
 				
 								<div class="hrLabel1">청소비</div>
 								<div class="hrData">
-									<input type="number" class="hrText2" name="HI_CLEAN_PRICE">
+									<input type="number" class="hrText2" name="HI_CLEAN_PRICE" value="${house.HI_CLEAN_PRICE }">
 								</div>
 					
 								<div class="hrLabel1">보증금</div>
 								<div class="hrData">
-									<input type="number" class="hrText2" name="HI_DEPOSIT">
+									<input type="number" class="hrText2" name="HI_DEPOSIT" value="${house.HI_DEPOSIT }"> 
 								</div>
 					
 							</div>
@@ -248,7 +248,7 @@
 							
 							<div class="hrLabel1">인원당 가격</div>
 							<div class="hrData">
-								<input type="number" class="hrText2" value="${house.HOUSE_PRICE }" name="HOUSE_PRICE">
+								<input type="number" class="hrText2" value="${house.HOUSE_PERSON_PRICE }" name="HOUSE_PERSON_PRICE">
 							</div>
 						</div>
 					</div>
@@ -267,7 +267,10 @@
 					<div class="hrLabel1">제공하는 공간</div>
 					
 					<div class="hrLabel1">편의 시설</div>
-					<div class="hrData selectFont">
+					<div class="hrData selectFont"> 
+					
+						<input type="hidden" name="HI_SPACE" value="${house.HI_SPACE }"><font color="red"> 현재 선택된 편의 시설 : ${house.HI_SPACE }</font>
+						<br>
 						<input type="checkbox" name="HI_SPACE" value="필수 품목">필수 품목 :&nbsp;
 						<label>수건, 침대시트, 비누, 화장지</label><br>
 						<input type="checkbox" name="HI_SPACE" value="무선 인터넷">무선 인터넷<br>
@@ -297,6 +300,9 @@
 					
 					<div class="hrLabel1">이용 공간</div>
 					<div class="hrData selectFont">
+					
+					<input type="hidden" name="HI_CSPACE" value="${house.HI_CSPACE }"><font color="red"> 현재 선택된 이용 공간 : ${house.HI_CSPACE }</font>
+						<br>
 						<input type="checkbox" name="HI_CSPACE" value="거실 단독 사용">거실 단독 사용<br>
 						<input type="checkbox" name="HI_CSPACE" value="부엌">부엌<br>
 						<input type="checkbox" name="HI_CSPACE" value="세탁기">빨래 - 세탁기<br>

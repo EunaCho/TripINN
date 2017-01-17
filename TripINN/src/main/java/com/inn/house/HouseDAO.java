@@ -58,6 +58,11 @@ public class HouseDAO extends AbstractDAO {
 	public void updateHouse(Map<String, Object> map) throws Exception {
 		update("house.updateHouse", map);
 	}
+	
+	public void updateHouseInfo(Map<String, Object> map) {
+		update("house.updateHouseInfo", map);
+		
+	}
 
 	// delete DAO
 	public void deleteHouse(Map<String, Object> map) throws Exception {
@@ -177,4 +182,6 @@ public class HouseDAO extends AbstractDAO {
 		// TODO Auto-generated method stub
 		insert("house.updateTotalPrice",map);
 	}
+
+	
 }

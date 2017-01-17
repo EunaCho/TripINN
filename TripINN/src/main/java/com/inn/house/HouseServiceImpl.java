@@ -69,7 +69,9 @@ public class HouseServiceImpl implements HouseService{
 	//house update
 	@Override
 	public void updateHouse(Map<String, Object> map, HttpServletRequest request) throws Exception {
-		houseDAO.updateHouse(map);
+		houseDAO.updateHouse(map); // HOUSE 수정
+		houseDAO.updateHouseInfo(map); //HOUSEINFO 수정
+		
 	}
 
 	//house delete

@@ -29,6 +29,13 @@ public class MemberDAO extends AbstractDAO {
 	void memberPwFind(Map<String, Object> map) throws Exception {
 		
 	}
+
+	public int memberEmailCheck(Map<String, Object> map) throws Exception {
+		int a1 = (int)selectOne("member.memberEmailCheck", map);
+		System.out.println("dao");
+		System.out.println(a1);
+		return a1;
+	}
 	
 
 }

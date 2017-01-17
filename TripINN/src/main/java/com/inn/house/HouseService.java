@@ -65,4 +65,5 @@ public interface HouseService {
 
 	void updateTotalPrice(Map<String, Object> map);
 
+
 }

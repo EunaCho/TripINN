@@ -173,9 +173,13 @@ public class HouseController {
 	
 	//숙소 정보 수정하기
 		@RequestMapping(value = "/house/houseUpdate.do", method=RequestMethod.POST)
-		public ModelAndView houseUpdate(CommandMap commandMap) throws Exception {
-			ModelAndView mv = new ModelAndView("houseUpdate");
-			
+		public ModelAndView houseUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
+			ModelAndView mv = new ModelAndView("redirect:/house/houseDetail.do");
+			System.out.println("맵 확인");
+			System.out.println(commandMap.getMap());
+			//입력한 값으로 house table 업데이트 하기
+			houseService.updateHouse(commandMap.getMap(), request);
+			mv.addObject("HOUSE_IDX", commandMap.get("HOUSE_IDX"));
 			return mv;
 		}
 		
