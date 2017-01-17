@@ -17,6 +17,61 @@
  
  #dropdown2{
             
+<<<<<<< HEAD
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:300px;
+			margin-top:-20px;
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+=======
          list-style-type: none;
          margin-left:-40px;
          position:absolute;
@@ -72,6 +127,7 @@
          hr{ width:95%; color:#eee;}
          
          
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
 
 
@@ -83,11 +139,62 @@
 <!-- 가운데 영역(좌+우) 전체 -->
 <div style="width:100%;height:auto;border:0px solid black;">
 
+<<<<<<< HEAD
+	<!-- 좌측 영역 -->
+   <div style="width:16.8%;height:420px;border:1px solid black;text-align:center;float:left;">	
+	   <section>
+				<nav style="width:250px;height:400px;margin-top:30px;">
+=======
    <!-- 좌측 영역 -->
    <div style="width:16.8%;height:280px;border:0px solid black;text-align:center;float:left;background:#eeeeff;">   
       <section>
             <nav style="width:250px;height:400px;margin-top:30px;">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
+<<<<<<< HEAD
+					<ul id="dropdown2">
+					<c:if test="${member_level == 1}">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a></li>
+					</c:if>	
+						<li><a>시작하기</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">이용방법</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList1.do">여행방법</a></li>
+							</ul>
+						</li>
+						<li><a>계정과 프로필</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList2.do">내 정보</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList3.do">보안과 비밀번호</a></li>
+							</ul>
+						</li>
+						<li><a>여행</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList4.do">숙소 찾기</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList5.do">숙소 예약</a></li>
+							</ul>
+						</li>
+						<li><a>트립</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList6.do">트립 참가</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList7.do">트립 호스팅</a></li>
+							</ul>
+						</li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList8.do">후기</a></li>
+						<li><a href="http://localhost:8080/TripINN/admin/qnaList.do">문의하기</a></li>
+						
+					</ul>
+				</nav>
+		</section>
+=======
                <ul id="dropdown2">
                <c:if test="${member_level == 1}">
                   <li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a></li>
@@ -130,6 +237,7 @@
                </ul>
             </nav>
       </section>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    </div>
 

@@ -508,24 +508,24 @@ public class MypageController {
 	}
 	
 	//프로필 수정하기 
-	@RequestMapping("/profileModify.do")
-	public ModelAndView profileModify(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="/profileModify.do", method=RequestMethod.POST)
+	public ModelAndView profileModify(CommandMap commandMap, HttpSession session, 
+			HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("redirect:/mypage/notice.do");
 		
-		commandMap.put("MEMBER_IDX", session.getAttribute("member_dix"));
+		commandMap.put("MEMBER_IDX", session.getAttribute("member_idx"));
 		commandMap.put("MEMBER_EMAIL", request.getParameter("MEMBER_EMAIL"));
 		commandMap.put("MEMBER_SEX", request.getParameter("MEMBER_SEX"));
 		commandMap.put("MEMBER_ADDR", request.getParameter("MEMBER_ADDR"));
 		commandMap.put("MEMBER_BIRTH", request.getParameter("MEMBER_BIRTH"));
 		commandMap.put("MEMBER_PHONE", request.getParameter("MEMBER_PHONE"));
-		commandMap.put("MEMBER_IMAGE", request.getParameter("MEMBER_IMAGE"));
 		commandMap.put("MEMBER_NAME", request.getParameter("MEMBER_NAME"));
 		
 		commandMap.put("MEMBER_CONTENTS", request.getParameter("MEMBER_CONTENTS"));
 		
 		
-		mypageService.updateMemberPlofile(commandMap.getMap());
+		mypageService.updateMemberPlofile(commandMap.getMap(), request);
 		
 		return mv;
 	}

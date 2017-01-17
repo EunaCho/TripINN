@@ -17,7 +17,11 @@
                  HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX ,
          (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
          (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
          From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX)
             ORDER BY HOUSE_IDX DESC
       ]]>
@@ -37,8 +41,13 @@
    </select>
    
    <select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
+<<<<<<< HEAD
       SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX, HOUSE_TOTAL_PRICE,
                     STAR_SUM, STAR_COUNT
+=======
+   SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX, HOUSE_TOTAL_PRICE,
+                    STAR_SUM, STAR_COUNT<!-- , STAR -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
      FROM (SELECT H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX ,HOUSE_TOTAL_PRICE,
          (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
          (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
@@ -49,12 +58,18 @@
                or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' 
                or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
             </if>
+<<<<<<< HEAD
             <if test="person != null">
                <![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
             </if>
             <if test="room != null">
             	<![CDATA[AND ( #{room} <= HI_ROOM)]]>
             </if> 
+=======
+            <!--  <if test="person != null">
+               <![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
+            </if>  -->
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
          </where>
          <if test="hr_first_date != null and hr_last_date != null">
       minus
@@ -74,8 +89,12 @@
          ORDER BY HOUSE_IDX DESC)
          
    </select>
+<<<<<<< HEAD
 
    
+=======
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    <!-- House Detail -->
    <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
@@ -319,7 +338,11 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
    ]]>
    </update>
    
+<<<<<<< HEAD
    	
+=======
+   
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    <select id="selectHouseList2" parameterType="hashmap" resultType="hashmap">
       <![CDATA[
          SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,

@@ -246,7 +246,7 @@
 			        	</c:if>
                     </tr>
                     
-                    <!-- 관리자인가 아닌가 구분하는 조건 -->
+                    
                     <c:url var="writeURL" value="/admin/faqWrite.do">
                     	<c:param name="faq_type" value="${row.FAQ_TYPE }"/>
                     </c:url>
