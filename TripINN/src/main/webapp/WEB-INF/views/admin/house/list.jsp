@@ -17,11 +17,80 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<<<<<<< HEAD
+
+   
+ <style>
+ 
+ #dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-50px;
+			position:absolute;
+			top:50px;
+			max-width:300px;
+			
+			
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+=======
 <!-- 스타일적용1 -->    
 <style>	
 	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
 	li{margin-right:50px }
 	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
 <!-- 스타일 적용2 -->
 <style>
@@ -34,7 +103,11 @@
 		background-color:#F4FFFF;
 		margin:auto;
 		margin-left:220px;
+<<<<<<< HEAD
+		margin-top:-650px;
+=======
 		margin-top:-383px;
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		
 	}
 	.report_list{
@@ -42,6 +115,11 @@
 	width:150px;
 	height:30px;
 	margin:10px;
+<<<<<<< HEAD
+	font-size:21px;
+	
+=======
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 	}
 	
 	.list1{
@@ -159,12 +237,53 @@
  	 
  	 
  <!-- 가운데 윗 영역 -->	 
+<<<<<<< HEAD
+    <div style="width:100%;height:100px;border:0px solid black;text-align:center;">
+	<h2>숙소목록 관리 페이지에 오신걸 환영합니다.</h2>
+=======
     <div style="width:100%;height:100px;border:1px solid black;text-align:center;">
 	<h2>숙소관리 페이지에 오신걸 환영합니다.</h2>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    </div>
    
   
    <!-- 좌측 영역 -->
+<<<<<<< HEAD
+   <div style="width:17%;height:600px;border:0px solid black;text-align:center;margin-top:-20px;background:#eeeeff;">
+   <div id="STATICMENU" style="width:17.5%;height:340px;border:0px solid black;text-align:center;">	
+	<section>
+				<nav style="height:400px;width:250px;">
+					<ul id="dropdown2">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
+						<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/memberList.do">회원관리</a></li>
+						</ul>
+						</li>
+						
+						<li><a href="http://localhost:8080/TripINN/admin/houseList.do">숙소관리</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+						
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do">투어관리</a>
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+						
+						<li>문의게시판
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do">Q&A</a></li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">FAQ</a></li>
+							
+							</ul>
+						</li>
+						
+					</ul>
+				</nav>
+		</section>
+=======
    <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
@@ -178,13 +297,23 @@
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
 
 	</ul>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    </div>
+<<<<<<< HEAD
+    </div>
+=======
    
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div class="report_list">
+<<<<<<< HEAD
+   </div>
+   <div style="width:1030px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+=======
    전체 숙소 목록
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
