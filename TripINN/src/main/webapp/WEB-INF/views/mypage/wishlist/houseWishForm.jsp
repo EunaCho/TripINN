@@ -175,7 +175,7 @@
 			<script>
 			function fn_search(pageNo){
 			    var listForm = document.listForm;
-			    listForm.action = "/TripINN/mypage/houseWishList.do;
+			    listForm.action = "/TripINN/mypage/houseWishList.do";
 			    listForm.currentPageNo.value = pageNo;
 			    listForm.submit();
 			}

@@ -90,7 +90,7 @@ function reserD_Detail(idx, tr_idx){
 
 	<div class="right_div">
 		<div class="reser_div">
-		 	내 예약취소 목록 
+		 	내 <font style="font-color:red;">예약취소</font> 목록 
 		</div>
 		<div>
 			<table class="reser_table">

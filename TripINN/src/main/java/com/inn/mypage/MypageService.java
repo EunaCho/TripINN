@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 //DAO 기능 구현
-public interface MypageService { 
+public interface MypageService {
 	
 	//------------------------------알림판------------------------------
 	Map<String, Object> selectMember(Map<String, Object> map) throws Exception; //회원정보 
@@ -25,7 +25,6 @@ public interface MypageService {
 	
 	List<Map<String, Object>> selectH_ReserList(Map<String, Object> map) throws Exception; //숙소 예약 현황 
 	List<Map<String, Object>> selectH_MsgList(Map<String,Object> map) throws Exception; //숙소 쪽지 현황
-
 	
 	List<Map<String, Object>> selectMy_ReserList(Map<String, Object> map) throws Exception; //예약관리 리스트
 	List<Map<String, Object>> selectH_ReserDeleteList(Map<String, Object> map) throws Exception;//예약취소 관리 리스트 
@@ -67,12 +66,7 @@ public interface MypageService {
 	void deleteTripWish(Map<String, Object> map) throws Exception;//트립 위시리스트 삭제 
 
 	void messageDel(String msg_idx);
-<<<<<<< Upstream, based on branch 'master' of https://github.com/EunaCho/TripINN.git
-
-	void house_rsv_del(String hr_idx);
-=======
 	//--------------------프로필 
 	void updateMemberPlofile(Map<String, Object> map) throws Exception; //프로필 수정하기
->>>>>>> 51e9c86 마이페이지 
 	
 }

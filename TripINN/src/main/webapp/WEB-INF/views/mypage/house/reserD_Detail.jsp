@@ -98,7 +98,7 @@
 <div style="width:1200px; height:100%; margin:0px auto;">
 	<div class="left_div">
 		<div class="side_list">
-			<a href="<%=cp%>/mypage/house.do" class="side-text">숙소목록</a>
+			<a href="<%=cp%>/mypage/house.do" class="side-text">호스팅 숙소</a>
 		</div>
 	
 		<div class="side_list">

@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-@Service("mypageService") //service등록  
+@Service("mypageService") //service등록 
 public class MypageServiceImpl implements MypageService{
 	
 	Logger log = Logger.getLogger(this.getClass()); 
@@ -215,11 +215,6 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public void messageDel(String msg_idx) {
 		mypageDAO.messageDel(msg_idx);
-	}
-
-	@Override
-	public void house_rsv_del(String hr_idx) {
-		mypageDAO.house_rsv_del(hr_idx);
 	}
 	
 	//-------프로필------//
