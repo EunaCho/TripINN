@@ -7,7 +7,6 @@
 <!-- 작성자: 이진욱 -->
 <!-- 좌측영역 스타일적용1 -->
 <style>
- 
  #dropdown2 li a{
  font-size:19px;
  color:black;
