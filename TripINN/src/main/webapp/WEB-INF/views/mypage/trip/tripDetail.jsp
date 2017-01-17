@@ -293,7 +293,6 @@ function modifyTrip(){
 						
 					 	<div style= " width:250px; height:auto; float:left; margin-left:370px; margin-top:-35px; border:0px solid red;">
                         	<input type="button" value="호스팅 수정하기" onclick="javascript:modifyTrip();" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; margin-right:25px;"/>
-                    		<input type="button" value="호스팅 삭제하기" onclick="javascript:deleteTrip(${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; "/>
                     	</div>
                      
 					</div><!-- name_div -->
@@ -319,7 +318,7 @@ function modifyTrip(){
 								 	</font>
 								<div style="width:70px; height:20px;">
 									<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
-										${list.TRIP_PERSONS}명 
+										${map.TRIP_PERSONS}명 
 									</font>
 								</div>
 							</div>
@@ -332,7 +331,7 @@ function modifyTrip(){
 									
 								<div style="margin:0px; width:70px; height:20px; text-align:center;">
 									<font style="color:#484848; font-weight:solid; font-size:13px; font-style:'바탕체'">
-										${list.TRIP_TYPE}
+										${map.TRIP_TYPE}
 									</font>
 								</div>
 							</div>
