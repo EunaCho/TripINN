@@ -27,10 +27,11 @@
  #dropdown2{
             
 			list-style-type: none;
-			margin-left:-40px;
+			margin-left:-60px;
 			position:absolute;
 			max-width:300px;
 			margin-top:80px;
+			top:60px;
 			}
 
 			#dropdown2 li{
@@ -94,8 +95,8 @@
 		height:100%;
 		background-color:white;
 		margin:auto;
-		margin-left:212px;
-		margin-top:-60px;
+		margin-left:220px;
+		margin-top:-700px;
 		
 	}
 	.report_list{
@@ -216,6 +217,7 @@
   
   
    <!-- 좌측 영역 -->
+   <div style="width:17%;height:600px;border:0px solid black;text-align:center;margin-top:40px;background:#eeeeff;">
    <div id="STATICMENU" style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
 	   <section>
 				<nav style="height:400px;width:250px;">
@@ -253,14 +255,13 @@
 		</section>
    
    </div>
-   
+   </div>
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div style="text-align:right">
      <h4>신고된 투어의 번호를 누르시면 투어가 삭제 됩니다.</h4>
   </div>
    <div class="report_list">
-   <h3>&nbsp;&nbsp;신고 목록</h3>
    </div>
    <div style="width:1028px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
         </div>

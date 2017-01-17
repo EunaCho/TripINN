@@ -42,12 +42,12 @@ public class HouseController {
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
 
-<<<<<<< HEAD
+
 		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
-=======
+
 		/*if (session.getAttribute("member_idx") != null) {*/
 			mv.addObject("search", map.getMap()); // 검색키워드 넘기기
->>>>>>> refs/remotes/origin/master
+
 
 		List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
 		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
@@ -80,7 +80,7 @@ public class HouseController {
 				list.get(i).put("HOUSE_IMAGE", str_img);
 			}
 
-<<<<<<< HEAD
+
 		}
 
 		if (!map_list.isEmpty()) {
@@ -114,7 +114,7 @@ public class HouseController {
 		mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
 		mv.addObject("map_list", store_addr);
 		mv.addObject("map_list_length", store_addr.length);
-=======
+
 			if (!map_list.isEmpty()) {
 				store_total_addr = new String[map_list.size()];
 				store_addr = new String[map_list.size()];
@@ -147,7 +147,7 @@ public class HouseController {
 			mv.addObject("map_list", store_addr);
 			mv.addObject("map_list_length", store_addr.length);
 		/*}*/
->>>>>>> refs/remotes/origin/master
+
 		return mv;
 
 	}

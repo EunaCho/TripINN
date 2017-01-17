@@ -29,8 +29,8 @@
 			list-style-type: none;
 			margin-left:-40px;
 			position:absolute;
-			max-width:300px;
-			margin-top:-20px;
+			max-width:280px;
+			margin-top:-5px;
 			}
 
 			#dropdown2 li{
@@ -130,7 +130,7 @@ border-radius:5px;
    
    
    <!-- 좌측 영역 -->
-   <div style="width:16.7%;height:380px;border:0px solid black;text-align:center;">	
+   <div style="width:17%;height:100%;border:0px solid black;text-align:center;background:#eeeeff;margin-top:-34px;margin-left:-8px;">	
 	   <section>
 				<nav style="height:400px;width:250px;">
 
@@ -169,7 +169,7 @@ border-radius:5px;
    </div>
    
     <!-- 가운데 영역 -->
-   <div style="color:black;width:83%;height:378px;border:1px solid black;text-align:left; position:absolute;top:205px;left:210px;">
+   <div style="color:black;width:83%;height:378px;border:3px solid #eeeeff;;text-align:left; position:absolute;top:205px;left:210px;">
    
    <form name="frm" method="post">
    <input type="button" value="수정하기" id="button2" onClick="mySubmit(1)" style="position:absolute;top:400px;left:380px;"/>

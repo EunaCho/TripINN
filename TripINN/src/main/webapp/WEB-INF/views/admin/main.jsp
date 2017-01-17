@@ -24,8 +24,9 @@
 			list-style-type: none;
 			margin-left:-40px;
 			position:absolute;
-			max-width:300px;
+			max-width:220px;
 			margin-top:-20px;
+			
 			}
 
 			#dropdown2 li{
@@ -85,7 +86,7 @@
 
    
    <!-- 좌측 영역 -->
-   <div style="width:16.8%;height:380px;border:0px solid black;text-align:center;">	
+   <div style="width:16.8%;height:100%;border:0px solid black;text-align:center;margin-top:-15px;background:#eeeeff;">	
 	   <section>
 				<nav style="height:400px;width:250px;">
 

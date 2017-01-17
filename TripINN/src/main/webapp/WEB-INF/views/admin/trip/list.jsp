@@ -27,9 +27,10 @@
  #dropdown2{
             
 			list-style-type: none;
-			margin-left:-40px;
+			margin-left:-50px;
 			position:absolute;
 			max-width:300px;
+			top:120px;
 			
 			}
 
@@ -89,7 +90,7 @@
 		height:85%;
 		margin:auto;
 		margin-left:220px;
-		margin-top:-70px;
+		margin-top:-750px;
 		
 	}
 	.report_list{
@@ -293,12 +294,13 @@
  	 
  <!-- 가운데 윗 영역 -->	 
     <div style="width:100%;height:100px;border:0px solid black;text-align:center;">
-	<h2>투어관리 페이지에 오신걸 환영합니다.</h2>
+	<h2>투어목록 관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
    <body onload="InitializeStaticMenu();">
    
    <!-- 좌측 영역 -->
+   <div style="width:17%;height:700px;border:0px solid black;text-align:center;margin-top:40px;background:#eeeeff;">
    <div id="STATICMENU" style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
 	   <section>
 				<nav style="height:400px;width:250px;">
@@ -336,11 +338,10 @@
 		</section>
    
    </div>
-   
+   </div>
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div class="report_list">
-  <h4>&nbsp;&nbsp;전체 투어 목록</h4>
    </div>
    <div style="width:1030px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    </div>

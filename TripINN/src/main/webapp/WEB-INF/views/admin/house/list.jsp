@@ -31,7 +31,9 @@
 			list-style-type: none;
 			margin-left:-50px;
 			position:absolute;
+			top:50px;
 			max-width:300px;
+			
 			
 			}
 
@@ -97,7 +99,7 @@
 		border-radius:4px;
 		margin:auto;
 		margin-left:220px;
-		margin-top:-60px;
+		margin-top:-650px;
 		
 	}
 	.report_list{
@@ -106,7 +108,7 @@
 	height:30px;
 	margin:10px;
 	font-size:21px;
-	font-
+	
 	}
 	
 	.list1{
@@ -272,12 +274,13 @@
  	 
  <!-- 가운데 윗 영역 -->	 
     <div style="width:100%;height:100px;border:0px solid black;text-align:center;">
-	<h2>숙소관리 페이지에 오신걸 환영합니다.</h2>
+	<h2>숙소목록 관리 페이지에 오신걸 환영합니다.</h2>
    </div>
    
   <body onload="InitializeStaticMenu();">
    <!-- 좌측 영역 -->
-   <div id="STATICMENU" style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
+   <div style="width:17%;height:600px;border:0px solid black;text-align:center;margin-top:-20px;background:#eeeeff;">
+   <div id="STATICMENU" style="width:17.5%;height:340px;border:0px solid black;text-align:center;">	
 	<section>
 				<nav style="height:400px;width:250px;">
 					<ul id="dropdown2">
@@ -312,11 +315,10 @@
 		</section>
    
    </div>
-    
+    </div>
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div class="report_list">
-     &nbsp;&nbsp;&nbsp;<Strong>전체 숙소 목록</Strong>
    </div>
    <div style="width:1030px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    </div>

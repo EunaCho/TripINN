@@ -103,13 +103,11 @@
 	</definition>
 	
 
-<<<<<<< HEAD
 
 	<!--  ==========================================================================================-->
 
 	
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 <!-- 마이페이지  -->
 
 	<definition name="noticeForm" template="/WEB-INF/common/layout.jsp">
