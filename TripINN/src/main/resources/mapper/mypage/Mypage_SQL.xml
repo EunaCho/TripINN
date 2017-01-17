@@ -11,7 +11,7 @@
    <select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
    <include refid="common.pagingPre"/> 
       select ROW_NUMBER() OVER 
-			(order by MSG_IDX desc) RNUM,
+			(order by MSG_IDX desc) RNUM, 
       MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX 
       from message where member_idx = #{member_idx}
    <include refid="common.pagingPost"/> 
@@ -22,7 +22,7 @@
    <include refid="common.pagingPre"/> 
       select ROW_NUMBER() OVER 
 			(order by MSG_IDX desc) RNUM,
-			MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+			MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE,  
       		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
       where receive_member_email =#{member_email}
       <include refid="common.pagingPost"/> 
@@ -30,7 +30,7 @@
    
    <!-- 받은 메시지 상세보기 -->
    <select id="selectReceiveMsgDetail" parameterType="hashmap" resultType="hashmap">
-   		select MSG_IDX,MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+   		select MSG_IDX,MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, m2.MEMBER_EMAIL SEND_EMAIL,
       		   HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
      	where receive_member_email =#{member_email} and msg_idx = #{msg_idx}
       	order by msg_idx desc

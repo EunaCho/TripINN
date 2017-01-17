@@ -216,9 +216,9 @@
 					</td>
 				</tr>
 				<tr >
-					<th>받는사람</th>
+					<th>보낸 사람</th>
 					<td style="height:25px;">
-						${map.RECEIVE_MEMBER_EMAIL}
+						${map.SEND_EMAIL}
 					</td>
 				</tr>
 				<tr>
@@ -236,9 +236,9 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center" style="height:60px;border:1px solid white; padding-top:5px;">
-						<input type="button" value="답장보내기" onclick="sendEmail('${map.RECEIVE_MEMBER_EMAIL}');" class="bottomBnt" style="height:40px;"/>
+						<input type="button" value="답장보내기" onclick="sendEmail('${map.SEND_EMAIL}');" class="bottomBnt" style="height:40px;"/>
 						<input type="button" value="삭제하기" onclick="delEmail('${map.MSG_IDX}');" class="bottomBnt" style="height:40px;"/>
-					</td>
+					</td>${map.RECEIVE_MEMBER_EMAIL}
 				</tr>
 			</table>
 		</div><!-- joinDiv End -->
@@ -254,6 +254,7 @@
 <div style="clear:both;"></div>
 <script>
 	function sendEmail(email) {
+		
 		var form = document.eform;
 		form.receive_member_email.value = email;
 		form.submit();
