@@ -25,7 +25,7 @@
 		<li><a href="<%=cp %>/mypage/sendMessage.do">메시지</a></li>
 		<li><a href="<%=cp %>/mypage/house.do">숙소목록</a></li>
 		<li><a href="<%=cp %>/mypage/trip.do">트립목록</a></li>
-		<li><a href="<%=cp %>/mypage/wishList.do">위시리스트</a></li>
+		<li><a href="<%=cp %>/mypage/houseWishList.do">위시리스트</a></li>
 		<li><a href="<%=cp %>/mypage/profile.do">프로필</a></li>
 	</ul>
 	</div>

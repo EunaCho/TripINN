@@ -19,9 +19,73 @@
 
 <!-- 스타일적용1 -->    
 <style>	
+<<<<<<< HEAD
+	#dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-60px;
+			position:absolute;
+			max-width:300px;
+			margin-top:80px;
+			top:60px;
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+=======
 	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
 	li{margin-right:50px }
 	.left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
 <!-- 스타일 적용2 -->
 <style>
@@ -34,7 +98,11 @@
 		background-color:#F4FFFF;
 		margin:auto;
 		margin-left:220px;
+<<<<<<< HEAD
+		margin-top:-700px;
+=======
 		margin-top:-383px;
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		
 	}
 	.report_list{
@@ -124,6 +192,12 @@
   
   
    <!-- 좌측 영역 -->
+<<<<<<< HEAD
+   <div style="width:17%;height:600px;border:0px solid black;text-align:center;margin-top:40px;background:#eeeeff;">
+   <div id="STATICMENU" style="width:17.5%;height:380px;border:0px solid black;text-align:center;">	
+	   <section>
+				<nav style="height:400px;width:250px;">
+=======
    <div style="width:17.5%;height:380px;border:1px solid black;text-align:center;">	
 	  <ul class="left-ul">
       <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
@@ -135,18 +209,22 @@
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	</ul>
    
    </div>
-   
+   </div>
    <!-- 가운데 영역 -->
    <div class="house_div">
    <div style="text-align:right">
      <h4>신고된 투어의 번호를 누르시면 투어가 삭제 됩니다.</h4>
   </div>
    <div class="report_list">
+<<<<<<< HEAD
+=======
    신고 목록
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">

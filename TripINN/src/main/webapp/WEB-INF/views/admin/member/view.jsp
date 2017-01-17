@@ -17,9 +17,111 @@
 
 <!-- 스타일적용2 -->    
 <style>	
+<<<<<<< HEAD
+	
+ 
+ #dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:280px;
+			margin-top:-5px;
+			}
+
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+
+	
+#button2{
+ background: #2e8ce3;
+ padding:7px 30px 7px 30px;
+ font-size:15px;
+ font-weight:bold;
+ color:#000000;
+ text-align:center;
+ border:solid 1px #73c8f0;
+ background: -moz-linear-gradient(0%, 100%, 90deg, #2e8ce3, #ffffff);
+ background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#2e8ce3));
+
+border-radius:5px;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+ border-bottom-color:#196ebb;
+ text-shadow:0 -1px 0 #196ebb;
+ }
+
+#button3{
+ background: #F361DC;
+ padding:7px 30px 7px 30px;
+ font-size:15px;
+ font-weight:bold;
+ color:#000000;
+ text-align:center;
+ border:solid 1px #FFB2D9;
+ background: -moz-linear-gradient(0%, 100%, 90deg, #F361DC, #ffffff);
+ background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#F361DC));
+
+border-radius:5px;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+ border-bottom-color:#99004C;
+ text-shadow:0 -1px 0 #99004C;
+ }
+=======
 	ul{width:172px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
 	li{margin-right:50px }
 	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
     
   </head>
@@ -33,6 +135,11 @@
    
    
    <!-- 좌측 영역 -->
+<<<<<<< HEAD
+   <div style="width:17%;height:100%;border:0px solid black;text-align:center;background:#eeeeff;margin-top:-34px;margin-left:-8px;">	
+	   <section>
+				<nav style="height:400px;width:250px;">
+=======
    <div style="width:16.7%;height:380px;border:1px solid black;text-align:center;">	
 	   <ul>   
         <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
@@ -44,13 +151,18 @@
 		<li><a><h2>문의게시판</h2></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
         <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 	</ul>
    
    </div>
    
     <!-- 가운데 영역 -->
+<<<<<<< HEAD
+   <div style="color:black;width:83%;height:378px;border:3px solid #eeeeff;;text-align:left; position:absolute;top:205px;left:210px;">
+=======
    <div style="color:black;width:80%;height:381px;border:2px solid red;text-align:left; position:absolute;top:208px;left:213px;">
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    <form name="frm" method="post">
    <input type="button" value="수정하기"  onClick="mySubmit(1)"/>

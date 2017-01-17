@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=422f5e3f211b3528145a528229d0877d&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=31244aa6795ca046e48d086d5b53f8c6&libraries=services"></script>
 <script>
-
+ 
 var containNum = 1;
 var createNum = 4;
 	$(function () {
@@ -397,11 +397,17 @@ var createNum = 4;
 				<input type="checkbox" name="trip_include" id="inc4" value="숙박"/><i></i>
 				<label for="inc4">숙박</label>
 				<input type="checkbox" name="trip_include" id="inc5" value="교통비"/><i></i>
-				<label for="inc5">교통비</label>
+				<label for="inc5">교통비</label> <br />
 				<input type="checkbox" name="trip_include" id="inc6" value="티켓"/><i></i>
 				<label for="inc6">티켓</label>
 				<input type="checkbox" name="trip_include" id="inc7" value="장비"/><i></i>
 				<label for="inc7">장비</label>
+				<input type="checkbox" name="trip_include" id="inc8" value="봉사료"/><i></i>
+				<label for="inc8">봉사료</label>
+				<input type="checkbox" name="trip_include" id="inc9" value="여행자보험"/><i></i>
+				<label for="inc9">여행자보험</label>
+				<input type="checkbox" name="trip_include" id="inc10" value="기타개인비용"/><i></i>
+				<label for="inc10">기타개인비용</label>
 			</div>
 			
 			<div style="width:100%;height:30px;margin-top:10px;" id="tripInfo6">
