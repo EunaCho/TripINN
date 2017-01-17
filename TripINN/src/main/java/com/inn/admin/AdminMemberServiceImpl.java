@@ -43,6 +43,24 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	}
 	
 	
+	//이메일로 검색
+		@Override
+		public List<Map<String,Object>> search3(Map<String,Object> map) {
+			return adminMemberDAO.search3(map);
+			
+		}
+	//번호로 검색
+		@Override
+		public List<Map<String,Object>> search4(Map<String,Object> map) {
+		    return adminMemberDAO.search4(map);
+					
+				}
+	//주소로 검색
+		@Override
+		public List<Map<String,Object>> search5(Map<String,Object> map) {
+			return adminMemberDAO.search5(map);
+					
+				}
 	
 
 }

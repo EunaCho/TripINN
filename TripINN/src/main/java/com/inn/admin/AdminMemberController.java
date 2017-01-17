@@ -24,12 +24,14 @@ public class AdminMemberController {
    private AdminMemberService adminMemberService;
    
 //--------------------------------------------------------------------//   
-   
+ //검색 구현을 위해 추가한 변수들
+ 	private int searchNum;			//검색유형 3이메일 4번호 5주소
+ 	private String isSearch; 
    
    //페이징 구현을 위해 추가한 변수들
       private int currentPage = 1;    //처음 표시되는 페이지 
       private int totalCount;         //총 글 갯수
-      private int blockCount = 10;   //1페이지당 글 몇개 할건지 정하는 변수
+      private int blockCount = 5;   //1페이지당 글 몇개 할건지 정하는 변수
       private int blockPage = 5;     //한 화면에 페이지번호 몇개까지 띄울 것인지 정하는 변수
       private String requestName;
       private String pagingHtml;  
@@ -45,7 +47,7 @@ public class AdminMemberController {
                || request.getParameter("currentPage").equals("0")) {
             currentPage = 1;
          } else {
-        	System.out.println("뭐라고"+currentPage);
+           System.out.println("뭐라고"+currentPage);
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
             System.out.println("떴냐?"+currentPage);
          }
@@ -54,11 +56,30 @@ public class AdminMemberController {
       List<Map<String,Object>> list = adminMemberService.selectMemberList(commandMap.getMap());
       //mv.addObject("list",list);
       
-      
+      /* 게시판 검색 */
+		String isSearch = request.getParameter("isSearch");  //jsp로부터 값을 받아와서
+		
+		commandMap.put("isSearch", isSearch);				//isSearch값을 맵에 집어넣는다.
+
+		if (isSearch != null) {
+			
+			isSearch = new String(isSearch.getBytes("8859_1"), "UTF-8");
+			searchNum = Integer.parseInt(request.getParameter("searchNum"));
+			
+			commandMap.put("searchNum", searchNum);		//searchNum값을 맵에 집어넣는다.
+
+			if (searchNum == 3) {
+				list = adminMemberService.search3(commandMap.getMap()); //이메일
+			}else if (searchNum == 4) {
+				list = adminMemberService.search4(commandMap.getMap()); //번호
+			}else if (searchNum == 5) {							
+				list = adminMemberService.search5(commandMap.getMap()); //주소
+			}
+		}
          
          totalCount = list.size();
          
-         page = new AdminPaging(currentPage, totalCount, blockCount, blockPage,"memberList");
+         page = new AdminPaging(currentPage, totalCount, blockCount, blockPage,"memberList",searchNum, isSearch);
          pagingHtml = page.getPagingHtml().toString();
 
          int lastCount = totalCount;
@@ -69,13 +90,14 @@ public class AdminMemberController {
                
          list = list.subList(page.getStartCount(), lastCount);
 
-        
+         mv.addObject("isSearch", isSearch);
+ 		 mv.addObject("searchNum", searchNum);
          mv.addObject("totalCount", totalCount);
          mv.addObject("pagingHtml", pagingHtml);
          mv.addObject("currentPage", currentPage);
          mv.addObject("list", list);
          mv.setViewName("memberList");  
-      
+		
       return mv;
    }
    

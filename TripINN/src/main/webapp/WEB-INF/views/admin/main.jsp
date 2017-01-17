@@ -12,7 +12,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-<<<<<<< HEAD
  <style>
  
  #dropdown2 li a{
@@ -26,7 +25,7 @@
 			margin-left:-40px;
 			position:absolute;
 			max-width:220px;
-			margin-top:-20px;
+			margin-top:-5px;
 			
 			}
 
@@ -77,49 +76,59 @@
 			}
 			hr{ width:95%; color:#eee;}
 </style>
-=======
-    <style>	
-	ul{width:170px;height:340px;background:blue;opacity:0.45;list-style:none;padding-top:10px;}
-	li{margin-right:50px }
-	a{font-size:12px;color:white;font-weight:bold;text-decoration:none}
-    </style>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
   </head>
   <body>
   <br><br>
-    <div style="width:100%;height:100px;border:1px solid blue;text-align:center;">
+    <div style="width:100%;height:100px;border:0px solid blue;text-align:center;">
 	<h2>관리자 페이지에 오신걸 환영합니다.</h2>
    </div>
 
    
    <!-- 좌측 영역 -->
-<<<<<<< HEAD
    <div style="width:16.8%;height:100%;border:0px solid black;text-align:center;margin-top:-15px;background:#eeeeff;">	
 	   <section>
 				<nav style="height:400px;width:250px;">
-=======
-   <div style="width:16.8%;height:380px;border:1px solid black;text-align:center;">	
-	   <ul>   
-        <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
-		<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
-		<li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-		<li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-		<li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-        
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
-	</ul>
+					<ul id="dropdown2">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
+						<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/memberList.do">회원관리</a></li>
+						</ul>
+						</li>
+						
+						<li><a href="http://localhost:8080/TripINN/admin/houseList.do">숙소관리</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do">신고하기</a></li>
+							</ul>
+						</li>
+						
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do">투어관리</a>
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do">신고하기</a></li>
+							
+							</ul>
+						</li>
+						
+						<li>문의게시판
+							<ul>
+						<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do">Q&A</a></li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">FAQ</a></li>
+							
+							</ul>
+						</li>
+						
+					</ul>
+				</nav>
+		</section>
    
    </div>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:64%;height:381px;border:1px solid black;text-align:left; position:absolute;top:208px;left:213px;">
-	<h3>관리자 공지사항</h3>
+   <div style="color:black;width:82%;height:390px;border:3px solid #eeeeff;text-align:left; position:absolute;top:205px;left:220px;">
+	<div style="color:black;width:100%;height:50px;border:1px solid white;background:#eeeeff;">
+	<h3>&nbsp;&nbsp;관리자 공지사항</h3>
+	</div>
 	<h4>&nbsp;· &nbsp;관리자 홈으로 이동</h4>
 	<h5>&nbsp;&nbsp;&nbsp;&nbsp;관리자 홈으로 바로 이동 할 수 있습니다.</h5>
 	
@@ -134,18 +143,5 @@
 	
    </div>
    
-   <!-- 우측영역 -->
-
- 
-   <div style="color:black;width:19%;height:380px;border:1px solid black;text-align:left; position:absolute;top:208px;left:1030px;">
-   <img src="/TripINN/images/풍차.jpg" style="width: 240px; height:381px;">
-   </div>
-   
- 
-   
-
-   
-
-  
   </body>
 </html>

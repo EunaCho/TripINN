@@ -128,7 +128,7 @@
 
 
  <!-- 가운데 윗 영역 -->
-<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+<div style="width:100%;height:100px;border:0px solid black;text-align:center;">
    <h2>Faq 페이지에 오신걸 환영합니다.</h2>
    </div>
 
@@ -136,7 +136,7 @@
 <div style="width:100%;height:auto;border:0px solid black;">
 
 <!-- 좌측 영역 -->
-   <div style="width:16.8%;height:420px;border:1px solid black;text-align:center;float:left;">	
+   <div style="width:16.8%;height:280px;border:0px solid black;text-align:center;float:left;background:#eeeeff;">	
 	   <section>
 				<nav style="width:250px;height:400px;margin-top:30px;">
 
@@ -187,7 +187,7 @@
 
 
 <!-- 가운데 우측 영역-->
-<div style="width:82%;height:auto;border:1px solid black;float:left;">
+<div style="width:82%;height:auto;border:0px solid black;float:left;margin-left:-20px;">
 
 <!-- 이용방법 영역 -->   
    <div class="myInfo_div">

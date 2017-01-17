@@ -703,8 +703,9 @@
    
    <!-- open register detail1 -->
    <definition name="houseRegister1" extends="main">
-      <put-attribute name="body" value="houseRegister_layout"/>
-   </definition>                  
+      <put-attribute name="body" value="/WEB-INF/views/house/register/houseRegister1.jsp"/>
+   </definition>  
+                   
    
    <!-- 숙소 추가정보 등록 페이지 정의 -->
    <definition name="houseRegister2_layout" extends="houseRegister_form">
