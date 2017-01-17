@@ -3,41 +3,25 @@
 
 <mapper namespace="house">
 
-	<!-- house list sql -->
-	<select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
-					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX ,
-      				  STAR_SUM, STAR_COUNT, (STAR_SUM/STAR_COUNT) STAR
-    		 FROM (SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
-					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX ,
-			(SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
-			(SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
+   <!-- house list sql -->
+   <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
+      <![CDATA[
+         SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+                HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+                 HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+                 HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX ,
+                    STAR_SUM, STAR_COUNT, (STAR_SUM/STAR_COUNT) STAR
+           FROM (SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+                HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+                 HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+                 HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX ,
+         (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_SUM,
+         (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX)STAR_COUNT
       
-		   From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX)
-				ORDER BY HOUSE_IDX DESC
-		]]>
-	</select>
-	<!-- member_idx member 정보 -->
-	<select id="selectOneMember" parameterType="hashmap" resultType="hashmap">
-		SELECT*FROM MEMBER 
-		WHERE MEMBER_IDX = #{MEMBER_IDX}
-	</select>
-	<!-- house Map 리스트 뽑기 idx, addr1 필요 -->
-	<select id="selectHouseMapList" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			SELECT HOUSE_IDX, HOUSE_ADDR1 
-			FROM HOUSE 
-			ORDER BY HOUSE_IDX DESC
-		]]>
-	</select>
-	
-	
-
+         From HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX)
+            ORDER BY HOUSE_IDX DESC
+      ]]>
+   </select>
    <!-- member_idx member 정보 -->
    <select id="selectOneMember" parameterType="hashmap" resultType="hashmap">
       SELECT*FROM MEMBER 
@@ -65,12 +49,9 @@
                or HOUSE_ADDR1 like '%' || #{preSearch_keyword} || '%' or HOUSE_ADDR2 like '%' || #{preSearch_keyword} || '%' 
                or HOUSE_ADDR3 like '%' || #{preSearch_keyword} || '%')
             </if>
-            <if test="person != null">
-            	<![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
-            </if>
-            <if test="room != null">
-            	<![CDATA[AND ( #{room} <= HI_ROOM)]]>
-            </if>
+            <!--  <if test="person != null">
+               <![CDATA[AND ( #{person} <= HOUSE_TOTAL_PERSONS)]]>
+            </if>  -->
          </where>
          <if test="hr_first_date != null and hr_last_date != null">
       minus
@@ -91,6 +72,7 @@
          
    </select>
 
+   
    
    <!-- House Detail -->
    <select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
@@ -122,241 +104,235 @@
          WHERE HOUSE_IDX = #{HOUSE_IDX} 
          ORDER BY HRB.HRB_IDX DESC
 
-		]]>
-	</select>
-	
-	<!-- house insert sql -->
-	<insert id="insertHouse" parameterType="hashmap" useGeneratedKeys="true" keyProperty="HOUSE_IDX">
-		<selectKey keyProperty="HOUSE_IDX" resultType="string" order="BEFORE">
-			SELECT HOUSE_IDX_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
-	<!-- HOUSE_IDX_SEQ.NEXTVAL -->
-	<![CDATA[
-		INSERT INTO HOUSE(
-			HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_KIND, 
-			HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, 
-			HOUSE_TOTAL_PERSONS, HOUSE_PERSON_PRICE, 
-			HOUSE_PRICE, HOUSE_IMAGE, MEMBER_IDX, HOUSE_PERSONS
-	    )VALUES(
-			#{HOUSE_IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_KIND}, 
-			#{HOUSE_ZIPCODE}, #{HOUSE_ADDR1}, #{HOUSE_ADDR2}, #{HOUSE_ADDR3},
-			#{HOUSE_TOTAL_PERSONS}, #{HOUSE_PERSON_PRICE}, 
-			#{HOUSE_PRICE}, #{HOUSE_IMAGE}, #{MY_MEMBER_IDX}, 0
-		)
-	]]>
-	</insert>
-	<!-- 
-	UPDATE HOUSE_INFO SET HI_CHECKOUT = SYSDATE
+      ]]>
+   </select>
+   
+   <!-- house insert sql -->
+   <insert id="insertHouse" parameterType="hashmap" useGeneratedKeys="true" keyProperty="HOUSE_IDX">
+      <selectKey keyProperty="HOUSE_IDX" resultType="string" order="BEFORE">
+         SELECT HOUSE_IDX_SEQ.NEXTVAL FROM DUAL
+      </selectKey>
+   <!-- HOUSE_IDX_SEQ.NEXTVAL -->
+   <![CDATA[
+      INSERT INTO HOUSE(
+         HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_KIND, 
+         HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, 
+         HOUSE_TOTAL_PERSONS, HOUSE_PERSON_PRICE, 
+         HOUSE_PRICE, HOUSE_IMAGE, MEMBER_IDX, HOUSE_PERSONS
+       )VALUES(
+         #{HOUSE_IDX}, #{HOUSE_NAME}, #{HOUSE_INFO}, #{HOUSE_KIND}, 
+         #{HOUSE_ZIPCODE}, #{HOUSE_ADDR1}, #{HOUSE_ADDR2}, #{HOUSE_ADDR3},
+         #{HOUSE_TOTAL_PERSONS}, #{HOUSE_PERSON_PRICE}, 
+         #{HOUSE_PRICE}, #{HOUSE_IMAGE}, #{MY_MEMBER_IDX}, 0
+      )
+   ]]>
+   </insert>
+   <!-- 
+   UPDATE HOUSE_INFO SET HI_CHECKOUT = SYSDATE
 WHERE HI_IDX = 240
 ALTER TABLE HOUSE_INFO
 MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
-	 -->
-	<!-- houseInfo insert sql -->
-	<insert id="insertHouseInfo" parameterType="hashmap">
-		<![CDATA[
-			INSERT INTO HOUSE_INFO(
-				HI_IDX, HOUSE_IDX, HI_SALE, HI_DEPOSIT, HI_GUEST, 
-				HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE, 
-				HI_CHECKIN, HI_CHECKOUT
-			)VALUES(
-				HI_IDX_SEQ.NEXTVAL, #{HOUSE_IDX}, #{HI_SALE}, #{HI_DEPOSIT}, 
-				#{HI_GUEST}, #{HI_SPACE}, #{HI_CSPACE}, #{HI_BAD}, #{HI_ROOM}, #{HI_CLEAN_PRICE},
-				#{HI_CHECKIN}, #{HI_CHECKOUT}
-				)		
-		]]>
-	</insert>
-	
-	<update id="updateHouse" parameterType="hashmap">
-	UPDATE HOUSE SET HOUSE_NAME = #{HOUSE_NAME}, HOUSE_INFO = #{HOUSE_INFO},
-					HOUSE_KIND = #{HOUSE_KIND}, HOUSE_ZIPCODE = #{HOUSE_ZIPCODE}, HOUSE_ADDR1 = #{HOUSE_ADDR1},
-					HOUSE_ADDR2 = #{HOUSE_ADDR2}, HOUSE_ADDR3 = #{HOUSE_ADDR3}, HOUSE_TOTAL_PERSONS = #{HOUSE_TOTAL_PERSONS},
-					 HOUSE_PERSON_PRICE = #{HOUSE_PERSON_PRICE}, HOUSE_PRICE = #{HOUSE_PRICE}<!--  HOUSE_IMAGE = #{HOUSE_IMAGE}, -->
-					<!-- HOUSE_PERSONS = #{HOUSE_PERSONS} -->
-			WHERE HOUSE_IDX = #{HOUSE_IDX}
-	</update>
-	
-	<update id="updateHouseInfo" parameterType="hashmap">
-	UPDATE HOUSE_INFO SET HI_SALE = #{HI_SALE}, HI_DEPOSIT = #{HI_DEPOSIT}, HI_GUEST = #{HI_GUEST}, HI_SPACE = #{HI_SPACE},
-						HI_CSPACE = #{HI_CSPACE}, HI_BAD = #{HI_BAD}, HI_ROOM = #{HI_ROOM}, HI_CLEAN_PRICE = #{HI_CLEAN_PRICE},
-						HI_CHECKIN = #{HI_CHECKIN}, HI_CHECKOUT = #{HI_CHECKOUT}
-				WHERE HOUSE_IDX = #{HOUSE_IDX}
-	</update>
-	
-	<update id="updateTotalPrice" parameterType="hashmap">
-	<![CDATA[
-	UPDATE HOUSE 
-	SET HOUSE_TOTAL_PRICE = 
-	(#{HOUSE_PRICE}+#{HOUSE_PERSON_PRICE}+#{HI_DEPOSIT}+#{HI_CLEAN_PRICE})/(#{HI_SALE}*0.01)
-	WHERE HOUSE_IDX = #{HOUSE_IDX}
-	]]>
-	</update>
-	
-	<insert id="insertHouseImg" parameterType="hashmap">
-		<![CDATA[
-			INSERT INTO HOUSE(
-			HOUSE_IMAGE
-			)VALUES(
-			#{HOUSE_IMAGE}
-			)
-		]]>
-	</insert>
-	
-	<insert id="insertReview" parameterType="hashmap">
-		INSERT INTO HOUSE_REVIEW_BOARD (
-		 	HRB_IDX, HRB_TITLE, HRB_CONTENT, HOUSE_IDX, HRB_PWD, MEMBER_IDX, HRB_STAR
-		 ) VALUES (
-		 	HRB_IDX_SEQ.NEXTVAL, #{HRB_TITLE}, #{HRB_CONTENT}, #{HOUSE_IDX}, #{HRB_PWD}, #{MEMBER_IDX}, #{HRB_STAR} 
-		 )
-	</insert>
-	
-	<insert id="insertWish" parameterType="hashmap" useGeneratedKeys="true" keyProperty="FVR_IDX">
-		<selectKey keyProperty="FVR_IDX" resultType="string" order="BEFORE">
-			SELECT FVR_IDX_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
-		<![CDATA[
-		INSERT INTO FAVORITES (
-			FAR_IDX, HOUSE_IDX, MEMBER_IDX
-		)VALUES(
-			#{FVR_IDX}, #{HOUSE_IDX}, #{MEMBER_IDX}
-		)
-		]]>
-		
-	</insert>
-	
-	
-	<!-- 숙소 예약 -->
-	<insert id="insertHouseRSV" parameterType="hashmap">
-		insert into HOUSE_RSV ( HR_NAME, HR_IDX, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, MEMBER_IDX, HOUSE_IDX, HR_PHONE, HR_EMAIL)
-		values (#{hr_name}, hr_idx_seq.nextval, #{hr_persons}, #{hr_first_date}, #{hr_last_date}, #{member_idx}, #{HOUSE_IDX}, #{hr_phone}, #{hr_email})
-	</insert>
-	
-	<update id="increaseHouseRSV" parameterType="hashmap">
-		UPDATE HOUSE 
-		SET HOUSE_TOTAL_PERSONS = HOUSE_TOTAL_PERSONS - #{hr_persons}
-		WHERE HOUSE_IDX = #{HOUSE_IDX}
-	</update>
-	
-	<select id="selectFVR_IDX" parameterType="hashmap" resultType="string">
-		
-		<![CDATA[
-			 SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL 
-		]]>
-		
-	</select>
-	<delete id="deleteWish" parameterType="hashmap">
-	<!-- SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL -->
-	
-		<![CDATA[
-			DELETE FAVORITES
-			 WHERE FAR_IDX = #{FVR_IDX}
-		]]>
-	</delete>
-	
-	<delete id="deleteReview" parameterType="hashmap">
-		<![CDATA[
-			DELETE HOUSE_REVIEW_BOARD 
-			 WHERE HRB_IDX = #{HRB_IDX}
-		]]>
-	
-	</delete>
-	<select id="selectMember" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			SELECT*FROM MEMBER
-			WHERE MEMBER_IDX = #{MEMBER_IDX}
-		]]>
-	</select>
-	
-	<insert id="insertLike" parameterType="hashmap">
-		<![CDATA[
-		 INSERT INTO HRB_LIKE_CHECK(
-			HRB_LIKE_IDX, HRB_IDX, MEMBER_IDX, HOUSE_IDX
-			)VALUES(
-			HRB_LIKE_IDX_SEQ.NEXTVAL, #{HRB_IDX}, #{MEMBER_IDX}, #{HOUSE_IDX}
-			)
-		]]>
-	</insert>
-	
-	<delete id="deleteLike" parameterType="hashmap">
-		<![CDATA[
-		DELETE FROM HRB_LIKE_CHECK 
-		WHERE 
-		HRB_IDX = #{HRB_IDX} AND MEMBER_IDX = #{MEMBER_IDX}
-		]]>
-	</delete>
-	
-	<update id="reviewLike" parameterType="hashmap">
-		<![CDATA[
-		UPDATE HOUSE_REVIEW_BOARD 
-		SET HRB_LIKE = HRB_LIKE + #{CNT} 
-		WHERE HOUSE_IDX = #{HOUSE_IDX}
-		]]>
-	</update>
-	
-	<select id="selectLikeCnt" parameterType="String" resultType="String">
-	<![CDATA[
-		SELECT HRB_LIKE 
-		FROM HOUSE_REVIEW_BOARD 
-		WHERE HRB_IDX = #{HRB_IDX}
-	]]>
-	</select>
-	
-	<select id="likeCheckList" parameterType="hashmap" resultType="hashmap">
-		SELECT HRB_LIKE_IDX, HRB_IDX, MEMBER_IDX 
-		FROM HRB_LIKE_CHECK 
-		WHERE HOUSE_IDX = #{HOUSE_IDX} AND MEMBER_IDX = #{MY_MEMBER_IDX}
-	</select>
+    -->
+   <!-- houseInfo insert sql -->
+   <insert id="insertHouseInfo" parameterType="hashmap">
+      <![CDATA[
+         INSERT INTO HOUSE_INFO(
+            HI_IDX, HOUSE_IDX, HI_SALE, HI_DEPOSIT, HI_GUEST, 
+            HI_SPACE, HI_CSPACE, HI_BAD, HI_ROOM, HI_CLEAN_PRICE, 
+            HI_CHECKIN, HI_CHECKOUT
+         )VALUES(
+            HI_IDX_SEQ.NEXTVAL, #{HOUSE_IDX}, #{HI_SALE}, #{HI_DEPOSIT}, 
+            #{HI_GUEST}, #{HI_SPACE}, #{HI_CSPACE}, #{HI_BAD}, #{HI_ROOM}, #{HI_CLEAN_PRICE},
+            #{HI_CHECKIN}, #{HI_CHECKOUT}
+            )      
+      ]]>
+   </insert>
+   
+   <update id="updateHouse" parameterType="hashmap">
+   UPDATE HOUSE SET HOUSE_NAME = #{HOUSE_NAME}, HOUSE_INFO = #{HOUSE_INFO},
+               HOUSE_KIND = #{HOUSE_KIND}, HOUSE_ZIPCODE = #{HOUSE_ZIPCODE}, HOUSE_ADDR1 = #{HOUSE_ADDR1},
+               HOUSE_ADDR2 = #{HOUSE_ADDR2}, HOUSE_ADDR3 = #{HOUSE_ADDR3}, HOUSE_TOTAL_PERSONS = #{HOUSE_TOTAL_PERSONS},
+                HOUSE_PERSON_PRICE = #{HOUSE_PERSON_PRICE}, HOUSE_PRICE = #{HOUSE_PRICE}<!--  HOUSE_IMAGE = #{HOUSE_IMAGE}, -->
+               <!-- HOUSE_PERSONS = #{HOUSE_PERSONS} -->
+         WHERE HOUSE_IDX = #{HOUSE_IDX}
+   </update>
+   
+   <update id="updateHouseInfo" parameterType="hashmap">
+   UPDATE HOUSE_INFO SET HI_SALE = #{HI_SALE}, HI_DEPOSIT = #{HI_DEPOSIT}, HI_GUEST = #{HI_GUEST}, HI_SPACE = #{HI_SPACE},
+                  HI_CSPACE = #{HI_CSPACE}, HI_BAD = #{HI_BAD}, HI_ROOM = #{HI_ROOM}, HI_CLEAN_PRICE = #{HI_CLEAN_PRICE},
+                  HI_CHECKIN = #{HI_CHECKIN}, HI_CHECKOUT = #{HI_CHECKOUT}
+            WHERE HOUSE_IDX = #{HOUSE_IDX}
+   </update>
+   
+   <update id="updateTotalPrice" parameterType="hashmap">
+   <![CDATA[
+   UPDATE HOUSE 
+   SET HOUSE_TOTAL_PRICE = 
+   (#{HOUSE_PRICE}+#{HOUSE_PERSON_PRICE}+#{HI_DEPOSIT}+#{HI_CLEAN_PRICE})/(#{HI_SALE}*0.01)
+   WHERE HOUSE_IDX = #{HOUSE_IDX}
+   ]]>
+   </update>
+   
+   <insert id="insertHouseImg" parameterType="hashmap">
+      <![CDATA[
+         INSERT INTO HOUSE(
+         HOUSE_IMAGE
+         )VALUES(
+         #{HOUSE_IMAGE}
+         )
+      ]]>
+   </insert>
+   
+   <insert id="insertReview" parameterType="hashmap">
+      INSERT INTO HOUSE_REVIEW_BOARD (
+          HRB_IDX, HRB_TITLE, HRB_CONTENT, HOUSE_IDX, HRB_PWD, MEMBER_IDX, HRB_STAR
+       ) VALUES (
+          HRB_IDX_SEQ.NEXTVAL, #{HRB_TITLE}, #{HRB_CONTENT}, #{HOUSE_IDX}, #{HRB_PWD}, #{MEMBER_IDX}, #{HRB_STAR} 
+       )
+   </insert>
+   
+   <insert id="insertWish" parameterType="hashmap" useGeneratedKeys="true" keyProperty="FVR_IDX">
+      <selectKey keyProperty="FVR_IDX" resultType="string" order="BEFORE">
+         SELECT FVR_IDX_SEQ.NEXTVAL FROM DUAL
+      </selectKey>
+      <![CDATA[
+      INSERT INTO FAVORITES (
+         FAR_IDX, HOUSE_IDX, MEMBER_IDX
+      )VALUES(
+         #{FVR_IDX}, #{HOUSE_IDX}, #{MEMBER_IDX}
+      )
+      ]]>
+      
+   </insert>
+   
+   
+   <!-- 숙소 예약 -->
+   <insert id="insertHouseRSV" parameterType="hashmap">
+      insert into HOUSE_RSV ( HR_NAME, HR_IDX, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, MEMBER_IDX, HOUSE_IDX, HR_PHONE, HR_EMAIL)
+      values (#{hr_name}, hr_idx_seq.nextval, #{hr_persons}, #{hr_first_date}, #{hr_last_date}, #{member_idx}, #{HOUSE_IDX}, #{hr_phone}, #{hr_email})
+   </insert>
+   
+      <select id="selectFVR_IDX" parameterType="hashmap" resultType="string">
+      
+      <![CDATA[
+          SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL 
+      ]]>
+      
+   </select>
+   <delete id="deleteWish" parameterType="hashmap">
+   <!-- SELECT FVR_IDX_SEQ.CURRVAL FROM DUAL -->
+   
+      <![CDATA[
+         DELETE FAVORITES
+          WHERE FAR_IDX = #{FVR_IDX}
+      ]]>
+   </delete>
+   
+   <delete id="deleteReview" parameterType="hashmap">
+      <![CDATA[
+         DELETE HOUSE_REVIEW_BOARD 
+          WHERE HRB_IDX = #{HRB_IDX}
+      ]]>
+   
+   </delete>
+   <select id="selectMember" parameterType="hashmap" resultType="hashmap">
+      <![CDATA[
+         SELECT*FROM MEMBER
+         WHERE MEMBER_IDX = #{MEMBER_IDX}
+      ]]>
+   </select>
+   
+   <insert id="insertLike" parameterType="hashmap">
+      <![CDATA[
+       INSERT INTO HRB_LIKE_CHECK(
+         HRB_LIKE_IDX, HRB_IDX, MEMBER_IDX, HOUSE_IDX
+         )VALUES(
+         HRB_LIKE_IDX_SEQ.NEXTVAL, #{HRB_IDX}, #{MEMBER_IDX}, #{HOUSE_IDX}
+         )
+      ]]>
+   </insert>
+   
+   <delete id="deleteLike" parameterType="hashmap">
+      <![CDATA[
+      DELETE FROM HRB_LIKE_CHECK 
+      WHERE 
+      HRB_IDX = #{HRB_IDX} AND MEMBER_IDX = #{MEMBER_IDX}
+      ]]>
+   </delete>
+   
+   <update id="reviewLike" parameterType="hashmap">
+      <![CDATA[
+      UPDATE HOUSE_REVIEW_BOARD 
+      SET HRB_LIKE = HRB_LIKE + #{CNT} 
+      WHERE HOUSE_IDX = #{HOUSE_IDX}
+      ]]>
+   </update>
+   
+   <select id="selectLikeCnt" parameterType="String" resultType="String">
+   <![CDATA[
+      SELECT HRB_LIKE 
+      FROM HOUSE_REVIEW_BOARD 
+      WHERE HRB_IDX = #{HRB_IDX}
+   ]]>
+   </select>
+   
+   <select id="likeCheckList" parameterType="hashmap" resultType="hashmap">
+      SELECT HRB_LIKE_IDX, HRB_IDX, MEMBER_IDX 
+      FROM HRB_LIKE_CHECK 
+      WHERE HOUSE_IDX = #{HOUSE_IDX} AND MEMBER_IDX = #{MY_MEMBER_IDX}
+   </select>
 
-	<insert id="sendMssg" parameterType="hashmap">
-	
-	<![CDATA[
-		insert into message (
-		msg_idx, receive_member_email, member_idx, msg_state, msg_type, msg_content, 
-		msg_title, house_idx, send_date
-		)values(
-		MSG_IDX_SEQ.NEXTVAL, #{RECEIVE_MEMBER_EMAIL}, #{MEMBER_IDX}, 0, 1, 
-		#{MSG_CONTENT}, #{MSG_TITLE}, #{HOUSE_IDX}, SYSDATE
-		)
-	]]>
-	
-	</insert>
-	
-	<insert id="insertReportHouse" parameterType="hashmap">
-	<![CDATA[
-	INSERT INTO REPORT_BOARD (
-		REPORT_IDX, REPORT_TITLE, REPORT_CONTENT, 
-		REPORT_REGDATE, REPORT_STATE, REPORT_TYPE, MEMBER_IDX, HOUSE_IDX
-		)VALUES(
-		REPORT_IDX_SEQ.NEXTVAL, #{REPORT_TITLE}, #{REPORT_CONTENT}, 
-		SYSDATE, 0, 0, #{MEMBER_IDX}, #{HOUSE_IDX}
-		)
-	]]>
-	</insert>
-	
-	<update id="increaseHouseCnt" parameterType="hashmap">
-	<![CDATA[
-		UPDATE HOUSE 
-		SET HOUSE_CNT = HOUSE_CNT + 1 
-		WHERE HOUSE_IDX = #{HOUSE_IDX}
-	]]>
-	</update>
-	
-	
-	<select id="selectHouseList2" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
-					 HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
-					  HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
-					  HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX ,
-      				  STAR_SUM, STAR_COUNT, (STAR_SUM/STAR_COUNT) STAR, r
-						FROM (SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX , STAR_SUM , STAR_COUNT, rownum r
-     					FROM( SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX , 
-           					STAR_SUM,  STAR_COUNT, rownum r
-          					FROM( SELECT distinct H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX , 
-               				(SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX) STAR_SUM, (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX) STAR_COUNT
-                			FROM HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX ORDER BY HOUSE_IDX)
-          					order by HOUSE_IDX)
-      						)   
-							WHERE r > #{FIRST_INDEX}  and r <= #{LAST_INDEX}
-		]]>
-	</select>
+   <insert id="sendMssg" parameterType="hashmap">
+   
+   <![CDATA[
+      insert into message (
+      msg_idx, receive_member_email, member_idx, msg_state, msg_type, msg_content, 
+      msg_title, house_idx, send_date
+      )values(
+      MSG_IDX_SEQ.NEXTVAL, #{RECEIVE_MEMBER_EMAIL}, #{MEMBER_IDX}, 0, 1, 
+      #{MSG_CONTENT}, #{MSG_TITLE}, #{HOUSE_IDX}, SYSDATE
+      )
+   ]]>
+   
+   </insert>
+   
+   <insert id="insertReportHouse" parameterType="hashmap">
+   <![CDATA[
+   INSERT INTO REPORT_BOARD (
+      REPORT_IDX, REPORT_TITLE, REPORT_CONTENT, 
+      REPORT_REGDATE, REPORT_STATE, REPORT_TYPE, MEMBER_IDX, HOUSE_IDX
+      )VALUES(
+      REPORT_IDX_SEQ.NEXTVAL, #{REPORT_TITLE}, #{REPORT_CONTENT}, 
+      SYSDATE, 0, 0, #{MEMBER_IDX}, #{HOUSE_IDX}
+      )
+   ]]>
+   </insert>
+   
+   <update id="increaseHouseCnt" parameterType="hashmap">
+   <![CDATA[
+      UPDATE HOUSE 
+      SET HOUSE_CNT = HOUSE_CNT + 1 
+      WHERE HOUSE_IDX = #{HOUSE_IDX}
+   ]]>
+   </update>
+   
+   
+   <select id="selectHouseList2" parameterType="hashmap" resultType="hashmap">
+      <![CDATA[
+         SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
+                HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3,
+                 HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, 
+                 HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX ,
+                    STAR_SUM, STAR_COUNT, (STAR_SUM/STAR_COUNT) STAR, r
+                  FROM (SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX , STAR_SUM , STAR_COUNT, rownum r
+                    FROM( SELECT HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, HOUSE_PERSON_PRICE, HOUSE_CNT, MEMBER_IDX , 
+                          STAR_SUM,  STAR_COUNT, rownum r
+                         FROM( SELECT distinct H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_KIND, HOUSE_ZIPCODE, HOUSE_ADDR1, HOUSE_ADDR2, HOUSE_ADDR3, HOUSE_TOTAL_PERSONS, HOUSE_PERSONS, HOUSE_TOTAL_PRICE, HOUSE_PRICE, HOUSE_PERSON_PRICE, HOUSE_CNT, H.MEMBER_IDX , 
+                           (SELECT SUM(HRB_STAR) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX) STAR_SUM, (SELECT COUNT(*) FROM HOUSE_REVIEW_BOARD H2 WHERE H2.HOUSE_IDX=H.HOUSE_IDX) STAR_COUNT
+                         FROM HOUSE H Left Join HOUSE_RSV RSV on H.HOUSE_IDX = RSV.HOUSE_IDX ORDER BY HOUSE_IDX)
+                         order by HOUSE_IDX)
+                        )   
+                     WHERE r > #{FIRST_INDEX}  and r <= #{LAST_INDEX}
+      ]]>
+   </select>
 </mapper>

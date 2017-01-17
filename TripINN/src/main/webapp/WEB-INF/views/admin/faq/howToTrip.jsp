@@ -86,12 +86,12 @@
    }
    .howToUse{
    border:0px solid black;
-   
    width:200px;
    height:30px;
    margin:10px 10px 50px 10px;
    font-size:21px;
    text-align: center;
+   font-family:'바탕체';
    }
    
    .list1{
@@ -195,7 +195,7 @@
   
       <!-- 글자 감싸는 영역 -->
       <div class="howToUse">
-         <h1>여행 방법</h1>
+         <h1>여행방법</h1>
    </div> 
    
    
@@ -213,12 +213,12 @@
     <div class="list1">  
          <!-- 제목 -->
          <div class="howToUse_title">
-         <a style = "font-size:19px;color:black;">${howToUse.FAQ_TITLE }</a>
+         <a style = "font-size:19px;color:black;font-family:'바탕체'">${howToUse.FAQ_TITLE }</a>
         </div> 
       
          <!-- 내용 -->
          <div class="howToUse_content">
-            <font style="font-size:13px;line-height:2.3em">${howToUse.FAQ_CONTENT} </font>
+            <font style="font-size:13px;line-height:2.3em;font-family:'바탕체'">${howToUse.FAQ_CONTENT} </font>
          </div>
          
          <!-- 이미지 -->

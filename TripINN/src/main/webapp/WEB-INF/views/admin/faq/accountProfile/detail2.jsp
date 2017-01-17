@@ -89,37 +89,49 @@
 	<div style="height:100%; border:1px solid black; margin:0px auto; display:table;">
 	-->
 	
-	<!-- 가운데 좌측 영역 -->
-   <div style="width:16.8%;height:240px;border:0px solid black;text-align:center;float:left;background:#eeeeff;">	
+	<!-- 좌측 영역 -->
+   <div style="width:16.8%;height:280px;border:0px solid black;text-align:center;float:left;background:#eeeeff;">	
 	   <section>
 				<nav style="width:250px;height:400px;margin-top:30px;">
 
 					<ul id="dropdown2">
-						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a>
-						<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/memberList.do">회원관리</a></li>
-						</ul>
-						</li>
-						
-						<li><a href="http://localhost:8080/TripINN/admin/houseList.do">숙소관리</a>
+					<c:if test="${member_level == 1}">
+						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a></li>
+					</c:if>	
+						<li><a>시작하기</a>
 							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do">신고하기</a></li>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">이용방법</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList1.do">여행방법</a></li>
 							</ul>
 						</li>
-						
-						<li><a href = "http://localhost:8080/TripINN/admin/adminTripList.do">투어관리</a>
+						<li><a>계정과 프로필</a>
 							<ul>
-						<li><a href = "http://localhost:8080/TripINN/admin/adminTripReportList.do">신고하기</a></li>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList2.do">내 정보</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList3.do">보안과 비밀번호</a></li>
 							</ul>
 						</li>
-						
-						<li>문의게시판
+						<li><a>여행</a>
 							<ul>
-						<li><a href = "http://localhost:8080/TripINN/admin/qnaList.do">Q&A</a></li>
-						<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">FAQ</a></li>
-							
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList4.do">숙소 찾기</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList5.do">숙소 예약</a></li>
 							</ul>
 						</li>
+						<li><a>트립</a>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList6.do">트립 참가</a></li>
+							</ul>
+							<ul>
+							<li><a href = "http://localhost:8080/TripINN/admin/faqList7.do">트립 호스팅</a></li>
+							</ul>
+						</li>
+						<li><a href = "http://localhost:8080/TripINN/admin/faqList8.do">후기</a></li>
+						<li><a href="http://localhost:8080/TripINN/admin/qnaList.do">문의하기</a></li>
 						
 					</ul>
 				</nav>
@@ -172,10 +184,10 @@
                 		<th scope="row">제목</th> 
                 	</c:if>
              
-                	<td style="height:80px;font-size:28px;border-bottom:2px solid #ccc" colspan="3">${map.FAQ_TITLE }</td>                	
+                	<td style="height:80px;font-size:20px;border-bottom:2px solid #ccc; text-align:center;width:100%;font-family:'바탕체'" colspan="3">${map.FAQ_TITLE }</td>                	
            		</tr>
             <tr>
-                <td style="height:180px;font-size:20px;" colspan="4">${map.FAQ_CONTENT }</td>   
+                <td style="height:180px;font-size:20px; font-family:'바탕체'" colspan="4">${map.FAQ_CONTENT }</td>   
             </tr>
             
         </tbody>

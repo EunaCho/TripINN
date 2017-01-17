@@ -71,6 +71,10 @@
          }
          hr{ width:95%; color:#eee;}
          
+         .board_view{
+         width:80%;
+         }
+         
          
 </style>
 

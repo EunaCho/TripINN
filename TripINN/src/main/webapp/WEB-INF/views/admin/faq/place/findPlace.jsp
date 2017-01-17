@@ -122,6 +122,9 @@
    font-size:14px;
    
    }
+   .board_list2{
+   width:80%;
+   }
    
 
 </style>
@@ -257,7 +260,7 @@
                 </c:forEach>
                 
                 <c:if test="${member_level == 1}">
-    				<div style="text-align:right;margin-top:-50px; margin-right:0px">    
+    				<div style="text-align:right;margin-top:-50px; margin-right:200px">    
 					<a href="${writeURL }" class="btn_write" id="write">글쓰기</a>	
 					<!--  <a href="javascript:fn_faqBoardUpdate('${howToUse.FAQ_IDX }');" class="btn_edit" id="update">수정하기</a>-->
 					</div>
