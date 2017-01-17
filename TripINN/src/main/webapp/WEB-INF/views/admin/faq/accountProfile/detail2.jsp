@@ -71,23 +71,26 @@
 				border: 0px solid gray;
 			}
 			hr{ width:95%; color:#eee;}
+			.board_view2{
+			width:80%;
+			}
 </style>
 
   <br><br>
   
  <!-- 가운데 윗 영역 -->
-<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+<div style="width:100%;height:100px;border:0px solid black;text-align:center;">
          <h2>FAQ 페이지에 오신걸 환영합니다.</h2>
 </div>
 
 <!-- 가운데 영역 전체(좌측+우측) -->
-  	<div style="width:100%;height:90%;border:1px solid black;">
+  	<div style="width:100%;height:90%;border:0px solid black;">
 	<!--
 	<div style="height:100%; border:1px solid black; margin:0px auto; display:table;">
 	-->
 	
 	<!-- 가운데 좌측 영역 -->
-   <div style="width:16.8%;height:420px;border:0px solid black;text-align:center;float:left;">	
+   <div style="width:16.8%;height:240px;border:0px solid black;text-align:center;float:left;background:#eeeeff;">	
 	   <section>
 				<nav style="width:250px;height:400px;margin-top:30px;">
 
@@ -126,7 +129,7 @@
 	
 
 	<!-- 가운데 우측영역 -->
-	<div style="width:1050px;height:100%; border:1px; text-align:center; top:208px;left:400px; margin:auto;">
+	<div style="width:1050px;height:100%; border:0px; text-align:center; top:208px;left:400px; margin:auto;">
       
 
       <!-- 상세보기,편집 할 수 없도록 <input> 태그를 사용하지 않았음. -->

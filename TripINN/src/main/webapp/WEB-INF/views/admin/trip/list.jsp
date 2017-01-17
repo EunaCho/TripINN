@@ -195,12 +195,13 @@
 	.house_addr{
 	border:0px solid black;
 	width:300px;
-	height:20px;
+	height:60px;
 	margin-left:550px;
 	margin-top:10px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
+	overflow-y:scroll;
 	}
 	.house_persons{
 	border:0px solid black;
@@ -217,7 +218,7 @@
 	width:300px;
 	height:20px;
 	margin-left:220px;
-	margin-top:-97px;
+	margin-top:-140px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -268,7 +269,7 @@
 	width:300px;
 	height:20px;
 	margin-left:550px;
-	margin-top:-53px;
+	margin-top:-10px;
 	background-color:#eee;
 	font-size:14px;
 	border-radius:7px;
@@ -348,13 +349,13 @@
    <c:when test="${fn:length(list)>0}">
    <c:forEach var="adminTrip" items="${list}">
     <div class="list1">
-     <div class="picture">
-     <c:set var="fullImg" value="${adminTrip.TRIP_IMAGE }"/>
+    <c:set var="fullImg" value="${adminTrip.TRIP_IMAGE }"/>
 	 <c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
+     <div class="picture">
     <img class="picture1" src="<%=cp%>/images/trip/${tripImg}">
       </div>
       <div class="house_idx">
-      &nbsp;번호: ${adminTrip.TRIP_IDX}
+      &nbsp;번호: ${adminTrip.TRIP_IDX} 
       </div>
        <div class="house_info">
       &nbsp;지역: ${adminTrip.TRIP_AREA}

@@ -4,3 +4,4 @@
 	alert("회원가입이 완료되었습니다.");
 	history.go(-1);
 </script>
+    

@@ -46,7 +46,6 @@ public class HouseController {
 		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
 
 		List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
-		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
 		List<Map<String, Object>> map_list = houseService.selectHouseMapList(map.getMap());
 
 		String str_total_addr = "";

@@ -6,44 +6,94 @@
 
 <!-- 스타일 적용2 -->
 <style>   
-ul{width:172px;height:340px;background:blue;opacity:0.4;list-style:none;padding-top:15px;}
 
-li{margin-right:50px }
+ 
+ #dropdown2 li a{
+ font-size:19px;
+ color:black;
+ }
+ 
+ #dropdown2{
+            
+			list-style-type: none;
+			margin-left:-40px;
+			position:absolute;
+			max-width:300px;
+			margin-top:5px;
+			margin-left:-45px;
+			}
 
-<<<<<<< HEAD
+			#dropdown2 li{
+			    
+				width: 200px;
+				height: 28px;
+				border: 0px;
+				border-style: solid dashed;
+				margin: 2px;
+				overflow:hidden;
+				background: #eeeeff;
+				display:inline-block;
+				transition: all 0.4s ease-out;
+				float:left;
+				text-align:center;
+				font-weight: 800;
+				padding-left: 10px;
+				font-size:14pt;
+				
+				
+			}
+
+			#dropdown2 > li > ul > li{
+		     	
+				height: 30px;
+				border: 2px;
+				list-style-type: none;
+				margin-left:-50px;
+				background:#c2e4e7;
+				text-align:center;
+				font-weight: 800;
+				font-size: 16pt;
+				padding-left: 10px;
+				opacity: 0.3;
+				transition: text-shadow 0.25s ease, opacity 0.8s ease;
+			}
+			#dropdown2 > li > ul > li:hover{
+				opacity: 1;
+				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
+			}
+			#dropdown2 > li:hover{
+				height:90px;
+			}
+			section{
+				display: block;
+				border: 0px solid gray;
+			}
+			hr{ width:95%; color:#eee;}
+
+
+
 .left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none;}
 .tbl { width:1000px; border:0;}
 .tbl tr th {  border:1px solid #a6a6a6;height:30px;text-align:center; background:#c8c8c8;}
 .tbl tr td { border:1px solid #a6a6a6; padding:5px;height:30px; text-align:center;}
-=======
-.left-ul li a{font-size:12px;color:#fff;font-weight:bold;text-decoration:none}
-.tbl { width:1000px; border:1px; }
-.tbl tr th {  border:1px solid #a6a6a6;height:30px;text-align:center; background:#eee; }
-.tbl tr td { border:1px solid #a6a6a6; padding:5px;height:30px; }
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 .tbl tr td a { text-decoration: none; color:#000; }
 .tbl tr td a:hover { color: #ff3300; vertical-align: middle; }
 #tbl {}
-<<<<<<< HEAD
 .paging{
    font-size:17px;
    margin-left:400px;
    margin-top:-10px;
    }
-=======
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style> 
 
   <br><br>
   
  <!-- 가운데 윗 영역 -->
-<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
+<div style="width:100%;height:70px;border:0px solid black;text-align:center;">
          <h2>회원관리 페이지에 오신걸 환영합니다.</h2>
 </div>
 
-<!-- 가운데 좌측+우측  묶은 영역 -->
 <div style="height:100%; margin:0px auto; display:table;"> <!-- 좌측+리스트 -->
-<<<<<<< HEAD
 <!-- 좌측영역 -->
 <div style="width:210px;height:80%;border:0px solid black; text-align:center;margin-top:10px;margin-left:-35px; float:left;background:#eeeeff;">
    <section>
@@ -82,23 +132,7 @@ li{margin-right:50px }
 				</nav>
 		</section>
 	
-=======
-<!-- 가운데 좌측영역 -->
-<div style="width:210px;height:380px;border:1px solid black;text-align:center; float:left;">
-   <ul class="left-ul">
-      <li> <a href = "http://localhost:8080/TripINN/admin/main.do"><h1>관리자 홈</h1></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/memberList.do"><h2>회원관리</h2></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/houseList.do"><h2>숙소관리</h2></a></li>
-      <li><a href = "http://localhost:8080/TripINN/admin/houseReportList.do"><h3>ㄴ신고하기</h3></a></li>
-      <li><a href = "http://www.daum.net"><h2>투어관리</h2></a></li>
-      <li><a href = "http://www.naver.com"><h3>ㄴ신고하기</h3></a></li>
-      <li><a><h2>문의게시판</h2></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/qnaList.do"><h3>ㄴQ&A</h3></a></li>
-        <li><a href = "http://localhost:8080/TripINN/admin/faqList.do"><h3>ㄴFAQ</h3></a></li>
-   </ul>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </div><!-- side div End -->
-<<<<<<< HEAD
    
 <div style="width:84%;height:60%; border:1px solid #eeeeff; text-align:left; margin:10px auto; float:left;margin-left:10px;">
     <div style="color:black;width:100%;height:50px;border:1px solid white;background:#eeeeff;">
@@ -110,17 +144,9 @@ li{margin-right:50px }
 
    <!-- 회원 테이블 영역 -->
        
-=======
-<!-- 가운데 우측영역 -->
-<div style="width:1025px;height:85%; border:1px solid red; text-align:center; top:208px;left:400px; margin:10px auto; float:left;">
-
-	<!-- 회원 테이블 영역 -->
-        <h2>회원 리스트</h2>
-     <div style="width:1001px; height:75%; margin:10px; border:1px solid red;"> <!-- table div start -->
- 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
        <form name="frm" method="post" action="/TripINN/admin/memberView.do">
           <input type="hidden" value="" name="MEMBER_IDX"/>
+          
  
          <table class="tbl">
       
@@ -154,19 +180,37 @@ li{margin-right:50px }
          </c:choose>
          </table>
        </form>
-   </div><!-- 회원 table div End -->
+   </div><!-- table div End -->
    
    <!-- 현재 페이지 번호를 저장 -->
-    <!--  <input type="hidden" id="currentPageNo" name="currentPageNo"/>-->
     <div class="paging">
        ${pagingHtml}
     </div>
-   
-</div><!-- 가운데 우측영역 end -->
+    <!-- 검색파트 영역 -->
+            	<div style="text-align:center; margin-top:30px; margin-left:-100px;">
+ 					<form  action="">
+ 						
+                     <select class="searchOption btn btn-default" name="searchNum" id="searchNum">
+                     	<option value="3">이메일</option>
+                     	<option value="4">번호</option>
+                     	<option value="5">주소</option>
+                     	
+                      	
+                     </select><input  type="text" name="isSearch" id="isSearch" style="margin-left:15px;width:200px;height:24px;border-radius :5px 5px 5px 5px;"/>            
+                     
+                     <span class="inputb">
+                          <input type="submit" value="검색"  style="font-size: 14px;"/>
+                  	 </span>
+               </div><!-- 검색파트 영역  끝 -->
+    
+</div><!-- list div End -->
 
-</div><!-- 전체(좌측+우측 묶은)영역  --> 
 
-<!-- 이건 도대체 뭐냐? -->
+
+
+</div><!-- 전체  --> 
+
+
 <div style="clear:both;"></div>
 
 
