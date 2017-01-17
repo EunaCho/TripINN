@@ -17,17 +17,44 @@
 	</insert>
 	
 	<select id="tripList" parameterType="HashMap" resultType="HashMap">
-		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+	<include refid="common.pagingPre"/> 
+		select 
+		ROW_NUMBER() OVER 
+			(order by nvl((select sum(trb_star) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') desc) RNUM, 
+		trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
-			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx from trip
+			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx,
+			   nvl((select sum(trb_star) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') trb_star,
+        		nvl((select count(*) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') total_cnt,
+          		nvl((select sum(tr_persons) from trip_rsv tr where tr.trip_idx=t.trip_idx), 0) reserved_num
+			   from trip t
 		where trip_area = #{trip_area}
+	<include refid="common.pagingPost"/> 
+	</select>
+	
+	<select id="selectTripListSearch" parameterType="hashmap" resultType="hashmap">
+		<include refid="common.pagingPre"/> 
+		select 
+		ROW_NUMBER() OVER (ORDER BY nvl((select sum(trb_star) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') desc) RNUM, 
+		trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
+			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
+			  trip_image, trip_pprice, trip_tprice, trip_persons, member_idx, house_idx,
+			   nvl((select sum(trb_star) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') trb_star,
+        		nvl((select count(*) from trip_review_board t2 where t2.trip_idx=t.trip_idx),'0') total_cnt,
+         		 nvl((select sum(tr_persons) from trip_rsv tr where tr.trip_idx=t.trip_idx), 0) reserved_num
+        		 from trip t
+		where trip_area = #{trip_area} and trip_type=#{trip_type} and trip_persons>=#{trip_persons}
+				and trip_first_date>=#{trip_first_date}
+		<include refid="common.pagingPost"/> 
 	</select>
 	
 	<select id="tripDetail" parameterType="HashMap" resultType="HashMap">
 		select trip_idx, trip_area, trip_type, trip_language, trip_name, trip_intro, trip_first_date,
 			 trip_last_date,trip_include, trip_zipcode, trip_addr1, trip_addr2, trip_addr3,
 			  trip_image, trip_pprice, trip_tprice, trip_persons, t.member_idx, house_idx,
-          member_email, member_name, member_phone, member_image
+          member_email, member_name, member_phone, nvl(member_image, 'basic_profile.png') member_image,
+          nvl((select trip_idx from favorites f where f.trip_idx=t.trip_idx and f.member_idx=#{member_idx}), 0) fav,
+          nvl((select sum(tr_persons) from trip_rsv tr where tr.trip_idx=t.trip_idx), 0) reserved_num
         from trip t inner join member m on m.member_idx = t.member_idx 
         	where t.trip_idx=#{trip_idx}
 	</select>
@@ -51,11 +78,18 @@
 	</insert>
 	
 	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
-		select trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_name,
-		 member_image, m.member_idx from trip_review_board t 
+		<include refid="common.pagingPre"/> 
+		select 
+		ROW_NUMBER() OVER (ORDER BY trb_like DESC, trb_regdate desc) RNUM, 
+		trb_idx, trb_content, trb_regdate, trb_star, trb_like, member_name,
+		 nvl(member_image, 'basic_profile.png') member_image, m.member_idx m_idx from trip_review_board t 
   			inner join member m on m.member_idx = t.member_idx 
   				where trip_idx=#{trip_idx}
-  					order by trb_like desc, trb_regdate desc
+		<include refid="common.pagingPost"/> 
+	</select>
+	
+	<select id="getReviewInfoSub" parameterType="hashmap" resultType="hashMap">
+		select sum(trb_star)  star_sum, count(*) total_cnt from trip_review_board where trip_idx=#{trip_idx}
 	</select>
 	
 	<update id="reviewLike" parameterType="hashmap">
@@ -65,6 +99,50 @@
 	<select id="getLikeCnt" parameterType="String" resultType="String">
 		select trb_like from trip_review_board where trb_idx=#{trb_idx}
 	</select>
+	
+	<delete id="deleteLike" parameterType="hashmap">
+		delete from trb_like_check where trb_idx=#{trb_idx} and member_idx=#{member_idx}
+	</delete>
+	
+	<insert id="insertLike" parameterType="hashmap">
+		insert into trb_like_check(trb_like_idx, trb_idx, member_idx, trip_idx)
+			values(trb_like_seq.nextVal, #{trb_idx}, #{member_idx}, #{trip_idx})
+	</insert>
+	
+	<select id="likeCheckList" parameterType="hashmap" resultType="hashmap">
+		select trb_like_idx, trb_idx, member_idx from trb_like_check
+			where trip_idx=#{trip_idx} and member_idx=#{member_idx}
+	</select>
+	
+	<insert id="insertBookMark" parameterType="java.util.HashMap">
+		insert into favorites(far_idx, member_idx, trip_idx)
+			values(fvr_idx_seq.nextval, #{member_idx}, #{trip_idx})
+	</insert>
+	
+	<delete id="deleteBookMark" parameterType="java.util.HashMap">
+		delete from favorites where trip_idx=#{trip_idx} and member_idx=#{member_idx}
+	</delete>
+	
+	<insert id="tripReport" parameterType="HashMap">
+		insert into report_board(report_idx, report_title, report_content, report_regdate,
+report_state, report_type, member_idx, trip_idx)
+		values(report_idx_seq.nextval, #{report_title}, #{report_content}, sysdate, #{report_state}, 
+		#{report_type},#{member_idx}, #{trip_idx})
+	</insert>
+	
+	<delete id="reviewDel" parameterType="String">
+		delete from trip_review_board where trb_idx=#{parameter}
+	</delete>
+	
+	<insert id="sendMsg" parameterType="HashMap">
+	insert into message (
+		msg_idx, receive_member_email, member_idx, msg_state, msg_type, msg_content, 
+		msg_title, trip_idx, send_date
+		)values(
+		MSG_IDX_SEQ.NEXTVAL, #{receive_member_email}, #{member_idx}, 0, 1, 
+		#{msg_content}, #{msg_title}, #{trip_idx}, SYSDATE
+		)
+	</insert>
 </mapper>
 
 
