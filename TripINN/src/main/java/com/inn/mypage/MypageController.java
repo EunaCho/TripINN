@@ -188,9 +188,9 @@ public class MypageController {
 		
 		return mv;
 	}
-<<<<<<< HEAD
+
 	//*숙소목록=>예약관리
-=======
+
 	// 숙소 상세 -> 예약관리 -> 예약 취소
 	@RequestMapping(value="/house_rsv_del.do", method=RequestMethod.POST)
 	public ModelAndView house_rsv_del(HttpServletRequest request) {
@@ -203,7 +203,7 @@ public class MypageController {
 	}
 	
 	//*숙소목록=>예약관리 리스트
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 	@RequestMapping("/houseReser.do")
 	public String houseReserForm(CommandMap commandMap) throws Exception{
 		

@@ -291,9 +291,7 @@
 					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>입실일</strong></font></td>
 					<td width="290px" height="30px;" bgcolor="#c8c8c8" align="center"><font color="white" size="2" ><strong>퇴실일</strong></font></td>
 				</tr>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
-	
-<<<<<<< HEAD
+
 		<div class="side_list">
 			<a href="<%=cp%>/mypage/houseReser.do" class="side-text">예약관리</a>
 		</div>
@@ -322,7 +320,6 @@
 							${houseMap.HOUSE_NAME}
 							</font>
 						</div>
-=======
 				<tr>
 					<td colspan="7"><hr/></td>
 				</tr>
@@ -354,7 +351,7 @@
 						</c:if>
 					</td>
 					<td align="center" bgcolor="#f3f3f3">
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 						
 						<div class="position_div">
 							<font style="color:#3c3c3c; font-weight:bolder; letter-spacing:2px; font-size:12px; font-style:'바탕체'">${list.HOUSE_ADDR1} ${list.HOUSE_ADDR2} ${list.HOUSE_ADDR3}</font>

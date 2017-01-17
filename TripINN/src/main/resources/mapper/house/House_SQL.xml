@@ -3,7 +3,7 @@
 
 <mapper namespace="house">
 
-<<<<<<< HEAD
+
    <!-- house list sql -->
    <select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
       <![CDATA[
@@ -97,9 +97,8 @@
       )
    ]]>
    </insert>
-   <!-- 
-   UPDATE HOUSE_INFO SET HI_CHECKOUT = SYSDATE
-=======
+ 
+
 	<!-- house list sql -->
 	<select id="selectHouseList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
@@ -121,7 +120,7 @@
 	</select>
 	
 	<select id="searchHouseList" parameterType="hashmap" resultType="hashmap">
-<<<<<<< HEAD
+
 		
 		SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE 
 		FROM (SELECT H.HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE,
@@ -149,7 +148,7 @@
 			
 	</select>
 	
-=======
+
       SELECT distinct HOUSE_IDX, HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, MEMBER_IDX, HOUSE_TOTAL_PRICE,
                     STAR_SUM, STAR_COUNT<!-- , STAR -->
      FROM (SELECT H.HOUSE_IDX,HOUSE_NAME, HOUSE_INFO, HOUSE_IMAGE, HOUSE_PRICE, H.MEMBER_IDX ,HOUSE_TOTAL_PRICE,
@@ -185,7 +184,7 @@
          
    </select>
 
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 	
 	<!-- House Detail -->
 	<select id="selectHouseDetail" parameterType="hashmap" resultType="hashmap">
@@ -313,8 +312,8 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
          WHERE MEMBER_IDX = #{MEMBER_IDX}
       ]]>
    </select>
-=======
-	 -->
+
+	
 	<!-- houseInfo insert sql -->
 	<insert id="insertHouseInfo" parameterType="hashmap">
 		<![CDATA[
@@ -347,5 +346,5 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
 		 	hrb_idx_seq.nextval, #{HRB_TITLE}, #{HRB_CONTENT}, <!-- #{HRB_PWD} --> #{HRB_REGDATE},<!--  #{HRB_STAR}, #{HRB_LIKE}, --> #{MEMBER_IDX}, #{HOUSE_IDX}
 		 )
 	</insert>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
+
 </mapper>
