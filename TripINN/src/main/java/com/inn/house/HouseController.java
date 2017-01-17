@@ -138,9 +138,34 @@ public class HouseController {
 		return mv;
 	}
 	
+<<<<<<< HEAD
 	//map view
 	@RequestMapping(value="/house/houseMapView.do")
 	public ModelAndView houseMapView(HttpServletRequest request){
+=======
+	//숙소 정보 수정폼
+	@RequestMapping(value = "/house/houseUpdateForm.do", method=RequestMethod.GET)
+	public ModelAndView houseUpdateForm(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("houseUpdateForm");
+		Map<String, Object> house = houseService.selectHouseDetail(commandMap.getMap());//하우스 상세정보 꺼내오기
+		mv.addObject("house", house);
+		return mv;
+	}
+	
+	//숙소 정보 수정하기
+		@RequestMapping(value = "/house/houseUpdate.do", method=RequestMethod.POST)
+		public ModelAndView houseUpdate(CommandMap commandMap) throws Exception {
+			ModelAndView mv = new ModelAndView("houseUpdate");
+			
+			return mv;
+		}
+		
+	
+
+	// map view
+	@RequestMapping(value = "/house/houseMapView.do")
+	public ModelAndView houseMapView(HttpServletRequest request) {
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		ModelAndView mv = new ModelAndView("house/register/houseMapView");
 		String addr1 = request.getParameter("addr");
 		

@@ -80,6 +80,39 @@ public class MypageServiceImpl implements MypageService{
 
 	//-------프로필------//
 
+
+	//----------------------------------------------위시리스트 --------------------------
+	@Override
+	public Map<String, Object> selectMy_HouseList(Map<String, Object> map) throws Exception {
+		return mypageDAO.selectMy_HouseList(map);
+	}
+
+	@Override
+	public Map<String, Object> selectMy_TripList(Map<String, Object> map) throws Exception {
+
+		return mypageDAO.selectMy_TripList(map) ;
+	}
+	//숙소 위시리스트 삭제
+	@Override
+	public void deleteHouseWish(Map<String, Object> map) throws Exception{
+		mypageDAO.deleteHouseWish(map);
+	}
+	//트립위시리스트 삭제 
+	@Override
+	public void deleteTripWish(Map<String, Object> map) throws Exception{
+		mypageDAO.deleteTripWish(map);
+	}
+
+	@Override
+	public void messageDel(String msg_idx) {
+		mypageDAO.messageDel(msg_idx);
+	}
+
+	@Override
+	public void house_rsv_del(String hr_idx) {
+		mypageDAO.house_rsv_del(hr_idx);
+	}
+	
 	//-------프로필------//
 
 }

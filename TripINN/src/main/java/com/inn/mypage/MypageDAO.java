@@ -56,4 +56,8 @@ public class MypageDAO extends AbstractDAO {
 	public List<Map<String, Object>> selectH_MsgList(Map<String, Object> map) throws Exception{
 		return (List<Map<String, Object>>)selectList("mypage.selectH_MsgList", map);
 	}
+
+	public void house_rsv_del(String hr_idx) {
+		delete("mypage.houseRsvDel", hr_idx);
+	}
 }

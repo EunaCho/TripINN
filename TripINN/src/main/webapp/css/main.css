@@ -13,11 +13,202 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav
 
 
 /* main.jsp */
+<<<<<<< HEAD
 /* 상단 롤링 */
 #rolling { width: 100%; height:400px; float:left; margin-left:-30px; }
 #rolling ul, li {list-style:none}
 #rolling .rolling_wrap { } 	
   
+=======
+/* 상단 롤링 블록 */
+ * { margin:0px; padding:0px; }
+        /* Animation Canvas */
+        .animation_canvas  {
+            overflow:hidden;
+            position:relative;     
+            margin:30px;     
+            float:left; 
+            width:900px; height:400px;
+        }
+    
+        /* Slider Panel */
+        .slider_panel { width:4500px; position:relative; }
+        .slider_image { float:left; width:900px; height:400px; }
+    
+        /* Slider Text Panel */
+        .slider_text_panel { position:absolute; top:200px; left:50px; }
+        .slider_text { position:absolute; width:250px; height:150px; color:white;}
+        .slider_text p {font-size:15px;}
+    
+        /* Control Panel */
+        .control_panel  {
+            position:absolute; top:380px; 
+            left:400px; height:13px; 
+            overflow:hidden; 
+        }
+
+        .control_button {
+            width:12px; height:46px;
+            position:relative; 
+    
+            float:left; cursor:pointer;  
+            background:url('/TripINN/images/point_button.png');
+        }
+        .control_button:hover { top:-16px; }
+        .control_button.active { top:-31px; }
+/* 공지사항 블록 */
+.noticeBlock{
+  /*   border: 1px solid; */
+    position: relative;
+    width: 350px;
+    height: 400px;
+    float: left;
+    padding:30px 0px;
+}
+
+.noticeCont {
+    position: relative;
+    float: left;
+    width: 340px;
+    margin: 10px 0px 20px;
+    /* border: 1px solid; */
+}
+.noticeCont .tab {
+    padding-top: 23px;
+}
+
+.noticeCont h4.tab1 {
+    left: 0;
+}
+.noticeCont h4.tab1 a {
+    background-image: url(/TripINN/images/news_t03.gif);
+}
+
+.noticeCont h4 {
+    position: absolute;
+    top: 0;
+    height: 23px;
+}
+
+.noticeCont h4.tab2 {
+    left: 0;
+}
+.noticeCont h4.tab2 a {
+    background-image: url(/TripINN/images/news_t02.gif);
+}
+.noticeCont h4.on a {
+    background-position: 0 -23px;
+}
+.noticeCont h4 a {
+    display: block;
+    width: 79px;
+    height: 23px;
+    overflow: hidden;
+    text-indent: -999em;
+    background: 0 0 no-repeat;
+}
+
+
+a:visited {
+    color: #333;
+    text-decoration: none;
+}
+a:link {
+    color: #333;
+    text-decoration: none;
+}
+
+.noticeCont .tabContent {
+    padding-top: 8px;
+    width: 340px;
+    height: 138px;
+    border-top: 1px solid #c9c9c9;
+}
+.noticeCont h4 {
+    position: absolute;
+    top: 0;
+    height: 23px;
+}
+.hide_el {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border: none;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.noticeCont .tabContent li {
+    position: relative;
+    height: 13px;
+    padding: 5px 0 5px 12px;
+    background: url(http://www.jinair.com/images/newMain/dot.gif) no-repeat 0 8px;
+    text-align: left;
+}
+
+.noticeCont .tabContent li a {
+    font-size: 11px;
+    letter-spacing: -1px;
+    color: #666;
+}
+
+a:visited {
+    color: #333;
+    text-decoration: none;
+}
+a:link {
+    color: #333;
+    text-decoration: none;
+}
+
+#rptNotice_ctl00_btnNew {
+    vertical-align: middle;
+    margin-top: -3px;
+}
+.noticeCont .tabContent li span {
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 11px;
+    color: #666;
+}
+
+ul, ol, li, h4, p  {
+    list-style: none;
+}
+
+html, body, form, input, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd {
+    margin: 0;
+    padding: 0;
+}
+td, div, li, dt, dd, input, textarea, select, h4, h5 {
+    font-family: Verdana, "돋움", dotum;
+   /*  font-size: 12px; */
+    word-spacing: 1px;
+    font-weight: normal;
+    color: #000;
+}
+
+img {
+    border: 0;
+    vertical-align: top;
+}
+
+div {
+    display: block;
+}
+
+.noticeCont .more {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+
+}
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
 /* 왼쪽 간편 검색바 */
 #leftDiv { background-color:#6482B9; min-height:500px; width:300px; float:left; margin:20px 20px 5px;  border-radius: 3px;border:2px solid #9BC3FF;}
