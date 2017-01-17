@@ -197,21 +197,15 @@
    		<h1>이용 방법</h1>
    </div>
    
-   <!--글쓰기버튼 감싸는 영역  -->
-	<!-- 관리자인가 아닌가 구분하는 조건 -->
-    <c:if test="${member_level == 1}">
-    	<div style="text-align:right;margin-top:-50px;margin-bottom:30px;">    
-			<a href="#this" class="btn_write" id="write">글쓰기</a>	
-		</div>
-	</c:if>	
+  
    
-   
-   <form name="frm" method="post" action="/TripINN/admin/faqList.do">
+   <form name="frm" method="post">
 	 
    
    <c:choose>
    	<c:when test="${fn:length(list)>0}">
 		<!-- 조건문 -->
+
 		
    	<c:forEach var="howToUse" items="${list}">
    		<c:if test="${howToUse.FAQ_TYPE == 1}">
@@ -243,8 +237,24 @@
 		</c:if><!-- 관리자여부 구분하는 조건 끝 -->
 		
 		
+       <c:url var="writeURL" value="/admin/faqWrite.do">
+            <c:param name="faq_type" value="${howToUse.FAQ_TYPE }"/>
+       </c:url>
+		
 		</c:if><!--FAQ_TYPE 조건 끝 -->
-   	</c:forEach>		
+   	</c:forEach>
+   	
+   	<!--글쓰기버튼 감싸는 영역  -->
+	<!-- 관리자인가 아닌가 구분하는 조건 -->
+    <c:if test="${member_level == 1}">
+    <br><br>
+    	<div style="text-align:right;margin-top:-50px; margin-right:0px">    
+			<a href="${writeURL }" class="btn_write" id="write">글쓰기</a>	
+		</div>
+		<br>				
+	</c:if>	
+   	
+   			
     </c:when>
     		<c:otherwise>
 				<div>
@@ -264,15 +274,16 @@
 	
     <!--스크립트 정의  -->
 	<script type="text/javascript">
-	$(document).ready(function(){
+	/*$(document).ready(function(){
     	$("#write").on("click", function(e){ //글쓰기 버튼
         	e.preventDefault();
         	fn_faqBoardWrite();
     	});
-	});
+	});*/
     
 	//게시글 쓰기
-	function fn_faqBoardWrite(){
+	function fn_faqBoardWrite(type){
+		var faq_type = type;
     	var comSubmit = new ComSubmit();
     	comSubmit.setUrl("<c:url value='/admin/faqWrite.do' />");
     	comSubmit.addParam("FAQ_TYPE",faq_type);
