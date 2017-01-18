@@ -7,7 +7,6 @@
 <!-- 작성자: 이진욱 -->
 <!-- 좌측영역 스타일적용1 -->
 <style>
- 
  #dropdown2 li a{
  font-size:19px;
  color:black;
@@ -234,7 +233,7 @@
        <c:if test="${member_level == 1}">
                
        <!--버튼을 감싸는 영역  -->
-       <div style="margin-bottom:30px;margin-right:50px;text-align:right;">
+       <div style="margin-bottom:30px;margin-right:50px;text-align:right;margin-right:250px;">
           <a href="javascript:fn_faqBoardUpdate('${howToUse.FAQ_IDX }');" class="btn_edit" id="update">수정하기</a>
          <a href="javascript:fn_faqDeleteBoard('${howToUse.FAQ_IDX }');" class="btn_del" id="delete">삭제하기</a>
       </div>

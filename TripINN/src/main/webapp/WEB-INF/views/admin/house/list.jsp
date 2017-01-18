@@ -317,15 +317,15 @@
    </div>
     </div>
    <!-- 가운데 영역 -->
-   <div class="house_div">
+   <div class="house_div" >
    <div class="report_list">
    </div>
-   <div style="width:1030px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+   <div style="width:900px; margin-left:80px; height:0px; border-bottom:2px solid #dcdcdc; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
    </div>
    <c:choose>
    <c:when test="${fn:length(list)>0}">
    <c:forEach var="house" items="${list}">
-    <div class="list1">
+    <div class="list1" >
      <div class="picture">
     <img class="picture1" src="<%=cp%>/images/house/${house.HOUSE_IMAGE}">
       </div>

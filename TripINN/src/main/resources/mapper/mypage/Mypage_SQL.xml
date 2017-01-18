@@ -11,7 +11,7 @@
    <select id="selectSendMsgList" parameterType="hashmap" resultType="hashmap">
    <include refid="common.pagingPre"/> 
       select ROW_NUMBER() OVER 
-			(order by MSG_IDX desc) RNUM,
+			(order by MSG_IDX desc) RNUM, 
       MSG_IDX, MSG_STATE, RECEIVE_MEMBER_EMAIL, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, HOUSE_IDX, TRIP_IDX 
       from message where member_idx = #{member_idx}
    <include refid="common.pagingPost"/> 
@@ -22,7 +22,7 @@
    <include refid="common.pagingPre"/> 
       select ROW_NUMBER() OVER 
 			(order by MSG_IDX desc) RNUM,
-			MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+			MSG_IDX, MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE,  
       		 HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
       where receive_member_email =#{member_email}
       <include refid="common.pagingPost"/> 
@@ -30,7 +30,7 @@
    
    <!-- 받은 메시지 상세보기 -->
    <select id="selectReceiveMsgDetail" parameterType="hashmap" resultType="hashmap">
-   		select MSG_IDX,MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, 
+   		select MSG_IDX,MSG_STATE, m2.member_email, MSG_TITLE, MSG_CONTENT, SEND_DATE, MSG_TYPE, m2.MEMBER_EMAIL SEND_EMAIL,
       		   HOUSE_IDX, TRIP_IDX from message m inner join member m2 on m.member_idx=m2.member_idx 
      	where receive_member_email =#{member_email} and msg_idx = #{msg_idx}
       	order by msg_idx desc
@@ -102,23 +102,31 @@
    
    <!-- 숙소목록->에약관리 리스트  -->
    <select id="selectMy_ReserList" parameterType="hashMap" resultType="hashmap">
-   	<![CDATA[		
-   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE, hr.HOUSE_IDX, 
-   				HR_DELETE_STATE, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE
+   	 <include refid="common.pagingPre"/> 
+   	<![CDATA[
+   		  SELECT  ROW_NUMBER() OVER 
+			(order by  HR_IDX desc) RNUM,
+			HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE, hr.HOUSE_IDX, 
+   			HR_DELETE_STATE, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE
 		from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
 		where hr.MEMBER_IDX =#{MEMBER_IDX} and HR_DELETE_STATE =0
 		order by HR_IDX desc
 	]]>	
+	<include refid="common.pagingPost"/> 
    </select>
    <!-- 숙소관리->예약관리-> 예약취소  리스트  -->
    <select id="selectH_ReserDeleteList" parameterType="hashmap" resultType="hashmap">
+   	 <include refid="common.pagingPre"/> 
    	 <![CDATA[	
-   		select HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE,hr.HOUSE_IDX, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE,
-				HR_DELETE_DATE, HR_DELETE_STATE
+   	 SELECT  ROW_NUMBER() OVER 
+			(order by  HR_IDX desc) RNUM,
+   			HR_IDX, HR_NAME, HR_TIME, HR_PERSONS, HR_FIRST_DATE, HR_LAST_DATE, HR_MONEY_STATE,hr.HOUSE_IDX, HOUSE_NAME, HOUSE_PRICE, HOUSE_IMAGE,
+			HR_DELETE_DATE, HR_DELETE_STATE
 		from HOUSE_RSV hr inner join HOUSE h on hr.HOUSE_IDX = h.HOUSE_IDX
 		where hr.MEMBER_IDX =#{MEMBER_IDX} and HR_DELETE_STATE >= 1
 		order by HR_IDX desc
    	]]>
+   	<include refid="common.pagingPost"/> 
    </select>
    
    <!-- 숙소관리->예약관리 ->예약관리 상세보기 -->
@@ -197,13 +205,17 @@
    
    <!-- 트립목록->예약관리->내가 예약한 트립 리스트  -->
    <select id="selectMy_TReserList" parameterType="hashmap" resultType="hashmap">
-   	<![CDATA[		
-   		select TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE, TR_MONEY_STATE, tr.TRIP_IDX, 
-   				 TRIP_NAME, TRIP_TPRICE, TRIP_PPRICE, TRIP_IMAGE
+    <include refid="common.pagingPre"/> 
+   	<![CDATA[
+   	SELECT ROW_NUMBER() OVER 
+			(order by TR_IDX desc) RNUM, 		
+   		       TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE, TR_MONEY_STATE, tr.TRIP_IDX, 
+   			   TRIP_NAME, TRIP_TPRICE, TRIP_PPRICE, TRIP_IMAGE
 		from TRIP_RSV tr inner join TRIP t on tr.TRIP_IDX = t.TRIP_IDX
 		where tr.MEMBER_IDX =#{MEMBER_IDX} and TR_DELETE_STATE =0
 		order by TR_IDX desc
 	]]>
+	<include refid="common.pagingPost"/> 
    </select>
    
    <!-- 트립목록->예약관리->예약관리 상세보기 -->
@@ -235,14 +247,17 @@
    
    <!--예약관리 예약취소 리스트   -->
    <select id="selectT_ReserDeleteList" parameterType="hashmap" resultType="hashmap">
-   	<![CDATA[		
-   		select TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE, TR_MONEY_STATE, tr.TRIP_IDX,
-   				TR_DELETE_STATE, TR_DELETE_DATE,
-   				 TRIP_NAME, TRIP_TPRICE, TRIP_PPRICE, TRIP_IMAGE
+   <include refid="common.pagingPre"/> 
+   	<![CDATA[
+   	  SELECT ROW_NUMBER() OVER 
+			(order by TR_IDX desc) RNUM, 
+   			 TR_IDX, TR_NAME, TR_TIME, TR_PERSONS, TR_FIRST_DATE, TR_LAST_DATE, TR_MONEY_STATE, tr.TRIP_IDX,
+   			 TR_DELETE_STATE, TR_DELETE_DATE,
+   		     TRIP_NAME, TRIP_TPRICE, TRIP_PPRICE, TRIP_IMAGE
 		from TRIP_RSV tr inner join TRIP t on tr.TRIP_IDX = t.TRIP_IDX
 		where tr.MEMBER_IDX =#{MEMBER_IDX} and TR_DELETE_STATE > 0
-		order by TR_IDX desc
 	]]>
+	<include refid="common.pagingPost"/> 
    </select>
    
     <!-- 트립관리->예약관리 ->예약취소 상세보기->예약취소목록 삭제 -->

@@ -138,7 +138,9 @@
         	 map:map,
         	 titile: positions[i].title,
         	 position: positions[i].latlng,
-        	 content: '<div class="markerImg" onclick="openOverlay()">$'+priceArry[i]+'</div>'
+        	 content: '<div class="markerImg" onclick="openOverlay()">$'+priceArry[i]+'</div>',
+        	 yAnchor: 1.2
+        	 
         });
     	 var content = '<div class="overlay_info" id="map_display'+ i +'">';
     	 	content += '<div id="head"><div id="diva"> ';

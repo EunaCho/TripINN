@@ -17,7 +17,7 @@
 
 
 <!-- 메인 바디 -->
-<div style="width:1350px;height:1300px;border:;text-align:center;">
+<div style="width:1350px;height:1300px;border:;text-align:center;margin:0px auto;">
 
 
 	<!-- 슬라이드 롤링 --> 

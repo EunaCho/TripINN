@@ -159,10 +159,12 @@ function tripDetail(idx) {
 				<input type="hidden" name="TRIP_IDX" value=""/>
  				<input type="hidden" name="index" value="${status.index+1}"/>
 			<c:forEach var="list" items="${list}" varStatus="status">
+			<c:set var="fullImg" value="${list.TRIP_IMAGE }"/>
+			<c:set var="tripImg" value="${fn:substring(fullImg, 0, fn:indexOf(fullImg, '|')) }"/>
 				<div class="trip_menu_div">
 					<div class="menu_div">
 						<div class="poto_div">
-						<img class="poto_div1" src="<%= cp %>/images/trip/${list.TRIP_IMAGE}">
+						<img class="poto_div1" src="<%= cp %>/images/trip/${tripImg}">
 						</div>
 						<div class="price_div">
 							<font style="color:#3c3c3c; font-weight:solid; font-size:15px; font-style:'바탕체'">

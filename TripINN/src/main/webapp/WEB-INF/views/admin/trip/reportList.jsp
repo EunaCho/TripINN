@@ -95,7 +95,7 @@
 		height:100%;
 		background-color:white;
 		margin:auto;
-		margin-left:220px;
+		margin-left:280px;
 		margin-top:-700px;
 		
 	}

@@ -141,7 +141,8 @@ body {
 }
 
 .hrAddrLeft {
-	width: 100%;
+	width: 50%;
+	float: left;
 	/* background-color: red; */
 }
 

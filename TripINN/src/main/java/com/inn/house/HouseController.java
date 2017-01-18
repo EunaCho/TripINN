@@ -108,9 +108,14 @@ public class HouseController {
 		mv.addObject("img", store_img);
 		mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
 		mv.addObject("map_list", store_addr);
+<<<<<<< HEAD
 		mv.addObject("map_list_length", store_addr.length);
 		System.out.println("리스트 넣은 후");
 		System.out.println(mv);
+=======
+		mv.addObject("map_list_length", list.size());
+
+>>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 		return mv;
 
 	}

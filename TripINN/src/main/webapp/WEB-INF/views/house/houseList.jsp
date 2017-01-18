@@ -77,7 +77,7 @@
     float: left;">
 
 	<!-- 상세검색폼 -->
-	<form id="searchForm" >
+	<form id="searchForm" action="/TripINN/house/houseMain.do" method="POST">
 	
 	<!-- 날짜 설정 -->
 	<div class="border_date">
@@ -184,8 +184,6 @@
 	
 	<div style="display:none">
 	<c:forEach items="${list}" var="house" varStatus="stat">
-
-				
 				<!-- 미리보기 개체 -->
 				<div class="pre_view_container">
 				<a href="${houseViewURL}">

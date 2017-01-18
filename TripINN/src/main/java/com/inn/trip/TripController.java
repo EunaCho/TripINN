@@ -41,7 +41,7 @@ public class TripController {
 	public ModelAndView tripRegist(CommandMap commandMap, HttpServletRequest request,
 				HttpSession session, @RequestParam(value="trip_include",required=true) List<String> inc_list) 
 				throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/trip.do");
+		ModelAndView mv = new ModelAndView("redirect:/tripList.do");
 		String trip_include = "";
 		for(String inc : inc_list) {
 			trip_include = trip_include + inc + "|";
