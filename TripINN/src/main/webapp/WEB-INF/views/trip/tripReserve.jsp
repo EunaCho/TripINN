@@ -93,7 +93,7 @@ function checkInfo() {
 				
 				<p style="width:350px;float:left;">호스트 : <font color="#1E6198">${tripInfo.MEMBER_NAME }</font> 님
 					<div style="width:300px;height:auto;float:right;margin-top:-75px;">
-						<img src="/TripINN/images/공유.png" class="hostImg" style="position:absolute;"/>
+						<img src="/TripINN/images/member/${tripInfo.MEMBER_IMAGE }" class="hostImg" style="position:absolute;"/>
 					</div>
 				</p>
 				</div>

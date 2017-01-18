@@ -45,7 +45,7 @@
 				font-weight: 800;
 				padding-left: 10px;
 				font-size:14pt;
-				
+				margin-top: 5px;
 				
 			}
 
@@ -86,7 +86,7 @@
 
    
    <!-- 좌측 영역 -->
-   <div style="width:16.8%;height:100%;border:0px solid black;text-align:center;margin-top:-15px;background:#eeeeff;">	
+   <div style="width:16%;height:100%;border:0px solid black;text-align:center;margin-top:-15px;background:#eeeeff;">	
 	   <section>
 				<nav style="height:400px;width:250px;">
 
@@ -125,7 +125,7 @@
    </div>
    
    <!-- 가운데 영역 -->
-   <div style="color:black;width:82%;height:390px;border:3px solid #eeeeff;text-align:left; position:absolute;top:205px;left:220px;">
+   <div style="color:black;width:80%;height:390px;border:3px solid #eeeeff;text-align:left; position:absolute;top:210px;left:280px;">
 	<div style="color:black;width:100%;height:50px;border:1px solid white;background:#eeeeff;">
 	<h3>&nbsp;&nbsp;관리자 공지사항</h3>
 	</div>

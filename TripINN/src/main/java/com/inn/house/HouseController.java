@@ -42,9 +42,10 @@ public class HouseController {
 	public ModelAndView houseList(CommandMap map, HttpSession session) throws Exception {
 
 		ModelAndView mv = new ModelAndView("houseMain"); // tilse에 등록된 jsp
-
+		
 		mv.addObject("search", map.getMap()); // 검색키워드 넘기기
-
+		System.out.println("서치후");
+		System.out.println(mv);
 		List<Map<String, Object>> list = houseService.searchHouseList(map.getMap());
 		List<Map<String, Object>> map_list = houseService.selectHouseMapList(map.getMap());
 
@@ -108,7 +109,9 @@ public class HouseController {
 		mv.addObject("list", list); // list에 담은 데이터를 보여주기 위함.
 		mv.addObject("map_list", store_addr);
 		mv.addObject("map_list_length", store_addr.length);
-
+		System.out.println("리스트 넣은 후");
+		System.out.println(mv);
+		mv.addObject("map_list_length", list.size());
 		return mv;
 
 	}

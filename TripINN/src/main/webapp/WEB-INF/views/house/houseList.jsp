@@ -29,6 +29,8 @@
 			values: [ 30000, 100000],
 			slide: function( event, ui ) {
 				$( "#amount" ).val( ui.values[ 0 ] +" 원" + " - " + ui.values[ 1 ]  +"원");
+				$("#price1").val(ui.values[ 0 ]); //슬라이드바 가격 받아오기 위한 변수 1
+				$("#price2").val(ui.values[ 1 ]); //슬라이드바 가격 받아오기 위한 변수 2
 			}
 		});
 		$( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) +" 원" +
@@ -75,7 +77,7 @@
     float: left;">
 
 	<!-- 상세검색폼 -->
-	<form id="searchForm" >
+	<form id="searchForm" action="/TripINN/house/houseMain.do" method="POST">
 	
 	<!-- 날짜 설정 -->
 	<div class="border_date">
@@ -102,9 +104,9 @@
 	</div>
 	<div class="border_category">
 		<div><h4>숙소 유형</h4></div>
-		<div class="h_category">집 전체<input type="checkbox" name="HOUSE_KIND" id="" style="color:"></div>
-		<div class="h_category">개인실<input type="checkbox" name="HOUSE_K  IND" id=""></div>
-		<div class="h_category">다인실<input type="checkbox" name="HOUSE_KIND" id=""></div>
+		<div class="h_category">집 전체<input type="checkbox" name="whole" value="집 전체" style="color:"></div>
+		<div class="h_category">개인실<input type="checkbox" name="private" value="개인실"></div>
+		<div class="h_category">다인실<input type="checkbox" name="dormitory" value="다인실"></div>
 	</div> 
 	
 	
@@ -122,7 +124,9 @@
 
 		</div>
 	</div>
-	
+	<!-- 슬라이드바 가격 받아오기 -->
+	<input type="hidden" id="price1" name="price1" />
+	<input type="hidden" id="price2" name="price2" />
 	<button class="button" type="submit">검색</button>
 	</form>
 	 
@@ -180,8 +184,6 @@
 	
 	<div style="display:none">
 	<c:forEach items="${list}" var="house" varStatus="stat">
-
-				
 				<!-- 미리보기 개체 -->
 				<div class="pre_view_container">
 				<a href="${houseViewURL}">

@@ -137,7 +137,7 @@
         
         <!-- 글씨 덮는 영역 -->
         <div class="row" style="width:1100px; height:35px; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
-   			<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>게시글 수정22</strong></font>
+   			<font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>게시글 수정</strong></font>
 		</div>		
 		<br>
         <tbody>

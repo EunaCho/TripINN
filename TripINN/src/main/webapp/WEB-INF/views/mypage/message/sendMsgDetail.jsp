@@ -236,7 +236,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center" style="height:60px;border:1px solid white; padding-top:5px;">
-						<input type="button" value="답장보내기" onclick="sendEmail('${map.RECEIVE_MEMBER_EMAIL}');" style="height:40px;" class="bottomBnt"/>
+						<%-- <input type="button" value="답장보내기" onclick="sendEmail('${map.RECEIVE_MEMBER_EMAIL}');" style="height:40px;" class="bottomBnt"/> --%>
 						<input type="button" value="삭제하기" onclick="delEmail('${map.MSG_IDX}');" style="height:40px;" class="bottomBnt"/>
 					</td>
 				</tr>

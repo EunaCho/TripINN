@@ -18,7 +18,7 @@ import com.common.common.UniqueNumberUtils;
 
 @Component("houseFileUtils")//어너테이션을 활용하여 객체의 관리를 스프링이 담당하도록 설정.
 public class FileUtils {
-	private static final String filePath = "E:\\upload\\"; //업로드할 파일 경로
+	private static final String filePath = "C:\\Java\\git\\TripINN\\TripINN\\src\\main\\webapp\\images\\house\\"; //업로드할 파일 경로
 	
 	public String parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
 		MultipartHttpServletRequest multipartHttpServletRequest =  (MultipartHttpServletRequest) request;
