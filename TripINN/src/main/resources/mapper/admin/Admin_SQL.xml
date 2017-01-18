@@ -426,11 +426,11 @@
          REPORT_CONTENT,
          REPORT_REGDATE,
          REPORT_TYPE,
-         HOUSE_NAME,
-         HOUSE_IMAGE
+         TRIP_NAME,
+         TRIP_IMAGE
 
           FROM
-            REPORT_BOARD R inner join HOUSE H on R.HOUSE_IDX=H.HOUSE_IDX
+            REPORT_BOARD R inner join TRIP T on R.TRIP_IDX=T.TRIP_IDX
             
             WHERE REPORT_TYPE=2
             
