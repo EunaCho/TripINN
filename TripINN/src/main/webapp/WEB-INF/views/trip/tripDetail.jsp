@@ -331,7 +331,7 @@ var favNum = 0;
 					 ${fn:substring(rlist.TRB_CONTENT,0, 100) }
 					 <c:if test="${rlist.TRB_CONTENT.length() > 100}">
 					 <br />
-					 	<span style=""><a href="javascript:$('#tdDiv-right${stat.index}').html('${rlist.TRB_CONTENT}')"
+					 	<span style=""><a href="javascript:moreReview('${stat.index}', '${rlist.TRB_CONTENT}')"
 					 	 style="text-decoration:underline;color:#cb4242;">
 					 	 		<b>+더보기</b></a>
 					 	 </span>
@@ -538,10 +538,18 @@ var favNum = 0;
 
 
 <script>
+function moreReview(idx, cont) {
+	var regExp = /[\'\"]/gm
+	var con = cont.replace(/[\'\"]/g, "");
+	
+	$("#tdDiv-right"+idx).html(con);
+}
 function reviewDelete(review_idx) {
-	var form = document.reviewDel;
-	form.trb_idx.value = review_idx;
-	form.submit();
+	if(confirm("삭제 하시겠습니까?")) {
+		var form = document.reviewDel;
+		form.trb_idx.value = review_idx;
+		form.submit();
+	}
 }
 function tripReport() {
 	var rform = document.reportForm;
@@ -554,4 +562,4 @@ function r_confirm (confirm) {
 				$(".report_layerWindow").css("display", "none");
 }
 </script>
- <%@ include file="/WEB-INF/views/house/review/message.jspf"%>
+ <%@ include file="/WEB-INF/views/trip/message.jspf"%>
