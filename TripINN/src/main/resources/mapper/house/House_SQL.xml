@@ -340,4 +340,10 @@ MODIFY(HI_CHECKIN DATE, HI_CHECKOUT DATE)
                      WHERE r > #{FIRST_INDEX}  and r <= #{LAST_INDEX}
       ]]>
    </select>
+   
+   <update id="increaseHouseRSV" parameterType="hashmap">
+      UPDATE HOUSE 
+      SET HOUSE_TOTAL_PERSONS = HOUSE_TOTAL_PERSONS - #{hr_persons}
+      WHERE HOUSE_IDX = #{HOUSE_IDX}
+   </update>
 </mapper>

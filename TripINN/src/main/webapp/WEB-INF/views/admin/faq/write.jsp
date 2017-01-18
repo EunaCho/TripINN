@@ -7,9 +7,8 @@
 
 
 <!-- 작성자: 이진욱 -->
-<!--가운데 좌측영역 스타일 적용-->
+<!-- 좌측영역 스타일적용1 -->
 <style>
- 
  #dropdown2 li a{
  font-size:19px;
  color:black;
@@ -17,61 +16,6 @@
  
  #dropdown2{
             
-<<<<<<< HEAD
-			list-style-type: none;
-			margin-left:-40px;
-			position:absolute;
-			max-width:300px;
-			margin-top:-20px;
-			}
-
-			#dropdown2 li{
-			    
-				width: 200px;
-				height: 28px;
-				border: 0px;
-				border-style: solid dashed;
-				margin: 2px;
-				overflow:hidden;
-				background: #eeeeff;
-				display:inline-block;
-				transition: all 0.4s ease-out;
-				float:left;
-				text-align:center;
-				font-weight: 800;
-				padding-left: 10px;
-				font-size:14pt;
-				
-				
-			}
-
-			#dropdown2 > li > ul > li{
-		     	
-				height: 30px;
-				border: 2px;
-				list-style-type: none;
-				margin-left:-50px;
-				background:#c2e4e7;
-				text-align:center;
-				font-weight: 800;
-				font-size: 16pt;
-				padding-left: 10px;
-				opacity: 0.3;
-				transition: text-shadow 0.25s ease, opacity 0.8s ease;
-			}
-			#dropdown2 > li > ul > li:hover{
-				opacity: 1;
-				text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #8888ff;
-			}
-			#dropdown2 > li:hover{
-				height:90px;
-			}
-			section{
-				display: block;
-				border: 0px solid gray;
-			}
-			hr{ width:95%; color:#eee;}
-=======
          list-style-type: none;
          margin-left:-40px;
          position:absolute;
@@ -125,80 +69,22 @@
             border: 0px solid gray;
          }
          hr{ width:95%; color:#eee;}
-         
-         .board_view{
-         width:80%;
-         }
-         
-         
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 </style>
 
 
  <!-- 가운데 윗 영역 -->
-<div style="width:100%;height:100px;border:0px solid black;text-align:center;">
+<div style="width:100%;height:100px;border:1px solid black;text-align:center;">
    <h2>FAQ 페이지에 오신걸 환영합니다.</h2>
 </div>
 
 <!-- 가운데 영역(좌+우) 전체 -->
-<div style="width:100%;height:auto;border:0px solid black;">
+<div style="width:100%;height:auto;border:1px solid black;">
 
-<<<<<<< HEAD
-	<!-- 좌측 영역 -->
-   <div style="width:16.8%;height:420px;border:1px solid black;text-align:center;float:left;">	
-	   <section>
-				<nav style="width:250px;height:400px;margin-top:30px;">
-=======
    <!-- 좌측 영역 -->
    <div style="width:16.8%;height:280px;border:0px solid black;text-align:center;float:left;background:#eeeeff;">   
       <section>
             <nav style="width:250px;height:400px;margin-top:30px;">
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
 
-<<<<<<< HEAD
-					<ul id="dropdown2">
-					<c:if test="${member_level == 1}">
-						<li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a></li>
-					</c:if>	
-						<li><a>시작하기</a>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList.do">이용방법</a></li>
-							</ul>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList1.do">여행방법</a></li>
-							</ul>
-						</li>
-						<li><a>계정과 프로필</a>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList2.do">내 정보</a></li>
-							</ul>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList3.do">보안과 비밀번호</a></li>
-							</ul>
-						</li>
-						<li><a>여행</a>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList4.do">숙소 찾기</a></li>
-							</ul>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList5.do">숙소 예약</a></li>
-							</ul>
-						</li>
-						<li><a>트립</a>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList6.do">트립 참가</a></li>
-							</ul>
-							<ul>
-							<li><a href = "http://localhost:8080/TripINN/admin/faqList7.do">트립 호스팅</a></li>
-							</ul>
-						</li>
-						<li><a href = "http://localhost:8080/TripINN/admin/faqList8.do">후기</a></li>
-						<li><a href="http://localhost:8080/TripINN/admin/qnaList.do">문의하기</a></li>
-						
-					</ul>
-				</nav>
-		</section>
-=======
                <ul id="dropdown2">
                <c:if test="${member_level == 1}">
                   <li><a href="http://localhost:8080/TripINN/admin/main.do">관리자 홈</a></li>
@@ -241,16 +127,15 @@
                </ul>
             </nav>
       </section>
->>>>>>> branch 'master' of https://github.com/EunaCho/TripINN.git
    
    </div>
 
 
 <!-- 가운데 우측 영역 , height 380 , 포지션 left: 230 대체할수 있는 퍼센트-->
-<div style="width:82%;height:50%;float:left;border:0px solid black;">
+<div style="width:82%;height:50%;float:left;border:1px solid black;margin-left:3px">
 
 <!-- 이용방법 영역 -->   
-   <div class="howToUse_div">
+   <div class="howToUse_div" style="margin-left:10px">
   
       <!-- 글자 감싸는 영역 -->
       <div class="howToUse" style="text-align:center">
@@ -266,7 +151,7 @@
             </colgroup>
             
      <!-- 글씨 덮는 영역 -->
-     <div class="row" style="width:1100px; height:35px; margin-bottom:0px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
+     <div class="row" style="width:1100px; height:35px; margin-bottom:5px; margin-top:10px;vertical-align:middle; padding-left:9px; padding-top:10px;">
          <font style="font-family:'Noto Sans', sans-serif; font-size:17px; font-color:#3b3a3a; "><strong>Faq 글작성</strong></font>
     </div>
             
@@ -322,7 +207,7 @@
        
       
    <!-- 작성하기버튼 감싸는 영역 -->
-      <div style="text-align:right; margin-right:280px;"> 
+      <div style="text-align:right; margin-right:280px;margin-top:-20px">
          <c:if test="${faq_type == '1'}">
          <a href="#this" class="btn_write" id="write" >작성하기</a>
       </c:if>
@@ -354,7 +239,7 @@
          <a href="#this" class="btn_write" id="write9" >작성하기</a>
       </c:if>
           
-      
+      <br><br><br><br>
            
     </div>
     

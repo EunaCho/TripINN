@@ -474,7 +474,7 @@ var favNum = 0;
 <input type="hidden" name="trip_idx" value="${trip.TRIP_IDX }" />
 <input type="hidden" name="member_idx" value="${sessionScope.member_idx }" />
 <input type="hidden" name="report_state" value="0" /> <!-- 0 진행중, 1 경고, 2 삭제 -->
-<input type="hidden" name="report_type" value="1" /> <!-- 0 숙소신고, 1 투어신고 -->
+<input type="hidden" name="report_type" value="2" /> <!-- 0 숙소신고, 1 투어신고 -->
 <div class="report_layerWindow">
 
 	 <div class="bg"></div>

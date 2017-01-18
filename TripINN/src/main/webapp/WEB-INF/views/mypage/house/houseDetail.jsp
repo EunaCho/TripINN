@@ -243,9 +243,9 @@ function deleteHouse(house_idx){
 }
 function modifyHouse(house_idx){
 	
-	document.houseForm.HOUSE_IDX = house_idx;
+	document.houseForm.HOUSE_IDX.value = house_idx;
 	
-	document.houseForm.action="/TripINN/house/houseModifyForm.do";
+	document.houseForm.action="/TripINN/house/houseUpdateForm.do";
 	document.houseForm.submit();
 }
 
@@ -285,7 +285,7 @@ function reserDetail(idx, hr_idx){
                </div>
                
                <div class="menu_div2">
-               <form name="houseForm" method="post">
+               <form name="houseForm">
                <input type="hidden" name="HOUSE_IDX" value=""/>
                   <div class="name_div">
                      <div style="width:200px; height:auto; float:left;">
@@ -299,7 +299,7 @@ function reserDetail(idx, hr_idx){
                      </div>
          
                     <div style= " width:120px; height:auto; float:right; margin-left:370px; margin-top:-35px; border:0px solid red;">
-                        <input type="button" value="호스팅 수정하기" onclick="javascript:modifyHouse${houseMap.HOUSE_IDX});" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; margin-right:25px;"/>
+                        <input type="button" value="호스팅 수정하기" onclick="javascript:modifyHouse('${houseMap.HOUSE_IDX}');" style="height:35px; border-radius:5px; border:2px solid #424244; background-color:#fff; float:left; margin-right:25px;"/>
                     </div>
                      
                   </div><!-- name_div -->
@@ -419,7 +419,9 @@ function reserDetail(idx, hr_idx){
 							<font style="color:#3c3c3c; letter-spacing:2px; font-size:12px; font-style:'바탕체'">예약</font>
 						</c:if>
 						<c:if test="${rList.HR_DELETE_STATE == 1}">	
-							<font style="color:red;  letter-spacing:2px; font-size:12px; font-style:'바탕체'">취소신청</font>
+							<b><font style="color:red;  letter-spacing:2px; font-size:12px; font-style:'바탕체'">
+								<a href="javascript:house_rsv_del('${rList.HR_IDX }');" style="color:red">취소신청</a></font>
+							</b>
 						</c:if>
 					</td>
 					<td align="center" bgcolor="#f3f3f3">
@@ -534,3 +536,16 @@ function reserDetail(idx, hr_idx){
    
 </div>
 <div style="clear:both;"></div>
+<form action="/TripINN/mypage/house_rsv_del.do" method="post" name="rform">
+	<input type="hidden" name="hr_idx" value="" />
+	<input type="hidden" name="HOUSE_IDX" value="${houseMap.HOUSE_IDX }" />
+</form>
+<script>
+function house_rsv_del(hr_idx) {
+	if(confirm("확인을 누르시면 예약이 취소됩니다.")) {
+		var form = document.rform;
+		form.hr_idx.value = hr_idx;
+		form.submit();
+	}
+}
+</script>
