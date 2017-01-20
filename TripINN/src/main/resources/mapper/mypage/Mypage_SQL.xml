@@ -323,4 +323,5 @@
    		where MEMBER_IDX= #{MEMBER_IDX}
    </update>
    
+   <delete parameterType="String" id="houseRsvDel"> delete from house_rsv where hr_idx=#{hr_idx} </delete>
 </mapper>

@@ -406,7 +406,9 @@ function modifyTrip(){
 							<font style="color:#3c3c3c; letter-spacing:2px; font-size:12px; font-style:'바탕체'">예약</font>
 						</c:if>
 						<c:if test="${rList.HR_DELETE_STATE == 1}">	
-							<font style="color:red;  letter-spacing:2px; font-size:12px; font-style:'바탕체'">취소신청</font>
+							<b><font style="color:red;  letter-spacing:2px; font-size:12px; font-style:'바탕체'">
+								<a href="javascript:house_rsv_del('${rList.HR_IDX }');" style="color:red">취소신청</a></font>
+							</b>
 						</c:if>
 					</td>
 					<td align="center" bgcolor="#f3f3f3">

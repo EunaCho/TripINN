@@ -179,4 +179,8 @@ public class MypageDAO extends AbstractDAO {
 	public void updateMemberPlofile(Map<String, Object> map) throws Exception{
 		update("mypage.updateMemberPlofile", map);
 	}
+
+	public void house_rsv_del(String hr_idx) {
+		delete("mypage.houseRsvDel", hr_idx);
+	}
 }

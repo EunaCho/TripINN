@@ -72,5 +72,7 @@ public interface MypageService {
 	void messageDel(String msg_idx);
 	//--------------------프로필 
 	void updateMemberPlofile(Map<String, Object> map, HttpServletRequest request) throws Exception; //프로필 수정하기
+
+	void house_rsv_del(String hr_idx);
 	
 }

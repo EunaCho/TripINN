@@ -225,6 +225,11 @@ public class MypageServiceImpl implements MypageService{
 	public void messageDel(String msg_idx) {
 		mypageDAO.messageDel(msg_idx);
 	}
+
+	@Override
+	public void house_rsv_del(String hr_idx) {
+		mypageDAO.house_rsv_del(hr_idx);
+	}
 	
 	//-------프로필------//
 
